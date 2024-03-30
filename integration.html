@@ -17,8 +17,8 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V28";
-			var switchOff = "Switch is off V28";
+			var switchOn = "Switch is on V29";
+			var switchOff = "Switch is off V29";
 			$('#check-toggle').change(function() {
    				if(this.checked){
 					Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
@@ -42,8 +42,10 @@
     				var message = conversations[0].labels[0]
     				if (message === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
       					$('#check-toggle').checked();
-				if (message != "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
+				}
+				else {
       					$!('#check-toggle').checked();
+				}
       				return
     			}
 
