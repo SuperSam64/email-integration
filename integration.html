@@ -9,11 +9,11 @@
 		<input type="checkbox" class="checkmark" id="check-toggle"></input>
 		<div id="checkmark-text" style="display:none">Checkmark is on V2</div>
 		<input type="checkbox" class="switch" id="check-switch"></input>
-		<div id="switch-text">PUSH ME</div>
+		<div id="switch-text">Switch is off V9</div>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V8";
-			var switchOff = "Switch is off V8";
+			var switchOn = "Switch is on V9";
+			var switchOff = $(#switch-text).text();
 			$('#check-toggle').click(function() {
    				$("#checkmark-text").toggle(this.checked);
 			});
