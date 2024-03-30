@@ -6,14 +6,18 @@
 	</head>
 	<body>
 		Here is some text!
-		<input type="checkbox" class="checkmark" id="check-toggle"></input>
-		<div id="checkmark-text" style="display:none">Checkmark is on V2</div>
-		<input type="checkbox" class="switch" id="check-switch"></input>
-		<div id="switch-text">Switch is off V11</div>
+		<div>
+			<div id="checkmark-text" style="display:none">Checkmark is on V2</div>
+			<input type="checkbox" class="checkmark" id="check-toggle"></input>
+		</div>
+		<div>
+			<div id="switch-text">Switch is off V112</div>
+			<input type="checkbox" class="switch" id="check-switch"></input>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V11";
-			var switchOff = "Switch is off V11";
+			var switchOn = "Switch is on V12";
+			var switchOff = "Switch is off V12";
 			$('#check-toggle').click(function() {
    				$("#checkmark-text").toggle(this.checked);
 			});
