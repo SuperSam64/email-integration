@@ -12,8 +12,11 @@
 		<div id="switch-text">Switch is off V9</div>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V9";
-			var switchOff = $(#switch-text).text();
+			var switchOn = "Switch is on V10";
+			var switchOff = "Switch is off V10";
+			$( document ).ready(function() {
+    				$(#switch-text).text(switchOff)
+			});
 			$('#check-toggle').click(function() {
    				$("#checkmark-text").toggle(this.checked);
 			});
