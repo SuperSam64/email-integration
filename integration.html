@@ -12,16 +12,16 @@
 		<div id="switch-text">PUSH ME</div>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on";
+			var switchOn = "Switch is on V8";
+			var switchOff = "Switch is off V8";
 			$('#check-toggle').click(function() {
    				$("#checkmark-text").toggle(this.checked);
 			});
-			
-   $("#check-switch").click(function () {
-      $('#switch-text').text(function(i, text){
-          return text === "PUSH ME" ? "DON'T PUSH ME" : "PUSH ME";
-      })
-   });
+			$("#check-switch").click(function () {
+				$('#switch-text').text(function(i, text){
+          			return text === switchOff ? switchOn : switchOff;
+      				})
+   			});
 		</script>
 	</body>
 </html>
