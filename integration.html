@@ -17,11 +17,8 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V26";
-			var switchOff = "Switch is off V26";
-			$( window ).on( "load", function() {
-				$('#switch-text').text(switchOff);
-			})
+			var switchOn = "Switch is on V28";
+			var switchOff = "Switch is off V28";
 			$('#check-toggle').change(function() {
    				if(this.checked){
 					Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
@@ -30,11 +27,37 @@
 					Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
 				}
 			});
+			$( window ).on( "load", function() {
+				$('#switch-text').text(switchOff);
+			})
 			$("#check-switch").click(function () {
 				$('#switch-text').text(function(i, text){
           			return text === switchOff ? switchOn : switchOff;
       				})
    			});
+
+
+			Missive.on('change:conversations', (ids) => {
+				Missive.fetchConversations(ids).then((conversations) => {
+    				var message = conversations[0].labels[0]
+    				if (message === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
+      					$('#check-toggle').checked();
+				if (message != "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
+      					$!('#check-toggle').checked();
+      				return
+    			}
+
+    var from = message.from_field
+    console.log('Message from:', from.name, from.address)
+    console.log('Message subject:', message.subject)
+  })
+})
+
+
+
+
+
+			
 		</script>
 	</body>
 </html>
