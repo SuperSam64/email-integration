@@ -16,9 +16,14 @@
 			$('#check-toggle').click(function() {
    				$("#checkmark-text").toggle(this.checked);
 			});
-			$('#check-switch').click(function() {
-				$("#switch-text").toggle(this.checked);		
-			});
+	
+
+
+$'check-switch'.on('click', function() {
+  $(switch-text).text((i, t) => t == 'string1' ? 'string2' : 'string1');
+});
+
+			
 		</script>
 	</body>
 </html>
