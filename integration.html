@@ -39,9 +39,9 @@
 
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
-    				var message = conversations[0]
-    					if (message.labels[0] === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
-      						$('#check-toggle').checked();
+    					var message = conversations[0].labels[0]
+    					if (message === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
+      						$('#check-toggle').prop('checked', true);
 					}
 					else {
       						$('#check-toggle').prop('checked', false);
