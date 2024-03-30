@@ -6,7 +6,8 @@
 	</head>
 	<body>
 		Here is some text!
-		<input[type="checkbox"] class="checkmark" id="checkme"></input>
+		<input type="checkbox" class="checkmark" id="checkme"></input>
+		<div id="dark-mode-text" style="display:none">Dark Mode On</div>
 		<div class="margin-large align-center">
 			<span class="button" id="can-label" >Version 1</span>
 		</div>
@@ -15,6 +16,9 @@
 			var custID = "123456";
 			$("#can-label").click(function () {
 				Missive.insertText(custID)
+			});
+			$('#checkme').click(function() {
+   				$("#dark-mode-text").toggle(this.checked);
 			});
 		</script>
 	</body>
