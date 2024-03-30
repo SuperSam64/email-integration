@@ -7,7 +7,7 @@
 	<body>
 		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<td width="120px"><div id="checkmark-text">Chatbot request 2</div></td>
+				<td width="120px"><div id="checkmark-text">Chatbot request 3</div></td>
 				<td><input type="checkbox" class="checkmark" id="check-toggle"></input></td>
 			</tr>
 			<tr class="section columns-center">
@@ -39,15 +39,15 @@
 
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
-    				var message = conversations[0].labels[0]
-    					if (message === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
+    				var message = conversations[0]
+    					if (message.labels[0] === "32cb35ef-c362-411d-97b5-0d0bb5366d5c") {
       						$('#check-toggle').checked();
 					}
 					else {
       						$('#check-toggle').prop('checked', false);
 					}
 				}
-    			});
+			});
 
     var from = message.from_field
     console.log('Message from:', from.name, from.address)
