@@ -7,7 +7,7 @@
 	<body>
 		Here is some text!
 		<div class="section">
-			<div id="checkmark-text" style="display:none">Checkmark is on V2</div>
+			<div id="checkmark-text">Chatbot request</div>
 			<input type="checkbox" class="checkmark" id="check-toggle"></input>
 		</div>
 		<table class="section columns-center">
@@ -18,13 +18,15 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Switch is on V22";
-			var switchOff = "Switch is off V22";
+			var switchOn = "Switch is on V23";
+			var switchOff = "Switch is off V23";
 			$( window ).on( "load", function() {
 				$('#switch-text').text(switchOff);
 			})
-			$('#check-toggle').click(function() {
-   				$("#checkmark-text").toggle(this.checked);
+			$('#check-toggle').change(function() {
+   				if(this.checked){
+					Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c")
+				}
 			});
 			$("#check-switch").click(function () {
 				$('#switch-text').text(function(i, text){
