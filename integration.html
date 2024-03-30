@@ -17,9 +17,7 @@
    				$("#checkmark-text").toggle(this.checked);
 			});
 			$('#check-switch').click(function() {
-				$("#switch-text").text(function(st1,st2){
-    				if (st2=='Switch is Off V2'){return 'Switch is on'};
-    				return 'Switch is Off'					
+				$("#switch-text").toggle(this.checked);		
 			});
 		</script>
 	</body>
