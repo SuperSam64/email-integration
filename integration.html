@@ -26,8 +26,8 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 17</div>
-		<div id="subject-text">[no subject 16]</div>
+		<div class="button" id="get-subject-button">Get Subject 18</div>
+		<div id="subject-text">[no subject 18]</div>
 
 
 		<!--=========================================================================-->
@@ -43,10 +43,12 @@
 			}
 			/**/
 			var message = conversations[0].latest_message
-			if (!message.subject) {
+			if (!message || !message.from_field) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
-				$('#subject-text').text("No subject")
+				if (!message.subject) {
+					$('#subject-text').text("No subject")
+				}
 				return
 			}
 
