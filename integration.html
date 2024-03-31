@@ -27,32 +27,45 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject 14]</div>
+		<div id="subject-text">[no subject 15]</div>
 
 
 		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		/*===================================================================*/
-		Missive.on('load', (ids) => {
+		
+		Missive.on('change:conversations', (ids) => {
 			Missive.fetchConversations(ids).then((conversations) => {
 			if (conversations.length != 1) {
-			// Do nothing if multiple conversations are selected.
-			return
-		}
-	
-		var message = conversations[0].latest_message
-		if (!message || !message.from_field) {
-		// Do nothing if conversation has no message (only chat comments) or if
-		// message has no From field.
-		return
-		}
-			  
-		    var from = message.from_field
-		    console.log('Message from:', from.name, from.address)
-		    $('#subject-text').text(message.subject)
-		  })
-		})
+				// Do nothing if multiple conversations are selected.
+				return
+			}
+
+			var message = conversations[0].latest_message
+			if (!message || !message.from_field) {
+				// Do nothing if conversation has no message (only chat comments) or if
+				// message has no From field.
+				return
+			}
+
+			var from = message.from_field
+			console.log('Message from:', from.name, from.address)
+			$('#subject-text').text(message.subject)
+			})
+		})	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			
 		/*===================================================================
    		var switchOn = "Toggle (on)";
