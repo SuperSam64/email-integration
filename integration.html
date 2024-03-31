@@ -43,7 +43,7 @@
 			}
 			/**/
 			var message = conversations[0].latest_message
-			if (!message.subject || !message.from_field) {
+			if (!message.subject) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
 				$('#subject-text').text("No subject")
