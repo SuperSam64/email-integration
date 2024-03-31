@@ -5,7 +5,7 @@
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 	</head>
 	<body>
-		<table class="section columns-center margin">
+		<!--<table class="section columns-center margin">
 			<tr class="section columns-center">
 				<td width="120px"><div id="checkmark-text">Chat request</div></td>
 				<td><input type="checkbox" class="checkmark" id="check-toggle"></input></td>
@@ -24,39 +24,62 @@
 					<span class="button" id="search">Search</span>
 				</td>
 			</tr>
-		</table>
+		</table>=====================================================================-->
+
+		<div class="button" id="get-subject-button">Get Subject</div>
+		<div id="subject-text>[no subject]</div>
+
+
+		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			var switchOn = "Toggle (on)";
-			var switchOff = "Toggle (off)";
-   			$('#new-message').click(function () { 
-				Missive.compose();
-				Missive.addAssignees("5c21049b-5a49-476c-813e-dfbf5285907d");
-			}); 
-			$('#search').click(function () { 
-				Missive.search("12345678");
-			});
-			$('#check-toggle').change(function() {
-   				if(this.checked){
-					Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-				}
-				if(!this.checked){
-					Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-				}
-			});
-			$( window ).on( "load", function() {
-				$('#switch-text').text(switchOff);
-			})
-			$("#check-switch").click(function () {
-				$('#switch-text').text(function(i, text){
-          			return text === switchOff ? switchOn : switchOff;
-      				})
-   			});
-
-			/* Removes chatbot label when going back to a conversation
-			Missive.on('change:conversations', (ids) => {
+		/*===================================================================*/
+		var subject;
+		$('#get-subject-button').click(function () {	
+			Missive.fetchConversations(ids).then((conversations) => {
+	    			if (conversations.length != 1) {
+	      			// Do nothing if multiple conversations are selected.
+	     			return
+    			}
+			var message = conversations[0].latest_message
+			if (!message || !message.from_field) {
+      			// Do nothing if conversation has no message (only chat comments) or if
+      			// message has no From field.
+      			return
+    			}
+    			subject === ('Message subject:', message.subject);
+			$('#subject-text') === subject;
+		});
+			
+		/*===================================================================
+   		var switchOn = "Toggle (on)";
+		var switchOff = "Toggle (off)";
+   		$('#new-message').click(function () { 
+			Missive.compose();
+			Missive.addAssignees("5c21049b-5a49-476c-813e-dfbf5285907d");
+		}); 
+		$('#search').click(function () { 
+			Missive.search("12345678");
+		});
+		$('#check-toggle').change(function() {
+			if(this.checked){
+				Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
+			}
+			if(!this.checked){
 				Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-			})*/			
-		</script>
+			}
+		});
+		$( window ).on( "load", function() {
+			$('#switch-text').text(switchOff);
+		})
+		$("#check-switch").click(function () {
+			$('#switch-text').text(function(i, text){
+       			return text === switchOff ? switchOn : switchOff;
+			})
+		});
+		Missive.on('change:conversations', (ids) => {
+		Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
+		})			
+		</script>*/
 	</body>
 </html>
