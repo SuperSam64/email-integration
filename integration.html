@@ -26,15 +26,17 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 33</div>
-		<div id="subject-text">[no subject 33]</div>
+		<div class="button" id="get-subject-button">Get Subject 34</div>
+		<div id="subject-text">[no subject 34]</div>
 
 
 		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		/*===================================================================*/
-		var getBody = function()((ids) => {
+		$( window ).on( "load", getBody());
+		Missive.on('change:conversations', getBody());
+		var getBody = function(){((ids) => {
 			Missive.fetchConversations(ids).then((conversations) => {
 			if (conversations.length != 1) {
 				// Do nothing if multiple conversations are selected.
@@ -49,9 +51,8 @@
 			}	
 				$('#subject-text').text(message.body)
 			})
-		});
-		$( window ).on( "load", getBody);
-		Missive.on('change:conversations', getBody);
+		})};
+
 			
 			
 			
