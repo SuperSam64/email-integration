@@ -27,7 +27,7 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject 5]</div>
+		<div id="subject-text">[no subject 6]</div>
 
 
 		<!--=========================================================================-->
@@ -36,11 +36,11 @@
 		/*===================================================================*/		
 		$('#get-subject-button').click(function () {(ids) => {
   			Missive.fetchConversations(ids).then((conversations) => {
-   				var message = conversations[0].latest_message
-    				$('#subject-text').text(message.subject);
+   				var message = conversations[0].latest_message;
+				var subject = message.subject;
+    				$('#subject-text').text(subject);
 			})
-		}
-		Missive.search("12345678");
+			Missive.search("12345678");
 		});
 			
 		/*===================================================================
