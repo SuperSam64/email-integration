@@ -27,17 +27,15 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject 3]</div>
+		<div id="subject-text">[no subject 4]</div>
 
 
 		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		/*===================================================================*/		
-		$('#get-subject-button').click(function () {	
-			Missive.fetchConversations(ids).then((conversations) => {   			
-			var message = conversations[0].latest_message    			
-			$('#subject-text').text(message.subject)
+		$('#get-subject-button').click(function () { 
+			Missive.search("12345678");
 		});
 			
 		/*===================================================================
