@@ -26,8 +26,8 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 21</div>
-		<div id="subject-text">[no subject 21]</div>
+		<div class="button" id="get-subject-button">Get Subject 22</div>
+		<div id="subject-text">[no subject 22]</div>
 
 
 		<!--=========================================================================-->
@@ -47,7 +47,9 @@
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
 				$('#subject-text').text(null)
-				Missive.addAssignees("5c21049b-5a49-476c-813e-dfbf5285907d");
+				if(messages_count=0){
+					Missive.addAssignees("5c21049b-5a49-476c-813e-dfbf5285907d");
+				}
 				return
 			}
 
