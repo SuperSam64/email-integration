@@ -27,14 +27,13 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject]</div>
+		<div id="subject-text">[no subject 1]</div>
 
 
 		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-		/*===================================================================*/
-		var subject;
+		/*===================================================================*/		
 		$('#get-subject-button').click(function () {	
 			Missive.fetchConversations(ids).then((conversations) => {
 	    			if (conversations.length != 1) {
@@ -47,8 +46,8 @@
       			// message has no From field.
       			return
     			}
-    			subject === ('Message subject:', message.subject);
-			$('#subject-text') === subject;
+    			var subject = ('Message subject:', message.subject);
+			$('#subject-text').text(subject);
 		});
 			
 		/*===================================================================
