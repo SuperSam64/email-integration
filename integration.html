@@ -26,32 +26,53 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 34</div>
-		<div id="subject-text">[no subject 34]</div>
+		<div class="button" id="get-subject-button">Get Subject 35</div>
+		<div id="subject-text">[no subject 35]</div>
 
 
 		<!--=========================================================================-->
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		/*===================================================================*/
-		$( window ).on( "load", getBody());
-		Missive.on('change:conversations', getBody());
-		var getBody = function(){((ids) => {
+		
+		Missive.on('change:conversations', (ids) => {
 			Missive.fetchConversations(ids).then((conversations) => {
-			if (conversations.length != 1) {
-				// Do nothing if multiple conversations are selected.
-				return
-			}
-			var message = conversations[0].latest_message
-			if (!message || !message.from_field) {
-				// Do nothing if conversation has no message (only chat comments) or if
-				// message has no From field.
-				$('#subject-text').text(null)
-				return
-			}	
-				$('#subject-text').text(message.body)
+				if (conversations.length != 1) {
+					// Do nothing if multiple conversations are selected.
+					return
+				}
+				var message = conversations[0].latest_message
+				if (!message || !message.from_field) {
+					// Do nothing if conversation has no message (only chat comments) or if
+					// message has no From field.
+					$('#subject-text').text(null)
+					if(conversations[0] === "No subject"){
+						Missive.addAssigness("5c21049b-5a49-476c-813e-dfbf5285907d");
+					}
+					return
+				}	
+				$('#subject-text').text(message.subject)
 			})
-		})};
+		});			
+		$( window ).on( "load", (ids) => {
+			Missive.fetchConversations(ids).then((conversations) => {
+				if (conversations.length != 1) {
+					// Do nothing if multiple conversations are selected.
+					return
+				}
+				var message = conversations[0].latest_message
+				if (!message || !message.from_field) {
+					// Do nothing if conversation has no message (only chat comments) or if
+					// message has no From field.
+					$('#subject-text').text(null)
+					if(conversations[0] === "No subject"){
+						Missive.addAssigness("5c21049b-5a49-476c-813e-dfbf5285907d");
+					}
+					return
+				}	
+				$('#subject-text').text(message.subject)
+			})
+		});
 
 			
 			
