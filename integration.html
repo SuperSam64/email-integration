@@ -27,7 +27,7 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject 12]</div>
+		<div id="subject-text">[no subject 13]</div>
 
 
 		<!--=========================================================================-->
@@ -42,11 +42,6 @@
 		    }
 		
 		    var message = conversations[0].latest_message
-		    if (!message.subject) {
-		      $('#subject-text').text("No subject")
-		      return
-		    }
-		
 		    var from = message.from_field
 		    console.log('Message from:', from.name, from.address)
 		    $('#subject-text').text(message.subject)
