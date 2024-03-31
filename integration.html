@@ -27,7 +27,7 @@
 		</table>=====================================================================-->
 
 		<div class="button" id="get-subject-button">Get Subject</div>
-		<div id="subject-text">[no subject 9]</div>
+		<div id="subject-text">[no subject 10]</div>
 
 
 		<!--=========================================================================-->
@@ -50,7 +50,7 @@
 		
 		    var from = message.from_field
 		    console.log('Message from:', from.name, from.address)
-		    $('#subject-text').text('Message subject:', message.subject)
+		    $('#subject-text').text(message.subject)
 		  })
 		})
 			
