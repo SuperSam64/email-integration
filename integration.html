@@ -26,8 +26,8 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 46</div>
-		<div id="subject-text">[no subject 46]</div>
+		<div class="button" id="get-subject-button">Get Subject 47</div>
+		<div id="subject-text">[no subject 47]</div>
 
 
 		<!--=========================================================================-->
@@ -39,17 +39,19 @@
 		
 		/*$("#get-subject-button").click(function () {
   			var thisUser = Missive.fetchUsers();
-			$('#subject-text').text(thisUser[0]);
+			
 		})*/
 
-$("#get-subject-button").click(function () {
-			$(thisUser).each(function(whichUser) { 
-  if (whichUser === Missive.users.me){$('#subject-text').text(whichUser) }
+
+
+		("#get-subject-button").click(function () {
+			Missive.fetchUsers(user) {
+				if (user.me){
+	    				$('#subject-text').text(user.id);
+				}
 				return
-})
-});
-		
-  
+			}
+    		});
   
   
   		/*===================================================================
