@@ -7,7 +7,7 @@
 	<body>
 		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<th style="align-center text-800">Version 2.4</th>
+				<th style="align-center text-800">Version 2.5</th>
 			</tr>
 			<tr class="section columns-center">
 				<td><span class="button" id="button1">Button 1</span></td>
@@ -35,8 +35,8 @@
 			function addNumbers(num1, num2) {
   				return num1 + num2;
 			}
-			var result = addNumbers(3, 5);;
-			$("#button2-text").click(result);
+			
+			$("#button2-text").click(addNumbers(3, 5));
 		</script>
 	</body>
 </html>
