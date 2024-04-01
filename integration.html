@@ -7,7 +7,7 @@
 	<body>
 		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<th style="align-center text-800">Version 2.8</th>
+				<th style="align-center text-800">Version 2.9</th>
 			</tr>
 			<tr class="section columns-center">
 				<td><span class="button" id="button1">Button 1</span></td>
@@ -32,13 +32,14 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			function addNumbers(num1, num2) {
-  				return num1 + num2;
+			function addNumbers(some_param) {
+  				var x = some_param; /* this is never used*/
+				return "I've been clicked!";
 			}
 			
 			$("#button2").click(function () { 
 
-				$("#button2-text").text(addNumbers(3,5));
+				$("#button2-text").text(addNumbers("anything-goes-here"));
 
 			}); 
 		</script>
