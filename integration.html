@@ -7,7 +7,7 @@
 	<body>
 		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<th style="align-center text-800">Version 1.7</th>
+				<th style="align-center text-800">Version 1.8</th>
 			</tr>
 			<tr class="section columns-center">
 				<td><span class="button width="140px" id="button1">Button 1</span></td>
@@ -32,10 +32,12 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			function click_button(sometext){
-				$("#button2-text").text(sometext);
+			function click_button(){
+				return "SUCCESS!!!!"
 			}
-			$("#button2").click(click_button("SUCCESS"));
+			$("#button2").click(){
+				$('button2-text').text(click_button);
+			};
 		</script>
 	</body>
 </html>
