@@ -26,8 +26,8 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 48</div>
-		<div id="subject-text">[no subject 48]</div>
+		<div class="button" id="get-subject-button">Get Subject 49</div>
+		<div id="subject-text">[no subject 49]</div>
 
 
 		<!--=========================================================================-->
@@ -45,8 +45,8 @@
 
 
 		$("#get-subject-button").click(function () {
-			var text = Missive.fetchUsers(me)
-			$('#switch-text').text(text);
+			var text = Missive.fetchUsers();
+			$('#switch-text').text(text[0]);
     		});
   
   
