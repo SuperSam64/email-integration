@@ -5,120 +5,17 @@
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 	</head>
 	<body>
-		<!--<table class="section columns-center margin">
+		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<td width="120px"><div id="checkmark-text">Chat request</div></td>
-				<td><input type="checkbox" class="checkmark" id="check-toggle"></input></td>
+				<th style="align-center text-800">Version 1.0</th>
 			</tr>
 			<tr class="section columns-center">
-				<td width="120px"><div id="switch-text" class="columns align-right"></div></td>
-				<td><input type="checkbox" class="switch columns" id="check-switch"></input></td>
+				<td class="button width="140px"" id="new-message">New Message</td>
+				<div id="switch-text"></div></td>
 			</tr>
-			<tr class="section columns-center">
-				<td>
-					<span class="button" id="new-message">New Message</span>
-				</td>
-			</tr>
-			<tr class="section columns-center">
-				<td>
-					<span class="button" id="search">Search</span>
-				</td>
-			</tr>
-		</table>=====================================================================-->
-
-		<div class="button" id="get-subject-button">Get Subject 49</div>
-		<div id="subject-text">[no subject 49]</div>
-
-
-		<!--=========================================================================-->
+		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-		/*===================================================================*/
-
-
-		
-		/*$("#get-subject-button").click(function () {
-  			var thisUser = Missive.fetchUsers();
-			
-		})*/
-
-
-
-		$("#get-subject-button").click(function () {
-			var text = Missive.fetchUsers();
-			$('#switch-text').text(text[0]);
-    		});
-  
-  
-  		/*===================================================================
-  
-  
-  		Missive.on('change:conversations', (ids) => {
-			Missive.fetchConversations(ids).then((conversations) => {
-				if (conversations.length != 1) {
-					// Do nothing if multiple conversations are selected.
-					return
-				}
-				var message = conversations[0].latest_message
-				if (!message || !message.from_field) {
-					// Do nothing if conversation has no message (only chat comments) or if
-					// message has no From field.
-					$('#subject-text').text(null)
-					if(conversations[0].subject == "No subject"){
-						Missive.addAssigness("5c21049b-5a49-476c-813e-dfbf5285907d");
-					}
-					return
-				}	
-				$('#subject-text').text(message.subject)
-			})
-		});			
-		$( window ).on( "load", (ids) => {
-			Missive.fetchConversations(ids).then((conversations) => {
-				if (conversations.length != 1) {
-					// Do nothing if multiple conversations are selected.
-					return
-				}
-				var message = conversations[0].latest_message
-				if (!message || !message.from_field) {
-					// Do nothing if conversation has no message (only chat comments) or if
-					// message has no From field.
-					$('#subject-text').text(null)
-					if(conversations[0].subject == "No subject"){
-						Missive.addAssigness("5c21049b-5a49-476c-813e-dfbf5285907d");
-					}
-					return
-				}	
-				$('#subject-text').text(message.subject)
-			})
-		});
-   		var switchOn = "Toggle (on)";
-		var switchOff = "Toggle (off)";
-   		$('#new-message').click(function () { 
-			Missive.compose();
-			Missive.addAssignees("5c21049b-5a49-476c-813e-dfbf5285907d");
-		}); 
-		$('#search').click(function () { 
-			Missive.search("12345678");
-		});
-		$('#check-toggle').change(function() {
-			if(this.checked){
-				Missive.addLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-			}
-			if(!this.checked){
-				Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-			}
-		});
-		$( window ).on( "load", function() {
-			$('#switch-text').text(switchOff);
-		})
-		$("#check-switch").click(function () {
-			$('#switch-text').text(function(i, text){
-       			return text === switchOff ? switchOn : switchOff;
-			})
-		});
-		Missive.on('change:conversations', (ids) => {
-		Missive.removeLabels("32cb35ef-c362-411d-97b5-0d0bb5366d5c");
-		})*/		
 		</script>
 	</body>
 </html>
