@@ -26,8 +26,8 @@
 			</tr>
 		</table>=====================================================================-->
 
-		<div class="button" id="get-subject-button">Get Subject 37</div>
-		<div id="subject-text">[no subject 37]</div>
+		<div class="button" id="get-subject-button">Get Subject 38</div>
+		<div id="subject-text">[no subject 38]</div>
 
 
 		<!--=========================================================================-->
@@ -37,14 +37,14 @@
 
 
 		
-		Missive.on('change:conversations')){
-  			me = (Missive.fetchUsers).each(function(users){
+		Missive.on('change:conversations'){
+  			me = (Missive.fetchUsers).each(function(users)){
     				if (users.me) {
       					users.id
       					return
     				}
 			$('#subject-text').text(me)
-		}) 
+		})
   
   
   
