@@ -34,8 +34,24 @@
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 		/*===================================================================*/
+
+
 		
 		Missive.on('change:conversations', (ids) => {
+  			var me = Missive.fetchUsers(ids).then((users) => {
+    				if (users.me) {
+      					users.id
+      					return
+    				}
+			$('#subject-text').text(me)
+		}) 
+  
+  
+  
+  		/*===================================================================
+  
+  
+  		Missive.on('change:conversations', (ids) => {
 			Missive.fetchConversations(ids).then((conversations) => {
 				if (conversations.length != 1) {
 					// Do nothing if multiple conversations are selected.
@@ -73,21 +89,6 @@
 				$('#subject-text').text(message.subject)
 			})
 		});
-
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		/*===================================================================
    		var switchOn = "Toggle (on)";
 		var switchOff = "Toggle (off)";
    		$('#new-message').click(function () { 
