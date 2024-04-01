@@ -7,7 +7,7 @@
 	<body>
 		<table class="section columns-center margin">
 			<tr class="section columns-center">
-				<th style="align-center text-800">Version 2.9</th>
+				<th style="align-center text-800">Version 3.1</th>
 			</tr>
 			<tr class="section columns-center">
 				<td><span class="button" id="button1">Button 1</span></td>
@@ -32,16 +32,57 @@
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			function addNumbers(some_param) {
-  				var x = some_param; /* this is never used*/
-				return "I've been clicked!";
+			/*======== create a function that can be reused as needed ========*/
+			function myFunction1(some_param) {
+  				/*======== parameters go here. this one does nothing, but serves as a placeholder ========*/
+				var x = some_param; /* this is never used*/
+				/*======== return the end result ========*/
+				return "Button 1 has been clicked!";
 			}
-			
+   			function myFunction2() {
+  				/*======== no parameters this time ========*/
+				return "Button 2 has been clicked!";
+			}
+			function myFunction3() {
+  				/*======== no parameters this time ========*/
+				return "Button 3 has been clicked!";
+			}
+			function myFunction4() {
+  				/*======== no parameters this time ========*/
+				return "Button 4 has been clicked!";
+			}
+			function myFunction5() {
+  				/*======== no parameters this time ========*/
+				return "Button 5 has been clicked!";
+			}
+			/*======== button to test that funciton works ========*/
+			$("#button1").click(function () { 
+				/*======== run the function, optionally with parameters ========*/
+				var value = myFunction1("anything-goes-here");
+				/*======== write the value to the text next to the button to test that it works ========*/
+				$("#button1-text").text(value);
+			});
+			/*======== button to test that funciton works ========*/
 			$("#button2").click(function () { 
-
-				$("#button2-text").text(addNumbers("anything-goes-here"));
-
-			}); 
+				/*======== run the function, no parameters ========*/
+				var value = myFunction2();
+				$("#button2-text").text(value);
+			});
+			$("#button3").click(function () { 
+				/*======== run the function, no parameters ========*/
+				var value = myFunction3();
+				$("#button3-text").text(value);
+			});
+			$("#button4").click(function () { 
+				/*======== run the function, no parameters ========*/
+				var value = myFunction4();
+				$("#button4-text").text(value);
+			});
+			$("#button5").click(function () { 
+				/*======== run the function, no parameters ========*/
+				var value = myFunction5();
+				$("#button5-text").text(value);
+			});
 		</script>
 	</body>
 </html>
