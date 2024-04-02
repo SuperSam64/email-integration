@@ -7,7 +7,7 @@
 	<body style="height:90%">
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 6.6
+			Version 6.7
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -17,7 +17,7 @@
 			<table>
 				<tr>
 					<td><span class="button column padding" id="get-subject">Get Subject</span></td>
-					<td><span class="columnn" id="button1-text" style="word-break: break-all">more text</span></td>
+					<td><span class="columnn" id="subject-text" style="word-break: break-all">more text</span></td>
 				</tr>
 			</table>
 		</div>
@@ -87,7 +87,7 @@
 				/*======== run the function, optionally with parameters ========*/
 				var value = myFunction1("anything-goes-here");
 				/*======== write the value to the text next to the button to test that it works ========*/
-				$("#button1-text").text(value);
+				$("#subject-text").text(value);
 			});
 			/*======== button to test that funciton works ========*/
 			$("#button2").click(function () { 
