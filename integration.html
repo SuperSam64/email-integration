@@ -6,10 +6,14 @@
 	</head>
 	<body style="height:90%">
 		<div class="column-vertical column-center margin align-center text-800">
-			<svg style="width: 24px; height: 24px">
-  				<use xlink:href="#account-circle"/><use>
-			</svg>
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 8.4
+
+
+
+
+
+
+			
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 8.5
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -75,7 +79,8 @@
 			}
    			function getCSubject() {
   				/*======== no parameters this time ========*/
-				return "Get conversation subject (function not defined)";
+				var avatar = Missive.fetchUsers('5c21049b-5a49-476c-813e-dfbf5285907d').avatar_url;
+				return avatar; /*"Get conversation subject (function not defined)";*/
 			}
 			function getLabels() {
   				/*======== no parameters this time ========*/
