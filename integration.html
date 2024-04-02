@@ -7,7 +7,7 @@
 	<body style="height:90%">
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 7.1
+			Version 7.3
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -33,7 +33,7 @@
 			<table>
 				<tr>
 					<td><span class="button column padding" id="get-replyto">Get Reply Email</span></td>
-					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="columnn" id="replyto-text style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -109,7 +109,7 @@
 				$("#msgcount-text").text(value);
 			});
 			$("#reload-button").click(function () { 
-				myFunction6();
+				Missive.reload();
 			});
 		</script>
 	</body>
