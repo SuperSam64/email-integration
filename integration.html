@@ -8,7 +8,7 @@
 
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin section" style="align-center text-800">
-			Version 4.8
+			Version 4.9
 		</div>
 		<div class="column-vertical margin section">
 			<span class="button column section" id="button1">Button 1</span>
@@ -29,6 +29,10 @@
 		<div class="column-vertical margin section">
 			<span class="button column section" id="button5">Button 5</span>
 			<span class="columnn section" id="button5-text" style="word-break: break-all">hi!</span>
+		</div>
+		<div class="column-vertical margin section">
+			<span class="button column section" id="reload-button">Reload</span>
+			<span class="columnn section" id="reload-text" style="word-break: break-all">Reload the page</span>
 		</div>
 		
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
@@ -55,6 +59,10 @@
 			function myFunction5() {
   				/*======== no parameters this time ========*/
 				return "Button 5 has been clicked!";
+			}
+			function myFunction6() {
+  				/*======== no parameters this time ========*/
+				Missive.reload();
 			}
 			/*======== button to test that funciton works ========*/
 			$("#button1").click(function () { 
@@ -83,6 +91,10 @@
 				/*======== run the function, no parameters ========*/
 				var value = myFunction5();
 				$("#button5-text").text(value);
+			});
+			$("#reload-button").click(function () { 
+				/*======== RELOAD ========*/
+				var value = myFunction6();
 			});
 		</script>
 	</body>
