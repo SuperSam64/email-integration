@@ -7,7 +7,7 @@
 	<body style="height:90%">
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 6.9
+			Version 7
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -24,15 +24,15 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button2">Button 2</span></td>
-					<td><span class="columnn" id="button2-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-labels">Get Labels</span></td>
+					<td><span class="columnn" id="labels-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button3">Button 3</span></td>
+					<td><span class="button column padding" id="button3">Get Reply Email</span></td>
 					<td><span class="columnn" id="button3-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
@@ -40,7 +40,7 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button4">Button 4</span></td>
+					<td><span class="button column padding" id="button4">Create a task</span></td>
 					<td><span class="columnn" id="button4-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
@@ -48,7 +48,7 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button5">Button 5</span></td>
+					<td><span class="button column padding" id="button5">Get Msg Count</span></td>
 					<td><span class="columnn" id="button5-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
@@ -62,7 +62,7 @@
 				/*======== return the end result ========*/
 				return "Here is the subject";
 			}
-   			function myFunction2() {
+   			function getLabels() {
   				/*======== no parameters this time ========*/
 				return "Button 2 has been clicked!";
 			}
@@ -90,10 +90,10 @@
 				$("#subject-text").text(value);
 			});
 			/*======== button to test that funciton works ========*/
-			$("#button2").click(function () { 
+			$("#get-labels").click(function () { 
 				/*======== run the function, no parameters ========*/
-				var value = myFunction2();
-				$("#button2-text").text(value);
+				var value = getLabels();
+				$("#labels-text").text(value);
 			});
 			$("#button3").click(function () { 
 				/*======== run the function, no parameters ========*/
