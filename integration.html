@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 8.8
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 8.9
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -80,7 +80,7 @@
    			function getCSubject() {
   				/*======== no parameters this time ========*/
 				var users = Missive.fetchUsers();
-				/*var avatar = users[0].avatar_url;*/
+				var currentUser = users[0];
 				return "hello";/*avatar; "Get conversation subject (function not defined)";*/
 			}
 			function getLabels() {
