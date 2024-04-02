@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 10.4
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 10.5
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -80,7 +80,9 @@
    			function getCSubject() {
 				var x = "y";
 				$(Missive.fetchUsers()).each(function(index){
-					x = index;
+					if(index > 0){
+						return index;
+					}
 				});
 				return x;
 			}
