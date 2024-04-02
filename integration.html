@@ -7,7 +7,7 @@
 	<body style="height:90%">
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 7
+			Version 7.1
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -32,24 +32,24 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button3">Get Reply Email</span></td>
-					<td><span class="columnn" id="button3-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-replyto">Get Reply Email</span></td>
+					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button4">Create a task</span></td>
-					<td><span class="columnn" id="button4-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="create-task">Create a task</span></td>
+					<td><span class="columnn" id="task-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button5">Get Msg Count</span></td>
-					<td><span class="columnn" id="button5-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-msgcount">Get Msg Count</span></td>
+					<td><span class="columnn" id="msgcount-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>	
@@ -64,19 +64,19 @@
 			}
    			function getLabels() {
   				/*======== no parameters this time ========*/
-				return "Button 2 has been clicked!";
+				return "Get active label(s) (function not defined)";
 			}
-			function myFunction3() {
+			function getReplyTo() {
   				/*======== no parameters this time ========*/
-				return "Button 3 has been clicked!";
+				return "Get reply to email address (function not defined)";
 			}
-			function myFunction4() {
+			function createTask() {
   				/*======== no parameters this time ========*/
-				return "Button 4 has been clicked!";
+				return "Create a task (function not defined)";
 			}
-			function myFunction5() {
+			function getMsgCount() {
   				/*======== no parameters this time ========*/
-				return "Button 5 has been clicked!";
+				return "Get number of messages in this thread (function not defined)";
 			}
 			function myFunction6() {
   				/*======== no parameters this time ========*/
@@ -95,18 +95,18 @@
 				var value = getLabels();
 				$("#labels-text").text(value);
 			});
-			$("#button3").click(function () { 
+			$("get-replyto").click(function () { 
 				/*======== run the function, no parameters ========*/
-				var value = myFunction3();
-				$("#button3-text").text(value);
+				var value = getReplyTo();
+				$("#replyto-text").text(value);
 			});
-			$("#button4").click(function () { 
-				var value = myFunction4();
-				$("#button4-text").text(value);
+			$("#create-task").click(function () { 
+				var value = createTask();
+				$("#task-text").text(value);
 			});
-			$("#button5").click(function () { 
-				var value = myFunction5();
-				$("#button5-text").text(value);
+			$("#get-msgcount").click(function () { 
+				var value = getMsgCount();
+				$("#msgcount-text").text(value);
 			});
 			$("#reload-button").click(function () { 
 				myFunction6();
