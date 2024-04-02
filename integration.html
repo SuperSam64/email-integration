@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 9.3
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 9.4
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -78,23 +78,10 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-  				Missive.fetchConversations(ids).then((conversations) => {
-   				if (conversations.length != 1) {
-				// Do nothing if multiple conversations are selected.
-				return
-    			}
-
-    			var message = conversations[0].latest_message
-    			if (!message || !message.from_field) {
-      			// Do nothing if conversation has no message (only chat comments) or if
-      			// message has no From field.
-      			return
-    			}
-
-    			var from = message.from_field
-			console.log('Message from:', from.name, from.address)
-    			console.log('Message subject:', message.subject)
-  			})
+  				var x = Missive.fetchUsers();
+				var y = x[0];
+				var z = y.avatar_url;
+				return z;
 			/*return currentUser.avatar_url; avatar; "Get conversation subject (function not defined)";*/
 			}
 			function getLabels() {
