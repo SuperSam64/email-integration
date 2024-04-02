@@ -7,7 +7,7 @@
 	<body style="height:90%">
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 6.5
+			Version 6.6
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -16,7 +16,7 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button1">Button 2</span></td>
+					<td><span class="button column padding" id="get-subject">Get Subject</span></td>
 					<td><span class="columnn" id="button1-text" style="word-break: break-all">more text</span></td>
 				</tr>
 			</table>
@@ -83,7 +83,7 @@
 				Missive.reload();
 			}
 			/*======== button to test that funciton works ========*/
-			$("#button1").click(function () { 
+			$("#get-subject").click(function () { 
 				/*======== run the function, optionally with parameters ========*/
 				var value = myFunction1("anything-goes-here");
 				/*======== write the value to the text next to the button to test that it works ========*/
