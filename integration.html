@@ -5,9 +5,8 @@
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 	</head>
 	<body style="height:90%">
-		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 7.3
+			Version 7.5
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -33,7 +32,7 @@
 			<table>
 				<tr>
 					<td><span class="button column padding" id="get-replyto">Get Reply Email</span></td>
-					<td><span class="columnn" id="replyto-text style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="columnn" id="replyto-text" "style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -60,7 +59,7 @@
   				/*======== parameters go here. this one does nothing, but serves as a placeholder ========*/
 				var x = some_param; /* this is never used*/
 				/*======== return the end result ========*/
-				return "Here is the subject";
+				return "Get conversation subject (function not defined)";
 			}
    			function getLabels() {
   				/*======== no parameters this time ========*/
@@ -77,10 +76,6 @@
 			function getMsgCount() {
   				/*======== no parameters this time ========*/
 				return "Get number of messages in this thread (function not defined)";
-			}
-			function myFunction6() {
-  				/*======== no parameters this time ========*/
-				Missive.reload();
 			}
 			/*======== button to test that funciton works ========*/
 			$("#get-subject").click(function () { 
