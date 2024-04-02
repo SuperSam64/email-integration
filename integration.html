@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 10
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 10.2
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -78,12 +78,11 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-				var x = $(Missive.fetchUsers()).each(function(index){
-
-						return "X";
-
+				var x = y;
+				$(Missive.fetchUsers()).each(function(index){
+					x = "Z"
 				});
-				return x[3];
+				return x;
 			}
 			function getLabels() {
   				/*======== no parameters this time ========*/
