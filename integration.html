@@ -7,16 +7,17 @@
 	<body>
 		<!--<table class="section margin" style="width:80% hieght:80%">-->
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 5.9
+			Version 6
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
 		</div>
 		<div class="column-vertical margin section">
+			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="button1">Button 1</span></td>
-					<td><span class="columnn" id="button1-text" style="word-break: break-all">Here is some text</span></td>
+					<td><span class="button column padding" id="get-subject">Get Subject</span></td>
+					<td><span class="columnn" id="get-subject-text" style="word-break: break-all">Here is some text</span></td>
 				</tr>
 			</table>
 		</div>
@@ -55,11 +56,11 @@
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			/*======== create a function that can be reused as needed ========*/
-			function myFunction1(some_param) {
+			function getSubject(some_param) {
   				/*======== parameters go here. this one does nothing, but serves as a placeholder ========*/
 				var x = some_param; /* this is never used*/
 				/*======== return the end result ========*/
-				return "Button 1 has been clicked!";
+				return "Here is the subject";
 			}
    			function myFunction2() {
   				/*======== no parameters this time ========*/
@@ -82,11 +83,11 @@
 				Missive.reload();
 			}
 			/*======== button to test that funciton works ========*/
-			$("#button1").click(function () { 
+			$("#get-subject").click(function () { 
 				/*======== run the function, optionally with parameters ========*/
-				var value = myFunction1("anything-goes-here");
+				var value = getSubject("anything-goes-here");
 				/*======== write the value to the text next to the button to test that it works ========*/
-				$("#button1-text").text(value);
+				$("get-subject-text").text(value);
 			});
 			/*======== button to test that funciton works ========*/
 			$("#button2").click(function () { 
@@ -100,16 +101,13 @@
 				$("#button3-text").text(value);
 			});
 			$("#button4").click(function () { 
-				/*======== run the function, no parameters ========*/
 				var value = myFunction4();
 				$("#button4-text").text(value);
 			});
 			$("#button5").click(function () { 
-				/*======== run the function, no parameters ========*/
 				var value = myFunction5();
 				$("#button5-text").text(value);
 			});
-			$("#reload-button").click(function () { 
 				/*======== RELOAD ========*/
 				var value = myFunction6();
 			});
