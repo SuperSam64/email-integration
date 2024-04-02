@@ -6,7 +6,7 @@
 	</head>
 	<body style="height:90%">
 		<div class="column-vertical column-center margin align-center text-800">
-			Version 7.7
+			Version 7.8
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -15,8 +15,17 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-subject">Get Subject</span></td>
+					<td><span class="button column padding" id="get-subject">Get M Subject</span></td>
 					<td><span class="columnn" id="subject-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div><
+		div class="column-vertical margin section">
+			<!-- individual table for row separates left from right, while also still allowing for "section" -->
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-cSubject">Get C Subject</span></td>
+					<td><span class="columnn" id="cSubject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -59,9 +68,13 @@
   				/*======== parameters go here. this one does nothing, but serves as a placeholder ========*/
 				var x = some_param; /* this is never used*/
 				/*======== return the end result ========*/
+				return "Get message subject (function not defined)";
+			}
+   			function getCSubject() {
+  				/*======== no parameters this time ========*/
 				return "Get conversation subject (function not defined)";
 			}
-   			function getLabels() {
+			function getLabels() {
   				/*======== no parameters this time ========*/
 				return "Get active label(s) (function not defined)";
 			}
@@ -85,6 +98,11 @@
 				$("#subject-text").text(value);
 			});
 			/*======== button to test that funciton works ========*/
+			$("#get-cSubject").click(function () { 
+				/*======== run the function, no parameters ========*/
+				var value = getCSubject();
+				$("#cSubject-text").text(value);
+			});
 			$("#get-labels").click(function () { 
 				/*======== run the function, no parameters ========*/
 				var value = getLabels();
