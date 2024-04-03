@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 15.1
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 15.2
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -79,10 +79,6 @@
 			}
    			function getCSubject() {
 
-				var currentUser = Missive.fecthUsers([0]).attr('id')
-
-
-				return currentUser;
 			}
 			
 			function getLabels() {
@@ -136,7 +132,10 @@
 				Missive.reload();
 			});
 
+			$( window ).on( "load", function() { 
+					$('#cSubject-text').text("text updated"); 
 
+			})
 		</script>
 	</body>
 </html>
