@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.2
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.4
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -130,9 +130,9 @@
 			$("#reload-button").click(function () { 
 				Missive.reload();
 			});
-			Missive.on('change:conversations', (ids) => {
-			  /*Missive.fetchConversations(*/
-			$("#get-cSubject").click(ids).then((conversations) => {
+
+		$("#get-cSubject").click((ids) => {
+			  Missive.fetchConversations(ids).then((conversations) => {
 			    if (conversations.length != 1) {
 			      // Do nothing if multiple conversations are selected.
 			      return
@@ -150,7 +150,7 @@
 			    console.log('Message subject:', message.subject)
 				  $("#cSubject-text").text(message.subject)
 			  })
-			})
+			}))
 		</script>
 	</body>
 </html>
