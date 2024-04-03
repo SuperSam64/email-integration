@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 11
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.1
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -78,31 +78,7 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-			var xyz = "1";
-
-			Missive.on('change:conversations', (ids) => {
-  Missive.fetchConversations(ids).then((conversations) => {
-    if (conversations.length != 1) {
-      // Do nothing if multiple conversations are selected.
-      return
-    }
-
-    var message = conversations[0].latest_message
-    if (!message || !message.from_field) {
-      // Do nothing if conversation has no message (only chat comments) or if
-      // message has no From field.
-      return
-    }
-
-    var from = message.from_field
-    console.log('Message from:', from.name, from.address)
-    console.log('Message subject:', message.subject)
-	  xyz = message.subject;
-  })
-})
-
-return xyz;
-				
+			
 			}
 			function getLabels() {
   				/*======== no parameters this time ========*/
@@ -154,6 +130,26 @@ return xyz;
 			$("#reload-button").click(function () { 
 				Missive.reload();
 			});
+			Missive.on('change:conversations', (ids) => {
+			  Missive.fetchConversations(ids).then((conversations) => {
+			    if (conversations.length != 1) {
+			      // Do nothing if multiple conversations are selected.
+			      return
+			    }
+			
+			    var message = conversations[0].latest_message
+			    if (!message || !message.from_field) {
+			      // Do nothing if conversation has no message (only chat comments) or if
+			      // message has no From field.
+			      return
+			    }
+			
+			    var from = message.from_field
+			    console.log('Message from:', from.name, from.address)
+			    console.log('Message subject:', message.subject)
+				  $("#cSubject-text").text(message.subject)
+			  })
+			})
 		</script>
 	</body>
 </html>
