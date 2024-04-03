@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 13.4
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 13.5
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -70,53 +70,53 @@
 		</div>	
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			/*======== create a function that can be reused as needed ========*/
+			//======== create a function that can be reused as needed ========
 			function getSubject(some_param){
-  				/*======== parameters go here. this one does nothing, but serves as a placeholder ========*/
-				var x = some_param; /* this is never used*/
-				/*======== return the end result ========*/
+  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
+				var x = some_param; // this is never used
+				//======== return the end result ========
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-				var x = "test" /*Missive.fetchUsers(id);*/
+				var x = "test"; //Missive.fetchUsers(id);
 				return x;
 			}
 			function getLabels() {
-  				/*======== no parameters this time ========*/
+  				//======== no parameters this time ========
 				return "Get active label(s) (function not defined)";
 			}
 			function getReplyTo() {
-  				/*======== no parameters this time ========*/
+  				//======== no parameters this time ========
 				return "Get reply to email address (function not defined)";
 			}
 			function createTask() {
-  				/*======== no parameters this time ========*/
+  				//======== no parameters this time ========
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount() {
-  				/*======== no parameters this time ========*/
+  				//======== no parameters this time ========
 				return "Get number of messages in this thread (function not defined)";
 			}
-			/*======== button to test that funciton works ========*/
+			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
-				/*======== run the function, optionally with parameters ========*/
+				//======== run the function, optionally with parameters ========
 				var value = getSubject("anything-goes-here");
-				/*======== write the value to the text next to the button to test that it works ========*/
+				//======== write the value to the text next to the button to test that it works ========
 				$("#subject-text").text(value);
 			});
-			/*======== button to test that funciton works ========*/
+			//======== button to test that funciton works ========
 			$("#get-cSubject").click(function () { 
-				/*======== run the function, no parameters ========*/
+				//======== run the function, no parameters ========
 				var value = getCSubject();
 				$("#cSubject-text").text(value);
 			});
 			$("#get-labels").click(function () { 
-				/*======== run the function, no parameters ========*/
+				//======== run the function, no parameters ========
 				var value = getLabels();
 				$("#labels-text").text(value);
 			});
 			$("#get-replyto").click(function () { 
-				/*======== run the function, no parameters ========*/
+				//======== run the function, no parameters ========
 				var value = getReplyTo();
 				$("#replyto-text").text(value);
 			});
