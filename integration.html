@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 15
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 15.1
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -79,7 +79,7 @@
 			}
    			function getCSubject() {
 
-				var currentUser = (Missive.fecthUsers()[0]).attr('id');
+				var currentUser = Missive.fecthUsers([0]).attr('id')
 
 
 				return currentUser;
