@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.9
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 12
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -132,7 +132,7 @@
 			});
 
 		$("#get-cSubject").click(function($) {
-			var x = "hi";
+			var x = Missive.fetchUsers()[0].first_name;
 			alert(x)
 			})
 		</script>
