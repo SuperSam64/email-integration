@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.1
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 11.2
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -104,11 +104,11 @@
 				$("#subject-text").text(value);
 			});
 			/*======== button to test that funciton works ========*/
-			$("#get-cSubject").click(function () { 
+			/*$("#get-cSubject").click(function () { 
 				/*======== run the function, no parameters ========*/
 				var value = getCSubject();
 				$("#cSubject-text").text(value);
-			});
+			});*/
 			$("#get-labels").click(function () { 
 				/*======== run the function, no parameters ========*/
 				var value = getLabels();
@@ -131,7 +131,8 @@
 				Missive.reload();
 			});
 			Missive.on('change:conversations', (ids) => {
-			  Missive.fetchConversations(ids).then((conversations) => {
+			  /*Missive.fetchConversations(*/
+			$("#get-cSubject").click(ids).then((conversations) => {
 			    if (conversations.length != 1) {
 			      // Do nothing if multiple conversations are selected.
 			      return
