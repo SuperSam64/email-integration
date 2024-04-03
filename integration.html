@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.5
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.6
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -78,19 +78,12 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-
-				var currentUser = "test";
-
-
-
-				Missive.fetchUsers().then((users) => {
-    				//if (users.first_name == "Sampson") {
-      					// Do nothing if multiple conversations are selected.
-      					currentUser = users.first_name;
-					//	return;
-    				//}		
-				})		
-				return currentUser;
+				var something = "test"
+				var fruitsArray = ["Apple", "Banana", "Orange", "Mango", "Pineapple"];
+        			$.each(fruitsArray, function(index, value){
+            		$(something).append(index + ": " + value + '<br>');
+        		});
+				return something;
 			}
 			
 			function getLabels() {
