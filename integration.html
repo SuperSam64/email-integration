@@ -78,9 +78,8 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-				Missive.fetchUsers(users) {
-					$("#cSubject-text").text(users[0].first_name);
-        		};
+				var x = Missive.fetchUsers(id);
+				$("#cSubject-text").text(x[0]);
 			}
 			function getLabels() {
   				/*======== no parameters this time ========*/
