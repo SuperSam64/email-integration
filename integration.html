@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.7
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.8
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -78,12 +78,10 @@
 				return "Get message subject (function not defined)";
 			}
    			function getCSubject() {
-				var something = "test"
-				var fruitsArray = ["Apple", "Banana", "Orange", "Mango", "Pineapple"];
-        			$.each(fruitsArray, function(index, value){
-            		something.append(index + ": " + value + '<br>');
-        		});
-				return something;
+				var something = fetchUsers([0]);
+				var other = something.first_name;
+				return other;
+				
 			}
 			
 			function getLabels() {
