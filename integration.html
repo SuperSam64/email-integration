@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.2
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 14.3
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -86,7 +86,7 @@
 				Missive.fetchUsers().then((users) => {
     				if (users.first_name == "Sam") {
       					// Do nothing if multiple conversations are selected.
-      					currentUser "Sam";
+      					currentUser = "Sam";
 						return;
     				}		
 				})		
