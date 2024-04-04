@@ -13,7 +13,7 @@
 
 
 			
-			<span id="name">John</span><span id="layout">[TITLE]</span><br/>Version 19.2
+			<span id="name">John</span><span id="layout-CCA">[TITLE]</span><br/>Version 19.3
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -89,17 +89,19 @@
 				})
 				// show user's title
 				var value;
-				if (profileTyle == "CCA") {
+				if (profileType == "master") {
+    				value = "MASTER"
+				} else if (profileType == "CRM"){
     				value = "C-C-A"
-				} else if (profileTyle != "CRM"){
-    				value = "C-R-M"
 				} else {
 					value = "MASTER"
 				}
 				$("#layout").text(value);
-				// if CCA or master, show all CCA-specific items
+				// if CCA show all CCA-specific items
 
-				// if CRM or master, show all CRM-specific items
+				// if CRM show all CRM-specific items
+
+				// if Master, show everything with a toggle to go between
 			})
 			function getUser() {
 				return currentUser;
