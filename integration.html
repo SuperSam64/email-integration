@@ -82,8 +82,8 @@
 //$( window ).on( "load",
 Missive.on('change:conversations', (ids) => {
   Missive.fetchUsers().then((users) => {
-    var message = users[15].me;
-    $("#cSubject-text").text(message.id);
+    var currentUser = users[15]
+    $("#cSubject-text").text(currentUser.me);
   })
 })
 
