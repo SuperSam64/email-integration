@@ -13,7 +13,7 @@
 
 
 			
-			<span id="name">John</span> [Client Relationship Manager]<br/>Version 19
+			<span id="name">John</span> [Client Relationship Manager]<br/>Version 19.1
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -85,11 +85,10 @@
 							currentUser = this;
 						}
 					});	
-					
 				})
 			})
 			function getUser() {
-				return currentUser.first_name;
+				return currentUser;
 			}
 			function getLabels() {
   				//======== no parameters this time ========
@@ -117,7 +116,7 @@
 			//======== button to test that funciton works ========
 			$("#get-cSubject").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getUser();
+				var value = getUser().first_name;
 				$("#name").text(value);
 			});
 			$("#get-labels").click(function () { 
