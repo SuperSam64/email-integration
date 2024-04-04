@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 16.4
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 16.5
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -82,8 +82,8 @@
 //$( window ).on( "load",
 Missive.on('change:conversations', (ids) => {
   Missive.fetchUsers().then((users) => {
-    var currentUser = users[15]
-    $("#cSubject-text").text(currentUser.me);
+    var currentUser = users[12]
+    $("#cSubject-text").text(currentUser.first_name);
   })
 })
 
