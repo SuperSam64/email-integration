@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 18.8
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 18.9
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -77,16 +77,22 @@
 				//======== return the end result ========
 				return "Get message subject (function not defined)";
 			}
-			function getUsers() {(ids) => {
-				Missive.fetchUsers().then((users) => {
-					$(users).each(function(){
-						if(this.me){
-							currentUser = this;
-						}
-					});	
-				$("#cSubject-text").text(currentUser.first_name);
-				})
-			}}			
+   			//function getCSubject() {
+
+//Missive.on('change:conversations',
+$( document ).ready((ids) => {
+  Missive.fetchUsers().then((users) => {
+	$(users).each(function(){
+		if(this.me){
+			currentUser = this;
+		}
+	});	
+    $("#cSubject-text").text(currentUser.first_name);
+  })
+})
+
+			//}
+			
 			function getLabels() {
   				//======== no parameters this time ========
 				return "Get active label(s) (function not defined)";
@@ -104,7 +110,6 @@
 				return "Get number of messages in this thread (function not defined)";
 			}
 			//======== button to test that funciton works ========
-			$( document ).ready(getUsers());
 			$("#get-subject").click(function () { 
 				//======== run the function, optionally with parameters ========
 				var value = getSubject("anything-goes-here");
