@@ -22,7 +22,7 @@
 				-->
 		
 			<div class="column-vertical column-center margin section align-center">
-				<table style="background-color:white; border: 1px solid black; margin-left:auto; margin-right:auto; width:0.1%; white-space:nowrap;">
+				<table style="background-color:white;border: 1px solid black; margin-left: auto;margin-right:auto; width:0.1%; white-space:nowrap;">
 					<tr>
 						<table style="width:0.1%; white-space: nowrap;">
 							<td>
@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 23</span>
+			<span class="button-link column padding">Version 23.1</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -125,17 +125,12 @@
 						}
 					});	
 				})
-				var firstName = currentUser.first_name;
-				var lastName  = currentUser.last_name;
-				var userAvatar = currentUser.avatar_url;
-				var fullName = firstName + " " + lastName;
-				$("#name").text(fullName);
 				// show user's title
 				var value;
 				if (profileType == "master") {
     				value = "MASTER"
 				} else if (profileType == "Client Relationship Manager"){
-    				value = "C-C-A"
+    				value = "Client Relationship Manager"
 				} else {
 					value = "Customer Care Advocate"
 				}
