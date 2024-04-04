@@ -20,29 +20,30 @@
 					only show "version" for master (can be on same line as toggle, not directly next to it)
 					set CCA status based on team?
 				-->
-		<table class="section margin-large">
-			<tr>
-				<table>
-					<td>
-					X X<br/>X X
-					</td>
-					<td>
-						<table>	
-							<tr>
-								<span id="name" class="text-600 text-xlarge">[NAME]</span>
-							</tr>				
-							<tr>
-								<span id="layout" class="text-small text-d">[TITLE]<span>
-							</tr>
-						</table>
-					</td>
-				</table>
-			</tr>
-			<tr><!--</tr> style="column-center margin align-center">-->
-				Version 20.1
-			</tr>				
-		</table>
-		
+		<div class="section margin-large">
+			<table>
+				<tr>
+					<table>
+						<td>
+						<span class="padding">X X<br/>X X</span>
+						</td>
+						<td>
+							<table>	
+								<tr>
+									<span id="name" class="text-600 text-xlarge">[NAME]</span>
+								</tr>				
+								<tr>
+									<span id="layout" class="text-small text-d">[TITLE]<span>
+								</tr>
+							</table>
+						</td>
+					</table>
+				</tr>
+				<tr><!--</tr> style="column-center margin align-center">-->
+					<span class="align-center column-center">Version 20.2</span>
+				</tr>				
+			</table>
+		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
 		</div>
@@ -160,8 +161,10 @@
 			//======== button to test that funciton works ========
 			$("#get-cSubject").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getUser().first_name;
-				$("#name").text(value);
+				var firstName = getUser().first_name;
+				var lastName  = getUser().last_name;
+				var fullName = firstName + " " + lastName;
+				$("#name").text(fullName);
 			});
 			$("#get-labels").click(function () { 
 				//======== run the function, no parameters ========
