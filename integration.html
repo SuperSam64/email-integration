@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 18.9
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 19
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -77,22 +77,26 @@
 				//======== return the end result ========
 				return "Get message subject (function not defined)";
 			}
-   			//function getCSubject() {
+			$( document ).ready({
+				getUsers()
+			});
 
-//Missive.on('change:conversations',
-$( document ).ready((ids) => {
-  Missive.fetchUsers().then((users) => {
-	$(users).each(function(){
-		if(this.me){
-			currentUser = this;
-		}
-	});	
-    $("#cSubject-text").text(currentUser.first_name);
-  })
-})
 
-			//}
-			
+			function getUsers(){(ids) => {
+					Missive.fetchUsers().then((users) => {
+						$(users).each(function(){
+							if(this.me){
+								currentUser = this;
+							}
+						});	
+						$("#cSubject-text").text(currentUser.first_name);
+					})
+				}
+			};
+
+
+
+
 			function getLabels() {
   				//======== no parameters this time ========
 				return "Get active label(s) (function not defined)";
