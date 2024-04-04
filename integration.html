@@ -13,7 +13,7 @@
 
 
 			
-			<span id="name">John</span> [Client Relationship Manager]<br/>Version 19.1
+			<span id="name">John</span><span id="layout">[TITLE]</span><br/>Version 19.2
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -72,6 +72,7 @@
 		<script type="text/javascript">
 			//======== create a function that can be reused as needed ========
 			var currentUser;
+			var profileType = "CCA" //CCA, CRM, master
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
 				var x = some_param; // this is never used
@@ -86,6 +87,19 @@
 						}
 					});	
 				})
+				// show user's title
+				var value;
+				if (profileTyle == "CCA") {
+    				value = "C-C-A"
+				} else if (profileTyle != "CRM"){
+    				value = "C-R-M"
+				} else {
+					value = "MASTER"
+				}
+				$("#layout").text(value);
+				// if CCA or master, show all CCA-specific items
+
+				// if CRM or master, show all CRM-specific items
 			})
 			function getUser() {
 				return currentUser;
