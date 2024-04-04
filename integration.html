@@ -5,7 +5,7 @@
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 	</head>
 	<body style="height:90%">
-		<div class="section margin">
+	
 
 				<!-- 
 					make "Name" first and last name
@@ -18,26 +18,27 @@
 					test a CRM specific item
 					test toggling between 2 views, "master" has toggle to set layout to either CRM or CCA, but neither should take away the toggle
 					only show "version" for master (can be on same line as toggle, not directly next to it)
+					set CCA status based on team?
 				-->
-			<table>
-				<tr>
-					<td>
-						X X<br/>X X
-					</td>
-					<td>	
-						<tr>
-							<span id="name" class="text-600 text-xlarge">[NAME]</span>
-						</tr>				
-						<tr>
-							<span id="layout" class="text-small text-d">[TITLE]<span>
-						</tr>
-					</td>
-				</tr>
-				<tr style="column-center margin align-center">
-					Version 19.9
-				</tr>				
-			</table>
-		</div>
+		<table class="section margin">
+			<tr>
+				<td>
+					X X<br/>X X
+				</td>
+				<td>	
+					<tr>
+						<span id="name" class="text-600 text-xlarge">[NAME]</span>
+					</tr>				
+					<tr>
+						<span id="layout" class="text-small text-d">[TITLE]<span>
+					</tr>
+				</td>
+			</tr>
+			<tr><!--</tr> style="column-center margin align-center">-->
+				Version 20
+			</tr>				
+		</table>
+		
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
 		</div>
