@@ -82,7 +82,7 @@
 //$( window ).on( "load",
 Missive.on('change:conversations', (ids) => {
   Missive.fetchUsers().then((users) => {
-    var currentUser = users[12]
+    var currentUser = users[0]
     $("#cSubject-text").text(currentUser.id);
   })
 })
