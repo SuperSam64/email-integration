@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 23.3</span>
+			<span class="button-link column padding">Version 23.4</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -122,6 +122,7 @@
 					$(users).each(function(){
 						if(this.me){
 							currentUser = this;
+							$("#name").text(currentUser.first_name);
 						}
 					});	
 				})
@@ -135,7 +136,6 @@
 					value = "Customer Care Advocate"
 				}
 				$("#layout").text(value);
-				$("#name").text("TEST");
 				// if CCA show all CCA-specific items
 
 				// if CRM show all CRM-specific items
