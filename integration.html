@@ -12,13 +12,14 @@
 					add avatar
 					check other user avatar to see what shows when one isn't present
 						if needed, make a placeholder avatar (use missive CSS default)
+					make a table, with avatar on the left, name on the top right, title on the bottom right
 					make both parts show on load
 					test a CCA specific item
 					test a CRM specific item
 					test toggling between 2 views, "master" has toggle to set layout to either CRM or CCA, but neither should take away the toggle
 				-->
 			
-			<span id="name" class="text-600 text-xlarge">[NAME]]</span><br/><span id="layout" class="text-small text-d">[TITLE]</span><br/>Version 19.5
+			<span id="name" class="text-600 text-xlarge">[NAME]</span><br/><span id="layout" class="text-small text-d">[TITLE]</span><br/>Version 19.6
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -96,10 +97,10 @@
 				var value;
 				if (profileType == "master") {
     				value = "MASTER"
-				} else if (profileType == "CRM"){
+				} else if (profileType == "Client Relationship Manager"){
     				value = "C-C-A"
 				} else {
-					value = "MASTER"
+					value = "Customer Care Advocate"
 				}
 				$("#layout").text(value);
 				// if CCA show all CCA-specific items
