@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 22.9</span>
+			<span class="button-link column padding">Version 23</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -125,8 +125,9 @@
 						}
 					});	
 				})
-				var firstName = getUser().first_name;
-				var lastName  = getUser().last_name;
+				var firstName = currentUser.first_name;
+				var lastName  = currentUser.last_name;
+				var userAvatar = currentUser.avatar_url;
 				var fullName = firstName + " " + lastName;
 				$("#name").text(fullName);
 				// show user's title
