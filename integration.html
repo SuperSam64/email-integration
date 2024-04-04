@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 22.8</span>
+			<span class="button-link column padding">Version 22.9</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -125,6 +125,10 @@
 						}
 					});	
 				})
+				var firstName = getUser().first_name;
+				var lastName  = getUser().last_name;
+				var fullName = firstName + " " + lastName;
+				$("#name").text(fullName);
 				// show user's title
 				var value;
 				if (profileType == "master") {
