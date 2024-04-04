@@ -13,7 +13,7 @@
 
 
 			
-			Signed in as: Sam [Client Relationship Manager]<br/>Version 18.2
+			Signed in as: Sam [Client Relationship Manager]<br/>Version 18.3
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -86,7 +86,7 @@ Missive.on('change:conversations', (ids) => {
 	
 	var currentUser = $(users).each(function(){
 		if(this.me){
-			return this;
+			return this
 		}
 	});	
 	
