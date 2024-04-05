@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 24.4</span>
+			<span class="button-link column padding">Version 24.5</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -124,6 +124,7 @@
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
 							$("#name").text(fullName);
+							$("#avatar").attr("src",currentUser.avatar_url)
 						}
 					});	
 				})
@@ -136,7 +137,7 @@
 				} else {
 					value = "Customer Care Advocate"
 				}
-				$("#avatar").attr("src","https://missive.imgix.net/818390b9-424d-4049-82ed-af180e94e621%2Favatar.jpg")
+				
 				$("#layout").text(value);
 				// if CCA show all CCA-specific items
 
