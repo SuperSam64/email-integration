@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 26.6</span>
+			<span class="button-link column padding">Version 26.7</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -135,27 +135,27 @@
 			//	}				
 			//}
 			//=================================================================================================
-			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
-					$(users).each(function(){
-						if(this.me){
-							currentUser = this;
-							var fullName = currentUser.first_name + " " + currentUser.last_name;
-							//$("#name").text(fullName).addClass("text-xlarge").end();
-							$("#avatar").attr("src",currentUser.avatar_url)
-						}
-					});	
-				})
+	//		$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
+	//				$(users).each(function(){
+	//					if(this.me){
+	//						currentUser = this;
+	//						var fullName = currentUser.first_name + " " + currentUser.last_name;
+	//						//$("#name").text(fullName).addClass("text-xlarge").end();
+	//						$("#avatar").attr("src",currentUser.avatar_url)
+	//					}
+	//				});	
+	//			})
 				// show user's title
-				var value;
-				if (profileType == "master") {
-    				value = "MASTER"
-				} else if (profileType == "Client Relationship Manager"){
-    				value = "Client Relationship Manager"
-				} else {
-					value = "Customer Care Advocate"
-				}
+	//			var value;
+	//			if (profileType == "master") {
+    //				value = "MASTER"
+	//			} else if (profileType == "Client Relationship Manager"){
+    //				value = "Client Relationship Manager"
+	//			} else {
+	//				value = "Customer Care Advocate"
+	//			}
 				
-				$("#layout").text(value);
+	//			$("#layout").text(value);
 				
 				
 				// if CCA show all CCA-specific items
@@ -163,7 +163,7 @@
 				// if CRM show all CRM-specific items
 
 				// if Master, show everything with a toggle to go between
-			})
+	//		})
 			//================================================
 			//$(window).on('load',function(){
 			//	alert("hello!");
