@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 24.9</span>
+			<span class="button-link column padding">Version 25</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -117,7 +117,7 @@
 				//======== return the end result ========
 				return "Get message subject (function not defined)";
 			}
-			$( document ).ready((ids) => {
+			$(window).load((ids) => {
 				Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.id == "f9823bc4-7564-4282-ae4b-92adcc8c6fe6"){ //me){
