@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 25.9</span>
+			<span class="button-link column padding">Version 26</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -118,7 +118,18 @@
 				//======== return the end result ========
 				return "Get message subject (function not defined)";
 			}
-			$( window ).on("load",(ids) => {Missive.fetchUsers().then((users) => {
+			//=================================================================================================
+			const getCurrentUsersFirstName = async () => {
+				const users = await
+				Missive.fetchUsers()
+
+				for (const user of users){
+					if(user.me) return
+					user.first_name
+				}				
+			}
+			//=================================================================================================
+			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
 							currentUser = this;
@@ -147,9 +158,13 @@
 
 				// if Master, show everything with a toggle to go between
 			})
-			/*$(window).on("load",function(){
-				
-			});*/
+			//================================================
+			(window).on("load",function(){
+				const name = await
+				getCurrentUserFirstName()
+				$("#get-labels").text('name:', name)
+			});
+			//================================================
 			function getUser() {
 				return currentUser;
 			}
