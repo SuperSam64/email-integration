@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 24.3</span>
+			<span class="button-link column padding">Version 24.4</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -120,7 +120,7 @@
 			$( document ).ready((ids) => {
 				Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
-						if(this.me){
+						if(this.id == "f9823bc4-7564-4282-ae4b-92adcc8c6fe6"){ //me){
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
 							$("#name").text(fullName);
