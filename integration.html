@@ -46,7 +46,7 @@
 						</table>
 					</tr>
 				<!--<tr></tr> style="column-center margin align-center">
-					<td style="width:0.1%; white-space: nowrap;">Version 22.1</td>
+					<td style="width:0.1%; white-space: nowrap;">Version 22.2</td>
 				</tr>-->
 			</table>
 		</div>
@@ -134,7 +134,7 @@
 						if(this.me){
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
-							$("#name").text(fullName);//.addClass("text-xlarge").end()
+							$("#name").text(fullName).addClass("text-xlarge").end();
 							$("#avatar").attr("src",currentUser.avatar_url)
 						}
 					});	
@@ -151,7 +151,7 @@
 				
 				$("#layout").text(value);
 				
-				;
+				
 				// if CCA show all CCA-specific items
 
 				// if CRM show all CRM-specific items
