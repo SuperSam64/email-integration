@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 26.5</span>
+			<span class="button-link column padding">Version 26.6</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -108,6 +108,12 @@
 		</div>	
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
+			$(window).on('load',function(){
+				alert("hello!");
+			//	const name = await
+			//	getCurrentUserFirstName()
+			//	$("#get-labels").text('name:', name)
+			});
 			//======== create a function that can be reused as needed ========
 			var currentUser;
 			var fullName;
@@ -159,12 +165,12 @@
 				// if Master, show everything with a toggle to go between
 			})
 			//================================================
-			$(window).on('load',function(){
-				alert("hello!")
+			//$(window).on('load',function(){
+			//	alert("hello!");
 			//	const name = await
 			//	getCurrentUserFirstName()
 			//	$("#get-labels").text('name:', name)
-			});
+			//});
 			//================================================
 			function getUser() {
 				return currentUser;
