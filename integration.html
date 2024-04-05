@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 25.4</span>
+			<span class="button-link column padding">Version 25.5</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -145,7 +145,7 @@
 
 				// if Master, show everything with a toggle to go between
 			})
-			$(window).load(function(){
+			$(window).on("load",function(){
 				$("#name").text(fullName);
 			});
 			function getUser() {
