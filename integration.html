@@ -2,7 +2,7 @@
 	<head>
 		<title>Filters Fast</title>
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
-		
+		<script src="https://integrations.missiveapp.com/missive.js"></script>
 	</head>
 	<body style="height:90%">
 	
@@ -107,7 +107,6 @@
 			</table>
 		</div>	
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-		<script src="https://integrations.missiveapp.com/missive.js"></script>
 		<script type="text/javascript">
 			//======== create a function that can be reused as needed ========
 			var currentUser;
@@ -120,22 +119,22 @@
 				return "Get message subject (function not defined)";
 			}
 			//=================================================================================================
-			const getCurrentUsersFirstName = async () => {
-				const users = await
-				Missive.fetchUsers()
+			//const getCurrentUsersFirstName = async () => {
+			//	const users = await
+			//	Missive.fetchUsers()
 
-				for (const user of users){
-					if(user.me) return
-					user.first_name
-				}				
-			}
+			//	for (const user of users){
+			//		if(user.me) return
+			//		user.first_name
+			//	}				
+			//}
 			//=================================================================================================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
-							$("#name").text(fullName).addClass("text-xlarge").end();
+							//$("#name").text(fullName).addClass("text-xlarge").end();
 							$("#avatar").attr("src",currentUser.avatar_url)
 						}
 					});	
