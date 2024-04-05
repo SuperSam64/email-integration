@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 25.3</span>
+			<span class="button-link column padding">Version 25.4</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -110,6 +110,7 @@
 		<script type="text/javascript">
 			//======== create a function that can be reused as needed ========
 			var currentUser;
+			var fullName;
 			var profileType = "CCA" //CCA, CRM, master
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
@@ -122,7 +123,6 @@
 						if(this.me){
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
-							$("#name").text(fullName);
 							$("#avatar").attr("src",currentUser.avatar_url)
 						}
 					});	
@@ -138,12 +138,16 @@
 				}
 				
 				$("#layout").text(value);
+				
 				// if CCA show all CCA-specific items
 
 				// if CRM show all CRM-specific items
 
 				// if Master, show everything with a toggle to go between
 			})
+			$(window).load(function(){
+				$("#name").text(fullName);
+			});
 			function getUser() {
 				return currentUser;
 			}
