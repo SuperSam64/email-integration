@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.1</span>
+			<span class="button-link column padding" id="reload-button">Version 35.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -153,11 +153,11 @@
 				// WORKING!
 				//var x;
 				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
-					return "NOFROM";
+					messageSubject = "NOFROM";
 				} else {
-					return currentConvo.latest_message.from_field.address;
+					messageSubject = currentConvo.latest_message.from_field.address;
 				}
-				//return x;
+				return messageSubject;
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
