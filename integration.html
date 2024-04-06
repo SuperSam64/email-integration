@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 33.6</span>
+			<span class="button-link column padding" id="reload-button">Version 33.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -129,11 +129,12 @@
 				messageCount = conversations[0].messages_count
 				msgTo = currentMessage.to_fields[0]
 				msgFrom = currentMessage.from_field
-				//if (!message || !message.from_field) {
+				if (!message.from_field) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
-				//return
-				})
+					msgFrom="NOFROM"
+					return
+				}
 				//	var from = message.from_field
 				//	console.log('Message from:', from.name, from.address)
 				//	console.log('Message subject:', message.subject)			
@@ -173,15 +174,7 @@
 				//}
 				//var y = msgTo;
 				var y = currentMessage.to_fields[0].address;
-				var z;
-				
-				if(typeof currentMessage.from_field.address === 'undefined')
-				{
-					z = "NOFROM"
-				}
-				else{
-					z = currentMessage.from_field.address
-				}
+				var z = msgFrom
 				var all = z; //+ " | " + z;
 				return all;
 			}
