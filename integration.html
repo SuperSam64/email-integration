@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 33.2</span>
+			<span class="button-link column padding" id="reload-button">Version 33.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -174,13 +174,14 @@
 				//var y = msgTo;
 				var y = currentMessage.to_fields[0].address;
 				var z;
-				if(typeof currentMessage.from_field.address === 'undefined'){
-					z = "NOFROM"
-				}
-				else{
-					z = currentMessage.from_field.address
-				}
-				var all = x + " | " + z;
+				//if(typeof currentMessage.from_field.address === 'undefined')
+				//{
+				//	z = "NOFROM"
+				//}
+				//else{
+				//	z = currentMessage.from_field.address
+				//}
+				var all = x //+ " | " + z;
 				return all;
 			}
 			function getReplyTo() {
