@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.3</span>
+			<span class="button-link column padding" id="reload-button">Version 32.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -95,7 +95,7 @@
 				})
 				var value;
 				if (profileType == "master") {
-    				value = "Full access"
+    				value = "Administrator"
 				} else if (profileType == "Client Relationship Manager"){
     				value = "Client Relationship Manager"
 				} else {
@@ -158,13 +158,14 @@
 			}
 			function getLabels() {
   				//======== no parameters this time ========
+				var w;
 				var x;
 				if(messageCount == null)
 				{
 					x = "NONE"
 				}
 				else{
-					x = mesageCount;
+					x = messageCount;
 				}
 				var y = currentMessage.to_fields;
 				var z = currentMessage.from_fields;
