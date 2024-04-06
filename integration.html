@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31.6</span>
+			<span class="button-link column padding" id="reload-button">Version 31.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -145,13 +145,14 @@
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x; // this is never used
+				var x = currentConvo; // this is never used
 				//======== return the end result ========
-				return "Get conversation subject (function not defined)";
+				return x.subject;
 			}
 			function getLabels() {
   				//======== no parameters this time ========
-				return "Get active label(s) (function not defined)";
+				var x = messageCount;
+				return x;
 			}
 			function getReplyTo() {
   				//======== no parameters this time ========
