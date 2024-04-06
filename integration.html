@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.9</span>
+			<span class="button-link column padding" id="reload-button">Version 33</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -172,7 +172,8 @@
 					x = messageCount;
 				}
 				//var y = msgTo;
-				var z = currentMessage.from_field;
+				var y = currentMessage.to_fields[0].address;
+				var z = currentMessage.from_field.address;
 				var all = x + " | " + z;
 				return all;
 			}
