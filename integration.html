@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 34.1</span>
+			<span class="button-link column padding" id="reload-button">Version 34.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -129,10 +129,10 @@
 					messageCount = conversations[0].messages_count
 					msgTo = currentMessage.to_fields[0]
 					
-					if (!currentMessage.from_field) {
+					if (!currentMessage.from_field.address) {
 						msgFrom="NOFROM";
 					}else{
-						msgFrom = currentMessage.from_field;
+						msgFrom = currentMessage.from_field.address;
 					}
 				})
 			})
