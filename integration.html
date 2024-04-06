@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 34.6</span>
+			<span class="button-link column padding" id="reload-button">Version 34.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -127,21 +127,21 @@
 					// Do nothing if multiple conversations are selected.
 				//	return
 				//}
-					currentMessage = conversations[0].latest_message
 					currentConvo = conversations[0]
-					messageCount = conversations[0].messages_count
+					currentMessage = currentConvo.latest_message
+					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
 					
-					if (!currentMessage || !currentMessage.from_field){
-						msgFrom="NOFROM";
-					}else{
-						msgFrom = currentMessage.from_field.address;
-					}
-					if(typeof currentMessage.subject === 'undefined'){
-						messageSubject = "NOSUBJECT";
-					}else{
-						messageSubject = currentMessage.subject	
-					}
+					//if (!currentMessage || !currentMessage.from_field){
+						msgFrom = "NOFROM";
+					//}else{
+					//	msgFrom = currentMessage.from_field.address;
+					//}
+					//if(typeof currentMessage.subject === 'undefined'){
+					//	messageSubject = "NOSUBJECT";
+					//}else{
+					//	messageSubject = currentMessage.subject	
+					//}
 				})
 			})
 			
@@ -150,15 +150,7 @@
 			}
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x;
-				if(typeof currentMessage.subject === 'undefined'){
-					x = currentConvo.subject
-				}
-				else{
-					x = currentMessage.subject
-				}
-				//======== return the end result ========
-				return x;
+				return msgFrom;
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
