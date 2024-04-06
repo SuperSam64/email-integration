@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 27.3</span>
+			<span class="button-link column padding">Version 27.4</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -135,9 +135,10 @@
 					$(users).each(function(){
 						if(this.me){
 							currentUser = this;
-							//var fullName = currentUser.first_name + " " + currentUser.last_name;
-							//$("#name").text(fullName).addClass("text-xlarge").end();
-							//$("#avatar").attr("src",currentUser.avatar_url)
+							var fullName = currentUser.first_name + " " + currentUser.last_name;
+							$("#avatar").attr("src",currentUser.avatar_url);
+							$("#layout").text(value);
+							$("#name").text(currentUser.first_name);
 						}
 					});	
 				})
@@ -151,10 +152,7 @@
 					value = "Customer Care Advocate"
 				}
 				
-				var fullName = currentUser.first_name + " " + currentUser.last_name;
-				$("#avatar").attr("src",currentUser.avatar_url)
-				$("#layout").text(value);
-				$("#name").text(currentUser.first_name);
+				
 				
 				// if CCA show all CCA-specific items
 
