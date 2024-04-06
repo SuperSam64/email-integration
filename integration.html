@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 26.8</span>
+			<span class="button-link column padding">Version 26.9</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -108,12 +108,8 @@
 		</div>	
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			$(window).on('load',function(){
-				$("#name").text("HELLO");
-			//	const name = await
-			//	getCurrentUserFirstName()
-			//	$("#get-labels").text('name:', name)
-			});
+
+	
 			//======== create a function that can be reused as needed ========
 			var currentUser;
 			var fullName;
@@ -135,27 +131,27 @@
 			//	}				
 			//}
 			//=================================================================================================
-	//		$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
-	//				$(users).each(function(){
-	//					if(this.me){
-	//						currentUser = this;
-	//						var fullName = currentUser.first_name + " " + currentUser.last_name;
-	//						//$("#name").text(fullName).addClass("text-xlarge").end();
-	//						$("#avatar").attr("src",currentUser.avatar_url)
-	//					}
-	//				});	
-	//			})
+			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
+					$(users).each(function(){
+						if(this.me){
+							currentUser = this;
+							var fullName = currentUser.first_name + " " + currentUser.last_name;
+							//$("#name").text(fullName).addClass("text-xlarge").end();
+							$("#avatar").attr("src",currentUser.avatar_url)
+						}
+					});	
+				})
 				// show user's title
-	//			var value;
-	//			if (profileType == "master") {
-    //				value = "MASTER"
-	//			} else if (profileType == "Client Relationship Manager"){
-    //				value = "Client Relationship Manager"
-	//			} else {
-	//				value = "Customer Care Advocate"
-	//			}
+				var value;
+				if (profileType == "master") {
+    				value = "MASTER"
+				} else if (profileType == "Client Relationship Manager"){
+    				value = "Client Relationship Manager"
+				} else {
+					value = "Customer Care Advocate"
+				}
 				
-	//			$("#layout").text(value);
+				$("#layout").text(value);
 				
 				
 				// if CCA show all CCA-specific items
@@ -163,8 +159,31 @@
 				// if CRM show all CRM-specific items
 
 				// if Master, show everything with a toggle to go between
-	//		})
+			})
 			//================================================
+			Missive.on('change:conversations', (ids) => {
+				Missive.fetchConversations(ids).then((conversations) => {
+					if (conversations.length != 1) {
+					// Do nothing if multiple conversations are selected.
+					return
+				}
+
+				var message = conversations[0].latest_message
+				if (!message || !message.from_field) {
+				// Do nothing if conversation has no message (only chat comments) or if
+				// message has no From field.
+				return
+				}
+
+					var from = message.from_field
+					console.log('Message from:', from.name, from.address)
+					console.log('Message subject:', message.subject)
+				})
+				$("#name").attr("src",currentUser.first_name)
+			})
+
+
+
 			//$(window).on('load',function(){
 			//	alert("hello!");
 			//	const name = await
