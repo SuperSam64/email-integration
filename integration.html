@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 34.4</span>
+			<span class="button-link column padding" id="reload-button">Version 34.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -137,7 +137,7 @@
 					}else{
 						msgFrom = currentMessage.from_field.address;
 					}
-					if(!currentMessage.subject){
+					if(typeof currentMessage.subject === 'undefined'){
 						messageSubject = "NOSUBJECT";
 					}else{
 						messageSubject = currentMessage.subject	
