@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31</span>
+			<span class="button-link column padding" id="reload-button">Version 31.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -78,12 +78,6 @@
 			var currentUser;
 			var fullName;
 			var profileType = "CCA" //CCA, CRM, master
-			function getSubject(some_param){
-  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x = some_param; // this is never used
-				//======== return the end result ========
-				return "Get message subject (function not defined)";
-			}
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -130,6 +124,18 @@
 			function getUser() {
 				return currentUser;
 			}
+			function getSubject(some_param){
+  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
+				var x = some_param; // this is never used
+				//======== return the end result ========
+				return "Get message subject (function not defined)";
+			}
+			function getCSubject(){
+  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
+				var x; // this is never used
+				//======== return the end result ========
+				return "Get conversation subject (function not defined)";
+			}
 			function getLabels() {
   				//======== no parameters this time ========
 				return "Get active label(s) (function not defined)";
@@ -156,10 +162,8 @@
 			//======== button to test that funciton works ========
 			$("#get-cSubject").click(function () { 
 				//======== run the function, no parameters ========
-				var firstName = getUser().first_name;
-				var lastName  = getUser().last_name;
-				var fullName = firstName + " " + lastName;
-				$("#name").text(fullName);
+				var value = getCSubject();
+				$("#cSubject-text").text(value);
 			});
 			$("#get-labels").click(function () { 
 				//======== run the function, no parameters ========
