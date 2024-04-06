@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.7</span>
+			<span class="button-link column padding" id="reload-button">Version 32.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -127,8 +127,8 @@
 				currentMessage = conversations[0].latest_message
 				currentConvo = conversations[0]
 				messageCount = conversations[0].messages_count
-				msgTo = conversations[0].latest_message.to_fields[0]
-				msgFrom = conversations[0].latest_message.from_field
+				msgTo = currentMessage.to_fields[0]
+				msgFrom = currentMessage.from_field
 				//if (!message || !message.from_field) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
@@ -145,7 +145,7 @@
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
 				var x;
-				if(typeof currentMessage.subject === 'undefined'){
+				if(!currentMessage.subject){
 					x = currentConvo.subject;
 				}
 				else{
@@ -164,16 +164,16 @@
   				//======== no parameters this time ========
 				var w;
 				var x;
-				if(typeof messageCount === 'undefined')
+				if(!messageCount)
 				{
 					x = "NONE"
 				}
 				else{
 					x = messageCount;
 				}
-				var y = msgTo;
-				var z = msgFrom;
-				var all = x + " " + y + " | " + z;
+				//var y = msgTo;
+				var z = currentMessage.from_field;
+				var all = x + " | " + z;
 				return all;
 			}
 			function getReplyTo() {
