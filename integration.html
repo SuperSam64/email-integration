@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31.9</span>
+			<span class="button-link column padding" id="reload-button">Version 32</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -139,13 +139,15 @@
 			}
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x = currentMessage.subject;
-				if(x == null){
+				var x;
+				if(currentMessage.subject == null){
 					x = currentConvo.subject;
-					return
+				}
+				else{
+					x = currentMessage.subject;
 				}
 				//======== return the end result ========
-				return x.subject;
+				return x;
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
