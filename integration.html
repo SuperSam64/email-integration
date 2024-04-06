@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.5</span>
+			<span class="button-link column padding" id="reload-button">Version 32.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -81,6 +81,8 @@
 			var currentConvo;
 			var currentnMessage;
 			var messageCount;
+			var msgTo;
+			var msgFrom;
 			var draft;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
