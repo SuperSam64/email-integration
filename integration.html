@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31.5</span>
+			<span class="button-link column padding" id="reload-button">Version 31.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -80,6 +80,7 @@
 			var profileType = "master"; //CCA, CRM, master
 			var currentConvo;
 			var currentnMessage;
+			var messageCount;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -116,12 +117,13 @@
 			})
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
-					if (conversations.length != 1) {
+				//	if (conversations.length != 1) {
 					// Do nothing if multiple conversations are selected.
-					return
-				}
+				//	return
+				//}
 				currentMessage = conversations[0].latest_message
 				currentConvo = conversations[0]
+				messageCount = conversations[0].message_count
 				//if (!message || !message.from_field) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
