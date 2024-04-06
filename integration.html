@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31.1</span>
+			<span class="button-link column padding" id="reload-button">Version 31.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -77,7 +77,9 @@
 			//======== create a function that can be reused as needed ========
 			var currentUser;
 			var fullName;
-			var profileType = "CCA" //CCA, CRM, master
+			var profileType = "CCA"; //CCA, CRM, master
+			var currentConvo;
+			var currentnMessage;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -110,15 +112,16 @@
 					// Do nothing if multiple conversations are selected.
 					return
 				}
-				var message = conversations[0].latest_message
+				currentMessage = conversations[0].latest_message
+				currentConvo = conversations[0]
 				if (!message || !message.from_field) {
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
 				return
 				}
-					var from = message.from_field
-					console.log('Message from:', from.name, from.address)
-					console.log('Message subject:', message.subject)
+				//	var from = message.from_field
+				//	console.log('Message from:', from.name, from.address)
+				//	console.log('Message subject:', message.subject)
 				})
 			})
 			function getUser() {
@@ -126,9 +129,9 @@
 			}
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x = some_param; // this is never used
+				var x = currentMessage; // this is never used
 				//======== return the end result ========
-				return "Get message subject (function not defined)";
+				return x.subject;
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
