@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.8</span>
+			<span class="button-link column padding" id="reload-button">Version 32.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -145,14 +145,14 @@
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
 				var x;
-				if(!currentMessage.subject){
-					x = currentConvo.subject;
+				if(typeof currentMessage === 'undefined'){
+					x = currentConvo;
 				}
 				else{
-					x = currentMessage.subject;
+					x = currentMessage;
 				}
 				//======== return the end result ========
-				return x;
+				return x.subject;
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
@@ -164,7 +164,7 @@
   				//======== no parameters this time ========
 				var w;
 				var x;
-				if(!messageCount)
+				if(typeof messageCount === 'undefined')
 				{
 					x = "NONE"
 				}
