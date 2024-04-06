@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 31.4</span>
+			<span class="button-link column padding" id="reload-button">Version 31.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -105,6 +105,14 @@
 				// if CRM show all CRM-specific items
 
 				// if Master, show everything with a toggle to go between
+				/*Missive.fetchConversations(ids).then((conversations) => {
+					if (conversations.length != 1) {
+					// Do nothing if multiple conversations are selected.
+					return
+					}
+					currentMessage = conversations[0].latest_message
+					currentConvo = conversations[0]
+				})*/
 			})
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
@@ -118,7 +126,7 @@
 				// Do nothing if conversation has no message (only chat comments) or if
 				// message has no From field.
 				//return
-			//	}
+				})
 				//	var from = message.from_field
 				//	console.log('Message from:', from.name, from.address)
 				//	console.log('Message subject:', message.subject)			
