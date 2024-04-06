@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 32.2</span>
+			<span class="button-link column padding" id="reload-button">Version 32.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -81,6 +81,7 @@
 			var currentConvo;
 			var currentnMessage;
 			var messageCount;
+			var draft;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -157,10 +158,18 @@
 			}
 			function getLabels() {
   				//======== no parameters this time ========
-				var x = messageCount;
+				var x;
+				if(messageCount == null)
+				{
+					x = "NONE"
+				}
+				else{
+					x = mesageCount;
+				}
 				var y = currentMessage.to_fields;
 				var z = currentMessage.from_fields;
-				return x;
+				var all = x + " " + y + " | " + z;
+				return all;
 			}
 			function getReplyTo() {
   				//======== no parameters this time ========
