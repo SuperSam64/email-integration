@@ -6,7 +6,7 @@
 	</head>
 	<body style="height:90%">
 		<!---------------------------HEADER--------------------------------->
-		<div class="column-vertical padding margin section" style="background-color: rgba(125, 127, 125, 0.4)">
+		<div class="column-vertical padding margin section" style="background-color: rgba(125, 127, 125, 0.2)">
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
 			  <tr>
 				<td rowspan="2"><img id="avatar" style="margin-right:8px;border:3px solid var(--missive-text-color-a);display:block; height:54px; border-radius:32px" src="profileplaceholder.png"></td>
@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 33.9</span>
+			<span class="button-link column padding" id="reload-button">Version 34</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -128,10 +128,11 @@
 					currentConvo = conversations[0]
 					messageCount = conversations[0].messages_count
 					msgTo = currentMessage.to_fields[0]
-					msgFrom = currentMessage.from_field
+					
 					if (!message.from_field) {
-						msgFrom="NOFROM"
-						return
+						msgFrom="NOFROM";
+					}else{
+						msgFrom = currentMessage.from_field;
 					}
 				})
 			})
