@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 33.8</span>
+			<span class="button-link column padding" id="reload-button">Version 33.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -124,20 +124,16 @@
 					// Do nothing if multiple conversations are selected.
 				//	return
 				//}
-				currentMessage = conversations[0].latest_message
-				currentConvo = conversations[0]
-				messageCount = conversations[0].messages_count
-				msgTo = currentMessage.to_fields[0]
-				msgFrom = currentMessage.from_field
-				if (!message.from_field) {
-				// Do nothing if conversation has no message (only chat comments) or if
-				// message has no From field.
-					msgFrom="NOFROM"
-					return
-				}
-				//	var from = message.from_field
-				//	console.log('Message from:', from.name, from.address)
-				//	console.log('Message subject:', message.subject)			
+					currentMessage = conversations[0].latest_message
+					currentConvo = conversations[0]
+					messageCount = conversations[0].messages_count
+					msgTo = currentMessage.to_fields[0]
+					msgFrom = currentMessage.from_field
+					if (!message.from_field) {
+						msgFrom="NOFROM"
+						return
+					}
+				})
 			})
 			
 			function getUser() {
