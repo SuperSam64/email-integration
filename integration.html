@@ -51,7 +51,7 @@
 			</table>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding">Version 26.9</span>
+			<span class="button-link column padding">Version 27</span>
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<span class="button-link column padding" id="reload-button">Reload</span>
@@ -179,7 +179,7 @@
 					console.log('Message from:', from.name, from.address)
 					console.log('Message subject:', message.subject)
 				})
-				$("#name").attr("src",currentUser.first_name)
+				$("#name").text(currentUser.first_name);
 			})
 
 
