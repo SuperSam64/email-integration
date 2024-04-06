@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 34.3</span>
+			<span class="button-link column padding" id="reload-button">Version 34.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -80,6 +80,9 @@
 			var profileType = "master"; //CCA, CRM, master
 			var currentConvo;
 			var currentnMessage;
+			var messageSubject;
+			var convoSubject;
+			var convoLink
 			var messageCount;
 			var msgTo;
 			var msgFrom;
@@ -129,10 +132,15 @@
 					messageCount = conversations[0].messages_count
 					msgTo = currentMessage.to_fields[0]
 					
-					if (!currentMessage.from_field.address) {
+					if (!currentMessage.from_field) {
 						msgFrom="NOFROM";
 					}else{
 						msgFrom = currentMessage.from_field.address;
+					}
+					if(!currentMessage.subject){
+						messageSubject = "NOSUBJECT";
+					}else{
+						messageSubject = currentMessage.subject	
 					}
 				})
 			})
@@ -160,20 +168,8 @@
 			}
 			function getLabels() {
   				//======== no parameters this time ========
-				var w;
-				var x;
-				//if(typeof messageCount === 'undefined')
-				//{
-				//	x = "NONE"
-				//}
-				//else{
-				//	x = messageCount;
-				//}
-				//var y = msgTo;
-				var y = currentMessage.to_fields[0].address;
-				var z = msgFrom
-				var all = z; //+ " | " + z;
-				return all;
+				var x = messageSubject;
+				return x;
 			}
 			function getReplyTo() {
   				//======== no parameters this time ========
