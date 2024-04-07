@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 40.3</span>
+			<span class="button-link column padding" id="reload-button">Version 40.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -169,7 +169,7 @@
 					}
 					$("#draft-text").text(isdraft)
 					*/
-					draft = true;
+					draft = "yes";
 					var message = conversations[0].latest_message
     				//if (!message || !message.from_field) {
       					// Do nothing if conversation has no message (only chat comments) or if
@@ -179,10 +179,10 @@
 					//	draft = false;
 					//}
 					
-					//if(draft){
+					if(draft == "yes"){
 
 						Missive.assign(currentUser.id)
-					//}
+					}
 					//draftvalue = "SOMETHING"
 					//$("#draft-text").text(draftvalue)
 					
@@ -238,13 +238,7 @@
 				return messageSubject;
 			}
 			function draft(input){
-				if(!input || !input.from_field)
-				{
-					return "YES";
-				} else {
-					return "NO";
-				}
-				
+				Missive.assign(currentUser.id)				
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
@@ -282,8 +276,7 @@
 				$("#from-text").text(value);
 			});
 			$("#get-draft").click(function () { 
-				
-				
+				draft();
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
