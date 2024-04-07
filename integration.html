@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 37.9</span>
+			<span class="button-link column padding" id="reload-button">Version 38</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -161,9 +161,15 @@
 					//	messageSubject = currentMessage.subject	
 					//}
 
-					var y = getFrom()
+					
 						
-					$("#draft-text").text(y)
+					if (!currentMessage || !currntMessage.from_field) {
+						// Do nothing if conversation has no message (only chat comments) or if
+						// message has no From field.
+						$("#draft-text").text("YES")
+   					}else{
+						$("#draft-text").text("NO")
+					}
 
 					
 					
@@ -217,7 +223,7 @@
 				}
 				return messageSubject;
 			}
-			function assignDraft(){
+			function assignDraft(input){
 				var from = getFrom();
 				var count = getMsgCount();
 				if((from == "[empty]") && (count < 2)){
@@ -260,8 +266,7 @@
 				$("#from-text").text(value);
 			});
 			$("#get-draft").click(function () { 
-				var value = assignDraft();
-				$("#draft-text").text(value);
+				assignDraft(currentConvo);
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
