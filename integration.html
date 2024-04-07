@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 40.5</span>
+			<span class="button-link column padding" id="reload-button">Version 40.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -178,6 +178,8 @@
     				}else{
 						draftval = "no";
 					}
+
+					draft(draftval);
 					
 					//if(draft == "yes"){
 
@@ -185,7 +187,7 @@
 					//}
 					//draftvalue = "SOMETHING"
 					//$("#draft-text").text(draftvalue)
-					$("#subject-text").text(value);
+					//$("#draft-text").text(value);
 					
 				
 
@@ -238,7 +240,7 @@
 				return messageSubject;
 			}
 			function draft(input){
-				Missive.assign(currentUser.id)				
+				$("#draft-text").text(input);				
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
