@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 39.3</span>
+			<span class="button-link column padding" id="reload-button">Version 39.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -169,7 +169,7 @@
 					$("#draft-text").text(isdraft)
 					*/
 				
-					draft(currentMessage)
+					$("#draft-text").text("SOMETHING")
 					
 					
 				
@@ -267,8 +267,8 @@
 				$("#from-text").text(value);
 			});
 			$("#get-draft").click(function () { 
-				var x = draft();
-				$("#draft-text").text(x)
+				
+				
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
