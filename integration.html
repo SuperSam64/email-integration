@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 39.5</span>
+			<span class="button-link column padding" id="reload-button">Version 39.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -175,8 +175,9 @@
       					// Do nothing if conversation has no message (only chat comments) or if
       					// message has no From field.
       					Missive.assign(currentUser.id)
-						return
-    				}
+    				}else{
+						Missive.assign(currentUser.id)
+					}
 				
 					//draftvalue = "SOMETHING"
 					//$("#draft-text").text(draftvalue)
