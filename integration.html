@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 39.2</span>
+			<span class="button-link column padding" id="reload-button">Version 39.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -166,9 +166,10 @@
 					if(draft){
 						isdraft="YES";
 					}
+					$("#draft-text").text(isdraft)
 					*/
 				
-
+					draft(currentMessage)
 					
 					
 				
@@ -221,8 +222,8 @@
 				}
 				return messageSubject;
 			}
-			function draft(){
-				if(!currentMessage || !currentMessage.from_field)
+			function draft(input){
+				if(!input || !input.from_field)
 				{
 					return "YES";
 				} else {
