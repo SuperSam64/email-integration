@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 36.5</span>
+			<span class="button-link column padding" id="reload-button">Version 36.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -219,10 +219,11 @@
 				//var count = getMsgCount();
 				//if((from == "[empty]") && (count < 2)){
 				//	return true;
-					 addAssignees(currentUser.id)
+		//			 assign(currentUser.id)
 				//}else{
 				//	return false;
 				//}
+				return(currentUser.id)
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
