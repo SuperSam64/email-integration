@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 39.9</span>
+			<span class="button-link column padding" id="reload-button">Version 40</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -171,7 +171,7 @@
 					*/
 					draft = true;
 					var message = conversations[0].latest_message
-    				if (typeof message.from_field.address === 'undefined') {
+    				if (!message || !message.from_field) {
       					// Do nothing if conversation has no message (only chat comments) or if
       					// message has no From field.
       					
