@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 41</span>
+			<span class="button-link column padding" id="reload-button">Version 41.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -173,9 +173,9 @@
 					
 					
 
-					draft();
-					
-					
+					$("#draft-text").text("test")
+					var xyz = "something"
+					$("#draft-text").text(xyz)
 					
 				
 
@@ -228,7 +228,7 @@
 				return messageSubject;
 			}
 			function draft(){
-				$("#msgcount-text").text("hello")
+				$("#draft-text").text("hello")
 				//$("#draft-text").text(currentConvo.id);
 			}
 			//======== button to test that funciton works ========
