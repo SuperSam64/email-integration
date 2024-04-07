@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 36.2</span>
+			<span class="button-link column padding" id="reload-button">Version 36.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -122,7 +122,8 @@
     				title = "Client Relationship Manager"
 				} else {
 					title = "Customer Care Advocate"
-				}		
+				}
+				
 				
 				// if CCA show all CCA-specific items
 
@@ -159,6 +160,12 @@
 					//}else{
 					//	messageSubject = currentMessage.subject	
 					//}
+
+				if(draft){
+					addAssignees(currentUser.id)
+				}	
+
+
 				})
 			})
 			
@@ -211,6 +218,7 @@
 				var count = getMsgCount();
 				if((from == "[empty]") && (count < 2)){
 					return true;
+					// addAssignees(currentUser.id)
 				}else{
 					return false;
 				}
