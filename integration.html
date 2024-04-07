@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.4</span>
+			<span class="button-link column padding" id="reload-button">Version 35.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -90,7 +90,7 @@
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						
-						doSomthing(this.me)
+						doSomthing(this)
 						
 						
 		
@@ -144,11 +144,13 @@
 			})
 			
 			function doSomething(input) {
-				currentUser = input;
-				var fullName = currentUser.first_name + " " + currentUser.last_name;
-				$("#avatar").attr("src",currentUser.avatar_url);
-				$("#layout").text(value);
-				$("#name").text(fullName);
+				if(input.me){
+					currentUser = input;
+					var fullName = currentUser.first_name + " " + currentUser.last_name;
+					$("#avatar").attr("src",currentUser.avatar_url);
+					$("#layout").text(value);
+					$("#name").text(fullName);
+				}
 			}
 			function getUser() {
 				return currentUser;
