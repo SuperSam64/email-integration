@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 36.1</span>
+			<span class="button-link column padding" id="reload-button">Version 36.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -209,7 +209,7 @@
 			function draft(){
 				var from = getFrom();
 				var count = getMsgCount();
-				if((from == "[empty]") && (count == 0)){
+				if((from == "[empty]") && (count < 2)){
 					return true;
 				}else{
 					return false;
