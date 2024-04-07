@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 39</span>
+			<span class="button-link column padding" id="reload-button">Version 39.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -169,11 +169,14 @@
 					// Do nothing if conversation has no message (only chat comments) or if
 					// message has no From field.
 					//nothing
-					}else{
-						isDraft = "YES"
+					return
 					}
+					
+					
+					isDraft = "YES"
+				
 
-					$("#draft-text").text(isdraft)
+					
 					
 				
 
@@ -225,12 +228,8 @@
 				}
 				return messageSubject;
 			}
-			function assignDraft(input){
-				var from = getFrom();
-				var count = getMsgCount();
-				if((from == "[empty]") && (count < 2)){
-					Missive.assign(currentUser.id)
-				}			
+			function draft(){
+				$("#draft-text").text(isdraft)	
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
@@ -268,7 +267,7 @@
 				$("#from-text").text(value);
 			});
 			$("#get-draft").click(function () { 
-				assignDraft(currentConvo);
+				draft();
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
