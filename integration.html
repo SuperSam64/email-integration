@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 37.4</span>
+			<span class="button-link column padding" id="reload-button">Version 37.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -161,9 +161,13 @@
 					//	messageSubject = currentMessage.subject	
 					//}
 
-					if((!currentConvo.latest_message.from_field) && (currentConvo.messages_count < 2)){
+					if(((!currentConvo.latest_message)||(!currentConvo.latest_message.from_field)) && (currentConvo.messages_count < 2)){
 						Missive.assign(currentUser.id)
+						$("#draft-text").text("ASSIGNED")
 					}	
+					else{
+						$("#draft-text").text("NO")
+					}
 					
 				
 
