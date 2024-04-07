@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 40.9</span>
+			<span class="button-link column padding" id="reload-button">Version 41</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -151,6 +151,7 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
+					Missive.assign(currentUser.id)
 					//msgFrom = "NOFROM";/// is this needed??************************************************************************************
 					//if (!currentMessage || !currentMessage.from_field){
 						
@@ -227,7 +228,7 @@
 				return messageSubject;
 			}
 			function draft(){
-				Misive.alert("hello");
+				$("#msgcount-text").text("hello")
 				//$("#draft-text").text(currentConvo.id);
 			}
 			//======== button to test that funciton works ========
