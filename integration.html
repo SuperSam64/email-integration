@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.7</span>
+			<span class="button-link column padding" id="reload-button">Version 35.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -89,13 +89,13 @@
 			var draft;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
-						
 						if(this.me){
-							doSomething(this);
+							currentUser = this;
+							var fullName = currentUser.first_name + " " + currentUser.last_name;
+							$("#avatar").attr("src",currentUser.avatar_url);
+							$("#layout").text(value);
+							$("#name").text(fullName);
 						}
-						
-						
-		
 					});	
 				})
 				var value;
@@ -105,9 +105,7 @@
     				value = "Client Relationship Manager"
 				} else {
 					value = "Customer Care Advocate"
-				}	
-				$("#layout").text(value);
-				$("#name").text(fullName);	
+				}		
 				
 				// if CCA show all CCA-specific items
 
@@ -147,15 +145,6 @@
 				})
 			})
 			
-			function doSomething(input) {
-				
-					currentUser = input;
-					var fullName = currentUser.first_name + " " + currentUser.last_name;
-					$("#avatar").attr("src",currentUser.avatar_url);
-					$("#layout").text(value);
-					$("#name").text(fullName);
-				
-			}
 			function getUser() {
 				return currentUser;
 			}
