@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.8</span>
+			<span class="button-link column padding" id="reload-button">Version 35.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -93,18 +93,18 @@
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
 							$("#avatar").attr("src",currentUser.avatar_url);
-							$("#layout").text(value);
+							$("#layout").text(title);
 							$("#name").text(fullName);
 						}
 					});	
 				})
-				var value;
+				var title;
 				if (profileType == "master") {
-    				value = "Administrator"
+    				title = "Administrator"
 				} else if (profileType == "Client Relationship Manager"){
-    				value = "Client Relationship Manager"
+    				title = "Client Relationship Manager"
 				} else {
-					value = "Customer Care Advocate"
+					title = "Customer Care Advocate"
 				}		
 				
 				// if CCA show all CCA-specific items
@@ -131,7 +131,7 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
-					msgFrom = "NOFROM";/// is this needed??************************************************************************************
+					//msgFrom = "NOFROM";/// is this needed??************************************************************************************
 					//if (!currentMessage || !currentMessage.from_field){
 						
 					//}else{
