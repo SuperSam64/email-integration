@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 36.6</span>
+			<span class="button-link column padding" id="reload-button">Version 36.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -223,7 +223,10 @@
 				//}else{
 				//	return false;
 				//}
-				return(currentUser.id)
+				var x = currentUser.id
+				assign(x)
+				return(x)
+				
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
