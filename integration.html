@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 37.3</span>
+			<span class="button-link column padding" id="reload-button">Version 37.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -161,7 +161,9 @@
 					//	messageSubject = currentMessage.subject	
 					//}
 
-				assignDraft()
+					if((!currentConvo.latest_message.from_field) && (currentConvo.messages_count < 2)){
+						Missive.assign(currentUser.id)
+					}	
 					
 				
 
