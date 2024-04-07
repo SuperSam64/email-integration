@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 40.4</span>
+			<span class="button-link column padding" id="reload-button">Version 40.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -103,7 +103,7 @@
 			var messageCount;
 			var msgTo;
 			var msgFrom;
-			var draft;
+			var draftval;
 			var isdraft;
 			var draftvalue;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
@@ -169,23 +169,23 @@
 					}
 					$("#draft-text").text(isdraft)
 					*/
-					draft = "yes";
+					draftval = "yes";
 					var message = conversations[0].latest_message
-    				//if (!message || !message.from_field) {
+    				if (!message || !message.from_field) {
       					// Do nothing if conversation has no message (only chat comments) or if
       					// message has no From field.
       					
-    				//}else{
-					//	draft = false;
-					//}
-					
-					if(draft == "yes"){
-
-						Missive.assign(currentUser.id)
+    				}else{
+						draftval = "no";
 					}
+					
+					//if(draft == "yes"){
+
+					//	Missive.assign(currentUser.id)
+					//}
 					//draftvalue = "SOMETHING"
 					//$("#draft-text").text(draftvalue)
-					
+					$("#subject-text").text(value);
 					
 				
 
