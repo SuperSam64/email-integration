@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.9</span>
+			<span class="button-link column padding" id="reload-button">Version 36</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -71,7 +71,15 @@
 					<td><span class="columnn" id="msgcount-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
-		</div>	
+		</div>
+		<div class="column-vertical margin section">
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-from">Get From</span></td>
+					<td><span class="columnn" id="from-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			//======== create a function that can be reused as needed ========
@@ -149,16 +157,9 @@
 				return currentUser;
 			}
 			function getSubject(some_param){
-  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				// WORKING!
-				//  if "from" is empty, number of messages is 1(?) OR not a valid number, subject is empty (all conditions must be met)
+  				
 				//var x;
-				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
-					messageSubject = "NOFROM";
-				} else {
-					messageSubject = currentConvo.latest_message.from_field.address;
-				}
-				return messageSubject;
+				
 			}
 			function getCSubject(){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
@@ -182,6 +183,14 @@
 			function getMsgCount() {
   				//======== no parameters this time ========
 				return "Get number of messages in this thread (function not defined)";
+			}
+			function getFrom(){
+				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
+					messageSubject = "NOFROM";
+				} else {
+					messageSubject = currentConvo.latest_message.from_field.address;
+				}
+				return messageSubject;
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
@@ -213,6 +222,10 @@
 			$("#get-msgcount").click(function () { 
 				var value = getMsgCount();
 				$("#msgcount-text").text(value);
+			});
+			$("#get-from").click(function () { 
+				var value = getFrom();
+				$("#from-text").text(value);
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
