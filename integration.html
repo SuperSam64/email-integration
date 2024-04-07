@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 35.2</span>
+			<span class="button-link column padding" id="reload-button">Version 35.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -89,13 +89,13 @@
 			var draft;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
-						if(this.me){
-							currentUser = this;
-							var fullName = currentUser.first_name + " " + currentUser.last_name;
-							$("#avatar").attr("src",currentUser.avatar_url);
-							$("#layout").text(value);
-							$("#name").text(fullName);
+						
+						doSomthing(this.me){
+
 						}
+						
+						
+		
 					});	
 				})
 				var value;
@@ -131,7 +131,7 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
-					msgFrom = "NOFROM";
+					msgFrom = "NOFROM";/// is this needed??************************************************************************************
 					//if (!currentMessage || !currentMessage.from_field){
 						
 					//}else{
@@ -145,12 +145,20 @@
 				})
 			})
 			
+			function doSomething(input) {
+				currentUser = input;
+				var fullName = currentUser.first_name + " " + currentUser.last_name;
+				$("#avatar").attr("src",currentUser.avatar_url);
+				$("#layout").text(value);
+				$("#name").text(fullName);
+			}
 			function getUser() {
 				return currentUser;
 			}
 			function getSubject(some_param){
   				//======== parameters go here. this one does nothing, but serves as a placeholder ========
 				// WORKING!
+				//  if "from" is empty, number of messages is 1(?) OR not a valid number, subject is empty (all conditions must be met)
 				//var x;
 				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
 					messageSubject = "NOFROM";
