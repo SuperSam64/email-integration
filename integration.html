@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 40.7</span>
+			<span class="button-link column padding" id="reload-button">Version 40.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -227,7 +227,8 @@
 				return messageSubject;
 			}
 			function draft(){
-				$("#from-text").text(currentConvo.id);
+				alert("hello");
+				//$("#draft-text").text(currentConvo.id);
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
@@ -265,7 +266,7 @@
 				$("#from-text").text(value);
 			});
 			$("#get-draft").click(function () { 
-				$("#from-text").text(currentConvo.id);
+				draft();
 			});
 			$("#reload-button").click(function () { 
 				Missive.reload();
