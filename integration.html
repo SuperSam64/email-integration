@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 36.4</span>
+			<span class="button-link column padding" id="reload-button">Version 36.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -163,7 +163,7 @@
 
 				if(draft){
 					//alert(currentUser.id)
-					assign(currentUser.id);
+					//assign(currentUser.id);
 				}	
 
 
@@ -215,14 +215,14 @@
 				return messageSubject;
 			}
 			function draft(){
-				var from = getFrom();
-				var count = getMsgCount();
-				if((from == "[empty]") && (count < 2)){
-					return true;
-					// addAssignees(currentUser.id)
-				}else{
-					return false;
-				}
+				//var from = getFrom();
+				//var count = getMsgCount();
+				//if((from == "[empty]") && (count < 2)){
+				//	return true;
+					 addAssignees(currentUser.id)
+				//}else{
+				//	return false;
+				//}
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
