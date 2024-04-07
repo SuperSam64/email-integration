@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 37</span>
+			<span class="button-link column padding" id="reload-button">Version 37.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -162,8 +162,7 @@
 					//}
 
 				if(draft){
-					//alert(currentUser.id)
-					//assign(currentUser.id);
+					Missive.assign(currentUser.id)
 				}	
 
 
@@ -215,19 +214,13 @@
 				return messageSubject;
 			}
 			function draft(){
-				//var from = getFrom();
-				//var count = getMsgCount();
-				//if((from == "[empty]") && (count < 2)){
-				//	return true;
-		//			 assign(currentUser.id)
-				//}else{
-				//	return false;
-				//}
-				var x = currentUser.id
-				//assign(x)
-				Missive.assign(['5c21049b-5a49-476c-813e-dfbf5285907d'])
-				//return(x)
-				
+				var from = getFrom();
+				var count = getMsgCount();
+				if((from == "[empty]") && (count < 2)){
+					return true;
+				} else {
+					return false;
+				}				
 			}
 			//======== button to test that funciton works ========
 			$("#get-subject").click(function () { 
