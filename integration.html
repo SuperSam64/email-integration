@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 37.7</span>
+			<span class="button-link column padding" id="reload-button">Version 37.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -161,7 +161,7 @@
 					//	messageSubject = currentMessage.subject	
 					//}
 
-					if(!currentConvo.latest_message.from_field){
+					if(currentConvo.latest_message.from_field){
 						//Missive.assign(currentUser.id)
 						$("#draft-text").text("ASSIGNED")
 					}	
