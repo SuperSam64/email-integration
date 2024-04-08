@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 42.1</span>
+			<span class="button-link column padding" id="reload-button">Version 42.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -174,7 +174,11 @@
 					
 					
 
-					
+					if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
+					msgFrom = "[empty]";
+				} else {
+					msgFrom = currentConvo.latest_message.from_field.address;
+				}
 				
 
 
@@ -183,11 +187,7 @@
 			
 
 
-				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
-					msgFrom = "[empty]";
-				} else {
-					msgFrom = currentConvo.latest_message.from_field.address;
-				}
+				
 				$("#draft-text").text(msgFrom);
 				
 			})
