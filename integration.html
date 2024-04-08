@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 44</span>
+			<span class="button-link column padding" id="reload-button">Version 44.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -150,9 +150,13 @@
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
 					isdraft = currentMessage.from_field.address
-					if(typeof isdraft === 'undefined')
+					if(!isdraft)
 					{
 						isdraft= "empty"
+					}
+					if(isdraft === null)
+					{
+						isdraft= "emempty"
 					}
 					
 				})
