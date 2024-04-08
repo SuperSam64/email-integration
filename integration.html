@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 42</span>
+			<span class="button-link column padding" id="reload-button">Version 42.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -179,8 +179,16 @@
 
 
 				})
-				var x = getFrom()
-				$("#draft-text").text(x);
+				
+			
+
+
+				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
+					msgFrom = "[empty]";
+				} else {
+					msgFrom = currentConvo.latest_message.from_field.address;
+				}
+				$("#draft-text").text(msgFrom);
 				
 			})
 			
