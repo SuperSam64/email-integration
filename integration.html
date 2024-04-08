@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 41.9</span>
+			<span class="button-link column padding" id="reload-button">Version 42</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -179,8 +179,8 @@
 
 
 				})
-				
-				$("#draft-text").text(currentConvo.latest_message.from_field.address);
+				var x = getFrom()
+				$("#draft-text").text(x);
 				
 			})
 			
