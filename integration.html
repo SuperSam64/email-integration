@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 41.6</span>
+			<span class="button-link column padding" id="reload-button">Version 41.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -179,7 +179,7 @@
 
 
 				})
-				if ((!currentMessage || !currentMessage.from_field) &&(messageCount < 2)){ // && (currentConvo.assigneeslength < 1)) {
+				if ((!currentConvo.latest_message || !currentConvo.latest_message.from_field) && (currentConvo.messages_count < 2)){ // && (currentConvo.assignees.length < 1)) {
 					Missive.assign(currentUser.id)
     			}
 			})
