@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 42.7</span>
+			<span class="button-link column padding" id="reload-button">Version 42.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -143,7 +143,7 @@
 				})*/
 			})
 			Missive.on('change:conversations', (ids) => {
-				
+				var abc = "first thing"
 				Missive.fetchConversations(ids).then((conversations) => {
 				//	if (conversations.length != 1) {
 					// Do nothing if multiple conversations are selected.
@@ -154,9 +154,9 @@
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
 					something = (!currentConvo.latest_message || !currentConvo.latest_message.from_field)
-					$("#draft-text").text("hello world");
+					abc = currentConvo.latest_message.id;
 				})
-				$("#draft-text").text(currentConvo.latest_message.id);
+				$("#draft-text").text(abc);
 				//var convos = Missive.fetchConversations();
 				//var somevar = convos[0].latest_message.from_field.address
 				//var othervar;
