@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 41.1</span>
+			<span class="button-link column padding" id="reload-button">Version 41.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -173,16 +173,15 @@
 					
 					
 
-					$("#draft-text").text("test")
-					var xyz = "something"
-					$("#draft-text").text(xyz)
 					
 				
 
 
 				})
 			})
-			
+			Missive.on('change:messages', (ids) => {
+				$("#draft-text").text(currentConvo.id)
+			})
 			function getUser() {
 				return currentUser;
 			}
