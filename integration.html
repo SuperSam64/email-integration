@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 42.8</span>
+			<span class="button-link column padding" id="reload-button">Version 42.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -154,7 +154,7 @@
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
 					something = (!currentConvo.latest_message || !currentConvo.latest_message.from_field)
-					abc = currentConvo.latest_message.id;
+					abc = currentConvo[0].latest_message.id;
 				})
 				$("#draft-text").text(abc);
 				//var convos = Missive.fetchConversations();
