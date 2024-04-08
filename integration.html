@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 43.2</span>
+			<span class="button-link column padding" id="reload-button">Version 43.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -152,10 +152,8 @@
 					isdraft = "empty"
 					if (!currentMessage || !currentMessage.from_field) {
 						// Do nothing if conversation has no message (only chat comments) or if
-						// message has no From field.
-						return
-					} else {
 						isdraft = currentMessage.id;
+						return
 					}
 				})
 				$("#draft-text").text(isdraft);
