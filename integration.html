@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 42.3</span>
+			<span class="button-link column padding" id="reload-button">Version 42.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -106,6 +106,7 @@
 			var draftval;
 			var isdraft;
 			var draftvalue;
+			var something;
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -152,6 +153,7 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
+					something = (!currentConvo.latest_message || !currentConvo.latest_message.from_field)
 					
 					//msgFrom = "NOFROM";/// is this needed??************************************************************************************
 					//if (!currentMessage || !currentMessage.from_field){
@@ -174,11 +176,7 @@
 					
 					
 
-					if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
-					msgFrom = "[empty]";
-				} else {
-					msgFrom = currentConvo.latest_message.from_field.address;
-				}
+					
 				
 
 
@@ -188,7 +186,7 @@
 
 
 				
-				$("#draft-text").text(msgFrom);
+				$("#draft-text").text(something);
 				
 			})
 			
