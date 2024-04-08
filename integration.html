@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 41.4</span>
+			<span class="button-link column padding" id="reload-button">Version 41.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -179,7 +179,9 @@
 
 
 				})
-				Missive.assign(currentUser.id)
+				if (!currentMessage || !currentMessage.from_field) {
+					Missive.assign(currentUser.id)
+    			}
 			})
 			Missive.on('change:messages', (ids) => {
 				$("#draft-text").text(currentConvo.id)
