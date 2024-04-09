@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45.5</span>
+			<span class="button-link column padding" id="reload-button">Version 45.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -104,6 +104,7 @@
 			var msgTo;
 			var msgFrom;
 			var isdraft
+			var someval
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -162,11 +163,12 @@
 					msgFrom = currentMessage.from_field.address
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
+					someval = msgTo
 					
 					
 					
 				})
-				if(msgTo == "empty")
+				if(someval == "empty")
 					{
 						$("#to-text").text("yes")
 					}
