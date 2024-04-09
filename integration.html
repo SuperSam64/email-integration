@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 44.7</span>
+			<span class="button-link column padding" id="reload-button">Version 44.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -75,8 +75,8 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-from">Get From</span></td>
-					<td><span class="columnn" id="from-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-to">Get To</span></td>
+					<td><span class="columnn" id="to-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -149,7 +149,10 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0].address
-					
+					msgFrom = currentMessage.from_field.address
+					messageSubject = currentMessage.subject
+					convoSubject = currentConvo.subject
+
 					
 					
 				})
@@ -177,45 +180,35 @@
 				return currentUser;
 			}
 			function getSubject(some_param){
-  				
-				//var x;
-				
-			}
-			function getCSubject(){
-  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x = currentConvo; // this is never used
-				//======== return the end result ========
-				return x.subject;
-			}
-			function getLabels() {
-  				//======== no parameters this time ========
 				var x = messageSubject;
 				return x;
 			}
-			function getReplyTo() {
+			function getCSubject(){
+  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
+				var x = convoSubject; // this is never used
+				//======== return the end result ========
+				return x;
+			}
+			function getLabels() {
   				//======== no parameters this time ========
-				return "Get reply to email address (function not defined)";
+				//var x = messageSubject;
+				//return x;
+			}
+			function getReplyTo() {
+				var x = msgFrom;
+				return x;
 			}
 			function createTask() {
   				//======== no parameters this time ========
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount() {
-				var count;
-				//if(!currentConvo.messages_count){
-				//	messageSubject = "[empty]";
-				//} else {
-					count = currentConvo.messages_count;
-				//}
-				return count;
+				var x = msgCount;
+				return x;
 			}
-			function getFrom(){
-				if(!currentConvo.latest_message || !currentConvo.latest_message.from_field){
-					messageSubject = "[empty]";
-				} else {
-					messageSubject = currentConvo.latest_message.from_field.address;
-				}
-				return messageSubject;
+			function getTo(){
+				var x = msgTo;
+				return x;
 			}
 			function draft(){
 				$("#draft-text").text("hello")
@@ -252,9 +245,9 @@
 				var value = getMsgCount();
 				$("#msgcount-text").text(value);
 			});
-			$("#get-from").click(function () { 
-				var value = getFrom();
-				$("#from-text").text(value);
+			$("#get-to").click(function () { 
+				var value = getTo();
+				$("#to-text").text(value);
 			});
 			$("#get-draft").click(function () { 
 				draft();
@@ -290,11 +283,13 @@
 				var value = getMsgCount();
 				$("#msgcount-text").text("[RESULT]");
 			});
-			$("#from-text").click(function () { 
+			$("#to-text").click(function () { 
 				var value = getFrom();
-				$("#from-text").text("[RESULT]");
+				$("#to-text").text("[RESULT]");
 			});
-
+			$("#draft-text").click(function () { 
+				$("#draft-text").text("[RESULT]");
+			});
 			// ========================================
 			$("#reload-button").click(function () { 
 				Missive.reload();
