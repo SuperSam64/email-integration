@@ -9,17 +9,17 @@
 		<div class="column-vertical padding margin section" style="border-radius:4px;background-color: rgba(125, 127, 125, 0.1)">
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
 			  <tr>
-				<td rowspan="2"><img id="avatar" style="margin-right:8px;border:3px solid var(--missive-text-color-a);display:block; height:54px; border-radius:32px" src="profileplaceholder.png"></td>
-				<td id="name" class="text-xlarge text-600"></td>
+				<td rowspan="2"><img id="avatar" style="border:3px solid var(--missive-text-color-a);display:block; height:54px; border-radius:32px" src="profileplaceholder.png"></td>
+				<td><span id="name" class="margin-left:8px;text-xlarge text-600"></span></td>
 			  </tr>
 			  <tr>
-				<td id="layout" style="vertical-align:top;font-style: italic" class="text-small text-c"></td>
+				<td><span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span></td>
 			  </tr>
 			</table>
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45</span>
+			<span class="button-link column padding" id="reload-button">Version 45.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -162,7 +162,7 @@
 					msgFrom = currentMessage.from_field.address
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
-					("#draft-text").text(messageSubject);
+					$("#subject-text").text(messageSubject);
 					
 					
 				})
