@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45.7</span>
+			<span class="button-link column padding" id="reload-button">Version 45.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -160,15 +160,20 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0].address
-					msgFrom = currentMessage.from_field.address
+					
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
-					someval = msgTo
-					
-					
+					var message = conversations[0].latest_message
+					if (!message || !message.from_field) {
+						// Do nothing if conversation has no message (only chat comments) or if
+						// message has no From field.
+						return
+    				}
+					msgFrom = currentMessage.from_field.address
+					$("#draft-text").text(msgFrom)
 					
 				})
-				getTo();
+				
 				
 				
 				//var convos = Missive.fetchConversations();
