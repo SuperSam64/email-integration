@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 44.8</span>
+			<span class="button-link column padding" id="reload-button">Version 44.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -140,6 +140,16 @@
 				})*/
 			})
 			Missive.on('change:conversations', (ids) => {
+				
+				currentConvo = "empty"
+				currentMessage = "empty"
+				messageCount = "empty"
+				msgTo = "empty"
+				msgFrom = "empty"
+				messageSubject = "empty"
+				convoSubject = "empty"
+
+
 				Missive.fetchConversations(ids).then((conversations) => {
 				//	if (conversations.length != 1) {
 					// Do nothing if multiple conversations are selected.
@@ -284,7 +294,7 @@
 				$("#msgcount-text").text("[RESULT]");
 			});
 			$("#to-text").click(function () { 
-				var value = getFrom();
+				var value = getTo();
 				$("#to-text").text("[RESULT]");
 			});
 			$("#draft-text").click(function () { 
