@@ -10,7 +10,7 @@
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
 			  <tr>
 				<td rowspan="2"><img id="avatar" style="border:3px solid var(--missive-text-color-a);display:block; height:54px; border-radius:32px" src="profileplaceholder.png"></td>
-				<td><span id="name" class="margin-left:8px;text-xlarge text-600"></span></td>
+				<td><span id="name" style="margin-left:8px" class="text-xlarge text-600"></span></td>
 			  </tr>
 			  <tr>
 				<td><span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span></td>
@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45.3</span>
+			<span class="button-link column padding" id="reload-button">Version 45.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -163,13 +163,13 @@
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
 					
-					if(messageSubject != "empty")
+					
+					
+				})
+				if(messageSubject != "empty")
 					{
 						Missive.assign(currentUser.id)
 					}
-					
-				})
-				
 				
 				
 				//var convos = Missive.fetchConversations();
