@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 44.6</span>
+			<span class="button-link column padding" id="reload-button">Version 44.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -259,6 +259,43 @@
 			$("#get-draft").click(function () { 
 				draft();
 			});
+			// ================ resets ================
+			$("#subject-text").click(function () { 
+				//======== run the function, optionally with parameters ========
+				var value = getSubject("anything-goes-here");
+				//======== write the value to the text next to the button to test that it works ========
+				$("#subject-text").text("[RESULT]");
+			});
+			//======== button to test that funciton works ========
+			$("#cSubject-text").click(function () { 
+				//======== run the function, no parameters ========
+				var value = getCSubject();
+				$("#cSubject-text").text("[RESULT]");
+			});
+			$("#labels-text").click(function () { 
+				//======== run the function, no parameters ========
+				var value = getLabels();
+				$("#labels-text").text("[RESULT]");
+			});
+			$("#replyto-text").click(function () { 
+				//======== run the function, no parameters ========
+				var value = getReplyTo();
+				$("#replyto-text").text("[RESULT]");
+			});
+			$("#task-text").click(function () { 
+				var value = createTask();
+				$("#task-text").text("[RESULT]");
+			});
+			$("#msgcount-text").click(function () { 
+				var value = getMsgCount();
+				$("#msgcount-text").text("[RESULT]");
+			});
+			$("#from-text").click(function () { 
+				var value = getFrom();
+				$("#from-text").text("[RESULT]");
+			});
+
+			// ========================================
 			$("#reload-button").click(function () { 
 				Missive.reload();
 			});
