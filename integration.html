@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45.1</span>
+			<span class="button-link column padding" id="reload-button">Version 45.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -162,12 +162,12 @@
 					msgFrom = currentMessage.from_field.address
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
-					$("#subject-text").text(messageSubject);
+					
 					
 					
 				})
 				
-					
+				$("#subject-text").text(messageSubject);
 				
 				//var convos = Missive.fetchConversations();
 				//var somevar = convos[0].latest_message.from_field.address
