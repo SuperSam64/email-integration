@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 44.7</span>
+			<span class="button-link column padding" id="reload-button">Version 44.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -149,8 +149,13 @@
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
 					msgTo = currentMessage.to_fields[0]
-					isdraft = "empty"
-					isdraft = currentMessage.to_fields[0].address
+					if(!currentMessage.to_fields[0] || currentMessage.to_fields[0] == null || currentMessage.to_fields[0] == 'undefined' || typeof currentMessage.to_fields[0]== 'undefined')
+					{
+						isdraft = "empty"
+					}else{
+					
+						isdraft = currentMessage.to_fields[0].address
+					}
 					
 					$("#draft-text").text(isdraft);
 				})
