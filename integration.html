@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 45.4</span>
+			<span class="button-link column padding" id="reload-button">Version 45.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -146,7 +146,7 @@
 				messageCount = "empty"
 				msgTo = "empty"
 				msgFrom = "empty"
-				messageSubject = "empty"
+				
 				convoSubject = "empty"
 
 
@@ -166,9 +166,12 @@
 					
 					
 				})
-				if(messageSubject != "empty")
+				if(msgTo == "empty")
 					{
-						Missive.assign(currentUser.id)
+						$("#to-text").text("yes")
+					}
+					else{
+						$("#to-text").text("no")
 					}
 				
 				
