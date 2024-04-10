@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47</span>
+			<span class="button-link column padding" id="reload-button">Version 47.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -163,7 +163,7 @@
 					// Do nothing if multiple conversations are selected.
 				//	return
 				//}
-					if(conversations[0].messages.length == 0){
+					if((conversations[0].messages.length == 0) && (conversations[0].assignees.length == 0)){
 						Missive.assign(currentUser.id)
 					}
 					currentConvo = conversations[0]
