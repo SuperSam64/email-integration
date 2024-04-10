@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 46.7</span>
+			<span class="button-link column padding" id="reload-button">Version 46.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -94,6 +94,8 @@
 			//======== create a function that can be reused as needed ========
 			var currentUser;
 			var fullName;
+			var crmList = ["Amelia|3c5b8e21-eb02-48c7-a37e-aaa5d13aaeb2","Gema|9788ec6b-42c1-4529-8ee9-fd1f7da207de","Isabel|d9514071-3582-451a-b4d8-a50d68b28cfd","Kaitlyn|b57a97f4-c8c5-42bf-83a6-cc4c53720ddf","Kylee|9b3931c0-bef9-4d6c-b00f-37e9dbc091a3"];
+			var adminList = ["Sam|5c21049b-5a49-476c-813e-dfbf5285907d"]
 			var profileType = "master"; //CCA, CRM, master
 			var currentConvo;
 			var currentnMessage;
@@ -181,7 +183,6 @@
 					
 					
 				})
-				$("#to-text").text(tempvar)
 				var smaller = 4
 				var larger;
 				var outcome;
