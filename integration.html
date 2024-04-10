@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 46.1</span>
+			<span class="button-link column padding" id="reload-button">Version 46.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -105,6 +105,7 @@
 			var msgFrom;
 			var isdraft
 			var someval
+			var tempvar
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -145,7 +146,7 @@
 				currentConvo = "empty"
 				currentMessage = "empty"
 				messageCount = "empty"
-				msgTo = "empty"
+				
 				//msgFrom = "empty"
 				
 				convoSubject = "empty"
@@ -159,24 +160,27 @@
 					currentConvo = conversations[0]
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
-					msgTo = currentMessage.to_fields[0].address
 					msgFrom = "EMPTY"
 					messageSubject = currentMessage.subject
 					convoSubject = currentConvo.subject
 					var message = conversations[0].latest_message
 					if (!message || !message.from_field) {
-						// Do nothing if conversation has no message (only chat comments) or if
-						// message has no From field.
-						return
+						
     				}
-					msgFrom = currentMessage.from_field.address
+					else{
+						msgTo = currentMessage.to_fields[0].address
+					}
+					tempvar = msgTo
+					msgTo = "empty"
+					
 					
 					
 				})
+				$("#to-text").text(tempvar)
 				var smaller = 4
 				var larger;
 				var outcome;
-				if(smaller < larger)
+				if(smaller > larger)
 				{
 					outcome = "correct"
 				}
