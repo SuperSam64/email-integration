@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.2</span>
+			<span class="button-link column padding" id="reload-button">Version 47.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -93,25 +93,22 @@
 		
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			//======== create a function that can be reused as needed ========
+			// ================================ variables ================================
 			var currentUser;
 			var fullName;
 			var crmList = ["Amelia|3c5b8e21-eb02-48c7-a37e-aaa5d13aaeb2","Gema|9788ec6b-42c1-4529-8ee9-fd1f7da207de","Isabel|d9514071-3582-451a-b4d8-a50d68b28cfd","Kaitlyn|b57a97f4-c8c5-42bf-83a6-cc4c53720ddf","Kylee|9b3931c0-bef9-4d6c-b00f-37e9dbc091a3"];
 			var adminList = ["Sam|5c21049b-5a49-476c-813e-dfbf5285907d"]
 			var profileType = "master"; //CCA, CRM, master
-			var currentConvo;
 			var currentnMessage;
+			var currentConvo;
 			var messageSubject;
 			var convoSubject;
-			var convoLink
+			var convoLink;
 			var messageCount;
 			var msgTo;
 			var msgFrom;
-			var isdraft
-			var someval
-			var tempvar
-			var emptyornot;
-			var convosExist;
+			var labelsArray
+			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
@@ -138,123 +135,53 @@
 				// if CRM show all CRM-specific items
 
 				// if Master, show everything with a toggle to go between
-				/*Missive.fetchConversations(ids).then((conversations) => {
-					if (conversations.length != 1) {
-					// Do nothing if multiple conversations are selected.
-					return
-					}
-					currentMessage = conversations[0].latest_message
-					currentConvo = conversations[0]
-				})*/
 			})
 			Missive.on('change:conversations', (ids) => {
-				
-				currentConvo = "empty"
-				currentMessage = "empty"
-				messageCount = "empty"
-				
-				//msgFrom = "empty"
-				
-				convoSubject = "empty"
-
-				
-				// old convo ID, new convo ID
-
 				Missive.fetchConversations(ids).then((conversations) => {
-				//	if (conversations.length != 1) {
-					// Do nothing if multiple conversations are selected.
-				//	return
-				//}
+					// If no messages have been sent or received in the current conversation, it is a new draft
 					if((conversations[0].messages.length == 0) && (conversations[0].assignees.length == 0)){
+						// assign 
 						Missive.assign(currentUser.id)
+					} else {
+						currentConvo = conversations[0];
+						currentMessage = currentConvo.latest_message;
+						messageCount = currentConvo.messages_count;
+						msgFrom = currentConvo.latest_message.from_field.address;
+						msgTo = currentConvo.latest_message.to_fields[0].address;
+						messageSubject = currentMessage.subject
+						convoSubject = currentConvo.subject
+						var message = conversations[0].latest_message
 					}
-					currentConvo = conversations[0]
-					currentMessage = currentConvo.latest_message
-					messageCount = currentConvo.messages_count
-					msgFrom = "EMPTY"
-					messageSubject = currentMessage.subject
-					convoSubject = currentConvo.subject
-					var message = conversations[0].latest_message
-					if (!message || !message.from_field) {
-						
-    				}
-					else{
-						emptyornot = "not empty"
-					}
-					tempvar = msgTo
-					msgTo = "empty"
-					
-					
-					
-				})
-				var smaller = 4
-				var larger;
-				var outcome;
-				if(smaller > larger)
-				{
-					outcome = "correct"
-				}
-				else{
-					outcome = "incorrect"
-				}
-				$("#draft-text").text(emptyornot)
-				emptyorno = "empty"
-				
-				
-				//var convos = Missive.fetchConversations();
-				//var somevar = convos[0].latest_message.from_field.address
-				//var othervar;
-				//if (!somevar)
-				//{
-				//	othervar = "empty"
-				//}else{
-				//	othervar = convos[0].latest_message.from_field.address
-				//}
-
-				
-				
-				
+				})	
 			})
-			
 			function getUser() {
 				return currentUser;
 			}
 			function getSubject(some_param){
-				var x = messageSubject;
-				return x;
+				var placeholder = some_param // this is never used, but is an example of how to use parameters
+				return messageSubject;
 			}
 			function getCSubject(){
-  				//======== parameters go here. this one does nothing, but serves as a placeholder ========
-				var x = convoSubject; // this is never used
-				//======== return the end result ========
-				return x;
+				//======== no parameters this time ========
+				return convoSubject;
 			}
 			function getLabels() {
-  				//======== no parameters this time ========
-				//var x = messageSubject;
-				//return x;
+				var labels = "placeholder"
+				return labels;
 			}
 			function getReplyTo() {
-				var x = msgFrom;
-				return x;
+				return msgFrom;
 			}
 			function createTask() {
-  				//======== no parameters this time ========
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount() {
-				var x = msgCount;
-				return x;
+				return messageCount;
 			}
 			function getTo(){
-				var x = msgTo;
-				return x;
+				return msgTo;
 			}
-			function draft(){
-				$("#draft-text").text("hello")
-				//$("#draft-text").text(currentConvo.id);
-			}
-			//======== button to test that funciton works ========
+			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
 				//======== run the function, optionally with parameters ========
 				var value = getSubject("anything-goes-here");
