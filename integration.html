@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 46.9</span>
+			<span class="button-link column padding" id="reload-button">Version 47</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -163,7 +163,9 @@
 					// Do nothing if multiple conversations are selected.
 				//	return
 				//}
-					$("#to-text").text(conversations[0].messages.length)
+					if(conversations[0].messages.length == 0){
+						Missive.assign(currentUser.id)
+					}
 					currentConvo = conversations[0]
 					currentMessage = currentConvo.latest_message
 					messageCount = currentConvo.messages_count
