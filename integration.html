@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 46</span>
+			<span class="button-link column padding" id="reload-button">Version 46.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<div class="column-vertical margin section">
@@ -173,7 +173,17 @@
 					
 					
 				})
-				$("#draft-text").text(msgFrom)
+				var smaller = 4
+				var larger;
+				var outcome;
+				if(smaller < larger)
+				{
+					outcome = "correct"
+				}
+				else{
+					outcome = "incorrect"
+				}
+				$("#draft-text").text(outcome)
 				
 				
 				//var convos = Missive.fetchConversations();
