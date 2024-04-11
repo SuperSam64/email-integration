@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.5</span>
+			<span class="button-link column padding" id="reload-button">Version 47.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -89,7 +89,8 @@
 			var fullName;
 			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3"]; // (Gema, Isabel, Kaitlyn, Kylee)
 			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
-			var profileType = "master"; //CCA, CRM, master
+			var profileType = "CCA"; // CCA, CRM, master
+			var title = "Customer Care Advocate" // default, unless  otherwise specified
 			var currentnMessage;
 			var currentConvo;
 			var messageSubject;
@@ -111,23 +112,19 @@
 							$("#name").text(fullName);
 							someIDvar = currentUser.id.split("-")
 						}
-					});	
-				})
-				var title;
-				if (profileType == "master") {
-    				title = "Administrator"
-				} else if (profileType == "Client Relationship Manager"){
-    				title = "Client Relationship Manager"
-				} else {
-					title = "Customer Care Advocate"
-				}
-				
-				
-				// if CCA show all CCA-specific items
-
-				// if CRM show all CRM-specific items
-
-				// if Master, show everything with a toggle to go between
+					});
+					$(crmList).each(function(){
+						if(this == someIDvar)
+						profileType = "master"
+						title = "Administrator";
+					});
+					$(adminList).each(function(){
+						if(this == someIDvar)
+						profileType = "CRM"
+						title = "Client Relationship Manager";
+						// set style sheets accordingly
+					});
+				})				
 			})
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
