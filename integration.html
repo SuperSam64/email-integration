@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.8</span>
+			<span class="button-link column padding" id="reload-button">Version 47.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -127,19 +127,26 @@
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
-					if((conversations[0].messages.length == 0) && (conversations[0].assignees.length == 0)){
-						// assign 
-						Missive.assign(currentUser.id)
+					if(conversations[0].messages.length == 0){
+						if(conversations[0].assignees.length == 0) {
+							// assign 
+							Missive.assign(currentUser.id)
+						}							
+							currentMessage = "[empty]";
+							messageCount = 0;
+							msgFrom = "[empty]";
+							msgTo = "[empty]";
+							messageSubject = "[empty]"
+							convoSubject = currentConvo.subject;
 					} else {
-						currentConvo = conversations[0];
 						currentMessage = currentConvo.latest_message;
 						messageCount = currentConvo.messages_count;
 						msgFrom = currentConvo.latest_message.from_field.address;
 						msgTo = currentConvo.latest_message.to_fields[0].address;
-						messageSubject = currentMessage.subject
-						convoSubject = currentConvo.subject
-						var message = conversations[0].latest_message
+						messageSubject = currentMessage.subject;
+						convoSubject = currentConvo.subject;
 					}
+					currentConvo = conversations[0];
 				})	
 			})
 			function getUser() {
