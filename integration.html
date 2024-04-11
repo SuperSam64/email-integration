@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.4</span>
+			<span class="button-link column padding" id="reload-button">Version 47.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -98,8 +98,8 @@
 			var messageCount;
 			var msgTo;
 			var msgFrom;
-			var labelsArray
-			var someIDvar
+			var labelsArray;
+			var someIDvar;
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -109,7 +109,7 @@
 							$("#avatar").attr("src",currentUser.avatar_url);
 							$("#layout").text(title);
 							$("#name").text(fullName);
-							someIDvar = currentUser.split("-")
+							someIDvar = currentUser.id.split("-")
 						}
 					});	
 				})
