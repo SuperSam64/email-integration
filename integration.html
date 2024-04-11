@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 49</span>
+			<span class="button-link column padding" id="reload-button">Version 49.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -130,18 +130,17 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
 					currentConvo = conversations[0];
-					if(conversations[0].messages.length == 0){							
-							currentMessage = "[empty]";
-							messageCount = 0;
-							msgFrom = "[empty]";
-							msgTo = "[empty]";
-							messageSubject = "[empty]"
-							convoSubject = currentConvo.subject;
-							labelsArray = ["No labels"];
-							if(conversations[0].assignees.length == 0) {
-								// assign 
-								Missive.assign(currentUser.id)
-							}
+					if(conversations[0].messages.length == 0){
+						currentMessage = "[empty]";
+						messageCount = 0;
+						msgFrom = "[empty]";
+						msgTo = "[empty]";
+						messageSubject = "[empty]"
+						convoSubject = currentConvo.subject;
+						if(conversations[0].assignees.length == 0){
+							// assign 
+							Missive.assign(currentUser.id)
+						}
 					}
 					else {
 						
@@ -151,17 +150,17 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						labelsArray = Missive.fetchLabels();
-						if(labelsArray.length == 0){
-							labelsArray = ["No labels"];
-							labelsText = "No labels" // DELETE WHEN DONE
-						}
-						else{
-							labelsText = labelsArray[0].name + " | " + labelsArray[1].name + " | " + labelsArray[2].name // DELETE WHEN DONE
-						}
-						$("#subject-text").text(labelsText); // DELETE WHEN DONE
 					}
-				})	
+					labelsArray = Missive.fetchLabels();
+					if(labelsArray.length == 0){
+						labelsArray = []
+						labelsText = "No labels";
+					}
+					else{
+						labelsText = labelsArray[0].name // DELETE WHEN DONE
+					}
+					$("#labels-text").text(labelsText); // DELETE WHEN DONE
+				})
 			})
 			function getUser() {
 				return currentUser;
