@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.9</span>
+			<span class="button-link column padding" id="reload-button">Version 48</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -112,12 +112,12 @@
 						profileType = "master"
 						title = "Administrator";
 					});
-					$(crmList).each(function(){
+					/*$(crmList).each(function(){
 						if(this == currentUser.id.split("-"))
 						profileType = "CRM"
 						title = "Client Relationship Manager";
 						// set style sheets accordingly
-					});
+					});*/
 					var fullName = currentUser.first_name + " " + currentUser.last_name;
 					$("#avatar").attr("src",currentUser.avatar_url);
 					$("#name").text(fullName);
