@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 50.5</span>
+			<span class="button-link column padding" id="reload-button">Version 50.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -156,7 +156,7 @@
 						// Do nothing if multiple conversations are selected.
 						//return
 						//}
-						Missive.fetchLabels(ids).then((labels) => {
+						Missive.fetchLabels(currentConvo).then((labels) => {
 							var currentLabel = labels[0];
 							$("#labels-text").text(currentLabel.id);
 
