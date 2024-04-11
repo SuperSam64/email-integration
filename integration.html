@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.3</span>
+			<span class="button-link column padding" id="reload-button">Version 47.4</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -82,22 +82,13 @@
 				</tr>
 			</table>
 		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-draft">Get Draft Status</span></td>
-					<td><span class="columnn" id="draft-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
 			// ================================ variables ================================
 			var currentUser;
 			var fullName;
-			var crmList = ["Amelia|3c5b8e21-eb02-48c7-a37e-aaa5d13aaeb2","Gema|9788ec6b-42c1-4529-8ee9-fd1f7da207de","Isabel|d9514071-3582-451a-b4d8-a50d68b28cfd","Kaitlyn|b57a97f4-c8c5-42bf-83a6-cc4c53720ddf","Kylee|9b3931c0-bef9-4d6c-b00f-37e9dbc091a3"];
-			var adminList = ["Sam|5c21049b-5a49-476c-813e-dfbf5285907d"]
+			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3"]; // (Gema, Isabel, Kaitlyn, Kylee)
+			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
 			var profileType = "master"; //CCA, CRM, master
 			var currentnMessage;
 			var currentConvo;
@@ -108,6 +99,7 @@
 			var msgTo;
 			var msgFrom;
 			var labelsArray
+			var someIDvar
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -117,6 +109,7 @@
 							$("#avatar").attr("src",currentUser.avatar_url);
 							$("#layout").text(title);
 							$("#name").text(fullName);
+							someIDvar = currentUser.split("-")
 						}
 					});	
 				})
@@ -166,7 +159,7 @@
 				return convoSubject;
 			}
 			function getLabels() {
-				var labels = "placeholder"
+				var labels = someIDvar[4];
 				return labels;
 			}
 			function getReplyTo() {
@@ -216,9 +209,6 @@
 				var value = getTo();
 				$("#to-text").text(value);
 			});
-			$("#get-draft").click(function () { 
-				draft();
-			});
 			// ================ resets ================
 			$("#subject-text").click(function () { 
 				//======== run the function, optionally with parameters ========
@@ -253,9 +243,6 @@
 			$("#to-text").click(function () { 
 				var value = getTo();
 				$("#to-text").text("[RESULT]");
-			});
-			$("#draft-text").click(function () { 
-				$("#draft-text").text("[RESULT]");
 			});
 			// ========================================
 			$("#reload-button").click(function () { 
