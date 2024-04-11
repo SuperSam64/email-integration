@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 48.5</span>
+			<span class="button-link column padding" id="reload-button">Version 48.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -99,7 +99,7 @@
 			var messageCount;
 			var msgTo;
 			var msgFrom;
-			var labelsArray;
+			var labelsArray = [];
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -137,18 +137,23 @@
 							msgTo = "[empty]";
 							messageSubject = "[empty]"
 							convoSubject = currentConvo.subject;
+							labelsArray = [];
 							if(conversations[0].assignees.length == 0) {
 								// assign 
 								Missive.assign(currentUser.id)
 							}
 					}
 					else {
+						
 						currentMessage = currentConvo.latest_message;
 						messageCount = currentConvo.messages_count;
 						msgFrom = currentConvo.latest_message.from_field.address;
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
+						labelsArray = fetchLabels().name;
+						labelsText = labelsArray[0] + " | " + labelsArray[1] + " | " + labelsArray[2] // DELETE WHEN DONE
+						$("#subject-text").text(labelsText); // DELETE WHEN DONE
 					}
 				})	
 			})
