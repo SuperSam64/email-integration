@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 49.4</span>
+			<span class="button-link column padding" id="reload-button">Version 49.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -152,16 +152,10 @@
 						convoSubject = currentConvo.subject;
 					}
 					Missive.fetchLabels(ids).then((labels) => {
-						labelsArray = [];
-						if(labels.length == 0){
-							labelsArray = ["Empty"];
-						}
-						else{
-							(labels).each(function(){
-								labelsArray.push(labels.name)
-							}
-						)}
-					})
+						(labels).each(function(){
+							labelsArray.push(labels.name)
+						})
+					})					
 					$("#labels-text").text(labelsArray[0]); // DELETE WHEN DONE
 				})
 			})
