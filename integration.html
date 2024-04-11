@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 49.1</span>
+			<span class="button-link column padding" id="reload-button">Version 49.2</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -100,6 +100,7 @@
 			var msgTo;
 			var msgFrom;
 			var labelsArray = [];
+			var labelsText;
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -154,7 +155,7 @@
 					labelsArray = Missive.fetchLabels();
 					if(labelsArray.length == 0){
 						labelsArray = []
-						labelsText = "No labels";
+						labelsText = "No labels"; // DELETE WHEN DONE
 					}
 					else{
 						labelsText = labelsArray[0].name // DELETE WHEN DONE
