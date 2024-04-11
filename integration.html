@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 48.7</span>
+			<span class="button-link column padding" id="reload-button">Version 48.8</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -151,12 +151,12 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						labelsArray = fetchLabels().name;
+						labelsArray = fetchLabels();
 						if(labelsArray.length == 0){
 							labelsArray = ["No labels"];
 						}
 						else{
-							labelsText = labelsArray[0] + " | " + labelsArray[1] + " | " + labelsArray[2] // DELETE WHEN DONE
+							labelsText = labelsArray[0].name + " | " + labelsArray[1].name + " | " + labelsArray[2].name // DELETE WHEN DONE
 							$("#subject-text").text(labelsText); // DELETE WHEN DONE
 						}
 					}
