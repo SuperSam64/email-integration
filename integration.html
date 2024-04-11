@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 48.6</span>
+			<span class="button-link column padding" id="reload-button">Version 48.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -137,7 +137,7 @@
 							msgTo = "[empty]";
 							messageSubject = "[empty]"
 							convoSubject = currentConvo.subject;
-							labelsArray = [];
+							labelsArray = ["No labels"];
 							if(conversations[0].assignees.length == 0) {
 								// assign 
 								Missive.assign(currentUser.id)
@@ -152,8 +152,13 @@
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
 						labelsArray = fetchLabels().name;
-						labelsText = labelsArray[0] + " | " + labelsArray[1] + " | " + labelsArray[2] // DELETE WHEN DONE
-						$("#subject-text").text(labelsText); // DELETE WHEN DONE
+						if(labelsArray.length == 0){
+							labelsArray = ["No labels"];
+						}
+						else{
+							labelsText = labelsArray[0] + " | " + labelsArray[1] + " | " + labelsArray[2] // DELETE WHEN DONE
+							$("#subject-text").text(labelsText); // DELETE WHEN DONE
+						}
 					}
 				})	
 			})
