@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 47.6</span>
+			<span class="button-link column padding" id="reload-button">Version 47.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -108,7 +108,6 @@
 							currentUser = this;
 							var fullName = currentUser.first_name + " " + currentUser.last_name;
 							$("#avatar").attr("src",currentUser.avatar_url);
-							$("#layout").text(title);
 							$("#name").text(fullName);
 							someIDvar = currentUser.id.split("-")
 						}
@@ -124,6 +123,7 @@
 						title = "Client Relationship Manager";
 						// set style sheets accordingly
 					});
+					$("#layout").text(title);
 				})				
 			})
 			Missive.on('change:conversations', (ids) => {
