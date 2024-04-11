@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 49.2</span>
+			<span class="button-link column padding" id="reload-button">Version 49.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=12 
@@ -144,7 +144,6 @@
 						}
 					}
 					else {
-						
 						currentMessage = currentConvo.latest_message;
 						messageCount = currentConvo.messages_count;
 						msgFrom = currentConvo.latest_message.from_field.address;
@@ -152,15 +151,15 @@
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
 					}
-					labelsArray = Missive.fetchLabels();
-					if(labelsArray.length == 0){
-						labelsArray = []
-						labelsText = "No labels"; // DELETE WHEN DONE
-					}
-					else{
-						labelsText = labelsArray[0].name // DELETE WHEN DONE
-					}
-					$("#labels-text").text(labelsText); // DELETE WHEN DONE
+					Missive.fetchLabels(ids).then((labels) => {
+						if(labels.length == 0){
+							labelsText = "No labels"; // DELETE WHEN DONE
+						}
+						else{
+							labelsText = labels.name // DELETE WHEN DONE
+						}
+						$("#labels-text").text(labelsText); // DELETE WHEN DONE
+					})
 				})
 			})
 			function getUser() {
