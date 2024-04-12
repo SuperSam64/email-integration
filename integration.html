@@ -18,11 +18,11 @@
 			  </tr>
 			</table>
 		</div>
-		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 53.2</span>
+			<!---------------------------  [[  VERSION  ]]  ------------------------------->
+			<span class="button-link column padding" id="reload-button">Version 53.3</span>
+			<!----------------------------------------------------------------------------->
 		</div>
-		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
 			from_field.customer_id will this work???? 
 			things to test:
@@ -160,9 +160,9 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						labelVar1 = currentConvo.labels[0].name
-						labelVar2 = currentConvo.labels[1].name
-						labelVar3 = currentConvo.labels[2].name
+						//labelVar1 = currentConvo.labels[0].name
+						//labelVar2 = currentConvo.labels[1].name
+						//labelVar3 = currentConvo.labels[2].name
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
     						labelsArray.push(currentConvo.labels[i].name)
 						}
