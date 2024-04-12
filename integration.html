@@ -2,6 +2,7 @@
 	<head>
 		<title>Filters Fast</title>
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
+		<link href="profile-visibility.css" rel="stylesheet">
 		<script src="https://integrations.missiveapp.com/missive.js"></script>
 	</head>
 	<body style="height:90%">
@@ -19,7 +20,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 51.9</span>
+			<span class="button-link column padding" id="reload-button">Version 52</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -158,9 +159,12 @@
 						labelVar1 = currentConvo.labels[0].name
 						labelVar2 = currentConvo.labels[1].name
 						labelVar3 = currentConvo.labels[2].name
-						labelVar4 = labelVar1 + " " + labelVar2 + " " + labelVar3
+						labelVar4 = currentConvo.labels[3].name
+						labelVar5 = currentConvo.labels[4].name
+						labelVar6 = currentConvo.labels[5].name
+						labelVar7 = labelVar1 + " " + labelVar2 + " " + labelVar3 + " " + labelVar4 + " " + labelVar5 + " " + labelVar6
 						//labelVar = currentConvo.labels.length
-						$("#labels-text").text(labelVar4);
+						$("#labels-text").text(labelVar7);
 					}
 					
 						//if (labels.length == 0) {
