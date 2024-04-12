@@ -20,12 +20,13 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 53.6</span>
+			<span class="button-link column padding" id="reload-button">Version 53.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
 			from_field.customer_id will this work???? 
 			things to test:
+				empty labels: Archive, Sent, Assigned, Unasigned Closed
 				make monday form link with order number
 				make monday search with order number
 				differentiate between number of SENT messages and number of RECEIVED messages (>1 would produce "thank you for your reply"), see whether the first message was sent/received, last messages as well
@@ -169,8 +170,13 @@
 						labelsArray = []
 						labelVar7 = "Labels: "
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
-    						labelsArray.push(currentConvo.labels[i].name)
-							labelVar7 = labelVar7 + labelsArray[i] + " "
+							if(currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
+								// do nothing
+							}
+							else {	
+								labelsArray.push(currentConvo.labels[i].name)
+								labelVar7 = labelVar7 + labelsArray[i] + " "
+							}
 						}
 						//labelVar7 = labelsArray[0] + " " + labelsArray[1] + " " + labelsArray[2]
 						//labelVar = currentConvo.labels.length  
