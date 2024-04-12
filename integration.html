@@ -20,7 +20,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 52.4</span>
+			<span class="button-link column padding" id="reload-button">Version 52.5</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -156,20 +156,18 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						empty(labelsArray);
-						labelsText = ""
 						//labelVar7 = labelVar1 + " " + labelVar2 + " " + labelVar3 + " " + labelVar4 + " " + labelVar5 + " " + labelVar6
-						if(currentConvo.labels.length == 0){
-							labelsArray.push("No labels")
-						}
-						else {
+						//if(currentConvo.labels.length == 0){
+						//	labelsArray = ["No labels"]
+						//}
+						e//lse {
 								for ( var i = 0, l = currentConvo.labels.length; i < l; i++ ) {
 								labelsArray.push(currentConvo.labels[i].name);
-								labelsText = labelsText + " | " + currentConvo.labels[i].name
-							}
+								
+							//}
 						}
 						//labelVar = currentConvo.labels.length  // "Archive" and "Assigned" are always present
-						$("#labels-text").text(labelsText);
+						$("#labels-text").text(labelsArray[0]);
 					}
 					
 						//if (labels.length == 0) {
