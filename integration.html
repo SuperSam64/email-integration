@@ -20,7 +20,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 52</span>
+			<span class="button-link column padding" id="reload-button">Version 52.1</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -162,8 +162,13 @@
 						labelVar4 = currentConvo.labels[3].name
 						labelVar5 = currentConvo.labels[4].name
 						labelVar6 = currentConvo.labels[5].name
-						labelVar7 = labelVar1 + " " + labelVar2 + " " + labelVar3 + " " + labelVar4 + " " + labelVar5 + " " + labelVar6
-						//labelVar = currentConvo.labels.length
+						labelsArray = [];
+						//labelVar7 = labelVar1 + " " + labelVar2 + " " + labelVar3 + " " + labelVar4 + " " + labelVar5 + " " + labelVar6
+						for ( var i = 0, l = currentConvo.labels.length; i < l; i++ ) {
+    						labelsArray.push(currentConvo.labels[i].name);
+						}
+						labelvar7 = labelsArray[0] + " " + labelsArray[1]
+						//labelVar = currentConvo.labels.length  // "Archive" and "Assigned" are always present
 						$("#labels-text").text(labelVar7);
 					}
 					
