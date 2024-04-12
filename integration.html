@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 51.5</span>
+			<span class="button-link column padding" id="reload-button">Version 51.6</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -155,7 +155,8 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						labelVar = currentConvo.labels[0].name
+						//labelVar = currentConvo.labels[0].name
+						labelVar = currentConvo.labels.length
 						$("#labels-text").text(labelVar);
 					}
 					
