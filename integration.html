@@ -170,9 +170,8 @@
 						labelsArray = []
 						labelVar7 = ""
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
-							if(!currentConvo.labels[i] || currentConvo.labels[i].name == "undefined" || currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
+							if(!currentConvo.labels[i] || typeof currentConvo.labels[i] == "undefined" || currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
 								// do nothing
-								return;
 							}
 							else {	
 								labelsArray.push(currentConvo.labels[i].id)
