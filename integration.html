@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 53.9</span>
+			<span class="button-link column padding" id="reload-button">Version 54</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -167,18 +167,16 @@
 						//labelVar1 = currentConvo.labels[0].name
 						//labelVar2 = currentConvo.labels[1].name
 						//labelVar3 = currentConvo.labels[2].name
-						labelsArray = ["No labels"]
+						labelsArray = []
+						labelVar7 = "No labels"
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
-							if(typeof currentConvo.labels[i].name === 'undefined' || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
+							if(currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "undefined" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
 								// do nothing
 							}
 							else {	
 								labelsArray.push(currentConvo.labels[i].name)
 								labelVar7 = labelVar7 + labelsArray[i] + " "
 							}
-						}
-						if(labelsArray.length > 1){
-							labelsArray = labelsArray.shift();
 						}
 						//labelVar7 = labelsArray[0] + " " + labelsArray[1] + " " + labelsArray[2]
 						//labelVar = currentConvo.labels.length  
