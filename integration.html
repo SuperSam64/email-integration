@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 51.6</span>
+			<span class="button-link column padding" id="reload-button">Version 51.7</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -91,7 +91,7 @@
 			// ================================ variables ================================
 			var currentUser;
 			var fullName;
-			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3"]; // (Gema, Isabel, Kaitlyn, Kylee)
+			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
 			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
 			var profileType = "CCA"; // CCA, CRM, master
 			var title = "Customer Care Advocate" // default, unless  otherwise specified
@@ -155,8 +155,10 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						//labelVar = currentConvo.labels[0].name
-						labelVar = currentConvo.labels.length
+						labelVar1 = currentConvo.labels[0].name
+						labelVar2 = currentConvo.labels[1].name
+						labelVar3 = currentConvo.labels[2].name
+						//labelVar = currentConvo.labels.length
 						$("#labels-text").text(labelVar);
 					}
 					
