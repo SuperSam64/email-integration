@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 53.3</span>
+			<span class="button-link column padding" id="reload-button">Version 53.4</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -136,14 +136,14 @@
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
-					labelsArray = ["No labels"]
 					currentConvo = conversations[0];
 					if(conversations[0].messages.length == 0){
 						currentMessage = "[empty]";
 						messageCount = 0;
 						msgFrom = "[empty]";
 						msgTo = "[empty]";
-						messageSubject = "[empty]"
+						messageSubject = "[empty]";
+						labelsArray = ["No labels"];
 						//labelsArray = [];
 						//labelsArray.push("No labels")
 						//$("#labels-text").text(labelsArray[0]);
@@ -163,6 +163,7 @@
 						//labelVar1 = currentConvo.labels[0].name
 						//labelVar2 = currentConvo.labels[1].name
 						//labelVar3 = currentConvo.labels[2].name
+						labelsArray = []
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
     						labelsArray.push(currentConvo.labels[i].name)
 						}
