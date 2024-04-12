@@ -20,7 +20,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 52.8</span>
+			<span class="button-link column padding" id="reload-button">Version 52.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -143,8 +143,9 @@
 						msgFrom = "[empty]";
 						msgTo = "[empty]";
 						messageSubject = "[empty]"
-						labelsArray = [];
-						labelsArray.push("No labels")
+						//labelsArray = [];
+						//labelsArray.push("No labels")
+						//$("#labels-text").text(labelsArray[0]);
 						convoSubject = currentConvo.subject;
 						if(conversations[0].assignees.length == 0){
 							// assign 
@@ -161,7 +162,10 @@
 						labelVar1 = currentConvo.labels[0].name
 						labelVar2 = currentConvo.labels[1].name
 						labelVar3 = currentConvo.labels[2].name
-						labelVar7 = labelVar1 + " " + labelVar2 + " " + labelVar3
+						for ( var i = 0, labelCount = currentConvo.labels.length; i < l; i++ ) {
+    						labelsArray.push(currentConvo.labels[i].name)
+						}
+						labelVar7 = labelsArray[0] + " " + labelsArray[1] + " " + labelsArray[2]
 						//labelVar = currentConvo.labels.length  
 						$("#labels-text").text(labelVar7);
 					}
