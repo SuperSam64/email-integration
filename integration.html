@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 50.8</span>
+			<span class="button-link column padding" id="reload-button">Version 50.9</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -157,12 +157,14 @@
 						//return
 						//}
 						Missive.fetchLabels().then((labels) => {
-							if(this.id == "408dbf5f-8a6f-46dc-8219-c6d0be95345e"){
-								labelsText = this.name;
-							}
-							
+							$(labels).each(function(){
+								if(this.id == "408dbf5f-8a6f-46dc-8219-c6d0be95345e"){
+									labelsText = this.name;
+								}
+							})
+							$("#labels-text").text(labelsText);
 						});
-						$("#labels-text").text(labelsText);
+					
 
 				})
 			})
