@@ -19,7 +19,7 @@
 		</div>
 		<!---------------------------VERSION---------------------------------->
 		<div class="column-vertical column-center margin section align-center">
-			<span class="button-link column padding" id="reload-button">Version 51.2</span>
+			<span class="button-link column padding" id="reload-button">Version 51.3</span>
 		</div>
 		<!-------------------------------------------------------------------->
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -105,6 +105,7 @@
 			var msgFrom;
 			var labelsArray = [];
 			var labelsText;
+			var labelVar;
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -154,6 +155,8 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
+						labelVar = currentConvo.labels[0].name
+						$("#labels-text").text(labelVar);
 					}
 					
 						//if (labels.length == 0) {
@@ -163,10 +166,10 @@
 						Missive.fetchLabels().then((labels) => {
 							$(labels).each(function(){
 								//if(this.id == "408dbf5f-8a6f-46dc-8219-c6d0be95345e"){
-									labelsArray.push(this.name);
+									labelsArray.push(this.id);
 								//}
 							})
-							$("#labels-text").text(labelsArray[4]);
+							//$("#labels-text").text(labelsArray[4]);
 						});
 					
 
