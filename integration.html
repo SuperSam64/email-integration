@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 54.3</span>
+			<span class="button-link column padding" id="reload-button">Version 54.4</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -170,7 +170,7 @@
 						labelsArray = []
 						labelVar7 = ""
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
-							if( typeof currentConvo.labels[i] === 'undefined' || currentConvo.labels[i].name == "undefined" || currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
+							if(!currentConvo.labels[i] || currentConvo.labels[i].name == "undefined" || currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
 								// do nothing
 							}
 							else {	
