@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.4</span>
+			<span class="button-link column padding" id="reload-button">Version 58.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -260,13 +260,13 @@
 
 			}
 			function update(input){
-				getReplyTo(currentConvo);
-				getTo(currentConvo);
-				assignDraft(currentConvo);
-				getSubject(currentConvo);
-				getCSubject(currentConvo);
-				getMsgCount(currentConvo);
-				getLabels(currentConvo);
+				getReplyTo(input);
+				getTo(input);
+				assignDraft(input);
+				getSubject(input);
+				getCSubject(input);
+				getMsgCount(input);
+				getLabels(input);
 			}
 			function showResults() {
 				$("#subject-text").text(messageSubject);
