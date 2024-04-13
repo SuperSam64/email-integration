@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56</span>
+			<span class="button-link column padding" id="reload-button">Version 56.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -144,7 +144,7 @@
 						msgTo = "[empty]";
 						messageSubject = "[empty]";
 						convoSubject = currentConvo.subject;
-						labelsArray = ["No labels"];
+						//labelsArray = ["No labels"];
 						if(conversations[0].assignees.length == 0){
 							// assign 
 							Missive.assign(currentUser.id)
@@ -157,7 +157,7 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						labelsArray = ["No labels"]
+						/*labelsArray = ["No labels"]
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {	
 							var prefix = currentConvo.labels[i].id.split("-")[0];
 							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
@@ -170,8 +170,9 @@
 						{
 							labelsArray.shift();
 						}
-						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY] */
 					}
+					getLabels(currentConvo);
 				})
 			})
 			function getUser() {
@@ -185,9 +186,36 @@
 				//======== no parameters this time ========
 				return convoSubject;
 			}
-			function getLabels() {
-				var labels = someIDvar[4];
-				return labels;
+			function getLabels(conversation) {
+				
+				
+
+
+				
+						labelsArray = ["No labels"]
+						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+							var prefix = conversation.labels[i].id.split("-")[0];
+							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
+							{
+								labelsArray.push(conversation.labels[i].name) // this can be .name or .id
+							}
+							var joinedArray = labelsArray.join(" | ");
+						}
+						if(labelsArray.length > 1)
+						{
+							labelsArray.shift();
+						}
+						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+					
+
+
+
+
+
+
+
+
+
 			}
 			function getReplyTo() {
 				return msgFrom;
