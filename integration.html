@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57</span>
+			<span class="button-link column padding" id="reload-button">Version 57.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -138,12 +138,13 @@
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0];
 					assignDraft(currentConvo);
+
 					if(conversations[0].messages.length == 0){
 						currentMessage = "[empty]";
 						messageCount = 0;
 						msgFrom = "[empty]";
 						msgTo = "[empty]";
-						messageSubject = "[empty]";
+						//messageSubject = "[empty]";
 						convoSubject = currentConvo.subject;
 					}
 					else {
@@ -165,44 +166,35 @@
 					Missive.assign(currentUser.id);
 				}
 			}
-			function getSubject(some_param){
-				var placeholder = some_param // this is never used, but is an example of how to use parameters
-				return messageSubject;
+			function getSubject(conversation){
+				if(conversation.messages.length == 0){
+					messageSubject = "[empty]"
+				}
+				else {
+					currentMessage = conversation.latest_message;
+					messageSubject = currentMessage.subject;
+				}
+				$("#subject-text").text(messageSubject);
 			}
 			function getCSubject(){
 				//======== no parameters this time ========
 				return convoSubject;
 			}
-			function getLabels(conversation) {
-				
-				
-
-
-				
-						labelsArray = ["No labels"]
-						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-							var prefix = conversation.labels[i].id.split("-")[0];
-							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
-							{
-								labelsArray.push(conversation.labels[i].name) // this can be .name or .id
-							}
-							var joinedArray = labelsArray.join(" | ");
-						}
-						if(labelsArray.length > 1)
-						{
-							labelsArray.shift();
-						}
-						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
-					
-
-
-
-
-
-
-
-
-
+			function getLabels(conversation) {				
+				labelsArray = ["No labels"]
+				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+					var prefix = conversation.labels[i].id.split("-")[0];
+					if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
+					{
+						labelsArray.push(conversation.labels[i].name) // this can be .name or .id
+					}
+					var joinedArray = labelsArray.join(" | ");
+				}
+				if(labelsArray.length > 1)
+				{
+					labelsArray.shift();
+				}
+				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
 			function getReplyTo() {
 				return msgFrom;
@@ -215,6 +207,9 @@
 			}
 			function getTo(){
 				return msgTo;
+			}
+			function showResults() {
+
 			}
 			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
