@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.1</span>
+			<span class="button-link column padding" id="reload-button">Version 56.2</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -178,7 +178,41 @@
 				return currentUser;
 			}
 			function update(conversation){
-				
+				if(conversation.messages.length == 0){    ////////
+						currentMessage = "[empty]";
+						messageCount = 0;
+						msgFrom = "[empty]";
+						msgTo = "[empty]";
+						messageSubject = "[empty]";
+						convoSubject = conversation.subject;
+						labelsArray = ["No labels"];
+						if(conversation.assignees.length == 0){
+							// assign 
+							Missive.assign(currentUser.id)
+						}
+					}
+					else {
+						currentMessage = conversation.latest_message;
+						messageCount = conversation.messages_count;
+						msgFrom = conversation.latest_message.from_field.address;
+						msgTo = conversation.latest_message.to_fields[0].address;
+						messageSubject = currentMessage.subject;
+						convoSubject = conversation.subject;
+						labelsArray = ["No labels"]
+						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+							var prefix = conversation.labels[i].id.split("-")[0];
+							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
+							{
+								labelsArray.push(conversation.labels[i].name) // this can be .name or .id
+							}
+							var joinedArray = labelsArray.join(" | ");
+						}
+						if(labelsArray.length > 1)
+						{
+							labelsArray.shift();
+						}
+						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+					}
 			}
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
