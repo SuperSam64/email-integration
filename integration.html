@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.7</span>
+			<span class="button-link column padding" id="reload-button">Version 57.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,8 +137,20 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0]; // keep this here so it can be referred to in other functions
-					update(currentConvo);
-					showResults();
+					assignDraft(currentConvo);
+					getSubject(currentConvo);
+					getCSubject(currentConvo);  // change format to Csubject = getCsubject() make csubjet return value. etc.
+					getReplyTo(currentConvo);
+					getTo(currentConvo);
+					getMsgCount(currentConvo);
+					getLabels(currentConvo);
+
+					$("#to-text").text(msgTo);
+					$("#msgcount-text").text(messageCount);
+					$("#replyto-text").text(msgFrom);
+					$("#labels-text").text(labelsArray)
+					$("#subject-text").text(messageSubject);
+					$("#cSubject-text").text(convoSubject);
 				})
 			})
 			function getUser() {
@@ -209,21 +221,10 @@
 				}
 			}
 			function update(input) {
-				assignDraft(input);
-				getSubject(input);
-				getCSubject(input);  // change format to Csubject = getCsubject() make csubjet return value. etc.
-				getReplyTo(input);
-				getTo(input);
-				getMsgCount(input);
-				getLabels(input);
+
 			}
 			function showResults() {
-				$("#to-text").text(msgTo);
-				$("#msgcount-text").text(messageCount);
-				$("#replyto-text").text(msgFrom);
-				$("#labels-text").text(labelsArray)
-				$("#subject-text").text(messageSubject);
-				$("#cSubject-text").text(convoSubject);
+
 			}
 			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
