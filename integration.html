@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.6</span>
+			<span class="button-link column padding" id="reload-button">Version 56.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -173,12 +173,17 @@
 				return currentUser;
 			}
 			function update(conversation){
-				currentMessage = "[empty]";
-				messageCount = 0;
-				msgFrom = "[empty]";
-				msgTo = "[empty]";
-				messageSubject = "[empty]";
-				convoSubject = conversation.subject;
+				if(conversation.messages.length == 0){
+					currentMessage = "[empty]";
+					messageCount = 0;
+					msgFrom = "[empty]";
+					msgTo = "[empty]";
+					messageSubject = "[empty]";
+					convoSubject = conversation.subject;
+				}
+				else {
+
+				}
 			};
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
