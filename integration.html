@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.2</span>
+			<span class="button-link column padding" id="reload-button">Version 59.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -154,34 +154,16 @@
 					return "[empty]"
 				}
 				else {
-					currentMessage = conversation.latest_message;
-					return currentMessage.subject;
+					return conversation.latest_message.currentMessage.subject;
 				}
-				
 			}
 			function getCSubject(conversation){
-
-				
-
-
-
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.subject;
-
 				}
-				
-
-
-
-		
-
-
-
-
-
 			}
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
@@ -198,66 +180,33 @@
 					labels.shift();
 				}
 				return labels;
-				
 			}
 			function getReplyTo(conversation) {
-	
-				
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.latest_message.from_field.address;
-
 				}
-				
-
-
-
-
-
-
-
 			}
 			function createTask() {
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount(conversation) {
-				
-				
-
 				if(conversation.messages.length == 0){
 					return 0;
 				}
 				else {
 					return conversation.messages_count;
-
 				}
-				
-
-
-
-
-
 			}
 			function getTo(conversation){
-				
-				
-
-
-				if(conversation.messages.length == 0){
+					if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.latest_message.to_fields[0].address;
-
 				}
-				
-
-
-
-
-
 			}
 			function update(input){
 				msgFrom = getReplyTo(input);
