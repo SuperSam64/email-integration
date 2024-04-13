@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.8</span>
+			<span class="button-link column padding" id="reload-button">Version 56</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -138,7 +138,12 @@
 					// If no messages have been sent or received in the current conversation, it is a new draft
 					currentConvo = conversations[0];
 					if(conversations[0].messages.length == 0){
-						update(currentConvo);
+						currentMessage = "[empty]";
+						messageCount = 0;
+						msgFrom = "[empty]";
+						msgTo = "[empty]";
+						messageSubject = "[empty]";
+						convoSubject = currentConvo.subject;
 						labelsArray = ["No labels"];
 						if(conversations[0].assignees.length == 0){
 							// assign 
@@ -146,6 +151,12 @@
 						}
 					}
 					else {
+						currentMessage = currentConvo.latest_message;
+						messageCount = currentConvo.messages_count;
+						msgFrom = currentConvo.latest_message.from_field.address;
+						msgTo = currentConvo.latest_message.to_fields[0].address;
+						messageSubject = currentMessage.subject;
+						convoSubject = currentConvo.subject;
 						labelsArray = ["No labels"]
 						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {	
 							var prefix = currentConvo.labels[i].id.split("-")[0];
@@ -166,24 +177,6 @@
 			function getUser() {
 				return currentUser;
 			}
-			function update(conversation){
-				if(conversation.messages.length == 0){
-					currentMessage = "[empty]";
-					messageCount = 0;
-					msgFrom = "[empty]";
-					msgTo = "[empty]";
-					messageSubject = "[empty]";
-					convoSubject = conversation.subject;
-				}
-				else {
-					currentMessage = conversation.latest_message;
-					messageCount = conversation.messages_count;
-					msgFrom = conversation.latest_message.from_field.address;
-					msgTo = conversation.latest_message.to_fields[0].address;
-					messageSubject = currentMessage.subject;
-					convoSubject = conversation.subject;
-				}
-			};
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
 				return messageSubject;
