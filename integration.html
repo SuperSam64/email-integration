@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.7</span>
+			<span class="button-link column padding" id="reload-button">Version 58.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -154,8 +154,8 @@
 					messageSubject = "[empty]"
 				}
 				else {
-					currentMessage = conversation.latest_message;
-					messageSubject = currentMessage.subject;
+					
+					return conversation.latest_message.currentMessage.subject;
 				}
 				
 			}
@@ -166,10 +166,10 @@
 
 
 				if(conversation.messages.length == 0){
-					convoSubject = "[empty]";
+					return "[empty]";
 				}
 				else {
-					convoSubject = conversation.subject;
+					return conversation.subject;
 
 				}
 				
