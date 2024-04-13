@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.4</span>
+			<span class="button-link column padding" id="reload-button">Version 59.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -154,8 +154,7 @@
 					return "[empty]"
 				}
 				else {
-					currentMessage = conversation.latest_message;
-					return currentMessage.subject;
+					return conversation.latest_message.subject;
 				}
 			}
 			function getCSubject(conversation){
