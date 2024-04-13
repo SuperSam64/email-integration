@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.5</span>
+			<span class="button-link column padding" id="reload-button">Version 58.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -138,7 +138,6 @@
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0];
 					update(currentConvo);
-
 					showResults();
 				})
 			})
@@ -204,10 +203,10 @@
 	
 				
 				if(conversation.messages.length == 0){
-					msgFrom = "[empty]";
+					return "[empty]";
 				}
 				else {
-					msgFrom = conversation.latest_message.from_field.address;
+					return conversation.latest_message.from_field.address;
 
 				}
 				
@@ -260,7 +259,7 @@
 
 			}
 			function update(input){
-				getReplyTo(input);
+				msgFrom = getReplyTo(input);
 				getTo(input);
 				assignDraft(input);
 				getSubject(input);
