@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.9</span>
+			<span class="button-link column padding" id="reload-button">Version 59</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -35,8 +35,8 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-messageSubject">Get M Subject</span></td>
-					<td><span class="columnn" id="messageSubject-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-subject">Get M Subject</span></td>
+					<td><span class="columnn" id="subject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -44,8 +44,8 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-conversationSubject">Get C Subject</span></td>
-					<td><span class="columnn" id="conversationSubject-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-cSubject">Get C Subject</span></td>
+					<td><span class="columnn" id="cSubject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -60,8 +60,8 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-from">Get Reply Email</span></td>
-					<td><span class="columnn" id="from-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-replyto">Get Reply Email</span></td>
+					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -98,13 +98,14 @@
 			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
 			var profileType = "CCA"; // CCA, CRM, master
 			var title = "Customer Care Advocate" // default, unless  otherwise specified
-			var currentConversation;
+			var currentnMessage;
+			var currentConvo;
 			var messageSubject;
-			var conversationSubject;
+			var convoSubject;
 			var convoLink;
 			var messageCount;
-			var messageTo;
-			var messageFrom;
+			var msgTo;
+			var msgFrom;
 			var labelsArray = [];
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
@@ -135,8 +136,8 @@
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
-					currentConversation = conversations[0];
-					update(currentConversation);
+					currentConvo = conversations[0];
+					update(currentConvo);
 					showResults();
 				})
 			})
@@ -148,22 +149,39 @@
 					Missive.assign(currentUser.id);
 				}
 			}
-			function getMessageSubject(conversation){
+			function getSubject(conversation){
 				if(conversation.messages.length == 0){
-					return = "[empty]"
+					messageSubject = "[empty]"
 				}
 				else {
 					
 					return conversation.latest_message.currentMessage.subject;
 				}
+				
 			}
-			function getConversationSubject(conversation){
+			function getCSubject(conversation){
+
+				
+
+
+
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.subject;
+
 				}
+				
+
+
+
+		
+
+
+
+
+
 			}
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
@@ -180,73 +198,106 @@
 					labels.shift();
 				}
 				return labels;
+				
 			}
-			function getFrom(conversation) {
+			function getReplyTo(conversation) {
+	
+				
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.latest_message.from_field.address;
+
 				}
+				
+
+
+
+
+
+
+
 			}
 			function createTask() {
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount(conversation) {
+				
+				
+
 				if(conversation.messages.length == 0){
 					return 0;
 				}
 				else {
 					return conversation.messages_count;
+
 				}
+				
+
+
+
+
+
 			}
 			function getTo(conversation){
+				
+				
+
+
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
 				else {
 					return conversation.latest_message.to_fields[0].address;
+
 				}
+				
+
+
+
+
+
 			}
 			function update(input){
-				messageFrom = getFrom(input);
-				messageTo = getTo(input);
+				msgFrom = getReplyTo(input);
+				msgTo = getTo(input);
 				assignDraft(input);
-				messageSubject = getMessageSubject(input);
-				conversationSubject = getConversationSubject(input);
+				messageSubject = getSubject(input);
+				convoSubject = getCSubject(input);
 				messageCount = getMsgCount(input);
 				labelsArray = getLabels(input);
 			}
 			function showResults() {
-				$("#messageSubject-text").text(messageSubject);
+				$("#subject-text").text(messageSubject);
 				$("#msgcount-text").text(messageCount);
-				$("#to-text").text(messageTo);
-				$("#from-text").text(messageFrom);
-				$("#conversationSubject-text").text(conversationSubject);
+				$("#to-text").text(msgTo);
+				$("#replyto-text").text(msgFrom);
+				$("#cSubject-text").text(convoSubject);
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
 			}
 			//======== button to test that function works ========
-			$("#get-messageSubject").click(function () { 
+			$("#get-subject").click(function () { 
 				//======== run the function, optionally with parameters ========
-				var value = getMessageSubject("anything-goes-here");
+				var value = getSubject("anything-goes-here");
 				//======== write the value to the text next to the button to test that it works ========
-				$("#messageSubject-text").text(value);
+				$("#subject-text").text(value);
 			});
 			//======== button to test that funciton works ========
-			$("#get-conversationSubject").click(function () { 
+			$("#get-cSubject").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getConversationSubject();
-				$("#conversationSubject-text").text(value);
+				var value = getCSubject();
+				$("#cSubject-text").text(value);
 			});
 			$("#get-labels").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getLabels();
 				$("#labels-text").text(value);
 			});
-			$("#get-from").click(function () { 
+			$("#get-replyto").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getFrom();
-				$("#from-text").text(value);
+				var value = getReplyTo();
+				$("#replyto-text").text(value);
 			});
 			$("#create-task").click(function () { 
 				var value = createTask();
@@ -261,27 +312,27 @@
 				$("#to-text").text(value);
 			});
 			// ================ resets ================
-			$("#messageSubject-text").click(function () { 
+			$("#subject-text").click(function () { 
 				//======== run the function, optionally with parameters ========
-				var value = getMessageSubject("anything-goes-here");
+				var value = getSubject("anything-goes-here");
 				//======== write the value to the text next to the button to test that it works ========
-				$("#messageSubject-text").text("[RESULT]");
+				$("#subject-text").text("[RESULT]");
 			});
 			//======== button to test that funciton works ========
-			$("#conversationSubject-text").click(function () { 
+			$("#cSubject-text").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getConversationSubject();
-				$("#conversationSubject-text").text("[RESULT]");
+				var value = getCSubject();
+				$("#cSubject-text").text("[RESULT]");
 			});
 			$("#labels-text").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getLabels();
 				$("#labels-text").text("[RESULT]");
 			});
-			$("#from-text").click(function () { 
+			$("#replyto-text").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getFrom();
-				$("#from-text").text("[RESULT]");
+				var value = getReplyTo();
+				$("#replyto-text").text("[RESULT]");
 			});
 			$("#task-text").click(function () { 
 				var value = createTask();
