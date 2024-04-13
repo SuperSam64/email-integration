@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58</span>
+			<span class="button-link column padding" id="reload-button">Version 58.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -178,7 +178,7 @@
 					convoSubject = conversation.subject;
 
 				}
-				$("#cSubject-text").text(convoSubject);
+				
 
 
 
@@ -215,7 +215,7 @@
 					msgFrom = conversation.latest_message.from_field.address;
 
 				}
-				$("#replyto-text").text(msgFrom);
+				
 
 
 
@@ -238,7 +238,7 @@
 					messageCount = conversation.messages_count;
 
 				}
-				$("#msgcount-text").text(messageCount);
+				
 
 
 
@@ -257,7 +257,7 @@
 					msgTo = conversation.latest_message.to_fields[0].address;
 
 				}
-				$("#to-text").text(msgTo);
+				
 
 
 
@@ -266,6 +266,10 @@
 			}
 			function showResults() {
 				$("#subject-text").text(messageSubject);
+				$("#msgcount-text").text(messageCount);
+				$("#to-text").text(msgTo);
+				$("#replyto-text").text(msgFrom);
+				$("#cSubject-text").text(convoSubject);                                                                                                                                                                                                                                                   
 			}
 			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
