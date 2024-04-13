@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56</span>
+			<span class="button-link column padding" id="reload-button">Version 56.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,39 +137,32 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
 					currentConvo = conversations[0];
-					update(conversation);
-				})
-			})
-			function getUser() {
-				return currentUser;
-			}
-			function update(conversation){
-				if(conversation.messages.length == 0){    ////////
+					if(currentConvo.messages.length == 0){    ////////
 						currentMessage = "[empty]";
 						messageCount = 0;
 						msgFrom = "[empty]";
 						msgTo = "[empty]";
 						messageSubject = "[empty]";
-						convoSubject = conversation.subject;
+						convoSubject = currentConvo.subject;
 						labelsArray = ["No labels"];
-						if(conversation.assignees.length == 0){
+						if(currentConvo.assignees.length == 0){
 							// assign 
 							Missive.assign(currentUser.id)
 						}
 					}
 					else {
-						currentMessage = conversation.latest_message;
-						messageCount = conversation.messages_count;
-						msgFrom = conversation.latest_message.from_field.address;
-						msgTo = conversation.latest_message.to_fields[0].address;
+						currentMessage = currentConvo.latest_message;
+						messageCount = currentConvo.messages_count;
+						msgFrom = currentConvo.latest_message.from_field.address;
+						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
-						convoSubject = conversation.subject;
+						convoSubject = currentConvo.subject;
 						labelsArray = ["No labels"]
-						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-							var prefix = conversation.labels[i].id.split("-")[0];
+						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {	
+							var prefix = currentConvo.labels[i].id.split("-")[0];
 							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
 							{
-								labelsArray.push(conversation.labels[i].name) // this can be .name or .id
+								labelsArray.push(currentConvo.labels[i].name) // this can be .name or .id
 							}
 							var joinedArray = labelsArray.join(" | ");
 						}
@@ -179,6 +172,13 @@
 						}
 						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 					} ////////
+				})
+			})
+			function getUser() {
+				return currentUser;
+			}
+			function update(conversation){
+				
 			}
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
