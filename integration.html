@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.6</span>
+			<span class="button-link column padding" id="reload-button">Version 57.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,13 +137,7 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0]; // keep this here so it can be referred to in other functions
-					assignDraft(currentConvo);
-					getSubject(currentConvo);
-					getCSubject(currentConvo);
-					getReplyTo(currentConvo);
-					getTo(currentConvo);
-					getMsgCount(currentConvo);
-					getLabels(currentConvo);
+					update(currentConvo);
 					showResults();
 				})
 			})
@@ -162,31 +156,14 @@
 				else {
 					messageSubject = conversation.latest_messagecurrentMessage.subject;
 				}
-				
 			}
 			function getCSubject(conversation){
-
-				
-
-
-
 				if(conversation.messages.length == 0){
 					convoSubject = "[empty]";
 				}
 				else {
 					convoSubject = conversation.subject;
-
 				}
-				
-
-
-
-		
-
-
-
-
-
 			}
 			function getLabels(conversation) {				
 				labelsArray = ["No labels"]
@@ -205,66 +182,40 @@
 				; // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
 			function getReplyTo(conversation) {
-	
-				
 				if(conversation.messages.length == 0){
 					msgFrom = "[empty]";
 				}
 				else {
 					msgFrom = conversation.latest_message.from_field.address;
-
 				}
-				
-
-
-
-
-
-
-
 			}
 			function createTask() {
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount(conversation) {
-				
-				
-
 				if(conversation.messages.length == 0){
 					messageCount = 0;
 				}
 				else {
 					messageCount = conversation.messages_count;
-
 				}
-				
-
-
-
-
-
 			}
 			function getTo(conversation){
-				
-				
-
-
 				if(conversation.messages.length == 0){
 					msgTo = "[empty]";
 				}
 				else {
 					msgTo = conversation.latest_message.to_fields[0].address;
-
 				}
-				
-
-
-
-
-
 			}
-			function update(conversation) {
-
+			function update(input) {
+				assignDraft(input);
+				getSubject(input);
+				getCSubject(input);  // change format to Csubject = getCsubject() make csubjet return value. etc.
+				getReplyTo(input);
+				getTo(input);
+				getMsgCount(input);
+				getLabels(input);
 			}
 			function showResults() {
 				$("#to-text").text(msgTo);
