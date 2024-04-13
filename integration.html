@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.4</span>
+			<span class="button-link column padding" id="reload-button">Version 56.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,15 +137,10 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
 					currentConvo = conversations[0];
-					if(currentConvo.messages.length == 0){    ////////
-						currentMessage = "[empty]";
-						//messageCount = 0;
-						//msgFrom = "[empty]";
-						//msgTo = "[empty]";
-						messageSubject = "[empty]";
-						convoSubject = currentConvo.subject;
+					if(conversations[0].messages.length == 0){
+						update(currentConvo);
 						labelsArray = ["No labels"];
-						if(currentConvo.assignees.length == 0){
+						if(conversations[0].assignees.length == 0){
 							// assign 
 							Missive.assign(currentUser.id)
 						}
@@ -171,27 +166,20 @@
 							labelsArray.shift();
 						}
 						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
-					} ////////
+					}
 				})
 			})
 			function getUser() {
 				return currentUser;
 			}
 			function update(conversation){
-				if(conversation.messages.length == 0){    ////////
-					//currentMessage = "[empty]";
-					messageCount = 0;
-					msgFrom = "[empty]";
-					msgTo = "[empty]";
-					//messageSubject = "[empty]";
-					//convoSubject = currentConvo.subject;
-					//labelsArray = ["No labels"];
-					//if(currentConvo.assignees.length == 0){
-						// assign 
-					//	Missive.assign(currentUser.id)
-					//}
-				}
-			}
+				currentMessage = "[empty]";
+				messageCount = 0;
+				msgFrom = "[empty]";
+				msgTo = "[empty]";
+				messageSubject = "[empty]";
+				convoSubject = conversation.subject;
+			};
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
 				return messageSubject;
