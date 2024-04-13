@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 55.8</span>
+			<span class="button-link column padding" id="reload-button">Version 55.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -107,8 +107,6 @@
 			var msgTo;
 			var msgFrom;
 			var labelsArray = [];
-			var labelsText;
-			var labelVar;
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -145,13 +143,8 @@
 						msgFrom = "[empty]";
 						msgTo = "[empty]";
 						messageSubject = "[empty]";
-						labelsArray = ["No labels"];
-						labelVar7 = labelsArray[0];
-						$("#labels-text").text(labelVar7);
-						//labelsArray = [];
-						//labelsArray.push("No labels")
-						//$("#labels-text").text(labelsArray[0]);
 						convoSubject = currentConvo.subject;
+						labelsArray = ["No labels"];
 						if(conversations[0].assignees.length == 0){
 							// assign 
 							Missive.assign(currentUser.id)
@@ -164,51 +157,21 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						//labelVar1 = currentConvo.labels[0].name
-						//labelVar2 = currentConvo.labels[1].name
-						//labelVar3 = currentConvo.labels[2].name
 						labelsArray = ["No labels"]
-						labelVar7 = ""
-						
-						
-						
-						
-						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {
-							//if(!currentConvo.labels[i] || typeof currentConvo.labels[i] == "undefined" || currentConvo.labels[i].name == "No labels" || currentConvo.labels[i].name == "Archive" || currentConvo.labels[i].name == "Sent" || currentConvo.labels[i].name == "Assigned" || currentConvo.labels[i].name == "Unasigned" || currentConvo.labels[i].name == "Closed"){	
-								// do nothing | get first part before - and if it is one of 3 things, don't include
-							//}
-							//else {	
-								if(currentConvo.labels[i].id.split("-")[0] != "sent" && currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "assigned_to_others" && currentConvo.labels[i].id.split("-")[0] != "unassigned" && currentConvo.labels[i].id.split("-")[0] != "archive" && currentConvo.labels[i].id.split("-")[0] != "closed")
-								{
-									labelsArray.push(currentConvo.labels[i].name)
-								}
-								//labelVar7 = labelVar7 + labelsArray[i] + " | "
-							//}
+						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {	
+							var prefix = currentConvo.labels[i].id.split("-")[0];
+							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
+							{
+								labelsArray.push(currentConvo.labels[i].name) // this can be .name or .id
+							}
 							var joinedArray = labelsArray.join(" | ");
 						}
 						if(labelsArray.length > 1)
 						{
 							labelsArray.shift();
 						}
-						//labelVar7 = labelsArray[0] + " " + labelsArray[1] + " " + labelsArray[2]
-						//labelVar = currentConvo.labels.length  
-						$("#labels-text").text(labelsArray);
+						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 					}
-					
-						//if (labels.length == 0) {
-						// Do nothing if multiple conversations are selected.
-						//return
-						//}
-						//Missive.fetchLabels().then((labels) => {
-							//$(labels).each(function(){
-								//if(this.id == "408dbf5f-8a6f-46dc-8219-c6d0be95345e"){
-									//labelsArray.push(this.id);
-								//}
-							//})
-							//$("#labels-text").text(labelsArray[4]);
-						//});
-					
-
 				})
 			})
 			function getUser() {
