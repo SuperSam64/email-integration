@@ -144,19 +144,14 @@
 					getTo(currentConvo);
 					if(conversations[0].messages.length == 0){
 						currentMessage = "[empty]";
-						messageCount = 0;
-						msgFrom = "[empty]";
-						msgTo = "[empty]";
+						//messageCount = 0;
 						//messageSubject = "[empty]";
-						convoSubject = currentConvo.subject;
+
 					}
 					else {
 						//currentMessage = currentConvo.latest_message;
-						messageCount = currentConvo.messages_count;
-						msgFrom = currentConvo.latest_message.from_field.address;
-						msgTo = currentConvo.latest_message.to_fields[0].address;
+						//messageCount = currentConvo.messages_count;
 						//messageSubject = currentMessage.subject;
-						convoSubject = currentConvo.subject;
 					}
 					getLabels(currentConvo);
 				})
@@ -189,7 +184,7 @@
 					convoSubject = "[empty]";
 				}
 				else {
-					convoSubject = conversation.latest_message.from_field.address;
+					convoSubject = conversation.subject;
 
 				}
 				$("#cSubject-text").text(convoSubject);
@@ -226,7 +221,7 @@
 					msgFrom = "[empty]";
 				}
 				else {
-					msgFrom = msgFrom = conversation.latest_message.from_field.address;
+					msgFrom = conversation.latest_message.from_field.address;
 
 				}
 				$("#from-text").text(msgFrom);
@@ -241,8 +236,23 @@
 			function createTask() {
 				return "Create a task (function not defined)";
 			}
-			function getMsgCount() {
-				return messageCount;
+			function getMsgCount(conversation) {
+				
+				
+
+				if(conversation.messages.length == 0){
+					messageCount = 0;
+				}
+				else {
+					messageCount = conversation.messages_count;
+
+				}
+				$("#msgcount-text").text(messageCount);
+
+
+
+
+
 			}
 			function getTo(conversation){
 				
