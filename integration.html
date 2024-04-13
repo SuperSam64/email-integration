@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.5</span>
+			<span class="button-link column padding" id="reload-button">Version 57.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -136,7 +136,7 @@
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
-					currentConvo = conversations[0];
+					currentConvo = conversations[0]; // keep this here so it can be referred to in other functions
 					assignDraft(currentConvo);
 					getSubject(currentConvo);
 					getCSubject(currentConvo);
@@ -144,6 +144,7 @@
 					getTo(currentConvo);
 					getMsgCount(currentConvo);
 					getLabels(currentConvo);
+					showResults();
 				})
 			})
 			function getUser() {
@@ -159,10 +160,9 @@
 					messageSubject = "[empty]"
 				}
 				else {
-					currentMessage = conversation.latest_message;
-					messageSubject = currentMessage.subject;
+					messageSubject = conversation.latest_messagecurrentMessage.subject;
 				}
-				$("#subject-text").text(messageSubject);
+				
 			}
 			function getCSubject(conversation){
 
@@ -177,7 +177,7 @@
 					convoSubject = conversation.subject;
 
 				}
-				$("#cSubject-text").text(convoSubject);
+				
 
 
 
@@ -202,7 +202,7 @@
 				{
 					labelsArray.shift();
 				}
-				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+				; // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
 			function getReplyTo(conversation) {
 	
@@ -214,7 +214,7 @@
 					msgFrom = conversation.latest_message.from_field.address;
 
 				}
-				$("#replyto-text").text(msgFrom);
+				
 
 
 
@@ -237,7 +237,7 @@
 					messageCount = conversation.messages_count;
 
 				}
-				$("#msgcount-text").text(messageCount);
+				
 
 
 
@@ -256,15 +256,23 @@
 					msgTo = conversation.latest_message.to_fields[0].address;
 
 				}
-				$("#to-text").text(msgTo);
+				
 
 
 
 
 
 			}
-			function showResults() {
+			function update(conversation) {
 
+			}
+			function showResults() {
+				$("#to-text").text(msgTo);
+				$("#msgcount-text").text(messageCount);
+				$("#replyto-text").text(msgFrom);
+				$("#labels-text").text(labelsArray)
+				$("#subject-text").text(messageSubject);
+				$("#cSubject-text").text(convoSubject);
 			}
 			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
