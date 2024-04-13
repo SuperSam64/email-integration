@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 54.9</span>
+			<span class="button-link column padding" id="reload-button">Version 5%</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -174,7 +174,7 @@
 								// do nothing | get first part before - and if it is one of 3 things, don't include
 							//}
 							//else {	
-								if(currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "unassigned" && currentConvo.labels[i].id.split("-")[0] != "archive" && currentConvo.labels[i].id.split("-")[0] != "closed")
+								if(currentConvo.labels[i].id.split("-")[0] != "sent" && currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "assigned_to_others" && currentConvo.labels[i].id.split("-")[0] != "unassigned" && currentConvo.labels[i].id.split("-")[0] != "archive" && currentConvo.labels[i].id.split("-")[0] != "closed")
 								{
 									labelsArray.push(currentConvo.labels[i].id)
 								}
