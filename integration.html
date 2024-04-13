@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.9</span>
+			<span class="button-link column padding" id="reload-button">Version 57</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -135,8 +135,9 @@
 			})
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
-					// If no messages have been sent or received in the current conversation, it is a new draft
+					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0];
+					assignDraft(currentConvo);
 					if(conversations[0].messages.length == 0){
 						currentMessage = "[empty]";
 						messageCount = 0;
@@ -144,11 +145,6 @@
 						msgTo = "[empty]";
 						messageSubject = "[empty]";
 						convoSubject = currentConvo.subject;
-						//labelsArray = ["No labels"];
-						if(conversations[0].assignees.length == 0){
-							// assign 
-							Missive.assign(currentUser.id)
-						}
 					}
 					else {
 						currentMessage = currentConvo.latest_message;
@@ -157,26 +153,17 @@
 						msgTo = currentConvo.latest_message.to_fields[0].address;
 						messageSubject = currentMessage.subject;
 						convoSubject = currentConvo.subject;
-						/*labelsArray = ["No labels"]
-						for ( var i = 0, labelCount = currentConvo.labels.length; i < labelCount; i++ ) {	
-							var prefix = currentConvo.labels[i].id.split("-")[0];
-							if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
-							{
-								labelsArray.push(currentConvo.labels[i].name) // this can be .name or .id
-							}
-							var joinedArray = labelsArray.join(" | ");
-						}
-						if(labelsArray.length > 1)
-						{
-							labelsArray.shift();
-						}
-						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY] */
 					}
 					getLabels(currentConvo);
 				})
 			})
 			function getUser() {
 				return currentUser;
+			}
+			function assignDraft(conversation) {
+				if(conversation.messages.length == 0 && conversation.assignees.length == 0){
+					Missive.assign(currentUser.id);
+				}
 			}
 			function getSubject(some_param){
 				var placeholder = some_param // this is never used, but is an example of how to use parameters
