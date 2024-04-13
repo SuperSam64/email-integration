@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.4</span>
+			<span class="button-link column padding" id="reload-button">Version 57.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -142,17 +142,7 @@
 					getCSubject(currentConvo);
 					getReplyTo(currentConvo);
 					getTo(currentConvo);
-					if(conversations[0].messages.length == 0){
-						currentMessage = "[empty]";
-						//messageCount = 0;
-						//messageSubject = "[empty]";
-
-					}
-					else {
-						//currentMessage = currentConvo.latest_message;
-						//messageCount = currentConvo.messages_count;
-						//messageSubject = currentMessage.subject;
-					}
+					getMsgCount(currentConvo);
 					getLabels(currentConvo);
 				})
 			})
@@ -224,7 +214,7 @@
 					msgFrom = conversation.latest_message.from_field.address;
 
 				}
-				$("#from-text").text(msgFrom);
+				$("#replyto-text").text(msgFrom);
 
 
 
