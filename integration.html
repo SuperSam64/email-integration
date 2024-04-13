@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 55.7</span>
+			<span class="button-link column padding" id="reload-button">Version 55.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -186,13 +186,13 @@
 							//}
 							var joinedArray = labelsArray.join(" | ");
 						}
-						if(labelsArray[0] == "")
+						if(labelsArray.length > 1)
 						{
-							labelsArray = ["No labels"];
+							labelsArray.shift();
 						}
 						//labelVar7 = labelsArray[0] + " " + labelsArray[1] + " " + labelsArray[2]
 						//labelVar = currentConvo.labels.length  
-						$("#labels-text").text(labelsArray.length);
+						$("#labels-text").text(labelsArray);
 					}
 					
 						//if (labels.length == 0) {
