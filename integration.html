@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 54.8</span>
+			<span class="button-link column padding" id="reload-button">Version 54.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -174,7 +174,10 @@
 								// do nothing | get first part before - and if it is one of 3 things, don't include
 							//}
 							//else {	
-								labelsArray.push(currentConvo.labels[i].id)
+								if(currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "assigned" && currentConvo.labels[i].id.split("-")[0] != "unassigned" && currentConvo.labels[i].id.split("-")[0] != "archive" && currentConvo.labels[i].id.split("-")[0] != "closed")
+								{
+									labelsArray.push(currentConvo.labels[i].id)
+								}
 								//labelVar7 = labelVar7 + labelsArray[i] + " | "
 							//}
 							var joinedArray = labelsArray.join(" | ");
