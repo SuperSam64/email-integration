@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.6</span>
+			<span class="button-link column padding" id="reload-button">Version 58.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -184,19 +184,20 @@
 
 			}
 			function getLabels(conversation) {				
-				labelsArray = ["No labels"]
+				var labels = ["No labels"]
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
 					var prefix = conversation.labels[i].id.split("-")[0];
 					if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
 					{
-						labelsArray.push(conversation.labels[i].name) // this can be .name or .id
+						labels.push(conversation.labels[i].name) // this can be .name or .id
 					}
-					var joinedArray = labelsArray.join(" | ");
+					var joinedArray = labels.join(" | ");
 				}
-				if(labelsArray.length > 1)
+				if(labels.length > 1)
 				{
-					labelsArray.shift();
+					labels.shift();
 				}
+				return labels;
 				
 			}
 			function getReplyTo(conversation) {
@@ -226,10 +227,10 @@
 				
 
 				if(conversation.messages.length == 0){
-					messageCount = 0;
+					return 0;
 				}
 				else {
-					messageCount = conversation.messages_count;
+					return conversation.messages_count;
 
 				}
 				
@@ -245,10 +246,10 @@
 
 
 				if(conversation.messages.length == 0){
-					msgTo = "[empty]";
+					return "[empty]";
 				}
 				else {
-					msgTo = conversation.latest_message.to_fields[0].address;
+					return conversation.latest_message.to_fields[0].address;
 
 				}
 				
@@ -260,12 +261,12 @@
 			}
 			function update(input){
 				msgFrom = getReplyTo(input);
-				getTo(input);
+				msgTo = getTo(input);
 				assignDraft(input);
-				getSubject(input);
-				getCSubject(input);
-				getMsgCount(input);
-				getLabels(input);
+				messageSubject = getSubject(input);
+				convoSubject = getCSubject(input);
+				messageCount = getMsgCount(input);
+				labelsArray = getLabels(input);
 			}
 			function showResults() {
 				$("#subject-text").text(messageSubject);
