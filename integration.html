@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.2</span>
+			<span class="button-link column padding" id="reload-button">Version 57.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -139,6 +139,9 @@
 					currentConvo = conversations[0];
 					assignDraft(currentConvo);
 					getSubject(currentConvo);
+					getCSubject(currentConvo);
+					getReplyTo(currentConvo);
+					getTo(currentConvo);
 					if(conversations[0].messages.length == 0){
 						currentMessage = "[empty]";
 						messageCount = 0;
@@ -176,9 +179,29 @@
 				}
 				$("#subject-text").text(messageSubject);
 			}
-			function getCSubject(){
-				//======== no parameters this time ========
-				return convoSubject;
+			function getCSubject(conversation){
+
+				
+
+
+
+				if(conversation.messages.length == 0){
+					convoSubject = "[empty]";
+				}
+				else {
+					convoSubject = conversation.latest_message.from_field.address;
+
+				}
+				$("#cSubject-text").text(convoSubject);
+
+
+
+		
+
+
+
+
+
 			}
 			function getLabels(conversation) {				
 				labelsArray = ["No labels"]
@@ -196,8 +219,24 @@
 				}
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
-			function getReplyTo() {
-				return msgFrom;
+			function getReplyTo(conversation) {
+	
+				
+				if(conversation.messages.length == 0){
+					msgFrom = "[empty]";
+				}
+				else {
+					msgFrom = msgFrom = conversation.latest_message.from_field.address;
+
+				}
+				$("#from-text").text(msgFrom);
+
+
+
+
+
+
+
 			}
 			function createTask() {
 				return "Create a task (function not defined)";
@@ -205,8 +244,24 @@
 			function getMsgCount() {
 				return messageCount;
 			}
-			function getTo(){
-				return msgTo;
+			function getTo(conversation){
+				
+				
+
+
+				if(conversation.messages.length == 0){
+					msgTo = "[empty]";
+				}
+				else {
+					msgTo = conversation.latest_message.to_fields[0].address;
+
+				}
+				$("#to-text").text(msgTo);
+
+
+
+
+
 			}
 			function showResults() {
 
