@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.1</span>
+			<span class="button-link column padding" id="reload-button">Version 58.2</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -203,7 +203,7 @@
 				{
 					labelsArray.shift();
 				}
-				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+				
 			}
 			function getReplyTo(conversation) {
 	
@@ -269,7 +269,8 @@
 				$("#msgcount-text").text(messageCount);
 				$("#to-text").text(msgTo);
 				$("#replyto-text").text(msgFrom);
-				$("#cSubject-text").text(convoSubject);                                                                                                                                                                                                                                                   
+				$("#cSubject-text").text(convoSubject);
+				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
 			}
 			//======== button to test that function works ========
 			$("#get-subject").click(function () { 
