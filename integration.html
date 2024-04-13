@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 58.2</span>
+			<span class="button-link column padding" id="reload-button">Version 58.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,11 +137,10 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0];
+					update();
 					assignDraft(currentConvo);
 					getSubject(currentConvo);
 					getCSubject(currentConvo);
-					getReplyTo(currentConvo);
-					getTo(currentConvo);
 					getMsgCount(currentConvo);
 					getLabels(currentConvo);
 					showResults();
@@ -263,6 +262,10 @@
 
 
 
+			}
+			function update(){
+				getReplyTo(currentConvo);
+				getTo(currentConvo);
 			}
 			function showResults() {
 				$("#subject-text").text(messageSubject);
