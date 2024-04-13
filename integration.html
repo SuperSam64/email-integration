@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 57.8</span>
+			<span class="button-link column padding" id="reload-button">Version 57.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -136,21 +136,14 @@
 			Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
-					currentConvo = conversations[0]; // keep this here so it can be referred to in other functions
+					currentConvo = conversations[0];
 					assignDraft(currentConvo);
 					getSubject(currentConvo);
-					getCSubject(currentConvo);  // change format to Csubject = getCsubject() make csubjet return value. etc.
+					getCSubject(currentConvo);
 					getReplyTo(currentConvo);
 					getTo(currentConvo);
 					getMsgCount(currentConvo);
 					getLabels(currentConvo);
-
-					$("#to-text").text(msgTo);
-					$("#msgcount-text").text(messageCount);
-					$("#replyto-text").text(msgFrom);
-					$("#labels-text").text(labelsArray)
-					$("#subject-text").text(messageSubject);
-					$("#cSubject-text").text(convoSubject);
 				})
 			})
 			function getUser() {
@@ -166,16 +159,34 @@
 					messageSubject = "[empty]"
 				}
 				else {
-					messageSubject = conversation.latest_messagecurrentMessage.subject;
+					currentMessage = conversation.latest_message;
+					messageSubject = currentMessage.subject;
 				}
+				$("#subject-text").text(messageSubject);
 			}
 			function getCSubject(conversation){
+
+				
+
+
+
 				if(conversation.messages.length == 0){
 					convoSubject = "[empty]";
 				}
 				else {
 					convoSubject = conversation.subject;
+
 				}
+				$("#cSubject-text").text(convoSubject);
+
+
+
+		
+
+
+
+
+
 			}
 			function getLabels(conversation) {				
 				labelsArray = ["No labels"]
@@ -191,36 +202,65 @@
 				{
 					labelsArray.shift();
 				}
-				; // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
+				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
 			function getReplyTo(conversation) {
+	
+				
 				if(conversation.messages.length == 0){
 					msgFrom = "[empty]";
 				}
 				else {
 					msgFrom = conversation.latest_message.from_field.address;
+
 				}
+				$("#replyto-text").text(msgFrom);
+
+
+
+
+
+
+
 			}
 			function createTask() {
 				return "Create a task (function not defined)";
 			}
 			function getMsgCount(conversation) {
+				
+				
+
 				if(conversation.messages.length == 0){
 					messageCount = 0;
 				}
 				else {
 					messageCount = conversation.messages_count;
+
 				}
+				$("#msgcount-text").text(messageCount);
+
+
+
+
+
 			}
 			function getTo(conversation){
+				
+				
+
+
 				if(conversation.messages.length == 0){
 					msgTo = "[empty]";
 				}
 				else {
 					msgTo = conversation.latest_message.to_fields[0].address;
+
 				}
-			}
-			function update(input) {
+				$("#to-text").text(msgTo);
+
+
+
+
 
 			}
 			function showResults() {
