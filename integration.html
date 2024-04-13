@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 56.2</span>
+			<span class="button-link column padding" id="reload-button">Version 56.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -137,7 +137,7 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft
 					currentConvo = conversations[0];
-					if(currentConvo.messages.length == 0){    ////////
+					/*if(currentConvo.messages.length == 0){    ////////
 						currentMessage = "[empty]";
 						messageCount = 0;
 						msgFrom = "[empty]";
@@ -171,7 +171,7 @@
 							labelsArray.shift();
 						}
 						$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
-					} ////////
+					} //////// */
 				})
 			})
 			function getUser() {
