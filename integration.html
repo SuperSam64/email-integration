@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 62.2</span>
+			<span class="button-link column padding" id="reload-button">Version 62.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -30,7 +30,11 @@
 				empty labels: Archive, Sent, Assigned, Unasigned Closed
 				make monday form link with order number
 				make monday search with order number
-				differentiate between number of SENT messages and number of RECEIVED messages (>1 would produce "thank you for your reply"), see whether the first message was sent/received, last messages as well
+				differentiate between number of SENT messages and number of RECEIVED messages (>1 would produce "thank you
+					for your reply"), see whether the first message was sent/received, last messages as well
+				if at least 1 message is from @filtersfast.com and to != @filtersfast.com (sent to cust by FF) and the most
+					recent message is the inverse (sent to FF by cust), thank you for your reply. also, account messages 
+					sent from other inboxes, which will appear as though they were received from customers.
 		-->
 		<div class="column-vertical margin section">
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
@@ -249,9 +253,13 @@
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
 				
-				var formField1 = Missive.formField({"type":"text","data":"this is a bunch of text"})
-				var myForm = {
-					"name": "A form"
+				const formField1 = {
+					type: "text",
+					value: "This is some text"
+				}
+				const myForm = {
+					name: "A form",
+					fields: [formField1]
 				}
 				Missive.openForm(myForm);
 			});						
