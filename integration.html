@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.5</span>
+			<span class="button-link column padding" id="reload-button">Version 59.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -35,7 +35,7 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-subject">Get M Subject</span></td>
+					<td><span class="button column padding" id="get-subject">Get Msg Subject</span></td>
 					<td><span class="columnn" id="subject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
@@ -44,8 +44,24 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-cSubject">Get C Subject</span></td>
+					<td><span class="button column padding" id="get-cSubject">Get Convo Subject</span></td>
 					<td><span class="columnn" id="cSubject-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="column-vertical margin section">
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-to">Get To</span></td>
+					<td><span class="columnn" id="to-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="column-vertical margin section">
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-replyto">Get From</span></td>
+					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -60,22 +76,6 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-replyto">Get Reply Email</span></td>
-					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="create-task">Create a task</span></td>
-					<td><span class="columnn" id="task-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
 					<td><span class="button column padding" id="get-msgcount">Get Msg Count</span></td>
 					<td><span class="columnn" id="msgcount-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
@@ -84,8 +84,8 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-to">Get To</span></td>
-					<td><span class="columnn" id="to-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="create-task">Create a task</span></td>
+					<td><span class="columnn" id="task-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -144,11 +144,6 @@
 			function getUser() {
 				return currentUser;
 			}
-			function assignDraft(conversation) {
-				if(conversation.messages.length == 0 && conversation.assignees.length == 0){
-					Missive.assign(currentUser.id);
-				}
-			}
 			function getSubject(conversation){
 				if(conversation.messages.length == 0){
 					return "[empty]"
@@ -163,6 +158,22 @@
 				}
 				else {
 					return conversation.subject;
+				}
+			}
+			function getTo(conversation){
+					if(conversation.messages.length == 0){
+					return "[empty]";
+				}
+				else {
+					return conversation.latest_message.to_fields[0].address;
+				}
+			}
+			function getReplyTo(conversation) {
+				if(conversation.messages.length == 0){
+					return "[empty]";
+				}
+				else {
+					return conversation.latest_message.from_field.address;
 				}
 			}
 			function getLabels(conversation) {				
@@ -181,17 +192,6 @@
 				}
 				return labels;
 			}
-			function getReplyTo(conversation) {
-				if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					return conversation.latest_message.from_field.address;
-				}
-			}
-			function createTask() {
-				return "Create a task (function not defined)";
-			}
 			function getMsgCount(conversation) {
 				if(conversation.messages.length == 0){
 					return 0;
@@ -200,22 +200,22 @@
 					return conversation.messages_count;
 				}
 			}
-			function getTo(conversation){
-					if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					return conversation.latest_message.to_fields[0].address;
+			function createTask() {
+				return "Create a task (function not defined)";
+			}
+			function assignDraft(conversation) {
+				if(conversation.messages.length == 0 && conversation.assignees.length == 0){
+					Missive.assign(currentUser.id);
 				}
 			}
 			function update(input){
-				msgFrom = getReplyTo(input);
-				msgTo = getTo(input);
-				assignDraft(input);
 				messageSubject = getSubject(input);
 				convoSubject = getCSubject(input);
-				messageCount = getMsgCount(input);
-				labelsArray = getLabels(input);
+				msgTo = getTo(input);
+				msgFrom = getReplyTo(input);
+				labelsArray = getLabels(input);				
+				messageCount = getMsgCount(input);				
+				assignDraft(input);
 			}
 			function showResults() {
 				$("#subject-text").text(messageSubject);
