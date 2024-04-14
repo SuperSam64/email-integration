@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 62.1</span>
+			<span class="button-link column padding" id="reload-button">Version 62.2</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -250,7 +250,10 @@
 			$("#get-preview").click(function () {
 				
 				var formField1 = Missive.formField({"type":"text","data":"this is a bunch of text"})
-				Missive.openForm({"name": "SOMEFORM", "fields": {"type":"text","name":"afield","data":"this is a field!"}});
+				var myForm = {
+					"name": "A form"
+				}
+				Missive.openForm(myForm);
 			});						
 			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
