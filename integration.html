@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.9</span>
+			<span class="button-link column padding" id="reload-button">Version 60</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -258,8 +258,7 @@
 				$("#messageCount-text").text(value);
 			});
 			$("#create-task").click(function () { 
-				var value = task();
-				$("#task-text").text(value);
+				task("This is a task");
 			});
 			// ================ resets ================
 			$("#messageSubject-text").click(function () { 
@@ -293,7 +292,7 @@
 				$("#messageCount-text").text("[RESULT]");
 			});
 			$("#task-text").click(function () { 
-				task("This is a task");
+				$("#task-text").text("[RESULT]");
 			});
 			// ========================================
 			$("#reload-button").click(function () { 
