@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 60.5</span>
+			<span class="button-link column padding" id="reload-button">Version 60.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -159,8 +159,12 @@
 					return "[empty]"
 				}
 				else {
-					bodyText = $($.parseHTML(conversation.latest_message.body)).text();
-					return bodyText;
+					x = conversation.latest_message.body
+					y = $(x).replace("<br>","[[new-line]]")
+					bodyText = $($.parseHTML(x)).text();
+					z = $(bodyText).replace("[[new-line]]","<br>")
+					abc = z.html();
+					return abc;
 				}
 			}
 			function getMessageSubject(conversation){
