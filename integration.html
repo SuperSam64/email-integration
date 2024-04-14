@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 61.9</span>
+			<span class="button-link column padding" id="reload-button">Version 62</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -248,7 +248,9 @@
 			}
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
-				Missive.openForm({"name": "SOMEFORM"})
+				
+				var formField1 = Missive.formField({"type":"text","data":"this is a bunch of text"})
+				Missive.openForm({"name": "SOMEFORM", "fields": ["formField1"]});
 			});						
 			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
