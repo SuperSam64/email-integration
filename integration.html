@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 62.3</span>
+			<span class="button-link column padding" id="reload-button">Version 62.4</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -35,6 +35,7 @@
 				if at least 1 message is from @filtersfast.com and to != @filtersfast.com (sent to cust by FF) and the most
 					recent message is the inverse (sent to FF by cust), thank you for your reply. also, account messages 
 					sent from other inboxes, which will appear as though they were received from customers.
+				unlabel chatbot request after sending
 		-->
 		<div class="column-vertical margin section">
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
@@ -254,8 +255,8 @@
 			$("#get-preview").click(function () {
 				
 				const formField1 = {
-					type: "text",
-					value: "This is some text"
+					type: "html",
+					value: "<div>This is some text</div>"
 				}
 				const myForm = {
 					name: "A form",
