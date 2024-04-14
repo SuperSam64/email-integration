@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 61.3</span>
+			<span class="button-link column padding" id="reload-button">Version 61.4</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -161,9 +161,9 @@
 				else {
 					
 					var bodyText1 = $($.parseHTML("<div>" + conversation.latest_message.body + "</div>")).text();
-					var bodyText2 = conversation.latest_message.preview;
+					var bodyText2 = conversation.latest_message.body;
 					var combo = bodyText1.replace(bodyText2,("[[beginning of message]] " + bodyText2))
-					return bodyText1;
+					return bodyText2;
 				}
 			}
 			function getMessageSubject(conversation){
