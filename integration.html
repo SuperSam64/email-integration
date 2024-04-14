@@ -10,7 +10,7 @@
 		<div class="column-vertical padding margin section" style="border-radius:4px;background-color: rgba(125, 127, 125, 0.1)">
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
 			  <tr>
-				<td rowspan="2"><img id="avatar" style="border:3px solid var(--missive-text-color-a);display:block; height:54px; border-radius:32px" src="profileplaceholder.png"></td>
+				<td rowspan="2"><span id="avatar" style="border:3px solid var(--missive-text-color-a);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span></td>
 				<td><span id="name" style="margin-left:8px" class="text-xlarge text-600"></span></td>
 			  </tr>
 			  <tr>
@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 60</span>
+			<span class="button-link column padding" id="reload-button">Version 60.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -129,7 +129,7 @@
 						}
 					})
 					var fullName = currentUser.first_name + " " + currentUser.last_name;
-					$("#avatar").attr("src",currentUser.avatar_url);
+					$("#avatar").css("background-image",currentUser.avatar_url);
 					$("#name").text(fullName);
 					$("#layout").text(title);
 				})				
