@@ -20,12 +20,13 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.8</span>
+			<span class="button-link column padding" id="reload-button">Version 59.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
 			from_field.customer_id will this work???? 
 			things to test:
+				crop icons to square
 				empty labels: Archive, Sent, Assigned, Unasigned Closed
 				make monday form link with order number
 				make monday search with order number
@@ -200,8 +201,8 @@
 					return conversation.messages_count;
 				}
 			}
-			function createTask() {
-				return "Create a task (function not defined)";
+			function task(text) {
+				Missive.createTask(text,false);
 			}
 			function assignDraft(conversation) {
 				if(conversation.messages.length == 0 && conversation.assignees.length == 0){
@@ -257,7 +258,7 @@
 				$("#messageCount-text").text(value);
 			});
 			$("#create-task").click(function () { 
-				var value = createTask();
+				var value = task();
 				$("#task-text").text(value);
 			});
 			// ================ resets ================
@@ -292,8 +293,7 @@
 				$("#messageCount-text").text("[RESULT]");
 			});
 			$("#task-text").click(function () { 
-				var value = createTask();
-				$("#task-text").text("[RESULT]");
+				task("This is a task");
 			});
 			// ========================================
 			$("#reload-button").click(function () { 
