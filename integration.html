@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 63.4</span>
+			<span class="button-link column padding" id="reload-button">Version 63.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -255,7 +255,11 @@
 			$("#get-preview").click(function () {
 				
 				var myField = {
-					type: "textarea"
+					type: "textarea",
+					data: {
+						rows:4,
+						focus:false
+					}
 				}
 
 				const myForm = {
