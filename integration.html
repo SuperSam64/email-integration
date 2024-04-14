@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 61.7</span>
+			<span class="button-link column padding" id="reload-button">Version 61.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -247,6 +247,9 @@
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
 			}
 			//======== button to test that function works ========
+			$("#get-preview").click(function () {
+				Missive.openForm.name("A form!")
+			});						
 			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
 				var value = getMessageSubject("anything-goes-here");
@@ -281,9 +284,6 @@
 				task("This is a task");
 			});
 			// ================ resets ================
-			$("#preview-text").click(function () {
-				Missive.alert("Message","Here is some text","This is a note");
-			});			
 			$("#messageSubject-text").click(function () { 
 				//======== run the function, optionally with parameters ========
 				var value = getMessageSubject("anything-goes-here");
