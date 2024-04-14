@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 62.8</span>
+			<span class="button-link column padding" id="reload-button">Version 62.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -254,22 +254,16 @@
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
 				var myField1 = {
-					type: "html",
+					type: "takearea",
 					data: {
-						value: "<div>This is some text</div>",
-						name: "something",
-						placeholder: "type here bro",
-						required: false
+						rows: 4,
+						focus: false
 					}
 				}
 				const myForm = {
 					name: "A form",
 					fields: {
-						type: textarea,
-						data: {
-							rows: 4,
-							focus: false
-						}					
+						myField1					
 					}
 				}
 				Missive.openForm(myForm);
