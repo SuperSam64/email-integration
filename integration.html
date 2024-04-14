@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 62.5</span>
+			<span class="button-link column padding" id="reload-button">Version 62.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -253,16 +253,17 @@
 			}
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
-				
-				const formField1 = {
-					type: "html",
-					data: {
-						value: "<div>This is some text</div>"
-					}
-				}
 				const myForm = {
 					name: "A form",
-					fields: [formField1]
+					fields: {
+						type: "html",
+						data: {
+							value: "<div>This is some text</div>",
+							name: "something",
+							placeholder: "type here bro",
+							required: false
+						}
+					}
 				}
 				Missive.openForm(myForm);
 			});						
