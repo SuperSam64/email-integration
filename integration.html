@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 64.2</span>
+			<span class="button-link column padding" id="reload-button">Version 64.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -251,18 +251,24 @@
 				$("#conversationSubject-text").text(convoSubject);
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
 			}
+			function extractContent(s) {
+				var span = document.createElement('span');
+				span.innerHTML = s;
+				return span.textContent || span.innerText;
+			};
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
 				
 				
-
-				const myForm = {
+				extractContent(currentConvo.latest_message.body)
+				/*const myForm = {
 					
 						name: "A form",
 						comments: [{content: "something"}]
+				
 							
 				}
-				Missive.openForm(myForm);
+				Missive.openForm(myForm);*/
 			});						
 			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
