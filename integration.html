@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 60.2</span>
+			<span class="button-link column padding" id="reload-button">Version 60.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -32,6 +32,15 @@
 				make monday search with order number
 				differentiate between number of SENT messages and number of RECEIVED messages (>1 would produce "thank you for your reply"), see whether the first message was sent/received, last messages as well
 		-->
+		<div class="column-vertical margin section">
+			<!-- individual table for row separates left from right, while also still allowing for "section" -->
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-preview">Get Msg Preview</span></td>
+					<td><span class="columnn" id="preview-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
 		<div class="column-vertical margin section">
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
@@ -99,8 +108,8 @@
 			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
 			var profileType = "CCA"; // CCA, CRM, master
 			var title = "Customer Care Advocate" // default, unless  otherwise specified
-			var currentnMessage;
 			var currentConvo;
+			var messagePreview;
 			var messageSubject;
 			var convoSubject;
 			var msgTo;
@@ -144,6 +153,14 @@
 			})
 			function getUser() {
 				return currentUser;
+			}
+			function getPreview(conversation){
+				if(conversation.messages.length == 0){
+					return "[empty]"
+				}
+				else {
+					return conversation.latest_message.preview;
+				}
 			}
 			function getMessageSubject(conversation){
 				if(conversation.messages.length == 0){
@@ -210,6 +227,7 @@
 				}
 			}
 			function update(input){
+				messagePreview = getPreview(input);
 				messageSubject = getMessageSubject(input);
 				convoSubject = getConversationSubject(input);
 				msgTo = getTo(input);
@@ -219,6 +237,7 @@
 				assignDraft(input);
 			}
 			function showResults() {
+				$("#preview-text").text(messagePreview);
 				$("#messageSubject-text").text(messageSubject);
 				$("#messageCount-text").text(messageCount);
 				$("#to-text").text(msgTo);
