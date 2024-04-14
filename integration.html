@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.7</span>
+			<span class="button-link column padding" id="reload-button">Version 59.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -102,11 +102,11 @@
 			var currentConvo;
 			var messageSubject;
 			var convoSubject;
-			var convoLink;
-			var messageCount;
 			var msgTo;
 			var msgFrom;
 			var labelsArray = [];
+			var messageCount;
+			var convoLink;			
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -238,27 +238,27 @@
 				var value = getConversationSubject();
 				$("#conversationSubject-text").text(value);
 			});
-			$("#get-labels").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getLabels();
-				$("#labels-text").text(value);
+			$("#get-to").click(function () { 
+				var value = getTo();
+				$("#to-text").text(value);
 			});
 			$("#get-from").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getFrom();
 				$("#from-text").text(value);
 			});
-			$("#create-task").click(function () { 
-				var value = createTask();
-				$("#task-text").text(value);
+			$("#get-labels").click(function () { 
+				//======== run the function, no parameters ========
+				var value = getLabels();
+				$("#labels-text").text(value);
 			});
 			$("#get-messageCount").click(function () { 
 				var value = getMessageCount();
 				$("#messageCount-text").text(value);
 			});
-			$("#get-to").click(function () { 
-				var value = getTo();
-				$("#to-text").text(value);
+			$("#create-task").click(function () { 
+				var value = createTask();
+				$("#task-text").text(value);
 			});
 			// ================ resets ================
 			$("#messageSubject-text").click(function () { 
@@ -273,27 +273,27 @@
 				var value = getConversationSubject();
 				$("#conversationSubject-text").text("[RESULT]");
 			});
-			$("#labels-text").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getLabels();
-				$("#labels-text").text("[RESULT]");
+			$("#to-text").click(function () { 
+				var value = getTo();
+				$("#to-text").text("[RESULT]");
 			});
 			$("#from-text").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getFrom();
 				$("#from-text").text("[RESULT]");
 			});
-			$("#task-text").click(function () { 
-				var value = createTask();
-				$("#task-text").text("[RESULT]");
+			$("#labels-text").click(function () { 
+				//======== run the function, no parameters ========
+				var value = getLabels();
+				$("#labels-text").text("[RESULT]");
 			});
 			$("#messageCount-text").click(function () { 
 				var value = getMessageCount();
 				$("#messageCount-text").text("[RESULT]");
 			});
-			$("#to-text").click(function () { 
-				var value = getTo();
-				$("#to-text").text("[RESULT]");
+			$("#task-text").click(function () { 
+				var value = createTask();
+				$("#task-text").text("[RESULT]");
 			});
 			// ========================================
 			$("#reload-button").click(function () { 
