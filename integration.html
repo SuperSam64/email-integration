@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 59.6</span>
+			<span class="button-link column padding" id="reload-button">Version 59.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -35,8 +35,8 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-subject">Get Msg Subject</span></td>
-					<td><span class="columnn" id="subject-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-messageSubject">Get Msg Subject</span></td>
+					<td><span class="columnn" id="messageSubject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -44,8 +44,8 @@
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-cSubject">Get Convo Subject</span></td>
-					<td><span class="columnn" id="cSubject-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-conversationSubject">Get Convo Subject</span></td>
+					<td><span class="columnn" id="conversationSubject-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -60,8 +60,8 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-replyto">Get From</span></td>
-					<td><span class="columnn" id="replyto-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-from">Get From</span></td>
+					<td><span class="columnn" id="from-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -76,8 +76,8 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-msgcount">Get Msg Count</span></td>
-					<td><span class="columnn" id="msgcount-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="button column padding" id="get-messageCount">Get Msg Count</span></td>
+					<td><span class="columnn" id="messageCount-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -144,7 +144,7 @@
 			function getUser() {
 				return currentUser;
 			}
-			function getSubject(conversation){
+			function getMessageSubject(conversation){
 				if(conversation.messages.length == 0){
 					return "[empty]"
 				}
@@ -152,7 +152,7 @@
 					return conversation.latest_message.subject;
 				}
 			}
-			function getCSubject(conversation){
+			function getConversationSubject(conversation){
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
@@ -168,7 +168,7 @@
 					return conversation.latest_message.to_fields[0].address;
 				}
 			}
-			function getReplyTo(conversation) {
+			function getFrom(conversation) {
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
@@ -192,7 +192,7 @@
 				}
 				return labels;
 			}
-			function getMsgCount(conversation) {
+			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
 					return 0;
 				}
@@ -209,87 +209,87 @@
 				}
 			}
 			function update(input){
-				messageSubject = getSubject(input);
-				convoSubject = getCSubject(input);
+				messageSubject = getMessageSubject(input);
+				convoSubject = getConversationSubject(input);
 				msgTo = getTo(input);
-				msgFrom = getReplyTo(input);
+				msgFrom = getFrom(input);
 				labelsArray = getLabels(input);				
-				messageCount = getMsgCount(input);				
+				messageCount = getMessageCount(input);				
 				assignDraft(input);
 			}
 			function showResults() {
-				$("#subject-text").text(messageSubject);
-				$("#msgcount-text").text(messageCount);
+				$("#messageSubject-text").text(messageSubject);
+				$("#messageCount-text").text(messageCount);
 				$("#to-text").text(msgTo);
-				$("#replyto-text").text(msgFrom);
-				$("#cSubject-text").text(convoSubject);
+				$("#from-text").text(msgFrom);
+				$("#conversationSubject-text").text(convoSubject);
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
 			}
 			//======== button to test that function works ========
-			$("#get-subject").click(function () { 
+			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
-				var value = getSubject("anything-goes-here");
+				var value = getMessageSubject("anything-goes-here");
 				//======== write the value to the text next to the button to test that it works ========
-				$("#subject-text").text(value);
+				$("#messageSubject-text").text(value);
 			});
 			//======== button to test that funciton works ========
-			$("#get-cSubject").click(function () { 
+			$("#get-conversationSubject").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getCSubject();
-				$("#cSubject-text").text(value);
+				var value = getConversationSubject();
+				$("#conversationSubject-text").text(value);
 			});
 			$("#get-labels").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getLabels();
 				$("#labels-text").text(value);
 			});
-			$("#get-replyto").click(function () { 
+			$("#get-from").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getReplyTo();
-				$("#replyto-text").text(value);
+				var value = getFrom();
+				$("#from-text").text(value);
 			});
 			$("#create-task").click(function () { 
 				var value = createTask();
 				$("#task-text").text(value);
 			});
-			$("#get-msgcount").click(function () { 
-				var value = getMsgCount();
-				$("#msgcount-text").text(value);
+			$("#get-messageCount").click(function () { 
+				var value = getMessageCount();
+				$("#messageCount-text").text(value);
 			});
 			$("#get-to").click(function () { 
 				var value = getTo();
 				$("#to-text").text(value);
 			});
 			// ================ resets ================
-			$("#subject-text").click(function () { 
+			$("#messageSubject-text").click(function () { 
 				//======== run the function, optionally with parameters ========
-				var value = getSubject("anything-goes-here");
+				var value = getMessageSubject("anything-goes-here");
 				//======== write the value to the text next to the button to test that it works ========
-				$("#subject-text").text("[RESULT]");
+				$("#messageSubject-text").text("[RESULT]");
 			});
 			//======== button to test that funciton works ========
-			$("#cSubject-text").click(function () { 
+			$("#conversationSubject-text").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getCSubject();
-				$("#cSubject-text").text("[RESULT]");
+				var value = getConversationSubject();
+				$("#conversationSubject-text").text("[RESULT]");
 			});
 			$("#labels-text").click(function () { 
 				//======== run the function, no parameters ========
 				var value = getLabels();
 				$("#labels-text").text("[RESULT]");
 			});
-			$("#replyto-text").click(function () { 
+			$("#from-text").click(function () { 
 				//======== run the function, no parameters ========
-				var value = getReplyTo();
-				$("#replyto-text").text("[RESULT]");
+				var value = getFrom();
+				$("#from-text").text("[RESULT]");
 			});
 			$("#task-text").click(function () { 
 				var value = createTask();
 				$("#task-text").text("[RESULT]");
 			});
-			$("#msgcount-text").click(function () { 
-				var value = getMsgCount();
-				$("#msgcount-text").text("[RESULT]");
+			$("#messageCount-text").click(function () { 
+				var value = getMessageCount();
+				$("#messageCount-text").text("[RESULT]");
 			});
 			$("#to-text").click(function () { 
 				var value = getTo();
