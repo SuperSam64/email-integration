@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.1</span>
+			<span class="button-link column padding" id="reload-button">Version 65.2</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -198,7 +198,7 @@
 				}
 				else {
 					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com"){
-						return conversation.latest_message.body.split(">")[0];
+						return conversation.latest_message.body.split(">")[4];
 					}
 					else{
 						return conversation.latest_message.from_field.address;
@@ -208,7 +208,7 @@
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-					var prefix = conversation.labels[i].id.split("-")[4];
+					var prefix = conversation.labels[i].id.split("-")[0];
 					if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
 					{
 						labels.push(conversation.labels[i].name) // this can be .name or .id
