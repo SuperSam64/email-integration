@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.5</span>
+			<span class="button-link column padding" id="reload-button">Version 65.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -101,6 +101,14 @@
 				<tr>
 					<td><span class="button column padding" id="create-task">Create a task</span></td>
 					<td><span class="columnn" id="task-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="column-vertical margin section">
+			<table>
+				<tr>
+					<td><span class="button column padding" id="get-customerID">Create a task</span></td>
+					<td><span class="columnn" id="customerID-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -226,6 +234,28 @@
 					return 0;
 				}
 				else {
+					return conversation.messages_count;
+				}
+			}
+			function getCustomerID(conversation) {
+				if(conversation.messages.length == 0){
+					return "[empty]";
+				}
+				else {
+					
+					
+					
+					
+					formatContact({
+						address: "test@filtersfast.com",
+						name: "John Doe"
+					})
+					
+					
+					
+					
+					
+					
 					return conversation.messages_count;
 				}
 			}
