@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.4</span>
+			<span class="button-link column padding" id="reload-button">Version 65.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -198,7 +198,7 @@
 				}
 				else {
 					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com"){
-						return conversation.latest_message.body.split("</a>")[0];
+						return (conversation.latest_message.body.split("</a>")[0]).split("<")[1];
 					}
 					else{
 						return conversation.latest_message.from_field.address;
