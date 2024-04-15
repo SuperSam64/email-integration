@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.6</span>
+			<span class="button-link column padding" id="reload-button">Version 65.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -107,7 +107,7 @@
 		<div class="column-vertical margin section">
 			<table>
 				<tr>
-					<td><span class="button column padding" id="get-customerID">Create a task</span></td>
+					<td><span class="button column padding" id="get-customerID">Get cust ID</span></td>
 					<td><span class="columnn" id="customerID-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
@@ -338,6 +338,10 @@
 			$("#create-task").click(function () { 
 				task("This is a task");
 			});
+			$("#get-customerID").click(function () { 
+				var value = getCustomerID();
+				$("#customerID-text").text("Done");
+			});
 			// ================ resets ================
 			$("#messageSubject-text").click(function () { 
 				//======== run the function, optionally with parameters ========
@@ -371,6 +375,9 @@
 			});
 			$("#task-text").click(function () { 
 				$("#task-text").text("[RESULT]");
+			});
+			$("#customerID-text").click(function () { 
+				$("#customerID-text").text("[RESULT]");
 			});
 			// ========================================
 			$("#reload-button").click(function () { 
