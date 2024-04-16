@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 66</span>
+			<span class="button-link column padding" id="reload-button">Version 66.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -129,7 +129,8 @@
 			var msgFrom;
 			var labelsArray = [];
 			var messageCount;
-			var convoLink;			
+			var convoLink;
+			var sendReceive;	
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -215,11 +216,17 @@
 			}
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
+				sendReceive = ""
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
 					var prefix = conversation.labels[i].id.split("-")[0];
-					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")// && prefix != "sent")
+					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
 					{
-						labels.push(conversation.labels[i].name) // this can be .name or .id
+						if(prefix == "sent"){
+							sendReceive = conversation.labels[i].name;
+						}
+						else{
+							labels.push(conversation.labels[i].name) // this can be .name or .id
+						}
 					}
 					var joinedArray = labels.join(" | ");
 				}
@@ -227,7 +234,11 @@
 				{
 					labels.shift();
 				}
-				return labels;
+				if(sendReceive != "Sent")
+				{
+					sendReceive = "Received"
+				}
+				return labels +  " | " + sendReceive;
 			}
 			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
