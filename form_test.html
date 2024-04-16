@@ -2,8 +2,16 @@
 	<head>
 		<title>Form</title>	
 	</head>
-	<body style="margin:0px;padding:0px">
+	<body style="margin:0px;padding:0px" onload="myFunction()">
+        <div id="params">some text</div>
         <iframe src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="width:99%;height:99%;margin:0 auto;padding:0px"></iframe>
+    <script>
+        function myFunction(){
+            var URLstring = window.location.href.split("?")
+            var parameters = URLstring[1].split("&")
+            $("#params").text(parameters)
+        }
+    </script>
     </body>
 </html>
     
