@@ -3,7 +3,7 @@
 		<title>Form</title>	
 	</head>
 	<body style="margin:0px;padding:0px">
-        <div id="params">some text 13</div>
+        <div id="params">some text 14</div>
         <iframe src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="width:99%;height:99%;margin:0 auto;padding:0px"></iframe>
     <script>
         var name;
@@ -21,8 +21,9 @@
             var parameters = URLstring[1]
             var paramSplit = parameters.split("&")
             var firstparam = paramSplit[1];
-            alert(firstparam)
-            $("#params").text(firstparam)
+            
+            $("#params").text(firstparam);
+            alert(firstparam);
             
         }
         window.onload = myFunction();
