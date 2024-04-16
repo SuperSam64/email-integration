@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 66.6</span>
+			<span class="button-link column padding" id="reload-button">Version 66.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -217,8 +217,9 @@
 			function getLabels(conversation){				
 				var labels = ["No labels"]
 				replied = false;
+				var counting
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-					var prefix = conversation.labels[i].id.split("-")[0];
+					/*var prefix = conversation.labels[i].id.split("-")[0];
 					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
 						if(prefix == "sent"){
 							replied = true;
@@ -226,12 +227,13 @@
 						else{
 							labels.push(conversation.labels[i].name) // this can be .name or .id
 						}
-					}
+					}*/
+					counting = i
 				}
-				if(labels.length > 1){
+				/*if(labels.length > 1){
 					labels.shift();
-				}
-				return labels +  " | " + replied;
+				}*/
+				return counting //labels +  " | " + replied;
 			}
 			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
