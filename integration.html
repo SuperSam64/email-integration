@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 67.3</span>
+			<span class="button-link column padding" id="reload-button">Version 67.4</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -161,6 +161,7 @@
 				Missive.fetchConversations(ids).then((conversations) => {
 					// If no messages have been sent or received in the current conversation, it is a new draft				
 					currentConvo = conversations[0];
+					replied = false;
 					update(currentConvo);
 					showResults();
 				})
@@ -217,28 +218,21 @@
 			function getLabels(conversation){				
 				var labels = ["No labels"]
 				replied = false;
-				var counting
-				if(!conversation.latest_message.to_fields){
-					counting = "ERROR";
-				}
-				else {
-					for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-						/*var prefix = conversation.labels[i].id.split("-")[0];
-						if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
-							if(prefix == "sent"){
-								replied = true;
-							}
-							else{
-								labels.push(conversation.labels[i].name) // this can be .name or .id
-							}
-						}*/
-						counting = i
+				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+					var prefix = conversation.labels[i].id.split("-")[0];
+					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
+						if(prefix == "sent"){
+							replied = true;
+						}
+						else{
+							labels.push(conversation.labels[i].name) // this can be .name or .id
+						}
 					}
 				}
-				/*if(labels.length > 1){
+				if(labels.length > 1){
 					labels.shift();
-				}*/
-				return counting //labels +  " | " + replied;
+				}
+				return labels +  " | " + replied;
 			}
 			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
