@@ -1,6 +1,10 @@
 <html>
 	<head>
-		<title>Form</title>	
+		<title>Form</title>
+        <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
+		<link href="profile-visibility.css" rel="stylesheet">
+		<script src="https://integrations.missiveapp.com/missive.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 	</head>
 	<body id="mainColor" style="margin:0px;padding:0px;background-image:url('logo_white.png');background-repeat: no-repeat;background-attachment: fixed;background-size:50% auto;background-position: center;">
         <iframe id="params" src="https://forms.monday.com/forms/embed/2b5ef96ccaa54f2644e1b1a70401dc27?r=use1" style="border:none;width:100%;height:100%;display:block;margin:auto;padding:0px"></iframe>
@@ -31,8 +35,11 @@
             yourElement.setAttribute('src', extendedURL);
             //window.location.replace("integration.html")
         }
+        function functionToRun(){
+            alert("Hi!");
+        }
         window.onload = myFunction();
-        $("form-submit-success-msg").onload = alert("here it is!");
+        $("#params").contents("#button").click(functionToRun);
     </script>
     </body>
 </html>
