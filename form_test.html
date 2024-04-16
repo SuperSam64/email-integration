@@ -6,7 +6,17 @@
         <div id="params">some text</div>
         <iframe src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="width:99%;height:99%;margin:0 auto;padding:0px"></iframe>
     <script>
+        var name;
+        var ordernum;
+        var custID;
+        var phonenum;
+        var reasoncode;
+        var refundReship;
+        var verifyAddress;
+        var itemQty;
+        var comments;
         function myFunction(){
+            alret("hi");
             var URLstring = window.location.href.split("?")
             var parameters = URLstring[1].split("&")
             $("#params").text(parameters)
