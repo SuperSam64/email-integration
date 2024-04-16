@@ -130,6 +130,7 @@
 			var labelsArray = [];
 			var messageCount;
 			var convoLink;
+			var replied; // change this to "replied" with a value of true/false
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -215,13 +216,13 @@
 			}
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
-				var sendReceive;
+				replied = "";
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
 					var prefix = conversation.labels[i].id.split("-")[0];
 					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
 					{
 						if(prefix == "sent"){
-							sendReceive = "Sent";
+							replied = true;
 						}
 						else{
 							labels.push(conversation.labels[i].name) // this can be .name or .id
@@ -233,11 +234,11 @@
 				{
 					labels.shift();
 				}
-				if(sendReceive != "Sent")
+				if(replied != true)
 				{
-					sendReceive = "Received"
+					replied = false;
 				}
-				return labels +  " | " + sendReceive;
+				return labels +  " | " + replied;
 			}
 			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
