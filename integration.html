@@ -214,34 +214,30 @@
 					}
 				}
 			}
-			function getLabels(conversation) {				
+			function getLabels(conversation){				
 				var labels = ["No labels"]
 				replied = "";
-						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-						var prefix = conversation.labels[i].id.split("-")[0];
-						if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
-						{
-							if(prefix == "sent"){
-								replied = true;
-							}
-							else{
-								labels.push(conversation.labels[i].name) // this can be .name or .id
-							}
+				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+					var prefix = conversation.labels[i].id.split("-")[0];
+					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
+						if(prefix == "sent"){
+							replied = true;
 						}
-						else {
-							labels = ["No labels"];
-							replied = false
+						else{
+							labels.push(conversation.labels[i].name) // this can be .name or .id
 						}
-						var joinedArray = labels.join(" | ");
 					}
-					if(labels.length > 1)
-					{
+					var joinedArray = labels.join(" | ");
+					if(labels.length > 1){
 						labels.shift();
 					}
-					if(replied != true)
-					{
+					else {
+						replied = false
+					}
+					if(replied != true){
 						replied = false;
 					}
+				}	
 				return labels +  " | " + replied;
 			}
 			function getMessageCount(conversation) {
