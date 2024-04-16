@@ -3,7 +3,7 @@
 		<title>Form</title>	
 	</head>
 	<body style="margin:0px;padding:0px">
-        <div><a id="params" href="https://www.filtersfast.com">some text 19</a></div>
+        <div><a id="params" href="https://www.filtersfast.com">some text 20</a></div>
         <iframe src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="width:99%;height:99%;margin:0 auto;padding:0px"></iframe>
     <script>
         var name;
@@ -18,12 +18,11 @@
         function myFunction(){
             //alert("hi");
             var URLstring = window.location.href.split("?")
-            var parameters = URLstring[1]
-            var paramSplit = parameters.split("&")
-            var firstparam = paramSplit[1];
+            var parameters = URLstring[1];
             
             var yourElement = document.getElementById('params');
-            yourElement.setAttribute('href', 'https://www.filtersfast.com/1234');
+            var extendedURL = 'https://www.filtersfast.com' + parameters
+            yourElement.setAttribute('href', extendedURL);
             alert(firstparam);
             
         }
