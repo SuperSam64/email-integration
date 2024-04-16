@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 66.2</span>
+			<span class="button-link column padding" id="reload-button">Version 66.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -217,26 +217,32 @@
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
 				replied = "";
-				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-					var prefix = conversation.labels[i].id.split("-")[0];
-					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
-					{
-						if(prefix == "sent"){
-							replied = true;
+				if(conversation.labels.length > 0){
+						for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+						var prefix = conversation.labels[i].id.split("-")[0];
+						if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
+						{
+							if(prefix == "sent"){
+								replied = true;
+							}
+							else{
+								labels.push(conversation.labels[i].name) // this can be .name or .id
+							}
 						}
-						else{
-							labels.push(conversation.labels[i].name) // this can be .name or .id
-						}
+						var joinedArray = labels.join(" | ");
 					}
-					var joinedArray = labels.join(" | ");
+					if(labels.length > 1)
+					{
+						labels.shift();
+					}
+					if(replied != true)
+					{
+						replied = false;
+					}
 				}
-				if(labels.length > 1)
-				{
-					labels.shift();
-				}
-				if(replied != true)
-				{
-					replied = false;
+				else{
+					labels = ["No labels"];
+					replied = false
 				}
 				return labels +  " | " + replied;
 			}
