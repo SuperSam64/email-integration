@@ -2,8 +2,8 @@
 	<head>
 		<title>Form</title>	
 	</head>
-	<body style="margin:0px;padding:0px" onload="myFunction()">
-        <div id="params">some text 11</div>
+	<body style="margin:0px;padding:0px">
+        <div id="params">some text 12</div>
         <iframe src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="width:99%;height:99%;margin:0 auto;padding:0px"></iframe>
     <script>
         var name;
@@ -23,7 +23,9 @@
             var firstparam = paramSplit[1];
             alert(firstparam)
             $("#params").text(firstparam)
+            
         }
+        window.onload ="myFunction()";
     </script>
     </body>
 </html>
