@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 67.4</span>
+			<span class="button-link column padding" id="reload-button">Version 67.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -258,23 +258,25 @@
 				}
 			}
 			function update(input){
-				messagePreview = getPreview(input);
+				/*messagePreview = getPreview(input);
 				messageSubject = getMessageSubject(input);
 				convoSubject = getConversationSubject(input);
 				msgTo = getTo(input);
 				msgFrom = getFrom(input);
 				labelsArray = getLabels(input);				
 				messageCount = getMessageCount(input);				
-				assignDraft(input);
+				assignDraft(input);*/
+				messageSubject = "TESTING"
 			}
 			function showResults() {
-				$("#preview-text").text(messagePreview);
+				/*$("#preview-text").text(messagePreview);
 				$("#messageSubject-text").text(messageSubject);
 				$("#messageCount-text").text(messageCount);
 				$("#to-text").text(msgTo);
 				$("#from-text").text(msgFrom);
 				$("#conversationSubject-text").text(convoSubject);
-				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]                                                                                                                                                                                                                                      
+				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]*/
+				$("#messageSubject-text").text(messageSubject);
 			}
 			function extractContent(s) {
 				var span = document.createElement('span');
