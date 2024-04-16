@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.8</span>
+			<span class="button-link column padding" id="reload-button">Version 65.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -246,17 +246,17 @@
 					
 					
 					
-					formatContact({
+					const userData = {
 						address: "test@filtersfast.com",
 						name: "John Doe"
-					})
+					}
 					
 					
 					
 					
 					
 					
-					return conversation.messages_count;
+					return formatContact(userData);
 				}
 			}
 			function task(text) {
