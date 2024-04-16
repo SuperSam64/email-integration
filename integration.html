@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 67.5</span>
+			<span class="button-link column padding" id="reload-button">Version 67.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -266,7 +266,7 @@
 				labelsArray = getLabels(input);				
 				messageCount = getMessageCount(input);				
 				assignDraft(input);*/
-				messageSubject = "TESTING"
+				labelsArray = "TESTING"
 			}
 			function showResults() {
 				/*$("#preview-text").text(messagePreview);
@@ -276,7 +276,7 @@
 				$("#from-text").text(msgFrom);
 				$("#conversationSubject-text").text(convoSubject);
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]*/
-				$("#messageSubject-text").text(messageSubject);
+				$("#labels-text").text(labelsArray);
 			}
 			function extractContent(s) {
 				var span = document.createElement('span');
