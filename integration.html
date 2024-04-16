@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 67.8</span>
+			<span class="button-link column padding" id="reload-button">Version 67.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -109,6 +109,14 @@
 				<tr>
 					<td><span class="button column padding" id="get-customerID">Get cust ID</span></td>
 					<td><span class="columnn" id="customerID-text" style="word-break: break-all">[RESULT]</span></td>
+				</tr>
+			</table>
+		</div>
+		<div class="column-vertical margin section">
+			<table>
+				<tr>
+					<td><span class="button column padding" id="CCA-form-button">Get cust ID</span></td>
+					<td><span class="columnn" id="CCA-form-text" style="word-break: break-all">[RESULT]</span></td>
 				</tr>
 			</table>
 		</div>
@@ -281,6 +289,9 @@
 				span.innerHTML = s;
 				return span.textContent || span.innerText;
 			};
+			function showCCAform(){
+				window.location.replace("form_test.html")
+			}
 			//======== button to test that function works ========
 			$("#get-preview").click(function () {
 				
@@ -331,6 +342,9 @@
 			$("#get-customerID").click(function () { 
 				var value = getCustomerID(currentConvo);
 				$("#customerID-text").text("Done");
+			});
+			$("#CCA-form-button").click(function () { 
+				showCCAform();
 			});
 			// ================ resets ================
 			$("#messageSubject-text").click(function () { 
