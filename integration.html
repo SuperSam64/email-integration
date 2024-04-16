@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 65.9</span>
+			<span class="button-link column padding" id="reload-button">Version 66</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -217,7 +217,7 @@
 				var labels = ["No labels"]
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
 					var prefix = conversation.labels[i].id.split("-")[0];
-					if(prefix != "sent" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive" && prefix != "closed")
+					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")// && prefix != "sent")
 					{
 						labels.push(conversation.labels[i].name) // this can be .name or .id
 					}
@@ -241,23 +241,8 @@
 				if(conversation.messages.length == 0){
 					return "[empty]";
 				}
-				else {
-					
-					
-					
-					
-					const userData = {
-						address: "test@filtersfast.com",
-						name: "John Doe"
-					}
-					
-					
-					
-					
-					
-					
-					return formatContact(userData);
-				}
+				//else {						
+				//}
 			}
 			function task(text) {
 				Missive.createTask(text,false);
