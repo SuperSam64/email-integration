@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 67.6</span>
+			<span class="button-link column padding" id="reload-button">Version 67.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -266,7 +266,7 @@
 				labelsArray = getLabels(input);				
 				messageCount = getMessageCount(input);				
 				assignDraft(input);*/
-				labelsArray = "TESTING"
+				labelsArray = getLabels(input);
 			}
 			function showResults() {
 				/*$("#preview-text").text(messagePreview);
@@ -299,7 +299,7 @@
 			});						
 			$("#get-messageSubject").click(function () { 
 				//======== run the function, optionally with parameters ========
-				var value = getMessageSubject("anything-goes-here");
+				var value = getMessageSubject(currentConvo);
 				//======== write the value to the text next to the button to test that it works ========
 				$("#messageSubject-text").text(value);
 			});
