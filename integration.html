@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 66.4</span>
+			<span class="button-link column padding" id="reload-button">Version 66.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -227,17 +227,17 @@
 							labels.push(conversation.labels[i].name) // this can be .name or .id
 						}
 					}
-					var joinedArray = labels.join(" | ");
-					if(labels.length > 1){
-						labels.shift();
-					}
-					else {
-						replied = false
-					}
-					if(replied != true){
-						replied = false;
-					}
-				}	
+				}
+				var joinedArray = labels.join(" | ");
+				if(labels.length > 1){
+					labels.shift();
+				}
+				else{
+					replied = false;
+				}				
+				if(replied != true){
+					replied = false;
+				}
 				return labels +  " | " + replied;
 			}
 			function getMessageCount(conversation) {
