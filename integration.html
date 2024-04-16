@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 66.1</span>
+			<span class="button-link column padding" id="reload-button">Version 66.2</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -130,7 +130,6 @@
 			var labelsArray = [];
 			var messageCount;
 			var convoLink;
-			var sendReceive;	
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -216,13 +215,13 @@
 			}
 			function getLabels(conversation) {				
 				var labels = ["No labels"]
-				sendReceive = ""
+				var sendReceive;
 				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
 					var prefix = conversation.labels[i].id.split("-")[0];
 					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive")
 					{
 						if(prefix == "sent"){
-							sendReceive = conversation.labels[i].name;
+							sendReceive = "Sent";
 						}
 						else{
 							labels.push(conversation.labels[i].name) // this can be .name or .id
