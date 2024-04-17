@@ -54,7 +54,10 @@
             Missive.reload();
         }
         function reset() {
-            window.location = window.location.href.split("?")[0];
+            var myFrame = document.getElementById('params')
+            var splitURL = window.location.href.split("?")[0]
+
+            myFrame.setAttribute('src', splitURL);
         }
         $("#reload-button").click(function (){
             reset();
