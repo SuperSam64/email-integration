@@ -15,8 +15,8 @@
         <div style="position:fixed;top:0px;width:100%;background-color:var(--missive-background-color)">
             <table style="padding:8px 16px 8px;font-weight:bold;margin:0 auto;width:100%">
                 <tr>
-                    <td><span class="button">Go back</span></td>
-                    <td style="text-align:right"><span class="button">Reload</span></td>
+                    <td><span class="button" id="back-button">Go back</span></td>
+                    <td style="text-align:right"><span class="button" id="reset-button">Reload</span></td>
                 </tr>
             </table>
         </div>
@@ -56,6 +56,12 @@
         function reset() {
             window.location.replace("form_test.html")
         }
+        $("#reload-button").click(function (){
+
+        });
+        $("#back-button").click(function (){
+
+        });
         window.onload = myFunction();
         
     </script>
