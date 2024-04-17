@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 68.4</span>
+			<span class="button-link column padding" id="reload-button">Version 68.5</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -140,6 +140,17 @@
 			var messageCount;
 			var convoLink;
 			var replied; // change this to "replied" with a value of true/false
+			var mondayForm = {
+				name: "Sam",
+				orderNum: null,
+				custID: null,
+				phoneNum: null,
+				reasonCode: null,
+				reshipRefund: null,
+				verify: null,
+				itemQTY: null,
+				commnets: null
+			}
 			// ========================== on load function ===============================
 			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
@@ -267,22 +278,22 @@
 				}
 			}
 			function update(input){
-				//messagePreview = getPreview(input);
-				//messageSubject = getMessageSubject(input);
-				//convoSubject = getConversationSubject(input);
-				//msgTo = getTo(input);
-				//msgFrom = getFrom(input);
+				messagePreview = getPreview(input);
+				messageSubject = getMessageSubject(input);
+				convoSubject = getConversationSubject(input);
+				msgTo = getTo(input);
+				msgFrom = getFrom(input);
 				labelsArray = getLabels(input);				
-				//messageCount = getMessageCount(input);				
-				//assignDraft(input);
+				messageCount = getMessageCount(input);				
+				assignDraft(input);
 			}
 			function showResults() {
-				//$("#preview-text").text(messagePreview);
-				//$("#messageSubject-text").text(messageSubject);
-				//$("#messageCount-text").text(messageCount);
-				//$("#to-text").text(msgTo);
-				//$("#from-text").text(msgFrom);
-				//$("#conversationSubject-text").text(convoSubject);
+				$("#preview-text").text(messagePreview);
+				$("#messageSubject-text").text(messageSubject);
+				$("#messageCount-text").text(messageCount);
+				$("#to-text").text(msgTo);
+				$("#from-text").text(msgFrom);
+				$("#conversationSubject-text").text(convoSubject);
 				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
 			}
 			function extractContent(s) {
