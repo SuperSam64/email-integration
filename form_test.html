@@ -16,7 +16,7 @@
             <table style="padding:8px 16px 8px;font-weight:bold;margin:0 auto;width:100%">
                 <tr>
                     <td>Go back</td>
-                    <td style="text-align:right">Reload</td>
+                    <td><span style="text-align:right">Reload</span></td>
                 </tr>
             </table>
         </div>
@@ -49,6 +49,9 @@
         }
         function functionToRun(){
             alert("Hi!");
+        }
+        function goBack() {
+            window.location.replace("integration.html")
         }
         window.onload = myFunction();
         
