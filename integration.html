@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 68.5</span>
+			<span class="button-link column padding" id="reload-button">Version 68.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -214,27 +214,6 @@
 					return conversation.subject;
 				}
 			}
-			function getTo(conversation){
-					if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					return conversation.latest_message.to_fields[0].address;
-				}
-			}
-			function getFrom(conversation) {
-				if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com"){
-						return (conversation.latest_message.body.split("</a>")[0]).split("<")[1];
-					}
-					else{
-						return conversation.latest_message.from_field.address;
-					}
-				}
-			}
 			function getLabels(conversation){				
 				var labels = ["No labels"]
 				replied = false;
@@ -253,6 +232,27 @@
 					labels.shift();
 				}
 				return labels +  " | " + replied;
+			}
+			function getTo(conversation){
+					if(conversation.messages.length == 0){
+					return "[empty]";
+				}
+				else {
+					return conversation.latest_message.to_fields[0].address;
+				}
+			}
+			function getFrom(conversation) {
+				if(conversation.messages.length == 0){
+					return "[empty]";
+				}
+				else {
+					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com" && replied == true){
+						return (conversation.latest_message.body.split("</a>")[0]).split("<")[1];
+					}
+					else{
+						return conversation.latest_message.from_field.address;
+					}
+				}
 			}
 			function getMessageCount(conversation) {
 				if(conversation.messages.length == 0){
@@ -281,9 +281,9 @@
 				messagePreview = getPreview(input);
 				messageSubject = getMessageSubject(input);
 				convoSubject = getConversationSubject(input);
+				labelsArray = getLabels(input);	
 				msgTo = getTo(input);
-				msgFrom = getFrom(input);
-				labelsArray = getLabels(input);				
+				msgFrom = getFrom(input);			
 				messageCount = getMessageCount(input);				
 				assignDraft(input);
 			}
