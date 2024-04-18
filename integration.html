@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 70</span>
+			<span class="button-link column padding" id="reload-button">Version 70.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -309,7 +309,7 @@
 			}
 			function writeDraft(email){
 				$("#draft-text").text("[empty]]")
-				if(isAssigned == true && replied == false){//} && currentConvo.length == 1){
+				if(isAssigned == true && replied == false && currentConvo.messages.length == 1){
 					$("#draft-text").text("ChangeEmail")
 					//composeInConversation({
 					//	deliver: false,
