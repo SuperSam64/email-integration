@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 69.2</span>
+			<span class="button-link column padding" id="reload-button">Version 69.3</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -148,7 +148,6 @@
 			var messageCount;
 			var convoLink;
 			var replied; // change this to "replied" with a value of true/false
-			var assignedToMe;
 			var mondayForm = {
 				name: "Sam",
 				orderNum: null,
@@ -263,8 +262,8 @@
 					}
 				}
 			}
-			function assigned(){
-				assignedToMe = false;
+			function assigned(conversation){
+				var assignedToMe = false;
 				for ( var i = 0, assignee = conversation.assignees; i < assignee; i++ ) {	
 					if(assignee == currentUser){
 						assignedToMe = true;
@@ -300,7 +299,7 @@
 				messageSubject = getMessageSubject(input);
 				convoSubject = getConversationSubject(input);
 				labelsArray = getLabels(input);	
-				assigned();
+				assigned(input);
 				msgTo = getTo(input);
 				msgFrom = getFrom(input);			
 				messageCount = getMessageCount(input);
