@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 70.6</span>
+			<span class="button-link column padding" id="reload-button">Version 70.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -311,10 +311,11 @@
 				$("#draft-text").text("[empty]]")
 				if(isAssigned == true && replied == false && currentConvo.messages.length == 1 && currentConvo.latest_message.from_field.address == "boldsales@filtersfast.com"){
 					$("#draft-text").text("ChangeEmail")
-					reply(//{
-						//deliver: false,
-						//mailto: email
-					)//});
+					const options = {
+						deliver: false,
+						mailto: "test@filtersfast.com"
+					}
+					Missive.reply(options);
 				}
 			}
 			function showResults() {
