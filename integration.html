@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 69.7</span>
+			<span class="button-link column padding" id="reload-button">Version 69.8</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -266,7 +266,7 @@
 			function assigned(conversation){
 				var assignedToMe = false;
 				for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
-					if(conversation.assignees[assignee] == currentUser){
+					if(conversation.assignees[i].id == currentUser.id){
 						assignedToMe = true;
 					}
 				}
