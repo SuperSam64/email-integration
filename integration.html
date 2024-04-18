@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 71.6</span>
+			<span class="button-link column padding" id="reload-button">Version 71.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -313,17 +313,15 @@
 					$("#draft-text").text("ChangeEmail")
 					// to_feilds format is { address: 'frodo@missiveapp.com', name: 'Frodo Baggins' }
 					
-					
-					const sendAddress = {
-						to_fields: {
-							address: "test@filtersfast.com"
+					const draftDetails = {
+						deliver: false,
+						mailto: {
+							to_fields: {
+								address: 'test@filtersfast.com'
+							}
 						}
 					}
-					const options = {
-						deliver: false,
-						mailto: sendAddress
-					}
-					Missive.composeInConversation(options);
+					Missive.composeInConversation(draftDetails);
 				}
 			}
 			function showResults() {
