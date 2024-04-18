@@ -1,1 +1,3 @@
-Missive.alert();
+function iWasClicked(){
+    Missive.alert();
+}

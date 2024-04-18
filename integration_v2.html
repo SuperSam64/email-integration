@@ -7,14 +7,31 @@
     <script src="script.js"></script>
   </head>
   <body>
+    <div class="column-vertical column-center margin section align-center">
+			<!---------------------------  [[  VERSION  ]]  ------------------------------->
+			<span class="button-link column padding" id="reload-button">Version 1.01</span>
+			<!----------------------------------------------------------------------------->
+		</div>
     <div class="column-vertical margin section">
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 			<table>
 				<tr>
 					<td><span class="button column padding" id="get-preview">Get Msg Preview</span></td>
-					<td><span class="columnn" id="preview-text" style="word-break: break-all">[RESULT]</span></td>
+					<td><span class="columnn" id="preview-text" style="word-break: break-all"></span></td>
 				</tr>
 			</table>
 		</div>
+
+
+    <script type="text/javascript">
+
+    $("#get-preview").click(function () { 
+      //======== run the function, no parameters ========
+      iWasClicked();
+    });
+
+    </script>
+
+
   </body
 </html>
