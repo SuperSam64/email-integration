@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 69.6</span>
+			<span class="button-link column padding" id="reload-button">Version 69.7</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -148,6 +148,7 @@
 			var messageCount;
 			var convoLink;
 			var replied; // change this to "replied" with a value of true/false
+			var isAssigned;
 			var mondayForm = {
 				name: "Sam",
 				orderNum: null,
@@ -310,10 +311,10 @@
 				$("#draft-text").text("[empty]]")
 				if(isAssigned == true){// && replied == false && currentConvo.length == 1){
 					$("#draft-text").text("ChangeEmail")
-					composeInConversation({
-						deliver: false,
-						mailto: email
-					});
+					//composeInConversation({
+					//	deliver: false,
+					//	mailto: email
+					//});
 				}
 			}
 			function showResults() {
