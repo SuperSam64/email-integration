@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 71.5</span>
+			<span class="button-link column padding" id="reload-button">Version 71.6</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -313,12 +313,11 @@
 					$("#draft-text").text("ChangeEmail")
 					// to_feilds format is { address: 'frodo@missiveapp.com', name: 'Frodo Baggins' }
 					
-					const thisAddress = {
-						address: 'test@filtersfast.com',
-						name: 'Sam'
-					}	
+					
 					const sendAddress = {
-						to_fields: thisAddress
+						to_fields: {
+							address: "test@filtersfast.com"
+						}
 					}
 					const options = {
 						deliver: false,
