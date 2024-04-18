@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 70.8</span>
+			<span class="button-link column padding" id="reload-button">Version 70.9</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -313,7 +313,9 @@
 					$("#draft-text").text("ChangeEmail")
 					const options = {
 						deliver: false,
-						mailto: "test@filtersfast.com"
+						mailto: {
+							to_fields: ["test@filtersfast.com"]
+						}
 					}
 					Missive.composeInConversation(options);
 				}
