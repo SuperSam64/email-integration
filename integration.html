@@ -20,11 +20,12 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 72</span>
+			<span class="button-link column padding" id="reload-button">Version 72.1</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
 			from_field.customer_id will this work???? 
+			get current convo id to go back to convo after a thing
 			things to test:
 				crop icons to square
 				empty labels: Archive, Sent, Assigned, Unasigned Closed
@@ -314,7 +315,7 @@
 					$("#draft-text").text("ChangeEmail")
 					// to_feilds format is { address: 'frodo@missiveapp.com', name: 'Frodo Baggins' }
 					
-					const draftDetails = {
+					var draftDetails = {
 						deliver: false,
 						mailto: {
 							to_fields: [{
@@ -322,6 +323,7 @@
 							}]
 						}
 					}
+					draftDetails.mailto.to_fields.address = draftDetails.mailto.to_fields.address.shift();
 					Missive.reply(draftDetails);
 				}
 			}
