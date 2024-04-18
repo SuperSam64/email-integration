@@ -20,7 +20,7 @@
 		</div>
 		<div class="column-vertical column-center margin section align-center">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 71.9</span>
+			<span class="button-link column padding" id="reload-button">Version 72</span>
 			<!----------------------------------------------------------------------------->
 		</div>
 		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
@@ -369,8 +369,9 @@
 				$("#conversationSubject-text").text(value);
 			});
 			$("#get-to").click(function () { 
-				var value = getTo();
-				$("#to-text").text(value);
+				Missive.search("Select Form test")
+				//var value = getTo();
+				//$("#to-text").text(value);
 			});
 			$("#get-from").click(function () { 
 				//======== run the function, no parameters ========
