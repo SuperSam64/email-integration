@@ -247,7 +247,7 @@
 				}
 				else {
 					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com" && replied == false){
-						return (conversation.latest_message.body.split("</a>")[0]).split("<")[1];
+						return (conversation.latest_message.body.split("mailto:")[1]).split('">')[0];
 					}
 					else{
 						return conversation.latest_message.from_field.address;
