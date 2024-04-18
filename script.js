@@ -1,3 +1,3 @@
 function iWasClicked(){
-    Missive.alert({title:"hello!"});
+    $("#textChange").text("I was clicked!")
 }
