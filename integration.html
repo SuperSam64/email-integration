@@ -313,9 +313,11 @@
 					$("#draft-text").text("ChangeEmail")
 					const options = {
 						deliver: false,
-						mailto: {
-							to_fields: ["test@filtersfast.com"]
-						}
+						mailto: [
+							{
+								to_fields: "test@filtersfast.com"
+							},
+						],
 					}
 					Missive.composeInConversation(options);
 				}
