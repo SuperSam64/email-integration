@@ -9,5 +9,6 @@
     margin:auto;
     width:90%;
     color:black;
-    background-color:white
+    background-color:white;
+    border-radius:6px;
 }
