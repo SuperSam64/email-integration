@@ -1,4 +1,10 @@
 function iWasClicked(){
     $("#textChange").text("I was clicked!")
-    Missive.alert("hello!")
+    const formData = {
+        name: "Form name",
+        notes:[{
+            message: "This is a note!"
+        }]
+    }
+    openForm(formData);
   }
