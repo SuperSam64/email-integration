@@ -9,21 +9,25 @@
   <body style="width:90%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 1.25</span>
+			<span class="button-link column padding" id="reload-button">Version 1.26</span>
 			<!----------------------------------------------------------------------------->
 		</div>
-    <span class="button column padding" id="get-preview" style="width:160px">Click me</span>
-    <div class="textFrame column-vertical section" style="margin-top:8px;margin-bottom:8px;padding:0;drop-shadow:6px 6px 6px black">
+    <span class="button column padding testButton" id="button1">Click me</span>
+    <div class="textFrame column-vertical section">
 			<!-- individual table for row separates left from right, while also still allowing for "section" -->
 	
-	<div id="textChange" style="color:black"><div style="font-weight:bold;padding:4px 0px 4px 6px; border-radius: 6px 6px 0px 0px;background-color:rgba(221, 221, 221)">Title</div><div style="padding:6px">Here is some text</div></div>
+	<div id="title1" class="textTitle"><div>Title</div><div id="body1" class="textBody">Here is some text</div></div>
 			
 		</div>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-    $("#get-preview").click(function () { 
+    $("#title1").click(function () { 
       //======== run the function, no parameters ========
-      iWasClicked();
+      body1Reset();
+    });
+    $("#body1").click(function () { 
+      //======== run the function, no parameters ========
+      body1Reset();
     });
     // alternate between clicked/ready
     </script>
