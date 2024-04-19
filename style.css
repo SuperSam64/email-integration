@@ -4,3 +4,10 @@
 .CCA{
     background-color:yellow;
 }
+.textFrame{
+    padding:6px;
+    margin:auto;
+    width:90%;
+    color:black;
+    background-color:white
+}
