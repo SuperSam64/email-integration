@@ -14,8 +14,12 @@ function body3Click(){
     $("#body3").text(something);
 }
 function body4Click(){
-    var something = "[empty]"
-    something = currentConversation.latest_message.from_field.address;
+    if(!currentConversation.latest_message){
+        var something = "[empty]"
+    }
+    else{
+        something = currentConversation.latest_message.from_field.address;
+    }
     $("#body4").text(something)
 }
 function body1Reset(){
