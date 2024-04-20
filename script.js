@@ -5,7 +5,9 @@ function body2Click(){
     $("#body2").text(currentConversation.messages_count + " | " + currentConversation.messages.length)
 }
 function body3Click(){
-    var something = "[empty]"
+    if(!currentConversation.latest_message){
+        var something = "[empty]"
+    }
     something = currentConversation.latest_message.to_fields[0].address;
     $("#body3").text(something)
 }
