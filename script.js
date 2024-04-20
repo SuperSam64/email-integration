@@ -62,13 +62,16 @@ function body8Click(conversation){
     }
 }
 function body9Click(conversation){
-    var assignedToMe = false;
-    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
-        if(conversation.assignees[i].id == currentUser.id){
-            assignedToMe = true;
-        }
+    if (var4 = "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
+    {
+        return true;
     }
-    return assignedToMe;
+    else {
+        return false;
+    }
+}
+function body10Click(conversation){
+
 }
 function body1Reset(){
     $("#body1").text("[ready]")
