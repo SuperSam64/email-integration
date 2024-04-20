@@ -21,12 +21,12 @@ function body3Click(conversation){
     }
 }
 function body4Click(conversation){
-    return "HELLO";/*if(!conversation.latest_message){
+    if(!conversation.latest_message){
         return "[empty]";
     }
     else{
         return conversation.latest_message.from_field.address;
-    }*/
+    }
 }
 function body5Click(conversation){
     if(!conversation.latest_message){
