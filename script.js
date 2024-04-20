@@ -79,7 +79,7 @@ function body11Click(conversation){
         return "[empty]";
     }
     else{
-        "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
+        return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
 function body12Click(conversation){
