@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.44</span>
+			<span class="button-link column padding" id="reload-button">Version 1.45</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -103,6 +103,10 @@
           var2 = body2Click(currentConversation);
           var3 = body3Click(currentConversation);
           var4 = body4Click(currentConversation);
+          $("#body1").text(var1);
+          $("#body2").text(var2);
+          $("#body3").text(var3);
+          $("#body4").text(var4);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
