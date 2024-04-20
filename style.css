@@ -5,25 +5,24 @@
     background-color:yellow;
 }
 .textFrame{
-    padding:0;
-    margin-bottom:8px;
-    margin-top:8px;
-    width:100%;
-    color:black;
-    background-color:white;
-    border-radius:6px;
-    box-shadow: 6px 6px 6px black;
+    margin:6px;
 }
 .textTitle{
-    font-weight:bold;
-    padding:4px 0px 4px 0px;
-    border-radius: 6px 6px 0px 0px;
     background-color:rgba(221, 221, 221);
     color:black;
+    font-weight:bold;
+    padding: 4px 6px 4px 6px; 
+    border-radius: 6px 6px 0px 0px"
 }
 .textBody{
+    background-color:white;
+    color:black;
     padding:6px;
+    border-radius: 0px 0px 6px 6px"
 }
 .testButton{
     width:160px;
 }
+
+
+
