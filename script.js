@@ -62,7 +62,7 @@ function body8Click(conversation){
     }
 }
 function body9Click(conversation){
-    if (var4 = "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
+    if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
     {
         return true;
     }
