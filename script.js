@@ -20,15 +20,26 @@ function body4Click(conversation){
         return conversation.latest_message.from_field.address;
     }
 }
+function body5Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        return conversation.latest_message.subject;
+    }
+}
 function body1Reset(){
     $("#body1").text("[ready]")
 }
-function body1Reset(){
+function body2Reset(){
     $("#body2").text("[ready]")
 }
-function body1Reset(){
+function body3Reset(){
     $("#body3").text("[ready]")
 }
-function body1Reset(){
+function body4Reset(){
     $("#body4").text("[ready]")
+}
+function body5Reset(){
+    $("#body5").text("[ready]")
 }

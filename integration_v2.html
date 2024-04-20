@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.45</span>
+			<span class="button-link column padding" id="reload-button">Version 1.46</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -94,6 +94,7 @@
       var var2;
       var var3;
       var var4;
+      var var5;
       //-------------------
       //------- WHEN CONVERSATION CHANGES ---------
       Missive.on('change:conversations', (ids) => {
@@ -103,10 +104,12 @@
           var2 = body2Click(currentConversation);
           var3 = body3Click(currentConversation);
           var4 = body4Click(currentConversation);
+          var5 = body5Click(currentConversation);
           $("#body1").text(var1);
           $("#body2").text(var2);
           $("#body3").text(var3);
           $("#body4").text(var4);
+          $("#body5").text(var5);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
@@ -134,6 +137,12 @@
       $("#body4").click(function () { 
         body4Reset();
       });
+      $("#title5").click(function () { 
+        body5Reset();
+      });
+      $("#body5").click(function () { 
+        body5Reset();
+      });
       $("#button1").click(function () { 
         body1Click();
       });
@@ -144,6 +153,9 @@
         body1Click();
       });
       $("#button4").click(function () { 
+        body1Click();
+      });
+      $("#button5").click(function () { 
         body1Click();
       });
     </script>
