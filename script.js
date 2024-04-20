@@ -53,14 +53,13 @@ function body7Click(conversation){
     }
 }
 function body8Click(conversation){
+    var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
-            return true;
-        }
-        else {
-            return false;
+            assignedToMe = true;
         }
     }
+    return assignedToMe;
 }
 function body1Reset(){
     $("#body1").text("[ready]")
