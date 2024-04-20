@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.50</span>
+			<span class="button-link column padding" id="reload-button">Version 1.51</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -96,6 +96,18 @@
 </div>
 </div>
 <!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
+<div class="textFrame column-vertical"><div id="title6">
+  <div class="textTitle">
+    Conversation subject
+  </div>
+  <div id="body6" class="textBody">
+    Here is some text
+  </div>
+</div>
+</div>
+<!------------------------------------------------------------->
+
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       //---- VARIABLES ----
@@ -106,6 +118,7 @@
       var var3;
       var var4;
       var var5;
+      var var6;
       //-------------------
       //------- WHEN CONVERSATION CHANGES ---------
       Missive.on('change:conversations', (ids) => {
@@ -116,11 +129,13 @@
           var3 = body3Click(currentConversation);
           var4 = body4Click(currentConversation);
           var5 = body5Click(currentConversation);
+          var6 = body6Click(currentConversation);
           $("#body1").text(var1);
           $("#body2").text(var2);
           $("#body3").text(var3);
           $("#body4").text(var4);
           $("#body5").text(var5);
+          $("#body6").text(var6);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
@@ -154,6 +169,12 @@
       $("#body5").click(function () { 
         body5Reset();
       });
+      $("#title6").click(function () { 
+        body6Reset();
+      });
+      $("#body6").click(function () { 
+        body6Reset();
+      });
       $("#button1").click(function () { 
         body1Click();
       });
@@ -167,6 +188,9 @@
         body1Click();
       });
       $("#button5").click(function () { 
+        body1Click();
+      });
+      $("#button6").click(function () { 
         body1Click();
       });
     </script>

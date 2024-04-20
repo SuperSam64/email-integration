@@ -36,6 +36,14 @@ function body5Click(conversation){
         return conversation.latest_message.subject;
     }
 }
+function body6Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        return conversation.subject;
+    }
+}
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -50,4 +58,7 @@ function body4Reset(){
 }
 function body5Reset(){
     $("#body5").text("[ready]")
+}
+function body6Reset(){
+    $("#body6").text("[ready]")
 }
