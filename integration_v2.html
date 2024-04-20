@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.53</span>
+			<span class="button-link column padding" id="reload-button">Version 1.54</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -88,7 +88,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title5">
   <div class="textTitle">
-    Conversation subject
+    Message subject
   </div>
   <div id="body5" class="textBody">
     Here is some text
@@ -99,7 +99,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title6">
   <div class="textTitle">
-    Message subject
+    Conversation subject
   </div>
   <div id="body6" class="textBody">
     Here is some text
@@ -130,12 +130,13 @@
           var4 = body4Click(currentConversation);
           var5 = body5Click(currentConversation);
           var6 = body6Click(currentConversation);
+          currentConversation.something = "testing"
           $("#body1").text(var1);
           $("#body2").text(var2);
           $("#body3").text(var3);
           $("#body4").text(var4);
           $("#body5").text(var5);
-          $("#body6").text(var6);
+          $("#body6").text(var6 + " | " + currentConversation.something);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
@@ -179,19 +180,19 @@
         body1Click();
       });
       $("#button2").click(function () { 
-        body1Click();
+        body2Click();
       });
       $("#button3").click(function () { 
-        body1Click();
+        body3Click();
       });
       $("#button4").click(function () { 
-        body1Click();
+        body4Click();
       });
       $("#button5").click(function () { 
-        body1Click();
+        body5Click();
       });
       $("#button6").click(function () { 
-        body1Click();
+        body6Click();
       });
     </script>
 </body>
