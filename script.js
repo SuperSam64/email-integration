@@ -1,26 +1,24 @@
-function body1Click(){
-    $("#body1").text(currentConversation.id)
+function body1Click(conversation){
+    return conversation.id;
 }
-function body2Click(){
-    $("#body2").text(currentConversation.messages_count + " | " + currentConversation.messages.length)
+function body2Click(conversation){
+    return (currentConversation.messages_count + " | " + currentConversation.messages.length);
 }
-function body3Click(){
-    if(!currentConversation.latest_message){
-        var something = "[empty]"
+function body3Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
     }
     else{
-        something = currentConversation.latest_message.to_fields[0].address;
+        return conversation.latest_message.to_fields[0].address;
     }
-    $("#body3").text(something);
 }
-function body4Click(){
-    if(!currentConversation.latest_message){
-        var something = "[empty]"
+function body4Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
     }
     else{
-        something = currentConversation.latest_message.from_field.address;
+        return conversation.latest_message.from_field.address;
     }
-    $("#body4").text(something)
 }
 function body1Reset(){
     $("#body1").text("[ready]")

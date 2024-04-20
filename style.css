@@ -6,6 +6,7 @@
 }
 .textFrame{
     margin:6px;
+    border-radius:6px;
 }
 .textTitle{
     background-color:rgba(221, 221, 221);
