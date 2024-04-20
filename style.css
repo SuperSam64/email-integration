@@ -5,7 +5,7 @@
     background-color:yellow;
 }
 .textFrame{
-    margin:0px; 
+    margin:4px; 
     border-radius:6px;
 }
 .textTitle{
@@ -25,7 +25,7 @@
 }
 .testButton{
     width:160px;
-    margin:60x;
+    margin:4px;
     border-radius:6px;
 }
 
