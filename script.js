@@ -2,7 +2,7 @@ function body1Click(){
     $("#body1").text(currentConversation.id)
 }
 function body2Click(){
-    $("#body2").text(currentConversation.messages_count)
+    $("#body2").text(currentConversation.messages_count + " | " + currentConversation.messages.length)
 }
 function body3Click(){
     var something = "[empty]"
