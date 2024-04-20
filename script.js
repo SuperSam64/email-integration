@@ -45,14 +45,23 @@ function body6Click(conversation){
     }
 }
 function body7Click(conversation){
-    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]" && var8 ==  false) {// & unassigned
+    var assignedToMe = false;
+    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+        if(conversation.assignees[i].id == currentUser.id){
+            assignedToMe = true;
+        }
+    }
+    return assignedToMe;
+}
+function body8Click(conversation){
+    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]" && var7 ==  false) {// & unassigned
         return true;
     }
     else{
         return false;
     }
 }
-function body8Click(conversation){
+function body9Click(conversation){
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -81,6 +90,12 @@ function body6Reset(){
 }
 function body7Reset(){
     $("#body7").text("[ready]")
+}
+function body8Reset(){
+    $("#body8").text("[ready]")
+}
+function body9Reset(){
+    $("#body9").text("[ready]")
 }
 
 

@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.81</span>
+			<span class="button-link column padding" id="reload-button">Version 1.82</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -110,7 +110,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title7">
   <div class="textTitle">
-    Is this a draft?
+    Is this assigned to me?
   </div>
   <div id="body7" class="textBody">
     Here is some text
@@ -121,7 +121,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title8">
   <div class="textTitle">
-    Assigned to me
+    Is this a draft that needs to be assigned?
   </div>
   <div id="body8" class="textBody">
     Here is some text
@@ -159,6 +159,7 @@
       var var6;
       var var7;
       var var8;
+      var var9;
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
@@ -198,8 +199,9 @@
           var4 = body4Click(currentConversation);
           var5 = body5Click(currentConversation);
           var6 = body6Click(currentConversation);
-          var7 = body7Click(currentConversation)
-          var8 = body8Click(currentConversation)
+          var7 = body7Click(currentConversation);
+          var8 = body8Click(currentConversation);
+          var9 = body9Click(currentConversation);
           $("#body1").text(var1);
           $("#body2").text(var2);
           $("#body3").text(var3);
@@ -208,6 +210,7 @@
           $("#body6").text(var6); // + " | " + currentConversation.something);
           $("#body7").text(var7);
           $("#body8").text(var8);
+          $("#body9").text(var9);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
@@ -259,6 +262,12 @@
       $("#body8").click(function () { 
         body8Reset();
       });
+      $("#title9").click(function () { 
+        body9Reset();
+      });
+      $("#body9").click(function () { 
+        body9Reset();
+      });
       $("#button1").click(function () { 
         body1Click();
       });
@@ -282,6 +291,9 @@
       });
       $("#button8").click(function () { 
         body8Click();
+      });
+      $("#button9").click(function () { 
+        body9Click();
       });
     </script>
 </body>
