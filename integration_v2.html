@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.74</span>
+			<span class="button-link column padding" id="reload-button">Version 1.75</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -159,6 +159,34 @@
       var var6;
       var var7;
       var var8;
+
+      // ============ PAGE LOAD ==============
+      $(document).ready((ids) => {
+        Missive.fetchUsers().then((users) => {
+          $(users).each(function(){
+            if(this.me){
+                currentUser = this;
+            }
+          });
+          $(adminList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+              profileType = "master"
+              title = "Administrator";
+            }
+          });
+          $(crmList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+              profileType = "CRM"
+              title = "Client Relationship Manager";
+            }
+          });
+        //var fullName = currentUser.first_name + " " + currentUser.last_name;
+        //$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+        //$("#name").text(fullName);
+        //$("#layout").text(title);
+        });				
+      });
+      // =====================================
       // "5c21049b-5a49-476c-813e-dfbf5285907d";  // CHANGE THIS LATER
       //-------------------
       //------- WHEN CONVERSATION CHANGES ---------
