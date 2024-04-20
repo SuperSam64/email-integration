@@ -9,7 +9,7 @@
   <body style="width:96%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.33</span>
+			<span class="button-link column padding" id="reload-button">Version 1.34</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -62,17 +62,10 @@
       Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {		
 					currentConversation = conversations[0];
-				})
-			})
-      Missive.on('change:messages', (ids) => {
-				Missive.fetchMessages(ids).then((messages) => {		
-					$("#body1").text("[ready]")
+          body1Click();
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
-
-
-
       $("#title1").click(function () { 
         body1Reset();
       });
