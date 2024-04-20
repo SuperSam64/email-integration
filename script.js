@@ -45,7 +45,12 @@ function body6Click(conversation){
     }
 }
 function body7Click(conversation){
-    return (bod2Click <2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") // & unassigned
+    if (bod2Click <2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") {// & unassigned
+        true;
+    }
+    else{
+        false
+    }
 }
 function body1Reset(){
     $("#body1").text("[ready]")
