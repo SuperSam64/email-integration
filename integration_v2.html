@@ -9,7 +9,7 @@
   <body style="width:96%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.35</span>
+			<span class="button-link column padding" id="reload-button">Version 1.36</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -96,6 +96,9 @@
 				Missive.fetchConversations(ids).then((conversations) => {		
 					currentConversation = conversations[0];
           body1Click();
+          body2Click();
+          body3Click();
+          body4Click();
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------

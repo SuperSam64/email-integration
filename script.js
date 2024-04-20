@@ -1,13 +1,13 @@
 function body1Click(){
     $("#body1").text(currentConversation.id)
 }
-function body1Click(){
+function body2Click(){
     $("#body2").text(currentConversation.messages_count)
 }
-function body1Click(){
+function body3Click(){
     $("#body3").text(currentConversation.latest_message.to_fields[0].address)
 }
-function body1Click(){
+function body4Click(){
     $("#body4").text(currentConversation.latest_message.from_field.address)
 }
 function body1Reset(){
