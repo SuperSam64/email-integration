@@ -72,6 +72,32 @@ function body9Click(conversation){
     }
 }
 function body10Click(conversation){
+    return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
+}
+function body11Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
+    }
+}
+function body12Click(conversation){
+
+}
+function body13Click(conversation){
+
+}
+function body14Click(conversation){
+
+}
+function body15Click(conversation){
+
+}
+function body16Click(conversation){
+
+}
+function body17Click(conversation){
 
 }
 function body1Reset(){
