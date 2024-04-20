@@ -8,8 +8,10 @@ function body3Click(){
     if(!currentConversation.latest_message){
         var something = "[empty]"
     }
-    something = currentConversation.latest_message.to_fields[0].address;
-    $("#body3").text(something)
+    else{
+        something = currentConversation.latest_message.to_fields[0].address;
+    }
+    $("#body3").text(something);
 }
 function body4Click(){
     var something = "[empty]"
