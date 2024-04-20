@@ -10,7 +10,7 @@ function body1Click(conversation){
     return conversation.id;
 }
 function body2Click(conversation){
-    return (currentConversation.messages_count + " | " + currentConversation.messages.length);
+    return (currentConversation.messages_count);
 }
 function body3Click(conversation){
     if(!conversation.latest_message){
@@ -44,6 +44,9 @@ function body6Click(conversation){
         return conversation.subject;
     }
 }
+function body7Click(conversation){
+    return (bod2Click <2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") // & unassigned
+}
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -61,4 +64,7 @@ function body5Reset(){
 }
 function body6Reset(){
     $("#body6").text("[ready]")
+}
+function body7Reset(){
+    $("#body7").text("[ready]")
 }
