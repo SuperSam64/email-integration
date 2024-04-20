@@ -45,7 +45,7 @@ function body6Click(conversation){
     }
 }
 function body7Click(conversation){
-    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") {// & unassigned
+    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]" && var8 ==  true) {// & unassigned
         return true;
     }
     else{
