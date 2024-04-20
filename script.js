@@ -52,7 +52,7 @@ function body7Click(conversation){
         return false;
     }
 }
-function body8Click(conversation){
+/*function body8Click(conversation){
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
             return true;
@@ -61,7 +61,7 @@ function body8Click(conversation){
             return false;
         }
     }
-}
+}*/
 function body1Reset(){
     $("#body1").text("[ready]")
 }
