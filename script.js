@@ -1,3 +1,29 @@
+$(document).ready((ids) => {
+    Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+            if(this.me){
+                currentUser = this;
+            }
+        });
+        $(adminList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+                profileType = "master"
+                title = "Administrator";
+            }
+        });
+        $(crmList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+                profileType = "CRM"
+                title = "Client Relationship Manager";
+                // set style sheets accordingly
+            }
+        })
+        var fullName = currentUser.first_name + " " + currentUser.last_name;
+        //$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+        //$("#name").text(fullName);
+        //$("#layout").text(title);
+    })				
+})
 function empty(conversation) {
     if(!conversation.latest_message){
         return true;

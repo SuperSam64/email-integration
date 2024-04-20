@@ -163,7 +163,8 @@
 				commnets: null
 			}
 			// ========================== on load function ===============================
-			$(document).ready((ids) => {Missive.fetchUsers().then((users) => {
+			$(document).ready((ids) => {
+				Missive.fetchUsers().then((users) => {
 					$(users).each(function(){
 						if(this.me){
 							currentUser = this;
