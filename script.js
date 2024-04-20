@@ -1,3 +1,11 @@
+function empty(conversation) {
+    if(!conversation.latest_message){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
 function body1Click(conversation){
     return conversation.id;
 }
