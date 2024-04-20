@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.64</span>
+			<span class="button-link column padding" id="reload-button">Version 1.65</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -152,6 +152,7 @@
       var var5;
       var var6;
       var var7;
+      var var8;
       //-------------------
       //------- WHEN CONVERSATION CHANGES ---------
       Missive.on('change:conversations', (ids) => {
@@ -172,6 +173,7 @@
           $("#body5").text(var5);
           $("#body6").text(var6); // + " | " + currentConversation.something);
           $("#body7").text(var7);
+          $("#body8").text(var8);
 				})
 			})
       //------- WHEN CONVERSATION CHANGES ---------
@@ -217,6 +219,12 @@
       $("#body7").click(function () { 
         body7Reset();
       });
+      $("#title8").click(function () { 
+        body8Reset();
+      });
+      $("#body8").click(function () { 
+        body8Reset();
+      });
       $("#button1").click(function () { 
         body1Click();
       });
@@ -237,6 +245,9 @@
       });
       $("#button7").click(function () { 
         body7Click();
+      });
+      $("#button8").click(function () { 
+        body8Click();
       });
     </script>
 </body>
