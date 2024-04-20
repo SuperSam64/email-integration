@@ -45,11 +45,11 @@ function body6Click(conversation){
     }
 }
 function body7Click(conversation){
-    if (body2Click(conversation) < 2) { // && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") {// & unassigned
-        true;
+    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]") {// & unassigned
+        return true;
     }
     else{
-        false
+        return false;
     }
 }
 function body1Reset(){
