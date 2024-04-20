@@ -62,13 +62,14 @@ function body8Click(conversation){
     }
 }
 function body9Click(conversation){
-    if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
+    return var4 + " | " +  var3 + " | " + var7 + " | " + var2;
+    /*if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
     {
         return true;
     }
     else {
         return false;
-    }
+    }*/
 }
 function body10Click(conversation){
 
