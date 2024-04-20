@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 1.58</span>
+			<span class="button-link column padding" id="reload-button">Version 1.59</span>
 			<!---------------------------------------------------------------------------->
       <!--
         - get current convo
@@ -121,10 +121,10 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title8">
   <div class="textTitle">
-    Is this a draft?
+    Assigned to me
   </div>
   <div id="body8" class="textBody">
-    Assigned to me
+    Here is some text
   </div>
 </div>
 </div>
@@ -132,15 +132,14 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title9">
   <div class="textTitle">
-    Is this a draft?
+    "To" and "From" both end in "@filtersfast.com"
   </div>
   <div id="body9" class="textBody">
-    "To" and "From" both end in "@filtersfast.com"
+    Here is some text
   </div>
 </div>
 </div>
 <!------------------------------------------------------------->
-
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       //---- VARIABLES ----
@@ -164,6 +163,7 @@
           var4 = body4Click(currentConversation);
           var5 = body5Click(currentConversation);
           var6 = body6Click(currentConversation);
+          var7 = body7click(currentConversation)
           currentConversation.something = "testing"
           $("#body1").text(var1);
           $("#body2").text(var2);

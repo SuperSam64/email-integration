@@ -73,3 +73,8 @@ function body6Reset(){
 function body7Reset(){
     $("#body7").text("[ready]")
 }
+
+
+// https://mail.missiveapp.com/#inbox/conversations/   [conversation ID]
+
+// https://mail.missiveapp.com/#inbox/conversations/   [conversation ID]   /messages/   [message ID]
