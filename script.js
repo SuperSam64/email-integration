@@ -50,8 +50,6 @@ function body4Click(conversation){
     }
 }
 function body14Click(conversation){
-    
-    
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -164,8 +162,6 @@ function body11Click(conversation){
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
-
-
 function body15Click(conversation){
     var labels = ["No labels"]
     replied = false;
@@ -185,9 +181,6 @@ function body15Click(conversation){
     }
     return labels;// +  " | " + replied;
 }
-
-
-
 function body16Click(conversation, labelID){
     var labeled = false;
     $(var15).each(function(){
@@ -197,8 +190,6 @@ function body16Click(conversation, labelID){
     });
     return labeled;
 }
-
-
 function update (input){
 
 }
