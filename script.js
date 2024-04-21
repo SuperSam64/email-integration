@@ -203,7 +203,7 @@ function getFullMessage(conversation){
         return "[empty]";
     }
     else{
-        return conversation.latest_message.body;
+        return Missive.insertHtml(conversation.latest_message.body);
     }
 }
 function update (input){
