@@ -62,7 +62,6 @@ function body8Click(conversation){
     }
 }
 function body9Click(conversation){
-    //return var4 + " | " +  var3 + " | " + var7 + " | " + var2;
     if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
     {
         return true;
@@ -83,8 +82,11 @@ function body11Click(conversation){
     }
 }
 function body12Click(conversation){
-    if(!conversation.latest_message || var9 == false){
+    if(!conversation.latest_message){
         return "[empty]";
+    }
+    else if(var9 == false){
+        return "ORIGINAL REPLY EMAIL";
     }
     else{
         var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
@@ -95,8 +97,11 @@ function body13Click(conversation){
 
 }
 function body14Click(conversation){
-    if(!conversation.latest_message || var9 == false){
+    if(!conversation.latest_message){
         return "[empty]";
+    }
+    else if(var9 == false){
+        return "ORIGINAL NAME";
     }
     else{
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
