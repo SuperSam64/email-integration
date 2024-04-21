@@ -82,7 +82,7 @@ function body11Click(conversation){
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
-function body12Click(conversation){
+/*function body12Click(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -102,7 +102,7 @@ function body14Click(conversation){
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
         return name;
     }
-}
+}*/
 function body15Click(conversation){
 
 }
