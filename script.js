@@ -203,13 +203,14 @@ function body17Reset(){
 
 
 /*
+~~~~~~~~~~ SIMPLIFY - remove/consolodate duplicated fuctions. if one true/false applies to many things, check them all at once. organize/sort, but not in such a way that it breaks functionality. test everything. consolodate results into one textbox
 replace "from" with modified "from" - but still have a trigger for when the email is being replaced so a draft can be made
 - only make a draft if message count is 1
 - make the "to" the customer's email. find a way to remove the other email. try array = []
 assign new drafts
 set these as utitilies
 create an array of tasks for POs and for tax exempt and others
-get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4 
+get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4. or if anywhere in the subject or body (html removed) is "order number XXXXXXXX" "order XXXXXXXX" "order no. XXXXXXXX" "order # XXXXXXXX" 
         get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
     else
         order number = "empty"
@@ -238,4 +239,17 @@ determine whether to say "thanks for reaching out" or "thank you for your reply"
         - link to other extension
         - link outside of extension
         - assign label
+
+    things to show on master list
+    - final from email
+    - to email
+    - message count
+    - will assign draft
+    - preview
+    - body
+    - link to convo
+    - link to message
+    - customer's name
+    - labels
+    - is label? (with example)
 */
