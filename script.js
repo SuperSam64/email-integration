@@ -1,11 +1,3 @@
-function empty(conversation) {
-    if(!conversation.latest_message){
-        return true;
-    }
-    else{
-        return false;
-    }
-}
 function body1Click(conversation){
     return conversation.id;
 }
@@ -46,18 +38,15 @@ function body7Click(conversation){
     }
     return assignedToMe;
 }
-function body8Click(conversation){ // depends on var7
-    var assignedToMe = false;
+function body8Click(conversation){ 
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
-            assignedToMe = true;
+            return false;
         }
     }
-    
     if(
         !conversation.latest_message &&
-        currentConversation.messages_count < 2 &&
-        assignedToMe ==  false
+        currentConversation.messages_count < 2 
     ){
         return true;
     }
@@ -65,14 +54,13 @@ function body8Click(conversation){ // depends on var7
         return false;
     }
 }
-function body9Click(conversation){ // depends on var7
+function body9Click(conversation){ 
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
             assignedToMe = true;
         }
     }
-    
     if(!conversation.latest_message){
         return false;
     }
