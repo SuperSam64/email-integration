@@ -47,10 +47,11 @@ function body7Click(conversation){
     return assignedToMe;
 }
 function body8Click(conversation){ // depends on var2, var3, var4, var7
-    if (
+    if(!conversation.latest_message){
+        return false;
+    }
+    else if (
         currentConversation.messages_count < 2 &&
-        var3 == "[empty]" && 
-        var4 == "[empty]" &&
         var7 ==  false
     ) {
         return true;
@@ -60,10 +61,13 @@ function body8Click(conversation){ // depends on var2, var3, var4, var7
     }
 }
 function body9Click(conversation){ // depends on var2, var3, var4, var7
-    if (
+    if(!conversation.latest_message){
+        return false;
+    }
+    else if (
         currentConversation.messages_count == 1 &&
-        var3.split("@")[1] == "filtersfast.com" &&
-        var4 == "boldsales@filtersfast.com" &&
+        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
         var7 == true        
     ) {
         return true;
