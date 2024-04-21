@@ -138,12 +138,12 @@ function body15Click(conversation){
     return labels;// +  " | " + replied;
 }
 function body16Click(conversation, labelID){
-    var labeled = false;
-    $(var15).each(function(){
+    var labeled = var15[0].id
+    //$(var15).each(function(){
         //if(this.id == labelID){
           labeled = this.id;
         //}
-    });
+    //});
     return labeled;
 }
 function body17Click(conversation){			
