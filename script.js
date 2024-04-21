@@ -92,6 +92,9 @@ function body12Click(conversation){
     }
 }
 function body13Click(conversation){
+
+}
+function body14Click(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -99,10 +102,6 @@ function body13Click(conversation){
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
         return name;
     }
-
-}
-function body14Click(conversation){
-
 }
 function body15Click(conversation){
 
