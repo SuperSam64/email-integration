@@ -83,7 +83,12 @@ function body11Click(conversation){
     }
 }
 function body12Click(conversation){
-
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        return conversation.latest_message.body//.split("mailto")[1];
+    }
 }
 function body13Click(conversation){
 
@@ -127,9 +132,27 @@ function body8Reset(){
 function body9Reset(){
     $("#body9").text("[ready]")
 }
-
-
-// https://mail.missiveapp.com/#inbox/conversations/   [conversation ID]
-
-// https://mail.missiveapp.com/#inbox/conversations/   [conversation ID]   /messages/   [message ID]
-
+function body10Reset(){
+    $("#body10").text("[ready]")
+}
+function body11Reset(){
+    $("#body11").text("[ready]")
+}
+function body12Reset(){
+    $("#body12").text("[ready]")
+}
+function body13Reset(){
+    $("#body13").text("[ready]")
+}
+function body14Reset(){
+    $("#body14").text("[ready]")
+}
+function body15Reset(){
+    $("#body15").text("[ready]")
+}
+function body16Reset(){
+    $("#body16").text("[ready]")
+}
+function body17Reset(){
+    $("#body17").text("[ready]")
+}
