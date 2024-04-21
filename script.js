@@ -94,10 +94,23 @@ function body13Click(conversation){
 
 }
 function body14Click(conversation){ // depends on var9, // depends on message exists
+    
+    var switchNames;
     if(!conversation.latest_message){
-        return "[empty]";
+        switchNames = false;
     }
-    else if(var9 == false){
+    else if (
+        currentConversation.messages_count == 1 &&
+        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+        var7 == true        
+    ) {
+        switchNames = true;
+    }
+    else {
+        switchNames = false;
+    }    
+    if(switchNames == false){
         if(!conversation.latest_message.from_field.name){
             return "[empty]";
         }
@@ -132,10 +145,22 @@ function body15Click(conversation){
 
 
 function body4Click(conversation){ // depends on var9, // depends on message exists
+    var switchEmails;
     if(!conversation.latest_message){
-        return "[empty]";
+        switchEmails = false;
     }
-    else if(var9 == false){
+    else if (
+        currentConversation.messages_count == 1 &&
+        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+        var7 == true        
+    ) {
+        switchEmails = true;
+    }
+    else {
+        switchEmails = false;
+    }
+    if(switchEmails == false){
         if(!conversation.latest_message.from_field.address){
             return "[empty]";
         }
