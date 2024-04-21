@@ -28,7 +28,7 @@
 .textBody{
     background-color:white;
     color:black;
-    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .testButton{
     width:160px;

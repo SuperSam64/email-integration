@@ -207,7 +207,22 @@ function getFullMessage(conversation){
     }
 }
 function update (input){
-
+    conversationID = getConversation(currentConversation);
+    conversationCount = getMessageCount(currentConversation);
+    messageTo = getTo(currentConversation);
+    messageFrom = getFrom(currentConversation);
+    customerName = getName(currentConversation);
+    messageSubject = getMessageSubject(currentConversation);
+    conversationSubject = getConversationSubject(currentConversation);
+    userAssigned = checkAssigned(currentConversation);
+    assignDraft = checkDraft(currentConversation);
+    forwarded = updateFrom(currentConversation);
+    conversationLink = getConversationLink(currentConversation);
+    messageLink = getMessageLink(currentConversation);
+    labels = getLabels(currentConversation);
+    isLabeled = labelCheck(currentConversation, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(currentConversation);
+    fullMessage = getFullMessage(currentConversation);
 }
 
 function body1Reset(){
