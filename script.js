@@ -88,7 +88,7 @@ function body12Click(conversation){
     }
     else{
         var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
-        return something; //name + " | " + email;
+        return email;
     }
 }
 function body13Click(conversation){
@@ -97,7 +97,7 @@ function body13Click(conversation){
     }
     else{
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
-        return something; //name + " | " + email;
+        return name;
     }
 
 }
