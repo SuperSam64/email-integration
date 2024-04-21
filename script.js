@@ -95,32 +95,35 @@ function body13Click(conversation){
 }
 function body14Click(conversation){ // depends on var9, // depends on message exists
     
-    var switchNames;
+    
     if(!conversation.latest_message){
-        switchNames = false;
-    }
-    else if (
-        currentConversation.messages_count == 1 &&
-        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-        var7 == true        
-    ) {
-        switchNames = true;
+        return "[empty]";
     }
     else {
-        switchNames = false;
-    }    
-    if(switchNames == false){
-        if(!conversation.latest_message.from_field.name){
-            return "[empty]";
+        var switchNames;
+        if (
+            currentConversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            var7 == true        
+        ) {
+            switchNames = true;
+        }
+        else {
+            switchNames = false;
+        }    
+        if(switchNames == false){
+            if(!conversation.latest_message.from_field.name){
+                return "[empty]";
+            }
+            else{
+                return conversation.latest_message.from_field.name;
+            }
         }
         else{
-            return conversation.latest_message.from_field.name;
+            var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
+            return name;
         }
-    }
-    else{
-        var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
-        return name;
     }
 }
 function body15Click(conversation){
@@ -145,32 +148,34 @@ function body15Click(conversation){
 
 
 function body4Click(conversation){ // depends on var9, // depends on message exists
-    var switchEmails;
     if(!conversation.latest_message){
-        switchEmails = false;
-    }
-    else if (
-        currentConversation.messages_count == 1 &&
-        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-        var7 == true        
-    ) {
-        switchEmails = true;
+        return "[empty]";
     }
     else {
-        switchEmails = false;
-    }
-    if(switchEmails == false){
-        if(!conversation.latest_message.from_field.address){
-            return "[empty]";
+        var switchEmails;
+        if (
+            currentConversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            var7 == true        
+        ) {
+            switchEmails = true;
+        }
+        else {
+            switchEmails = false;
+        }
+        if(switchEmails == false){
+            if(!conversation.latest_message.from_field.address){
+                return "[empty]";
+            }
+            else{
+                return conversation.latest_message.from_field.address;
+            }
         }
         else{
-            return conversation.latest_message.from_field.address;
+            var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
+            return email;
         }
-    }
-    else{
-        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
-        return email;
     }
 }
 
