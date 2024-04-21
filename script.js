@@ -86,7 +86,7 @@ function body12Click(conversation){
         return "[empty]";
     }
     else if(var9 == false){
-        return "ORIGINAL REPLY EMAIL";
+        return conversation.latest_message.from_field.address;
     }
     else{
         var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
@@ -101,7 +101,7 @@ function body14Click(conversation){
         return "[empty]";
     }
     else if(var9 == false){
-        return "ORIGINAL NAME";
+        return conversation.latest_message.from_field.name;
     }
     else{
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
