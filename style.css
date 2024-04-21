@@ -16,8 +16,7 @@
     padding: 2px 6px 10px 6px; 
 }
 .bottomSection{
-    border-radius: 0px 0px 6px 6px;
-    padding: 10px 6px 2px 6px; 
+    padding-bottom:12px; 
 }
 .textTitle{
     background-color:white;

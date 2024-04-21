@@ -9,13 +9,13 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 2.53</span>
+			<span class="button-link column padding" id="reload-button">Version 2.54</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button1">Click me</span>
     <!------------------------------------------------------------------------>
-    <table class="textFrame"> <!-- Table of results -->>
+    <table class="textFrame"> <!-- Table of results -->
     <!------------------------- TEXT BOX -------------------------->
       <tr id="title1" class="textTitle"><td width="24 px" style="text-align:right">
         1.
@@ -156,10 +156,10 @@
         16.
       </td><td></td><td>
         Full Message
-      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16" class="textBody">
+      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16" class="textBody bottomSection">
         [placeholder]
       </td></tr>
-    <!------------------------------------------------------------->    
+    <!------------------------------------------------------------->
     </table>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -218,24 +218,7 @@
       Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {		
 					currentConversation = conversations[0];
-          // cut here
-          conversationID = getConversation(currentConversation);
-          conversationCount = getMessageCount(currentConversation);
-          messageTo = getTo(currentConversation);
-          messageFrom = getFrom(currentConversation);
-          customerName = getName(currentConversation);
-          messageSubject = getMessageSubject(currentConversation);
-          conversationSubject = getConversationSubject(currentConversation);
-          userAssigned = checkAssigned(currentConversation);
-          assignDraft = checkDraft(currentConversation);
-          forwarded = updateFrom(currentConversation);
-          conversationLink = getConversationLink(currentConversation);
-          messageLink = getMessageLink(currentConversation);
-          labels = getLabels(currentConversation);
-          isLabeled = labelCheck(currentConversation, "1d53229eb9e1"); // shorten this later
-          preview = getPreview(currentConversation);
-          fullMessage = getFullMessage(currentConversation);
-          // cut here
+          update(currentConversation);
           showResults();
 				})
 			})
@@ -331,7 +314,7 @@
         body16Reset();
       });
       $("#button1").click(function () { 
-        getConversation();
+        // test button click here
       });
     </script>
 </body>

@@ -207,24 +207,23 @@ function getFullMessage(conversation){
     }
 }
 function update (input){
-    conversationID = getConversation(currentConversation);
-    conversationCount = getMessageCount(currentConversation);
-    messageTo = getTo(currentConversation);
-    messageFrom = getFrom(currentConversation);
-    customerName = getName(currentConversation);
-    messageSubject = getMessageSubject(currentConversation);
-    conversationSubject = getConversationSubject(currentConversation);
-    userAssigned = checkAssigned(currentConversation);
-    assignDraft = checkDraft(currentConversation);
-    forwarded = updateFrom(currentConversation);
-    conversationLink = getConversationLink(currentConversation);
-    messageLink = getMessageLink(currentConversation);
-    labels = getLabels(currentConversation);
-    isLabeled = labelCheck(currentConversation, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(currentConversation);
-    fullMessage = getFullMessage(currentConversation);
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input);
 }
-
 function body1Reset(){
     $("#body1").text("[ready]")
 }
