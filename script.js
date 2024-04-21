@@ -51,11 +51,17 @@ function body14Click(conversation){
     }
     else {
         var switchNames;
+        var assignedToMe = false;
+        for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+            if(conversation.assignees[i].id == currentUser.id){
+                assignedToMe = true;
+            }
+        }
         if (
             currentConversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            var7 == true        
+            assignedToMe == true        
         ) {
             switchNames = true;
         }
