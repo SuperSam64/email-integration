@@ -47,10 +47,17 @@ function body7Click(conversation){
     return assignedToMe;
 }
 function body8Click(conversation){ // depends on var7
+    var assignedToMe = false;
+    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+        if(conversation.assignees[i].id == currentUser.id){
+            assignedToMe = true;
+        }
+    }
+    
     if(
         !conversation.latest_message &&
         currentConversation.messages_count < 2 &&
-        var7 ==  false
+        assignedToMe ==  false
     ){
         return true;
     }
@@ -59,6 +66,13 @@ function body8Click(conversation){ // depends on var7
     }
 }
 function body9Click(conversation){ // depends on var7
+    var assignedToMe = false;
+    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+        if(conversation.assignees[i].id == currentUser.id){
+            assignedToMe = true;
+        }
+    }
+    
     if(!conversation.latest_message){
         return false;
     }
@@ -67,7 +81,7 @@ function body9Click(conversation){ // depends on var7
             currentConversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            var7 == true        
+            assignedToMe == true        
         ) {
             return true;
         }
@@ -93,7 +107,7 @@ function body12Click(conversation){
 function body13Click(conversation){
 
 }
-function body14Click(conversation){ // depends on var9, // depends on message exists
+function body14Click(conversation){ // depends on message exists
     
     
     if(!conversation.latest_message){
@@ -147,7 +161,7 @@ function body15Click(conversation){
 }
 
 
-function body4Click(conversation){ // depends on var9, // depends on message exists
+function body4Click(conversation){ // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -193,6 +207,9 @@ function body17Click(conversation){
 
 }
 
+function update (input){
+
+}
 
 function body1Reset(){
     $("#body1").text("[ready]")
