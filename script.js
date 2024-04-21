@@ -12,7 +12,7 @@ function body1Click(conversation){
 function body2Click(conversation){
     return (currentConversation.messages_count);
 }
-function body3Click(conversation){
+function body3Click(conversation){ // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -20,15 +20,24 @@ function body3Click(conversation){
         return conversation.latest_message.to_fields[0].address;
     }
 }
-function body4Click(conversation){
+function body4Click(conversation){ // depends on var9, // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
+    else if(var9 == false){
+        if(!conversation.latest_message.from_field.address){
+            return "[empty]";
+        }
+        else{
+            return conversation.latest_message.from_field.address;
+        }
+    }
     else{
-        return conversation.latest_message.from_field.address;
+        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
+        return email;
     }
 }
-function body5Click(conversation){
+function body5Click(conversation){ // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -36,7 +45,7 @@ function body5Click(conversation){
         return conversation.latest_message.subject;
     }
 }
-function body6Click(conversation){
+function body6Click(conversation){ // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -53,7 +62,7 @@ function body7Click(conversation){
     }
     return assignedToMe;
 }
-function body8Click(conversation){
+function body8Click(conversation){ // depends on var2, var3, var4, var7
     if (
         var2 < 2 &&
         var3 == "[empty]" && 
@@ -66,7 +75,7 @@ function body8Click(conversation){
         return false;
     }
 }
-function body9Click(conversation){
+function body9Click(conversation){ // depends on var2, var3, var4, var7
     if (
         var2 == 1 &&
         var3.split("@")[1] == "filtersfast.com" &&
@@ -91,26 +100,12 @@ function body11Click(conversation){
     }
 }
 function body12Click(conversation){
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else if(var9 == false){
-        if(!conversation.latest_message.from_field.address){
-            return "[empty]";
-        }
-        else{
-            return conversation.latest_message.from_field.address;
-        }
-    }
-    else{
-        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
-        return email;
-    }
+    return "OBSOLETE";
 }
 function body13Click(conversation){
 
 }
-function body14Click(conversation){
+function body14Click(conversation){ // depends on var9, // depends on message exists
     if(!conversation.latest_message){
         return "[empty]";
     }
