@@ -149,6 +149,8 @@ function body16Click(conversation, labelID){
 function body17Click(conversation){			
 
 }
+
+
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -203,53 +205,5 @@ function body17Reset(){
 
 
 /*
-~~~~~~~~~~ SIMPLIFY - remove/consolodate duplicated fuctions. if one true/false applies to many things, check them all at once. organize/sort, but not in such a way that it breaks functionality. test everything. consolodate results into one textbox
-replace "from" with modified "from" - but still have a trigger for when the email is being replaced so a draft can be made
-- only make a draft if message count is 1
-- make the "to" the customer's email. find a way to remove the other email. try array = []
-assign new drafts
-set these as utitilies
-create an array of tasks for POs and for tax exempt and others
-get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4. or if anywhere in the subject or body (html removed) is "order number XXXXXXXX" "order XXXXXXXX" "order no. XXXXXXXX" "order # XXXXXXXX" 
-        get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
-    else
-        order number = "empty"
-    if order number is given by user, and order number was previosuly "empty", set convo subject to order number
-check for contact by email. if one does not exist, create it. show fields for the user to modify: name, phone number, email, cust ID. when any field is modified, update contact.
-scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
-  - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
-create forms
-set up branching for forms
-make autoreply templates that can be modified by me, based on the regular templates
-identify time of day when applying a template
-take contexts for monday forms and for responses
-for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
-link to monday form
-link to monday search
-include link to message in monday form?
-decide what should be CCA, what should be CRM, and what should be shared, separate accordingly
-come up with functions admins can do with no coding, such as change a person's level
-respond automatically to chatbot requests
-determine whether to say "thanks for reaching out" or "thank you for your reply"
-     - 
-        - has attachments?
-        - function to do all starting operations
-        - create task
-        - link within extension
-        - link to other extension
-        - link outside of extension
-        - assign label
 
-    things to show on master list
-    - final from email
-    - to email
-    - message count
-    - will assign draft
-    - preview
-    - body
-    - link to convo
-    - link to message
-    - customer's name
-    - labels
-    - is label? (with example)
 */
