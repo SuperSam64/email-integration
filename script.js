@@ -141,7 +141,7 @@ function body16Click(conversation, labelID){
     var labeled = false;
     $(var15).each(function(){
         //if(this.id == labelID){
-          var labeled = this.id;
+          labeled = this.id;
         //}
     });
     return labeled;
