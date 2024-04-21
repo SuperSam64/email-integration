@@ -200,10 +200,10 @@ function getPreview(conversation){
 }
 function getFullMessage(conversation){
     if(!conversation.latest_message){
-        return "[empty]";
+        $("#body16").text("[empty]")
     }
     else{
-        return Missive.insertHtml(conversation.latest_message.body);
+        $("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
     }
 }
 function update (input){
@@ -222,7 +222,7 @@ function update (input){
     labels = getLabels(input);
     isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
-    fullMessage = getFullMessage(input);
+    getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
 }
 function body1Reset(){
     $("#body1").text("[ready]")
@@ -288,7 +288,6 @@ function showResults(){
     $("#body13").text(labels);
     $("#body14").text(isLabeled);
     $("#body15").text(preview);
-    $("#body16").text(fullMessage);
 }
 
 /*
