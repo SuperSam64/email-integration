@@ -1,10 +1,10 @@
-function body1Click(conversation){
+function getConversation(conversation){
     return conversation.id;
 }
-function body2Click(conversation){
+function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
-function body3Click(conversation){
+function getTo(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -12,7 +12,7 @@ function body3Click(conversation){
         return conversation.latest_message.to_fields[0].address;
     }
 }
-function body4Click(conversation){
+function getFrom(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -49,7 +49,7 @@ function body4Click(conversation){
         }
     }
 }
-function body14Click(conversation){
+function getName(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -86,7 +86,7 @@ function body14Click(conversation){
         }
     }
 }
-function body5Click(conversation){
+function getMessageSubject(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -94,7 +94,7 @@ function body5Click(conversation){
         return conversation.latest_message.subject;
     }
 }
-function body6Click(conversation){
+function getConversationSubject(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -102,7 +102,7 @@ function body6Click(conversation){
         return conversation.subject;
     }
 }
-function body7Click(conversation){
+function checkAssigned(conversation){
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -111,7 +111,7 @@ function body7Click(conversation){
     }
     return assignedToMe;
 }
-function body8Click(conversation){ 
+function checkDraft(conversation){ 
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
             return false;
@@ -127,7 +127,7 @@ function body8Click(conversation){
         return false;
     }
 }
-function body9Click(conversation){ 
+function updateFrom(conversation){ 
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -151,10 +151,10 @@ function body9Click(conversation){
         }
     }
 }
-function body10Click(conversation){
+function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
-function body11Click(conversation){
+function getMessageLink(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -162,7 +162,7 @@ function body11Click(conversation){
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
-function body15Click(conversation){
+function getLabels(conversation){
     var labels = ["No labels"]
     replied = false;
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
@@ -181,9 +181,9 @@ function body15Click(conversation){
     }
     return labels;// +  " | " + replied;
 }
-function body16Click(conversation, labelID){
+function labelCheck(conversation, labelID){
     var labeled = false;
-    $(getLabels).each(function(){
+    $(labels).each(function(){
         if(this.split("-")[4] == labelID){
           labeled = true;
         }
@@ -206,9 +206,6 @@ function body3Reset(){
 function body4Reset(){
     $("#body4").text("[ready]")
 }
-function body5Reset(){
-    $("#body5").text("[ready]")
-}
 function body6Reset(){
     $("#body6").text("[ready]")
 }
@@ -227,30 +224,33 @@ function body10Reset(){
 function body11Reset(){
     $("#body11").text("[ready]")
 }
+function body12Reset(){
+    $("#body12").text("[ready]")
+}
+function body5Reset(){
+    $("#body5").text("[ready]")
+}
+function body13Reset(){
+    $("#body13").text("[ready]")
+}
 function body14Reset(){
     $("#body14").text("[ready]")
-}
-function body15Reset(){
-    $("#body15").text("[ready]")
-}
-function body16Reset(){
-    $("#body16").text("[ready]")
 }
 function showResults(){
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
-    $("#body3").text(getTo);
-    $("#body4").text(getFrom);
-    $("#body5").text(getName);
+    $("#body3").text(messageTo);
+    $("#body4").text(messageFrom);
+    $("#body5").text(customerName);
     $("#body6").text(messageSubject); 
     $("#body7").text(conversationSubject);
     $("#body8").text(userAssigned);
     $("#body9").text(assignDraft);
-    $("#body10").text(updateFrom);
+    $("#body10").text(forwarded);
     $("#body11").text(conversationLink);
-    $("#body14").text(messageLink);
-    $("#body15").text(getLabels);
-    $("#body16").text(checkLabel);
+    $("#body12").text(messageLink);
+    $("#body13").text(labels);
+    $("#body14").text(isLabeled);
 }
 
 /*

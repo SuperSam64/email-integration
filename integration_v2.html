@@ -65,21 +65,9 @@
     <!------------------------------------------------------------->
     <!------------------------- TEXT BOX -------------------------->
     <div class="textFrame column-vertical">
-      <div id="title14">
-        <div class="textTitle">
-          5. Customer's name
-        </div>
-        <div id="body14" class="textBody">
-          Here is some text
-        </div>
-      </div>
-    </div>
-    <!------------------------------------------------------------->
-    <!------------------------- TEXT BOX -------------------------->
-    <div class="textFrame column-vertical">
       <div id="title5">
         <div class="textTitle">
-          6. Message subject
+          5. Customer's name
         </div>
         <div id="body5" class="textBody">
           Here is some text
@@ -91,7 +79,7 @@
     <div class="textFrame column-vertical">
       <div id="title6">
         <div class="textTitle">
-          7. Conversation subject
+          6. Message subject
         </div>
         <div id="body6" class="textBody">
           Here is some text
@@ -103,7 +91,7 @@
     <div class="textFrame column-vertical">
       <div id="title7">
         <div class="textTitle">
-          8. Is this assigned to me?
+          7. Conversation subject
         </div>
         <div id="body7" class="textBody">
           Here is some text
@@ -115,7 +103,7 @@
     <div class="textFrame column-vertical">
       <div id="title8">
         <div class="textTitle">
-          9. Is this a draft that needs to be assigned?
+          8. Is this assigned to me?
         </div>
         <div id="body8" class="textBody">
           Here is some text
@@ -127,7 +115,7 @@
     <div class="textFrame column-vertical">
       <div id="title9">
         <div class="textTitle">
-          10. Does the email address need to be replaced?
+          9. Is this a draft that needs to be assigned?
         </div>
         <div id="body9" class="textBody">
           Here is some text
@@ -139,7 +127,7 @@
     <div class="textFrame column-vertical">
       <div id="title10">
         <div class="textTitle">
-          11. Link to conversation
+          10. Does the email address need to be replaced?
         </div>
         <div id="body10" class="textBody">
           Here is some text
@@ -151,7 +139,7 @@
     <div class="textFrame column-vertical">
       <div id="title11">
         <div class="textTitle">
-          12. Link to message
+          11. Link to conversation
         </div>
         <div id="body11" class="textBody">
           Here is some text
@@ -161,11 +149,11 @@
     <!------------------------------------------------------------->
     <!------------------------- TEXT BOX -------------------------->
     <div class="textFrame column-vertical">
-      <div id="title15">
+      <div id="title12">
         <div class="textTitle">
-          13. All labels
+          12. Link to message
         </div>
-        <div id="body15" class="textBody">
+        <div id="body12" class="textBody">
           Here is some text
         </div>
       </div>
@@ -173,11 +161,23 @@
     <!------------------------------------------------------------->
     <!------------------------- TEXT BOX -------------------------->
     <div class="textFrame column-vertical">
-      <div id="title16">
+      <div id="title13">
+        <div class="textTitle">
+          13. All labels
+        </div>
+        <div id="body13" class="textBody">
+          Here is some text
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------------------->
+    <!------------------------- TEXT BOX -------------------------->
+    <div class="textFrame column-vertical">
+      <div id="title14">
         <div class="textTitle">
           14. Is the label "Cancellations" applied? (1d53229eb9e1)
         </div>
-        <div id="body16" class="textBody bottomSection">
+        <div id="body14" class="textBody bottomSection">
           Here is some text
         </div>
       </div>
@@ -195,18 +195,18 @@
       var currentConversation;
       var conversationID;
       var conversationCount;
-      var getTo;
-      var getFrom;
-      var getName;
+      var messageTo;
+      var messageFrom;
+      var customerName;
       var messageSubject;
       var conversationSubject;
       var userAssigned;
       var assignDraft;
-      var updateFrom;
+      var forwarded;
       var conversationLink;
       var messageLink;
-      var getLabels;
-      var checkLabel;
+      var labels;
+      var isLabeled;
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
@@ -238,20 +238,20 @@
       Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {		
 					currentConversation = conversations[0];
-          conversationID = body1Click(currentConversation);
-          conversationCount = body2Click(currentConversation);
-          getTo = body3Click(currentConversation);
-          getFrom = body4Click(currentConversation);
-          getName = body5Click(currentConversation);
-          messageSubject = body6Click(currentConversation);
-          conversationSubject = body7Click(currentConversation);
-          userAssigned = body8Click(currentConversation);
-          assignDraft = body9Click(currentConversation);
-          updateFrom = body10Click(currentConversation);
-          conversationLink = body11Click(currentConversation);
-          messageLink = body14Click(currentConversation);
-          getLabels = body15Click(currentConversation);
-          checkLabel = body16Click(currentConversation, "1d53229eb9e1"); // shorten this later
+          conversationID = getConversation(currentConversation);
+          conversationCount = getMessageCount(currentConversation);
+          messageTo = getTo(currentConversation);
+          messageFrom = getFrom(currentConversation);
+          customerName = getName(currentConversation);
+          messageSubject = getMessageSubject(currentConversation);
+          conversationSubject = getConversationSubject(currentConversation);
+          userAssigned = checkAssigned(currentConversation);
+          assignDraft = checkDraft(currentConversation);
+          forwarded = updateFrom(currentConversation);
+          conversationLink = getConversationLink(currentConversation);
+          messageLink = getMessageLink(currentConversation);
+          labels = getLabels(currentConversation);
+          isLabeled = labelCheck(currentConversation, "1d53229eb9e1"); // shorten this later
           showResults();
 				})
 			})
@@ -322,65 +322,65 @@
       $("#body11").click(function () { 
         body11Reset();
       });
+      $("#title12").click(function () { 
+        body12Reset();
+      });
+      $("#body12").click(function () { 
+        body12Reset();
+      });
+      $("#title13").click(function () { 
+        body13Reset();
+      });
+      $("#body13").click(function () { 
+        body13Reset();
+      });
       $("#title14").click(function () { 
         body14Reset();
       });
       $("#body14").click(function () { 
         body14Reset();
       });
-      $("#title15").click(function () { 
-        body15Reset();
-      });
-      $("#body15").click(function () { 
-        body15Reset();
-      });
-      $("#title16").click(function () { 
-        body16Reset();
-      });
-      $("#body16").click(function () { 
-        body16Reset();
-      });
       $("#button1").click(function () { 
-        body1Click();
+        getConversation();
       });
       $("#button2").click(function () { 
-        body2Click();
+        getMessageCount();
       });
       $("#button3").click(function () { 
-        body3Click();
+        getTo();
       });
       $("#button4").click(function () { 
-        body4Click();
+        getFrom();
       });
       $("#button5").click(function () { 
-        body5Click();
+        getName();
       });
       $("#button6").click(function () { 
-        body6Click();
+        getMessageSubject();
       });
       $("#button7").click(function () { 
-        body7Click();
+        getConversationSubject();
       });
       $("#button8").click(function () { 
-        body8Click();
+        checkAssigned();
       });
       $("#button9").click(function () { 
-        body9Click();
+        checkDraft();
       });
       $("#button10").click(function () { 
-        body10Click();
+        updateFrom();
       });
       $("#button11").click(function () { 
-        body11Click();
+        getConversationLink();
+      });
+      $("#button12").click(function () { 
+        getMessageLink();
+      });
+      $("#button13").click(function () { 
+        getLabels();
       });
       $("#button14").click(function () { 
-        body14Click();
-      });
-      $("#button15").click(function () { 
-        body15Click();
-      });
-      $("#button16").click(function () { 
-        body16Click();
+        labelCheck();
       });
     </script>
 </body>
