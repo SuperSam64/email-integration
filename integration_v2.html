@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 2.42</span>
+			<span class="button-link column padding" id="reload-button">Version 2.43</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -18,7 +18,7 @@
     <!------------------------- TEXT BOX -------------------------->
     <div class="textFrame column-vertical section"><div id="title1">
         <div class="textTitle topSection">
-          Conversation ID
+          1. Conversation ID
         </div>
         <div id="body1" class="textBody">
           Here is some text
@@ -29,7 +29,7 @@
     <!------------------------- TEXT BOX -------------------------->
     <div class="textFrame column-vertical"><div id="title2">
       <div class="textTitle">
-        Conversation Count
+        2. Conversation Count
       </div>
       <div id="body2" class="textBody">
         Here is some text
@@ -40,7 +40,7 @@
   <!------------------------- TEXT BOX -------------------------->
   <div class="textFrame column-vertical"><div id="title3">
     <div class="textTitle">
-      To
+      3. To
     </div>
     <div id="body3" class="textBody">
       Here is some text
@@ -51,7 +51,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title4">
   <div class="textTitle">
-    From
+    4. From
   </div>
   <div id="body4" class="textBody">
     Here is some text
@@ -60,9 +60,20 @@
 </div>
 <!------------------------------------------------------------->
 <!------------------------- TEXT BOX -------------------------->
+<div class="textFrame column-vertical"><div id="title14">
+  <div class="textTitle">
+    5. Customer's name (replacement)
+  </div>
+  <div id="body14" class="textBody">
+    Here is some text
+  </div>
+</div>
+</div>
+<!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title5">
   <div class="textTitle">
-    Message subject
+    6. Message subject
   </div>
   <div id="body5" class="textBody">
     Here is some text
@@ -73,7 +84,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title6">
   <div class="textTitle">
-    Conversation subject
+    7. Conversation subject
   </div>
   <div id="body6" class="textBody">
     Here is some text
@@ -84,7 +95,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title7">
   <div class="textTitle">
-    Is this assigned to me?
+    8. Is this assigned to me?
   </div>
   <div id="body7" class="textBody">
     Here is some text
@@ -95,7 +106,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title8">
   <div class="textTitle">
-    Is this a draft that needs to be assigned?
+    9. Is this a draft that needs to be assigned?
   </div>
   <div id="body8" class="textBody">
     Here is some text
@@ -106,7 +117,7 @@
 <!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title9">
   <div class="textTitle">
-    Does the email address need to be replaced?
+    10. Does the email address need to be replaced?
   </div>
   <div id="body9" class="textBody">
     Here is some text
@@ -114,9 +125,10 @@
 </div>
 </div>
 <!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title10">
   <div class="textTitle">
-    Link to conversation
+    11. Link to conversation
   </div>
   <div id="body10" class="textBody">
     Here is some text
@@ -124,9 +136,10 @@
 </div>
 </div>
 <!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title11">
   <div class="textTitle">
-    Link to message
+    12. Link to message
   </div>
   <div id="body11" class="textBody">
     Here is some text
@@ -134,43 +147,10 @@
 </div>
 </div>
 <!------------------------------------------------------------->
-<!------------------------------------------------------------->
-<div class="textFrame column-vertical"><div id="title12">
-  <div class="textTitle">
-    Email to replace with
-  </div>
-  <div id="body12" class="textBody">
-    Here is some text
-  </div>
-</div>
-</div>
-<!------------------------------------------------------------->
-<!------------------------------------------------------------->
-<div class="textFrame column-vertical"><div id="title13">
-  <div class="textTitle">
-    Customer's name (original)
-  </div>
-  <div id="body13" class="textBody">
-    Here is some text
-  </div>
-</div>
-</div>
-<!------------------------------------------------------------->
-<!------------------------------------------------------------->
-<div class="textFrame column-vertical"><div id="title14">
-  <div class="textTitle">
-    Customer's name (replacement)
-  </div>
-  <div id="body14" class="textBody">
-    Here is some text
-  </div>
-</div>
-</div>
-<!------------------------------------------------------------->
-<!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title15">
   <div class="textTitle">
-    All labels
+    13. All labels
   </div>
   <div id="body15" class="textBody">
     Here is some text
@@ -178,23 +158,12 @@
 </div>
 </div>
 <!------------------------------------------------------------->
-<!------------------------------------------------------------->
+<!------------------------- TEXT BOX -------------------------->
 <div class="textFrame column-vertical"><div id="title16">
   <div class="textTitle">
-    Is this label applied?
+    14. Is this label applied?
   </div>
   <div id="body16" class="textBody">
-    Here is some text
-  </div>
-</div>
-</div>
-<!------------------------------------------------------------->
-<!------------------------------------------------------------->
-<div class="textFrame column-vertical"><div id="title17">
-  <div class="textTitle">
-    title
-  </div>
-  <div id="body17" class="textBody bottomSection">
     Here is some text
   </div>
 </div>
@@ -222,12 +191,9 @@
       var var9;
       var var10;
       var var11;
-      var var12;
-      var var13;
       var var14;
       var var15;
       var var16;
-      var var17;
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
@@ -272,12 +238,9 @@
           var9 = body9Click(currentConversation);
           var10 = body10Click(currentConversation);
           var11 = body11Click(currentConversation);
-          var12 = body12Click(currentConversation);
-          var13 = body13Click(currentConversation);
           var14 = body14Click(currentConversation);
           var15 = body15Click(currentConversation);
           var16 = body16Click(currentConversation, "1d53229eb9e1"); // shorten this later
-          var17 = body17Click(currentConversation);
           showResults();
 				})
 			})
@@ -348,18 +311,6 @@
       $("#body11").click(function () { 
         body11Reset();
       });
-      $("#title12").click(function () { 
-        body12Reset();
-      });
-      $("#body12").click(function () { 
-        body12Reset();
-      });
-      $("#title13").click(function () { 
-        body13Reset();
-      });
-      $("#body13").click(function () { 
-        body13Reset();
-      });
       $("#title14").click(function () { 
         body14Reset();
       });
@@ -377,12 +328,6 @@
       });
       $("#body16").click(function () { 
         body16Reset();
-      });
-      $("#title17").click(function () { 
-        body17Reset();
-      });
-      $("#body17").click(function () { 
-        body17Reset();
       });
       $("#button1").click(function () { 
         body1Click();
@@ -417,12 +362,6 @@
       $("#button11").click(function () { 
         body11Click();
       });
-      $("#button12").click(function () { 
-        body12Click();
-      });
-      $("#button13").click(function () { 
-        body13Click();
-      });
       $("#button14").click(function () { 
         body14Click();
       });
@@ -431,9 +370,6 @@
       });
       $("#button16").click(function () { 
         body16Click();
-      });
-      $("#button17").click(function () { 
-        body17Click();
       });
     </script>
 </body>

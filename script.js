@@ -164,12 +164,7 @@ function body11Click(conversation){
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
-function body12Click(conversation){
-    return "OBSOLETE";
-}
-function body13Click(conversation){
 
-}
 
 function body15Click(conversation){
     var labels = ["No labels"]
@@ -202,9 +197,7 @@ function body16Click(conversation, labelID){
     });
     return labeled;
 }
-function body17Click(conversation){			
 
-}
 
 function update (input){
 
@@ -243,12 +236,6 @@ function body10Reset(){
 function body11Reset(){
     $("#body11").text("[ready]")
 }
-function body12Reset(){
-    $("#body12").text("[ready]")
-}
-function body13Reset(){
-    $("#body13").text("[ready]")
-}
 function body14Reset(){
     $("#body14").text("[ready]")
 }
@@ -257,9 +244,6 @@ function body15Reset(){
 }
 function body16Reset(){
     $("#body16").text("[ready]")
-}
-function body17Reset(){
-    $("#body17").text("[ready]")
 }
 function showResults(){
     $("#body1").text(var1);
@@ -273,12 +257,9 @@ function showResults(){
     $("#body9").text(var9);
     $("#body10").text(var10);
     $("#body11").text(var11);
-    $("#body12").text(var12);
-    $("#body13").text(var13);
     $("#body14").text(var14);
     $("#body15").text(var15);
     $("#body16").text(var16);
-    $("#body17").text(var17)
 }
 
 /*
