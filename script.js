@@ -101,7 +101,12 @@ function body14Click(conversation){
         return "[empty]";
     }
     else if(var9 == false){
-        return conversation.latest_message.from_field.name;
+        if(conversation.latest_message.from_field.name == ''){
+            return "[empty]";
+        }
+        else{
+            return conversation.latest_message.from_field.name;
+        }
     }
     else{
         var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
