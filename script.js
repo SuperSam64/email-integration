@@ -83,18 +83,25 @@ function body11Click(conversation){
     }
 }
 function body12Click(conversation){
-if(!conversation.latest_message){
+    if(!conversation.latest_message || var9 == false){
         return "[empty]";
     }
     else{
-        return conversation.latest_message.to_fields[0].address;
+        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
+        return email;
     }
 }
 function body13Click(conversation){
 
 }
 function body14Click(conversation){
-
+    if(!conversation.latest_message || var9 == false){
+        return "[empty]";
+    }
+    else{
+        var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
+        return name;
+    }
 }
 function body15Click(conversation){
 
