@@ -114,7 +114,23 @@ function body14Click(conversation){
     }
 }
 function body15Click(conversation){
-
+    var labels = ["No labels"]
+    replied = false;
+    for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+        var prefix = conversation.labels[i].id.split("-")[0];
+        if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
+            if(prefix == "sent"){
+                replied = true;
+            }
+            else{
+                labels.push(conversation.labels[i].name) // this can be .name or .id
+            }
+        }
+    }
+    if(labels.length > 1){
+        labels.shift();
+    }
+    return labels +  " | " + replied;
 }
 function body16Click(conversation){
 
