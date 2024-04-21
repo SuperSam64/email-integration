@@ -128,7 +128,7 @@ function body15Click(conversation){
                 replied = true;
             }
             else{
-                labels.push(conversation.labels[i].name) // this can be .name or .id
+                labels.push(conversation.labels[i].id) // this can be .name or .id
             }
         }
     }
@@ -138,12 +138,12 @@ function body15Click(conversation){
     return labels;// +  " | " + replied;
 }
 function body16Click(conversation, labelID){
-    var labeled = var15[0].id
-    //$(var15).each(function(){
-        //if(this.id == labelID){
-          labeled = this.id;
-        //}
-    //});
+    var labeled = false;
+    $(var15).each(function(){
+        if(this == labelID){
+          labeled = this;
+        }
+    });
     return labeled;
 }
 function body17Click(conversation){			
