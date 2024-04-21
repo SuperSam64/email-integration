@@ -50,14 +50,17 @@ function body8Click(conversation){ // depends on var2, var3, var4, var7
     if(!conversation.latest_message){
         return false;
     }
-    else if (
-        currentConversation.messages_count < 2 &&
-        var7 ==  false
-    ) {
-        return true;
-    }
-    else{
-        return false;
+    else {
+
+        if (
+            currentConversation.messages_count < 2 &&
+            var7 ==  false
+        ) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 function body9Click(conversation){ // depends on var2, var3, var4, var7
