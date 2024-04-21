@@ -4,7 +4,7 @@ function body1Click(conversation){
 function body2Click(conversation){
     return (currentConversation.messages_count);
 }
-function body3Click(conversation){ // depends on message exists
+function body3Click(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -12,8 +12,71 @@ function body3Click(conversation){ // depends on message exists
         return conversation.latest_message.to_fields[0].address;
     }
 }
-
-function body5Click(conversation){ // depends on message exists
+function body4Click(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else {
+        var switchEmails;
+        if (
+            currentConversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            var7 == true        
+        ) {
+            switchEmails = true;
+        }
+        else {
+            switchEmails = false;
+        }
+        if(switchEmails == false){
+            if(!conversation.latest_message.from_field.address){
+                return "[empty]";
+            }
+            else{
+                return conversation.latest_message.from_field.address;
+            }
+        }
+        else{
+            var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
+            return email;
+        }
+    }
+}
+function body14Click(conversation){
+    
+    
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else {
+        var switchNames;
+        if (
+            currentConversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            var7 == true        
+        ) {
+            switchNames = true;
+        }
+        else {
+            switchNames = false;
+        }    
+        if(switchNames == false){
+            if(!conversation.latest_message.from_field.name){
+                return "[empty]";
+            }
+            else{
+                return conversation.latest_message.from_field.name;
+            }
+        }
+        else{
+            var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
+            return name;
+        }
+    }
+}
+function body5Click(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -21,7 +84,7 @@ function body5Click(conversation){ // depends on message exists
         return conversation.latest_message.subject;
     }
 }
-function body6Click(conversation){ // depends on message exists
+function body6Click(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -95,39 +158,7 @@ function body12Click(conversation){
 function body13Click(conversation){
 
 }
-function body14Click(conversation){ // depends on message exists
-    
-    
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else {
-        var switchNames;
-        if (
-            currentConversation.messages_count == 1 &&
-            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            var7 == true        
-        ) {
-            switchNames = true;
-        }
-        else {
-            switchNames = false;
-        }    
-        if(switchNames == false){
-            if(!conversation.latest_message.from_field.name){
-                return "[empty]";
-            }
-            else{
-                return conversation.latest_message.from_field.name;
-            }
-        }
-        else{
-            var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
-            return name;
-        }
-    }
-}
+
 function body15Click(conversation){
     var labels = ["No labels"]
     replied = false;
@@ -148,38 +179,6 @@ function body15Click(conversation){
     return labels;// +  " | " + replied;
 }
 
-
-function body4Click(conversation){ // depends on message exists
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else {
-        var switchEmails;
-        if (
-            currentConversation.messages_count == 1 &&
-            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            var7 == true        
-        ) {
-            switchEmails = true;
-        }
-        else {
-            switchEmails = false;
-        }
-        if(switchEmails == false){
-            if(!conversation.latest_message.from_field.address){
-                return "[empty]";
-            }
-            else{
-                return conversation.latest_message.from_field.address;
-            }
-        }
-        else{
-            var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
-            return email;
-        }
-    }
-}
 
 
 function body16Click(conversation, labelID){
