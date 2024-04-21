@@ -18,11 +18,17 @@ function body4Click(conversation){
     }
     else {
         var switchEmails;
+        var assignedToMe = false;
+        for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+            if(conversation.assignees[i].id == currentUser.id){
+                assignedToMe = true;
+            }
+        }
         if (
-            currentConversation.messages_count == 1 &&
+            conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            var7 == true        
+            assignedToMe == true       
         ) {
             switchEmails = true;
         }
@@ -50,7 +56,7 @@ function body14Click(conversation){
         return "[empty]";
     }
     else {
-        var switchNames;
+        var switchName;
         var assignedToMe = false;
         for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
             if(conversation.assignees[i].id == currentUser.id){
@@ -58,17 +64,17 @@ function body14Click(conversation){
             }
         }
         if (
-            currentConversation.messages_count == 1 &&
+            conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true        
         ) {
-            switchNames = true;
+            switchName = true;
         }
         else {
-            switchNames = false;
+            switchName = false;
         }    
-        if(switchNames == false){
+        if(switchName == false){
             if(!conversation.latest_message.from_field.name){
                 return "[empty]";
             }
