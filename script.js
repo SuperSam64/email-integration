@@ -1,4 +1,4 @@
-function empty(conversation) {
+function empty(conversation) {  
     if(!conversation.latest_message){
         return true;
     }
@@ -12,7 +12,7 @@ function body1Click(conversation){
 function body2Click(conversation){
     return (currentConversation.messages_count);
 }
-function body3Click(conversation){
+function body3Click(conversation){ // DEPENDANT ON CONVO HAVING MESSAGE
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -21,14 +21,9 @@ function body3Click(conversation){
     }
 }
 function body4Click(conversation){
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else{
-        return conversation.latest_message.from_field.address;
-    }
+    return "OBSOLETE";
 }
-function body5Click(conversation){
+function body5Click(conversation){ // DEPENDANT ON CONVO HAVING MESSAGE
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -36,7 +31,7 @@ function body5Click(conversation){
         return conversation.latest_message.subject;
     }
 }
-function body6Click(conversation){
+function body6Click(conversation){ // DEPENDANT ON CONVO HAVING MESSAGE
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -44,7 +39,7 @@ function body6Click(conversation){
         return conversation.subject;
     }
 }
-function body7Click(conversation){
+function body7Click(conversation){ 
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -53,16 +48,22 @@ function body7Click(conversation){
     }
     return assignedToMe;
 }
-function body8Click(conversation){
-    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]" && var7 ==  false) {// & unassigned
+function body8Click(conversation){ // DEPENDANT ON var2, var3, var4, var7
+    if (var2 < 2
+    && var3 == "[empty]"
+    && var4 == "[empty]"
+    && var7 ==  false) {// & unassigned
         return true;
     }
     else{
         return false;
     }
 }
-function body9Click(conversation){
-    if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
+function body9Click(conversation){ // DEPENDANT ON var2, var3, var4, var7
+    if (var2 == 1
+    && var3.split("@")[1] == "filtersfast.com"
+    && var4 == "boldsales@filtersfast.com"
+    && var7 == true)
     {
         return true;
     }
@@ -73,7 +74,7 @@ function body9Click(conversation){
 function body10Click(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
-function body11Click(conversation){
+function body11Click(conversation){ // DEPENDANT ON CONVO HAVING MESSAGE
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -82,7 +83,7 @@ function body11Click(conversation){
     }
 }
 function body12Click(conversation){
-    if(!conversation.latest_message){
+    if(!conversation.latest_message){ // DEPENDANT ON CONVO HAVING MESSAGE, var9
         return "[empty]";
     }
     else if(var9 == false){
@@ -102,7 +103,7 @@ function body13Click(conversation){
 
 }
 function body14Click(conversation){
-    if(!conversation.latest_message){
+    if(!conversation.latest_message){ // DEPENDANT ON CONVO HAVING MESSAGE, var9
         return "[empty]";
     }
     else if(var9 == false){
@@ -123,7 +124,11 @@ function body15Click(conversation){
     replied = false;
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
-        if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
+        if(prefix != "closed"
+        && prefix != "assigned"
+        && prefix != "assigned_to_others"
+        && prefix != "unassigned"
+        && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
             }
@@ -201,6 +206,25 @@ function body17Reset(){
     $("#body17").text("[ready]")
 }
 
+function showResults(){
+    $("#body1").text(var1);
+    $("#body2").text(var2);
+    $("#body3").text(var3);
+    $("#body4").text(var4);
+    $("#body5").text(var5);
+    $("#body6").text(var6); 
+    $("#body7").text(var7);
+    $("#body8").text(var8);
+    $("#body9").text(var9);
+    $("#body10").text(var10);
+    $("#body11").text(var11);
+    $("#body12").text(var12);
+    $("#body13").text(var13);
+    $("#body14").text(var14);
+    $("#body15").text(var15);
+    $("#body16").text(var16);
+    $("#body17").text(var17)
+}
 
 /*
 ~~~~~~~~~~ SIMPLIFY - remove/consolodate duplicated fuctions. if one true/false applies to many things, check them all at once. organize/sort, but not in such a way that it breaks functionality. test everything. consolodate results into one textbox
