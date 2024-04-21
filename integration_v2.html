@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 2.46</span>
+			<span class="button-link column padding" id="reload-button">Version 2.47</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -193,20 +193,20 @@
       var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
 			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
       var currentConversation;
-      var var1;
-      var var2;
-      var var3;
-      var var4;
-      var var5;
-      var var6;
-      var var7;
-      var var8;
-      var var9;
-      var var10;
-      var var11;
-      var var14;
-      var var15;
-      var var16;
+      var conversationID;
+      var conversationCount;
+      var getTo;
+      var getFrom;
+      var getName;
+      var messageSubject;
+      var conversationSubject;
+      var userAssigned;
+      var assignDraft;
+      var updateFrom;
+      var conversationLink;
+      var messageLink;
+      var getLabels;
+      var checkLabel;
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
@@ -238,20 +238,20 @@
       Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {		
 					currentConversation = conversations[0];
-          var1 = body1Click(currentConversation);
-          var2 = body2Click(currentConversation);
-          var3 = body3Click(currentConversation);
-          var4 = body4Click(currentConversation);
-          var5 = body5Click(currentConversation);
-          var6 = body6Click(currentConversation);
-          var7 = body7Click(currentConversation);
-          var8 = body8Click(currentConversation);
-          var9 = body9Click(currentConversation);
-          var10 = body10Click(currentConversation);
-          var11 = body11Click(currentConversation);
-          var14 = body14Click(currentConversation);
-          var15 = body15Click(currentConversation);
-          var16 = body16Click(currentConversation, "1d53229eb9e1"); // shorten this later
+          conversationID = body1Click(currentConversation);
+          conversationCount = body2Click(currentConversation);
+          getTo = body3Click(currentConversation);
+          getFrom = body4Click(currentConversation);
+          getName = body5Click(currentConversation);
+          messageSubject = body6Click(currentConversation);
+          conversationSubject = body7Click(currentConversation);
+          userAssigned = body8Click(currentConversation);
+          assignDraft = body9Click(currentConversation);
+          updateFrom = body10Click(currentConversation);
+          conversationLink = body11Click(currentConversation);
+          messageLink = body14Click(currentConversation);
+          getLabels = body15Click(currentConversation);
+          checkLabel = body16Click(currentConversation, "1d53229eb9e1"); // shorten this later
           showResults();
 				})
 			})

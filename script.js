@@ -183,7 +183,7 @@ function body15Click(conversation){
 }
 function body16Click(conversation, labelID){
     var labeled = false;
-    $(var15).each(function(){
+    $(getLabels).each(function(){
         if(this.split("-")[4] == labelID){
           labeled = true;
         }
@@ -237,20 +237,20 @@ function body16Reset(){
     $("#body16").text("[ready]")
 }
 function showResults(){
-    $("#body1").text(var1);
-    $("#body2").text(var2);
-    $("#body3").text(var3);
-    $("#body4").text(var4);
-    $("#body5").text(var5);
-    $("#body6").text(var6); 
-    $("#body7").text(var7);
-    $("#body8").text(var8);
-    $("#body9").text(var9);
-    $("#body10").text(var10);
-    $("#body11").text(var11);
-    $("#body14").text(var14);
-    $("#body15").text(var15);
-    $("#body16").text(var16);
+    $("#body1").text(conversationID);
+    $("#body2").text(conversationCount);
+    $("#body3").text(getTo);
+    $("#body4").text(getFrom);
+    $("#body5").text(getName);
+    $("#body6").text(messageSubject); 
+    $("#body7").text(conversationSubject);
+    $("#body8").text(userAssigned);
+    $("#body9").text(assignDraft);
+    $("#body10").text(updateFrom);
+    $("#body11").text(conversationLink);
+    $("#body14").text(messageLink);
+    $("#body15").text(getLabels);
+    $("#body16").text(checkLabel);
 }
 
 /*
