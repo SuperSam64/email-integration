@@ -49,10 +49,7 @@ function body7Click(conversation){
     return assignedToMe;
 }
 function body8Click(conversation){ // DEPENDANT ON var2, var3, var4, var7
-    if (var2 < 2
-    && var3 == "[empty]"
-    && var4 == "[empty]"
-    && var7 ==  false) {// & unassigned
+    if (body2Click(conversation) < 2 && body3Click(conversation) == "[empty]" && body4Click(conversation) == "[empty]" && var7 ==  false) {// & unassigned
         return true;
     }
     else{
@@ -60,10 +57,7 @@ function body8Click(conversation){ // DEPENDANT ON var2, var3, var4, var7
     }
 }
 function body9Click(conversation){ // DEPENDANT ON var2, var3, var4, var7
-    if (var2 == 1
-    && var3.split("@")[1] == "filtersfast.com"
-    && var4 == "boldsales@filtersfast.com"
-    && var7 == true)
+    if (var4 == "boldsales@filtersfast.com" && var3.split("@")[1] == "filtersfast.com" && var7 == true && var2 == 1)
     {
         return true;
     }
@@ -124,11 +118,7 @@ function body15Click(conversation){
     replied = false;
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
-        if(prefix != "closed"
-        && prefix != "assigned"
-        && prefix != "assigned_to_others"
-        && prefix != "unassigned"
-        && prefix != "archive"){
+        if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
             }
