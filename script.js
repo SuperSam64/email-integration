@@ -130,10 +130,16 @@ function body15Click(conversation){
     if(labels.length > 1){
         labels.shift();
     }
-    return labels +  " | " + replied;
+    return labels;// +  " | " + replied;
 }
-function body16Click(conversation){
-
+function body16Click(conversation, labelID){
+    var labeled = false;
+    $(var15).each(function(){
+        if(this.id = labelID){
+          var labeled = true;
+        }
+    });
+    return labeled;
 }
 function body17Click(conversation){			
 
