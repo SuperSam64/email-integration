@@ -55,9 +55,9 @@ function body7Click(conversation){
 }
 function body8Click(conversation){
     if (
-        body2Click(conversation) < 2 &&
-        body3Click(conversation) == "[empty]" && 
-        body4Click(conversation) == "[empty]" &&
+        var2 < 2 &&
+        var3 == "[empty]" && 
+        var4 == "[empty]" &&
         var7 ==  false
     ) {
         return true;
@@ -68,10 +68,10 @@ function body8Click(conversation){
 }
 function body9Click(conversation){
     if (
-        var4 == "boldsales@filtersfast.com" &&
+        var2 == 1 &&
         var3.split("@")[1] == "filtersfast.com" &&
-        var7 == true &&
-        var2 == 1
+        var4 == "boldsales@filtersfast.com" &&
+        var7 == true        
     ) {
         return true;
     }
