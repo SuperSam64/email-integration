@@ -86,7 +86,12 @@ function body12Click(conversation){
         return "[empty]";
     }
     else if(var9 == false){
-        return conversation.latest_message.from_field.address;
+        if(!conversation.latest_message.from_field.id){
+            return "[empty]";
+        }
+        else{
+            return conversation.latest_message.from_field.id;
+        }
     }
     else{
         var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
@@ -135,7 +140,7 @@ function body15Click(conversation){
 function body16Click(conversation, labelID){
     var labeled = false;
     $(var15).each(function(){
-        if(this.id = labelID){
+        if(this.id == labelID){
           var labeled = true;
         }
     });
