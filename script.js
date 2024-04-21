@@ -190,6 +190,22 @@ function labelCheck(conversation, labelID){
     });
     return labeled;
 }
+function getPreview(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        return conversation.latest_message.preview;
+    }
+}
+function getFullMessage(conversation){
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        return conversation.latest_message.body;
+    }
+}
 function update (input){
 
 }
@@ -236,6 +252,12 @@ function body13Reset(){
 function body14Reset(){
     $("#body14").text("[ready]")
 }
+function body15Reset(){
+    $("#body15").text("[ready]")
+}
+function body16Reset(){
+    $("#body16").text("[ready]")
+}
 function showResults(){
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
@@ -251,6 +273,8 @@ function showResults(){
     $("#body12").text(messageLink);
     $("#body13").text(labels);
     $("#body14").text(isLabeled);
+    $("#body15").text(preview);
+    $("#body16").text(fullMessage);
 }
 
 /*

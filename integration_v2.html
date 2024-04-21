@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="margin-top:8px;margin-bottom:8px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 2.47</span>
+			<span class="button-link column padding" id="reload-button">Version 2.48</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -177,7 +177,29 @@
         <div class="textTitle">
           14. Is the label "Cancellations" applied? (1d53229eb9e1)
         </div>
-        <div id="body14" class="textBody bottomSection">
+        <div id="body14" class="textBody">
+          Here is some text
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------------------->
+    <div class="textFrame column-vertical">
+      <div id="title15">
+        <div class="textTitle">
+          15. Preview
+        </div>
+        <div id="body15" class="textBody">
+          Here is some text
+        </div>
+      </div>
+    </div>
+    <!------------------------------------------------------------->
+    <div class="textFrame column-vertical">
+      <div id="title16">
+        <div class="textTitle">
+          16. Full Message
+        </div>
+        <div id="body16" class="textBody bottomSection">
           Here is some text
         </div>
       </div>
@@ -207,6 +229,8 @@
       var messageLink;
       var labels;
       var isLabeled;
+      var preview;
+      var fullMessage
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
@@ -252,6 +276,8 @@
           messageLink = getMessageLink(currentConversation);
           labels = getLabels(currentConversation);
           isLabeled = labelCheck(currentConversation, "1d53229eb9e1"); // shorten this later
+          preview = getPreview(currentConversation);
+          fullMessage = getFullMessage(currentConversation);
           showResults();
 				})
 			})
@@ -340,47 +366,14 @@
       $("#body14").click(function () { 
         body14Reset();
       });
+      $("#body15").click(function () { 
+        body15Reset();
+      });
+      $("#body16").click(function () { 
+        body16Reset();
+      });
       $("#button1").click(function () { 
         getConversation();
-      });
-      $("#button2").click(function () { 
-        getMessageCount();
-      });
-      $("#button3").click(function () { 
-        getTo();
-      });
-      $("#button4").click(function () { 
-        getFrom();
-      });
-      $("#button5").click(function () { 
-        getName();
-      });
-      $("#button6").click(function () { 
-        getMessageSubject();
-      });
-      $("#button7").click(function () { 
-        getConversationSubject();
-      });
-      $("#button8").click(function () { 
-        checkAssigned();
-      });
-      $("#button9").click(function () { 
-        checkDraft();
-      });
-      $("#button10").click(function () { 
-        updateFrom();
-      });
-      $("#button11").click(function () { 
-        getConversationLink();
-      });
-      $("#button12").click(function () { 
-        getMessageLink();
-      });
-      $("#button13").click(function () { 
-        getLabels();
-      });
-      $("#button14").click(function () { 
-        labelCheck();
       });
     </script>
 </body>
