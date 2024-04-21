@@ -87,7 +87,9 @@ function body12Click(conversation){
         return "[empty]";
     }
     else{
-        return conversation.latest_message.body//.split("mailto")[1];
+        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
+        var name = (conversation.latest_message.body.split("From</b>")[1]).split("&lt;")[0]
+        return name + " | " + email;
     }
 }
 function body13Click(conversation){
