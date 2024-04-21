@@ -202,7 +202,25 @@ function body16Reset(){
 function body17Reset(){
     $("#body17").text("[ready]")
 }
-
+function showResults(){
+    $("#body1").text(var1);
+    $("#body2").text(var2);
+    $("#body3").text(var3);
+    $("#body4").text(var4);
+    $("#body5").text(var5);
+    $("#body6").text(var6); 
+    $("#body7").text(var7);
+    $("#body8").text(var8);
+    $("#body9").text(var9);
+    $("#body10").text(var10);
+    $("#body11").text(var11);
+    $("#body12").text(var12);
+    $("#body13").text(var13);
+    $("#body14").text(var14);
+    $("#body15").text(var15);
+    $("#body16").text(var16);
+    $("#body17").text(var17)
+}
 
 /*
 
