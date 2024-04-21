@@ -229,4 +229,13 @@ include link to message in monday form?
 decide what should be CCA, what should be CRM, and what should be shared, separate accordingly
 come up with functions admins can do with no coding, such as change a person's level
 respond automatically to chatbot requests
+determine whether to say "thanks for reaching out" or "thank you for your reply"
+     - 
+        - has attachments?
+        - function to do all starting operations
+        - create task
+        - link within extension
+        - link to other extension
+        - link outside of extension
+        - assign label
 */
