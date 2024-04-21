@@ -46,37 +46,34 @@ function body7Click(conversation){
     }
     return assignedToMe;
 }
-function body8Click(conversation){ // depends on var2, var3, var4, var7
-    if(!conversation.latest_message){
-        return false;
-    }
-    else {
-
-        if (
-            currentConversation.messages_count < 2 &&
-            var7 ==  false
-        ) {
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-}
-function body9Click(conversation){ // depends on var2, var3, var4, var7
-    if(!conversation.latest_message){
-        return false;
-    }
-    else if (
-        currentConversation.messages_count == 1 &&
-        conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-        conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-        var7 == true        
-    ) {
+function body8Click(conversation){ // depends on var7
+    if(
+        !conversation.latest_message &&
+        currentConversation.messages_count < 2 &&
+        var7 ==  false
+    ){
         return true;
     }
     else {
         return false;
+    }
+}
+function body9Click(conversation){ // depends on var7
+    if(!conversation.latest_message){
+        return false;
+    }
+    else {
+        if (
+            currentConversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            var7 == true        
+        ) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
 function body10Click(conversation){
