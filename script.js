@@ -140,8 +140,8 @@ function body15Click(conversation){
 function body16Click(conversation, labelID){
     var labeled = false;
     $(var15).each(function(){
-        if(this == labelID){
-          labeled = this;
+        if(this.split("-")[4] == labelID){
+          labeled = true;
         }
     });
     return labeled;
