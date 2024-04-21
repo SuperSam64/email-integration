@@ -86,11 +86,11 @@ function body12Click(conversation){
         return "[empty]";
     }
     else if(var9 == false){
-        if(!conversation.latest_message.from_field.id){
+        if(!conversation.latest_message.from_field.address){
             return "[empty]";
         }
         else{
-            return conversation.latest_message.from_field.id;
+            return conversation.latest_message.from_field.address;
         }
     }
     else{
@@ -202,3 +202,8 @@ function body16Reset(){
 function body17Reset(){
     $("#body17").text("[ready]")
 }
+
+
+/*
+
+*/
