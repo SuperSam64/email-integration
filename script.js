@@ -82,27 +82,20 @@ function body11Click(conversation){
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
     }
 }
-/*function body12Click(conversation){
-    if(!conversation.latest_message){
+function body12Click(conversation){
+if(!conversation.latest_message){
         return "[empty]";
     }
     else{
-        var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
-        return email;
+        return conversation.latest_message.to_fields[0].address;
     }
 }
 function body13Click(conversation){
 
 }
 function body14Click(conversation){
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else{
-        var name = (conversation.latest_message.body.split("From:</b>")[1]).split("&lt;")[0];
-        return name;
-    }
-}*/
+
+}
 function body15Click(conversation){
 
 }
