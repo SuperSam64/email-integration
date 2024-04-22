@@ -291,9 +291,6 @@ function showResults(){
 }
 
 /*
-~~~~~~~~~~ SIMPLIFY - remove/consolodate duplicated fuctions. if one true/false applies to many things, check them all at once. organize/sort, but not in such a way that it breaks functionality. test everything. consolodate results into one textbox
-replace "from" with modified "from" - but still have a trigger for when the email is being replaced so a draft can be made
-- only make a draft if message count is 1
 - make the "to" the customer's email. find a way to remove the other email. try array = []
 assign new drafts
 set these as utitilies
