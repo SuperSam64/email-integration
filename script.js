@@ -207,15 +207,15 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
+    var myVar = "hi"/*("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
-    myVar = myVar.split(" ")[0];
     myVar = myVar.replace("#","");
     myVar = myVar.replace("cp09-","|!|");
     myVar = myVar.replace("-","");
     myVar = myVar.replace("cp","");
     myVar = myVar.replace(" ","");
     myVar = myVar.replace("|!|","CP09-");
+    myVar = myVar.split(" ")[0];
     if(myVar.length == 8){
         // normal order
         myVar = "Order #" + myVar
@@ -226,7 +226,7 @@ function getOrderNumber(conversation){
     }
     else{
         myVar = "unknown"
-    }
+    }*/
     return myVar;
 }
 function update (input){
