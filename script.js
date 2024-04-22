@@ -207,13 +207,24 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    var myVar = ("text" + orderNoTest.toLowerCase()).split("order")[1];
+    var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar.replace("#","");
     myVar = myVar.replace("cp09-","|!|");
     myVar = myVar.replace("-","");
     myVar = myVar.replace("cp","");
     myVar = myVar.replace(" ","");
-    myVar = myVar.replace("|!|","cp09-");
+    myVar = myVar.replace("|!|","CP09-");
+    if(myVar.length == 8){
+        // normal order
+        myVar = "Order #" + myVar
+    }
+    else if(myVar.length == 12) {
+        // CP09 order
+        myVar = "Order #" + myVar
+    }
+    else{
+        myVar = "unknown"
+    }
     return myVar;
 }
 function update (input){
@@ -234,6 +245,9 @@ function update (input){
     preview = getPreview(input);
     getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
+}
+function orderNumberSearch {
+    // use this to search the body for an order number if one is not present in the subject.
 }
 function body1Reset(){
     $("#body1").text("[ready]")
@@ -332,6 +346,7 @@ come up with functions admins can do with no coding, such as change a person's l
 respond automatically to chatbot requests
 make an "about" page to show version, e tc
 determine whether to say "thanks for reaching out" or "thank you for your reply"
+parse diff formats like gmail, yahoo mail, etc
      - 
         - has attachments?
         - function to do all starting operations
@@ -353,4 +368,15 @@ determine whether to say "thanks for reaching out" or "thank you for your reply"
     - customer's name
     - labels
     - is label? (with example)
+    - new message for caddis warning
+
+    order number
+    order no
+    order no.
+    order #
+    order number is
+    order no is
+    order no. is
+    order # is
+
 */
