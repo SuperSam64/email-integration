@@ -207,7 +207,7 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    var myVar = orderNoTest.toLowerCase().split("order")
+    var myVar = orderNoTest.toLowerCase().split("order")[1]
     return myVar;
 }
 function update (input){
