@@ -245,7 +245,7 @@ function update (input){
     isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
     getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
+    //orderNumber = getOrderNumber(input);
 }
 function orderNumberSearch {
     // use this to search the body for an order number if one is not present in the subject.
@@ -317,7 +317,7 @@ function showResults(){
     $("#body13").text(labels);
     $("#body14").text(isLabeled);
     $("#body15").text(preview);
-    $("#body17").text(orderNumber);
+    //$("#body17").text(orderNumber);
 }
 
 /*
