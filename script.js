@@ -209,6 +209,11 @@ function getFullMessage(conversation){
 function getOrderNumber(conversation){
     var myVar = ("text" + orderNoTest.toLowerCase()).split("order")[1];
     myVar = myVar.replace("#","");
+    myVar = myVar.replace("cp09-","|!|");
+    myVar = myVar.replace("-","");
+    myVar = myVar.replace("cp","");
+    myVar = myVar.replace(" ","");
+    myVar = myVar.replace("|!|","cp09-");
     return myVar;
 }
 function update (input){
