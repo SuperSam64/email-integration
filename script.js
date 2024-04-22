@@ -207,8 +207,8 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    orderNumber = orderNoTest.toLowerCase().split("order")
-    return orderNumber;
+    var myVar = orderNoTest.toLowerCase().split("order")
+    return myVar;
 }
 function update (input){
     conversationID = getConversation(input);
@@ -296,6 +296,7 @@ function showResults(){
     $("#body13").text(labels);
     $("#body14").text(isLabeled);
     $("#body15").text(preview);
+    $("#body15").text(orderNumber);
 }
 
 /*
