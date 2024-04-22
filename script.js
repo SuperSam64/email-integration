@@ -207,7 +207,7 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    var myVar = "hi"/*("text" + conversationSubject.toLowerCase()).split("order")[1];
+    var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
     myVar = myVar.replace("#","");
     myVar = myVar.replace("cp09-","|!|");
@@ -226,7 +226,7 @@ function getOrderNumber(conversation){
     }
     else{
         myVar = "unknown"
-    }*/
+    }
     return myVar;
 }
 function update (input){
@@ -248,7 +248,7 @@ function update (input){
     getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
 }
-function orderNumberSearch {
+function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
 }
 function body1Reset(){
