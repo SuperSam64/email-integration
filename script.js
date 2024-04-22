@@ -206,6 +206,10 @@ function getFullMessage(conversation){
         $("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
     }
 }
+function getOrderNumber(conversation){
+    orderNumber = orderNoTest.toLowerCase().split("order")
+    return orderNumber;
+}
 function update (input){
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
@@ -223,6 +227,7 @@ function update (input){
     isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
     getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
 }
 function body1Reset(){
     $("#body1").text("[ready]")
@@ -271,6 +276,9 @@ function body15Reset(){
 }
 function body16Reset(){
     $("#body16").text("[ready]")
+}
+function body17Reset(){
+    $("#body17").text("[ready]")
 }
 function showResults(){
     $("#body1").text(conversationID);
