@@ -209,8 +209,8 @@ function getFullMessage(conversation){
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
-    if(subject.includes("order") == true){
-        myVar = ("text" + conversation.subject.toLowerCase()).split("order")[1];
+    if(subject.includes("order")){
+        myVar = "text" + subject.split("order")[1];
     }
     else {
         myVar = "no order number in subject"
@@ -359,6 +359,8 @@ come up with functions admins can do with no coding, such as change a person's l
 respond automatically to chatbot requests
 make an "about" page to show version, e tc
 determine whether to say "thanks for reaching out" or "thank you for your reply"
+<div data-missive-collapsable-handle="true"></div>
+        ^ previous message
 parse diff formats like gmail, yahoo mail, etc
      - 
         - has attachments?
