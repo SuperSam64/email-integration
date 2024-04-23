@@ -215,6 +215,15 @@ function getOrderNumber(conversation){
          myVar = myVar.replace(" ","");
         myVar = myVar.replace("]"," ]");
         myVar = myVar.split(" ")[0];
+        myVar = myVar.replace("#","");
+        myVar = myVar.replace(";","");
+        myVar = myVar.replace(".","");
+        myVar = myVar.replace("cp09","|!|");
+        myVar = myVar.replace("-","");
+        myVar = myVar.replace("cp","");
+        myVar = myVar.replace(" ","");
+        myVar = myVar.replace("|!|","CP09-");  
+    
     }
     else {
         myVar = "[empty]";
