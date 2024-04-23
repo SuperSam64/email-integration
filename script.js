@@ -95,12 +95,7 @@ function getMessageSubject(conversation){
     }
 }
 function getConversationSubject(conversation){
-    if(!conversation.latest_message){
-        return "[empty]";
-    }
-    else{
-        return conversation.subject;
-    }
+    return conversation.subject;
 }
 function checkAssigned(conversation){
     var assignedToMe = false;
@@ -208,55 +203,26 @@ function getFullMessage(conversation){
 }
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
-    var myVar;
+    var orderNumber;
     if(subject.includes("order")){
-        myVar = "[" + subject + "]";
-        myVar = myVar.split("order")[1];
-         myVar = myVar.replace(" ","");
-        myVar = myVar.replace("]"," ]");
-        myVar = myVar.split(" ")[0];
-        myVar = myVar.replace("#","");
-        myVar = myVar.replace(";","");
-        myVar = myVar.replace(".","");
-        myVar = myVar.replace("cp09","|!|");
-        myVar = myVar.replace("-","");
-        myVar = myVar.replace("cp","");
-        myVar = myVar.replace(" ","");
-        myVar = myVar.replace("|!|","CP09-");  
-    
+        orderNumber = "[" + subject + "]";
+        orderNumber = orderNumber.split("order")[1];
+        orderNumber = orderNumber.replace(" ","");
+        orderNumber = orderNumber.replace("]"," ]");
+        orderNumber = orderNumber.split(" ")[0];
+        orderNumber = orderNumber.replace("#","");
+        orderNumber = orderNumber.replace(";","");
+        orderNumber = orderNumber.replace(".","");
+        orderNumber = orderNumber.replace("cp09","|!|");
+        orderNumber = orderNumber.replace("-","");
+        orderNumber = orderNumber.replace("cp","");
+        orderNumber = orderNumber.replace(" ","");
+        orderNumber = orderNumber.replace("|!|","CP09-");
     }
     else {
-        myVar = "[empty]";
+        orderNumber = "[empty]";
     }
-
-    
-    /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
-    myVar = myVar + " text";
-    myVar = myVar.replace("#","");
-    myVar = myVar.replace(";","");
-    myVar = myVar.replace(".","");
-    myVar = myVar.replace("#","");
-    myVar = myVar.replace("cp09","|!|");
-    myVar = myVar.replace("-","");
-    myVar = myVar.replace("cp","");
-    myVar = myVar.replace(" ","");
-    myVar = myVar.replace("|!|","CP09-");
-    myVar = myVar.split(" ")[0];
-    if(myVar.length == 8){
-        // normal order
-        myVar = "Order #" + myVar
-    }
-    else if(myVar.length == 12) {
-        // CP09 order
-        myVar = "Order #" + myVar
-    }
-    else{
-        myVar = "unknown"
-    }*/
-
-    // replace: spaces, slash, comma, period, numsign, cp09- (temporarily), cp, dashes. then replace CP09- back.
-    //myVar = subject;
-    return myVar;
+    return orderNumber;
 }
 function update (input){
     conversationID = getConversation(input);
