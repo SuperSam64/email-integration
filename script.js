@@ -209,7 +209,7 @@ function getFullMessage(conversation){
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
-    if(!conversation.lastest_message){
+    if(!conversation.latest_message){
         myVar = "no messages";
     }
     else if(subject.includes("order")){
