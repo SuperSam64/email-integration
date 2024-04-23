@@ -208,9 +208,9 @@ function getFullMessage(conversation){
 }
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
-    var myVar;
+    var myVar = "[empty]";
     if(subject.includes("order")){
-        myvar = yes;/* "[" + subject + " ]";
+        myvar = "yes";/* "[" + subject + " ]";
         myVar = myVar.split("order")[1];
         myVar = myVar.split(" ")[0];*/
     }
