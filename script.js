@@ -222,7 +222,10 @@ function getOrderNumber(conversation){
     /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
     myVar = myVar.replace("#","");
-    myVar = myVar.replace("cp09-","|!|");
+    myVar = myVar.replace(";","");
+    myVar = myVar.replace(".","");
+    myVar = myVar.replace("#","");
+    myVar = myVar.replace("cp09","|!|");
     myVar = myVar.replace("-","");
     myVar = myVar.replace("cp","");
     myVar = myVar.replace(" ","");
