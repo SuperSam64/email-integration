@@ -208,7 +208,12 @@ function getFullMessage(conversation){
 }
 function getOrderNumber(conversation){
     const subject = conversation.subject.toLowerCase();
-    
+    if(subject.includes("order")){
+        var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
+    }
+    else {
+        myVar = "no order number in subject"
+    }
     var myVar = subject;
     /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
@@ -230,6 +235,8 @@ function getOrderNumber(conversation){
     else{
         myVar = "unknown"
     }*/
+
+    // replace: spaces, slash, comma, period, numsign, cp09- (temporarily), cp, dashes. then replace CP09- back.
     return myVar;
 }
 function update (input){
