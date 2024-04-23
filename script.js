@@ -212,12 +212,12 @@ function getOrderNumber(conversation){
     var var1 = "hello";
     var var2 = "hi";
     if(var1.includes(var2)){
-        true;//myVar = "text" + subject.split("order")[1];
+        myVar = "text" + subject.split("order")[1];
     }
     else {
-       false;// myVar = "no order number in subject"
+        myVar = "no order number in subject"
     }
-    var myVar = subject;
+    return myVar = subject;
     /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
     myVar = myVar.replace("#","");
