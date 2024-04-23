@@ -207,7 +207,10 @@ function getFullMessage(conversation){
     }
 }
 function getOrderNumber(conversation){
-    var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
+    const subject = conversation.subject.toLowerCase();
+    
+    var myVar = subject;
+    /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
     myVar = myVar + " text";
     myVar = myVar.replace("#","");
     myVar = myVar.replace("cp09-","|!|");
@@ -226,7 +229,7 @@ function getOrderNumber(conversation){
     }
     else{
         myVar = "unknown"
-    }
+    }*/
     return myVar;
 }
 function update (input){
