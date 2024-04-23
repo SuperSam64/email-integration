@@ -315,6 +315,18 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
 }
+function buttonClicked() {
+    var myVar = {
+        deliver:false,
+        mailto: {
+            to_fields: [{
+                address: "test@filtersfast.com",
+                name: "John Doe"
+            }]
+        }
+    }
+    Missive.reply(myVar);
+}
 
 /*
 - make the "to" the customer's email. find a way to remove the other email. try array = []
