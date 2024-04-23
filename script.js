@@ -209,11 +209,13 @@ function getFullMessage(conversation){
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
-    if(subject.includes("order")){
-        myVar = "text" + subject.split("order")[1];
+    var var1 = "hello";
+    var var2 = "hi";
+    if(var1.includes(var2)){
+        true;//myVar = "text" + subject.split("order")[1];
     }
     else {
-        myVar = "no order number in subject"
+       false;// myVar = "no order number in subject"
     }
     var myVar = subject;
     /*var myVar = ("text" + conversationSubject.toLowerCase()).split("order")[1];
