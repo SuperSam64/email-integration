@@ -209,16 +209,13 @@ function getFullMessage(conversation){
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
-    if(!conversation.latest_message){
-        myVar = "no messages";
-    }
-    else if(subject.includes("order")){
+    if(subject.includes("order")){
         myvar = "yes";/* "[" + subject + " ]";
         myVar = myVar.split("order")[1];
         myVar = myVar.split(" ")[0];*/
     }
     else {
-        myVar = "no order number"
+        myVar = "no"
     }
 
     
@@ -247,7 +244,7 @@ function getOrderNumber(conversation){
     }*/
 
     // replace: spaces, slash, comma, period, numsign, cp09- (temporarily), cp, dashes. then replace CP09- back.
-    myVar = subject;
+    //myVar = subject;
     return myVar;
 }
 function update (input){
