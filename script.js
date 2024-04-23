@@ -247,6 +247,7 @@ function getOrderNumber(conversation){
     }*/
 
     // replace: spaces, slash, comma, period, numsign, cp09- (temporarily), cp, dashes. then replace CP09- back.
+    myVar = subject;
     return myVar;
 }
 function update (input){
