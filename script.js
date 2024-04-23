@@ -215,7 +215,7 @@ function getOrderNumber(conversation){
         myVar = myVar.split(" ")[0];*/
     }
     else {
-        myVar = "no"
+        myVar = subject;
     }
 
     
