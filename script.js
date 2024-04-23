@@ -210,7 +210,7 @@ function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
     if(!conversation.lastest_message){
-        myVar = "[empty]";
+        myVar = "no messages";
     }
     else if(subject.includes("order")){
         myvar = "yes";/* "[" + subject + " ]";
@@ -218,7 +218,7 @@ function getOrderNumber(conversation){
         myVar = myVar.split(" ")[0];*/
     }
     else {
-        myVar = "[empty]]"
+        myVar = "no order number"
     }
 
     
