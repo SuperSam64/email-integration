@@ -203,26 +203,26 @@ function getFullMessage(conversation){
 }
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
-    var orderNumber;
+    var orderString;
     if(subject.includes("order")){
-        orderNumber = "[" + subject + "]";
-        orderNumber = orderNumber.split("order")[1];
-        orderNumber = orderNumber.replace(" ","");
-        orderNumber = orderNumber.replace("]"," ]");
-        orderNumber = orderNumber.split(" ")[0];
-        orderNumber = orderNumber.replace("#","");
-        orderNumber = orderNumber.replace(";","");
-        orderNumber = orderNumber.replace(".","");
-        orderNumber = orderNumber.replace("cp09","|!|");
-        orderNumber = orderNumber.replace("-","");
-        orderNumber = orderNumber.replace("cp","");
-        orderNumber = orderNumber.replace(" ","");
-        orderNumber = orderNumber.replace("|!|","CP09-");
+        orderString = "[" + subject + "]";
+        orderString = orderString.split("order")[1];
+        orderString = orderString.replace(" ","");
+        orderString = orderString.replace("]"," ]");
+        orderString = orderString.split(" ")[0];
+        orderString = orderString.replace("#","");
+        orderString = orderString.replace(";","");
+        orderString = orderString.replace(".","");
+        orderString = orderString.replace("cp09","|!|");
+        orderString = orderString.replace("-","");
+        orderString = orderString.replace("cp","");
+        orderString = orderString.replace(" ","");
+        orderString = orderString.replace("|!|","CP09-");
     }
     else {
-        orderNumber = "[empty]";
+        orderString = "[empty]";
     }
-    return orderNumber;
+    return orderString;
 }
 function update (input){
     conversationID = getConversation(input);
