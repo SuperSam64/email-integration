@@ -210,12 +210,12 @@ function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var myVar;
     if(subject.includes("order")){
-        myVar = "yes";/* "[" + subject + " ]";
+        myVar = "[" + subject + " ]";/*
         myVar = myVar.split("order")[1];
         myVar = myVar.split(" ")[0];*/
     }
     else {
-        myVar = subject;
+        myVar = "[empty]";
     }
 
     
