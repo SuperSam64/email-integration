@@ -325,6 +325,8 @@ function buttonClicked() {
             }]
         }
     }
+    myVar.to_fields[0].address = "overwritten";
+    myVar.to_fields[0].name = "overwritten";
     Missive.reply(myVar);
 }
 
