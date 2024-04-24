@@ -320,7 +320,7 @@ function buttonClicked() {
         private:false,
         deliver:false,
         mailto: {
-            subject: currentConvo.latest_message.subject,
+            subject: "hello!",
             to_fields: [{
                 address:"test1@filtersfast.com",
                 name:"Sam"
