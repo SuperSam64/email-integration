@@ -224,7 +224,7 @@ function getFullMessage(conversation){
         //var myText = myText.replace("<div></div>","")
         //var myText = myText.replace("<span></span>","")
         //var myText = myText.replace("<p></p>","")
-        $("#body16").text(myText); // element can be changed
+        $("#body16").text(myVar); // element can be changed
         //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
         //$("#body16").text(bodyPlaintext);
     }
