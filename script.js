@@ -328,6 +328,7 @@ function buttonClicked() {
             }]
         }
     }
+    myVar.to_fields.pop;
     Missive.reply(myVar);
 }
 
