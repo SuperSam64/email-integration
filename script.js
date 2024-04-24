@@ -327,7 +327,7 @@ function buttonClicked() {
             }]
         }
     }
-    Missive.forward(myVar);
+    Missive.composeInConversation(myVar);
 }
 
 /*
