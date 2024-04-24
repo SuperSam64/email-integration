@@ -322,7 +322,7 @@ function buttonClicked() {
             subject: "hello!",
         }
     }
-    myVar.mailto.to_fields[0] = "test@filtersfast.com";
+    myVar.mailto.to_fields[0].address = "test@filtersfast.com";
     Missive.reply(myVar);
 }
 
