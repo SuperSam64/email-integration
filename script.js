@@ -203,7 +203,19 @@ function getFullMessage(conversation){
         // get full html of reply
         var output;
         var bodyHTML = currentConversation.latest_message.body;
+        myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
+        myVar = myVar.replace("<div ","[division]<div ")
+        myVar = myVar.replace("<div>","[division]<div>")
+        myVar = myVar.replace("</div>","[/division]")
+        myVar = myVar.replace("<span ","[section]<span ")
+        myVar = myVar.replace("<span>","[section]<span>")
+        myVar = myVar.replace("</span>","</span>[/section]")
+        myVar = myVar.replace("<p ","[paragraph]<p ")
+        myVar = myVar.replace("<p>","[paragraph]<p>")
+        myVar = myVar.replace("</p>","</p>[/paragraph]")
+        myVar = myVar.replace("<br>","[linebreak]")
+        myVar = myVar.replace("<br/>","[linebreak]")
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
         // enclose the whole thing in a div if this hasn't been done already
