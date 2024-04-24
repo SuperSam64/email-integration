@@ -319,10 +319,7 @@ function buttonClicked() {
     var myVar = {
         deliver:false,
         mailto: {
-            to_fields: [{
-                address: "test@filtersfast.com",
-                name: "John Doe"
-            }]
+            to_fields: []
         }
     }
     myVar.to_fields[0].address = "overwritten";
