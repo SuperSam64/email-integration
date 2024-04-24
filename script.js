@@ -317,17 +317,13 @@ function showResults(){
 }
 function buttonClicked() {
     var myVar = {
-        private:false,
         deliver:false,
         mailto: {
             subject: "hello!",
-            to_fields: [{
-                address:"test1@filtersfast.com",
-                name:"Sam"
-            }]
         }
     }
-    Missive.composeInConversation(myVar);
+    myVar.mailto.to_fields[0] = "test@filtersfast.com";
+    Missive.reply(myVar);
 }
 
 /*
