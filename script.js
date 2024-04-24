@@ -317,19 +317,17 @@ function showResults(){
 }
 function buttonClicked() {
     var myVar = {
+        private:false,
         deliver:false,
         mailto: {
             to_fields: [{
-                address:"test1@filtersfast.com"
-            },{
-                address:"test2@filtersfast.com"
-            },{
-                address:"test3@filtersfast.com"
-            }]
+                address:"test1@filtersfast.com",
+                name:"Sam"
+            }],
+            subject:currentConversation.latest_message.subject;
         }
     }
-    myVar.mailto.to_fields.shift();
-    Missive.reply(myVar);
+    Missive.forward(myVar);
 }
 
 /*
