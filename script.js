@@ -216,12 +216,15 @@ function getFullMessage(conversation){
         myVar = myVar.replace("</p>","</p>[/paragraph]")
         myVar = myVar.replace("<br>","[linebreak]")
         myVar = myVar.replace("<br/>","[linebreak]")
+        var temp = document.createElement('div');
+        temp.innerHTML = myVar;
+        
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
         // enclose the whole thing in a div if this hasn't been done already
         // parse out the html, but not as text. it should break lines appropriately.
 
-        output = myVar;
+        output = temp.innerText;
 
         /*var temp = document.createElement('div');
         myVar = conversation.latest_message.body;
