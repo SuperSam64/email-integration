@@ -199,7 +199,18 @@ function getFullMessage(conversation){
     }
     else{
         //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
-        var temp = document.createElement('div');
+        
+        // get full html of reply
+        var bodyHTML = currentConversation.latest_message.body;
+        // replace divs, breaks, spans and paragraphs with placeholders
+        // turn the rest into plain text
+        // add back the divs, breaks, spans and paragraphs
+        // enclose the whole thing in a div if this hasn't been done already
+        // parse out the html, but not as text. it should break lines appropriately.
+
+
+
+        /*var temp = document.createElement('div');
         myVar = conversation.latest_message.body;
         myVar = myVar.replace("<div ","[division]<div ")
         myVar = myVar.replace("<div>","[division]<div>")
@@ -213,7 +224,7 @@ function getFullMessage(conversation){
         myVar = myVar.replace("<br>","[linebreak]")
         myVar = myVar.replace("<br/>","[linebreak]")
         
-        temp.innerHTML = myVar;
+        
         var myText = temp.text();
         var myText = myText.replace("[division]","<div>")
         var myText = myText.replace("[/division]","</div>")
@@ -227,8 +238,8 @@ function getFullMessage(conversation){
         var myText = myText.replace("<p></p>","")
         //var myText = myText.innerHTML;
         $("#body16").text(myText); // element can be changed
-        //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
-        //$("#body16").text(bodyPlaintext);
+        //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed */
+        $("#body16").text(bodyHTML);
     }
 }
 function getOrderNumber(conversation){
