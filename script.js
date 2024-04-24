@@ -198,8 +198,8 @@ function getFullMessage(conversation){
         $("#body16").text("[empty]")
     }
     else{
-        $("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
-        $("#body16").text("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
+        //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
+        $("#body16").text(conversation.latest_message.body); // element can be changed
         //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
         //$("#body16").text(bodyPlaintext);
     }
