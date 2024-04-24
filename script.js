@@ -324,7 +324,7 @@ function buttonClicked() {
                 address:"test1@filtersfast.com",
                 name:"Sam"
             }],
-            subject:currentConversation.latest_message.subject;
+            subject:currentConversation.latest_message.subject
         }
     }
     Missive.forward(myVar);
