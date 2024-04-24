@@ -201,16 +201,29 @@ function getFullMessage(conversation){
         //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
         var temp = document.createElement('div');
         myVar = conversation.latest_message.body;
-        myVar = myVar.replace("<div>","[division]")
+        myVar = myVar.replace("<div ","[division]<div ")
+        myVar = myVar.replace("<div>","[division]<div>")
         myVar = myVar.replace("</div>","[/division]")
-        myVar = myVar.replace("<span>","[section]")
-        myVar = myVar.replace("</span>","[/section]")
-        myVar = myVar.replace("<p>","[paragraph]")
-        myVar = myVar.replace("</p>","[/paragraph]")
+        myVar = myVar.replace("<span ","[section]<span ")
+        myVar = myVar.replace("<span>","[section]<span>")
+        myVar = myVar.replace("</span>","</span>[/section]")
+        myVar = myVar.replace("<p ","[paragraph]<p ")
+        myVar = myVar.replace("<p>","[paragraph]<p>")
+        myVar = myVar.replace("</p>","</p>[/paragraph]")
         myVar = myVar.replace("<br>","[linebreak]")
         myVar = myVar.replace("<br/>","[linebreak]")
         temp.innerHTML = conversation.latest_message.body;
         var myText = temp.innerText;
+        var myText = myText.replace("[division]","<div>")
+        var myText = myText.replace("[/division]","</div>")
+        var myText = myText.replace("[section]","<span>")
+        var myText = myText.replace("[/section]","</span>")
+        var myText = myText.replace("[paragraph]","<p>")
+        var myText = myText.replace("[/paragraph]","</p>")
+        var myText = myText.replace("[linebreak]","<br/>")
+        var myText = myText.replace("<div></div>","")
+        var myText = myText.replace("<span></span>","")
+        var myText = myText.replace("<p></p>","")
         $("#body16").text(myText); // element can be changed
         //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
         //$("#body16").text(bodyPlaintext);
