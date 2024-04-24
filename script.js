@@ -320,11 +320,11 @@ function buttonClicked() {
         private:false,
         deliver:false,
         mailto: {
+            subject: currentConvo.latest_message.subject,
             to_fields: [{
                 address:"test1@filtersfast.com",
                 name:"Sam"
-            }],
-            subject:currentConversation.latest_message.subject
+            }]
         }
     }
     Missive.forward(myVar);
