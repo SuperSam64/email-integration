@@ -322,8 +322,6 @@ function buttonClicked() {
             to_fields: []
         }
     }
-    myVar.to_fields[0].address = "overwritten";
-    myVar.to_fields[0].name = "overwritten";
     Missive.reply(myVar);
 }
 
