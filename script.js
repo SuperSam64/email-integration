@@ -214,7 +214,7 @@ function getFullMessage(conversation){
         myVar = myVar.replace("<br/>","[linebreak]")
         
         temp.innerHTML = myVar;
-        var myText = temp;
+        var myText = temp.text();
         var myText = myText.replace("[division]","<div>")
         var myText = myText.replace("[/division]","</div>")
         var myText = myText.replace("[section]","<span>")
