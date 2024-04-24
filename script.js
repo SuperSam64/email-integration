@@ -328,7 +328,7 @@ function buttonClicked() {
             }]
         }
     }
-    myVar.mailto.to_fields.pop;
+    myVar.mailto.to_fields.pop();
     Missive.reply(myVar);
 }
 
