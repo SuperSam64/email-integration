@@ -319,7 +319,13 @@ function buttonClicked() {
     var myVar = {
         deliver:false,
         mailto: {
-            to_fields: []
+            to_fields: [{
+                address:"test1@filtersfast.com"
+            },{
+                address:"test2@filtersfast.com"
+            },{
+                address:"test3@filtersfast.com"
+            }]
         }
     }
     Missive.reply(myVar);
