@@ -200,6 +200,15 @@ function getFullMessage(conversation){
     else{
         //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
         var temp = document.createElement('div');
+        myVar = conversation.latest_message.body;
+        myVar = myVar.replace("<div>","[division]")
+        myVar = myVar.replace("</div>","[/division]")
+        myVar = myVar.replace("<span>","[section]")
+        myVar = myVar.replace("</span>","[/section]")
+        myVar = myVar.replace("<p>","[paragraph]")
+        myVar = myVar.replace("</p>","[/paragraph]")
+        myVar = myVar.replace("<br>","[linebreak]")
+        myVar = myVar.replace("<br/>","[linebreak]")
         temp.innerHTML = conversation.latest_message.body;
         var myText = temp.innerText;
         $("#body16").text(myText); // element can be changed
