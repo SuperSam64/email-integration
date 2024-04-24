@@ -213,7 +213,7 @@ function getFullMessage(conversation){
         myVar = myVar.replace("<br>","[linebreak]")
         myVar = myVar.replace("<br/>","[linebreak]")
         temp.innerHTML = conversation.latest_message.body;
-        var myText = temp.innerText;
+        var myText = myVar.innerText;
         //var myText = myText.replace("[division]","<div>")
         //var myText = myText.replace("[/division]","</div>")
         //var myText = myText.replace("[section]","<span>")
@@ -224,7 +224,7 @@ function getFullMessage(conversation){
         //var myText = myText.replace("<div></div>","")
         //var myText = myText.replace("<span></span>","")
         //var myText = myText.replace("<p></p>","")
-        $("#body16").text(myVar); // element can be changed
+        $("#body16").text(myText); // element can be changed
         //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
         //$("#body16").text(bodyPlaintext);
     }
