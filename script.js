@@ -198,7 +198,8 @@ function getFullMessage(conversation){
         $("#body16").text("[empty]")
     }
     else{
-        $("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
+        //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
+        $("#body16").text(conversation.latest_message.body.text()); // element can be changed
     }
 }
 function getOrderNumber(conversation){
@@ -320,10 +321,14 @@ function buttonClicked() {
         deliver:false,
         mailto: {
             subject: "hello!",
+            to_fields:[{
+                address:messageFrom,
+                name:customerName,
+                subject:messageSubject.replace("FW:","Re:")
+            }]
         }
     }
-    myVar.mailto.to_fields[0].address = "test@filtersfast.com";
-    Missive.reply(myVar);
+    Missive.composeInConversation(myVar);
 }
 
 /*
