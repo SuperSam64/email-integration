@@ -202,7 +202,7 @@ function getFullMessage(conversation){
         var temp = document.createElement('div');
         temp.innerHTML = html;
         var myText = temp.innerText;
-        $("#body16").text(conversation.latest_message.body); // element can be changed
+        $("#body16").text(myText); // element can be changed
         //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed
         //$("#body16").text(bodyPlaintext);
     }
