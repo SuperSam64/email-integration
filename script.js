@@ -213,7 +213,7 @@ function getFullMessage(conversation){
         myVar = myVar.replace("<br>","[linebreak]")
         myVar = myVar.replace("<br/>","[linebreak]")
         temp.innerHTML = conversation.latest_message.body;
-        //var myText = temp.innerText;
+        var myText = temp.innerText;
         //var myText = myText.replace("[division]","<div>")
         //var myText = myText.replace("[/division]","</div>")
         //var myText = myText.replace("[section]","<span>")
