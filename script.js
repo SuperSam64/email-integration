@@ -232,7 +232,7 @@ function getFullMessage(conversation){
         myVar = myVar.replace("[/section]","</span>")
         myVar = myVar.replace("[paragraph]","<p>")
         myVar = myVar.replace("[/paragraph]","</p>")
-        myVar = myVar.replace("[linebreak]","<br/>")
+        something = myVar.replace("[linebreak]","<br/>")
         
         $("#body16").html(something);
         
