@@ -221,17 +221,17 @@ function getFullMessage(conversation){
         var temp = document.createElement('div');
         temp.innerHTML = myVar;
         something = temp.innterText;
-        myVar = something;
-
-        myVar = myVar.replace("[division]","<div>")
-        myVar = myVar.replace("[/division]","</div>")
-        myVar = myVar.replace("[section]","<span>")
-        myVar = myVar.replace("[/section]","</span>")
-        myVar = myVar.replace("[paragraph]","<p>")
-        myVar = myVar.replace("[/paragraph]","</p>")
-        myVar = myVar.replace("[linebreak]","<br/>")
         
-        $("#body16").innerHTML(myVar);
+
+        //myVar = myVar.replace("[division]","<div>")
+        //myVar = myVar.replace("[/division]","</div>")
+        //myVar = myVar.replace("[section]","<span>")
+        //myVar = myVar.replace("[/section]","</span>")
+        //myVar = myVar.replace("[paragraph]","<p>")
+        //myVar = myVar.replace("[/paragraph]","</p>")
+        //myVar = myVar.replace("[linebreak]","<br/>")
+        
+        $("#body16").innerHTML(something);
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
