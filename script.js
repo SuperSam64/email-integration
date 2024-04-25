@@ -206,16 +206,16 @@ function getFullMessage(conversation){
         myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
         myVar = myVar.replace("<div ","[division]<div ")
-        myVar = myVar.replace("<div>","[division]<div>")
-        myVar = myVar.replace("</div>","[/division]")
-        myVar = myVar.replace("<span ","[section]<span ")
-        myVar = myVar.replace("<span>","[section]<span>")
-        myVar = myVar.replace("</span>","</span>[/section]")
-        myVar = myVar.replace("<p ","[paragraph]<p ")
-        myVar = myVar.replace("<p>","[paragraph]<p>")
-        myVar = myVar.replace("</p>","</p>[/paragraph]")
-        myVar = myVar.replace("<br>","[linebreak]")
-        myVar = myVar.replace("<br/>","[linebreak]")
+        //myVar = myVar.replace("<div>","[division]<div>")
+        //myVar = myVar.replace("</div>","[/division]")
+        //myVar = myVar.replace("<span ","[section]<span ")
+        //myVar = myVar.replace("<span>","[section]<span>")
+        //myVar = myVar.replace("</span>","</span>[/section]")
+        //myVar = myVar.replace("<p ","[paragraph]<p ")
+        //myVar = myVar.replace("<p>","[paragraph]<p>")
+        //myVar = myVar.replace("</p>","</p>[/paragraph]")
+        //myVar = myVar.replace("<br>","[linebreak]")
+        //myVar = myVar.replace("<br/>","[linebreak]")
         var temp = document.createElement('div');
         temp.innerHTML = myVar + "";
         
