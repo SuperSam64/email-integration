@@ -220,7 +220,7 @@ function getFullMessage(conversation){
         }
         var temp = document.createElement('div');
         temp.innerHTML = myVar;
-        something = myVar.text();
+        something = temp.innterText;
         myVar = something;
 
         myVar = myVar.replace("[division]","<div>")
