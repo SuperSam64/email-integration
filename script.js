@@ -195,7 +195,7 @@ function getPreview(conversation){
 }
 function getFullMessage(conversation,element){
     if(!conversation.latest_message){
-        $("#body16").text("[empty]")
+        $("#" + element).text("[empty]")
     }
     else{
         //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
@@ -204,22 +204,22 @@ function getFullMessage(conversation,element){
         
         var bodyHTML = currentConversation.latest_message.body;
         // replace divs, breaks, spans and paragraphs with placeholders
-        bodyHTML = bodyHTML.replaceAll("> </","></")
-        bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ")
-        bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>")
-        bodyHTML = bodyHTML.replaceAll("</div>","[/division]")
-        bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ")
-        bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>")
-        bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]")
-        bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]")
-        bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]")
+        bodyHTML = bodyHTML.replaceAll("> </","></");
+        bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
+        bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
+        bodyHTML = bodyHTML.replaceAll("</div>","[/division]");
+        bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ");
+        bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>");
+        bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]");
+        bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]");
+        bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]");
         while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[section][/section]") || bodyHTML.includes("[paragraph][/paragraph]")) {
-            bodyHTML = bodyHTML.replaceAll("[division][/division]","")
-            bodyHTML = bodyHTML.replaceAll("[section][/section]","")
-            bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","")
+            bodyHTML = bodyHTML.replaceAll("[division][/division]","");
+            bodyHTML = bodyHTML.replaceAll("[section][/section]","");
+            bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","");
         }
         
-        elementID = document.getElementById("body16")
+        elementID = document.getElementById(element);
         elementID.innerHTML = bodyHTML;
         bodyHTML = elementID.innerText;
 
@@ -227,13 +227,13 @@ function getFullMessage(conversation,element){
 
 
 
-        bodyHTML = bodyHTML.replaceAll("[division]","<div>")
-        bodyHTML = bodyHTML.replaceAll("[/division]","</div>")
-        bodyHTML = bodyHTML.replaceAll("[section]","<span>")
-        bodyHTML = bodyHTML.replaceAll("[/section]","</span>")
-        bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>")
-        bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>")
-        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>")
+        bodyHTML = bodyHTML.replaceAll("[division]","<div>");
+        bodyHTML = bodyHTML.replaceAll("[/division]","</div>");
+        bodyHTML = bodyHTML.replaceAll("[section]","<span>");
+        bodyHTML = bodyHTML.replaceAll("[/section]","</span>");
+        bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
+        bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
+        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         
         $("#" + element).html(bodyHTML);
         
