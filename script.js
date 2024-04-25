@@ -250,7 +250,7 @@ function getOrderNumber(conversation){
         orderString = orderString.replace("|!|","CP09-")
         orderString = orderString.trim();
         orderString = orderString.replace("]"," ]");
-        //orderString = orderString.split(" ")[0];
+        orderString = orderString.split(" ")[0];
     }
     else {
         orderString = "[empty]";
