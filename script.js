@@ -201,7 +201,7 @@ function getFullMessage(conversation){
         //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
         
         // get full html of reply
-        var something;
+        
         var bodyHTML = currentConversation.latest_message.body;
         // replace divs, breaks, spans and paragraphs with placeholders
         bodyHTML = bodyHTML.replaceAll("> </","></")
@@ -233,9 +233,9 @@ function getFullMessage(conversation){
         bodyHTML = bodyHTML.replaceAll("[/section]","</span>")
         bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>")
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>")
-        something = bodyHTML.replaceAll("[linebreak]","<br/>")
+        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>")
         
-        $("#body16").html(something);
+        $("#body16").html(bodyHTML);
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
