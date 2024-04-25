@@ -199,33 +199,6 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
-        
-
-
-    //
-    //<blockquote - make sure this will not remove inteded blockquotes
-    //<div id ="xxxxxyahoo_quoted" - xxxxx is variable, find yahoo_quoted, and remove everything between that and the previous "
-    //<div class="WordSection1"
-    //<div>-------- Original message
-
-
-
-        bodyHTML = bodyHTML.replace('<div class="gmail_quote"',"[end of message]");
-        bodyHTML = bodyHTML.replace('<div class="WordSection1"',"[end of message]");
-        bodyHTML = bodyHTML.replace('<blockquote',"[end of message]");
-        bodyHTML = bodyHTML.replace('<div class="<div>-------- Original message"',"[end of message]");
-        bodyHTML = bodyHTML.replace('<div id="divRplyFwdMsg',"[end of message]");
-        
-        
-        if(bodyHTML.includes("[end of message]")){
-            bodyHTML = bodyHTML.split("[end of message]")[0];
-        }
-
-        // count ("<p " + "<p>") - "</p>", add in the corresponding number of "</p>". do the same with ("<div " + "<div>") - "</div>"
-        $("#" + element).text(bodyHTML);
-
-        /*  -------- main code
-        var bodyHTML = currentConversation.latest_message.body;
         bodyHTML = bodyHTML.replaceAll("> </","></");
         bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
         bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
@@ -248,7 +221,6 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         $("#" + element).html(bodyHTML);
-        ------------------------------------ */
     }
 }
 function getOrderNumber(conversation){
