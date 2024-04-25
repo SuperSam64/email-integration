@@ -229,13 +229,13 @@ function getFullMessage(conversation){
 
 
 
-        myVar = something.replace("[division]","<div>")
-        myVar = myVar.replace("[/division]","</div>")
-        myVar = myVar.replace("[section]","<span>")
-        myVar = myVar.replace("[/section]","</span>")
-        myVar = myVar.replace("[paragraph]","<p>")
-        myVar = myVar.replace("[/paragraph]","</p>")
-        something = myVar.replace("[linebreak]","<br/>")
+        myVar = something.replaceAll("[division]","<div>")
+        myVar = myVar.replaceAll("[/division]","</div>")
+        myVar = myVar.replaceAll("[section]","<span>")
+        myVar = myVar.replaceAll("[/section]","</span>")
+        myVar = myVar.replaceAll("[paragraph]","<p>")
+        myVar = myVar.replaceAll("[/paragraph]","</p>")
+        something = myVar.replaceAll("[linebreak]","<br/>")
         
         $("#body16").html(something);
         
