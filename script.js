@@ -198,34 +198,84 @@ function getFullMessage(conversation){
         $("#body16").text("[empty]")
     }
     else{
-        var elementID = "body16";
+        //$("#body16").html("</div>" + conversation.latest_message.body + "</div>"); // element can be changed
+        
+        // get full html of reply
+        var output;
         var bodyHTML = currentConversation.latest_message.body;
+        myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
-        bodyHTML = bodyHTML.replaceAll("> </","></")
-        bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ")
-        bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>")
-        bodyHTML = bodyHTML.replaceAll("</div>","[/division]")
-        bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ")
-        bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>")
-        bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]")
-        bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]")
-        bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]")
-        while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[section][/section]") || bodyHTML.includes("[paragraph][/paragraph]")) {
-            bodyHTML = bodyHTML.replaceAll("[division][/division]","")
-            bodyHTML = bodyHTML.replaceAll("[section][/section]","")
-            bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","")
+        myVar = myVar.replaceAll("> </","></")
+        myVar = myVar.replaceAll("<div ","[division]<div ")
+        myVar = myVar.replaceAll("<div>","[division]<div>")
+        myVar = myVar.replaceAll("</div>","[/division]")
+        myVar = myVar.replaceAll("<p ","[paragraph]<p ")
+        myVar = myVar.replaceAll("<p>","[paragraph]<p>")
+        myVar = myVar.replaceAll("</p>","</p>[/paragraph]")
+        myVar = myVar.replaceAll("<br>","[linebreak]")
+        myVar = myVar.replaceAll("<br/>","[linebreak]")
+        
+        while (myVar.includes("[division][/division]") || myVar.includes("[section][/section]") || myVar.includes("[paragraph][/paragraph]")) {
+            myVar = myVar.replaceAll("[division][/division]","")
+            myVar = myVar.replaceAll("[section][/section]","")
+            myVar = myVar.replaceAll("[paragraph][/paragraph]","")
         }
-        element = document.getElementById(elementID)
-        element.innerHTML = bodyHTML;
+        
+        element = document.getElementById("body16")
+        element.innerHTML = myVar;
         something = element.innerText;
-        bodyHTML = bodyHTML.replaceAll("[division]","<div>")
-        bodyHTML = bodyHTML.replaceAll("[/division]","</div>")
-        bodyHTML = bodyHTML.replaceAll("[section]","<span>")
-        bodyHTML = bodyHTML.replaceAll("[/section]","</span>")
-        bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>")
-        bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>")
-        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>")
-        $("#" + elementID).html(bodyHTML);
+
+        //var someOtherThing = $(something)
+
+
+
+        myVar = something.replaceAll("[division]","<div>")
+        myVar = myVar.replaceAll("[/division]","</div>")
+        myVar = myVar.replaceAll("[section]","<span>")
+        myVar = myVar.replaceAll("[/section]","</span>")
+        myVar = myVar.replaceAll("[paragraph]","<p>")
+        myVar = myVar.replaceAll("[/paragraph]","</p>")
+        something = myVar.replaceAll("[linebreak]","<br/>")
+        
+        $("#body16").html(something);
+        
+        // turn the rest into plain text
+        // add back the divs, breaks, spans and paragraphs
+        // enclose the whole thing in a div if this hasn't been done already
+        // parse out the html, but not as text. it should break lines appropriately.
+
+        
+
+        /*var temp = document.createElement('div');
+        myVar = conversation.latest_message.body;
+        myVar = myVar.replace("<div ","[division]<div ")
+        myVar = myVar.replace("<div>","[division]<div>")
+        myVar = myVar.replace("</div>","[/division]")
+        myVar = myVar.replace("<span ","[section]<span ")
+        myVar = myVar.replace("<span>","[section]<span>")
+        myVar = myVar.replace("</span>","</span>[/section]")
+        myVar = myVar.replace("<p ","[paragraph]<p ")
+        myVar = myVar.replace("<p>","[paragraph]<p>")
+        myVar = myVar.replace("</p>","</p>[/paragraph]")
+        myVar = myVar.replace("<br>","[linebreak]")
+        myVar = myVar.replace("<br/>","[linebreak]")
+        
+        
+        var myText = temp.text();
+        var myText = myText.replace("[division]","<div>")
+        var myText = myText.replace("[/division]","</div>")
+        var myText = myText.replace("[section]","<span>")
+        var myText = myText.replace("[/section]","</span>")
+        var myText = myText.replace("[paragraph]","<p>")
+        var myText = myText.replace("[/paragraph]","</p>")
+        var myText = myText.replace("[linebreak]","<br/>")
+        var myText = myText.replace("<div></div>","")
+        var myText = myText.replace("<span></span>","")
+        var myText = myText.replace("<p></p>","")
+        //var myText = myText.innerHTML;
+        $("#body16").text(myText); // element can be changed
+        //bodyPlaintext = conversation.latest_message.body.text(); // element can be changed */
+        
     }
 }
 function getOrderNumber(conversation){
