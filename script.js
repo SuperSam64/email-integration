@@ -205,7 +205,7 @@ function getFullMessage(conversation){
         var bodyHTML = currentConversation.latest_message.body;
         myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
-        myVar = myVar.replace("<div ","[division]<div ")
+        myVar = myVar.replaceAll("<div ","[division]<div ")
         //myVar = myVar.replace("<div>","[division]<div>")
         //myVar = myVar.replace("</div>","[/division]")
         //myVar = myVar.replace("<span ","[section]<span ")
