@@ -230,7 +230,7 @@ function getFullMessage(conversation){
         
         var temp = document.createElement('div');
         temp.innerHTML = myVar;
-        other = myVar;
+        other = temp.innerText;
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
