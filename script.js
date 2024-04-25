@@ -217,8 +217,12 @@ function getFullMessage(conversation,element){
         
         
         if(bodyHTML.includes("[end of message]")){
-            bodyHTML = bodyHTML.split("[end of message]");
+            bodyHTML = bodyHTML.split("[end of message]")[0];
         }
+
+        // count ("<p " + "<p>") - "</p>", add in the corresponding number of "</p>". do the same with ("<div " + "<div>") - "</div>"
+
+
         /*  -------- main code
         var bodyHTML = currentConversation.latest_message.body;
         bodyHTML = bodyHTML.replaceAll("> </","></");
@@ -232,7 +236,6 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]");
         while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[section][/section]") || bodyHTML.includes("[paragraph][/paragraph]")) {
             bodyHTML = bodyHTML.replaceAll("[division][/division]","");
-            bodyHTML = bodyHTML.replaceAll("[section][/section]","");
             bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","");
         }
         elementID = document.getElementById(element);
@@ -240,8 +243,6 @@ function getFullMessage(conversation,element){
         bodyHTML = elementID.innerText;
         bodyHTML = bodyHTML.replaceAll("[division]","<div>");
         bodyHTML = bodyHTML.replaceAll("[/division]","</div>");
-        bodyHTML = bodyHTML.replaceAll("[section]","<span>");
-        bodyHTML = bodyHTML.replaceAll("[/section]","</span>");
         bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
