@@ -200,6 +200,25 @@ function getFullMessage(conversation,element){
     else{
         var bodyHTML = currentConversation.latest_message.body;
         $("#" + element).text(bodyHTML);
+
+
+    //
+    //<blockquote - make sure this will not remove inteded blockquotes
+    //<div id ="xxxxxyahoo_quoted" - xxxxx is variable, find yahoo_quoted, and remove everything between that and the previous "
+    //<div class="WordSection1"
+    //<div>-------- Original message
+
+
+
+        bodyHTML = bodyHTML.replace('<div class="gmail_quote"',"[end of message]");
+        bodyHTML = bodyHTML.replace('<div class="WordSection1"',"[end of message]");
+        bodyHTML = bodyHTML.replace('<blockquote',"[end of message]");
+        bodyHTML = bodyHTML.replace('<div class="<div>-------- Original message"',"[end of message]");
+        
+        
+        if(bodyHTML.includes("[end of message]")){
+            bodyHTML = bodyHTML.split("[end of message]");
+        }
         /*  -------- main code
         var bodyHTML = currentConversation.latest_message.body;
         bodyHTML = bodyHTML.replaceAll("> </","></");
@@ -380,6 +399,7 @@ get order number from convo subject line - split by space. if [0] lowercase is "
         get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
     else
         order number = "empty"
+* attachments-1.missiveapp.com
     if order number is given by user, and order number was previosuly "empty", set convo subject to order number
 check for contact by email. if one does not exist, create it. show fields for the user to modify: name, phone number, email, cust ID. when any field is modified, update contact.
 scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
@@ -394,6 +414,11 @@ for certain values entered into integration form, save the info automatically (o
 link to monday form
 link to monday search
 include link to message in monday form?
+after order number, add note.
+    Order number
+    note 
+    ex. convo subject may say: Order #4937718, refund for return. these should be short.
+have a status - if it is waiting on something, denote that
 decide what should be CCA, what should be CRM, and what should be shared, separate accordingly
 come up with functions admins can do with no coding, such as change a person's level
 respond automatically to chatbot requests
