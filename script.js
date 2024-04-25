@@ -234,7 +234,7 @@ function getFullMessage(conversation){
         //myVar = myVar.replace("[/paragraph]","</p>")
         //myVar = myVar.replace("[linebreak]","<br/>")
         
-        //$("#body16").innerHTML(something);
+        $("#body16").text(something);
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
