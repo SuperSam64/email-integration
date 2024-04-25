@@ -218,19 +218,19 @@ function getFullMessage(conversation){
             myVar = myVar.replaceAll("[section] [/section]","")
             myVar = myVar.replaceAll("[paragraph] [/paragraph]","")
         }
-
-
-        //myVar = myVar.replace("[division]","<div>")
-        //myVar = myVar.replace("[/division]","</div>")
-        //myVar = myVar.replace("[section]","<span>")
-        //myVar = myVar.replace("[/section]","</span>")
-        //myVar = myVar.replace("[paragraph]","<p>")
-        //myVar = myVar.replace("[/paragraph]","</p>")
-        //myVar = myVar.replace("[linebreak]","<br/>")
-        
         var temp = document.createElement('div');
         temp.innerHTML = myVar;
-        other = temp.innerText;
+        myVar = temp.innerText;
+
+        myVar = myVar.replace("[division]","<div>")
+        myVar = myVar.replace("[/division]","</div>")
+        myVar = myVar.replace("[section]","<span>")
+        myVar = myVar.replace("[/section]","</span>")
+        myVar = myVar.replace("[paragraph]","<p>")
+        myVar = myVar.replace("[/paragraph]","</p>")
+        myVar = myVar.replace("[linebreak]","<br/>")
+        other = myVar;
+        
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
