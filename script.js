@@ -361,6 +361,9 @@ function buttonClicked() {
 
 /*
 - make the "to" the customer's email. find a way to remove the other email. try array = []
+places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
+
+
 assign new drafts
 set these as utitilies
 create an array of tasks for POs and for tax exempt and others
