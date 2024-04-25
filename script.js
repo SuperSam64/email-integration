@@ -199,7 +199,7 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
-        $("#" + element).text(bodyHTML);
+        
 
 
     //
@@ -214,6 +214,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replace('<div class="WordSection1"',"[end of message]");
         bodyHTML = bodyHTML.replace('<blockquote',"[end of message]");
         bodyHTML = bodyHTML.replace('<div class="<div>-------- Original message"',"[end of message]");
+        bodyHTML = bodyHTML.replace('<div id="divRplyFwdMsg',"[end of message]");
         
         
         if(bodyHTML.includes("[end of message]")){
@@ -221,7 +222,7 @@ function getFullMessage(conversation,element){
         }
 
         // count ("<p " + "<p>") - "</p>", add in the corresponding number of "</p>". do the same with ("<div " + "<div>") - "</div>"
-
+        $("#" + element).text(bodyHTML);
 
         /*  -------- main code
         var bodyHTML = currentConversation.latest_message.body;
