@@ -220,17 +220,14 @@ function getFullMessage(conversation){
         }
 
 
-        myVar = myVar.replace("<div ","[division]<div ")
-        myVar = myVar.replace("<div>","[division]<div>")
-        myVar = myVar.replace("</div>","[/division]")
-        myVar = myVar.replace("<span ","[section]<span ")
-        myVar = myVar.replace("<span>","[section]<span>")
-        myVar = myVar.replace("</span>","</span>[/section]")
-        myVar = myVar.replace("<p ","[paragraph]<p ")
-        myVar = myVar.replace("<p>","[paragraph]<p>")
-        myVar = myVar.replace("</p>","</p>[/paragraph]")
-        myVar = myVar.replace("<br>","[linebreak]")
-        myVar = myVar.replace("<br/>","[linebreak]")
+        var myVar = myVar.replace("[division]","<div>")
+        var myVar = myVar.replace("[/division]","</div>")
+        var myVar = myVar.replace("[section]","<span>")
+        var myVar = myVar.replace("[/section]","</span>")
+        var myVar = myVar.replace("[paragraph]","<p>")
+        var myVar = myVar.replace("[/paragraph]","</p>")
+        var myVar = myVar.replace("[linebreak]","<br/>")
+        var myVar = myVar.replace("<p></p>","")
         
         var temp = document.createElement('div');
         temp.innerHTML = myVar + "";
