@@ -245,8 +245,8 @@ function getOrderNumber(conversation){
         orderString = orderString.replace("-","");
         orderString = orderString.replace("cp","");
         orderString = orderString.replace(")","");
+        orderString = orderString.replace("|!|","CP09-")
         orderString = orderString.replaceAll(" ","");
-        orderString = orderString.replace("|!|","CP09-");
     }
     else {
         orderString = "[empty]";
@@ -362,8 +362,13 @@ function buttonClicked() {
 /*
 - make the "to" the customer's email. find a way to remove the other email. try array = []
 places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
-
-
+    <div class="gmail_quote"
+    <blockquote - make sure this will not remove inteded blockquotes
+    <div id ="xxxxxyahoo_quoted" - xxxxx is variable, find yahoo_quoted, and remove everything between that and the previous "
+    <div class="WordSection1"
+    <div>-------- Original message
+    see if there's a way to determine if something is a date. ex "On Wed, Ap 24"
+    need a way to close tags that cannot be closed because the closing tag is after the portion being removed
 assign new drafts
 set these as utitilies
 create an array of tasks for POs and for tax exempt and others
