@@ -213,7 +213,7 @@ function getFullMessage(conversation){
         myVar = myVar.replaceAll("</p>","</p>[/paragraph]")
         myVar = myVar.replaceAll("<br>","[linebreak]")
         myVar = myVar.replaceAll("<br/>","[linebreak]")
-        while (lmyVar.includes() || lmyVar.includes() || lmyVar.includes()) {
+        while (myVar.includes() || myVar.includes() || myVar.includes()) {
             myVar = myVar.replaceAll("[division] [/division]","")
             myVar = myVar.replaceAll("[section] [/section]","")
             myVar = myVar.replaceAll("[paragraph] [/paragraph]","")
