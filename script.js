@@ -239,17 +239,16 @@ function getOrderNumber(conversation){
         orderString = orderString.replace("#","");
         orderString = orderString.replace("no","");
         orderString = orderString.replace("number","");
-        //orderString = orderString.replace(";","");
-        //orderString = orderString.replace(":","");
-        //orderString = orderString.replace(".","");
-        //orderString = orderString.replace("cp09","|!|");
-        //orderString = orderString.replace("-","");
-        //orderString = orderString.replace("cp","");
-        //orderString = orderString.replace(")","");
-        //orderString = orderString.replace("|!|","CP09-")
-        //orderString = orderString.replaceAll(" ","");
-        //orderString = orderString.trim();
-        //orderString = orderString.replace("]"," ]");
+        orderString = orderString.replace(";","");
+        orderString = orderString.replace(":","");
+        orderString = orderString.replace(".","");
+        orderString = orderString.replace("cp09","|!|");
+        orderString = orderString.replace("-","");
+        orderString = orderString.replace("cp","");
+        orderString = orderString.replace(")","");
+        orderString = orderString.replace("|!|","CP09-")
+        orderString = orderString.trim();
+        orderString = orderString.replace("]"," ]");
         //orderString = orderString.split(" ")[0];
     }
     else {
