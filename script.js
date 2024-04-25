@@ -205,6 +205,7 @@ function getFullMessage(conversation){
         var bodyHTML = currentConversation.latest_message.body;
         myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
+        myVar = myVar.replaceAll("> </","></")
         myVar = myVar.replaceAll("<div ","[division]<div ")
         myVar = myVar.replaceAll("<div>","[division]<div>")
         myVar = myVar.replaceAll("</div>","[/division]")
@@ -213,16 +214,17 @@ function getFullMessage(conversation){
         myVar = myVar.replaceAll("</p>","</p>[/paragraph]")
         myVar = myVar.replaceAll("<br>","[linebreak]")
         myVar = myVar.replaceAll("<br/>","[linebreak]")
-        myVar = myVar.replaceAll("] [/","][/")
-        while (myVar.includes("[division][/division]") || myVar.includes("[section][/section]") || myVar.includes("[paragraph][/paragraph]")) {
-            myVar = myVar.replaceAll("[division] [/division]","")
-            myVar = myVar.replaceAll("[section] [/section]","")
-            myVar = myVar.replaceAll("[paragraph] [/paragraph]","")
-        }
-        var temp = document.createElement('div');
-        temp.innerHTML = myVar;
-        something = temp.innerText;
         
+        while (myVar.includes("[division][/division]") || myVar.includes("[section][/section]") || myVar.includes("[paragraph][/paragraph]")) {
+            myVar = myVar.replaceAll("[division][/division]","")
+            myVar = myVar.replaceAll("[section][/section]","")
+            myVar = myVar.replaceAll("[paragraph][/paragraph]","")
+        }
+        
+        element = document.getElementById("body16")
+        element.innerHTML = myVar;
+        something = element.innerText;
+
         //var someOtherThing = $(something)
 
 
