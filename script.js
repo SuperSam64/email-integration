@@ -235,10 +235,11 @@ function getOrderNumber(conversation){
     var orderString;
     if(subject.includes("order")){
         orderString = "[" + subject + "]";
-        //orderString = orderString.split("order")[1];
-        //orderString = orderString.replace("]"," ]");
+        orderString = orderString.split("order")[1];
+        orderString = orderString.replace("]"," ]");
         //orderString = orderString.split(" ")[0];
         //orderString = orderString.replace("#","");
+        //orderString = orderString.replace("# ","");
         //orderString = orderString.replace(";","");
         //orderString = orderString.replace(".","");
         //orderString = orderString.replace("cp09","|!|");
