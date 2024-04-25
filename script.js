@@ -199,7 +199,7 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
-        $("#" + element).html(bodyHTML);
+        $("#" + element).text(bodyHTML);
         /*  -------- main code
         var bodyHTML = currentConversation.latest_message.body;
         bodyHTML = bodyHTML.replaceAll("> </","></");
