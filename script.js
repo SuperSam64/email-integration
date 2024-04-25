@@ -246,6 +246,7 @@ function getOrderNumber(conversation){
         orderString = orderString.replace("-","");
         orderString = orderString.replace("cp","");
         orderString = orderString.replace(")","");
+        orderString = orderString.replace("[","");
         orderString = orderString.replace("|!|","CP09-")
         orderString = orderString.trim();
         orderString = orderString.replace("]"," ]");
