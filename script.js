@@ -199,7 +199,9 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
-        // replace divs, breaks, spans and paragraphs with placeholders
+        $("#" + element).html(bodyHTML);
+        /*  -------- main code
+        var bodyHTML = currentConversation.latest_message.body;
         bodyHTML = bodyHTML.replaceAll("> </","></");
         bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
         bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
@@ -225,6 +227,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         $("#" + element).html(bodyHTML);
+        ------------------------------------ */
     }
 }
 function getOrderNumber(conversation){
