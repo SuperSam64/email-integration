@@ -203,39 +203,37 @@ function getFullMessage(conversation){
         // get full html of reply
         var output;
         var bodyHTML = currentConversation.latest_message.body;
-        myVar = bodyHTML;
         // replace divs, breaks, spans and paragraphs with placeholders
-        myVar = myVar.replaceAll("> </","></")
-        myVar = myVar.replaceAll("<div ","[division]<div ")
-        myVar = myVar.replaceAll("<div>","[division]<div>")
-        myVar = myVar.replaceAll("</div>","[/division]")
-        myVar = myVar.replaceAll("<p ","[paragraph]<p ")
-        myVar = myVar.replaceAll("<p>","[paragraph]<p>")
-        myVar = myVar.replaceAll("</p>","</p>[/paragraph]")
-        myVar = myVar.replaceAll("<br>","[linebreak]")
-        myVar = myVar.replaceAll("<br/>","[linebreak]")
-        
-        while (myVar.includes("[division][/division]") || myVar.includes("[section][/section]") || myVar.includes("[paragraph][/paragraph]")) {
-            myVar = myVar.replaceAll("[division][/division]","")
-            myVar = myVar.replaceAll("[section][/section]","")
-            myVar = myVar.replaceAll("[paragraph][/paragraph]","")
+        bodyHTML = bodyHTML.replaceAll("> </","></")
+        bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ")
+        bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>")
+        bodyHTML = bodyHTML.replaceAll("</div>","[/division]")
+        bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ")
+        bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>")
+        bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]")
+        bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]")
+        bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]")
+        while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[section][/section]") || bodyHTML.includes("[paragraph][/paragraph]")) {
+            bodyHTML = bodyHTML.replaceAll("[division][/division]","")
+            bodyHTML = bodyHTML.replaceAll("[section][/section]","")
+            bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","")
         }
         
         element = document.getElementById("body16")
-        element.innerHTML = myVar;
+        element.innerHTML = bodyHTML;
         something = element.innerText;
 
         //var someOtherThing = $(something)
 
 
 
-        myVar = something.replaceAll("[division]","<div>")
-        myVar = myVar.replaceAll("[/division]","</div>")
-        myVar = myVar.replaceAll("[section]","<span>")
-        myVar = myVar.replaceAll("[/section]","</span>")
-        myVar = myVar.replaceAll("[paragraph]","<p>")
-        myVar = myVar.replaceAll("[/paragraph]","</p>")
-        something = myVar.replaceAll("[linebreak]","<br/>")
+        bodyHTML = something.replaceAll("[division]","<div>")
+        bodyHTML = bodyHTML.replaceAll("[/division]","</div>")
+        bodyHTML = bodyHTML.replaceAll("[section]","<span>")
+        bodyHTML = bodyHTML.replaceAll("[/section]","</span>")
+        bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>")
+        bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>")
+        something = bodyHTML.replaceAll("[linebreak]","<br/>")
         
         $("#body16").html(something);
         
