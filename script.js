@@ -219,9 +219,9 @@ function getFullMessage(conversation,element){
             bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","")
         }
         
-        element = document.getElementById("body16")
-        element.innerHTML = bodyHTML;
-        bodyHTML = element.innerText;
+        elementID = document.getElementById("body16")
+        elementID.innerHTML = bodyHTML;
+        bodyHTML = elementID.innerText;
 
         //var someOtherThing = $(something)
 
@@ -235,7 +235,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>")
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>")
         
-        $("#body16").html(bodyHTML);
+        $("#" + element).html(bodyHTML);
         
         // turn the rest into plain text
         // add back the divs, breaks, spans and paragraphs
@@ -423,6 +423,7 @@ create forms
 set up branching for forms
 make autoreply templates that can be modified by me, based on the regular templates
 identify time of day when applying a template
+for order number, repalce "# " with "#"
 take contexts for monday forms and for responses
 for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
 link to monday form
