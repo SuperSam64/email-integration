@@ -193,7 +193,7 @@ function getPreview(conversation){
         return conversation.latest_message.preview;
     }
 }
-function getFullMessage(conversation){
+function getFullMessage(conversation,element){
     if(!conversation.latest_message){
         $("#body16").text("[empty]")
     }
@@ -316,7 +316,7 @@ function update (input){
     labels = getLabels(input);
     isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
-    getFullMessage(input); // this is linked to a specific element - change it in script.js as needed
+    getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
 }
 function orderNumberSearch (){

@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 3.84</span>
+			<span class="button-link column padding" id="reload-button">Version 3.85</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -172,33 +172,34 @@
     </table>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      //---- VARIABLES ----
-      var currentUser;
-			var fullName;
-			var profileType = "CCA"; // CCA, CRM, master
-			var title = "Customer Care Advocate" // default, unless  otherwise specified
-      var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
-			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
-      var currentConversation;
-      var conversationID;
-      var conversationCount;
-      var messageTo;
-      var messageFrom;
-      var customerName;
-      var messageSubject;
-      var conversationSubject;
-      var userAssigned;
-      var assignDraft;
-      var forwarded;
-      var conversationLink;
-      var messageLink;
-      var labels;
-      var isLabeled;
-      var preview;
-      var fullMessage;
-      var orderNoTest = "Order #CP-12458935"; // this is for testing, delete later
-      var orderNumber;
-      var bodyPlaintext;
+      {//---- VARIABLES ----
+        var currentUser;
+        var fullName;
+        var profileType = "CCA"; // CCA, CRM, master
+        var title = "Customer Care Advocate" // default, unless  otherwise specified
+        var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
+        var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
+        var currentConversation;
+        var conversationID;
+        var conversationCount;
+        var messageTo;
+        var messageFrom;
+        var customerName;
+        var messageSubject;
+        var conversationSubject;
+        var userAssigned;
+        var assignDraft;
+        var forwarded;
+        var conversationLink;
+        var messageLink;
+        var labels;
+        var isLabeled;
+        var preview;
+        var fullMessage;
+        var orderNoTest = "Order #CP-12458935"; // this is for testing, delete later
+        var orderNumber;
+        var bodyPlaintext;
+      }
       // ============ PAGE LOAD ==============
       $(document).ready((ids) => {
         Missive.fetchUsers().then((users) => {
