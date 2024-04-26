@@ -199,6 +199,16 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
+        bodyHTML = bodyHTML.replace('<div id="divRplyFwdMsg"','[end of message]');
+        bodyHTML = bodyHTML.replace('<div class="gmail_quote">','[end of message]');
+        bodyHTML = bodyHTML.replace('<blockquote type="cite">','[end of message]');
+        bodyHTML = bodyHTML.replace('<div class="WordSection1">','[end of message]');
+        bodyHTML = bodyHTML.replace('<p class="yahoo-quoted-begin"','[end of message]');
+        bodyHTML = bodyHTML.replace('<div>-------- Original message --------</div>','[end of message]');
+        bodyHTML = bodyHTML.replace('<div id="ymail_android_signature">','<div id="ymail_android_signature">[end of message]');
+        if(bodyHTML.includes('[end of message]')){
+            bodyHMTL = bodyHTML.split('[end of message]')[0]
+        }
         bodyHTML = bodyHTML.replaceAll("> </","></");
         bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
         bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
