@@ -214,6 +214,9 @@ function getFullMessage(conversation,element){
         }
         bodyHTML = bodyHTML.replaceAll("> <","><");
         bodyHTML = bodyHTML.replaceAll(">&nbsp;<","><");
+        bodyHTML = bodyHTML.replaceAll("> &nbsp;<","><");
+        bodyHTML = bodyHTML.replaceAll(">&nbsp; <","><");
+        bodyHTML = bodyHTML.replaceAll("> &nbsp; <","><");
         bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
         bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
         bodyHTML = bodyHTML.replaceAll("</div>","[/division]");
