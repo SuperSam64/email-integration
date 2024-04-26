@@ -221,8 +221,9 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]");
         bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]");
         bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]");
-        while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[paragraph][/paragraph]" || "[linebreak][linebreak]")) {
+        while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[paragraph][/paragraph]" || "[linebreak][linebreak]" || "[division][linebreak]")) {
             bodyHTML = bodyHTML.replaceAll("[division][/division]","");
+            bodyHTML = bodyHTML.replaceAll("[division][linebreak]","[linebreak]");
             bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","");
             bodyHTML = bodyHTML.replaceAll("[linebreak][linebreak]","[linebreak]");
         }
