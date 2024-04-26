@@ -213,6 +213,7 @@ function getFullMessage(conversation,element){
             bodyHTML = bodyHTML.split('[end of message]')[0];
         }
         bodyHTML = bodyHTML.replaceAll("> <","><");
+        bodyHTML = bodyHTML.replaceAll(">&nbsp;<","><");
         bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
         bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
         bodyHTML = bodyHTML.replaceAll("</div>","[/division]");
