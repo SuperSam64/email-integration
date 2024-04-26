@@ -235,6 +235,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
+        bodyHTML = "<blockquote>" + bodyHTML + "</blockquote>"
         $("#" + element).html(bodyHTML);
     }
 }
@@ -362,7 +363,7 @@ function showResults(){
     $("#body17").text(orderNumber);
 }
 function buttonClicked() {
-    /*var myVar = {
+    var myVar = {
         deliver:false,
         mailto: {
             subject: "hello!",
@@ -373,8 +374,8 @@ function buttonClicked() {
             }]
         }
     }
-    Missive.composeInConversation(myVar); */
-    createTasks(purchaseOrderTasks);
+    Missive.composeInConversation(myVar);
+    //createTasks(purchaseOrderTasks);
 }
 
 /*
