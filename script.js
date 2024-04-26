@@ -212,27 +212,28 @@ function getFullMessage(conversation,element){
         if(bodyHTML.includes('[end of message]')){
             bodyHTML = bodyHTML.split('[end of message]')[0];
         }
-        //bodyHTML = bodyHTML.replaceAll("> </","></");
-        //bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
-        //bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
-        //bodyHTML = bodyHTML.replaceAll("</div>","[/division]");
-        //bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ");
-        //bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>");
-        //bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]");
-        //bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]");
-        //bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]");
-        //while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[section][/section]") || bodyHTML.includes("[paragraph][/paragraph]")) {
-        //    bodyHTML = bodyHTML.replaceAll("[division][/division]","");
-        //    bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","");
-        //}
-        //elementID = document.getElementById(element);
-        //elementID.innerHTML = bodyHTML;
-        //bodyHTML = elementID.innerText;
-        //bodyHTML = bodyHTML.replaceAll("[division]","<div>");
-        //bodyHTML = bodyHTML.replaceAll("[/division]","</div>");
-        //bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
-        //bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
-        //bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
+        bodyHTML = bodyHTML.replaceAll("> </","></");
+        bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
+        bodyHTML = bodyHTML.replaceAll("<div>","[division]<div>");
+        bodyHTML = bodyHTML.replaceAll("</div>","[/division]");
+        bodyHTML = bodyHTML.replaceAll("<p ","[paragraph]<p ");
+        bodyHTML = bodyHTML.replaceAll("<p>","[paragraph]<p>");
+        bodyHTML = bodyHTML.replaceAll("</p>","</p>[/paragraph]");
+        bodyHTML = bodyHTML.replaceAll("<br>","[linebreak]");
+        bodyHTML = bodyHTML.replaceAll("<br/>","[linebreak]");
+        while (bodyHTML.includes("[division][/division]") || bodyHTML.includes("[paragraph][/paragraph]" || "[linebreak][linebreak]")) {
+            bodyHTML = bodyHTML.replaceAll("[division][/division]","");
+            bodyHTML = bodyHTML.replaceAll("[paragraph][/paragraph]","");
+            bodyHTML = bodyHTML.replaceAll("[linebreak][linebreak]","[linebreak]");
+        }
+        elementID = document.getElementById(element);
+        elementID.innerHTML = bodyHTML;
+        bodyHTML = elementID.innerText;
+        bodyHTML = bodyHTML.replaceAll("[division]","<div>");
+        bodyHTML = bodyHTML.replaceAll("[/division]","</div>");
+        bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
+        bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
+        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         $("#" + element).html(bodyHTML);
     }
 }
