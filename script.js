@@ -237,6 +237,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         bodyHTML = "<blockquote>" + bodyHTML + "</blockquote>"
         $("#" + element).html(bodyHTML);
+        return bodyHTML;
     }
 }
 function getOrderNumber(conversation){
@@ -260,6 +261,9 @@ function getOrderNumber(conversation){
         orderString = orderString.trim();
         orderString = orderString.replace("]"," ]");
         orderString = orderString.split(" ")[0];
+        if(orderString.length() != 8 && orderString.length() != 12){
+            orderString = "[empty]";
+        }
     }
     else {
         orderString = "[empty]";
@@ -282,7 +286,7 @@ function update (input){
     labels = getLabels(input);
     isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
-    getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
 }
 function orderNumberSearch (){
@@ -370,7 +374,8 @@ function buttonClicked() {
             to_fields:[{
                 address:messageFrom,
                 name:customerName,
-                subject:messageSubject.replace("FW:","Re:")
+                subject:messageSubject.replace("FW:","Re:"),
+                body:fullMessage
             }]
         }
     }
