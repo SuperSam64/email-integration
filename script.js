@@ -207,7 +207,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replace('<div>-------- Original message --------</div>','[end of message]');
         bodyHTML = bodyHTML.replace('<div id="ymail_android_signature">','<div id="ymail_android_signature">[end of message]');
         if(bodyHTML.includes('[end of message]')){
-            bodyHMTL = bodyHTML.split('[end of message]')[0];
+            bodyHTML = bodyHTML.split('[end of message]')[0];
         }
         //bodyHTML = bodyHTML.replaceAll("> </","></");
         //bodyHTML = bodyHTML.replaceAll("<div ","[division]<div ");
