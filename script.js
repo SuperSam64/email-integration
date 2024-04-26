@@ -234,7 +234,11 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[/division]","</div>");
         bodyHTML = bodyHTML.replaceAll("[paragraph]","<p>");
         bodyHTML = bodyHTML.replaceAll("[/paragraph]","</p>");
-        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
+        bodyHTML = bodyHTML.replaceAll("[linebreak]","<br>");
+        while (bodyHTML.includes("<br><br>") || bodyHTML.includes("<br> <br>")) {
+            bodyHTML = bodyHTML.replaceAll("<br><br>","<br>");
+            bodyHTML = bodyHTML.replaceAll("<br> <br>","<br>");
+        }
         bodyHTML = "<br><br>From: " + messageFrom + '<br><blockquote><span style="font-style:italic">' + bodyHTML + "</span></blockquote>" // can change later, also include date
         $("#" + element).html(bodyHTML);
         return bodyHTML.trim();
