@@ -421,12 +421,11 @@ function buttonClicked() {
     );
     var myVar = {
         deliver:false,
-        mailto: {
-            body: "hello" //someText
-        }
+        mailto: [{
+            body: someText
+        }]
     }
     Missive.composeInConversation(myVar);
-        //'<div class="missive_signature"><div>--</div><div>' + emailClosing +',</div><div>' + fullName.split(" ")[0] + '</div><div><br></div><div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">           <img alt="large-FF-shield-logo-Full.png" title="" width="192" data-missive-image-resolution="288" data-missive-resizable-image="true" style="max-width: 100%" data-missive-attachment-id="524e01ca-499a-4edd-876d-a47b7ea50bbe"            src="https://attachments-1.missiveapp.com/524e01ca-499a-4edd-876d-a47b7ea50bbe/large-FF-shield-logo-Full.png?Expires=1714167754&amp;Signature=lwkmfL-6G9a9VFmvvhBBxJDQbaW3WSY3qpWmhVMdIVF306OStGd3VbDi6i5BkxPlN2DLHWAwzjwzNlsx1XZWSx2lZXjZRcsbfuJDH0bW44TOyPi5dhcO6gZFfinbM-b1xjcPd5VF~znm8KuyOuNR~T1z2jDlcozKUuxhH6C3DKhw8freFAJ0bg~BlNGDo4iIHBETHdelihxGdlgi8Mo0V~7DNkEiq-9E~luNoX9gtJVgFsIq9BGT-VkxriknP84Ex27-6kKArqZigcd4KcLqyY~gF6gaVl5cRrF-JMARqy4BzoOV3Kr~XRm4sN5a1o6IvmdgpJxvrE~XWTvucrLLyg__&amp;Key-Pair-Id=APKAJWJJOF7ZM5FW5N4Q" data-missive-attachment-attributes="{&quot;id&quot;:&quot;524e01ca-499a-4edd-876d-a47b7ea50bbe&quot;,&quot;filename&quot;:&quot;large-FF-shield-logo-Full.png&quot;,&quot;extension&quot;:&quot;png&quot;,&quot;url&quot;:&quot;/v1/attachments/524e01ca-499a-4edd-876d-a47b7ea50bbe/redirect?context%5Bid%5D=838671bd-cb11-4ed4-aff1-7fe4e1d33fdb&amp;context%5Bresource%5D=message_entry&amp;context%5Btype%5D=resource&quot;,&quot;media_type&quot;:&quot;image&quot;,&quot;sub_type&quot;:&quot;png&quot;,&quot;size&quot;:32753,&quot;uploaded&quot;:true,&quot;width&quot;:1280,&quot;height&quot;:276,&quot;angle&quot;:null,&quot;path&quot;:null,&quot;visibility&quot;:&quot;private&quot;,&quot;resolution&quot;:null,&quot;context&quot;:{&quot;type&quot;:&quot;resource&quot;,&quot;resource&quot;:&quot;message_entry&quot;,&quot;id&quot;:&quot;838671bd-cb11-4ed4-aff1-7fe4e1d33fdb&quot;},&quot;signed_url&quot;:&quot;https://attachments-1.missiveapp.com/524e01ca-499a-4edd-876d-a47b7ea50bbe/large-FF-shield-logo-Full.png?Expires=1714167754&amp;Signature=lwkmfL-6G9a9VFmvvhBBxJDQbaW3WSY3qpWmhVMdIVF306OStGd3VbDi6i5BkxPlN2DLHWAwzjwzNlsx1XZWSx2lZXjZRcsbfuJDH0bW44TOyPi5dhcO6gZFfinbM-b1xjcPd5VF~znm8KuyOuNR~T1z2jDlcozKUuxhH6C3DKhw8freFAJ0bg~BlNGDo4iIHBETHdelihxGdlgi8Mo0V~7DNkEiq-9E~luNoX9gtJVgFsIq9BGT-VkxriknP84Ex27-6kKArqZigcd4KcLqyY~gF6gaVl5cRrF-JMARqy4BzoOV3Kr~XRm4sN5a1o6IvmdgpJxvrE~XWTvucrLLyg__&amp;Key-Pair-Id=APKAJWJJOF7ZM5FW5N4Q&quot;,&quot;signed_url_expires_at&quot;:1714167744}"></a></div><div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp;          "" | &nbsp;📞<a href="tel:+18664383458">866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div></div>')
 }
 
 /*
