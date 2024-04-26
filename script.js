@@ -199,6 +199,7 @@ function getFullMessage(conversation,element){
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
+        bodyHTML = bodyHTML.replace('<div>--</div>','[end of message]');
         bodyHTML = bodyHTML.replace('<div id="divRplyFwdMsg"','[end of message]');
         bodyHTML = bodyHTML.replace('<div class="gmail_quote">','[end of message]');
         bodyHTML = bodyHTML.replace('<blockquote type="cite">','[end of message]');
