@@ -202,6 +202,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replace('<div id="divRplyFwdMsg"','[end of message]');
         bodyHTML = bodyHTML.replace('<div class="gmail_quote">','[end of message]');
         bodyHTML = bodyHTML.replace('<blockquote type="cite">','[end of message]');
+        bodyHTML = bodyHTML.replace('<div class="WordSection1">','');
         bodyHTML = bodyHTML.replace('<div class="WordSection1">','[end of message]');
         bodyHTML = bodyHTML.replace('<p class="yahoo-quoted-begin"','[end of message]');
         bodyHTML = bodyHTML.replace('<div>-------- Original message --------</div>','[end of message]');
