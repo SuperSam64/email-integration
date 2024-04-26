@@ -240,7 +240,10 @@ function getFullMessage(conversation,element){
             bodyHTML = bodyHTML.replaceAll("<br><br>","<br>");
             bodyHTML = bodyHTML.replaceAll("<br> <br>","<br>");
         }
-        bodyHTML = "<br><br>From: " + messageFrom + '<br><blockquote><span style="font-style:italic">' + bodyHTML + "[---]" + "</span></blockquote>" // can change later, also include date
+        bodyHTML = bodyHTML + "[---]";
+        bodyHTML = bodyHTML.replaceAll("<br>[---]","");
+        bodyHTML = bodyHTML.replaceAll("<br> [---]","");
+        bodyHTML = "<br><br>From: " + messageFrom + '<br><blockquote><span style="font-style:italic">' + bodyHTML + "</span></blockquote>" // can change later, also include date
         $("#" + element).html(bodyHTML);
         return bodyHTML.trim();
     }
@@ -457,5 +460,14 @@ parse diff formats like gmail, yahoo mail, etc
     order no is
     order no. is
     order # is
+
+
+    configurable options: wording of closing ex. "Sincerely"
+    Time-based greeting
+    Customize "Thank you for reaching out to us!"
+    Customize "Thank you for your reply!"
+    Toggle auto-assign draft
+    Toggle auto-correct return email
+    Customize name for Monday posts "Post Monday as:"
 
 */
