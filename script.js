@@ -338,8 +338,8 @@ function body16Reset(){
 function body17Reset(){
     $("#body17").text("[ready]")
 }
-function createPurchaseOrderTasks(){
-    for ( var i = 0, task = purchaseOrderTasks.length; i < task; i++ ) {	
+function createTasks(input){
+    for ( var i = 0, task = input.length; i < task; i++ ) {	
         Missive.createTask(task[i], false);
     }
 }
@@ -374,7 +374,7 @@ function buttonClicked() {
         }
     }
     Missive.composeInConversation(myVar); */
-    createPurchasOrderTasks(purchaseOrderTasks);
+    createTasks(purchaseOrderTasks);
 }
 
 /*
