@@ -396,6 +396,7 @@ function buttonClicked() {
     //createTasks(purchaseOrderTasks);
 
     emailClosing = "Sincerely";
+    Missive.composeInConversation();
     Missive.insertHtml(
         '<div class="missive_signature"><div>--</div><div>' + emailClosing + ',</div><div>' + fullName.split(" ")[0] + 
         '</div><div><br></div><div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">' +
