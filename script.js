@@ -261,9 +261,10 @@ function getOrderNumber(conversation){
         orderString = orderString.trim();
         orderString = orderString.replace("]"," ]");
         orderString = orderString.split(" ")[0];
-        //if(orderString.length() != 8 && orderString.length() != 12){
-        //    orderString = "[empty]";
-        //}
+        //orderString = orderString + " | " + orderString.length; // for testing, remove later
+        if(orderString.length != 8 && orderString.length != 12){
+            orderString = "[empty]";
+        }
     }
     else {
         orderString = "[empty]";
