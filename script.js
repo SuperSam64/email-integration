@@ -338,9 +338,9 @@ function body16Reset(){
 function body17Reset(){
     $("#body17").text("[ready]")
 }
-function createTasks(input){
-    for ( var i = 0, task = input.length; i < task; i++ ) {	
-        Missive.createTask(task[i], false);
+function createTasks(tasks){
+    for ( var i = 0; i < tasks.length; i ++ ) {	
+        Missive.createTask(tasks[i], false);
     }
 }
 function showResults(){
