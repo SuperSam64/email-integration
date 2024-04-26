@@ -422,7 +422,7 @@ function buttonClicked() {
     var myVar = {
         deliver:false,
         mailto: {
-            body:someText
+            body: "hello" //someText
         }
     }
     Missive.composeInConversation(myVar);
