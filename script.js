@@ -207,6 +207,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replace('<div class="WordSection1">','[end of message]');
         bodyHTML = bodyHTML.replace('<p class="yahoo-quoted-begin"','[end of message]');
         bodyHTML = bodyHTML.replace('<div>-------- Original message --------</div>','[end of message]');
+        bodyHTML = bodyHTML.replace('<hr id="zwchr">','[end of message]');
         bodyHTML = bodyHTML.replace('<div id="ymail_android_signature">','<div id="ymail_android_signature">[end of message]');
         if(bodyHTML.includes('[end of message]')){
             bodyHTML = bodyHTML.split('[end of message]')[0];
