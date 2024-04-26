@@ -237,7 +237,7 @@ function getFullMessage(conversation,element){
         bodyHTML = bodyHTML.replaceAll("[linebreak]","<br/>");
         bodyHTML = "<br><br>From: " + messageFrom + '<br><blockquote><span style="font-style:italic">' + bodyHTML + "</span></blockquote>" // can change later, also include date
         $("#" + element).html(bodyHTML);
-        return bodyHTML;
+        return bodyHTML.trim();
     }
 }
 function getOrderNumber(conversation){
