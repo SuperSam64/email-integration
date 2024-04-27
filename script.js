@@ -471,7 +471,53 @@ function buttonClicked() {
     //insertSignature(emailClosing);
 
     
-    var formData = showForm();
+    var formData = Missive.openForm({
+        name: "My Form",
+        options: {
+            label: "return?",
+            value: 12345,
+            color: '#F00'
+        },
+        fields: [{
+            type: "select",
+            data: {
+                name: "selector",
+                options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
+                value: 1
+            }
+        },{
+            type: "html",
+            data: {
+                name: "htmlsection",
+                placeholder: "",
+                value: "<div><a href='https://www.google.com'>a link</a></div>"
+            }
+        },{
+            type: "input",
+            data: {
+                name: "myTextArea",
+                placeholder: "enter text here",
+                scope: {selector: 2},
+                options: {
+                    label: "type some stuff",
+                    value: "type some estuff"
+                }
+            }
+        },{
+            type: "input",
+            data: {
+                name: "myTextArea2",
+                placeholder: "enter text here again"
+            }
+        }],
+        buttons: [{
+            type: "cancel",
+            label: "cancel"
+        },{
+            type: "submit",
+            label: "click me!"
+        }]
+    })
     
     $("#body4").text(formData[3].data.value);
 
