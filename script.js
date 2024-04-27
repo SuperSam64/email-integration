@@ -473,7 +473,7 @@ function buttonClicked() {
     
     var formData = Missive.openForm({
         name: "My Form",
-        fields: [{
+        fields: [/*{
             type: "select",
             id:"someID",
             data: {
@@ -495,34 +495,26 @@ function buttonClicked() {
                 placeholder: "enter text here",
                 scope: {selector: 2},
                 options: {
-                    label: "type some stuff",
-                    value: "type some estuff"
+                    label: "type some stuff"
                 }
             }
-        },{
+        },*/{
             type: "input",
             data: {
-                name: "myTextArea2",
-                placeholder: "enter text here again"
+                name: "textbox",
+                placeholder: "enter some text"
             }
         }],
         buttons: [{
             type: "cancel",
-            label: "cancel"
+            label: "Cancel"
         },{
             type: "submit",
-            label: "click me!"
+            label: "Submit!"
         }]
     })
-    console.log(formData);
-    console.log(formData[3]);
-    console.log(formData[3].fields.data.value);
-    console.log(formData[3].fields.data.options.value);
-    console.log(formData[3].data.options.value);
-    console.log(formData[3].data.value);
-
-
-    $("#body4").text(formData[3]);
+    
+    $("#body4").text(formData.textbox);
 
     
     /*var myVar = {
