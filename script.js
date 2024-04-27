@@ -384,7 +384,7 @@ function buttonClicked() {
 
     //createTasks(purchaseOrderTasks);
 
-    /*emailClosing = "Sincerely";*/
+    emailClosing = "Sincerely";
     
     var someText = (
         '<div class="missive_signature"><div>--</div><div>' + emailClosing + ',</div><div>' + fullName.split(" ")[0] + 
