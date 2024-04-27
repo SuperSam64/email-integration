@@ -380,22 +380,11 @@ function showResults(){
     $("#body17").text(orderNumber);
 }
 function buttonClicked() {
-    /*var myVar = {
-        deliver:false,
-        mailto: {
-            subject:messageSubject.replace("FW:","Re:"),
-            body:fullMessage,
-            to_fields:[{
-                address:messageFrom,
-                name:customerName
-            }]
-        }
-    }
-    Missive.composeInConversation(myVar);*/
+  
 
     //createTasks(purchaseOrderTasks);
 
-    emailClosing = "Sincerely";
+    /*emailClosing = "Sincerely";
     
     var someText = (
         '<div class="missive_signature"><div>--</div><div>' + emailClosing + ',</div><div>' + fullName.split(" ")[0] + 
@@ -418,14 +407,20 @@ function buttonClicked() {
         'JMARqy4BzoOV3Kr~XRm4sN5a1o6IvmdgpJxvrE~XWTvucrLLyg__&amp;Key-Pair-Id=APKAJWJJOF7ZM5FW5N4Q&quot;,&quot;signed_url_expires_at&quot;:1714167744}">' +
         '</a></div><div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp;'+
         ' | &nbsp;📞<a href="tel:+18664383458">866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div></div>'  
-    );
-    var myVar = {
+    );*/
+     var myVar = {
         deliver:false,
-        mailto: [{
-            body: someText
-        }]
+        mailto: {
+            subject:messageSubject.replace("FW:","Re:"),
+            body:fullMessage,
+            to_fields:[{
+                address:messageFrom,
+                name:customerName
+            }]
+        }
     }
     Missive.composeInConversation(myVar);
+
 }
 
 /*
