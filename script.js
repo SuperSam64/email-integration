@@ -423,7 +423,15 @@ function buttonClicked() {
             data: {
                 name: "myTextArea",
                 value: "default value",
-                placeholder: "enter text here",
+                placeholder: "enter text here"
+            }
+        },{
+            type: "input",
+            data: {
+                name: "myTextArea2",
+                value: "second box",
+                placeholder: "enter text here again",
+                scope: { myTextArea: "hi" }
             }
         }],
         buttons: [{
@@ -431,7 +439,7 @@ function buttonClicked() {
             label: "click me!"
         }]
     }
-
+        // !!!!!!!!!!! 'scope' is the way to hide/show what is relevant
     Missive.openForm(formVar);
     var hello = formVar.fields[0].data.value;
     $("#body4").text(hello);
