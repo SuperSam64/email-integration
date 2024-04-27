@@ -418,6 +418,10 @@ function buttonClicked() {
     
     formVar = {
         name: "My Form",
+        options: {
+            label: "return?",
+            value: false
+        }
         fields: [{
             type: "input",
             data: {
