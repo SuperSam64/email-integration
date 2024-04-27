@@ -517,7 +517,7 @@ function buttonClicked() {
     })
     
     
-    output = formData[3].data.value
+    output = formData.fields[3].data.value
     console.log(output)
     
     $("#body4").text(formData.textbox);
