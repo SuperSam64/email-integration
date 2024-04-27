@@ -431,7 +431,7 @@ function showForm(){
             type: "input",
             data: {
                 name: "myTextArea",
-                value: "default value",
+                value: currentConversation.subject,
                 placeholder: "enter text here",
                 scope: {messageTo: "[empty]"},
                 options: {
