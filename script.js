@@ -438,7 +438,7 @@ function showForm(){
             type: "input",
             data: {
                 name: "myTextArea",
-                value: currentConversation.subject,
+                value: "this is a value",
                 placeholder: "enter text here",
                 scope: {selector: 2},
                 options: {
@@ -473,7 +473,7 @@ function buttonClicked() {
     
     var formData = showForm();
     
-    $("#body4").text(formData.fields[3].value);
+    $("#body4").text(formData.fields[3].data.value);
 
     
     /*var myVar = {
