@@ -418,15 +418,7 @@ function buttonClicked() {
     
     formVar = {
         name: "My Form",
-        fields: [{
-            type:"input",
-            data: {
-                type: "text"
-            },
-            options: {
-                thin:false
-            }
-        }]
+        fields: [{ type: 'cancel', label: 'Cancel' }]
     }
 
     Missive.openForm(formVar);
