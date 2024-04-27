@@ -391,8 +391,8 @@ function buttonClicked() {
         '</div><div><br></div><div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">' +
         '<img alt="large-FF-shield-logo-Full.png" title="" width="192" data-missive-image-resolution="288" data-missive-resizable-image="true" ' + 
         'style="max-width: 100%" data-missive-attachment-id="524e01ca-499a-4edd-876d-a47b7ea50bbe"' + 
-        'src="https://attachments-1.missiveapp.com/524e01ca-499a-4edd-876d-a47b7ea50bbe/large-FF-shield-logo-Full.png?Expires=1714167754&amp;')// + 
-        'Signature=lwkmfL-6G9a9VFmvvhBBxJDQbaW3WSY3qpWmhVMdIVF306OStGd3VbDi6i5BkxPlN2DLHWAwzjwzNlsx1XZWSx2lZXjZRcsbfuJDH0bW44TOyPi5dhcO6gZFfinbM-' /*+ 
+        'src="https://attachments-1.missiveapp.com/524e01ca-499a-4edd-876d-a47b7ea50bbe/large-FF-shield-logo-Full.png?Expires=1714167754&amp;' + 
+        'Signature=lwkmfL-6G9a9VFmvvhBBxJDQbaW3WSY3qpWmhVMdIVF306OStGd3VbDi6i5BkxPlN2DLHWAwzjwzNlsx1XZWSx2lZXjZRcsbfuJDH0bW44TOyPi5dhcO6gZFfinbM-' + 
         'b1xjcPd5VF~znm8KuyOuNR~T1z2jDlcozKUuxhH6C3DKhw8freFAJ0bg~BlNGDo4iIHBETHdelihxGdlgi8Mo0V~7DNkEiq-9E~luNoX9gtJVgFsIq9BGT-VkxriknP84Ex27-' +
         '6kKArqZigcd4KcLqyY~gF6gaVl5cRrF-JMARqy4BzoOV3Kr~XRm4sN5a1o6IvmdgpJxvrE~XWTvucrLLyg__&amp;Key-Pair-Id=APKAJWJJOF7ZM5FW5N4Q" data-missive-' +
         'attachment-attributes="{&quot;id&quot;:&quot;524e01ca-499a-4edd-876d-a47b7ea50bbe&quot;,&quot;filename&quot;:&quot;large-FF-shield-logo-Full.png' +
@@ -406,7 +406,8 @@ function buttonClicked() {
         'T1z2jDlcozKUuxhH6C3DKhw8freFAJ0bg~BlNGDo4iIHBETHdelihxGdlgi8Mo0V~7DNkEiq-9E~luNoX9gtJVgFsIq9BGT-VkxriknP84Ex27-6kKArqZigcd4KcLqyY~gF6gaVl5cRrF-'+
         'JMARqy4BzoOV3Kr~XRm4sN5a1o6IvmdgpJxvrE~XWTvucrLLyg__&amp;Key-Pair-Id=APKAJWJJOF7ZM5FW5N4Q&quot;,&quot;signed_url_expires_at&quot;:1714167744}">' +
         '</a></div><div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp;'+
-        ' | &nbsp;📞<a href="tel:+18664383458">866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div></div>'  
+        ' | &nbsp;📞<a href="tel:+18664383458">866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div></div>' +
+        '<br><br> Here is some text!'
     )
     /*var myVar = {
         deliver:false,
