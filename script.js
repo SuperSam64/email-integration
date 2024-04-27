@@ -379,15 +379,9 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
 }
-function buttonClicked() {
-  
-
-    //createTasks(purchaseOrderTasks);
-
-    emailClosing = "Sincerely";
-    
-    var someText = (
-        '<div class="missive_signature"><div>--</div><div>'+ emailClosing + ',</div><div>' + currentUser.first_name.split(" ")[0] + 
+function insertSignature(closing){
+    var closingHTML = (
+        '<div class="missive_signature"><div>--</div><div>'+ closing + ',</div><div>' + currentUser.first_name.split(" ")[0] + 
         '</div><div><br></div><div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">' +
         '<img alt="large-FF-shield-logo-Full.png" title="" width="192" data-missive-image-resolution="288" data-missive-resizable-image="true" ' + 
         'style="max-width: 100%" data-missive-attachment-id="524e01ca-499a-4edd-876d-a47b7ea50bbe"' + 
@@ -409,6 +403,22 @@ function buttonClicked() {
         ' | &nbsp;📞<a href="tel:+18664383458">866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div></div>' +
         '<br><br> Here is some text!'
     )
+    var emailDetails = {
+        deliver:false,
+        mailto: {
+            body:closingHTML,
+        }
+    }
+    Missive.composeInConversation(emailDetails);
+}
+function buttonClicked() {
+  
+    insertSignature(emailClosing);
+    //createTasks(purchaseOrderTasks);
+
+    
+    
+    
     /*var myVar = {
         deliver:false,
         mailto: {
@@ -421,18 +431,7 @@ function buttonClicked() {
         }
     }
     Missive.composeInConversation(myVar);*/
-    var myVar = {
-        deliver:false,
-        mailto: {
-            subject:messageSubject.replace("FW:","Re:"),
-            body:someText,
-            to_fields:[{
-                address:messageFrom,
-                name:customerName
-            }]
-        }
-    }
-    Missive.composeInConversation(myVar);
+    
 
 }
 
