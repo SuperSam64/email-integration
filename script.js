@@ -430,7 +430,9 @@ function showForm(){
         },{
             type: "html",
             data: {
-                text: '<div><a href="https://www.google.com">a link</a></div>'
+                name: "htmlsection",
+                placeholder: "",
+                value: "<div><a href='https://www.google.com'>a link</a></div>"
             }
         },{
             type: "input",
