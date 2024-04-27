@@ -424,11 +424,19 @@ function buttonClicked() {
             color: '#F00'
         },
         fields: [{
+            type: "select",
+            data: {
+                name: "selector",
+                value: "Cancellation",
+                options: ["Cancellation","Purchase order"]
+            }
+        },{
             type: "input",
             data: {
                 name: "myTextArea",
                 value: "default value",
-                placeholder: "enter text here"
+                placeholder: "enter text here",
+                scope: {selector: "Cancellation"}
             }
         },{
             type: "input",
