@@ -421,7 +421,10 @@ function buttonClicked() {
         fields: [{
             type:"input",
             data: {
-                type: "number",
+                type: "text"
+            },
+            options: {
+                thin:false
             }
         }]
     }
