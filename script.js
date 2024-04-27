@@ -417,13 +417,13 @@ function buttonClicked() {
 
     
     formVar = {
-        name: "My Form",
-        fields: [{
-            type:"input",
-            data: {
-                type: "number",
-            }
-        }]
+        name: "My Form"//,
+        //fields: [{
+        //    type:"input",
+        //    data: {
+        //        type: "number",
+        //    }
+        //}]
     }
 
     openForm(formVar);
