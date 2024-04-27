@@ -519,7 +519,7 @@ function buttonClicked() {
         }]
     })
     
-    $("#body4").text(formData[3]);
+    $("#body4").text(formData[3].data.value);
 
     
     /*var myVar = {
