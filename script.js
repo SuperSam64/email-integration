@@ -455,8 +455,8 @@ function buttonClicked() {
         }]
     }
         // !!!!!!!!!!! 'scope' is the way to hide/show what is relevant
-    var formResults = Missive.openForm(formVar);
-    var hello = formResults.fields[0].data.value;
+    var formResults = Missive.openForm(formVar).formResults.fields[0].data.value;
+    var hello = formResults;
     $("#body4").text(hello);
 
     
