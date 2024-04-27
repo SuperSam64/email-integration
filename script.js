@@ -436,7 +436,7 @@ function buttonClicked() {
                 name: "myTextArea",
                 value: "default value",
                 placeholder: "enter text here",
-                scope: {selector: "Cancellation"}
+                scope: {messageTo: "[empty]"}
             }
         },{
             type: "input",
