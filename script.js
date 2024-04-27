@@ -494,6 +494,7 @@ function buttonClicked() {
                 name: "myTextArea",
                 placeholder: "enter text here",
                 scope: {selector: 2},
+                value: "",
                 options: {
                     label: "type some stuff"
                 }
@@ -502,6 +503,7 @@ function buttonClicked() {
             type: "input",
             data: {
                 name: "textbox",
+                value: "",
                 placeholder: "enter some text"
             }
         }],
@@ -513,6 +515,10 @@ function buttonClicked() {
             label: "Submit!"
         }]
     })
+    
+    
+    output = formData[3].data.value
+    console.log(output)
     
     $("#body4").text(formData.textbox);
 
