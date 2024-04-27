@@ -416,9 +416,17 @@ function buttonClicked() {
     //insertSignature(emailClosing);
 
     
-    openForm({
-        name: "My Form"
-    })
+    formVar = {
+        name: "My Form",
+        fields: [{
+            type:"input",
+            data: {
+                type: "number",
+            }
+        }]
+    }
+
+    openForm(formVar);
     
     /*var myVar = {
         deliver:false,
