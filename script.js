@@ -420,7 +420,8 @@ function buttonClicked() {
         name: "My Form",
         options: {
             label: "return?",
-            value: false
+            value: 12345,
+            color: '#F00'
         },
         fields: [{
             type: "input",
@@ -434,11 +435,13 @@ function buttonClicked() {
             data: {
                 name: "myTextArea2",
                 value: "second box",
-                placeholder: "enter text here again",
-                scope: { myTextArea: "hi" }
+                placeholder: "enter text here again"
             }
         }],
         buttons: [{
+            type: "cancel",
+            label: "cancel"
+        },{
             type: "submit",
             label: "click me!"
         }]
