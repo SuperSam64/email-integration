@@ -411,11 +411,8 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
-function buttonClicked() {
-  
-    //insertSignature(emailClosing);
 
-    
+function showForm(){
     formVar = {
         name: "My Form",
         options: {
@@ -436,7 +433,11 @@ function buttonClicked() {
                 name: "myTextArea",
                 value: "default value",
                 placeholder: "enter text here",
-                scope: {messageTo: "[empty]"}
+                scope: {messageTo: "[empty]"},
+                options: {
+                    label: "type some stuff",
+                    value: "type some estuff"
+                }
             }
         },{
             type: "input",
@@ -455,8 +456,17 @@ function buttonClicked() {
         }]
     }
         // !!!!!!!!!!! 'scope' is the way to hide/show what is relevant
-    var formResults = Missive.openForm(formVar).formResults.fields[1].data.value;
-    var hello = formResults;
+    var formResults = Missive.openForm(formVar); //.formResults.fields[1].data.value;
+    return formResults
+
+}
+function buttonClicked() {
+  
+    //insertSignature(emailClosing);
+
+    
+    var formData = showForm();
+    var hello = formData.fields[1].data.value;
     $("#body4").text(hello);
 
     
