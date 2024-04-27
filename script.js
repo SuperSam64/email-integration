@@ -387,7 +387,7 @@ function buttonClicked() {
     emailClosing = "Sincerely";
     
     var someText = (
-        '<div class="missive_signature"><div>--</div><div>') /*+ emailClosing + ',</div><div>' + fullName.split(" ")[0] + 
+        '<div class="missive_signature"><div>--</div><div>'+ emailClosing) /* + ',</div><div>' + fullName.split(" ")[0] + 
         '</div><div><br></div><div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">' +
         '<img alt="large-FF-shield-logo-Full.png" title="" width="192" data-missive-image-resolution="288" data-missive-resizable-image="true" ' + 
         'style="max-width: 100%" data-missive-attachment-id="524e01ca-499a-4edd-876d-a47b7ea50bbe"' + 
