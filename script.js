@@ -519,7 +519,8 @@ function buttonClicked() {
         }]
     })
     
-    $("#body4").text(formData[3].data.value);
+    parsed = JSON.parse(fromData)
+    $("#body4").text(parsed[3].data.value);
 
     
     /*var myVar = {
