@@ -473,11 +473,6 @@ function buttonClicked() {
     
     var formData = Missive.openForm({
         name: "My Form",
-        options: {
-            label: "return?",
-            value: 12345,
-            color: '#F00'
-        },
         fields: [{
             type: "select",
             data: {
@@ -518,7 +513,14 @@ function buttonClicked() {
             label: "click me!"
         }]
     })
-    
+    console.log(formData);
+    console.log(formData[3]);
+    console.log(formData[3].fields.data.value);
+    console.log(formData[3].fields.data.options.value);
+    console.log(formData[3].data.options.value);
+    console.log(formData[3].data.value);
+
+
     $("#body4").text(formData[3]);
 
     
