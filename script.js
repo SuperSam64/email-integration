@@ -419,7 +419,7 @@ function buttonClicked() {
     formVar = {
         name: "My Form",
         fields: [{
-            type: "textarea",
+            type: "input",
             data: {
                 name: "myTextArea",
                 value: "default value",
