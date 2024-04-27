@@ -413,11 +413,12 @@ function insertSignature(closing){
 }
 function buttonClicked() {
   
-    insertSignature(emailClosing);
-    //createTasks(purchaseOrderTasks);
+    //insertSignature(emailClosing);
 
     
-    
+    openForm({
+        name: "My Form"
+    })
     
     /*var myVar = {
         deliver:false,
