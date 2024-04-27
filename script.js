@@ -473,7 +473,7 @@ function buttonClicked() {
     
     var formData = showForm();
     
-    $("#body4").text(formData.fields[3].data.value);
+    $("#body4").text(formData[3].data.value);
 
     
     /*var myVar = {
