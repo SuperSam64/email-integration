@@ -421,7 +421,7 @@ function buttonClicked() {
         options: {
             label: "return?",
             value: false
-        }
+        },
         fields: [{
             type: "input",
             data: {
