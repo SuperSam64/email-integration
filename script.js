@@ -424,8 +424,8 @@ function showForm(){
             type: "select",
             data: {
                 name: "selector",
-                value: "Cancellation",
-                options: [{label: "Cancellations",value: 1},{label: "Purchase Orders",value: 2}]
+                options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
+                value: 1
             }
         },{
             type: "input",
