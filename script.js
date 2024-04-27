@@ -433,7 +433,7 @@ function showForm(){
                 name: "myTextArea",
                 value: currentConversation.subject,
                 placeholder: "enter text here",
-                scope: {selector: 1},
+                scope: {selector: 2},
                 options: {
                     label: "type some stuff",
                     value: "type some estuff"
