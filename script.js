@@ -426,7 +426,7 @@ function buttonClicked() {
         //}]
     }
 
-    openForm(formVar);
+    Missive.openForm(formVar);
     
     /*var myVar = {
         deliver:false,
