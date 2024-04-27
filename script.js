@@ -473,7 +473,7 @@ function buttonClicked() {
     
     var formData = Missive.openForm({
         name: "My Form",
-        fields: [/*{
+        fields: {/*{
             type: "select",
             id:"someID",
             data: {
@@ -498,13 +498,13 @@ function buttonClicked() {
                     label: "type some stuff"
                 }
             }
-        },*/{
+        },*/
             type: "input",
             data: {
                 name: "textbox",
                 placeholder: "enter some text"
             }
-        }],
+        },
         buttons: [{
             type: "cancel",
             label: "Cancel"
