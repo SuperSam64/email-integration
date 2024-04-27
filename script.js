@@ -471,7 +471,7 @@ function buttonClicked() {
     //insertSignature(emailClosing);
 
     
-    var formData = new Missive.openForm({
+    var formData = Missive.openForm({
         name: "My Form",
         fields: [{
             type: "select",
