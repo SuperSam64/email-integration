@@ -475,6 +475,7 @@ function buttonClicked() {
         name: "My Form",
         fields: [{
             type: "select",
+            id:"someID",
             data: {
                 name: "selector",
                 options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
