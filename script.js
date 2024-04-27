@@ -428,6 +428,11 @@ function showForm(){
                 value: 1
             }
         },{
+            type: "html",
+            data: {
+                value: '<div><a href="https://www.google.com">a link</a></div>'
+            }
+        },{
             type: "input",
             data: {
                 name: "myTextArea",
