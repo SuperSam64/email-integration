@@ -425,6 +425,10 @@ function buttonClicked() {
                 value: "default value",
                 placeholder: "enter text here",
             }
+        }],
+        buttons: [{
+            type: "submit",
+            label: "click me!"
         }]
     }
 
