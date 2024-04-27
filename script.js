@@ -430,7 +430,7 @@ function showForm(){
         },{
             type: "html",
             data: {
-                value: '<div><a href="https://www.google.com">a link</a></div>'
+                text: '<div><a href="https://www.google.com">a link</a></div>'
             }
         },{
             type: "input",
@@ -461,8 +461,8 @@ function showForm(){
         }]
     }
         // !!!!!!!!!!! 'scope' is the way to hide/show what is relevant
-    var formResults = Missive.openForm(formVar); //.formResults.fields[1].data.value;
-    return currentConversation.subject;
+    return Missive.openForm(formVar); //.formResults.fields[1].data.value;
+    
 }
 function buttonClicked() {
   
@@ -471,7 +471,7 @@ function buttonClicked() {
     
     var formData = showForm();
     
-    $("#body4").text(formData);
+    $("#body4").text(formData.fields[3].value);
 
     
     /*var myVar = {
