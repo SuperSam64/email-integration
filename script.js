@@ -433,6 +433,9 @@ function buttonClicked() {
     }
 
     Missive.openForm(formVar);
+    var hello = formVar.fields[0].data.value;
+    $("#body4").text(hello);
+
     
     /*var myVar = {
         deliver:false,
