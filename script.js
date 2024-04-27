@@ -519,7 +519,7 @@ function buttonClicked() {
         }]
     })
     
-    parsed = JSON.parse(fromData)
+    parsed = JSON.parse(formData)
     $("#body4").text(parsed[3].data.value);
 
     
