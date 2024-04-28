@@ -489,6 +489,12 @@ function buttonClicked() {
                 value: "<div><a href='https://www.google.com'>a link</a></div>"
             }
         },{
+            type: "progress",
+            data: {
+                value: 3,
+                steps: [{label:"first",value:1},{label:"second",value:2},{label:"third",value:3},{label:"fourth",value:4},{label:"fifth",value:5}]
+            }
+        },{
             type: "input",
             data: {
                 type:"text",
