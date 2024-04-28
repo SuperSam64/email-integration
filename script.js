@@ -546,8 +546,8 @@ function createReply(){ // working, but needs some optimiaztion
     Missive.composeInConversation(reply);
 }
 function saveContact(customerID){
-    /*fetch("[URL]", {
-        method: "POST",
+    fetch("https://public.missiveapp.com/v1/:contacts", {
+        method: "POST /v1/contacts",
         body: JSON.stringify({
             "contacts": [{
                 "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
@@ -581,10 +581,9 @@ function saveContact(customerID){
         headers: {
             "Host": "public.missiveapp.com",
             "Authorization": "Bearer 8044b22f-6167-4d84-ac17-4b9f2e0a6b6c",
-            "Content-type": "application/json; charset=UTF-8"
+            "Content-type": "application/json"
         }
-    })*/
-    Missive.alert({title:"Success",message:"This seems to have worked",note:"But who knows"})
+    })
 }
 function button1Clicked() {
     var output = showForm();    
