@@ -283,6 +283,18 @@ function getOrderNumber(conversation){
     }
     return orderString;
 }
+function getTimeStamp(conversation){  
+    if(!conversation.latest_message){
+        return "[empty]";
+    }
+    else{
+        var timestampFormat = {
+            time:true,
+            year:true
+        }
+        return Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
+    }
+}
 function update (input){
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
@@ -301,6 +313,7 @@ function update (input){
     preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -319,6 +332,7 @@ function showResults(){
     $("#body14").text(isLabeled);
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
+    $("#body18").text(timeStamp);
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
@@ -561,6 +575,9 @@ function body16Reset(){
 }
 function body17Reset(){
     $("#body17").text("[ready]")
+}
+function body18Reset(){
+    $("#body18").text("[ready]")
 }
 
 /*

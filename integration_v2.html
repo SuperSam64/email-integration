@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 5.12</span>
+			<span class="button-link column padding" id="reload-button">Version 5.13</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -165,19 +165,28 @@
         16.
       </td><td></td><td>
         Full Message
-      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16" class="textBody bottomSection">
+      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16">
         [placeholder]
       </td></tr>
     <!------------------------------------------------------------->
-      <!------------------------- TEXT BOX -------------------------->
+    <!------------------------- TEXT BOX -------------------------->
       <tr id="title17" class="textTitle"><td width="24 px" style="text-align:right">
         17.
       </td><td></td><td>
         Order Number
-      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body17" class="textBody bottomSection">
+      </td></tr><tr><td colspan="2"></td><td colspan="3" id="body17">
         [placeholder]
       </td></tr>
     <!------------------------------------------------------------->
+    <!------------------------- TEXT BOX -------------------------->
+    <tr id="title18" class="textTitle"><td width="24 px" style="text-align:right">
+      18.
+    </td><td></td><td>
+      Time Stamp
+    </td></tr><tr><td colspan="2"></td><td colspan="3" id="body18" class="textBody bottomSection">
+      [placeholder]
+    </td></tr>
+  <!------------------------------------------------------------->
     </table>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -210,6 +219,7 @@
         var signature;
         var emailClosing = "Sincerely";
         var suggestedLabel;
+        var timeStamp;
         var purchaseOrderTasks = [
           "Task 1 [Missive](https://www.missiveapp.com)",
           "Task 2",
@@ -349,6 +359,9 @@
       });
       $("#body17").click(function () { 
         body17Reset();
+      });
+      $("#body18").click(function () { 
+        body18Reset();
       });
       $("#button1").click(function () { 
         button1Clicked();
