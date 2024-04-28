@@ -292,7 +292,7 @@ function getTimeStamp(conversation){
             time:true,
             year:true
         }
-        return Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
+        return conversation.latest_message.delivered_at; //Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
     }
 }
 function update (input){
