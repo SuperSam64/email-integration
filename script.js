@@ -292,7 +292,7 @@ function getTimeStamp(conversation){
             time:true,
             year:true
         }
-        return conversation.latest_message.delivered_at; //Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
+        return Missive.formatTimestamp(conversation.latest_message.delivered_at,{time:true}); //Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
     }
 }
 function update (input){
@@ -585,6 +585,8 @@ function body18Reset(){
 places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
 assign new drafts
 set these as utitilies
+for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
+    opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
 create an array of tasks for POs and for tax exempt and others
 get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4. or if anywhere in the subject or body (html removed) is "order number XXXXXXXX" "order XXXXXXXX" "order no. XXXXXXXX" "order # XXXXXXXX" 
         get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
