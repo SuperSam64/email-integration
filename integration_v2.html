@@ -9,14 +9,20 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 5.06</span>
+			<span class="button-link column padding" id="reload-button">Version 5.07</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" style="margin-top:48px" id="button1">Show Form</span><br>
     <!------------------------------------------------------------------------>
     <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="margin-top:48px" id="button2">Click me</span>
+    <span class="button column padding testButton" id="button2">Click me</span>
+    <!------------------------------------------------------------------------>
+    <!-------------------------- BUTTON -------------------------------------->
+    <span class="button column padding testButton" id="button3">Click me</span>
+    <!------------------------------------------------------------------------>
+    <!-------------------------- BUTTON -------------------------------------->
+    <span class="button column padding testButton" id="button4">Click me</span>
     <!------------------------------------------------------------------------>
     <table class="textFrame"> <!-- Table of results -->
     <!------------------------- TEXT BOX -------------------------->
@@ -345,10 +351,16 @@
         body17Reset();
       });
       $("#button1").click(function () { 
-        buttonClicked();
+        button1Clicked();
       });
       $("#button2").click(function () { 
         button2Clicked();
+      });
+      $("#button3").click(function () { 
+        button3Clicked();
+      });
+      $("#button4").click(function () { 
+        button4Clicked();
       });
     </script>
 </body>

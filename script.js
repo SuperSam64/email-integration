@@ -457,7 +457,27 @@ function showForm(){
     }// ------------------------
     formData = Missive.openForm({
         name: "My Form",
+        comments: [{
+            name: "myComment",
+            content: "This is the emaial that you are responding to if repsonding in a popup (for example, chatbot replies). Here is some more text to fill out this examplen",
+            authorName: "Customer's Name",
+            date: "Jan 1, 2024"
+        }],
+        buttons: [{
+            type: "cancel",
+            label: "Cancel"
+        },{
+            type: "submit",
+            label: "Submit!"
+        }],
         fields: [{
+            type: "html",
+            data: {
+                name: "htmlSection",
+                placeholder: "",
+                value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
+            }
+        },{
             type: "select",
             id:"someID",
             data: {
@@ -465,13 +485,6 @@ function showForm(){
                 options: [{label: "Option 1",value: 1,color: '#F00'},{label: "Option 2",value: 2,color: '#50A8FF'}],
                 value: 1,
                 placeholder: "Placeholder (optional)"
-            }
-        },{
-            type: "html",
-            data: {
-                name: "htmlSection",
-                placeholder: "",
-                value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
         },{
             type: "progress",
@@ -518,24 +531,11 @@ function showForm(){
                 required:true,
                 thin:true
             }
-        }],
-        comments: [{
-            name: "myComment",
-            content: "This is the emaial that you are responding to if repsonding in a popup (for example, chatbot replies). Here is some more text to fill out this examplen",
-            authorName: "Customer's Name",
-            date: "Jan 1, 2024"
-        }],
-        buttons: [{
-            type: "cancel",
-            label: "Cancel"
-        },{
-            type: "submit",
-            label: "Submit!"
         }]
     })
     return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
-function buttonClicked() {
+function button1Clicked() {
   
     //insertSignature(emailClosing);
 
@@ -565,6 +565,12 @@ function buttonClicked() {
 }
 function button2Clicked() {
     $("#body4").text(formData.textbox);
+}
+function button3Clicked() {
+    
+}
+function button4Clicked() {
+    
 }
 
 /*
