@@ -316,7 +316,7 @@ function getTimeStamp(conversation){
         else{
             hours = timestampDate.getHours()
         }
-        var formattedDate = weekday + ", " + month + " " + day +", " + year + ", " + hours + ":" + mins + " " + ampm,
+        var formattedDate = weekday + ", " + month + " " + day +", " + year + ", " + hours + ":" + mins + " " + ampm
         return formattedDate;
     }
 }
