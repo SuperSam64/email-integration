@@ -193,7 +193,7 @@ function getPreview(conversation){
         return conversation.latest_message.preview;
     }
 }
-function getFullMessage(conversation,element){
+function getFullMessage(conversation,element){  // in progress
     if(!conversation.latest_message){
         $("#" + element).text("[empty]")
     }
@@ -564,10 +564,10 @@ function button1Clicked() {
 
 }
 function button2Clicked() {
-    $("#body4").text(formData.textbox);
+    insertSignature(closing);
 }
 function button3Clicked() {
-    
+    creatTasks();
 }
 function button4Clicked() {
     
