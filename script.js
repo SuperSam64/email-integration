@@ -546,7 +546,7 @@ function createReply(){ // working, but needs some optimiaztion
     Missive.composeInConversation(reply);
 }
 function saveContact(customerID){
-    fetch("[URL]", {
+    /*fetch("[URL]", {
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
@@ -583,7 +583,7 @@ function saveContact(customerID){
             "Authorization": "Bearer 8044b22f-6167-4d84-ac17-4b9f2e0a6b6c",
             "Content-type": "application/json; charset=UTF-8"
         }
-    })
+    })*/
     Missive.alert({title:"Success",message:"This seems to have worked",note:"But who knows"})
 }
 function button1Clicked() {
