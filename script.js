@@ -491,7 +491,9 @@ function buttonClicked() {
         },{
             type: "input",
             data: {
+                type:"text",
                 name: "myTextArea",
+                thin:true,
                 placeholder: "enter text here",
                 scope: {selector: 2},
                 value: "",
