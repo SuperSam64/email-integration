@@ -484,7 +484,7 @@ function createTasks(tasks){
         Missive.createTask(tasks[i], false);
     }
 }
-function createReply(){
+function createReply(){ // working, but needs some optimiaztion
     var reply = {
         deliver:false,
         mailto: {
