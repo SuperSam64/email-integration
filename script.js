@@ -478,16 +478,16 @@ function buttonClicked() {
             id:"someID",
             data: {
                 name: "selector",
-                options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
+                options: [{label: "Option 1",value: 1,color: '#F00'},{label: "Option 2",value: 2,color: '#50A8FF'}],
                 value: 1,
-                placeholder: "Choose a reason"
+                placeholder: "Placeholder (optional)"
             }
         },{
             type: "html",
             data: {
-                name: "htmlsection",
+                name: "htmlSection",
                 placeholder: "",
-                value: "<div><a href='https://www.google.com'>a link</a></div>"
+                value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
         },{
             type: "progress",
@@ -495,16 +495,30 @@ function buttonClicked() {
                 name: "progresstracker",
                 placeholder:"",
                 value: 2,
-                steps: [{label:"first",value:1},{label:"second",value:2},{label:"third",value:3},{label:"fourth",value:4},{label:"fifth",value:5}]
+                steps: [{label:"Step 1",value:1},{label:"Step 2",value:2},{label:"Step 3",value:3},{label:"Step 4",value:4},{label:"Step 5",value:5}]
+            }
+        },{
+            type: "input",
+            scope: { selector: 1},
+            data: {
+                type:"text",
+                name: "textInput1",
+                thin:true,
+                placeholder: "This will only show when option 1 is selcted",
+                value: "",
+                required:true,
+                options: {
+                    label: "type some stuff"
+                }
             }
         },{
             type: "input",
             scope: { selector: 2},
             data: {
                 type:"text",
-                name: "myTextArea",
+                name: "textInput2",
                 thin:true,
-                placeholder: "enter text here",
+                placeholder: "This will only show when option 2 is selected",
                 value: "",
                 required:true,
                 options: {
@@ -514,22 +528,18 @@ function buttonClicked() {
         },{
             type: "input",
             data: {
-                name: "textbox",
+                name: "textInput3",
                 value: "",
-                placeholder: "enter some text",
+                placeholder: "Enter some text (required)",
                 required:true,
                 thin:true
             }
         }],
-        notes: [{
-            name: "myNote",
-            message: "This is a note",
-        }],
         comments: [{
             name: "myComment",
-            content: "This is a comment",
-            authorName: "Sam",
-            date: "Dec 2, 2023"
+            content: "This is the emaial that you are responding to if repsonding in a popup (for example, chatbot replies). Here is some more text to fill out this examplen",
+            authorName: "Customer's Name",
+            date: "Jan 1, 1"
         }],
         buttons: [{
             type: "cancel",
