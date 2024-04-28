@@ -291,11 +291,17 @@ function formatDate(date){
     var timestampDate = new Date(1000*date);;
     var weekday = weekdaysShort[timestampDate.getDay()];
     var hours;
-    var mins = timestampDate.getMinutes();
+    var mins;
     var ampm;
     var month = monthsShort[timestampDate.getMonth()]
     var day = timestampDate.getDate()
     var year = timestampDate.getFullYear()
+    if(timestampDate.getMinutes() < 10){
+        var mins = "0" + timestampDate.getMinutes();
+    }
+    else {
+        var mins = timestampDate.getMinutes();
+    }
     if(timestampDate.getHours() > 11){
         ampm = "PM"
     }
