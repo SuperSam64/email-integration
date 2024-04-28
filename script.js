@@ -545,6 +545,47 @@ function createReply(){ // working, but needs some optimiaztion
     }
     Missive.composeInConversation(reply);
 }
+function saveContact(customerID){
+    fetch("[URL]", {
+        method: "POST",
+        body: JSON.stringify({
+            "contacts": [{
+                "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
+                "first_name": "John",
+                "last_name": "Doe",
+                "starred": true,
+                "infos": [{
+                    "kind": "phone_number",
+                    "label": "mobile",
+                    "value": "+1 704 555-5555"
+                }, {
+                    "kind": "email",
+                    "label": "home",
+                    "value": "test@filtersfast.com"
+                }],
+                "memberships": [{
+                    "group": {
+                        "kind": "group",
+                        "name": "VIPs"
+                    }
+                }, {
+                    "title": "CEO",
+                    "location": "Charlotte, NC",
+                    "group": {
+                        "kind": "organization",
+                        "name": "Filters Fast"
+                    }
+                }]
+            }]
+        }),
+        headers: {
+            "Host": "public.missiveapp.com",
+            "Authorization": "Bearer 8044b22f-6167-4d84-ac17-4b9f2e0a6b6c",
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    Missive.alert({title:"Success",message:"This seems to have worked",note:"But who knows"})
+}
 function button1Clicked() {
     var output = showForm();    
     console.log(output.fields[3].data.value); // figure out how to take data from form
@@ -557,6 +598,9 @@ function button3Clicked() {
 }
 function button4Clicked() {
     createReply();
+}
+function button5Clicked() {
+    saveContact("1234567");
 }
 function body1Reset(){
     $("#body1").text("[ready]")
