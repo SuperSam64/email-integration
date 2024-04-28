@@ -489,6 +489,8 @@ function buttonClicked() {
                 value: "<div><a href='https://www.google.com'>a link</a></div>"
             }
         },{
+            name: "progresstracker",
+            placeholder:"",
             type: "progress",
             data: {
                 value: 1,
