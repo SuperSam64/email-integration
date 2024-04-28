@@ -547,7 +547,7 @@ function createReply(){ // working, but needs some optimiaztion
 }
 function saveContact(customerID){
     fetch("https://public.missiveapp.com/v1/:contacts", {
-        method: "POST /v1/contacts",
+        method: "POST",
         body: JSON.stringify({
             "contacts": [{
                 "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
