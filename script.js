@@ -479,7 +479,8 @@ function buttonClicked() {
             data: {
                 name: "selector",
                 options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
-                value: 1
+                value: 1,
+                placeholder: "Choose a reason"
             }
         },{
             type: "html",
