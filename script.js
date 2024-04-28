@@ -554,7 +554,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
                 "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
                 "first_name": firstName,
                 "last_name": lastName,
-                "starred": true,
                 "infos": [{
                     "kind": "phone_number",
                     "label": "main",
