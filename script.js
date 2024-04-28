@@ -288,13 +288,8 @@ function getTimeStamp(conversation){
         return "[empty]";
     }
     else{
-        var formattedTimestamp = {
-            timestamp: conversation.latest_message.delivered_at,
-            options: {
-                time: true
-            }
-        }
-        return Missive.formatTimestamp(formattedTimestamp); //Missive.formatTimestamp(conversation.latest_message.delivered_at,timeStampFormat); 
+        var formattedTimestamp = new Date(1000*conversation.latest_message.delivered_at)
+        return formattedTimestamp.toString();
     }
 }
 function update (input){
