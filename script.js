@@ -521,6 +521,16 @@ function buttonClicked() {
                 thin:true
             }
         }],
+        notes: [{
+            name: "myNote",
+            message: "This is a note",
+        }],
+        comments: [{
+            name: "myComment",
+            content: "This is a comment",
+            authorName: "Sam",
+            date: "Dec 2, 2023"
+        }],
         buttons: [{
             type: "cancel",
             label: "Cancel"
