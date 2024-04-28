@@ -411,66 +411,50 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
-
 function showForm(){
-    formVar = {
-        name: "My Form",
-        options: {
-            label: "return?",
-            value: 12345,
-            color: '#F00'
-        },
-        fields: [{
-            type: "select",
-            data: {
-                name: "selector",
-                options: [{label: "Cancellations",value: 1,color: '#F00'},{label: "Purchase Orders",value: 2,color: '#FF0'}],
-                value: 1
-            }
-        },{
-            type: "html",
-            data: {
-                name: "htmlsection",
-                placeholder: "",
-                value: "<div><a href='https://www.google.com'>a link</a></div>"
-            }
-        },{
-            type: "input",
-            data: {
-                name: "myTextArea",
-                value: "this is a value",
-                placeholder: "enter text here",
-                scope: {selector: 2},
-                options: {
-                    label: "type some stuff",
-                    value: "type some estuff"
-                }
-            }
-        },{
-            type: "input",
-            data: {
-                name: "myTextArea2",
-                value: "second box",
-                placeholder: "enter text here again"
-            }
-        }],
-        buttons: [{
-            type: "cancel",
-            label: "cancel"
-        },{
-            type: "submit",
-            label: "click me!"
-        }]
-    }
-        // !!!!!!!!!!! 'scope' is the way to hide/show what is relevant
-    return Missive.openForm(formVar); //.formResults.fields[1].data.value;
-    
-}
-function buttonClicked() {
-  
-    //insertSignature(emailClosing);
-
-    
+    {/* ---- MISSIVE COLORS ----
+        --Blue--
+        {#005CD4
+        #0080FF
+        #50A8FF
+        #01ACF0
+        #0193CE
+        #49CBFF
+        --Teal--
+        #31E5DD
+        #00C4BB
+        #008C8F
+        --Green--
+        #009E61
+        #00C76E
+        #50DC96
+        --Yellow--
+        #FFF200
+        #FFD700
+        #FFC258
+        --Orange--
+        #FFA667
+        #FF7D22
+        #DE5C00
+        --Red--
+        #EE3430
+        #CC0000
+        #FF716F
+        --Pink--
+        #FF6FB4
+        #EC008B
+        #C60074
+        --Purple--
+        #865CA5
+        #581C94
+        #3A0074
+        --Gray--
+        #BAB6B6
+        #737373
+        --Black--
+        #000000
+        */
+    }// ------------------------
     formData = Missive.openForm({
         name: "My Form",
         fields: [{
@@ -539,7 +523,7 @@ function buttonClicked() {
             name: "myComment",
             content: "This is the emaial that you are responding to if repsonding in a popup (for example, chatbot replies). Here is some more text to fill out this examplen",
             authorName: "Customer's Name",
-            date: "Jan 1, 1"
+            date: "Jan 1, 2024"
         }],
         buttons: [{
             type: "cancel",
@@ -549,10 +533,17 @@ function buttonClicked() {
             label: "Submit!"
         }]
     })
+    return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
+}
+function buttonClicked() {
+  
+    //insertSignature(emailClosing);
+
     
+
     
-    var output = formData.fields[3].data.value
-    console.log(output)
+    var output = showForm();    
+    console.log(output.fields[3].data.value);
     
     
 
