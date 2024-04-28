@@ -517,7 +517,8 @@ function buttonClicked() {
                 name: "textbox",
                 value: "",
                 placeholder: "enter some text",
-                required:true
+                required:true,
+                thin:true
             }
         }],
         buttons: [{
