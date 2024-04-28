@@ -506,7 +506,7 @@ function button2Clicked() {
     insertSignature(emailClosing);
 }
 function button3Clicked() {
-    creatTasks(purchaseOrderTasks);
+    createTasks(purchaseOrderTasks);
 }
 function button4Clicked() {
     createReply();
