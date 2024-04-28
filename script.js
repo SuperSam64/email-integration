@@ -499,38 +499,14 @@ function createReply(){
     Missive.composeInConversation(reply);
 }
 function button1Clicked() {
-  
-    //insertSignature(emailClosing);
-
-    
-
-    
     var output = showForm();    
-    console.log(output.fields[3].data.value);
-    
-    
-
-    
-    /*var myVar = {
-        deliver:false,
-        mailto: {
-            subject:messageSubject.replace("FW:","Re:"),
-            body:fullMessage,
-            to_fields:[{
-                address:messageFrom,
-                name:customerName
-            }]
-        }
-    }
-    Missive.composeInConversation(myVar);*/
-    
-
+    console.log(output.fields[3].data.value); // figure out how to take data from form
 }
 function button2Clicked() {
     insertSignature(emailClosing);
 }
 function button3Clicked() {
-    creatTasks();
+    creatTasks(purchaseOrderTasks);
 }
 function button4Clicked() {
     createReply();
