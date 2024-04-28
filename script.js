@@ -494,11 +494,11 @@ function buttonClicked() {
                 name: "progresstracker",
                 placeholder:"",
                 value: 2,
-                steps: [{label:"first",value:1},{label:"first",value:2},{label:"first",value:3},{label:"first",value:4},{label:"first",value:5}]
+                steps: [{label:"first",value:1},{label:"second",value:2},{label:"third",value:3},{label:"fourth",value:4},{label:"fifth",value:5}]
             }
         },{
             type: "input",
-            scope: { selector: 1},
+            scope: { selector: 2},
             data: {
                 type:"text",
                 name: "myTextArea",
