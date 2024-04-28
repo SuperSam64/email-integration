@@ -545,36 +545,27 @@ function createReply(){ // working, but needs some optimiaztion
     }
     Missive.composeInConversation(reply);
 }
-function saveContact(customerID){
+function saveContact(firstName,lastName,email,phoneNumber,customerID){
     fetch("https://public.missiveapp.com/v1/contacts", {
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
                 "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
-                "first_name": "John",
-                "last_name": "Doe",
+                "first_name": firstName,
+                "last_name": lastName,
                 "starred": true,
                 "infos": [{
                     "kind": "phone_number",
-                    "label": "mobile",
-                    "value": "+1 704 555-5555"
+                    "label": "main",
+                    "value": phoneNumber
                 }, {
                     "kind": "email",
-                    "label": "home",
-                    "value": "test@filtersfast.com"
-                }],
-                "memberships": [{
-                    "group": {
-                        "kind": "group",
-                        "name": "VIPs"
-                    }
+                    "label": "personal",
+                    "value": email
                 }, {
-                    "title": "CEO",
-                    "location": "Charlotte, NC",
-                    "group": {
-                        "kind": "organization",
-                        "name": "Filters Fast"
-                    }
+                    "kind": "custom",
+                    "label": "Customer ID",
+                    "value": customerID
                 }]
             }]
         }),
@@ -599,7 +590,7 @@ function button4Clicked() {
     createReply();
 }
 function button5Clicked() {
-    saveContact("1234567");
+    saveContact("John","Doe","johndoe@filtersfast.com","+1 704 555-9999","9876543"); // variables pre-filled for testing
 }
 function body1Reset(){
     $("#body1").text("[ready]")
