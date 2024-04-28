@@ -489,10 +489,10 @@ function buttonClicked() {
                 value: "<div><a href='https://www.google.com'>a link</a></div>"
             }
         },{
-            name: "progresstracker",
-            placeholder:"",
             type: "progress",
             data: {
+                name: "progresstracker",
+                placeholder:"",
                 value: 1,
                 steps: [{label:"first",value:1}]
             }
