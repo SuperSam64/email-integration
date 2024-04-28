@@ -283,42 +283,44 @@ function getOrderNumber(conversation){
     }
     return orderString;
 }
+function formatDate(date){
+    const weekdaysShort = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
+    const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
+    const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    var timestampDate = new Date(1000*date);;
+    var weekday = weekdaysShort[timestampDate.getDay()];
+    var hours;
+    var mins = timestampDate.getMinutes();
+    var ampm;
+    var month = monthsShort[timestampDate.getMonth()]
+    var day = timestampDate.getDate()
+    var year = timestampDate.getFullYear()
+    if(timestampDate.getHours() > 11){
+        ampm = "PM"
+    }
+    else{
+        ampm = "AM"
+    }
+    if(timestampDate.getHours() > 12){
+        hours = timestampDate.getHours() - 12
+    }
+    else if(timestampDate.getHours() == 0){
+        hours = 12
+    }
+    else{
+        hours = timestampDate.getHours()
+    }
+    var formattedDate = weekday + ", " + month + " " + day +", " + year + ", " + hours + ":" + mins + " " + ampm
+    return formattedDate;
+}
 function getTimeStamp(conversation){  
     if(!conversation.latest_message){
         return "[empty]";
     }
     else{
-        var timestampRaw = 1712165088;
-        const weekdaysShort = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
-        const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
-        const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-        var timestampDate = new Date(1000*timestampRaw);;
-        var weekday = weekdaysShort[timestampDate.getDay()];
-        var hours;
-        var mins = timestampDate.getMinutes();
-        var ampm;
-        var month = monthsShort[timestampDate.getMonth()]
-        var day = timestampDate.getDate()
-        var year = timestampDate.getFullYear()
-        if(timestampDate.getHours() > 11){
-            ampm = "PM"
-        }
-        else{
-            ampm = "AM"
-        }
-        if(timestampDate.getHours() > 12){
-            hours = timestampDate.getHours() - 12
-        }
-        else if(timestampDate.getHours() == 0){
-            hours = 12
-        }
-        else{
-            hours = timestampDate.getHours()
-        }
-        var formattedDate = weekday + ", " + month + " " + day +", " + year + ", " + hours + ":" + mins + " " + ampm
-        return formattedDate;
-    }
+        return formatDate(conversation.latestmessage.delivered_at);
+    }    
 }
 function update (input){
     conversationID = getConversation(input);
