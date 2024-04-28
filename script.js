@@ -302,65 +302,6 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
 }
-function orderNumberSearch (){
-    // use this to search the body for an order number if one is not present in the subject.
-}
-function body1Reset(){
-    $("#body1").text("[ready]")
-}
-function body2Reset(){
-    $("#body2").text("[ready]")
-}
-function body3Reset(){
-    $("#body3").text("[ready]")
-}
-function body4Reset(){
-    $("#body4").text("[ready]")
-}
-function body6Reset(){
-    $("#body6").text("[ready]")
-}
-function body7Reset(){
-    $("#body7").text("[ready]")
-}
-function body8Reset(){
-    $("#body8").text("[ready]")
-}
-function body9Reset(){
-    $("#body9").text("[ready]")
-}
-function body10Reset(){
-    $("#body10").text("[ready]")
-}
-function body11Reset(){
-    $("#body11").text("[ready]")
-}
-function body12Reset(){
-    $("#body12").text("[ready]")
-}
-function body5Reset(){
-    $("#body5").text("[ready]")
-}
-function body13Reset(){
-    $("#body13").text("[ready]")
-}
-function body14Reset(){
-    $("#body14").text("[ready]")
-}
-function body15Reset(){
-    $("#body15").text("[ready]")
-}
-function body16Reset(){
-    $("#body16").text("[ready]")
-}
-function body17Reset(){
-    $("#body17").text("[ready]")
-}
-function createTasks(tasks){
-    for ( var i = 0; i < tasks.length; i ++ ) {	
-        Missive.createTask(tasks[i], false);
-    }
-}
 function showResults(){
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
@@ -378,6 +319,9 @@ function showResults(){
     $("#body14").text(isLabeled);
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
+}
+function orderNumberSearch (){
+    // use this to search the body for an order number if one is not present in the subject.
 }
 function insertSignature(closing){
     var closingHTML = (
@@ -535,6 +479,25 @@ function showForm(){
     })
     return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
+function createTasks(tasks){
+    for ( var i = 0; i < tasks.length; i ++ ) {	
+        Missive.createTask(tasks[i], false);
+    }
+}
+function createReply(){
+    var reply = {
+        deliver:false,
+        mailto: {
+            subject:messageSubject.replace("FW:","Re:"),
+            body:fullMessage,
+            to_fields:[{
+                address:messageFrom,
+                name:customerName
+            }]
+        }
+    }
+    Missive.composeInConversation(reply);
+}
 function button1Clicked() {
   
     //insertSignature(emailClosing);
@@ -564,13 +527,64 @@ function button1Clicked() {
 
 }
 function button2Clicked() {
-    insertSignature(closing);
+    insertSignature(emailClosing);
 }
 function button3Clicked() {
     creatTasks();
 }
 function button4Clicked() {
-    
+    createReply();
+}
+function body1Reset(){
+    $("#body1").text("[ready]")
+}
+function body2Reset(){
+    $("#body2").text("[ready]")
+}
+function body3Reset(){
+    $("#body3").text("[ready]")
+}
+function body4Reset(){
+    $("#body4").text("[ready]")
+}
+function body6Reset(){
+    $("#body6").text("[ready]")
+}
+function body7Reset(){
+    $("#body7").text("[ready]")
+}
+function body8Reset(){
+    $("#body8").text("[ready]")
+}
+function body9Reset(){
+    $("#body9").text("[ready]")
+}
+function body10Reset(){
+    $("#body10").text("[ready]")
+}
+function body11Reset(){
+    $("#body11").text("[ready]")
+}
+function body12Reset(){
+    $("#body12").text("[ready]")
+}
+function body5Reset(){
+    $("#body5").text("[ready]")
+}
+function body13Reset(){
+    $("#body13").text("[ready]")
+}
+function body14Reset(){
+    $("#body14").text("[ready]")
+}
+function body15Reset(){
+    $("#body15").text("[ready]")
+}
+function body16Reset(){
+    $("#body16").text("[ready]")
+}
+function body17Reset(){
+    $("#body17").text("[ready]")
 }
 
 /*
