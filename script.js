@@ -546,7 +546,7 @@ function createReply(){ // working, but needs some optimiaztion
     Missive.composeInConversation(reply);
 }
 function saveContact(customerID){
-    fetch("https://public.missiveapp.com/v1/:contacts", {
+    fetch("https://public.missiveapp.com/v1/contacts", {
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
