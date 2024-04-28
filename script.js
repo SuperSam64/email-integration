@@ -319,7 +319,7 @@ function getTimeStamp(conversation){
         return "[empty]";
     }
     else{
-        return formatDate(conversation.latestmessage.delivered_at);
+        return formatDate(conversation.latest_message.delivered_at);
     }    
 }
 function update (input){
