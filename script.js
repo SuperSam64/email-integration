@@ -501,6 +501,7 @@ function buttonClicked() {
                 name: "myTextArea",
                 thin:true,
                 placeholder: "enter text here",
+                label:"a label",
                 scope: {selector: 2},
                 value: "",
                 required:true,
