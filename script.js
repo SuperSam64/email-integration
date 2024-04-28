@@ -546,6 +546,7 @@ function createReply(){ // working, but needs some optimiaztion
     Missive.composeInConversation(reply);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
+    // there is no visual indicator when the action is successful - make one
     fetch("https://public.missiveapp.com/v1/contacts", {
         method: "POST",
         body: JSON.stringify({
@@ -564,7 +565,8 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
                     "value": email
                 }, {
                     "kind": "custom",
-                    "label": "Customer ID",
+                    "label": "other",
+                    "custom_label":"Customer ID";
                     "value": customerID
                 }]
             }]
@@ -575,6 +577,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
             "Content-type": "application/json"
         }
     })
+    Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function button1Clicked() {
     var output = showForm();    
