@@ -495,6 +495,7 @@ function buttonClicked() {
                 placeholder: "enter text here",
                 scope: {selector: 2},
                 value: "",
+                required:true,
                 options: {
                     label: "type some stuff"
                 }
@@ -504,7 +505,8 @@ function buttonClicked() {
             data: {
                 name: "textbox",
                 value: "",
-                placeholder: "enter some text"
+                placeholder: "enter some text",
+                required:true
             }
         }],
         buttons: [{
