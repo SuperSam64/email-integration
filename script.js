@@ -634,6 +634,13 @@ create forms
 set up branching for forms
 make autoreply templates that can be modified by me, based on the regular templates
 identify time of day when applying a template
+when changing conversations with a Monday panel open, prompt to make sure.
+    "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
+    store current convo as last convo
+    get new current convo
+    prompt >
+        yes: change the integration back to main content
+        no: navigate to previous convo by convo ID, do nothing in the integration
 for order number, repalce "# " with "#"
 take contexts for monday forms and for responses
 for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
