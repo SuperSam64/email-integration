@@ -501,8 +501,6 @@ function buttonClicked() {
                 name: "myTextArea",
                 thin:true,
                 placeholder: "enter text here",
-                label:"a label",
-                scope: {selector: 2},
                 value: "",
                 required:true,
                 options: {
@@ -531,7 +529,7 @@ function buttonClicked() {
     var output = formData.fields[3].data.value
     console.log(output)
     
-    $("#body4").text(formData.textbox);
+    
 
     
     /*var myVar = {
@@ -548,6 +546,9 @@ function buttonClicked() {
     Missive.composeInConversation(myVar);*/
     
 
+}
+function button2Clicked() {
+    $("#body4").text(formData.textbox);
 }
 
 /*

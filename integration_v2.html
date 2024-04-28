@@ -9,11 +9,14 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 4.93</span>
+			<span class="button-link column padding" id="reload-button">Version 4.94</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" style="margin-top:48px" id="button1">Click me</span>
+    <!------------------------------------------------------------------------>
+    <!-------------------------- BUTTON -------------------------------------->
+    <span class="button column padding testButton" style="margin-top:48px" id="button2">Click me</span>
     <!------------------------------------------------------------------------>
     <table class="textFrame"> <!-- Table of results -->
     <!------------------------- TEXT BOX -------------------------->
@@ -343,6 +346,9 @@
       });
       $("#button1").click(function () { 
         buttonClicked();
+      });
+      $("#button2").click(function () { 
+        button2Clicked();
       });
     </script>
 </body>
