@@ -469,6 +469,19 @@ async function showForm(){
                 value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
         },{
+            type: "calendar",
+            id:"calendarField",
+            data: {
+                allow_past: true,
+                allow_all_day:true
+            }
+        },{
+            type: "duration",
+            id:"timePassed",
+            data: {
+                value: "01:45"
+            }
+        },{
             type: "select",
             id:"someID",
             data: {
