@@ -446,7 +446,7 @@ async function showForm(){
         #000000
         */
     }// ------------------------
-    let formData = await Missive.openForm({
+    const formData = await Missive.openForm({
         name: "My Form",
         comments: [{
             name: "myComment",
@@ -524,7 +524,8 @@ async function showForm(){
             }
         }]
     })
-    $("#body4").text(formData[3])
+    console.log(formData)
+    //$("#body4").text(formData.textInput1)
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function createTasks(tasks){
