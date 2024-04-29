@@ -572,7 +572,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         }),
         headers: {
             "Host": "public.missiveapp.com",
-            "Authorization": "Bearer ****************4b9f2e0a6b6c", // fill this in later
+            "Authorization": "Bearer " + token, // fill this in later
             "Content-type": "application/json"
         }
     })
