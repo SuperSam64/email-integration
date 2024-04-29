@@ -473,7 +473,8 @@ async function showForm(){
             id:"calendarField",
             data: {
                 allow_past: true,
-                allow_all_day:true
+                allow_all_day:true,
+                value: ""
             }
         },{
             type: "duration",
