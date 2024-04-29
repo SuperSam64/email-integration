@@ -551,7 +551,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
-                "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
+                "contact_book": "****************-eebc53fa6cf7", // fill this in later
                 "first_name": firstName,
                 "last_name": lastName,
                 "infos": [{
@@ -572,7 +572,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         }),
         headers: {
             "Host": "public.missiveapp.com",
-            "Authorization": "Bearer 8044b22f-6167-4d84-ac17-4b9f2e0a6b6c",
+            "Authorization": "Bearer ****************4b9f2e0a6b6c", // fill this in later
             "Content-type": "application/json"
         }
     })
