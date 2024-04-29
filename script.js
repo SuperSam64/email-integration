@@ -667,6 +667,7 @@ check for contact by email. if one does not exist, create it. show fields for th
 scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
   - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
 create forms
+**** when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages.
 set up branching for forms
 make autoreply templates that can be modified by me, based on the regular templates
 identify time of day when applying a template
