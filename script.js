@@ -468,18 +468,20 @@ async function showForm(){
                 placeholder: "",
                 value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
-        },/*{
+        },{
             type: "calendar",
-            id:"calendarField",
             data: {
+                name:"calendarField",
+                placeholder: "",
                 allow_past: true,
                 allow_all_day:true,
                 value: ""
             }
-        },*/{
+        },{
             type: "duration",
-            id:"timePassed",
             data: {
+                name:"timePassed",
+                placeholder:"".
                 value: "01:45"
             }
         },{
