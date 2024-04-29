@@ -402,7 +402,7 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
-function showForm(){
+async function showForm(){
     {/* ---- MISSIVE COLORS ----
         --Blue--
         {#005CD4
@@ -446,7 +446,7 @@ function showForm(){
         #000000
         */
     }// ------------------------
-    formData = Missive.openForm({
+    let formData = await Missive.openForm({
         name: "My Form",
         comments: [{
             name: "myComment",
@@ -524,7 +524,8 @@ function showForm(){
             }
         }]
     })
-    return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
+    $("#body4").text(formData.fields[3].data.value)
+    //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
