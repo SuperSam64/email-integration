@@ -468,7 +468,7 @@ async function showForm(){
                 placeholder: "",
                 value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
-        },{
+        },/*{
             type: "calendar",
             id:"calendarField",
             data: {
@@ -476,7 +476,7 @@ async function showForm(){
                 allow_all_day:true,
                 value: ""
             }
-        },{
+        },*/{
             type: "duration",
             id:"timePassed",
             data: {
