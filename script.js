@@ -524,7 +524,7 @@ async function showForm(){
             }
         }]
     })
-    console.log(formData)
+    console.log(formData.textInput1)
     //$("#body4").text(formData.textInput1)
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
