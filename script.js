@@ -524,7 +524,7 @@ async function showForm(){
             }
         }]
     })
-    $("#body4").text(formData[3].data.value)
+    $("#body4").text(formData)
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function createTasks(tasks){
