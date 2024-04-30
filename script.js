@@ -481,7 +481,7 @@ async function showForm(){
             type: "duration",
             data: {
                 name:"timePassed",
-                placeholder:"",
+                placeholder:"Here is some text",
                 value: "01:45"
             }
         },{
