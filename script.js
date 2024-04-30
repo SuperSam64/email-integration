@@ -503,6 +503,7 @@ async function showForm(){
             }
         },{
             type: "input",
+            label: "Some text",
             scope: { selector: 1},
             data: {
                 type:"text",
