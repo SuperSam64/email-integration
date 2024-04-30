@@ -447,13 +447,7 @@ async function showForm(){
         */
     }// ------------------------
     const formData = await Missive.openForm({
-        name: "My Form",
-        comments: [{
-            name: "myComment",
-            content: "This is the emaial that you are responding to if repsonding in a popup (for example, chatbot replies). Here is some more text to fill out this examplen",
-            authorName: "Customer's Name",
-            date: "Jan 1, 2024"
-        }],
+        name: "Cancellation",
         buttons: [{
             type: "cancel",
             label: "Cancel"
@@ -461,33 +455,7 @@ async function showForm(){
             type: "submit",
             label: "Submit!"
         }],
-        notes:[{
-            message:"this is some other note"
-        }],
         fields: [{
-            type: "html",
-            data: {
-                name: "htmlSection2",
-                placeholder: "Here is a placeholder",
-                value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
-            }
-        },{
-            type: "calendar",
-            data: {
-                name:"calendarField",
-                placeholder: "",
-                allow_past: true,
-                allow_all_day:true,
-                value: ""
-            }
-        },{
-            type: "duration",
-            data: {
-                name:"timePassed",
-                placeholder:"Here is some text",
-                value: "01:45"
-            }
-        },{
             type: "select",
             id:"someID",
             data: {
@@ -497,51 +465,20 @@ async function showForm(){
                 placeholder: "Placeholder (optional)"
             }
         },{
-            type: "progress",
-            data: {
-                name: "progresstracker",
-                placeholder:"Progress placeholder",
-                value: 2,
-                steps: [{label:"Step 1",value:1},{label:"Step 2",value:2},{label:"Step 3",value:3},{label:"Step 4",value:4},{label:"Step 5",value:5}]
-            }
-        },{
             type: "input",
             label: "Some text",
             scope: { selector: 1},
             data: {
-                label: "here is a label",
                 type:"text",
                 name: "textInput1",
+                options:{
+                    thin:true,
+                    prefix:true
+                },
                 thin:true,
                 placeholder: "This will only show when option 1 is selcted",
                 value: "",
                 required:true,
-                options: {
-                    label: "type some stuff"
-                }
-            }
-        },{
-            type: "input",
-            scope: { selector: 2},
-            data: {
-                type:"text",
-                name: "textInput2",
-                thin:true,
-                placeholder: "This will only show when option 2 is selected",
-                value: "",
-                required:true,
-                options: {
-                    label: "type some stuff"
-                }
-            }
-        },{
-            type: "input",
-            data: {
-                name: "textInput3",
-                value: "",
-                placeholder: "Enter some text (required)",
-                required:true,
-                thin:true
             }
         }]
     })
