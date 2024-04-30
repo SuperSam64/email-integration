@@ -459,22 +459,22 @@ async function showForm(){
             type: "select",
             data: {
                 name: "orderCancelled",
-                options: [{label: "Yes",value: 1},{label: "No",value: 2}],
-                value: 1,
+                options: [{label: "Yes",value: 0},{label: "No",value: 1}],
+                value: 0,
                 placeholder: "Was the order cancelled?"
             }
         },{
             type: "select",
-            scope: { orderCancelled: 2 },
+            scope: { orderCancelled: 1 },
             data: {
                 name: "returnDone",
-                options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
+                options: [{label: "Return not needed",value: 0},{label: "Standard return created",value: 1},{label: "Refund-only return created",value: 2},{label: "Custom air filters",value: 3}],
                 value: 1,
                 placeholder: "Was a return created?"
             }
         },{
             type: "textarea",
-            scope: { orderCancelled: 2 },
+            scope: { orderCancelled: 1 },
             data: {
                 name: "trackingNumbers",
                 placeholder: "Enter tracking number(s), 1 per line\n(leave empty if no tracking is available)",
@@ -485,8 +485,8 @@ async function showForm(){
             type: "select",
             data: {
                 name: "subscriptionCancelled",
-                options: [{label: "Yes",value: 1},{label: "No",value: 2}],
-                value: 2,
+                options: [{label: "Yes",value: 0},{label: "No",value: 1}],
+                value: 1,
                 placeholder: "Was a subscription  cancelled?"
             }
         }]
