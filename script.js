@@ -495,7 +495,7 @@ async function showForm(){
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
-    var thing = showForm();
+    var thing = new showForm();
     $("#body1").text(thing.return)
 }
 function createTasks(tasks){
