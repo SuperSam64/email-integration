@@ -514,7 +514,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingString//.replace("<br>","");
+        trackingResult = testVar//.replace("<br>","");
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
