@@ -504,11 +504,11 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         testVar = formData.trackingNumbers.trim.split("\n");
-        var trackingString = "";
+        var trackingString = "test";
 
-        for ( var i = 0; i < testVar.length; i++ ) {
+        /*for ( var i = 0; i < testVar.length; i++ ) {
             trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
-        }
+        }*/
 
 
 
