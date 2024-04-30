@@ -507,14 +507,17 @@ async function showForm(){
         var trackingString = "test";
 
         for ( var i = 0; i < testVar.length; i++ ) {
-            trackingString = trackingString.trim() + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
+            if(trackingString.trim() != ""){
+                trackingString = trackingString.trim() + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
+            }
+                
         }
 
 
 
 
 
-        trackingResult = testVar//.replace("<br>","");
+        trackingResult = trackingString//.replace("<br>","");
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
