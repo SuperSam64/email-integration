@@ -473,10 +473,11 @@ async function showForm(){
                 placeholder: "Was a return created?"
             }
         },{
-            type: "input",
+            type: "textarea",
+            scope: { orderCancelled: 2 },
             data: {
                 type:"text",
-                name: "subscriptionCancelled",
+                name: "trackingNumbers",
                 options:{
                     thin:true,
                     prefix:true
@@ -485,6 +486,14 @@ async function showForm(){
                 placeholder: "This will only show when option 1 is selcted",
                 value: "",
                 required:true,
+            }
+        },{
+            type: "select",
+            data: {
+                name: "subscriptionCancelled",
+                options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
+                value: 1,
+                placeholder: "Was a return created?"
             }
         }]
     })
