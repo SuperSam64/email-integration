@@ -503,18 +503,18 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        testVar = formData.trackingNumbers.split("\n");
+        testVar = formData.trackingNumbers.trim.split("\n");
         var trackingString = "";
 
         for ( var i = 0, trackingList = testVar.length; i < trackingList; i++ ) {
-            trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[trackingList] +'">' + testVar[trackingList] + '</a>'
+            trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
         }
 
 
 
 
 
-        trackingResult = trackingString;
+        trackingResult = trackingString.replace("<br>","");
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
