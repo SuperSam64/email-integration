@@ -491,12 +491,16 @@ async function showForm(){
             }
         }]
     })
-    return formData;
+    var cancelResult = formData.orderCancelled;
+    var trackingResult = formData.trackingNumbers;
+    var returnResult = formData.return;
+    var subscriptionResult = formData.subscriptionCancelled;
+    var fullString = cancelResult + "  " + trackingResult + "  " + returnResult + "  " + subscriptionResult
+    $("#body1").text(fullString)
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
-    var thing = new showForm();
-    $("#body1").text(thing.return)
+    showForm();
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
