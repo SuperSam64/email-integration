@@ -474,7 +474,7 @@ async function showForm(){
             }
         },{
             type: "textarea",
-            scope: { orderCancelled: 2 },
+            scope: { trackingNumbers: 2 },
             data: {
                 type:"text",
                 name: "trackingNumbers",
@@ -483,7 +483,7 @@ async function showForm(){
                     prefix:true
                 },
                 thin:true,
-                placeholder: "This will only show when option 1 is selcted",
+                placeholder: "Enter tracking number(s), 1 per line\n(leave empty if no tracking is available)",
                 value: "",
                 required:true,
             }
