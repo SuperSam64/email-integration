@@ -402,6 +402,10 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
+function cancellationReply(input) {
+    $("#body1").text(input.return)
+}
+
 async function showForm(){
     {/* ---- MISSIVE COLORS ----
         --Blue--
@@ -497,9 +501,7 @@ async function showForm(){
             }
         }]
     })
-    var result = formData;
-    console.log(result);
-    $("#body4").text(result);
+    cancellationReply(formData);
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function createTasks(tasks){
@@ -555,8 +557,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function button1Clicked() {
-    var output = showForm();    
-    console.log(output.fields[3].data.value); // figure out how to take data from form
+    cancellationReply = showForm();    
 }
 function button2Clicked() {
     insertSignature(emailClosing);
