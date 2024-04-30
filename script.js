@@ -491,9 +491,9 @@ async function showForm(){
             type: "select",
             data: {
                 name: "subscriptionCancelled",
-                options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
-                value: 1,
-                placeholder: "Was a return created?"
+                options: [{label: "Yes",value: 1},{label: "No",value: 2}],
+                value: 2,
+                placeholder: "Was a subscription  cancelled?"
             }
         }]
     })
