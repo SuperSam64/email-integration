@@ -462,24 +462,13 @@ async function showForm(){
             label: "Submit!"
         }],
         notes:[{
-            message:"This is some note"
-        }],
-        fields: [{
-            type: "html",
-            data: {
-                name: "htmlSection",
-                placeholder: "",
-                value: "Hello! "
-            }
-        }],
-        notes:[{
             message:"this is some other note"
         }],
         fields: [{
             type: "html",
             data: {
                 name: "htmlSection2",
-                placeholder: "",
+                placeholder: "Here is a placeholder",
                 value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
         },{
@@ -511,7 +500,7 @@ async function showForm(){
             type: "progress",
             data: {
                 name: "progresstracker",
-                placeholder:"",
+                placeholder:"Progress placeholder",
                 value: 2,
                 steps: [{label:"Step 1",value:1},{label:"Step 2",value:2},{label:"Step 3",value:3},{label:"Step 4",value:4},{label:"Step 5",value:5}]
             }
