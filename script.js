@@ -467,7 +467,7 @@ async function showForm(){
             type: "select",
             scope: { orderCancelled: 2 },
             data: {
-                name: "return",
+                name: "returnDone",
                 options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
                 value: 1,
                 placeholder: "Was a return created?"
@@ -503,7 +503,7 @@ async function showForm(){
         "Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
     ]
     var subscriptionResult = ["","Thank you for reaching out to us! I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation."]
-    var fullString = [cancelResult,trackingResult,returnResult,subscriptionResult];
+    var fullString = [cancelResult[orderCancelled],trackingResult,returnResult[returnDone],subscriptionResult[subscriptionCancelled]];
     $("#body1").text(fullString)
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
