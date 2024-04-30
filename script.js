@@ -502,10 +502,10 @@ async function showForm(){
         "Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled"
     ];
-    if(orderCancelled == 2) {
+    if(formatData.orderCancelled == 2) {
         trackingResult = formData.trackingNumbers;
     }
-    if(orderCancelled == 2) {
+    if(formatData.orderCancelled == 2) {
         returnResult = [
             " If you wish to setup a return you may do so by logging into your filtersfast.com account.",
             " I have initiated a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
