@@ -402,10 +402,6 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
-function cancellationReply(input) {
-    $("#body1").text(input.return)
-}
-
 async function showForm(){
     {/* ---- MISSIVE COLORS ----
         --Blue--
@@ -495,8 +491,12 @@ async function showForm(){
             }
         }]
     })
-    cancellationReply(formData);
+    return formData;
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
+}
+function cancellationReply() {
+    var thing = showForm();
+    $("#body1").text(thing.return)
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
@@ -551,7 +551,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function button1Clicked() {
-    cancellationReply = showForm();    
+    cancellationReply();    
 }
 function button2Clicked() {
     insertSignature(emailClosing);
