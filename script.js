@@ -506,8 +506,8 @@ async function showForm(){
         testVar = formData.trackingNumbers.trim.split("\n");
         var trackingString = "";
 
-        for ( var i = 0, trackingList = testVar.length; i < trackingList; i++ ) {
-            trackingString = [i] //trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" /*+ testVar[i] */+'">' /*+ testVar[i]*/ + '</a>'
+        for ( var i = 0; i < testVar.length; i++ ) {
+            trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
         }
 
 
