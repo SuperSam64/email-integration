@@ -461,7 +461,8 @@ async function showForm(){
                 name: "orderCancelled",
                 options: [{label: "Yes",value: 0},{label: "No",value: 1}],
                 value: 0,
-                placeholder: "Was the order cancelled?"
+                placeholder: "Was the order cancelled?",
+                required:true
             }
         },{
             type: "select",
@@ -470,7 +471,8 @@ async function showForm(){
                 name: "returnDone",
                 options: [{label: "Return not needed",value: 0},{label: "Standard return created",value: 1},{label: "Refund-only return created",value: 2},{label: "Custom air filters",value: 3}],
                 value: 1,
-                placeholder: "Was a return created?"
+                placeholder: "Was a return created?",
+                required:true
             }
         },{
             type: "textarea",
@@ -479,7 +481,6 @@ async function showForm(){
                 name: "trackingNumbers",
                 placeholder: "Enter tracking number(s), 1 per line\n(leave empty if no tracking is available)",
                 value: "",
-                required:true,
             }
         },{
             type: "select",
@@ -487,7 +488,8 @@ async function showForm(){
                 name: "subscriptionCancelled",
                 options: [{label: "Yes",value: 0},{label: "No",value: 1}],
                 value: 1,
-                placeholder: "Was a subscription  cancelled?"
+                placeholder: "Was a subscription  cancelled?",
+                required:true
             }
         }]
     })
@@ -499,12 +501,14 @@ async function showForm(){
     var returnResult = [
         " If you wish to setup a return you may do so by logging into your filtersfast.com account.",
         " I have initiated a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
-        " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s)",
+        " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s).",
         " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
     ];
-    var subscriptionResult = [""," I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation."]
-    var fullString = [cancelResult[formData.orderCancelled] + trackingResult + returnResult[formData.returnDone] + subscriptionResult[formData.subscriptionCancelled]];
+    var subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
+    var closing = "Let me know if you need further assistance. Have a great day!"
+    var fullString = [cancelResult[formData.orderCancelled] + trackingResult + returnResult[formData.returnDone] + subscriptionResult[formData.subscriptionCancelled] + closing];
     $("#body1").text(fullString);
+    // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
