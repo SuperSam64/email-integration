@@ -495,27 +495,28 @@ async function showForm(){
         }]
     })
     var cancelResult = "";
-    var trackingResult = ""
+    var trackingResult = "";
     var returnResult = "";
     var subscriptionResult = "";
     cancelResult = [
         "Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
-        "We apologize as this order has already shipped from our warehouse and can no longer be cancelled"
+        "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
         trackingResult = formData.trackingNumbers;
     }
     if(formData.orderCancelled == 2) {
-        returnResult = [
+        returnResultOptions = [
             " If you wish to setup a return you may do so by logging into your filtersfast.com account.",
             " I have initiated a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
             " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s).",
             " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
         ];
+        returnResult = returnResultOptions[formData.returnDone - 1];
     }
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
-    var closing = "Let me know if you need further assistance. Have a great day!"
-    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult[formData.returnDone - 1] + subscriptionResult[formData.subscriptionCancelled - 1] + closing];
+    var closing = " Let me know if you need further assistance. Have a great day!"
+    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing];
     $("#body1").text(fullString);
     // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
     // have separate for order cancellation or subscription cancellation
