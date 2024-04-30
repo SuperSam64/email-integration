@@ -503,8 +503,8 @@ async function showForm(){
         " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
     ];
     var subscriptionResult = [""," I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation."]
-    var fullString = [cancelResult[formData.orderCancelled],trackingResult,returnResult[formData.returnDone],subscriptionResult[formData.subscriptionCancelled]];
-    $("#body1").text(fullString.join())
+    var fullString = [cancelResult[formData.orderCancelled] + trackingResult + returnResult[formData.returnDone] + subscriptionResult[formData.subscriptionCancelled]];
+    $("#body1").text(fullString);
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
