@@ -506,6 +506,7 @@ async function showForm(){
             label: "Some text",
             scope: { selector: 1},
             data: {
+                label: "here is a label",
                 type:"text",
                 name: "textInput1",
                 thin:true,
