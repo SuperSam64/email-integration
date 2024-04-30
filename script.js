@@ -457,20 +457,26 @@ async function showForm(){
         }],
         fields: [{
             type: "select",
-            id:"someID",
             data: {
-                name: "selector",
-                options: [{label: "Option 1",value: 1,color: '#F00'},{label: "Option 2",value: 2,color: '#50A8FF'}],
+                name: "orderCancelled",
+                options: [{label: "Yes",value: 1},{label: "No",value: 2}],
                 value: 1,
-                placeholder: "Placeholder (optional)"
+                placeholder: "Was the order cancelled?"
+            }
+        },{
+            type: "select",
+            scope: { orderCancelled: 2 },
+            data: {
+                name: "return",
+                options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
+                value: 1,
+                placeholder: "Was a return created?"
             }
         },{
             type: "input",
-            label: "Some text",
-            scope: { selector: 1},
             data: {
                 type:"text",
-                name: "textInput1",
+                name: "subscriptionCancelled",
                 options:{
                     thin:true,
                     prefix:true
@@ -482,7 +488,7 @@ async function showForm(){
             }
         }]
     })
-    var result = formData.textInput1;
+    var result = formData;
     console.log(result);
     $("#body4").text(result);
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
