@@ -461,10 +461,24 @@ async function showForm(){
             type: "submit",
             label: "Submit!"
         }],
+        notes:[{
+            message:"This is some note"
+        }],
         fields: [{
             type: "html",
             data: {
                 name: "htmlSection",
+                placeholder: "",
+                value: "Hello! "
+            }
+        }],
+        notes:[{
+            message:"this is some other note"
+        }],
+        fields: [{
+            type: "html",
+            data: {
+                name: "htmlSection2",
                 placeholder: "",
                 value: "Dear [Name],<br><br>Thank you for [reaching out to us!]! "
             }
