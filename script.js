@@ -460,33 +460,33 @@ async function showForm(){
             data: {
                 name: "orderCancelled",
                 options: [{label: "Yes",value: 1},{label: "No",value: 2}],
-                value: 0,
+                value: 1,
                 placeholder: "Was the order cancelled?",
                 required:true
             }
         },{
             type: "select",
-            scope: { orderCancelled: 1 },
+            scope: { orderCancelled: 2 },
             data: {
                 name: "returnDone",
-                options: [{label: "Return not needed",value: 0},{label: "Standard return created",value: 1},{label: "Refund-only return created",value: 2},{label: "Custom air filters",value: 3}],
+                options: [{label: "Return not needed",value: 1},{label: "Standard return created",value: 2},{label: "Refund-only return created",value: 3},{label: "Custom air filters",value: 4}],
                 value: 1,
                 placeholder: "Was a return created?",
                 required:true
             }
         },{
             type: "textarea",
-            scope: { orderCancelled: 1 },
+            scope: { orderCancelled: 2 },
             data: {
                 name: "trackingNumbers",
-                placeholder: "Enter tracking number(s), 1 per line\n(leave empty if no tracking is available)",
+                placeholder: 'Enter tracking numbers, 1 per line.\nIf USPS, add ", USPS" after number\nLeave blank if no tracking info is available.\n\nExamples:\n01234567891011121314',
                 value: "",
             }
         },{
             type: "select",
             data: {
                 name: "subscriptionCancelled",
-                options: [{label: "Yes",value: 0},{label: "No",value: 1}],
+                options: [{label: "Yes",value: 1},{label: "No",value: 2}],
                 value: 1,
                 placeholder: "Was a subscription  cancelled?",
                 required:true
@@ -514,7 +514,7 @@ async function showForm(){
     }
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
     var closing = "Let me know if you need further assistance. Have a great day!"
-    var fullString = [cancelResult[formData.orderCancelled] + trackingResult + returnResult[formData.returnDone] + subscriptionResult[formData.subscriptionCancelled] + closing];
+    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult[formData.returnDone - 1] + subscriptionResult[formData.subscriptionCancelled - 1] + closing];
     $("#body1").text(fullString);
     // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
     // have separate for order cancellation or subscription cancellation
