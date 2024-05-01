@@ -503,53 +503,15 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var trackingString = formData.trackingNumbers;
-        var trackingList = [];
-        var shipper = "FedEx";
-        var link = "www.fedex.com";
-        var trackingValue;
-        var trackingHTML;
-        var trackingList = [];
-        var trackingLinks = [];
-        var trackingArray = trackingString.split("\n");
-        var testVar
-        for ( var i = 0; i < trackingArray.length; i++ ) {
-            if(trackingArray[i].replaceAll(" ","") != ""){
-                var currentString = trackingArray[i];
-                currentString = currentString.trim()
-                currentString = currentString.replaceAll(" ",",");
-                currentString = currentString.replace(",","|");
-                currentString = currentString.replaceAll(",","");
-                trackingList.push(currentString);                
+        input = formData.trackingNumber.replaceAll("\n","|[!]")
+        inputArray = input.split("|")
+        var newArray;
+        for ( var i = 0; i < newVar.length; i++ ) {
+            if(inputArray[i].replaceAll(" ") != "[!]") {
+                newArray.replace("[!]").push(inputArray[i])
             }
         }
-        for ( var i = 0; i < trackingList.length; i++ ) {
-            if(trackingList[i].includes("|") && trackingList != 'undefined'){
-                testvar = trackingList[i];
-                shipper = trackingList[i].split("|")[1].toUpperCase();
-                link = trackingList[i];
-                trackingValue = trackingList[i].split("|")[0]
-            }
-            else if(trackingList[i].toLowerCase().substr(0,2) == "1z") {
-                shipper = "UPS";
-                link = "www.ups.com";
-                trackingValue = trackingList[i]
-            }
-            else if (trackingList[i].length >= 22){
-                shipper = "DHL";
-                link = "dhl.com";
-                trackingValue = trackingList[i];
-            }
-            else {
-                trackingValue = trackingList[i];
-            }
-            trackingHTML = testVar;
-            trackingLinks.push(trackingHTML);
-        }
-        
-        /*
-        
-        */
+
         
         /*testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
         var trackingString = "";
@@ -590,7 +552,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingHTML;
+        trackingResult = newArray;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
