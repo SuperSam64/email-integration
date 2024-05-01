@@ -506,11 +506,11 @@ async function showForm(){
         var trackingString = formData.trackingNumbers;
         trackingString = trackingString.replaceAll("\n","[!]");
         trackingString = trackingString.trim();
-        trackingString = trackingString.replace(/\s+g/," ")
+        trackingString = trackingString.replaceAll(/\s+g/," ")
         trackingString = trackingString.replaceAll(" ","|");
         trackingString = trackingString.replaceAll("[!]"," ");
         trackingString = trackingString.trim();
-        trackingString = trackingString.replace(/\s+g/," ")
+        trackingString = trackingString.replaceAll(/\s+g/," ")
         trackingString = trackingString.split(" ");
         
         
