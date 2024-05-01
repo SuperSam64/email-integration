@@ -509,7 +509,7 @@ async function showForm(){
         var otherArray = [];
         for ( var i = 0; i < input.length; i ++ ) {	
             var temp = input[i];
-            output = temp.trim();
+            output = temp.trim() + "<- why is there a space here";
             otherArray.push(output);
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
