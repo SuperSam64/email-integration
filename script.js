@@ -509,10 +509,17 @@ async function showForm(){
         var link = "www.fedex.com";
         var trackingValue;
         var trackingHTML;
-        trackingString = trackingString.split("\n");
-        for ( var i = 0; i < trackingString.length; i++ ) {
-            if(trackingString[i].trim() != ""){
-                trackingList.push(trackingString[i].trim().replaceAll(","," ").replace(" ","|").replaceAll(" ",""));
+        var trackingList = [];
+        var trackingLinks = [];
+        var trackingArray = trackingString.split("\n");
+        for ( var i = 0; i < trackingArray.length; i++ ) {
+            if(trackingArray[i].replaceAll(" ","") != ""){
+                var currentString = trackingArray[i];
+                currentString = currentString.trim()
+                currentString = currentString.replaceAll(" ",",");
+                currentString = currentString.replace(",","|");
+                currentString = currentString.replaceAll(",","");
+                trackingList.push(currentString);                
             }
         }
         for ( var i = 0; i < trackingList.length; i++ ) {
@@ -535,6 +542,7 @@ async function showForm(){
                 trackingValue = trackingList[i];
             }
             trackingHTML = trackingHTML + "|" + shipper + "|" + link + "|" + trackingValue + "||";
+            trackingLinks.push(trackingHTML);
         }
         
         /*
