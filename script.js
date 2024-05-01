@@ -503,7 +503,7 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        testVar = formData.trackingNumbers.replace("\n","[!]").trim();
+        testVar = formData.trackingNumbers.replace("\n","[!]").trim().split("[!]");
         var trackingString = "";
 
         for ( var i = 0; i < testVar.length; i++ ) {
