@@ -510,7 +510,7 @@ async function showForm(){
             output = temp.trim() + "<- why is there a space here";
             output = output.replaceAll("[ ","");
             output = output.replaceAll(" ]","");
-            otherArray.push(output);
+            if(output != "") {otherArray.push(output)}
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
@@ -519,7 +519,7 @@ async function showForm(){
 
 
 
-        trackingResult = input;
+        trackingResult = otherArray;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
