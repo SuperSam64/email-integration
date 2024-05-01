@@ -505,10 +505,26 @@ async function showForm(){
     if(formData.orderCancelled == 2) {
         testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]").replace("<br>","");
         var trackingString = "";
+        var shipper = "FedEx";
+        var linkPrefix = "https://www.fedex.com/wtrk/track/?trknbr=";
 
         for ( var i = 0; i < testVar.length; i++ ) {
             
-                trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
+            if(testVar[i].substr(0,2) == "1Z") {
+                shipper = "UPS"
+                linkPrefix = "https://www.ups.com/track?trackNums=";
+            }
+            else if (testVar[i].length == 26){
+                shipper = "DHL"
+                linkPrefix = "https://webtrack.dhlglobalmail.com/orders?trackingNumber=";
+            }
+            else if (testVar[i].substr(4).toLowerCase() == "usps") {
+                shipper = "USPS"
+                linkPrefix = "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1="
+            }
+
+
+                trackingString = trackingString + '<br>' + shipper + ' tracking #<a href="' + linkPrefix + testVar[i] +'">' + testVar[i] + '</a>'
             
                 
         }
