@@ -504,8 +504,8 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var var1 = formData.trackingNumbers;
-        var input = var1.replaceAll("\n","|[!]");
-        
+        var something = var1.replaceAll("\n","|[!]");
+        var input = something.split("|");
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
