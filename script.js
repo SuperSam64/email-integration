@@ -531,8 +531,9 @@ async function showForm(){
                 trackingValue = "trkval";
                 shipper = "XYZ";
                 link = trackingList[i].replace(","," ").trim();
-                var prefix = link.split(" ")[0];
-                var suffix = link.split(" ")[1];
+                var prefix = link.replace(" ","|")
+                prefix = prefix.split("|")[0];
+                var suffix = prefix.split("|")[1];
                 var full = link
                 link = " | " + prefix +"."+ suffix + full + " | "
                 /*if(trackingList[i].trim().split(" ")[1] == "usps"){
