@@ -507,9 +507,9 @@ async function showForm(){
         var otherArray = [];
         for ( var i = 0; i < input.length; i ++ ) {	
             var temp = "[ " + input[i] + " ]";
-            output = temp.trim();
-            output = output.replaceAll("[ ","");
-            output = output.replaceAll(" ]","");
+            output = temp;
+            //output = output.replaceAll("[ ","");
+            //output = output.replaceAll(" ]","");
             if(output != "") {otherArray.push(output)}
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
