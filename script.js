@@ -504,16 +504,13 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
-        trackingString = trackingString.replaceAll("\n","[!]");
-        trackingString = trackingString.trim();
-        trackingString = trackingString.replace(/ +/g, ' ');
-        trackingString = trackingString.replaceAll(" ","|");
-        trackingString = trackingString.replaceAll(" ","|");
-        trackingString = trackingString.replaceAll("[!]"," ");
-        trackingString = trackingString.trim();
-        trackingString = trackingString.replace(/ +/g, ' ');
-        trackingString = trackingString.split(" ");
-        
+        var trackingList = [];
+        trackingString = trackingString.split("\n");
+        for ( var i = 0; i < trackingString.length; i++ ) {
+            if(trackingString[i].trim() != ""){
+            trackingList.push(trackingString[i].trim());
+            }
+        }
         
         /*
         
@@ -558,7 +555,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingString;
+        trackingResult = trackingList;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
