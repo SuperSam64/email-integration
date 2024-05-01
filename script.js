@@ -529,11 +529,12 @@ async function showForm(){
             else if(trackingList[i].replace(","," ").trim().includes(" ")) {
                 
                 
+                var linkString = trackingList[i].replace(","," ").trim();
+                var suffix = linkString.substr(linkString.length - 4);
                 shipper = "XYZ";
                 trackingValue = "trkval";
-        
-                var prefix = trackingList[i].replace(","," ").trim().replace(" ","|").split("|")[0];
-                var suffix = trackingList[i].replace(","," ").trim().substr(link.length - 4);
+                link = linkString.replace(" ","|").split("|")[0];
+                // if suffix is usps, usps, unknown
             
                 link = " || " + prefix +" | "+ suffix + " || " 
                 /*if(trackingList[i].trim().split(" ")[1] == "usps"){
