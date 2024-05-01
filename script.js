@@ -504,13 +504,7 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         input = formData.trackingNumber.replaceAll("\n","|[!]")
-        inputArray = input.split("|")
-        var newArray = [];
-        for ( var i = 0; i < inputArray.length; i++ ) {
-            if(inputArray[i].replaceAll(" ","") != "[!]") {
-                newArray.push(inputArray[i].replace("[!]","").trim())
-            }
-        }
+        
 
         
         /*testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
@@ -552,7 +546,7 @@ async function showForm(){
 
 
 
-        trackingResult = newArray;
+        trackingResult = input;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
