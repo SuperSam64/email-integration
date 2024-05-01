@@ -508,7 +508,7 @@ async function showForm(){
         trackingString = trackingString.split("\n");
         for ( var i = 0; i < trackingString.length; i++ ) {
             if(trackingString[i].trim() != ""){
-            trackingList.push(trackingString[i].trim());
+            trackingList.push(trackingString[i].trim().replaceAll(","," ").replace(" ","|").replaceAll(" ",""));
             }
         }
         
