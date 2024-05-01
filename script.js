@@ -504,57 +504,12 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
-        var shipper = "FedEx";
-        var link = "www.fedex.com";
-        var trackingValue;
+        trackingString = trackingString.replaceAll("\n","[!]");
         trackingString = trackingString.trim();
-        trackingString = trackingString.replaceAll(" ","[!]");
-        trackingString = trackingString.replaceAll("\n"," ");
-        trackingString = trackingString.trim();
-        trackingString = trackingString.replaceAll(" ","||");
-        trackingString = trackingString.replaceAll(","," ");
+        trackingString = trackingString.replaceAll(" ","|");
         trackingString = trackingString.replaceAll("[!]"," ");
         trackingString = trackingString.trim();
-        trackingString = trackingString.toLowerCase();
-        trackingList = trackingString.split("||");
-        
-        
-        for ( var i = 0; i < trackingList.length; i++ ) {
-            trackingValue = trackingList[i];
-            if (trackingList[i].trim().substr(0,2) == "1z"){
-                shipper = "UPS";
-                trackingValue = trackingList[i].toUpperCase();
-                link = "www.ups.com";
-            }
-            else if(trackingList[i].replace(","," ").trim().includes(" ")) {
-                
-                
-                var linkString = trackingList[i].replace(","," ").trim();
-                var suffix = linkString.substr(linkString.length - 4);
-                shipper = "XYZ";
-                trackingValue = "trkval";
-                link = linkString.replace(" ","|").split("|")[0];
-                // if suffix is usps, usps, unknown
-            
-                link = " || " + prefix +" | "+ suffix + " || " 
-                /*if(trackingList[i].trim().split(" ")[1] == "usps"){
-                    trackingValue = trackingList[i].trim().split(" ")[0];
-                    shipper = "USPS";
-                    link = "usps.com";
-                }
-                else{
-                    link = trackingList[i].trim().split(" ")[0];
-                }*/
-            }
-            else if (trackingList[i].length >= 22){
-                shipper = "DHL";
-                link = "www.dhl.com";
-            }
-        }
-
-        
-        
-        var combo = link;
+        trackingString = trackingString.split(" ");
         
         
         
@@ -600,7 +555,7 @@ async function showForm(){
 
 
 
-        trackingResult = combo;
+        trackingResult = trackingString;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
