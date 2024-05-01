@@ -565,7 +565,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingString;
+        trackingResult = trackingList;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
