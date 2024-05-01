@@ -504,15 +504,15 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
-        trackingString = trackingString.trim();
-        trackingString = trackingString.replaceAll(" ","|");
-        trackingString = trackingString.replaceAll("\n"," ");
-        trackingString = trackingString.trim();
-        trackingString = trackingString.replaceAll(" ","<br>");
-        trackingString = trackingString.replaceAll(","," ");
-        trackingString = trackingString.replaceAll("|","<br>");
-        trackingString = trackingString.trim();
-        trackingString = trackingString.trim();toLowerCase();
+        //trackingString = trackingString.trim();
+        //trackingString = trackingString.replaceAll(" ","|");
+        //trackingString = trackingString.replaceAll("\n"," ");
+        //trackingString = trackingString.trim();
+        //trackingString = trackingString.replaceAll(" ","<br>");
+        //trackingString = trackingString.replaceAll(","," ");
+        //trackingString = trackingString.replaceAll("|","<br>");
+        //trackingString = trackingString.trim();
+        //trackingString = trackingString.trim();toLowerCase();
         
         
         
