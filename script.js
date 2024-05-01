@@ -534,8 +534,9 @@ async function showForm(){
                 var prefix = link.replace(" ","|")
                 prefix = prefix.split("|")[0];
                 var suffix = prefix.split("|")[1];
+                var other = link.substr(link.length - 4)
                 var full = link
-                link = " | " + prefix +"."+ suffix + full + " | "
+                link = " | " + prefix +"."+ suffix + full + " | " + other
                 /*if(trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
                     shipper = "USPS";
