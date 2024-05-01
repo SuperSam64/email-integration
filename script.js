@@ -508,9 +508,9 @@ async function showForm(){
         trackingString = trackingString.replaceAll(" ","|");
         trackingString = trackingString.replaceAll("\n"," ");
         trackingString = trackingString.trim();
-        //trackingString = trackingString.replaceAll(" ","<br>");
-        //trackingString = trackingString.replaceAll(","," ");
-        //trackingString = trackingString.replaceAll("|","<br>");
+        trackingString = trackingString.replaceAll(" ","<br>");
+        trackingString = trackingString.replaceAll(","," ");
+        trackingString = trackingString.replaceAll("|","<br>");
         //trackingString = trackingString.trim();
         //trackingString = trackingString.trim();toLowerCase();
         
