@@ -533,7 +533,7 @@ async function showForm(){
                     link = "usps.com";
                 }
                 else{
-                    link = trackingList[i].trim().split(" ")[1];
+                    link = trackingList[i].trim().split(" ")[0];
                 }
             }
             else if (trackingList[i].length >= 22){
