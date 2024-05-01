@@ -508,6 +508,7 @@ async function showForm(){
         var shipper = "FedEx";
         var link = "www.fedex.com";
         var trackingValue;
+        var trackingHTML;
         trackingString = trackingString.split("\n");
         for ( var i = 0; i < trackingString.length; i++ ) {
             if(trackingString[i].trim() != ""){
@@ -533,6 +534,7 @@ async function showForm(){
             else {
                 trackingValue = trackingList[i];
             }
+            trackingHTML = trackingHTML + "|" + shipper + "|" + link + "|" + trackingValue + "||";
         }
         
         /*
@@ -578,7 +580,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingList;
+        trackingResult = trackingHTML;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
