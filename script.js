@@ -504,9 +504,9 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
-        var shipper;
-        var link;
-        var trackingValue
+        var shipper = "FedEx";
+        var link = "www.fedex.com";
+        var trackingValue;
         trackingString = trackingString.trim();
         trackingString = trackingString.replaceAll(" ","[!]");
         trackingString = trackingString.replaceAll("\n"," ");
@@ -520,15 +520,28 @@ async function showForm(){
         
         
         for ( var i = 0; i < trackingList.length; i++ ) {
-            if(trackingList[i].trim().includes(" ")) {
-                trackingValue = trackingList[i].trim().split(" ")[0];
-                shipper = "USPS";
-                link = "usps.com";
+            if (trackingList[i].trim().substr(0,2) == "1z"){
+                shipper = "UPS";
+                trackingValue = trackingList[i];
+                link = "www.ups.com";
+            }
+            else if (trackingList[i].length >= 22){
+                shipper = "DHL";
+                trackingValue = trackingList[i];
+                link = "www.dhl.com";
+            }
+            else if(trackingList[i].trim().includes(" ")) {
+                if(trackingValue = trackingList[i].trim().split(" ")[1] == "usps"){
+                    trackingValue = trackingList[i].trim().split(" ")[0];
+                    shipper = "USPS";
+                    link = "usps.com";
+                }
             }
         }
+
         
         
-        
+        var combo = shipper + " " + trackingValue + " " + link;
         
         
         
@@ -574,7 +587,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingList;
+        trackingResult = combo;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
