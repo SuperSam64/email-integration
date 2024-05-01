@@ -503,41 +503,7 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        input = formData.trackingNumber.replaceAll("\n","|[!]")
-        
-
-        
-        /*testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
-        var trackingString = "";
-        var shipper = "FedEx";
-        var linkPrefix = "https://www.fedex.com/wtrk/track/?trknbr=";
-
-        for ( var i = 0; i < testVar.length; i++ ) {
-            
-            if(testVar[i].substr(0,2) == "1Z") {
-                shipper = "UPS"
-                linkPrefix = "https://www.ups.com/track?trackNums=";
-            }
-            else if (testVar[i].length >= 22){
-                shipper = "DHL"
-                linkPrefix = "https://webtrack.dhlglobalmail.com/orders?trackingNumber=";
-            }
-            else if (testVar[i].includes(",")) {
-                var prefix = testVar[i].split(",")[0].trim();
-                var suffix = testVar[i].split(",")[1].trim().toLowerCase();
-                
-                
-                if(suffix == "usps"){
-                    shipper = "USPS"
-                    linkPrefix = "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1="
-                }
-            }
-
-
-                trackingString = trackingString + '<br>' + shipper + ' tracking #<a href="' + linkPrefix + testVar[i] +'">' + testVar[i] + '</a>'
-            
-                
-        }*/
+        input = formData.trackingNumber;
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
