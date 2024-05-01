@@ -512,6 +512,11 @@ async function showForm(){
             //output = output.replaceAll(" ]","");
             if(output != "") {otherArray.push(output)}
         }
+        for ( var i = 0; i < otherArray.length; i ++ ) {	
+            var yesorno
+            if(otherArray[i].includes(" ")){yesorno = "yes"}else{yesorno = "no"}
+            
+        }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
