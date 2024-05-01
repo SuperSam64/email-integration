@@ -512,6 +512,7 @@ async function showForm(){
         var trackingList = [];
         var trackingLinks = [];
         var trackingArray = trackingString.split("\n");
+        var testVar
         for ( var i = 0; i < trackingArray.length; i++ ) {
             if(trackingArray[i].replaceAll(" ","") != ""){
                 var currentString = trackingArray[i];
@@ -524,6 +525,7 @@ async function showForm(){
         }
         for ( var i = 0; i < trackingList.length; i++ ) {
             if(trackingList[i].includes("|")){
+                testvar = trackingList[i];
                 shipper = trackingList[i].split("|")[1].toUpperCase();
                 link = trackingList[i];
                 trackingValue = trackingList[i].split("|")[0]
@@ -541,7 +543,7 @@ async function showForm(){
             else {
                 trackingValue = trackingList[i];
             }
-            trackingHTML = trackingHTML + "|" + shipper + "|" + link + "|" + trackingValue + "||";
+            trackingHTML 
             trackingLinks.push(trackingHTML);
         }
         
