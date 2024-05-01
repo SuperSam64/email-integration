@@ -504,7 +504,7 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
-        //trackingString = trackingString.trim();
+        trackingString = trackingString.trim();
         //trackingString = trackingString.replaceAll(" ","|");
         //trackingString = trackingString.replaceAll("\n"," ");
         //trackingString = trackingString.trim();
