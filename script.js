@@ -524,7 +524,7 @@ async function showForm(){
             }
         }
         for ( var i = 0; i < trackingList.length; i++ ) {
-            if(trackingList[i].includes("|")){
+            if(trackingList[i].includes("|") && trackingList != 'undefined'){
                 testvar = trackingList[i];
                 shipper = trackingList[i].split("|")[1].toUpperCase();
                 link = trackingList[i];
