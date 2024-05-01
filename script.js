@@ -504,20 +504,20 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         testVar = formData.trackingNumbers.replace("\n","[!]").trim();
-        var trackingString = "test";
+        var trackingString = "";
 
-        /*for ( var i = 0; i < testVar.length; i++ ) {
-            if(trackingString.trim() != ""){
-                trackingString = trackingString.trim() + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
-            }
+        for ( var i = 0; i < testVar.length; i++ ) {
+            
+                trackingString = trackingString + '<br>FedEx tracking #<a href="' + "https://www.fedex.com/wtrk/track/?trknbr=" + testVar[i] +'">' + testVar[i] + '</a>'
+            
                 
-        }*/
+        }
 
 
 
 
 
-        trackingResult = testVar//.replace("<br>","");
+        trackingResult = trackingString//.replace("<br>","");
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
