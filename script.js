@@ -525,11 +525,6 @@ async function showForm(){
                 trackingValue = trackingList[i];
                 link = "www.ups.com";
             }
-            else if (trackingList[i].length >= 22){
-                shipper = "DHL";
-                trackingValue = trackingList[i];
-                link = "www.dhl.com";
-            }
             else if(trackingList[i].trim().includes(" ")) {
                 if(trackingValue = trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
@@ -537,6 +532,12 @@ async function showForm(){
                     link = "usps.com";
                 }
             }
+            else if (trackingList[i].length >= 22){
+                shipper = "DHL";
+                trackingValue = trackingList[i];
+                link = "www.dhl.com";
+            }
+            
         }
 
         
