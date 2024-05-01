@@ -528,15 +528,14 @@ async function showForm(){
             }
             else if(trackingList[i].replace(","," ").trim().includes(" ")) {
                 
-                trackingValue = "trkval";
+                
                 shipper = "XYZ";
-                link = trackingList[i].replace(","," ").trim();
-                var prefix = link.replace(" ","|")
-                prefix = prefix.split("|")[0];
-                var suffix = prefix.split("|")[1];
-                var other = link.substr(link.length - 4)
-                var full = link
-                link = " | " + prefix +"."+ suffix + full + " | " + other
+                trackingValue = "trkval";
+        
+                var prefix = trackingList[i].replace(","," ").trim().replace(" ","|").split("|")[0];
+                var suffix = trackingList[i].replace(","," ").trim().substr(link.length - 4);
+            
+                link = " || " + prefix +" | "+ suffix + " || " 
                 /*if(trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
                     shipper = "USPS";
@@ -554,7 +553,7 @@ async function showForm(){
 
         
         
-        var combo = shipper + " " + trackingValue + " " + link;
+        var combo = link;
         
         
         
