@@ -532,6 +532,9 @@ async function showForm(){
                     shipper = "USPS";
                     link = "usps.com";
                 }
+                else{
+                    link = trackingList[i].trim().split(" ")[1] == "usps";
+                }
             }
             else if (trackingList[i].length >= 22){
                 shipper = "DHL";
