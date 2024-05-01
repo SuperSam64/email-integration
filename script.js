@@ -479,7 +479,7 @@ async function showForm(){
             scope: { orderCancelled: 2 },
             data: {
                 name: "trackingNumbers",
-                placeholder: 'Enter tracking numbers, 1 per line.\nIf USPS, add ", USPS" after number\nLeave blank if no tracking info is available.\n\nExamples:\n01234567891011121314',
+                placeholder: 'Enter 1 tracking numberper line.\nIf USPS, add ", USPS" after number\nLeave blank if no tracking info is available.\n\nExamples:\n01234567891011121314\n41312111019876543210, USPS',
                 value: "",
                 rows: 8
             }
@@ -503,7 +503,7 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
+        testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]").replace("<br>,"");
         var trackingString = "";
 
         for ( var i = 0; i < testVar.length; i++ ) {
@@ -513,7 +513,10 @@ async function showForm(){
                 
         }
 
-
+        // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
+        // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
+        // https://www.fedex.com/wtrk/track/?trknbr=  other
+        // https://www.ups.com/track?trackNums=    1Z
 
 
 
