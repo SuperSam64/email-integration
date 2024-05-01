@@ -528,7 +528,7 @@ async function showForm(){
             
                 
         }
-        trackingString.replace("<br>","");
+        
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
@@ -536,7 +536,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingString//.replace("<br>","");
+        trackingResult = trackingString.replace("<br>","");
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
