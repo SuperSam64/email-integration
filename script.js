@@ -520,9 +520,9 @@ async function showForm(){
         
         
         for ( var i = 0; i < trackingList.length; i++ ) {
+            trackingValue = trackingList[i];
             if (trackingList[i].trim().substr(0,2) == "1z"){
                 shipper = "UPS";
-                trackingValue = trackingList[i];
                 link = "www.ups.com";
             }
             else if(trackingList[i].trim().includes(" ")) {
@@ -534,10 +534,8 @@ async function showForm(){
             }
             else if (trackingList[i].length >= 22){
                 shipper = "DHL";
-                trackingValue = trackingList[i];
                 link = "www.dhl.com";
             }
-            
         }
 
         
