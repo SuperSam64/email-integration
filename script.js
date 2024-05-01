@@ -530,7 +530,7 @@ async function showForm(){
                 
                 trackingValue = "trkval";
                 shipper = "XYZ";
-                link = trackingList[i].trim().split(" ");
+                link = " | " + trackingList[i].trim(); + " | "
                 /*if(trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
                     shipper = "USPS";
