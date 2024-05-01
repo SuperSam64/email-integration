@@ -505,10 +505,33 @@ async function showForm(){
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
         var trackingList = [];
+        var shipper = "FedEx";
+        var link = "www.fedex.com";
+        var trackingValue;
         trackingString = trackingString.split("\n");
         for ( var i = 0; i < trackingString.length; i++ ) {
             if(trackingString[i].trim() != ""){
-            trackingList.push(trackingString[i].trim().replaceAll(","," ").replace(" ","|").replaceAll(" ",""));
+                trackingList.push(trackingString[i].trim().replaceAll(","," ").replace(" ","|").replaceAll(" ",""));
+            }
+        }
+        for ( var i = 0; i < trackingList.length; i++ ) {
+            if(trackingList[i].includes("|")){
+                shipper = trackingList[i].split("|")[1].toUpperCase();
+                link = "dynamic URL";
+                trackingValue = trackingList[i].split("|")[0]
+            }
+            else if(trackingList[i].toLowerCase().substr(0,2) == "1z") {
+                shipper = "UPS";
+                link = "www.ups.com";
+                trackingValue = trackingList[i]
+            }
+            else if (trackingList[i].length >= 22){
+                shipper = "DHL";
+                link = "dhl.com";
+                trackingValue = trackingList[i];
+            }
+            else {
+                trackingValue = trackingList[i];
             }
         }
         
