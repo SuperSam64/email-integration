@@ -524,7 +524,7 @@ async function showForm(){
 
 
 
-        trackingResult = otherArray;
+        trackingResult = yesorno;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
