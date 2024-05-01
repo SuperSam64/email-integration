@@ -506,7 +506,7 @@ async function showForm(){
         var input = formData.trackingNumbers.split("\n");
         var otherArray = [];
         for ( var i = 0; i < input.length; i ++ ) {	
-            var temp = "[ " + input[i] + " ]";
+            var temp = input[i].trim();
             output = temp;
             //output = output.replaceAll("[ ","");
             //output = output.replaceAll(" ]","");
