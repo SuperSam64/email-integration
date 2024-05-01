@@ -527,14 +527,18 @@ async function showForm(){
                 link = "www.ups.com";
             }
             else if(trackingList[i].trim().includes(" ")) {
-                if(trackingList[i].trim().split(" ")[1] == "usps"){
+                
+                trackingValue = "trkval";
+                shipper = "XYZ";
+                link = trackingList[i].trim().split(" ");
+                /*if(trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
                     shipper = "USPS";
                     link = "usps.com";
                 }
                 else{
                     link = trackingList[i].trim().split(" ")[0];
-                }
+                }*/
             }
             else if (trackingList[i].length >= 22){
                 shipper = "DHL";
