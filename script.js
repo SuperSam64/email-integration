@@ -527,7 +527,7 @@ async function showForm(){
                 link = "www.ups.com";
             }
             else if(trackingList[i].trim().includes(" ")) {
-                if(trackingValue = trackingList[i].trim().split(" ")[1] == "usps"){
+                if(trackingList[i].trim().split(" ")[1] == "usps"){
                     trackingValue = trackingList[i].trim().split(" ")[0];
                     shipper = "USPS";
                     link = "usps.com";
