@@ -503,7 +503,7 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        input = formData.trackingNumber;
+        var input = formData.trackingNumber;
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
