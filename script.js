@@ -518,9 +518,11 @@ async function showForm(){
                 shipper = "DHL"
                 linkPrefix = "https://webtrack.dhlglobalmail.com/orders?trackingNumber=";
             }
-            else if (testVar[i].trim().substr(testVar[i].trim().length - 4).toLowerCase() == "usps") {
-                shipper = "USPS"
-                linkPrefix = "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1="
+            else if (testVar[i].includes(",")) {
+                if(testVar[i].replaceAll(" ").split(",")[2].toLowerCase() == "usps"){}
+                    shipper = "USPS"
+                    linkPrefix = "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1="
+                }
             }
 
 
