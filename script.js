@@ -523,6 +523,7 @@ async function showForm(){
             trackingValue = trackingList[i];
             if (trackingList[i].trim().substr(0,2) == "1z"){
                 shipper = "UPS";
+                trackingValue = trackingList[i].toUpperCase();
                 link = "www.ups.com";
             }
             else if(trackingList[i].trim().includes(" ")) {
