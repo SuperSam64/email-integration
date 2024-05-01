@@ -525,7 +525,7 @@ async function showForm(){
         for ( var i = 0; i < trackingList.length; i++ ) {
             if(trackingList[i].includes("|")){
                 shipper = trackingList[i].split("|")[1].toUpperCase();
-                link = "dynamic URL";
+                link = trackingList[i];
                 trackingValue = trackingList[i].split("|")[0]
             }
             else if(trackingList[i].toLowerCase().substr(0,2) == "1z") {
