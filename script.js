@@ -504,6 +504,9 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingString = formData.trackingNumbers;
+        var shipper;
+        var link;
+        var trackingValue
         trackingString = trackingString.trim();
         trackingString = trackingString.replaceAll(" ","[!]");
         trackingString = trackingString.replaceAll("\n"," ");
@@ -516,7 +519,13 @@ async function showForm(){
         trackingList = trackingString.split("||");
         
         
-        
+        for ( var i = 0; i < trackingList.length; i++ ) {
+            if(trackingList[i].trim().includes(" ")) {
+                trackingValue = trackingList[i].trim().split(" ")[0];
+                shipper = "USPS";
+                link = "usps.com";
+            }
+        }
         
         
         
