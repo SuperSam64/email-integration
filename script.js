@@ -506,6 +506,12 @@ async function showForm(){
         var var1 = formData.trackingNumbers;
         var something = var1.replaceAll("\n","|[!]");
         var input = something.split("|");
+        var otherArray = [];
+        for ( var i = 0; i < input.length; i ++ ) {	
+            var temp = input[i];
+            output = temp.trim();
+            otherArray.push(output);
+        }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
