@@ -503,13 +503,13 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var var1 = formData.trackingNumbers;
-        var something = var1.replaceAll("\n","|[!]");
-        var input = something.split("|");
+        var input = formData.trackingNumbers.split("\n");
         var otherArray = [];
         for ( var i = 0; i < input.length; i ++ ) {	
-            var temp = input[i];
+            var temp = "[ " + input[i] + " ]";
             output = temp.trim() + "<- why is there a space here";
+            output = output.replaceAll("[ ","");
+            output = output.replaceAll(" ]","");
             otherArray.push(output);
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
