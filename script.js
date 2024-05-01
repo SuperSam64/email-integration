@@ -526,11 +526,11 @@ async function showForm(){
                 trackingValue = trackingList[i].toUpperCase();
                 link = "www.ups.com";
             }
-            else if(trackingList[i].trim().includes(" ")) {
+            else if(trackingList[i].replace(","," ").trim().includes(" ")) {
                 
                 trackingValue = "trkval";
                 shipper = "XYZ";
-                link = trackingList[i].trim();
+                link = trackingList[i].replace(","," ").trim();
                 var prefix = link.split(" ")[0];
                 var suffix = link.split(" ")[1];
                 var full = link
