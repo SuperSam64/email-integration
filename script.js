@@ -503,7 +503,29 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
+        var trackingString = formData.trackingNumbers;
+        trackingString = trackingString.trim();
+        trackingString = trackingString.replaceAll(" ","|");
+        trackingString = trackingString.replaceAll("\n"," ");
+        trackingString = trackingString.trim();
+        trackingString = trackingString.replaceAll(" ","<br>");
+        trackingString = trackingString.replaceAll(","," ");
+        trackingString = trackingString.replaceAll("|","<br>");
+        trackingString = trackingString.trim();
+        trackingString = trackingString.trim();toLowerCase();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        /*testVar = formData.trackingNumbers.replaceAll("\n","[!]").trim().split("[!]");
         var trackingString = "";
         var shipper = "FedEx";
         var linkPrefix = "https://www.fedex.com/wtrk/track/?trknbr=";
@@ -514,7 +536,7 @@ async function showForm(){
                 shipper = "UPS"
                 linkPrefix = "https://www.ups.com/track?trackNums=";
             }
-            else if (testVar[i].length == 26){
+            else if (testVar[i].length >= 22){
                 shipper = "DHL"
                 linkPrefix = "https://webtrack.dhlglobalmail.com/orders?trackingNumber=";
             }
@@ -533,7 +555,7 @@ async function showForm(){
                 trackingString = trackingString + '<br>' + shipper + ' tracking #<a href="' + linkPrefix + testVar[i] +'">' + testVar[i] + '</a>'
             
                 
-        }
+        }*/
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
@@ -542,7 +564,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingString.replace("<br>","");
+        trackingResult = trackingString;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
