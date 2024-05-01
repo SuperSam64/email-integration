@@ -508,7 +508,7 @@ async function showForm(){
         var newArray;
         for ( var i = 0; i < inputArray.length; i++ ) {
             if(inputArray[i].replaceAll(" ","") != "[!]") {
-                newArray.replace("[!]","").trim().push(inputArray[i])
+                newArray.push(inputArray[i].replace("[!]","").trim())
             }
         }
 
