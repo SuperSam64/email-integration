@@ -509,12 +509,16 @@ async function showForm(){
         var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
+                var modified = trackingInput[i].toLowerCase().trim()
                 var shipper;
                 var number;
                 var link;
+                //if(){
+
+                //}
                 trackingArray[i] = {
                     first: "something",
-                    second: "something else",
+                    second: modified,
                     third: "one more thing"
                 }
             //}
