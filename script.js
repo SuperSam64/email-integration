@@ -513,7 +513,8 @@ async function showForm(){
                 var shipper;
                 var number;
                 var link;
-                //if(){
+                //if(shipper.includes(" ") || shipper.includes(",")){
+                  //  shipper = shipper
 
                 //}
                 trackingArray[i] = {
@@ -535,7 +536,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingArray[0].second;
+        trackingResult = modified;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
