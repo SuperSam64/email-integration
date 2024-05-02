@@ -506,13 +506,16 @@ async function showForm(){
         var trackingInput = formData.trackingNumbers.toLowerCase.split("\n")
         var trackingArray = [];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
-            if(trackingInput[i].replaceAll(" ","") != ""){
+            //if(trackingInput[i].replaceAll(" ","") != ""){
+                var shipper;
+                var number;
+                var link;
                 trackingArray[i] = {
                     first: "something",
                     second: "something else",
                     third: "one more thing"
                 }
-            }
+            //}
         }
         
         
