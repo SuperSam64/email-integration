@@ -504,10 +504,12 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingArray;
-        var trackingString = formData.trackingNumbers.split("\n");
-        if(trackingString.replaceAll(" ","") != "")
-        {
-            trackingArray.push(trackingString.trim());
+        var trackingList = formData.trackingNumbers.split("\n");
+        for ( var i = 0; i < trackingList.length; i ++ ) {
+            if(trackingList[i].replaceAll(" ","") != "")
+            {
+                trackingList[i].trim().push(trackingArray);
+            }
         }
         
         
