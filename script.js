@@ -510,7 +510,7 @@ async function showForm(){
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
                 var shipper;
-                var number = trackingInput[i]
+                var number = trackingInput[i].toString().toLowerCase().trim();
                 var link;
                 //if(number.includes(" ") || number.includes(",")){
                 //    number = number.replaceAll(","," ");
@@ -527,7 +527,7 @@ async function showForm(){
                 //}
                 trackingArray[i] = {
                     first: "something",
-                    second: number,
+                    second: "number",
                     third: "one more thing"
                 }
             //}
