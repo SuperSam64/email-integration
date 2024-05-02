@@ -527,7 +527,7 @@ async function showForm(){
                 //}
                 trackingArray[i] = {
                     first: "something",
-                    second: "number",
+                    second: trackingInput[i],
                     third: "one more thing"
                 }
             //}
