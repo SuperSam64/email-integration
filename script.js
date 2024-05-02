@@ -503,10 +503,21 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var myObject = {
-            first: "something",
-            second: "something else"
+        var trackingInput = formData.trackingNumbers.toLowerCase.split("\n")
+        var trackingArray = [];
+        for ( var i = 0; i < trackingInput.length; i ++ ) {
+            if(trackingInput[i].replaceAll(" ","") != ""){
+                var trackingObject = {
+                    first: "something",
+                    second: "something else",
+                    third: "one more thing"
+                }
+                trackingArray.push(trackingObject);
+            }
         }
+        
+        
+        
 
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
@@ -516,7 +527,7 @@ async function showForm(){
 
 
 
-        trackingResult = myObject.second;
+        trackingResult = trackingArray[0].second;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
