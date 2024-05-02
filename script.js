@@ -521,7 +521,13 @@ async function showForm(){
             yesorno = otherArray[i].replaceAll(","," ");
             yesorno = yesorno.replace(" ","|")
             yesorno = yesorno.replaceAll(" ","")
-            lastArray.push(yesorno);
+            if(yesorno.includes("|")){
+                shipper = yesorno.split("|")[1].toUpperCase
+            }
+            else {
+                shipper = "FedEx"
+            }
+            lastArray.push(shipper);
             
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
