@@ -505,6 +505,8 @@ async function showForm(){
     if(formData.orderCancelled == 2) {
         var trackingInput = formData.trackingNumbers.toLowercase()
         var trackingArray = [];
+        var shippers = ["USPS","UPS","DHL","FedEx"];
+        var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
                 var shipper;
