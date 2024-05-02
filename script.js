@@ -511,24 +511,32 @@ async function showForm(){
             var currentLine = trackingInput[i];
             if(1 == currentLine.trim().length > 0){
                 var shipper;
-                var number = "hello"//trackingInput[i].toString().toLowerCase().trim();
+                var number = currentLine.toLowerCase().trim();
                 var link;
-                //if(number.includes(" ") || number.includes(",")){
-                //    number = number.replaceAll(","," ");
-                //    number = number.replace(" ","|");
-                //      number = number.replaceAll(" ","");
-                //      shipper = number.split("|")[1];
-                //      number = number.split("|")[0];
-                //      for ( var i = 0; i < shippers.length; i ++ ) {
-                //        link = "unknown";  
-                //        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                //              link = links[i];
-                //        }
-                //  }
-                //}
+                
+                
+                
+                
+                if(number.includes(" ") || number.includes(",")){
+                    number = number.replaceAll(","," ");
+                    number = number.replace(" ","|");
+                    number = number.replaceAll(" ","");
+                    shipper = number.split("|")[1];
+                    number = number.split("|")[0];
+                    for ( var i = 0; i < shippers.length; i ++ ) {
+                        link = "unknown";  
+                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                        link = links[i];
+                        }
+                    }
+                }
+                
+                
+                
+                
                 trackingArray.push({
                     first: "something",
-                    second: currentLine.replaceAll(" ",""),
+                    second: "second",
                     third: "one more thing"
                 })
             }
