@@ -524,9 +524,13 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
                     for ( var i = 0; i < shippers.length; i ++ ) {
-                        link = number;
+                        
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '< href="'+ links[i] + number + '">' + number + '</a>';
+                        }
+                        else{
+                            link = shippers[i].toLowercase() + " !! " + shipper.toLowerCase();
+                            //link = number;
                         }
                     }
                 }
