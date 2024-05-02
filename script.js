@@ -506,7 +506,11 @@ async function showForm(){
         var trackingInput = formData.trackingNumbers.split("\n")
         var trackingArray = [];
         var shippers = ["USPS","UPS","DHL","FedEx"];
-        var links = ["usps.com","ups.com","dhl.com","fedex.com"];
+        var links = [
+            "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=",
+            "https://www.ups.com/track?trackNums=",
+            "https://webtrack.dhlglobalmail.com/orders?trackingNumber=",
+            "https://www.fedex.com/wtrk/track/?trknbr="];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i].toLowerCase().trim();
             if(1 == currentLine.length > 0){
