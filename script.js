@@ -508,17 +508,17 @@ async function showForm(){
         var shippers = ["USPS","UPS","DHL","FedEx"];
         var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
-            var currentLine = trackingInput[i];
-            if(1 == currentLine.trim().length > 0){
+            var currentLine = trackingInput[i].toLowerCase().trim();
+            if(1 == currentLine.length > 0){
                 var shipper;
-                var number = currentLine.toLowerCase().trim();
+                var number; //  = currentLine.toLowerCase().trim();
                 var link;
                 
                 
                 
                 
-                if(number.includes(" ") || number.includes(",")){
-                    number = number.replaceAll(","," ");
+                if(currentLine.includes(" ") || currentLine.includes(",")){
+                    number = currentLine.replaceAll(","," ");
                     number = number.replace(" ","|");
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
@@ -526,7 +526,7 @@ async function showForm(){
                     for ( var i = 0; i < shippers.length; i ++ ) {
                         link = "unknown";  
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                        link = links[i];
+                            link = links[i];
                         }
                     }
                 }
