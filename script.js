@@ -505,6 +505,11 @@ async function showForm(){
     if(formData.orderCancelled == 2) {
         var input = formData.trackingNumbers.split("\n");
         var otherArray = [];
+        var lastArray = [];
+        var shipper;
+        var trackingValue;
+        var yesorno
+        var link;
         for ( var i = 0; i < input.length; i ++ ) {	
             var temp = input[i].trim();
             output = temp;
@@ -513,8 +518,10 @@ async function showForm(){
             if(output != "") {otherArray.push(output)}
         }
         for ( var i = 0; i < otherArray.length; i ++ ) {	
-            var yesorno
-            if(otherArray[i].includes(" ")){yesorno = "yes"}else{yesorno = "no"}
+            yesorno = otherArray[i].replaceAll(","," ");
+            yesorno = yesorno.replace(" ","|")
+            yesorno = yesorno.replaceAll(" ","")
+            lastArray.push(yesorno);
             
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
