@@ -508,7 +508,7 @@ async function showForm(){
         var shippers = ["USPS","UPS","DHL","FedEx"];
         var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
-            //if(trackingInput[i].replaceAll(" ","") != ""){
+            if(trackingInput[i].replaceAll(" ","") != ""){
                 var shipper;
                 var number = "hello"//trackingInput[i].toString().toLowerCase().trim();
                 var link;
@@ -531,7 +531,7 @@ async function showForm(){
                     second: something,
                     third: "one more thing"
                 }
-            //}
+            }
         }
         
         
@@ -545,7 +545,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingArray[2].second;
+        trackingResult = trackingArray[3].second;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
