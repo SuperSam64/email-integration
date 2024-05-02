@@ -512,7 +512,7 @@ async function showForm(){
                 var trackingObject = [];
                 trackingObject.link = "https://www.fedex.com/wtrk/track/?trknbr="
                 trackingObject.shipper = "FedEx";
-                trackingObject.number = trackingList[i].trim().push;
+                trackingObject.number = trackingList[i].trim();
                 trackingArray.push(trackingObject);
             }
         }
