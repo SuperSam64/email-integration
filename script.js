@@ -510,7 +510,7 @@ async function showForm(){
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
                 var shipper;
-                var number = trackingInput[i]
+                var number = trackingInput[i].toString().toLowerCase().trim();
                 var link;
                 //if(number.includes(" ") || number.includes(",")){
                 //    number = number.replaceAll(","," ");
@@ -544,7 +544,7 @@ async function showForm(){
 
 
 
-        trackingResult = number;
+        trackingResult = trackingArray[3];
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
