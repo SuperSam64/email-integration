@@ -522,9 +522,9 @@ async function showForm(){
             yesorno = yesorno.replace(" ","|")
             yesorno = yesorno.replaceAll(" ","")
             if(yesorno.includes("|")){
-                shipper = yesorno.split("|")[1].toUpperCase
+                shipper = yesorno.split("|")[1].toUpperCase()
                 link = "dynamic"
-                trackingValue = yesorno.split("|")[0].toUpperCase
+                trackingValue = yesorno.split("|")[0].toUpperCase()
             }
             else {
                 shipper = "FedEx";
