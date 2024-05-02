@@ -503,35 +503,13 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var input = formData.trackingNumbers.split("\n");
-        var otherArray = [];
-        var lastArray = [];
-        var shipper = "FedEx";
-        var trackingValue = "placeholder";
-        var yesorno
-        var link = "www.fedex.com";
-        for ( var i = 0; i < input.length; i ++ ) {	
-            var temp = input[i].trim();
-            output = temp;
-            //output = output.replaceAll("[ ","");
-            //output = output.replaceAll(" ]","");
-            if(output != "") {
-                yesorno = otherArray[i].replaceAll(","," ");
-                yesorno = yesorno.replace(" ","|")
-                yesorno = yesorno.replaceAll(" ","")
-                if(yesorno.includes("|")){
-                    shipper = yesorno.split("|")[1].toUpperCase()
-                    link = "dynamic"
-                    trackingValue = yesorno.split("|")[0].toUpperCase()
-                }
-                else {
-                    shipper = "UPS";
-                    link = "www.ups.com";
-                    trackingValue = "placeholder";
-                }
-                lastArray.push(shipper + "-" + link + "-" + trackingValue + "//");
-            }
+        var trackingArray;
+        var trackingString = formData.trackingNumbers.split("\n");
+        if(trackingString.replaceAll(" ","") != "")
+        {
+            trackingArray.push(trackingString.trim());
         }
+        
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
@@ -540,7 +518,7 @@ async function showForm(){
 
 
 
-        trackingResult = lastArray;
+        trackingResult = trackingArray;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
