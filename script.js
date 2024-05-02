@@ -510,7 +510,7 @@ async function showForm(){
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
                 var shipper;
-                var number = trackingInput[i].toString().toLowerCase().trim();
+                var number = "hello"//trackingInput[i].toString().toLowerCase().trim();
                 var link;
                 //if(number.includes(" ") || number.includes(",")){
                 //    number = number.replaceAll(","," ");
