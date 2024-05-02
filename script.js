@@ -527,16 +527,29 @@ async function showForm(){
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
-                    for ( var i = 0; i < shippers.length; i ++ ) {
-                        
-                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            link = '< href="'+ links[i] + number + '">' + number + '</a>';
-                        }
-                        else{
-                            shippers[i];
-                        }
+                }
+                else {
+                    number = currentLine;
+                    if(number.substr(0,2).toLowerCase() == "1z"){
+                        shipper = "UPS";
+                    }
+                    else if(number.length >= 22){
+                        shipper = "DHL";
+                    }
+                    else {
+                        shipper = "FedEx";
                     }
                 }
+                for ( var i = 0; i < shippers.length; i ++ ) {
+                    
+                    if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                        link = '< href="'+ links[i] + number + '">' + number + '</a>';
+                    }
+                    else{
+                        shippers[i];
+                    }
+                }
+                
                 
                 
                 
@@ -549,7 +562,11 @@ async function showForm(){
             }
         }
         
-        
+        // lastly, if 2 tracking numbers and object1.shipper = object2.shipper, "with [shipper] tracking numbers X and Y"
+        //      else if only 1 tracking number, "with [shipper] tracking number X" 
+        //      else if 0 tracking numbers "and tracking will be provided soon via email"
+        //      else "and tracking has been provided below" => [shipper] tracking #[number]
+        //      call sections "trackingSection" and "groupTrackingSection"
         
 
         
