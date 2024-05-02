@@ -524,9 +524,9 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
                     for ( var i = 0; i < shippers.length; i ++ ) {
-                        link = "unknown";  
+                        link = number;
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            link = links[i];
+                            link = '< href="'+ links[i] + number + '">' + number + '</a>';
                         }
                     }
                 }
