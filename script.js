@@ -503,24 +503,11 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var trackingArray;
-        var trackingList = formData.trackingNumbers.split("\n");
-        var testString = "";
-        for ( var i = 0; i < trackingList.length; i ++ ) {
-            if(trackingList[i].replaceAll(" ","") != "")
-            {
-                var trackingObject = {
-                    link: "https://www.fedex.com/wtrk/track/?trknbr=",
-                    shipper: "FedEx",
-                    number: trackingList[i].trim()
-                }
-                trackingArray.push(trackingObject);
-            }
+        var myObject = {
+            first: "something",
+            second: "something else"
         }
-        for ( var i = 0; i < trackingArray.length; i ++ ) {
-            trackingArray[i].link = "this has changed";
-            testString = testString + trackingArray[i].link + "|" + trackingArray[i].shipper + "|" + trackingArray[i].number + "/";
-        }
+
         
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
@@ -529,7 +516,7 @@ async function showForm(){
 
 
 
-        trackingResult = testString;
+        trackingResult = myObject.second;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
