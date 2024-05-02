@@ -509,13 +509,21 @@ async function showForm(){
         var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             //if(trackingInput[i].replaceAll(" ","") != ""){
-                var modified = trackingInput[i].toLowerCase().trim()
                 var shipper;
-                var number;
+                var number = trackingInput[i].toString().toLowerCase().trim();
                 var link;
-                //if(shipper.includes(" ") || shipper.includes(",")){
-                  //  shipper = shipper
-
+                //if(number.includes(" ") || number.includes(",")){
+                //    number = number.replaceAll(","," ");
+                //    number = number.replace(" ","|");
+                //      number = number.replaceAll(" ","");
+                //      shipper = number.split("|")[1];
+                //      number = number.split("|")[0];
+                //      for ( var i = 0; i < shippers.length; i ++ ) {
+                //        link = "unknown";  
+                //        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                //              link = links[i];
+                //        }
+                //  }
                 //}
                 trackingArray[i] = {
                     first: "something",
@@ -536,7 +544,7 @@ async function showForm(){
 
 
 
-        trackingResult = modified;
+        trackingResult = number;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
