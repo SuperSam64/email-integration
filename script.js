@@ -509,14 +509,16 @@ async function showForm(){
         for ( var i = 0; i < trackingList.length; i ++ ) {
             if(trackingList[i].replaceAll(" ","") != "")
             {
-                var trackingObject = [];
-                trackingObject.link = "https://www.fedex.com/wtrk/track/?trknbr="
-                trackingObject.shipper = "FedEx";
-                trackingObject.number = trackingList[i].trim();
+                var trackingObject = {
+                    link: "https://www.fedex.com/wtrk/track/?trknbr=",
+                    shipper: "FedEx",
+                    number: trackingList[i].trim()
+                }
                 trackingArray.push(trackingObject);
             }
         }
         for ( var i = 0; i < trackingArray.length; i ++ ) {
+            trackingArray[i].link = "this has changed";
             testString = testString + trackingArray[i].link + "|" + trackingArray[i].shipper + "|" + trackingArray[i].number + "/";
         }
         
