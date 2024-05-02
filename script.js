@@ -523,11 +523,15 @@ async function showForm(){
             yesorno = yesorno.replaceAll(" ","")
             if(yesorno.includes("|")){
                 shipper = yesorno.split("|")[1].toUpperCase
+                link = "dynamic"
+                trackingValue = yesorno.split("|")[0].toUpperCase
             }
             else {
-                shipper = "FedEx"
+                shipper = "FedEx";
+                link = "www.fedex.com";
+                trackingValue = "placeholder";
             }
-            lastArray.push(shipper);
+            lastArray.push(shipper + "-" + link + "-" + trackingValue + "//");
             
         }
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
