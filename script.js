@@ -504,7 +504,7 @@ async function showForm(){
     ];
     if(formData.orderCancelled == 2) {
         var trackingInput = formData.trackingNumbers.toLowerCase.split("\n")
-        var trackingArray = [];
+        var trackingArray = [{}];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             if(trackingInput[i].replaceAll(" ","") != ""){
                 var trackingObject = {
