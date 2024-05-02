@@ -535,9 +535,9 @@ async function showForm(){
                 
                 
                 trackingArray.push({
-                    first: "something",
-                    second: "second",
-                    third: "one more thing"
+                    first: number,
+                    second: shipper,
+                    third: link
                 })
             }
         }
@@ -553,7 +553,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingArray[3].second;
+        trackingResult = trackingArray[3].number + " " + trackingArray[3].link + " " + trackingArray[3].shipper + " | ";
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
