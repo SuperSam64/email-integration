@@ -535,9 +535,9 @@ async function showForm(){
                 
                 
                 trackingArray.push({
-                    first: number,
-                    second: shipper,
-                    third: link
+                    number: number,
+                    shipper: shipper,
+                    link: link
                 })
             }
         }
