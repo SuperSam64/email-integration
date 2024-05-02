@@ -509,7 +509,7 @@ async function showForm(){
         var links = ["usps.com","ups.com","dhl.com","fedex.com"];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i];
-            if(1 == 1){//currentLine.trim().length > 0){
+            if(1 == currentLine.trim().length > 0){
                 var shipper;
                 var number = "hello"//trackingInput[i].toString().toLowerCase().trim();
                 var link;
@@ -526,11 +526,11 @@ async function showForm(){
                 //        }
                 //  }
                 //}
-                trackingArray[i] = {
+                trackingArray.push({
                     first: "something",
                     second: currentLine.replaceAll(" ",""),
                     third: "one more thing"
-                }
+                })
             }
         }
         
