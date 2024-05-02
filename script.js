@@ -506,34 +506,33 @@ async function showForm(){
         var input = formData.trackingNumbers.split("\n");
         var otherArray = [];
         var lastArray = [];
-        var shipper;
-        var trackingValue;
+        var shipper = "FedEx";
+        var trackingValue = "placeholder";
         var yesorno
-        var link;
+        var link = "www.fedex.com";
         for ( var i = 0; i < input.length; i ++ ) {	
             var temp = input[i].trim();
             output = temp;
             //output = output.replaceAll("[ ","");
             //output = output.replaceAll(" ]","");
-            if(output != "") {otherArray.push(output)}
-        }
-        for ( var i = 0; i < otherArray.length; i ++ ) {	
-            yesorno = otherArray[i].replaceAll(","," ");
-            yesorno = yesorno.replace(" ","|")
-            yesorno = yesorno.replaceAll(" ","")
-            if(yesorno.includes("|")){
-                shipper = yesorno.split("|")[1].toUpperCase()
-                link = "dynamic"
-                trackingValue = yesorno.split("|")[0].toUpperCase()
+            if(output != "") {
+                yesorno = otherArray[i].replaceAll(","," ");
+                yesorno = yesorno.replace(" ","|")
+                yesorno = yesorno.replaceAll(" ","")
+                if(yesorno.includes("|")){
+                    shipper = yesorno.split("|")[1].toUpperCase()
+                    link = "dynamic"
+                    trackingValue = yesorno.split("|")[0].toUpperCase()
+                }
+                else {
+                    shipper = "UPS";
+                    link = "www.ups.com";
+                    trackingValue = "placeholder";
+                }
+                lastArray.push(shipper + "-" + link + "-" + trackingValue + "//");
             }
-            else {
-                shipper = "FedEx";
-                link = "www.fedex.com";
-                trackingValue = "placeholder";
-            }
-            lastArray.push(shipper + "-" + link + "-" + trackingValue + "//");
-            
         }
+        
         // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
