@@ -528,7 +528,7 @@ async function showForm(){
                 //}
                 trackingArray[i] = {
                     first: "something",
-                    second: currentLine,
+                    second: currentLine.replaceAll(" ",""),
                     third: "one more thing"
                 }
             //}
