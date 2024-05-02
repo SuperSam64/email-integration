@@ -525,10 +525,10 @@ async function showForm(){
                 //        }
                 //  }
                 //}
-                var something = trackingInput[1]
+                var something = trackingInput[i]
                 trackingArray[i] = {
                     first: "something",
-                    second: trackingInput[i],
+                    second: something,
                     third: "one more thing"
                 }
             //}
@@ -545,7 +545,7 @@ async function showForm(){
 
 
 
-        trackingResult = something//trackingArray[3].second;
+        trackingResult = trackingArray[2].second;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
