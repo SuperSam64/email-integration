@@ -528,7 +528,7 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
                 }
-                else {
+                /*else {
                     number = currentLine;
                     if(number.substr(0,2).toLowerCase() == "1z"){
                         shipper = "UPS";
@@ -539,7 +539,7 @@ async function showForm(){
                     else {
                         shipper = "FedEx";
                     }
-                }
+                }*/
                 for ( var i = 0; i < shippers.length; i ++ ) {
                     
                     if(shippers[i].toLowerCase() == shipper.toLowerCase()){
