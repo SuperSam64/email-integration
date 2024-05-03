@@ -535,8 +535,9 @@ async function showForm(){
                         }
                     }
                 }
+                // if no shipper has been specified
                 else {
-                    number = currentLine.trim();
+                    number = currentLine;
                     if(number.substr(0,2).toLowerCase() == "1z"){
                         shipper = "UPS";
                     }
@@ -547,10 +548,11 @@ async function showForm(){
                         shipper = "FedEx";
                     }
                 }
+                // buiild link
                 for ( var i = 0; i < shippers.length; i ++ ) {
-                    if(shippers[i] == shipper){
-                        link = '<a href="'+ links[i] + number + '">' + number + '</a>';
-                    }
+                    //if(shippers[i] == shipper){
+                        link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
+                    //}
                 }
                 trackingArray.push({
                     number: number,
