@@ -528,7 +528,7 @@ async function showForm(){
                             link = '< href="'+ links[i] + number + '">' + number + '</a>';
                         }
                         else{
-                            link = shippers[i];
+                            link = number;
                         }
                     }
                 }
