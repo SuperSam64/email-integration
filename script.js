@@ -513,22 +513,25 @@ async function showForm(){
             "https://www.fedex.com/wtrk/track/?trknbr="];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i].toLowerCase().trim();
+            // If this line is not empty
             if(1 == currentLine.length > 0){
                 var shipper;
                 var number; //  = currentLine.toLowerCase().trim();
                 var link;
+                // If this line has a shipper specified
                 if(currentLine.includes(" ") || currentLine.includes(",")){
                     number = currentLine.replaceAll(","," ");
                     number = number.replace(" ","|");
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
+                    // check all shippers to see which one matches
                     for ( var i = 0; i < shippers.length; i ++ ) {
+                        // by default, no link
+                        link = number;
+                        // if a match is found
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '<a href="'+ links[i] + number + '">' + number + '</a>';
-                        }
-                        else{
-                            link = number;
                         }
                     }
                 }
