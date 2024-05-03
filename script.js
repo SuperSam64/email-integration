@@ -517,50 +517,50 @@ async function showForm(){
                 var shipper;
                 var number; //  = currentLine.toLowerCase().trim();
                 var link;
-                
-                
-                
-                
                 if(currentLine.includes(" ") || currentLine.includes(",")){
                     number = currentLine.replaceAll(","," ");
                     number = number.replace(" ","|");
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
-                /*}
-                else {
-                    number = currentLine;
-                    /*if(number.substr(0,2).toLowerCase() == "1z"){
-                        shipper = "UPS";
-                    }
-                    else if(number.length >= 22){
-                        shipper = "DHL";
-                    }
-                    else {
-                        shipper = "FedEx";
-                    }
-                }*/
-                for ( var i = 0; i < shippers.length; i ++ ) {
+                    for ( var i = 0; i < shippers.length; i ++ ) {
                     
-                    if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                        link = '< href="'+ links[i] + number + '">' + number + '</a>';
-                    }
-                    else{
-                        shippers[i];
+                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                            link = '< href="'+ links[i] + number + '">' + number + '</a>';
+                        }
+                        else{
+                            shippers[i];
+                        }
                     }
                 }
-            }
-                
-                
-                
-                
-                
                 trackingArray.push({
                     number: number,
                     shipper: shipper,
                     link: link
                 })
             }
+            /*}
+            else {
+                number = currentLine;
+                /*if(number.substr(0,2).toLowerCase() == "1z"){
+                    shipper = "UPS";
+                }
+                else if(number.length >= 22){
+                    shipper = "DHL";
+                }
+                else {
+                    shipper = "FedEx";
+                }
+            }*/
+                
+            
+                
+                
+                
+                
+                
+            
+            
         }
         
         // lastly, if 2 tracking numbers and object1.shipper = object2.shipper, "with [shipper] tracking numbers X and Y"
