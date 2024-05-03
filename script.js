@@ -524,43 +524,32 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
                     for ( var i = 0; i < shippers.length; i ++ ) {
-                    
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '< href="'+ links[i] + number + '">' + number + '</a>';
                         }
                         else{
-                            shippers[i];
+                            link = shippers[i];
                         }
                     }
                 }
+                /*else {
+                    number = currentLine;
+                    /*if(number.substr(0,2).toLowerCase() == "1z"){
+                        shipper = "UPS";
+                    }
+                    else if(number.length >= 22){
+                        shipper = "DHL";
+                    }
+                    else {
+                        shipper = "FedEx";
+                    }
+                }*/
                 trackingArray.push({
                     number: number,
                     shipper: shipper,
                     link: link
                 })
-            }
-            /*}
-            else {
-                number = currentLine;
-                /*if(number.substr(0,2).toLowerCase() == "1z"){
-                    shipper = "UPS";
-                }
-                else if(number.length >= 22){
-                    shipper = "DHL";
-                }
-                else {
-                    shipper = "FedEx";
-                }
-            }*/
-                
-            
-                
-                
-                
-                
-                
-            
-            
+            }                 
         }
         
         // lastly, if 2 tracking numbers and object1.shipper = object2.shipper, "with [shipper] tracking numbers X and Y"
