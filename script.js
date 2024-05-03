@@ -525,16 +525,16 @@ async function showForm(){
                     number = number.split("|")[0];
                     for ( var i = 0; i < shippers.length; i ++ ) {
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            link = '< href="'+ links[i] + number + '">' + number + '</a>';
+                            link = '<a href="'+ links[i] + number + '">' + number + '</a>';
                         }
                         else{
                             link = number;
                         }
                     }
                 }
-                /*else {
-                    number = currentLine;
-                    /*if(number.substr(0,2).toLowerCase() == "1z"){
+                else {
+                    number = currentLine.trim();
+                    if(number.substr(0,2).toLowerCase() == "1z"){
                         shipper = "UPS";
                     }
                     else if(number.length >= 22){
@@ -543,7 +543,12 @@ async function showForm(){
                     else {
                         shipper = "FedEx";
                     }
-                }*/
+                }
+                for ( var i = 0; i < shippers.length; i ++ ) {
+                    if(shippers[i] == shipper){
+                        link = '<a href="'+ links[i] + number + '">' + number + '</a>';
+                    }
+                }
                 trackingArray.push({
                     number: number,
                     shipper: shipper,
@@ -567,7 +572,7 @@ async function showForm(){
 
 
 
-        trackingResult = trackingArray[3].number + " " + trackingArray[3].link + " " + trackingArray[3].shipper + " | ";
+        trackingResult = trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
