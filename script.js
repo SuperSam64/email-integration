@@ -569,7 +569,7 @@ async function showForm(){
         // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
         // https://www.fedex.com/wtrk/track/?trknbr=  other
         // https://www.ups.com/track?trackNums=    1Z
-
+        // CHARCODEAT
 
 
         trackingResult = trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
