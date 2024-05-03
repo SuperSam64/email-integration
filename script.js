@@ -539,7 +539,7 @@ async function showForm(){
                     else {
                         shipper = "FedEx";
                     }
-                }
+                }*/
                 for ( var i = 0; i < shippers.length; i ++ ) {
                     
                     if(shippers[i].toLowerCase() == shipper.toLowerCase()){
@@ -547,8 +547,9 @@ async function showForm(){
                     }
                     else{
                         shippers[i];
-                    }*/
+                    }
                 }
+            }
                 
                 
                 
