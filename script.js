@@ -527,7 +527,7 @@ async function showForm(){
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0];
-                }
+                /*}
                 else {
                     number = currentLine;
                     /*if(number.substr(0,2).toLowerCase() == "1z"){
@@ -538,7 +538,7 @@ async function showForm(){
                     }
                     else {
                         shipper = "FedEx";
-                    }*/
+                    }
                 }
                 for ( var i = 0; i < shippers.length; i ++ ) {
                     
@@ -547,7 +547,7 @@ async function showForm(){
                     }
                     else{
                         shippers[i];
-                    }
+                    }*/
                 }
                 
                 
