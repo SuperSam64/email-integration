@@ -513,86 +513,88 @@ async function showForm(){
 
 
 
+        if (formData.trackingNumbers.trim().length == 0){
 
+            var shippers = [
+                "USPS",
+                "UPS",
+                "DHL",
+                "FedEx"];
+            var links = [
+                "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=",
+                "https://www.ups.com/track?trackNums=",
+                "https://webtrack.dhlglobalmail.com/orders?trackingNumber=",
+                "https://www.fedex.com/wtrk/track/?trknbr="
+            ];
+            var trackingInput = formData.trackingNumbers.split("\n")
+            var trackingArray = [];
+            var output = "nothing!"; ///////////////////////////////////////////////////////////////////////////////////////
+            for ( var line = 0; line < trackingInput.length; line ++ ) {
+                var currentLine = trackingInput[line].toLowerCase().trim();
+                if (currentLine.length > 0){
+                //   everything below here
+                
 
-        var shippers = [
-            "USPS",
-            "UPS",
-            "DHL",
-            "FedEx"];
-        var links = [
-            "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=",
-            "https://www.ups.com/track?trackNums=",
-            "https://webtrack.dhlglobalmail.com/orders?trackingNumber=",
-            "https://www.fedex.com/wtrk/track/?trknbr="
-        ];
-        var trackingInput = formData.trackingNumbers.split("\n")
-        var trackingArray = [];
-        var output = "nothing!"; ///////////////////////////////////////////////////////////////////////////////////////
-        for ( var line = 0; line < trackingInput.length; line ++ ) {
-            var currentLine = trackingInput[line].toLowerCase().trim();
-            if (currentLine.length > 0){
-            //   everything below here
-            
-
-                if(currentLine.includes(" ") || currentLine.includes(",")){
-                    number = currentLine.replaceAll(","," ");
-                    number = number.replace(" ","|");
-                    number = number.replaceAll(" ","");
-                    shipper = number.split("|")[1];
-                    number = number.split("|")[0]
-                    var unknown = true;
-                    for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
-                        if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
-                            shipper = "shipper" + shippers[shipperIndex];
-                            link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
-                            unknown = false;
+                    if(currentLine.includes(" ") || currentLine.includes(",")){
+                        number = currentLine.replaceAll(","," ");
+                        number = number.replace(" ","|");
+                        number = number.replaceAll(" ","");
+                        shipper = number.split("|")[1];
+                        number = number.split("|")[0]
+                        var unknown = true;
+                        for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
+                            if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
+                                shipper = shippers[shipperIndex];
+                                link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
+                                unknown = false;
+                            }
                         }
-                    }
-                    if(unknown == true){
-                        shipper = "Unknown";
-                        link = number;
-                    }
-                    
-                    
-                }
-                else {
-                    number = currentLine;
-                    if(number.substr(0,2).toLowerCase() == "1z"){
-                        shipper = "UPS";
-                    }
-                    else if(number.length >= 22){
-                        shipper = "DHL";
+                        if(unknown == true){
+                            shipper = "Unknown";
+                            link = number;
+                        }
+                        
+                        
                     }
                     else {
-                        shipper = "FedEx";
-                    }
-                    for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
-                        if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
-                            link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
+                        number = currentLine;
+                        if(number.substr(0,2).toLowerCase() == "1z"){
+                            shipper = "UPS";
                         }
+                        else if(number.length >= 22){
+                            shipper = "DHL";
+                        }
+                        else {
+                            shipper = "FedEx";
+                        }
+                        for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
+                            if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
+                                link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
+                            }
+                        }
+
+
+
                     }
-
-
-
+                //   everything above here
                 }
-            //   everything above here
+                trackingArray.push({
+                    number: number,
+                    shipper: shipper,
+                    link: link
+                })
             }
-            trackingArray.push({
-                number: number,
-                shipper: shipper,
-                link: link
-            })
+
+
+
+
+            output = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+
+
         }
-
-
-
-
-        output = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
-
-
-
-
+        else {
+            output = "";
+        }
 
 
 
