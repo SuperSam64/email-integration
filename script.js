@@ -631,7 +631,17 @@ async function cancellationForm(newMessage){
     var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
-        Missive.Compose({})
+        Missive.compose({
+                deliver:false,
+                mailto: {
+                    subject: "Re: order #" + formData.orderNumber,
+                    body: fullString,
+                    to_fields:[{
+                        address: formData.emailAddress,
+                        name:formData.firstName
+                    }]
+                }
+            })
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
     else {
