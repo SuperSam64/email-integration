@@ -631,12 +631,13 @@ async function cancellationForm(newMessage){
     var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
-        //Missive.Compose({})
+        Missive.Compose({})
+        // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
+    }
+    else {
+        // do this if it is a reply rather than a new message thread
     }
     $("#body1").text(fullString);
-    // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
-    // have separate for order cancellation or subscription cancellation
-    //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
     cancellationForm(true);
