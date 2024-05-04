@@ -458,7 +458,7 @@ async function cancellationForm(newMessage){
         fields: [{
             data: {
                 name: "newMessage",
-                value: newMessage,
+                value: true,
             }
         },{
             type: "input",
@@ -631,12 +631,7 @@ async function cancellationForm(newMessage){
     var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
-        Missive.Compose({
-            deliver: false,
-            mailto: {
-                subject = formData.orderNumber
-            }
-        })
+        //Missive.Compose({})
     }
     $("#body1").text(fullString);
     // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
@@ -644,7 +639,7 @@ async function cancellationForm(newMessage){
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
-    cancellationForm(false);
+    cancellationForm(true);
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
