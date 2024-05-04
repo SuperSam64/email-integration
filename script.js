@@ -513,7 +513,7 @@ async function showForm(){
 
 
 
-        if (formData.trackingNumbers.trim().length == 0){
+        if (formData.trackingNumbers.trim().length > 0){
 
             var shippers = [
                 "USPS",
