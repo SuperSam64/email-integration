@@ -545,14 +545,16 @@ async function showForm(){
                     for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
                         if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
                             shipper = "shipper" + shippers[shipperIndex];
+                            link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
                             unknown = false;
                         }
                     }
                     if(unknown == true){
                         shipper = "Unknown";
+                        link = number;
                     }
-
-                    output = output + "[" + number + " | " + shipper + "]"
+                    
+                    output = output + link;
                 }
                 else {
                     number = currentLine;
@@ -565,9 +567,14 @@ async function showForm(){
                     else {
                         shipper = "FedEx";
                     }
+                    for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
+                        if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
+                            link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
+                        }
+                    }
 
 
-                    output = output + "[" + number + " | " + shipper + "]";
+                    output = output + link;
                 }
 
 
