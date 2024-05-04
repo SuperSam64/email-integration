@@ -552,13 +552,14 @@ async function showForm(){
                         shipper = "FedEx";
                     }
                 }
-            }
+            test = test + " " + shipper
                 // buiid link
  //             for ( var i = 0; i < shippers.length; i ++ ) {
                     //if(shippers[i] == shipper){
  //                     link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
                     //}
  //             }
+            }
                 // push tracking details to object array
  //             trackingArray.push({
  //                 number: number,
