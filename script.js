@@ -529,8 +529,8 @@ async function showForm(){
         var trackingInput = formData.trackingNumbers.split("\n")
         var trackingArray = [];
         var output = "nothing!"; ///////////////////////////////////////////////////////////////////////////////////////
-        for ( var i = 0; i < trackingInput.length; i ++ ) {
-            var currentLine = trackingInput[i].toLowerCase().trim();
+        for ( var line = 0; line < trackingInput.length; line ++ ) {
+            var currentLine = trackingInput[line].toLowerCase().trim();
             if (currentLine.length > 0){
             //   everything below here
             
@@ -542,7 +542,7 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0]
                     //var unknown = true;
-                    for ( var i = 0; i < shippers.length; i ++ ){
+                    for ( var shipperIndex = 0; i < shippers.length; shipperIndex ++ ){
                         //if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             shipper = "shipper" + "!"//shippers[i];
                             //unknown = false;
