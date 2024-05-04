@@ -542,7 +542,7 @@ async function showForm(){
                     shipper = number.split("|")[1];
                     number = number.split("|")[0]
                     //var unknown = true;
-                    for ( var shipperIndex = 0; i < shippers.length; shipperIndex ++ ){
+                    for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
                         //if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             shipper = "shipper" + "!"//shippers[i];
                             //unknown = false;
