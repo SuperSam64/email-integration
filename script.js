@@ -519,10 +519,11 @@ async function showForm(){
                 var shipper;
                 var number; //  = currentLine.toLowerCase().trim();
                 var link;
-                
+            test = "1. " + currentLine.length + " "
             
             // If this line has a shipper specified
                 if(currentLine.includes(" ") || currentLine.includes(",")){
+                    test = test + "2. " + "contains a comma "
                     number = currentLine.replaceAll(","," ");
                     number = number.replace(" ","|");
                     number = number.replaceAll(" ","");
@@ -530,11 +531,13 @@ async function showForm(){
                     number = number.split("|")[0];
                     // check all shippers to see which one matches
                     for ( var i = 0; i < shippers.length; i ++ ) {
+                        test = test + "3. " + shippers[i] + " & " + shipper + " "
                         // by default, no link
                         link = number;
                         // if a match is found
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '<a href="'+ links[i] + number + '">' + number + '</a>';
+                            test = test + "4. " + "this is a link ";
                         }
                     }
                 }
@@ -552,9 +555,8 @@ async function showForm(){
                         shipper = "FedEx";
                     }
                 }
-            test = test + " " + shipper
                 // buiid link
- //             for ( var i = 0; i < shippers.length; i ++ ) {
+                //for ( var i = 0; i < shippers.length; i ++ ) {
                     //if(shippers[i] == shipper){
  //                     link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
                     //}
