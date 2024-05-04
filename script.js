@@ -457,7 +457,6 @@ async function showForm(){
             label: "Submit!"
         }],
         fields: [{
-            type: "input",
             data: {
                 name: "showName",
                 value: showName,
