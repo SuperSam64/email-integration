@@ -503,90 +503,71 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
     ];
     if(formData.orderCancelled == 2) {
-        var trackingInput = formData.trackingNumbers.split("\n")
-        var trackingArray = [];
-        var shippers = ["USPS","UPS","DHL","FedEx"];
-        var test;
+
+
+
+
+
+
+
+
+
+
+
+
+        var shippers = [
+            "USPS",
+            "UPS",
+            "DHL",
+            "FedEx"];
         var links = [
             "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=",
             "https://www.ups.com/track?trackNums=",
             "https://webtrack.dhlglobalmail.com/orders?trackingNumber=",
-            "https://www.fedex.com/wtrk/track/?trknbr="];
+            "https://www.fedex.com/wtrk/track/?trknbr="
+        ];
+        var trackingInput = formData.trackingNumbers.split("\n")
+        var trackingArray = [];
+        var output; ///////////////////////////////////////////////////////////////////////////////////////
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i].toLowerCase().trim();
-            // If this line is not empty
-            if(1 == currentLine.length > 0){
-                var shipper;
-                var number; //  = currentLine.toLowerCase().trim();
-                var link;
-            test = "1. " + currentLine.length + " "
+            if (currentLine.length > 0){
+            //   everything below here
             
-            // If this line has a shipper specified
+
                 if(currentLine.includes(" ") || currentLine.includes(",")){
-                    test = test + "2. " + "contains a comma "
-                    number = currentLine.replaceAll(","," ");
-                    number = number.replace(" ","|");
-                    number = number.replaceAll(" ","");
-                    shipper = number.split("|")[1];
-                    number = number.split("|")[0];
-                    // check all shippers to see which one matches
-                    for ( var i = 0; i < shippers.length; i ++ ) {
-                        test = test + "3. " + shippers[i] + " & " + shipper + " "
-                        // by default, no link
-                        link = number;
-                        // if a match is found
-                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            link = '<a href="'+ links[i] + number + '">' + number + '</a>';
-                            test = test + "4. " + "this is a link ";
-                        }
-                    }
+                    output = output + "Just a number |"
                 }
-            
-                // if no shipper has been specified
                 else {
-                    number = currentLine;
-                    if(number.substr(0,2).toLowerCase() == "1z"){
-                        shipper = "UPS";
-                    }
-                    else if(number.length >= 22){
-                        shipper = "DHL";
-                    }
-                    else {
-                        shipper = "FedEx";
-                    }
+                    output = output + "Needs to be split | "
                 }
-                // buiid link
-                //for ( var i = 0; i < shippers.length; i ++ ) {
-                    //if(shippers[i] == shipper){
- //                     link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
-                    //}
- //             }
+
+
+
+
+
+
+
+
+
+
+            //   everything above here
             }
-                // push tracking details to object array
- //             trackingArray.push({
- //                 number: number,
- //                 shipper: shipper,
- //                 link: link
- //             })
- //         }                 
- //     }
-        
-        // lastly, if 2 tracking numbers and object1.shipper = object2.shipper, "with [shipper] tracking numbers X and Y"
-        //      else if only 1 tracking number, "with [shipper] tracking number X" 
-        //      else if 0 tracking numbers "and tracking will be provided soon via email"
-        //      else "and tracking has been provided below" => [shipper] tracking #[number]
-        //      call sections "trackingSection" and "groupTrackingSection"
-        
-
-        
-        // USPS = https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=, appended by ,USPS
-        // https://webtrack.dhlglobalmail.com/orders?trackingNumber=  length 26
-        // https://www.fedex.com/wtrk/track/?trknbr=  other
-        // https://www.ups.com/track?trackNums=    1Z
-        // CHARCODEAT
-
         }
-        trackingResult = test       //   trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
+
+
+
+
+
+
+
+
+
+
+
+
+
+        trackingResult = output;
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
