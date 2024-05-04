@@ -535,7 +535,7 @@ async function showForm(){
             //   everything below here
             
 
-                if(currentLine.includes(" ") || currentLine.includes(",")){
+                /*if(currentLine.includes(" ") || currentLine.includes(",")){
                     number = currentLine.replaceAll(","," ");
                     number = number.replace(" ","|");
                     number = number.replaceAll(" ","");
@@ -554,7 +554,7 @@ async function showForm(){
 
                     output = output + "[" + number + " | " + shipper + "]"
                 }
-                else {
+                else {*/
                     number = currentLine;
                     if(number.substr(0,2).toLowerCase() == "1z"){
                         shipper = "UPS";
@@ -568,7 +568,7 @@ async function showForm(){
 
 
                     output = output + "[" + number + " | " + shipper + "]";
-                }
+                //}
 
 
 
