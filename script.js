@@ -536,7 +536,8 @@ async function showForm(){
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '<a href="'+ links[i] + number + '">' + number + '</a>';
                         }
-                    } test = shippers[i] + "|" + shipper;
+                        test = shippers[i].toLowerCase() + "|" + shipper.toLowerCase();
+                    }
                 }
             }
                 // if no shipper has been specified
