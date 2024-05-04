@@ -588,19 +588,20 @@ async function showForm(){
 
 
             if(trackingArray.length == 1){
-                trackingResult = shipper + " tracking #" + trackingArray[0].link + ".";
+                trackingResult = shipper + " tracking #" + trackingArray[0].link + " and can no longer be cancelled";
                 trackingResult = trackingResult.replaceAll("Unknown ","");
             }
             else if (trackingArray.length == 2 && trackingArray[0].shipper == trackingArray[1].shipper){
                 
-                    trackingResult = shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + ".";
+                    trackingResult = shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + " and can no longer be cancelled.";
                     trackingResult = trackingResult.replaceAll("Unknown ","");
                 
             }
             else {
                 for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
-                    trackingFooter = trackingFooter + "<br>" + shipper + " tracking: #" + trackingArray[trackingObject].link
+                    trackingFooter = trackingFooter + "<br>" + trackingArray[trackingObject].shipper + " tracking: #" + trackingArray[trackingObject].link
                 }
+                trackingFooter = "<br>" + trackingFooter;
                 trackingFooter = trackingFooter.replaceAll("Unknown tracking #","Tracking #");
                 trackingFooter = trackingFooter.replaceAll("Unknown ","");
             }
