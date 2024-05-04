@@ -536,7 +536,7 @@ async function showForm(){
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '<a href="'+ links[i] + number + '">' + number + '</a>';
                         }
-                        test = shipper.toLowerCase()// + "|" + shipper.toLowerCase();
+                        test = test + shippers[i].toLowerCase() + "|" + shipper.toLowerCase() + "}}";
                     }
                 }
             }
