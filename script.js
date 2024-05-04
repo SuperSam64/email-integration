@@ -644,7 +644,7 @@ async function cancellationForm(newMessage){
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
-    cancellationForm(true);
+    cancellationForm(false);
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
