@@ -554,7 +554,7 @@ async function showForm(){
                         link = number;
                     }
                     
-                    output = output + link;
+                    
                 }
                 else {
                     number = currentLine;
@@ -574,26 +574,21 @@ async function showForm(){
                     }
 
 
-                    output = output + link;
+
                 }
-
-
-
-
-
-
-
-
-
-
             //   everything above here
             }
+            trackingArray.push({
+                number: number,
+                shipper: shipper,
+                link: link
+            })
         }
 
 
 
 
-
+        output = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
 
 
 
