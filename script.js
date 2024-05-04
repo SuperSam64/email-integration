@@ -547,7 +547,18 @@ async function showForm(){
                 }
                 else {
                     number = currentLine;
-                    output = output + "[" + number + " | shipping options]"
+                    if(number.substr(0,2).toLowerCase() == "1z"){
+                        shipper = "UPS";
+                    }
+                    else if(number.length >= 22){
+                        shipper = "DHL";
+                    }
+                    else {
+                        shipper = "FedEx";
+                    }
+
+
+                    output = output + "[" + number + " | " + shipper + "]";
                 }
 
 
