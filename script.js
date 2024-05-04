@@ -599,7 +599,7 @@ async function showForm(){
             }
             else {
                 for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
-                    trackingFooter = "<br>" + shipper + " tracking: #" + trackingArray[trackingObject].link
+                    trackingFooter = trackingFooter + "<br>" + shipper + " tracking: #" + trackingArray[trackingObject].link
                 }
                 trackingFooter = trackingFooter.replaceAll("Unknown tracking #","Tracking #");
                 trackingFooter = trackingFooter.replaceAll("Unknown ","");
