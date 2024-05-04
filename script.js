@@ -402,7 +402,7 @@ function insertSignature(closing){
     }
     Missive.composeInConversation(emailDetails);
 }
-async function showForm(){
+async function cancellationForm(newMessage){
     {/* ---- MISSIVE COLORS ----
         --Blue--
         {#005CD4
@@ -446,7 +446,6 @@ async function showForm(){
         #000000
         */
     }// ------------------------
-    var showName = false;
     const formData = await Missive.openForm({
         name: "Cancellation",
         buttons: [{
@@ -458,12 +457,12 @@ async function showForm(){
         }],
         fields: [{
             data: {
-                name: "showName",
-                value: showName,
+                name: "newMessage",
+                value: newMessage,
             }
         },{
             type: "input",
-            scope: {showName: true},
+            scope: {newMessage: true},
             data: {
                 name: "customerName",
                 placeholder: "Customer's first name",
@@ -471,6 +470,7 @@ async function showForm(){
             }
         },{
             type: "input",
+            scope: {newMessage: true},
             data: {
                 name: "emailAddress",
                 placeholder: "Customer's email address",
@@ -479,6 +479,7 @@ async function showForm(){
             }
         },{
             type: "input",
+            scope: {newMessage: true},
             data: {
                 name: "orderNumber",
                 placeholder: "Order number",
@@ -628,13 +629,22 @@ async function showForm(){
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
     var closing = " Let me know if you need further assistance. Have a great day!"
     var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+    // formData.customerName, formData.emailAddress, formData.orderNumber
+    if(formData.newMessage == true){
+        Missive.Compose({
+            deliver: false,
+            mailto: {
+                subject = formData.orderNumber
+            }
+        })
+    }
     $("#body1").text(fullString);
     // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
     // have separate for order cancellation or subscription cancellation
     //return Missive.openForm(formData); // this does not work, replace with something that will pass the object to a variable
 }
 function cancellationReply() {
-    showForm();
+    cancellationForm(true);
 }
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
