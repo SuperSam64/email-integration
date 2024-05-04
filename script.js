@@ -541,7 +541,16 @@ async function showForm(){
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0]
-                    
+                    var unknown = true;
+                    for ( var i = 0; i < shippers.length; i ++ ){
+                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                            shipper = shippers[i];
+                            unknown = false;
+                        }
+                    }
+                    if(unknown == true){
+                        shipper = "Unknown";
+                    }
 
                     output = output + "[" + number + " | " + shipper + "]"
                 }
