@@ -504,18 +504,7 @@ async function showForm(){
         "We apologize as this order has already shipped from our warehouse"
     ];
     if(formData.orderCancelled == 2) {
-
-
-
-
-
-
-
-
-
-
         if (formData.trackingNumbers.trim().length > 0){
-
             var shippers = [
                 "USPS",
                 "UPS",
@@ -532,9 +521,6 @@ async function showForm(){
             for ( var line = 0; line < trackingInput.length; line ++ ) {
                 var currentLine = trackingInput[line].toLowerCase().trim();
                 if (currentLine.length > 0){
-                //   everything below here
-                
-
                     if(currentLine.includes(" ") || currentLine.includes(",")){
                         number = currentLine.replaceAll(","," ");
                         number = number.replace(" ","|");
@@ -553,8 +539,6 @@ async function showForm(){
                             shipper = "Unknown";
                             link = number;
                         }
-                        
-                        
                     }
                     else {
                         number = currentLine;
@@ -572,11 +556,7 @@ async function showForm(){
                                 link = '<a href="' + links[shipperIndex] + number + '">' + number + '</a>'
                             }
                         }
-
-
-
                     }
-                //   everything above here
                 }
                 trackingArray.push({
                     number: number,
@@ -584,18 +564,13 @@ async function showForm(){
                     link: link
                 })
             }
-//---
-
-
             if(trackingArray.length == 1){
-                trackingResult = " with " + shipper + " tracking #" + trackingArray[0].link + " and can no longer be cancelled";
+                trackingResult = " with " + shipper + " tracking #" + trackingArray[0].link + ", and can no longer be cancelled";
                 trackingResult = trackingResult.replaceAll("Unknown ","");
             }
             else if (trackingArray.length == 2 && trackingArray[0].shipper == trackingArray[1].shipper){
-                
-                    trackingResult = " with " + shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + " and can no longer be cancelled.";
-                    trackingResult = trackingResult.replaceAll("Unknown ","");
-                
+                trackingResult = " with " + shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + ", and can no longer be cancelled.";
+                trackingResult = trackingResult.replaceAll("Unknown ","");
             }
             else {
                 for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
@@ -606,19 +581,11 @@ async function showForm(){
                 trackingFooter = trackingFooter.replaceAll("Unknown tracking #","Tracking #");
                 trackingFooter = trackingFooter.replaceAll("Unknown ","");
             }
-            
-
-
         }
         else {
             trackingResult = " and can no longer be cancelled; tracking will be provided soon via email.";
             trackingFooter = "";
         }
-
-
-
-
-
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
