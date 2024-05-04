@@ -588,7 +588,7 @@ async function showForm(){
 
 
             if(trackingArray.length == 1){
-                trackingResult = shipper + " tracking #" + trackingArray[0].link + " and can no longer be cancelled";
+                trackingResult = " with " + shipper + " tracking #" + trackingArray[0].link + " and can no longer be cancelled";
                 trackingResult = trackingResult.replaceAll("Unknown ","");
             }
             else if (trackingArray.length == 2 && trackingArray[0].shipper == trackingArray[1].shipper){
