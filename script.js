@@ -528,7 +528,7 @@ async function showForm(){
         ];
         var trackingInput = formData.trackingNumbers.split("\n")
         var trackingArray = [];
-        var output; ///////////////////////////////////////////////////////////////////////////////////////
+        var output = "nothing!"; ///////////////////////////////////////////////////////////////////////////////////////
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i].toLowerCase().trim();
             if (currentLine.length > 0){
