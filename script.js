@@ -536,10 +536,17 @@ async function showForm(){
             
 
                 if(currentLine.includes(" ") || currentLine.includes(",")){
-                    output = output + "Just a number |"
+                    number = currentLine.replaceAll(","," ");
+                    number = number.replace(" ","|");
+                    number = number.replaceAll(" ","");
+                    shipper = number.split("|")[1];
+                    number = number.split("|")[0]
+                    
+
+                    output = output + "[" + number + " | " + shipper + "]"
                 }
                 else {
-                    output = output + "Needs to be split | "
+                    output = output + "Just a number | "
                 }
 
 
