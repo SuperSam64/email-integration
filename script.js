@@ -541,16 +541,16 @@ async function showForm(){
                     number = number.replaceAll(" ","");
                     shipper = number.split("|")[1];
                     number = number.split("|")[0]
-                    //var unknown = true;
+                    var unknown = true;
                     for ( var shipperIndex = 0; shipperIndex < shippers.length; shipperIndex ++ ){
-                        //if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            shipper = "shipper" + "!"//shippers[i];
-                            //unknown = false;
-                        //}
-                    }/*
+                        if(shippers[shipperIndex].toLowerCase() == shipper.toLowerCase()){
+                            shipper = "shipper" + shippers[shipperIndex];
+                            unknown = false;
+                        }
+                    }
                     if(unknown == true){
                         shipper = "Unknown";
-                    }*/
+                    }
 
                     output = output + "[" + number + " | " + shipper + "]"
                 }
