@@ -601,7 +601,7 @@ async function showForm(){
                 for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
                     trackingFooter = trackingFooter + "<br>" + trackingArray[trackingObject].shipper + " tracking: #" + trackingArray[trackingObject].link
                 }
-                trackingFooter = "<br>" + trackingFooter;
+                trackingFooter = " and can no longer be cancelled; I have provided tracking below.<br>" + trackingFooter;
                 trackingFooter = trackingFooter.replaceAll("Unknown tracking #","Tracking #");
                 trackingFooter = trackingFooter.replaceAll("Unknown ","");
             }
