@@ -642,6 +642,7 @@ async function cancellationForm(newMessage){
                     }]
                 }
             })
+            currentConversation.assign(currentUser);
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
     else {
