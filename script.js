@@ -501,7 +501,7 @@ async function showForm(){
     var trackingFooter = "";
     cancelResult = [
         "Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
-        "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
+        "We apologize as this order has already shipped from our warehouse"
     ];
     if(formData.orderCancelled == 2) {
 
@@ -593,7 +593,7 @@ async function showForm(){
             }
             else if (trackingArray.length == 2 && trackingArray[0].shipper == trackingArray[1].shipper){
                 
-                    trackingResult = shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + " and can no longer be cancelled.";
+                    trackingResult = " with " + shipper + " tracking numbers " + trackingArray[0].link + " and " + trackingArray[1].link + " and can no longer be cancelled.";
                     trackingResult = trackingResult.replaceAll("Unknown ","");
                 
             }
@@ -601,7 +601,8 @@ async function showForm(){
                 for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
                     trackingFooter = trackingFooter + "<br>" + trackingArray[trackingObject].shipper + " tracking: #" + trackingArray[trackingObject].link
                 }
-                trackingFooter = " and can no longer be cancelled; I have provided tracking below.<br>" + trackingFooter;
+                trackingResult = " and can no longer be cancelled; I have provided tracking below."
+                trackingFooter = "<br>" + trackingFooter;
                 trackingFooter = trackingFooter.replaceAll("Unknown tracking #","Tracking #");
                 trackingFooter = trackingFooter.replaceAll("Unknown ","");
             }
