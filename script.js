@@ -546,7 +546,7 @@ async function showForm(){
                     output = output + "[" + number + " | " + shipper + "]"
                 }
                 else {
-                    output = output + "Just a number | "
+                    output = output + "[" + number + "shipping options]"
                 }
 
 
