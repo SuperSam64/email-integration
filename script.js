@@ -528,7 +528,6 @@ async function showForm(){
             ];
             var trackingInput = formData.trackingNumbers.split("\n")
             var trackingArray = [];
-            var output = "nothing!"; ///////////////////////////////////////////////////////////////////////////////////////
             for ( var line = 0; line < trackingInput.length; line ++ ) {
                 var currentLine = trackingInput[line].toLowerCase().trim();
                 if (currentLine.length > 0){
@@ -588,18 +587,18 @@ async function showForm(){
 
 
 
-            output = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+            trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
 
 
         }
         else {
-            output = "";
+            trackingResult  = "";
         }
 
 
 
 
-        trackingResult = output;
+
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
