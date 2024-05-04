@@ -543,10 +543,10 @@ async function showForm(){
                     number = number.split("|")[0]
                     //var unknown = true;
                     for ( var i = 0; i < shippers.length; i ++ ){
-                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            shipper = shippers[i];
+                        //if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+                            shipper = "shipper" + "!"//shippers[i];
                             //unknown = false;
-                        }
+                        //}
                     }/*
                     if(unknown == true){
                         shipper = "Unknown";
