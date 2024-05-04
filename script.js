@@ -456,6 +456,28 @@ async function showForm(){
             label: "Submit!"
         }],
         fields: [{
+            type: "input",
+            data: {
+                name: "customerName",
+                placeholder: "Customer's first name",
+                value: "",
+            }
+        },{
+            type: "input",
+            data: {
+                name: "emailAddress",
+                placeholder: "Customer's email address",
+                value: "",
+                required: true
+            }
+        },{
+            type: "input",
+            data: {
+                name: "orderNumber",
+                placeholder: "Order number",
+                value: "",
+            }
+        },{
             type: "select",
             data: {
                 name: "orderCancelled",
@@ -557,12 +579,12 @@ async function showForm(){
                             }
                         }
                     }
+                    trackingArray.push({
+                        number: number,
+                        shipper: shipper,
+                        link: link
+                    })
                 }
-                trackingArray.push({
-                    number: number,
-                    shipper: shipper,
-                    link: link
-                })
             }
             if(trackingArray.length == 1){
                 trackingResult = " with " + shipper + " tracking #" + trackingArray[0].link + ", and can no longer be cancelled";
