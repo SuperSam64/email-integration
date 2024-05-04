@@ -458,6 +458,12 @@ async function showForm(){
         }],
         fields: [{
             type: "input",
+            data: {
+                name: "showName",
+                value: showName,
+            }
+        },{
+            type: "input",
             scope: {showName: true},
             data: {
                 name: "customerName",
