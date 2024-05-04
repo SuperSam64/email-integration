@@ -518,49 +518,52 @@ async function showForm(){
                 var shipper;
                 var number; //  = currentLine.toLowerCase().trim();
                 var link;
+                trackingInput = link;
+            }
                 // If this line has a shipper specified
-                if(currentLine.includes(" ") || currentLine.includes(",")){
-                    number = currentLine.replaceAll(","," ");
-                    number = number.replace(" ","|");
-                    number = number.replaceAll(" ","");
-                    shipper = number.split("|")[1];
-                    number = number.split("|")[0];
+ //             if(currentLine.includes(" ") || currentLine.includes(",")){
+ //                 number = currentLine.replaceAll(","," ");
+ //                 number = number.replace(" ","|");
+ //                 number = number.replaceAll(" ","");
+ //                 shipper = number.split("|")[1];
+ //                 number = number.split("|")[0];
                     // check all shippers to see which one matches
-                    for ( var i = 0; i < shippers.length; i ++ ) {
+ //                 for ( var i = 0; i < shippers.length; i ++ ) {
                         // by default, no link
-                        link = number;
+ //                     link = number;
                         // if a match is found
-                        if(shippers[i].toLowerCase() == shipper.toLowerCase()){
-                            link = '<a href="'+ links[i] + number + '">' + number + '</a>';
-                        }
-                    }
-                }
+ //                     if(shippers[i].toLowerCase() == shipper.toLowerCase()){
+ //                         link = '<a href="'+ links[i] + number + '">' + number + '</a>';
+ //                     }
+ //                 }
+ //             }
                 // if no shipper has been specified
-                else {
-                    number = currentLine;
-                    if(number.substr(0,2).toLowerCase() == "1z"){
-                        shipper = "UPS";
-                    }
-                    else if(number.length >= 22){
-                        shipper = "DHL";
-                    }
-                    else {
-                        shipper = "FedEx";
-                    }
-                }
-                // buiild link
-                for ( var i = 0; i < shippers.length; i ++ ) {
+ //             else {
+ //                 number = currentLine;
+ //                 if(number.substr(0,2).toLowerCase() == "1z"){
+ //                     shipper = "UPS";
+ //                 }
+ //                 else if(number.length >= 22){
+ //                     shipper = "DHL";
+ //                 }
+ //                 else {
+ //                     shipper = "FedEx";
+ //                 }
+ //             }
+                // buiid link
+ //             for ( var i = 0; i < shippers.length; i ++ ) {
                     //if(shippers[i] == shipper){
-                        link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
+ //                     link = "test"// '<a href="'+ links[i] + number + '">' + number + '</a>';
                     //}
-                }
-                trackingArray.push({
-                    number: number,
-                    shipper: shipper,
-                    link: link
-                })
-            }                 
-        }
+ //             }
+                // push tracking details to object array
+ //             trackingArray.push({
+ //                 number: number,
+ //                 shipper: shipper,
+ //                 link: link
+ //             })
+ //         }                 
+ //     }
         
         // lastly, if 2 tracking numbers and object1.shipper = object2.shipper, "with [shipper] tracking numbers X and Y"
         //      else if only 1 tracking number, "with [shipper] tracking number X" 
@@ -576,8 +579,8 @@ async function showForm(){
         // https://www.ups.com/track?trackNums=    1Z
         // CHARCODEAT
 
-
-        trackingResult = trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
+        }
+        trackingResult = trackingInput       //   trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
