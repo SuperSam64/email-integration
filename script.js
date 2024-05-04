@@ -536,23 +536,23 @@ async function showForm(){
                         if(shippers[i].toLowerCase() == shipper.toLowerCase()){
                             link = '<a href="'+ links[i] + number + '">' + number + '</a>';
                         }
-                        test = test + shippers[i].toLowerCase() + "|" + shipper.toLowerCase() + "}}";
+                    }
+                }
+            
+                // if no shipper has been specified
+                else {
+                    number = currentLine;
+                    if(number.substr(0,2).toLowerCase() == "1z"){
+                        shipper = "UPS";
+                    }
+                    else if(number.length >= 22){
+                        shipper = "DHL";
+                    }
+                    else {
+                        shipper = "FedEx";
                     }
                 }
             }
-                // if no shipper has been specified
- //             else {
- //                 number = currentLine;
- //                 if(number.substr(0,2).toLowerCase() == "1z"){
- //                     shipper = "UPS";
- //                 }
- //                 else if(number.length >= 22){
- //                     shipper = "DHL";
- //                 }
- //                 else {
- //                     shipper = "FedEx";
- //                 }
- //             }
                 // buiid link
  //             for ( var i = 0; i < shippers.length; i ++ ) {
                     //if(shippers[i] == shipper){
