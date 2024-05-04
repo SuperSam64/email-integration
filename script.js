@@ -458,7 +458,7 @@ async function cancellationForm(newMessage){
         fields: [{
             data: {
                 name: "newMessage",
-                value: true,
+                value: newMessage,
             }
         },{
             type: "input",
