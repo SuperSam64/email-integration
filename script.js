@@ -506,6 +506,7 @@ async function showForm(){
         var trackingInput = formData.trackingNumbers.split("\n")
         var trackingArray = [];
         var shippers = ["USPS","UPS","DHL","FedEx"];
+        var test;
         var links = [
             "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=",
             "https://www.ups.com/track?trackNums=",
@@ -513,12 +514,13 @@ async function showForm(){
             "https://www.fedex.com/wtrk/track/?trknbr="];
         for ( var i = 0; i < trackingInput.length; i ++ ) {
             var currentLine = trackingInput[i].toLowerCase().trim();
+            test = "first thing";
             // If this line is not empty
             if(1 == currentLine.length > 0){
                 var shipper;
                 var number; //  = currentLine.toLowerCase().trim();
                 var link;
-                trackingInput = link;
+                test = "something";
             }
                 // If this line has a shipper specified
  //             if(currentLine.includes(" ") || currentLine.includes(",")){
@@ -580,7 +582,7 @@ async function showForm(){
         // CHARCODEAT
 
         }
-        trackingResult = trackingInput       //   trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
+        trackingResult = test       //   trackingArray[1].number + " " + trackingArray[1].link + " " + trackingArray[1].shipper + " | ";
     }
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
