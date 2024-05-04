@@ -588,20 +588,22 @@ async function showForm(){
 
 
             if(trackingArray.length == 1){
-                trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+                trackingResult = trackingArray[0].shipper + " | " + trackingArray[0].link;
             }
             else if (trackingArray.length == 2){
-                trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+                //for ( var trackingObject = 0; trackingObject < trackingInput.length; trackingObject ++ ) {
+                    trackingResult = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link;
+                //}
             }
             else {
-                trackingFooter  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+                trackingFooter = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
             }
             
 
 
         }
         else {
-            trackingResult  = "";
+            trackingResult = "";
             trackingFooter = "";
         }
 
