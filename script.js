@@ -446,7 +446,7 @@ async function showForm(){
         #000000
         */
     }// ------------------------
-    var showName = true;
+    var showName = false;
     const formData = await Missive.openForm({
         name: "Cancellation",
         buttons: [{
