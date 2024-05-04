@@ -498,6 +498,7 @@ async function showForm(){
     var trackingResult = "";
     var returnResult = "";
     var subscriptionResult = "";
+    var trackingFooter = "";
     cancelResult = [
         "Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
         "We apologize as this order has already shipped from our warehouse and can no longer be cancelled."
@@ -583,16 +584,25 @@ async function showForm(){
                     link: link
                 })
             }
+//---
 
 
-
-
-            trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+            if(trackingArray.length == 1){
+                trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+            }
+            else if (trackingArray.length == 2){
+                trackingResult  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+            }
+            else {
+                trackingFooter  = trackingArray[0].shipper + " | " + trackingArray[0].link + " -> " + trackingArray[1].shipper + " | " + trackingArray[1].link + " -> " + trackingArray[2].shipper + " | " + trackingArray[2].link + " -> " + trackingArray[3].shipper + " | " + trackingArray[3].link
+            }
+            
 
 
         }
         else {
             trackingResult  = "";
+            trackingFooter = "";
         }
 
 
@@ -611,7 +621,7 @@ async function showForm(){
     }
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
     var closing = " Let me know if you need further assistance. Have a great day!"
-    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing];
+    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     $("#body1").text(fullString);
     // need to omit certain options depending on what is selected, a hidden item doesn't automatically mean empty.
     // have separate for order cancellation or subscription cancellation
