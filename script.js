@@ -727,10 +727,17 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){
-    Missive.fetchLabels().then(labels => {
-        // do something with your result
-        return "hello"
-    })
+    function getLabels(conversation){
+        var labels = ["No labels"]
+        for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+            labels.push(conversation.labels[i].id) // this can be .name or .id
+
+        }
+        if(labels.length > 1){
+            labels.shift();
+        }
+        return labels;// +  " | " + replied;
+    }
 }
     
 
