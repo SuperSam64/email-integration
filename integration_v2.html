@@ -17,25 +17,25 @@
                 <span id="avatar" style="border:3px solid var(--missive-text-color-a);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
               </td>
               <td>
-                <span id="name" style="margin-left:8px" class="text-xlarge text-600">Name</span>
+                <span id="name" style="margin-left:8px" class="text-xlarge text-600"></span>
               </td>
             </tr>
             <tr>
               <td>
-                <span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c">Title</span>
+                <span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="column-vertical column-center margin section align-center">
+      <div class="button-link column-vertical column-center margin section align-center">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.34
+        Version 8.35
         <!----------------------------------------------------------------------------->
       </div>
     </div>
     <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="margin-top:48px" id="button1">Show Form</span><br>
+    <span class="button column padding testButton" style="margin-top:180px" id="button1">Show Form</span><br>
     <!------------------------------------------------------------------------>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button2">Insert Signature</span><br>
@@ -289,9 +289,9 @@
             }
         });
         var fullName = currentUser.first_name + " " + currentUser.last_name;
-        //$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-        //$("#name").text(fullName);
-        //$("#layout").text(title);
+        $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+        $("#name").text(fullName);
+        $("#layout").text(title);
         $("#body19").text(title);  // delete later
         });
 
