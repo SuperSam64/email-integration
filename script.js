@@ -669,6 +669,7 @@ async function cancellationForm(newMessage){
         // do this if it is a reply rather than a new message thread
     }
     $("#body1").text(fullString);
+    $("#body2").text(currentConversation);
 }
 function cancellationReply() {
     cancellationForm(true);
