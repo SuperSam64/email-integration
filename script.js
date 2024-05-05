@@ -735,7 +735,9 @@ function getKey(conversation)
     organization = Missive.fetchLabels();
     var something = organization[0];
     var somethingElse = something;
-    
+    Missive.fetchLabels(ids).then((labels) => {
+
+    })
     
     
     
