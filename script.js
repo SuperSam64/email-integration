@@ -728,7 +728,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 function getKey(conversation){
         
-    key = conversation.labels[0].id;
+    key = conversation.labels[0].organization_id;
     
     
     
