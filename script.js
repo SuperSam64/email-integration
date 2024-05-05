@@ -349,17 +349,15 @@ function update (input){
     timeStamp = getTimeStamp(input);
 }
 function getKey(input){
-    /*var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var keyArray = [];
     var stringOnly = input.replaceAll("-","");
-    var output;
     for ( var i = 0; i < stringOnly.length; i ++ ) {
     
         keyArray[i] = stringOnly.charCodeAt(i) + offsetArray[i];
     
     }
-    output = keyArray.join();*/
-    var output = input;
+    let output = String.fromCharCode(keyArray);
     return output;
     
 }
