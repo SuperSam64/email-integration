@@ -727,7 +727,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){
-    Missive.fetchLabels().then(labels => {
+    Missive.fetchLabels().resolve().then(labels => {
         // do something with your result
         return "hello"
     })
