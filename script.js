@@ -728,7 +728,8 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 function getKey(conversation)
 {
-    var organization = Missive.fetchLabels()[0].organization_id;
+    var organization = Missive.fetchLabels()[0]
+    var something = organization.organization_id;
     var key = organization.replaceAll("-");
     return key;
 }
