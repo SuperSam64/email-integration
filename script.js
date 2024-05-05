@@ -727,7 +727,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){    
-    var fullName;
+    var myTestVar;
     Missive.fetchUsers().then((users) => {
         $(users).each(function(){
           if(this.me){
@@ -746,11 +746,11 @@ function getKey(conversation){
                 title = "Client Relationship Manager";
             }
         });
-        fullName = currentUser.first_name + " " + currentUser.last_name;
+        myTestVar = currentUser.first_name + " " + currentUser.last_name;
  
     });
     
-    return fullName;
+    return myTestVar;
     
     
     
