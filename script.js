@@ -357,7 +357,8 @@ function getKey(input){
         keyArray[i] = stringOnly.charCodeAt(i) + offsetArray[i];
     
     }
-    let output = String.fromCharCode(keyArray);
+    //let output = String.fromCharCode(keyArray);
+    var output = keyArray;
     return output;
     
 }
