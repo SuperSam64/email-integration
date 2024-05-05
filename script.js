@@ -349,7 +349,11 @@ function update (input){
     timeStamp = getTimeStamp(input);
 }
 function getKey(input){    
-    return input.replaceAll("-");
+    
+    
+    
+    return input;
+    
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -369,7 +373,6 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
     $("#body18").text(timeStamp);
-    $("#body19").text(token); 
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
