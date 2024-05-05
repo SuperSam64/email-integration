@@ -726,60 +726,9 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
-function getKey(conversation){    
-    /*var myTestVar;
-    Missive.fetchUsers().then((users) => {
-        $(users).each(function(){
-          if(this.me){
-              currentUser = this;
-          }
-        });
-        $(adminList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-                profileType = "master"
-                title = "Administrator";
-            }
-        });
-        $(crmList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-                profileType = "CRM"
-                title = "Client Relationship Manager";
-            }
-        });
-        myTestVar = currentUser.first_name + " " + currentUser.last_name;
- 
-    });
+function getKey(input){    
     
-    return myTestVar;*/
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    /*var labelsArray = [""];
-    Missive.fetchLabels().then((labels) => {
-        for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-            labelsArray.push(labels[i].id) // this can be .name or .id
-
-        }
-        if(labelsArray.length > 1){
-            labelsArray.shift();
-        }
-        return labelsArray;// +  " | " + replied;
-    })*/
+    return input.replaceAll("-","")
 }
 
 function button1Clicked() {
