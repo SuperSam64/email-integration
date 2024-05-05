@@ -349,18 +349,22 @@ function update (input){
     timeStamp = getTimeStamp(input);
 }
 function getKey(input){
+    var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var keyArray = [];
-    var stringOnly = input.replaceAll("-","");
     for ( var i = 0; i < stringOnly.length; i ++ ) {
-    
-        keyArray[i] = stringOnly.charCodeAt(i)// + offsetArray[i];
-    
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
-    //let output = String.fromCharCode(keyArray);
-    var output = keyArray;
+    var keyArrayJoined = keyArray.join("")
+    var sections = [
+        keyArray.join("").substr(0, 8),
+        keyArray.join("").substr(8, 4),
+        keyArray.join("").substr(12, 4),
+        keyArray.join("").substr(16, 4),
+        keyArray.join("").substr(20, 12)
+    ]
+    output = sections.join("-");
     return output;
-    
 }
 function showResults(){
     $("#body1").text(conversationID);
