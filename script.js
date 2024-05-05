@@ -727,7 +727,48 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){    
-    var labelsArray = [""];
+    var tokenVar;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+            if(this.length == 36){
+                tokenVar = this;
+            }
+        });
+    return tokenVar;
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*var labelsArray = [""];
     Missive.fetchLabels().then((labels) => {
         for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
             labelsArray.push(labels[i].id) // this can be .name or .id
@@ -737,7 +778,7 @@ function getKey(conversation){
             labelsArray.shift();
         }
         return labelsArray;// +  " | " + replied;
-    })
+    })*/
 }
 
 function button1Clicked() {
