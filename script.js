@@ -728,7 +728,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 function getKey(conversation){
    var labels = Missive.fetchLabels();
-   return labels.id;
+   return labels[8].organization_id;
     
 }
 function button1Clicked() {
