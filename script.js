@@ -631,10 +631,17 @@ async function cancellationForm(newMessage){
     var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
+        var subjectField;
+        if(formData.orderNumber.length > 0){
+            subjectField = " (Order #" + formData.orderNumber + ")";
+        }
+        else {
+            subjectField = "";
+        }
         Missive.compose({
                 deliver:false,
                 mailto: {
-                    subject: "Re: order #" + formData.orderNumber,
+                    subject: "Re: Cancellation request" + subjectField,
                     body: fullString,
                     to_fields:[{
                         address: formData.emailAddress,
@@ -642,7 +649,8 @@ async function cancellationForm(newMessage){
                     }]
                 }
             })
-            currentConversation.assign(currentUser);
+            Missive.setSubject(subjectField.replace(" (","").replace(")",""));
+            currentConversation.MIssive.assign(currentUser);
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
     else {
