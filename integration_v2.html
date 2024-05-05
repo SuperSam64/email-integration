@@ -30,7 +30,7 @@
       </div>
       <div class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.62
+        Version 8.63
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -297,11 +297,10 @@
           var organization
           $(labels).each(function(){
             if(this.id.length == 36){
-                organization = this;
+                organization = this.id;
             }
           });
-          
-          token = getKey(organizaation.organization_id);
+          token = getKey(organization.id);
           $("#body19").text(token);  // this can be deleted later, it is only used to show the key
         });
         Missive.fetchConversations(ids).then((conversations) => {		
