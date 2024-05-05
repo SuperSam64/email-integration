@@ -30,7 +30,7 @@
       </div>
       <div class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.42
+        Version 8.43
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -293,20 +293,16 @@
         $("#name").text(fullName);
         $("#layout").text(title);
         });
-
-        Missive.fetchLabels().then((users) => {
-          $(users).each(function(){
+        Missive.fetchLabels().then((labels) => {
+          var organization
+          $(labels).each(function(){
             if(this.id.length == 36){
-                currentUser = this;
+                organization = this;
             }
           });
-          token = currentUser.id;
+          token = organization.id;
           $("#body19").text(token);  // delete later
         });
-
-
-
-
         Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
           update(currentConversation);
