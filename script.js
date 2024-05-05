@@ -348,6 +348,9 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
 }
+function getKey(input){    
+    return input.replaceAll("-");
+}
 function showResults(){
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
@@ -725,9 +728,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
-function getKey(input){    
-    return input;
-}
+
 
 function button1Clicked() {
     cancellationReply();    
