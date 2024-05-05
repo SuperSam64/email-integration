@@ -729,9 +729,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 function getKey(conversation){
     var labels = conversation.labels
     for ( var i = 0; i < labels.length; i++ ){
-        if(labels[i].organization_id != ""){
             key = labels[i].organization_id;
-        }
     }
     
     
