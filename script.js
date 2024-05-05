@@ -727,18 +727,18 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){    
-// Missive.fetchUsers().then((users) => {
-    var labels = ["No labels"]
-    for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-        labels.push(conversation.labels[i].organization_id) // this can be .name or .id
+    var labelsArray = [""];
+    Missive.fetchUsers().then((labels) => {
+        for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+            labelsArray.push(labels[i].id) // this can be .name or .id
 
-    }
-    if(labels.length > 1){
-        labels.shift();
-    }
-    return labels;// +  " | " + replied;
+        }
+        if(labelsArray.length > 1){
+            labelsArray.shift();
+        }
+        return labelsArray;// +  " | " + replied;
+    })
 }
-    
 
 function button1Clicked() {
     cancellationReply();    
