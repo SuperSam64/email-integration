@@ -347,7 +347,6 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
-    token = getKey(input)
 }
 function showResults(){
     $("#body1").text(conversationID);
