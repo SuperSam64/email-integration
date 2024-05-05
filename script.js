@@ -661,15 +661,13 @@ async function cancellationForm(newMessage){
             }
         })
         Missive.setSubject(subjectField.replace(" (","").replace(")",""));
-        currentConversation = missive.fecthConversations()[0];
-        currentConversation.Mkssive.assign(currentUser);
+        Missive.assign(currentUser);
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
     else {
         // do this if it is a reply rather than a new message thread
     }
     $("#body1").text(fullString);
-    $("#body2").text(currentConversation);
 }
 function cancellationReply() {
     cancellationForm(true);
