@@ -727,7 +727,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){    
-    var myTestVar;
+    /*var myTestVar;
     Missive.fetchUsers().then((users) => {
         $(users).each(function(){
           if(this.me){
@@ -750,7 +750,7 @@ function getKey(conversation){
  
     });
     
-    return myTestVar;
+    return myTestVar;*/
     
     
     

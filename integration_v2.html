@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 8.31</span>
+			<span class="button-link column padding" id="reload-button">Version 8.32</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -252,30 +252,45 @@
           $(users).each(function(){
             if(this.me){
                 currentUser = this;
-            }
-          });
-          $(adminList).each(function(){
+          }
+        });
+        $(adminList).each(function(){
             if(this == currentUser.id.split("-")[4]){
               profileType = "master"
               title = "Administrator";
             }
-          });
-          $(crmList).each(function(){
+        });
+        $(crmList).each(function(){
             if(this == currentUser.id.split("-")[4]){
               profileType = "CRM"
               title = "Client Relationship Manager";
             }
-          });
+        });
         var fullName = currentUser.first_name + " " + currentUser.last_name;
         //$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
         //$("#name").text(fullName);
         //$("#layout").text(title);
+        $("#body19").text(title);  // delete later
         });
+
+        /* Missive.fetchUsers().then((users) => {
+          $(users).each(function(){
+            if(this.me){
+                currentUser = this;
+          }
+        });
+        
+        token = currentUser.first_name + " " + currentUser.last_name;
+        }); */
+
+
+
+
         Missive.fetchConversations(ids).then((conversations) => {		
-					currentConversation = conversations[0];
+          currentConversation = conversations[0];
           update(currentConversation);
           showResults();
-				})				
+        })				
       });
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------
