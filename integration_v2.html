@@ -30,7 +30,7 @@
       </div>
       <div class="button-link margin section align-center" style="margin:auto">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.36
+        Version 8.37
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -292,18 +292,17 @@
         $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
         $("#name").text(fullName);
         $("#layout").text(title);
-        $("#body19").text(title);  // delete later
         });
 
-        /* Missive.fetchUsers().then((users) => {
+        Missive.fetchUsers().then((users) => {
           $(users).each(function(){
             if(this.me){
                 currentUser = this;
-          }
+            }
+          });
+          token = currentUser.first_name + " " + currentUser.last_name;
+          $("#body19").text(title);  // delete later
         });
-        
-        token = currentUser.first_name + " " + currentUser.last_name;
-        }); */
 
 
 
