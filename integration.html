@@ -186,7 +186,7 @@
 					var fullName = currentUser.first_name + " " + currentUser.last_name;
 					$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
 					$("#name").text(fullName);
-					$("#layout").text(title);
+					$("#layout").text(title); //
 				})				
 			})
 			Missive.on('change:conversations', (ids) => {

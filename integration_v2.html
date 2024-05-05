@@ -7,11 +7,33 @@
     <script src="script.js"></script>
   </head>
   <body style="width:92%;height:96%;margin:auto">
-    <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
-			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 8.32</span>
-			<!---------------------------------------------------------------------------->
-		</div>
+    <!---------------------------HEADER--------------------------------->
+    <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
+      <div class="column-vertical padding margin section" style="border-radius:4px;background-color: rgba(125, 127, 125, 0.1)">
+        <table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
+          <tbody>
+            <tr>
+              <td rowspan="2">
+                <span id="avatar" style="border:3px solid var(--missive-text-color-a);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
+              </td>
+              <td>
+                <span id="name" style="margin-left:8px" class="text-xlarge text-600">Name</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c">Title</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="column-vertical column-center margin section align-center">
+        <!---------------------------  [[  VERSION  ]]  ------------------------------->
+        Version 8.34
+        <!----------------------------------------------------------------------------->
+      </div>
+    </div>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" style="margin-top:48px" id="button1">Show Form</span><br>
     <!------------------------------------------------------------------------>
