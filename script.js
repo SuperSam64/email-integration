@@ -355,7 +355,6 @@ function getKey(input){
     for ( var i = 0; i < stringOnly.length; i ++ ) {
         keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
-    var keyArrayJoined = keyArray.join("")
     var sections = [
         keyArray.join("").substr(0, 8),
         keyArray.join("").substr(8, 4),
@@ -364,6 +363,7 @@ function getKey(input){
         keyArray.join("").substr(20, 12)
     ]
     var output = sections.join("-");
+    output = input + " | " + stringOnly + " | " + keyArray + " | " + sections + " | " + output;
     return output;
 }
 function showResults(){
