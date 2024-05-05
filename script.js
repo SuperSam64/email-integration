@@ -728,11 +728,25 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 function getKey(conversation)
 {
-    var organization;
+    var organization = "test"   
     Missive.fetchLabels(ids).then((labels) => {
-        organization = labels[0].organization_id
+        if (labels.length != 1) {
+          // Do nothing if multiple conversations are selected.
+          return
+        }    
     })
-    var key = organization.replaceAll("-");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    var key = organization;
     return key;
 }
 function button1Clicked() {
