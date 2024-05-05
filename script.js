@@ -352,7 +352,9 @@ function getKey(input){
     
     
     
-    return input;
+
+    var output = input.relpaceAll("-","");
+    return output;
     
 }
 function showResults(){
