@@ -367,7 +367,7 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
     $("#body18").text(timeStamp);
-    $("#body18").text(token);
+    $("#body19").text(token);
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
