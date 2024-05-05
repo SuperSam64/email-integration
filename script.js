@@ -363,8 +363,8 @@ function getKey(input){
         keyArray.join("").substr(16, 4),
         keyArray.join("").substr(20, 12)
     ]
-    output = sections.join("-");
-    return input;
+    var output = sections.join("-");
+    return output;
 }
 function showResults(){
     $("#body1").text(conversationID);
