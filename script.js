@@ -632,6 +632,17 @@ async function cancellationForm(newMessage){
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
         var subjectField;
+        var fullName = formData.customerName;
+        var firstName = "";
+        var laastName = "";
+        if(fullName.includes(" ")){
+            fullName.replace("[!]");
+            firstName = fullName.split("[!]")[0]
+            lastName = fullName.split("[!]")[1]
+        }
+        else {
+            firstName = fullName;
+        }
         if(formData.orderNumber.length > 0){
             subjectField = " (Order #" + formData.orderNumber + ")";
         }
@@ -645,12 +656,12 @@ async function cancellationForm(newMessage){
                 body: fullString,
                 to_fields:[{
                     address: formData.emailAddress,
-                    name:formData.firstName
+                    name: firstName
                 }]
             }
         })
         Missive.setSubject(subjectField.replace(" (","").replace(")",""));
-        //currentConversation = missive.fecthConversations()[0];
+        currentConversation = missive.fecthConversations()[0];
         currentConversation.Mkssive.assign(currentUser);
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
