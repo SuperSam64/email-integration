@@ -9,7 +9,7 @@
   <body style="width:92%;height:96%;margin:auto">
     <div class="column-vertical column-center margin section align-center" style="background-color:var(--missive-background-color);position:fixed;top:0px;margin:auto;z-index:1;width:100%">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------>
-			<span class="button-link column padding" id="reload-button">Version 7.92</span>
+			<span class="button-link column padding" id="reload-button">Version 7.93</span>
 			<!---------------------------------------------------------------------------->
 		</div>
     <!-------------------------- BUTTON -------------------------------------->
@@ -26,6 +26,9 @@
     <!------------------------------------------------------------------------>
     <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button5">Save Contact</span><br>
+    <!------------------------------------------------------------------------>
+    <!-------------------------- BUTTON -------------------------------------->
+    <span class="button column padding testButton" id="button6">[do something]</span><br>
     <!------------------------------------------------------------------------>
     <table class="textFrame"> <!-- Table of results -->
     <!------------------------- TEXT BOX -------------------------->
@@ -189,7 +192,16 @@
     </td></tr><tr><td colspan="2"></td><td colspan="3" id="body18" class="textBody bottomSection">
       [placeholder]
     </td></tr>
-  <!------------------------------------------------------------->
+    <!------------------------------------------------------------->
+    <!------------------------- TEXT BOX -------------------------->
+    <tr id="title18" class="textTitle"><td width="24 px" style="text-align:right">
+      19.
+    </td><td></td><td>
+      Token
+    </td></tr><tr><td colspan="2"></td><td colspan="3" id="body19" class="textBody bottomSection">
+      [placeholder]
+    </td></tr>
+    <!------------------------------------------------------------->
     </table>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
@@ -223,7 +235,7 @@
         var emailClosing = "Sincerely";
         var suggestedLabel;
         var timeStamp;
-        var token = "****************4b9f2e0a6b6c";
+        var token;
         var purchaseOrderTasks = [
           "Email customer for PO revision",
           "PO prepared",
@@ -263,6 +275,7 @@
 					currentConversation = conversations[0];
           update(currentConversation);
           showResults();
+          token = getKey("something")
 				})				
       });
       // =====================================
@@ -371,6 +384,9 @@
       $("#body18").click(function () { 
         body18Reset();
       });
+      $("#body19").click(function () { 
+        body19Reset();
+      });
       $("#button1").click(function () { 
         button1Clicked();
       });
@@ -385,6 +401,9 @@
       });
       $("#button5").click(function () { 
         button5Clicked();
+      });
+      $("#button6").click(function () { 
+        button6Clicked();
       });
     </script>
 </body>

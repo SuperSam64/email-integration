@@ -347,6 +347,7 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
+    token = getKey(input,Missive.fetchLabels()[0].organization_id)
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -366,6 +367,7 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
     $("#body18").text(timeStamp);
+    $("#body18").text(token);
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
@@ -724,6 +726,11 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
+function getKey(conversation, organization)
+{
+    var key = organization.replaceAll("-");
+    return key;
+}
 function button1Clicked() {
     cancellationReply();    
 }
@@ -738,6 +745,9 @@ function button4Clicked() {
 }
 function button5Clicked() {
     saveContact("John","Doe","johndoe@filtersfast.com","+1 704 555-9999","9876543"); // variables pre-filled for testing
+}
+function button6Clicked() {
+    
 }
 function body1Reset(){
     $("#body1").text("[ready]")
@@ -792,6 +802,9 @@ function body17Reset(){
 }
 function body18Reset(){
     $("#body18").text("[ready]")
+}
+function body19Reset(){
+    $("#body19").text("[ready]")
 }
 
 /*
