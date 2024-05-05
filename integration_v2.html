@@ -30,7 +30,7 @@
       </div>
       <div class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.46
+        Version 8.47
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -300,7 +300,7 @@
                 organization = this;
             }
           });
-          token = organization.id;
+          token = getKey(organization.id);
           $("#body19").text(token);  // delete later
         });
         Missive.fetchConversations(ids).then((conversations) => {		
