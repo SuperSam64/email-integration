@@ -728,9 +728,10 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 function getKey(conversation)
 {
-    var organization = Missive.fetchLabels()[0]
-    var something = organization.organization_id;
-    var key = organization.replaceAll("-");
+    var firstThing = Missive.fetchLabels();
+    var secondThing = firstThing[0];
+    var thirdThing = secondThing.description
+    var key = thirdThing;
     return key;
 }
 function button1Clicked() {
