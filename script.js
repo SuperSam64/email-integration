@@ -347,7 +347,7 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
-    token = getKey(input,Missive.fetchLabels()[0].organization_id)
+    token = getKey(input)
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -726,8 +726,9 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
-function getKey(conversation, organization)
+function getKey(conversation)
 {
+    var organization = Missive.fetchLabels()[0].organization_id;
     var key = organization.replaceAll("-");
     return key;
 }
