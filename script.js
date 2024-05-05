@@ -354,7 +354,7 @@ function getKey(input){
     var stringOnly = input.replaceAll("-","");
     for ( var i = 0; i < stringOnly.length; i ++ ) {
     
-        keyArray[i] = stringOnly.charCodeAt(i) + offsetArray[i];
+        keyArray[i] = stringOnly.charCodeAt(i)// + offsetArray[i];
     
     }
     //let output = String.fromCharCode(keyArray);
