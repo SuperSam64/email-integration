@@ -746,7 +746,7 @@ function getKey(conversation){
                 title = "Client Relationship Manager";
             }
         });
-        var fullName = currentUser.first_name + " " + currentUser.last_name;
+        fullName = currentUser.first_name + " " + currentUser.last_name;
  
     });
     
