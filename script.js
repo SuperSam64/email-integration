@@ -730,8 +730,8 @@ function getKey(conversation)
 {
     var firstThing = Missive.fetchLabels();
     var secondThing = firstThing[0];
-    var thirdThing = secondThing.description
-    var key = thirdThing;
+    //var thirdThing = secondThing.description
+    var key = secondThing;
     return key;
 }
 function button1Clicked() {
