@@ -364,7 +364,7 @@ function getKey(input){
         keyArray.join("").substr(20, 12)
     ]
     output = sections.join("-");
-    return output;
+    return input;
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -742,8 +742,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
-
-
 function button1Clicked() {
     cancellationReply();    
 }
@@ -820,7 +818,7 @@ function body19Reset(){
     $("#body19").text("[ready]")
 }
 
-/*
+/*        NOTES
 - make the "to" the customer's email. find a way to remove the other email. try array = []
 places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
 assign new drafts
