@@ -727,29 +727,30 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title:"Contact added",message:"Contact has been added to your contact list."})
 }
 function getKey(conversation){    
-    var tokenVar;
-    Missive.fetchLabels().then((labels) => {
-        $(labels).each(function(){
-            if(this.length == 36){
-                tokenVar = this;
+    var fullName;
+    Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+          if(this.me){
+              currentUser = this;
+          }
+        });
+        $(adminList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+                profileType = "master"
+                title = "Administrator";
             }
         });
-    return tokenVar;
+        $(crmList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+                profileType = "CRM"
+                title = "Client Relationship Manager";
+            }
+        });
+        var fullName = currentUser.first_name + " " + currentUser.last_name;
+ 
     });
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    return fullName;
     
     
     
