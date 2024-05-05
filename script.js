@@ -734,7 +734,7 @@ function getKey(conversation)
     var outputArray = [];
     organization = Missive.fetchLabels();
     var something = organization[0];
-    var somethingElse = something.id;
+    var somethingElse = something;
     
     
     
