@@ -339,7 +339,7 @@ function getGreeting(conversation) {
         segment = "evening"
     }
     else if (currentHour > 11) {
-        segment = "evening"
+        segment = "afternoon"
     }
     else {
         segment = "morning"
