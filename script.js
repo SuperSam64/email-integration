@@ -686,19 +686,20 @@ async function cancellationForm(newMessage){
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
         var subjectField;
-        var fullName = formData.customerName;
+        customerName = formData.customerName;
+        orderNumber = formData.orderNumber;
         var firstName = "";
         var laastName = "";
-        if(fullName.includes(" ")){
-            fullName.replace("[!]");
+        if(customerName.includes(" ")){
+            customerName.replace(" ","[!]");
             firstName = fullName.split("[!]")[0]
             lastName = fullName.split("[!]")[1]
         }
         else {
-            firstName = fullName;
+            firstName = customerName;
         }
         if(formData.orderNumber.length > 0){
-            subjectField = " (Order #" + formData.orderNumber + ")";
+            subjectField = " (Order #" + orderNumber + ")";
         }
         else {
             subjectField = "";
