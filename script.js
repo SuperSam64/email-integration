@@ -160,13 +160,13 @@ function getMessageLink(conversation){
 function getLabels(conversation){
     var labels = ["No labels"]
     replied = false;
-    greeting = "Thank you for reaching out to us!"
+    intro = "Thank you for reaching out to us!";
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
         if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
-                "Thank you for your reply!"
+                intro = "Thank you for your reply!";
             }
             else{
                 labels.push(conversation.labels[i].id) // this can be .name or .id
@@ -330,6 +330,24 @@ function getTimeStamp(conversation){
         return formatDate(conversation.latest_message.delivered_at);
     }    
 }
+function getGreeting(conversation) {
+    var segment;
+    var timeBased;
+    var currentTime = new Date();
+    var currentHour = currentTime.getHours();
+    if (currentTime > 15) {
+        segment = "evening"
+    }
+    else if (currentTime > 11) {
+        segment = "evening"
+    }
+    else {
+        segment = "morning"
+    }
+    timeBased = ["Good",segment,customerName]
+    
+    return timeBased.join(" ") + ",<br><br>" + intro;
+}
 function update (input){
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
@@ -349,6 +367,7 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
+    greeting = getGreeting(conversation);
 }
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
@@ -400,7 +419,7 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
     $("#body18").text(timeStamp);
-    $("#body20").text(replied);
+    $("#body20").text(greeting);
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
