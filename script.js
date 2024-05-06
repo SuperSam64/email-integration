@@ -782,19 +782,19 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function button1Clicked() {
-    cancellationReply();    
+    cancellationNew();    
 }
 function button2Clicked() {
-    insertSignature(emailClosing);
+    cancellationReply(); 
 }
 function button3Clicked() {
-    createTasks(purchaseOrderTasks);
+    insertSignature(emailClosing);
 }
 function button4Clicked() {
-    createReply();
+    createTasks(purchaseOrderTasks);
 }
 function button5Clicked() {
-    saveContact("John","Doe","johndoe@filtersfast.com","+1 704 555-9999","9876543"); // variables pre-filled for testing
+    createReply()
 }
 function button6Clicked() {
     saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
