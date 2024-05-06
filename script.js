@@ -328,6 +328,9 @@ function getTimeStamp(conversation){
         return formatDate(conversation.latest_message.delivered_at);
     }    
 }
+function getRepliedStatus(conversation) {
+
+}
 function update (input){
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
@@ -347,6 +350,7 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
+    getRepliedStatus(input);
 }
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
@@ -830,6 +834,9 @@ function body18Reset(){
 }
 function body19Reset(){
     $("#body19").text("[ready]")
+}
+function body20Reset(){
+    $("#body20").text("[ready]")
 }
 
 /*        NOTES
