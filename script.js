@@ -362,8 +362,23 @@ function getKey(input){
         keyArray.join("").substr(16, 4),
         keyArray.join("").substr(20, 12)
     ]
-    var output = sections.join("-");
-    return output;
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").substr(0, 8),
+        keyArray.join("").substr(8, 4),
+        keyArray.join("").substr(12, 4),
+        keyArray.join("").substr(16, 4),
+        keyArray.join("").substr(20, 12)
+    ]
+    return sections.join("-");
 }
 function showResults(){
     $("#body1").text(conversationID);
@@ -714,7 +729,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
-                "contact_book": "****************-eebc53fa6cf7", // fill this in later
+                "contact_book": contactBook, // fill this in later
                 "first_name": firstName,
                 "last_name": lastName,
                 "infos": [{

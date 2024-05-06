@@ -30,7 +30,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.67
+        Version 8.68
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -301,7 +301,8 @@
             }
           });
           token = getKey(organization);
-          $("#body19").text(token);  // this can be deleted later, it is only used to show the key
+          contactBook = getContactKey(organization);
+          $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
         });
         Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
