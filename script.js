@@ -726,6 +726,9 @@ async function cancellationForm(newMessage){
 function cancellationReply() {
     cancellationForm(true);
 }
+function cancellationNew() {
+    cancellationForm(false);
+}
 function createTasks(tasks){
     for ( var i = 0; i < tasks.length; i ++ ) {	
         Missive.createTask(tasks[i], false);
