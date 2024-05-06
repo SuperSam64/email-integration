@@ -709,8 +709,8 @@ async function cancellationForm(newMessage){
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
-                    address: formData.emailAddress,
-                    name: firstName
+                    address: messageFrom,
+                    name: cutomerName
                 }]
             }
         })
@@ -720,10 +720,27 @@ async function cancellationForm(newMessage){
     }
     else {
         // do this if it is a reply rather than a new message thread
+        var subjectField;
+        if(orderNumber.length > 0){
+            subjectField = " (Order #" + orderNumber + ")";
+        }
+        else {
+            subjectField = "";
+        }
+        Missive.reply({
+            deliver:false,
+            mailto: {
+                subject: "Re: Cancellation request" + subjectField,
+                body: fullString,
+                to_fields:[{
+                    address: formData.emailAddress,
+                    name: firstName
+                }]
+            }
+        });
     }
     $("#body1").text(fullString);
-    Missive.reply();
-    Missive.insertHTML(fullString);
+    
 }
 function cancellationReply() {
     cancellationForm(true);
