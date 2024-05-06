@@ -722,6 +722,8 @@ async function cancellationForm(newMessage){
         // do this if it is a reply rather than a new message thread
     }
     $("#body1").text(fullString);
+    Missive.reply();
+    Missive.insertHTML(fullString);
 }
 function cancellationReply() {
     cancellationForm(true);
