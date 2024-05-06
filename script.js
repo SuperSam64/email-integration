@@ -335,10 +335,10 @@ function getGreeting(conversation) {
     var timeBased;
     var currentTime = new Date();
     var currentHour = currentTime.getHours();
-    if (currentTime > 15) {
+    if (currentHour > 15) {
         segment = "evening"
     }
-    else if (currentTime > 11) {
+    else if (currentHour > 11) {
         segment = "evening"
     }
     else {
@@ -584,8 +584,8 @@ async function cancellationForm(newMessage){
     var subscriptionResult = "";
     var trackingFooter = "";
     cancelResult = [
-        "Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
-        "We apologize as this order has already shipped from our warehouse"
+        " Your order has been cancelled. Please allow 3-7 days for your refund to apply.",
+        " We apologize as this order has already shipped from our warehouse"
     ];
     if(formData.orderCancelled == 2) {
         if (formData.trackingNumbers.trim().length > 0){
@@ -682,7 +682,7 @@ async function cancellationForm(newMessage){
     }
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
     var closing = " Let me know if you need further assistance. Have a great day!"
-    var fullString = [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+    var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
         var subjectField;
