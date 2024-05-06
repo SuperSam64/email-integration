@@ -722,6 +722,8 @@ async function cancellationForm(newMessage){
     else {
         // do this if it is a reply rather than a new message thread
         var subjectField;
+        var firstName = "";
+        var lastName = "";
         if(customerName.includes(" ")){
             customerName.replace(" ","[!]");
             firstName = customerName.split("[!]")[0]
@@ -742,7 +744,6 @@ async function cancellationForm(newMessage){
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
-                    address: formData.emailAddress,
                     name: firstName
                 }]
             }
