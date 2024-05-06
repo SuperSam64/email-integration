@@ -710,7 +710,7 @@ async function cancellationForm(newMessage){
                 body: fullString,
                 to_fields:[{
                     address: messageFrom,
-                    name: cutomerName
+                    name: customerName
                 }]
             }
         })
