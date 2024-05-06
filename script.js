@@ -160,11 +160,13 @@ function getMessageLink(conversation){
 function getLabels(conversation){
     var labels = ["No labels"]
     replied = false;
+    greeting = "Thank you for reaching out to us!"
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
         if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
+                "Thank you for your reply!"
             }
             else{
                 labels.push(conversation.labels[i].id) // this can be .name or .id
@@ -327,9 +329,6 @@ function getTimeStamp(conversation){
     else{
         return formatDate(conversation.latest_message.delivered_at);
     }    
-}
-function getRepliedStatus(conversation) {
-
 }
 function update (input){
     conversationID = getConversation(input);
