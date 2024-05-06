@@ -692,8 +692,8 @@ async function cancellationForm(newMessage){
         var laastName = "";
         if(customerName.includes(" ")){
             customerName.replace(" ","[!]");
-            firstName = fullName.split("[!]")[0]
-            lastName = fullName.split("[!]")[1]
+            firstName = customerName.split("[!]")[0]
+            lastName = customerName.split("[!]")[1]
         }
         else {
             firstName = customerName;
