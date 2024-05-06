@@ -754,7 +754,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
             "Content-type": "application/json"
         }
     })
-    Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: ""})
+    Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function button1Clicked() {
     cancellationReply();    
