@@ -689,7 +689,7 @@ async function cancellationForm(newMessage){
         customerName = formData.customerName;
         orderNumber = formData.orderNumber;
         var firstName = "";
-        var laastName = "";
+        var lastName = "";
         if(customerName.includes(" ")){
             customerName.replace(" ","[!]");
             firstName = customerName.split("[!]")[0]
@@ -710,8 +710,8 @@ async function cancellationForm(newMessage){
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
+                    name: firstName,
                     address: messageFrom,
-                    name: firstName
                 }]
             }
         })
