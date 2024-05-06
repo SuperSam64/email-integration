@@ -772,7 +772,7 @@ function button5Clicked() {
     saveContact("John","Doe","johndoe@filtersfast.com","+1 704 555-9999","9876543"); // variables pre-filled for testing
 }
 function button6Clicked() {
-    
+    saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
 }
 function body1Reset(){
     $("#body1").text("[ready]")
