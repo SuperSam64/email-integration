@@ -28,9 +28,9 @@
           </tbody>
         </table>
       </div>
-      <div class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
+      <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 8.65
+        Version 8.66
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -297,7 +297,7 @@
           var organization
           $(labels).each(function(){
             if(this.id.length == 36){
-                organization = this.organization_id;
+                organization = this.id;
             }
           });
           token = getKey(organization);
@@ -318,7 +318,7 @@
           showResults();
 				})
 			})
-      //---------------- RESETS ------------------
+      {//---------------- RESETS ------------------
       $("#title1").click(function () { 
         body1Reset();
       });
@@ -436,6 +436,10 @@
       $("#button6").click(function () { 
         button6Clicked();
       });
+      $("#version_number").click(function (){
+        Missive.reload();
+      });
+      }
     </script>
 </body>
 </html>

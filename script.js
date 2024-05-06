@@ -363,7 +363,6 @@ function getKey(input){
         keyArray.join("").substr(20, 12)
     ]
     var output = sections.join("-");
-    output = input + " | " + stringOnly + " | " + keyArray + " | " + sections + " | " + output;
     return output;
 }
 function showResults(){
