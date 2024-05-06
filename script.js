@@ -367,7 +367,7 @@ function update (input){
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
-    greeting = getGreeting(conversation);
+    greeting = getGreeting(input);
 }
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
