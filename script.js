@@ -734,8 +734,7 @@ async function cancellationForm(newMessage){
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
-                    name: firstName,
-                    address:""
+                    name: firstName
                 }]
             }
         });
