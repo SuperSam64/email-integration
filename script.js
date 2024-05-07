@@ -335,6 +335,13 @@ function getGreeting(conversation) {
     var timeBased;
     var currentTime = new Date();
     var currentHour = currentTime.getHours();
+    if(customerName.includes(" ") == true){
+        firstName = customerName.replace(" ","[!]").split("[!]")[0]
+        lastName = customerName.replace(" ","[!]").split("[!]")[1]
+    }
+    else {
+        firstName = customerName;
+    }
     if (currentHour > 15) {
         segment = "evening"
     }
@@ -691,12 +698,11 @@ async function cancellationForm(newMessage){
         var firstName = "";
         var lastName = "";
         if(customerName.includes(" ") == true){
-            customerName.replace(" ","[!]");
-            firstName = customerName.split("[!]")[0]
-            lastName = customerName.split("[!]")[1]
+            firstName = "5" + customerName.replace(" ","[!]").split("[!]")[0]
+            lastName = "6" + customerName.replace(" ","[!]").split("[!]")[1]
         }
         else {
-            firstName = customerName;
+            firstName = "7" + customerName;
         }
         if(formData.orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
@@ -711,7 +717,7 @@ async function cancellationForm(newMessage){
                 body: fullString,
                 to_fields:[{
                     name: firstName,
-                    address: messageFrom,
+                    address: messageFrom
                 }]
             }
         })
@@ -724,12 +730,11 @@ async function cancellationForm(newMessage){
         var firstName = "";
         var lastName = "";
         if(customerName.includes(" ") == true){
-            customerName.replace(" ","[!]");
-            firstName = customerName.split("[!]")[0]
-            lastName = customerName.split("[!]")[1]
+            firstName = "1" + customerName.replace(" ","[!]").split("[!]")[0];
+            lastName = "2" + customerName.replace(" ","[!]").split("[!]")[1];
         }
         else {
-            firstName = customerName;
+            firstName = "3" + customerName;
         }
         if(orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
@@ -743,7 +748,8 @@ async function cancellationForm(newMessage){
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
-                    name: firstName
+                    name: firstName,
+                    address:""
                 }]
             }
         });
