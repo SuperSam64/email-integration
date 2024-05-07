@@ -821,11 +821,9 @@ function button2Clicked() {
 function button3Clicked() {
     Missive.fetchConversations().then((conversations) => {
         var somethingGoesHere
-        $(conversations).each(function(){
-          if(this.id.length == 36){
-              somethingGoesHere = this.id;
-          }
-        });
+        
+              somethingGoesHere = conversations[0].id;
+         
         
         $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
     });
