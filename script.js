@@ -700,7 +700,7 @@ async function cancellationForm(newMessage){
             subjectField = "";
         }
         var fullGreeting = [greeting,firstName];
-        var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+        var fullString = fullGreeting.join(" ") + ",<br><br>Thank you for reaching out to us!" + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.compose({
             deliver:false,
             mailto: {
@@ -733,7 +733,7 @@ async function cancellationForm(newMessage){
             subjectField = "";
         }
         var fullGreeting = [greeting,firstName];
-        var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+        var fullString = fullGreeting.join(" ") + "," + intro + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.reply({
             deliver:false,
             mailto: {
