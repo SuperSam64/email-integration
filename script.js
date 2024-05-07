@@ -810,7 +810,9 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    currentConversation = conversations[0];
+    Missive.fetchConversations(ids).then((conversations) => {		    
+          currentConversation = conversations[0];
+    })				
     $("#body2").text(currentConversation)
     //insertSignature(emailClosing);
 }
