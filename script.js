@@ -819,15 +819,13 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    Missive.fetchConversations().then((conversations) => {
-        var somethingGoesHere
-        
-              somethingGoesHere = conversations[0].id;
-         
-        
-        $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
-    });
-
+    
+    
+    
+    
+    
+    var somethingGoesHere = Missive.fetchConversations()[0].id;
+    $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
 
     //insertSignature(emailClosing);
 }
