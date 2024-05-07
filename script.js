@@ -351,7 +351,7 @@ function getGreeting(conversation) {
     else {
         segment = "morning"
     }
-    timeBased = ["Good",segment,customerName]
+    timeBased = ["Good",segment,firstName]
     
     return timeBased.join(" ") + ",<br><br>" + intro;
 }
@@ -697,13 +697,6 @@ async function cancellationForm(newMessage){
         orderNumber = formData.orderNumber;
         var firstName = "";
         var lastName = "";
-        if(customerName.includes(" ") == true){
-            firstName = "5" + customerName.replace(" ","[!]").split("[!]")[0]
-            lastName = "6" + customerName.replace(" ","[!]").split("[!]")[1]
-        }
-        else {
-            firstName = "7" + customerName;
-        }
         if(formData.orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
         }
@@ -729,13 +722,6 @@ async function cancellationForm(newMessage){
         var subjectField;
         var firstName = "";
         var lastName = "";
-        if(customerName.includes(" ") == true){
-            firstName = "1" + customerName.replace(" ","[!]").split("[!]")[0];
-            lastName = "2" + customerName.replace(" ","[!]").split("[!]")[1];
-        }
-        else {
-            firstName = "3" + customerName;
-        }
         if(orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
         }
