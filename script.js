@@ -690,7 +690,7 @@ async function cancellationForm(newMessage){
         orderNumber = formData.orderNumber;
         var firstName = "";
         var lastName = "";
-        if(customerName.includes(" ")){
+        if(customerName.includes(" ") == true){
             customerName.replace(" ","[!]");
             firstName = customerName.split("[!]")[0]
             lastName = customerName.split("[!]")[1]
@@ -715,7 +715,6 @@ async function cancellationForm(newMessage){
                 }]
             }
         })
-        Missive.setSubject(subjectField.replace(" (","").replace(")",""));
         Missive.assign(currentUser);
         // set some of these to global variables for this thread, but make sure to clear the variables in this function so they don't remain when the conversation changes
     }
@@ -724,7 +723,7 @@ async function cancellationForm(newMessage){
         var subjectField;
         var firstName = "";
         var lastName = "";
-        if(customerName.includes(" ")){
+        if(customerName.includes(" ") == true){
             customerName.replace(" ","[!]");
             firstName = customerName.split("[!]")[0]
             lastName = customerName.split("[!]")[1]
