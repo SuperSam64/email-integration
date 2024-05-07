@@ -689,7 +689,6 @@ async function cancellationForm(newMessage){
     }
     subscriptionResult = [" I have also cancelled your Home Filter Club subscription, and you will receive an email regarding the cancellation.",""]
     var closing = " Let me know if you need further assistance. Have a great day!"
-    var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
     // formData.customerName, formData.emailAddress, formData.orderNumber
     if(formData.newMessage == true){
         var subjectField;
@@ -710,13 +709,14 @@ async function cancellationForm(newMessage){
         else {
             subjectField = "";
         }
+        var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.compose({
             deliver:false,
             mailto: {
                 subject: "Re: Cancellation request" + subjectField,
                 body: fullString,
                 to_fields:[{
-                    address: messageFrom
+                    address: formData.emailAddress
                 }]
             }
         })
@@ -734,6 +734,7 @@ async function cancellationForm(newMessage){
         else {
             subjectField = "";
         }
+        var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.reply({
             deliver:false,
             mailto: {
