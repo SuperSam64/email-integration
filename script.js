@@ -810,7 +810,9 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    insertSignature(emailClosing);
+    currentConversation = conversations[0];
+    $("#body2").text(currentConversation)
+    //insertSignature(emailClosing);
 }
 function button4Clicked() {
     createTasks(purchaseOrderTasks);
