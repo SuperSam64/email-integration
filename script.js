@@ -732,10 +732,7 @@ async function cancellationForm(newMessage){
             deliver:false,
             mailto: {
                 subject: "Re: Cancellation request" + subjectField,
-                body: fullString,
-                to_fields:[{
-                    name: firstName
-                }]
+                body: fullString
             }
         });
     }
