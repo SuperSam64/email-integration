@@ -366,15 +366,6 @@ function update (input){
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
 }
-async function getConvo(){
-    var someVar = await Missive.fetchConversations(ids).then((conversations) => {		
-          
-        currentConversation = conversations[0];      
-    })
-    update(currentConversation);
-    showResults();
-    return someVar;
-}
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
@@ -819,12 +810,11 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    
-    
-    
-    
-    
-    var somethingGoesHere = Missive.fetchConversations()[0].id;
+    var somethingGoesHere;
+    Missive.fetchConversations().then((conversations) => {		
+        somethingGoesHere = conversations[0].id;
+        
+    })
     $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
 
     //insertSignature(emailClosing);
