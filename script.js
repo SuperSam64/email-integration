@@ -819,10 +819,18 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    Missive.fetchConversations().then((conversations) => {		    
-          currentConversation = conversations[0];
-    })				
-    $("#body2").text(currentConversation)
+    Missive.fetchConversations().then((conversations) => {
+        var somethingGoesHere
+        $(conversations).each(function(){
+          if(this.id.length == 36){
+              somethingGoesHere = this.id;
+          }
+        });
+        
+        $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
+    });
+
+
     //insertSignature(emailClosing);
 }
 function button4Clicked() {
