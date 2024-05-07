@@ -699,7 +699,7 @@ async function cancellationForm(newMessage){
         else {
             subjectField = "";
         }
-        var fullgreeting = [greeting,firstName];
+        var fullGreeting = [greeting,firstName];
         var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.compose({
             deliver:false,
@@ -732,7 +732,7 @@ async function cancellationForm(newMessage){
         else {
             subjectField = "";
         }
-        var fullgreeting = [greeting,firstName];
+        var fullGreeting = [greeting,firstName];
         var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.reply({
             deliver:false,
