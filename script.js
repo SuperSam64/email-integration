@@ -371,6 +371,8 @@ async function getConvo(){
           
         currentConversation = conversations[0];      
     })
+    update(currentConversation);
+    showResults();
     return someVar;
 }
 function getKey(input){
