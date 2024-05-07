@@ -697,6 +697,13 @@ async function cancellationForm(newMessage){
         orderNumber = formData.orderNumber;
         var firstName = "";
         var lastName = "";
+        if(customerName.includes(" ") == true){
+            firstName = customerName.replace(" ","[!]").split("[!]")[0]
+            lastName = customerName.replace(" ","[!]").split("[!]")[1]
+        }
+        else {
+            firstName = customerName;
+        }
         if(formData.orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
         }
