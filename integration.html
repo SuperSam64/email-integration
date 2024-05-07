@@ -3,447 +3,460 @@
 		<title>Filters Fast</title>
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 		<link href="profile-visibility.css" rel="stylesheet">
+		<link href="test/style_test.css" rel="stylesheet">
 		<script src="https://integrations.missiveapp.com/missive.js"></script>
+		<script src="test/script_test.js"></script>
 	</head>
-	<body style="height:90%">
+	<body style="width:92%;height:96%;margin:auto">
 		<!---------------------------HEADER--------------------------------->
-		<div class="column-vertical padding margin section" style="border-radius:4px;background-color: rgba(125, 127, 125, 0.1)">
+		<div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
+		  <div class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
-			  <tr>
-				<td rowspan="2"><span id="avatar" style="border:3px solid var(--missive-text-color-a);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span></td>
-				<td><span id="name" style="margin-left:8px" class="text-xlarge text-600"></span></td>
-			  </tr>
-			  <tr>
-				<td><span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span></td>
-			  </tr>
+			  <tbody>
+				<tr>
+				  <td rowspan="2">
+					<span id="avatar" style="border:4px solid var(--accent-color);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
+				  </td>
+				  <td>
+					<span id="name" style="margin-left:8px" class="text-xlarge text-600"></span>
+				  </td>
+				</tr>
+				<tr>
+				  <td>
+					<span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span>
+				  </td>
+				</tr>
+			  </tbody>
 			</table>
-		</div>
-		<div class="column-vertical column-center margin section align-center">
+		  </div>
+		  <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			<span class="button-link column padding" id="reload-button">Version 72.2</span>
+			Version 9.07
 			<!----------------------------------------------------------------------------->
+		  </div>
 		</div>
-		<!-- monday main board search: https://filtersfast.monday.com/boards/650367267/pulses/6430604454?term=
-			from_field.customer_id will this work???? 
-			get current convo id to go back to convo after a thing
-			things to test:
-				crop icons to square
-				empty labels: Archive, Sent, Assigned, Unasigned Closed
-				make monday form link with order number
-				make monday search with order number
-				differentiate between number of SENT messages and number of RECEIVED messages (>1 would produce "thank you
-					for your reply"), see whether the first message was sent/received, last messages as well
-				if at least 1 message is from @filtersfast.com and to != @filtersfast.com (sent to cust by FF) and the most
-					recent message is the inverse (sent to FF by cust), thank you for your reply. also, account messages 
-					sent from other inboxes, which will appear as though they were received from customers.
-				unlabel chatbot request after sending
-				/// if TO and FROM boldsales, swap emails
-		-->
-		<div id="mSearch" class="button column padding">Monday Search 16172379</div>
-		<div class="column-vertical margin section">
-			<!-- individual table for row separates left from right, while also still allowing for "section" -->
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-preview">Get Msg Preview</span></td>
-					<td><span class="columnn" id="preview-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<!-- individual table for row separates left from right, while also still allowing for "section" -->
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-messageSubject">Get Msg Subject</span></td>
-					<td><span class="columnn" id="messageSubject-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<!-- individual table for row separates left from right, while also still allowing for "section" -->
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-conversationSubject">Get Convo Subject</span></td>
-					<td><span class="columnn" id="conversationSubject-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-to">Get To</span></td>
-					<td><span class="columnn" id="to-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-from">Get From</span></td>
-					<td><span class="columnn" id="from-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-labels">Get Labels</span></td>
-					<td><span class="columnn" id="labels-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-messageCount">Get Msg Count</span></td>
-					<td><span class="columnn" id="messageCount-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="create-task">Create a task</span></td>
-					<td><span class="columnn" id="task-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="get-customerID">Get cust ID</span></td>
-					<td><span class="columnn" id="customerID-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="CCA-form-button">Monday form</span></td>
-					<td><span class="columnn" id="CCA-form-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
-		<div class="column-vertical margin section">
-			<table>
-				<tr>
-					<td><span class="button column padding" id="draft-button">Write draft</span></td>
-					<td><span class="columnn" id="draft-text" style="word-break: break-all">[RESULT]</span></td>
-				</tr>
-			</table>
-		</div>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
+		<!------------------------------------------------------------------------>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
+		<!------------------------------------------------------------------------>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" id="button3" style="visibility:hidden">Insert Signature</span><br>
+		<!------------------------------------------------------------------------>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" id="button4" style="visibility:hidden">Insert Tasks</span><br>
+		<!------------------------------------------------------------------------>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" id="button5" style="visibility:hidden">Insert Reply Draft</span><br>
+		<!------------------------------------------------------------------------>
+		<!-------------------------- BUTTON -------------------------------------->
+		<span class="button column padding testButton" id="button6" style="visibility:hidden">Save Contact</span><br>
+		<!------------------------------------------------------------------------>
+		<table class="textFrame" style="visibility:hidden"> <!-- Table of results -->
+		<!------------------------- TEXT BOX -------------------------->
+		<tr id="title1" class="textTitle"><td width="24 px" style="text-align:right">
+		  1.
+		</td><td></td><td>
+		  Conversation ID
+		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body1" class="textBody">
+		  [placeholder]
+		</td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title2" class="textTitle"><td width="24 px" style="text-align:right">
+			2.
+		  </td><td></td><td>
+			Conversation Count
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body2" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title3" class="textTitle"><td width="24 px" style="text-align:right">
+			3.
+		  </td><td></td><td>
+			To
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body3" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title4" class="textTitle"><td width="24 px" style="text-align:right">
+			4.
+		  </td><td></td><td>
+			From
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body4" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title5" class="textTitle"><td width="24 px" style="text-align:right">
+			5.
+		  </td><td></td><td>
+			Customer's Name
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body5" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title6" class="textTitle"><td width="24 px" style="text-align:right">
+			6.
+		  </td><td></td><td>
+			Message Subject
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body6" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title7" class="textTitle"><td width="24 px" style="text-align:right">
+			7.
+		  </td><td></td><td>
+			Conversation Subject
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body7" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title8" class="textTitle"><td width="24 px" style="text-align:right">
+			8.
+		  </td><td></td><td>
+			Is this assigned to me?
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body8" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title9" class="textTitle"><td width="24 px" style="text-align:right">
+			9.
+		  </td><td></td><td>
+			Is this a draft that needs to be assigned?
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body9" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title10" class="textTitle"><td width="24 px" style="text-align:right">
+			10.
+		  </td><td></td><td>
+			Does the email address need to be replaced?
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body10" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title11" class="textTitle"><td width="24 px" style="text-align:right">
+			11.
+		  </td><td></td><td>
+			Link to Conversation
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body11" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title12" class="textTitle"><td width="24 px" style="text-align:right">
+			12.
+		  </td><td></td><td>
+			Link to Message
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body12" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title13" class="textTitle"><td width="24 px" style="text-align:right">
+			13.
+		  </td><td></td><td>
+			All Labels
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body13" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title14" class="textTitle"><td width="24 px" style="text-align:right">
+			14.
+		  </td><td></td><td>
+			Is the label "Cancellations" applied? (1d53229eb9e1)
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body14" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title15" class="textTitle"><td width="24 px" style="text-align:right">
+			15.
+		  </td><td></td><td>
+			Preview
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body15" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title16" class="textTitle"><td width="24 px" style="text-align:right">
+			16.
+		  </td><td></td><td>
+			Full Message
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		  <tr id="title17" class="textTitle"><td width="24 px" style="text-align:right">
+			17.
+		  </td><td></td><td>
+			Order Number
+		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body17" class="textBody">
+			[placeholder]
+		  </td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		<tr id="title18" class="textTitle"><td width="24 px" style="text-align:right">
+		  18.
+		</td><td></td><td>
+		  Time Stamp
+		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body18" class="textBody bottomSection">
+		  [placeholder]
+		</td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		<tr id="title19" class="textTitle"><td width="24 px" style="text-align:right">
+		  19.
+		</td><td></td><td>
+		  Token
+		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body19" class="textBody bottomSection">
+		  [placeholder]
+		</td></tr>
+		<!------------------------------------------------------------->
+		<!------------------------- TEXT BOX -------------------------->
+		<tr id="title19" class="textTitle"><td width="24 px" style="text-align:right">
+		  20.
+		</td><td></td><td>
+		  Greeting
+		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body20" class="textBody bottomSection">
+		  [placeholder]
+		</td></tr>
+		<!------------------------------------------------------------->
+		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 		<script type="text/javascript">
-			// ================================ variables ================================
+		  {//---- VARIABLES ----
 			var currentUser;
 			var fullName;
-			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
-			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
 			var profileType = "CCA"; // CCA, CRM, master
 			var title = "Customer Care Advocate" // default, unless  otherwise specified
-			var currentConvo;
-			var messagePreview;
+			var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
+			var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
+			var currentConversation;
+			var conversationID;
+			var conversationCount;
+			var messageTo;
+			var messageFrom;
+			var customerName;
 			var messageSubject;
-			var convoSubject;
-			var msgTo;
-			var msgFrom;
-			var labelsArray = [];
-			var messageCount;
-			var convoLink;
-			var replied; // change this to "replied" with a value of true/false
-			var isAssigned;
-			var mondayForm = {
-				name: "Sam",
-				orderNum: null,
-				custID: null,
-				phoneNum: null,
-				reasonCode: null,
-				reshipRefund: null,
-				verify: null,
-				itemQTY: null,
-				commnets: null
-			}
-			// ========================== on load function ===============================
-			$(document).ready((ids) => {
-				Missive.fetchUsers().then((users) => {
-					$(users).each(function(){
-						if(this.me){
-							currentUser = this;
-						}
-					});
-					$(adminList).each(function(){
-						if(this == currentUser.id.split("-")[4]){
-							profileType = "master"
-							title = "Administrator";
-						}
-					});
-					$(crmList).each(function(){
-						if(this == currentUser.id.split("-")[4]){
-							profileType = "CRM"
-							title = "Client Relationship Manager";
-							// set style sheets accordingly
-						}
+			var conversationSubject;
+			var userAssigned;
+			var assignDraft;
+			var forwarded;
+			var conversationLink;
+			var messageLink;
+			var labels;
+			var isLabeled;
+			var preview;
+			var fullMessage;
+			var orderNoTest = "Order #CP-12458935"; // this is for testing, delete later
+			var orderNumber;
+			var signature;
+			var emailClosing = "Sincerely";
+			var suggestedLabel;
+			var timeStamp;
+			var token;
+			var replied;
+			var intro;
+			var greeting;
+			var purchaseOrderTasks = [
+			  "Email customer for PO revision",
+			  "PO prepared",
+			  "Customer is on terms (Limit: $)",
+			  "- or - Email customer that order needs payment",
+			  "Take payment",
+			  "Send confirmation email",
+			  "Sending shippng info to [DC](https://filtersfast.monday.com/boards/768866444) | [Purchasing](https://filtersfast.monday.com/boards/768866444)"
+			]
+		  }
+		  // ============ PAGE LOAD ==============
+		  $(window).on('load',(ids) => {
+			Missive.fetchUsers().then((users) => {
+			  $(users).each(function(){
+				if(this.me){
+					currentUser = this;
+			  }
+			});
+			$(adminList).each(function(){
+				if(this == currentUser.id.split("-")[4]){
+				  profileType = "master"
+				  title = "Administrator";
+				}
+			});
+			$(crmList).each(function(){
+				if(this == currentUser.id.split("-")[4]){
+				  profileType = "CRM"
+				  title = "Client Relationship Manager";
+				}
+			});
+			var fullName = currentUser.first_name + " " + currentUser.last_name;
+			$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+			$("#name").text(fullName);
+			$("#layout").text(title);
+			});
+			Missive.fetchLabels().then((labels) => {
+			  var organization
+			  $(labels).each(function(){
+				if(this.id.length == 36){
+					organization = this.organization_id;
+				}
+			  });
+			  token = getKey(organization);
+			  contactBook = getContactsKey(organization);
+			  $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
+			});
+			Missive.fetchConversations(ids).then((conversations) => {		
+			  currentConversation = conversations[0];
+			  update(currentConversation);
+			  showResults();
+			})				
+		  });
+		  // =====================================
+		  //------- WHEN CONVERSATION CHANGES ---------
+		  Missive.on('change:conversations', (ids) => {
+					Missive.fetchConversations(ids).then((conversations) => {		
+			  currentConversation = conversations[0];
+			  update(currentConversation);
+			  showResults();
 					})
-					var fullName = currentUser.first_name + " " + currentUser.last_name;
-					$("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-					$("#name").text(fullName);
-					$("#layout").text(title); //
-				})				
-			})
-			Missive.on('change:conversations', (ids) => {
-				Missive.fetchConversations(ids).then((conversations) => {
-					// If no messages have been sent or received in the current conversation, it is a new draft				
-					currentConvo = conversations[0];
-					replied = false;
-					update(currentConvo);
-					showResults();
 				})
-			})
-			function getUser() {
-				return currentUser;
-			}
-			function getPreview(conversation){
-				if(conversation.messages.length == 0){
-					return "[empty]"
-				}
-				else {
-					$("#preview-text").html("<div>" + "Hello!" + "</div>")
-					//return bodyText2;
-				}
-			}
-			function getMessageSubject(conversation){
-				if(conversation.messages.length == 0){
-					return "[empty]"
-				}
-				else {
-					return conversation.latest_message.subject;
-				}
-			}
-			function getConversationSubject(conversation){
-				if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					return conversation.subject;
-				}
-			}
-			function getLabels(conversation){				
-				var labels = ["No labels"]
-				replied = false;
-				for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
-					var prefix = conversation.labels[i].id.split("-")[0];
-					if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
-						if(prefix == "sent"){
-							replied = true;
-						}
-						else{
-							labels.push(conversation.labels[i].name) // this can be .name or .id
-						}
-					}
-				}
-				if(labels.length > 1){
-					labels.shift();
-				}
-				return labels +  " | " + replied;
-			}
-			function getTo(conversation){
-					if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					return conversation.latest_message.to_fields[0].address;
-				}
-			}
-			function getFrom(conversation) {
-				if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				else {
-					if(conversation.latest_message.from_field.address == "boldsales@filtersfast.com" && replied == false){
-						return (conversation.latest_message.body.split("mailto:")[1]).split('">')[0];
-					}
-					else{
-						return conversation.latest_message.from_field.address;
-					}
-				}
-			}
-			function assigned(conversation){
-				var assignedToMe = false;
-				for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
-					if(conversation.assignees[i].id == currentUser.id){
-						assignedToMe = true;
-					}
-				}
-				return assignedToMe;
-			}
-			function getMessageCount(conversation) {
-				if(conversation.messages.length == 0){
-					return 0;
-				}
-				else {
-					return conversation.messages_count;
-				}
-			}
-			function getCustomerID(conversation) {
-				if(conversation.messages.length == 0){
-					return "[empty]";
-				}
-				//else {						
-				//}
-			}
-			function task(text) {
-				Missive.createTask(text,false);
-			}
-			function assignDraft(conversation) {
-				if(conversation.messages.length == 0 && conversation.assignees.length == 0){
-					Missive.assign(currentUser.id);
-				}
-			}
-			function update(input){
-				messagePreview = getPreview(input);
-				messageSubject = getMessageSubject(input);
-				convoSubject = getConversationSubject(input);
-				labelsArray = getLabels(input);	
-				isAssigned = assigned(input);
-				msgTo = getTo(input);
-				msgFrom = getFrom(input);			
-				messageCount = getMessageCount(input);
-				writeDraft(msgFrom);			
-				assignDraft(input);
-			}
-			function writeDraft(email){
-				$("#draft-text").text("[empty]]")
-				if(isAssigned == true && replied == false && currentConvo.messages.length == 1 && currentConvo.latest_message.from_field.address == "boldsales@filtersfast.com"){
-					$("#draft-text").text("ChangeEmail")
-					// to_feilds format is { address: 'frodo@missiveapp.com', name: 'Frodo Baggins' }
-					
-					var draftDetails = {
-						deliver: false,
-						mailto: {
-							to_fields: [{
-								address: "test@filtersfast.com"
-							}]
-						}
-					}
-					
-					Missive.reply(draftDetails);
-				}
-			}
-			function showResults() {
-				$("#preview-text").text(messagePreview);
-				$("#messageSubject-text").text(messageSubject);
-				$("#messageCount-text").text(messageCount);
-				$("#to-text").text(msgTo);
-				$("#from-text").text(msgFrom);
-				$("#conversationSubject-text").text(convoSubject);
-				$("#labels-text").text(labelsArray); // [ THIS CAN BE DELETED, IT IS ONLY USED TO TEST THE LABELS ARRAY]
-			}
-			function extractContent(s) {
-				var span = document.createElement('span');
-				span.innerHTML = s;
-				return span.textContent || span.innerText;
-			};
-			function showCCAform(){
-				window.location.replace("https://supersam64.github.io/email-integration/form_test.html?name=Sam%20Nimmo&text0=16040569&text6=4450897&text03=3017856194&status=7&status0=12&text3=EXPXXFIL0016%20x%204&status4=5&pulse__update=Does%20not%20wish%20to%20wait,%20please%20cancel")
-			}
-			//======== button to test that function works ========
-			$("#get-preview").click(function () {
-				
-				
-				$("#preview-text").text(extractContent(currentConvo.latest_message.body))
-				/*const myForm = {
-					
-						name: "A form",
-						comments: [{content: "something"}]
-				
-							
-				}
-				Missive.openForm(myForm);*/
-			});						
-			$("#get-messageSubject").click(function () { 
-				//======== run the function, optionally with parameters ========
-				var value = getMessageSubject(currentConvo);
-				//======== write the value to the text next to the button to test that it works ========
-				$("#messageSubject-text").text(value);
-			});
-			//======== button to test that funciton works ========
-			$("#get-conversationSubject").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getConversationSubject();
-				$("#conversationSubject-text").text(value);
-			});
-			$("#get-to").click(function () { 
-				Missive.search("Select Form test")
-				//var value = getTo();
-				//$("#to-text").text(value);
-			});
-			$("#get-from").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getFrom();
-				$("#from-text").text(value);
-			});
-			$("#get-labels").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getLabels();
-				$("#labels-text").text(value);
-			});
-			$("#get-messageCount").click(function () { 
-				var value = getMessageCount();
-				$("#messageCount-text").text(value);
-			});
-			$("#create-task").click(function () { 
-				task("This is a task");
-			});
-			$("#get-customerID").click(function () { 
-				var value = getCustomerID(currentConvo);
-				$("#customerID-text").text("Done");
-			});
-			$("#CCA-form-button").click(function () { 
-				showCCAform();
-			});
-			// ================ resets ================
-			$("#messageSubject-text").click(function () { 
-				//======== run the function, optionally with parameters ========
-				var value = getMessageSubject("anything-goes-here");
-				//======== write the value to the text next to the button to test that it works ========
-				$("#messageSubject-text").text("[RESULT]");
-			});
-			//======== button to test that funciton works ========
-			$("#conversationSubject-text").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getConversationSubject();
-				$("#conversationSubject-text").text("[RESULT]");
-			});
-			$("#to-text").click(function () { 
-				var value = getTo();
-				$("#to-text").text("[RESULT]");
-			});
-			$("#from-text").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getFrom();
-				$("#from-text").text("[RESULT]");
-			});
-			$("#labels-text").click(function () { 
-				//======== run the function, no parameters ========
-				var value = getLabels();
-				$("#labels-text").text("[RESULT]");
-			});
-			$("#messageCount-text").click(function () { 
-				var value = getMessageCount();
-				$("#messageCount-text").text("[RESULT]");
-			});
-			$("#task-text").click(function () { 
-				$("#task-text").text("[RESULT]");
-			});
-			$("#customerID-text").click(function () { 
-				$("#customerID-text").text("[RESULT]");
-			});
-			// ========================================
-			$("#reload-button").click(function () { 
-				Missive.reload();
-			});
-			$("#mSearch").click(function () { 
-				Missive.openURL("https://filtersfast.monday.com/boards/650367267/pulses/6483732974?term=16172379");
-			});
+		  {//---------------- RESETS ------------------
+		  $("#title1").click(function () { 
+			body1Reset();
+		  });
+		  $("#body1").click(function () { 
+			body1Reset();
+		  });
+		  $("#title2").click(function () { 
+			body2Reset();
+		  });
+		  $("#body2").click(function () { 
+			body2Reset();
+		  });
+		  $("#title3").click(function () { 
+			body3Reset();
+		  });
+		  $("#body3").click(function () { 
+			body3Reset();
+		  });
+		  $("#title4").click(function () { 
+			body4Reset();
+		  });
+		  $("#body4").click(function () { 
+			body4Reset();
+		  });
+		  $("#title5").click(function () { 
+			body5Reset();
+		  });
+		  $("#body5").click(function () { 
+			body5Reset();
+		  });
+		  $("#title6").click(function () { 
+			body6Reset();
+		  });
+		  $("#body6").click(function () { 
+			body6Reset();
+		  });
+		  $("#title7").click(function () { 
+			body7Reset();
+		  });
+		  $("#body7").click(function () { 
+			body7Reset();
+		  });
+		  $("#title8").click(function () { 
+			body8Reset();
+		  });
+		  $("#body8").click(function () { 
+			body8Reset();
+		  });
+		  $("#title9").click(function () { 
+			body9Reset();
+		  });
+		  $("#body9").click(function () { 
+			body9Reset();
+		  });
+		  $("#title10").click(function () { 
+			body10Reset();
+		  });
+		  $("#body10").click(function () { 
+			body10Reset();
+		  });
+		  $("#title11").click(function () { 
+			body11Reset();
+		  });
+		  $("#body11").click(function () { 
+			body11Reset();
+		  });
+		  $("#title12").click(function () { 
+			body12Reset();
+		  });
+		  $("#body12").click(function () { 
+			body12Reset();
+		  });
+		  $("#title13").click(function () { 
+			body13Reset();
+		  });
+		  $("#body13").click(function () { 
+			body13Reset();
+		  });
+		  $("#title14").click(function () { 
+			body14Reset();
+		  });
+		  $("#body14").click(function () { 
+			body14Reset();
+		  });
+		  $("#body15").click(function () { 
+			body15Reset();
+		  });
+		  $("#body16").click(function () { 
+			body16Reset();
+		  });
+		  $("#body17").click(function () { 
+			body17Reset();
+		  });
+		  $("#body18").click(function () { 
+			body18Reset();
+		  });
+		  $("#body19").click(function () { 
+			body19Reset();
+		  });
+		  $("#body20").click(function () { 
+			body20Reset();
+		  });
+		  $("#button1").click(function () { 
+			button1Clicked();
+		  });
+		  $("#button2").click(function () { 
+			button2Clicked();
+		  });
+		  $("#button3").click(function () { 
+			button3Clicked();
+		  });
+		  $("#button4").click(function () { 
+			button4Clicked();
+		  });
+		  $("#button5").click(function () { 
+			button5Clicked();
+		  });
+		  $("#button6").click(function () { 
+			button6Clicked();
+		  });
+		  $("#version_number").click(function (){
+			Missive.reload();
+		  });
+		  }
 		</script>
 	</body>
-</html>
+	</html>
