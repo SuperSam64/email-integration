@@ -819,7 +819,7 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    Missive.fetchConversations(ids).then((conversations) => {		    
+    Missive.fetchConversations().then((conversations) => {		    
           currentConversation = conversations[0];
     })				
     $("#body2").text(currentConversation)
