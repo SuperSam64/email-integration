@@ -9,7 +9,7 @@
 	</head>
 	<body style="width:92%;height:96%;margin:auto">
 		<!---------------------------HEADER--------------------------------->
-		<div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
+		<div style="top:0px;left:0px;margin:0px;padding:0px;width:100%;background-color:var(--missive-background-color)">
 		  <div class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
 			<table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
 			  <tbody>
@@ -31,12 +31,12 @@
 		  </div>
 		  <div id="version_number" class="button-link margin section align-center" style="visibility:hidden;margin:auto;width:100%;padding-bottom:12px">
 			<!---------------------------  [[  VERSION  ]]  ------------------------------->
-			Version 9.07
+			Version 9.08
 			<!----------------------------------------------------------------------------->
 		  </div>
 		</div>
 		<!-------------------------- BUTTON -------------------------------------->
-		<span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
+		<span class="button column padding testButton" id="button1">Cancellation (Reply)</span><br>
 		<!------------------------------------------------------------------------>
 		<!-------------------------- BUTTON -------------------------------------->
 		<span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
@@ -55,184 +55,123 @@
 		<!------------------------------------------------------------------------>
 		<table class="textFrame" style="visibility:hidden"> <!-- Table of results -->
 		<!------------------------- TEXT BOX -------------------------->
-		<tr id="title1" class="textTitle"><td width="24 px" style="text-align:right">
-		  1.
-		</td><td></td><td>
-		  Conversation ID
-		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body1" class="textBody">
-		  [placeholder]
-		</td></tr>
+		<span id="title1" class="textTitle"><td width="24 px" style="text-align:right">
+		</span><span id="body1" class="textBody">
+		  </span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title2" class="textTitle"><td width="24 px" style="text-align:right">
-			2.
-		  </td><td></td><td>
-			Conversation Count
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body2" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title2" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		  </span><span id="body2" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title3" class="textTitle"><td width="24 px" style="text-align:right">
-			3.
-		  </td><td></td><td>
-			To
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body3" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title3" class="textTitle"><td width="24 px" style="text-align:right">
+			
+		  </span><span id="body3" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title4" class="textTitle"><td width="24 px" style="text-align:right">
-			4.
-		  </td><td></td><td>
-			From
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body4" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title4" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body4" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title5" class="textTitle"><td width="24 px" style="text-align:right">
-			5.
-		  </td><td></td><td>
-			Customer's Name
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body5" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title5" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		  </span><span id="body5" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title6" class="textTitle"><td width="24 px" style="text-align:right">
-			6.
-		  </td><td></td><td>
-			Message Subject
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body6" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title6" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body6" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title7" class="textTitle"><td width="24 px" style="text-align:right">
-			7.
-		  </td><td></td><td>
-			Conversation Subject
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body7" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title7" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body7" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title8" class="textTitle"><td width="24 px" style="text-align:right">
-			8.
-		  </td><td></td><td>
-			Is this assigned to me?
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body8" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title8" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body8" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title9" class="textTitle"><td width="24 px" style="text-align:right">
-			9.
-		  </td><td></td><td>
-			Is this a draft that needs to be assigned?
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body9" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title9" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		  </span><span id="body9" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title10" class="textTitle"><td width="24 px" style="text-align:right">
-			10.
-		  </td><td></td><td>
-			Does the email address need to be replaced?
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body10" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title10" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body10" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title11" class="textTitle"><td width="24 px" style="text-align:right">
-			11.
-		  </td><td></td><td>
-			Link to Conversation
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body11" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title11" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body11" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title12" class="textTitle"><td width="24 px" style="text-align:right">
-			12.
-		  </td><td></td><td>
-			Link to Message
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body12" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title12" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body12" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title13" class="textTitle"><td width="24 px" style="text-align:right">
-			13.
-		  </td><td></td><td>
-			All Labels
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body13" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title13" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		  </span><span id="body13" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title14" class="textTitle"><td width="24 px" style="text-align:right">
-			14.
-		  </td><td></td><td>
-			Is the label "Cancellations" applied? (1d53229eb9e1)
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body14" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title14" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		  </span><span id="body14" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title15" class="textTitle"><td width="24 px" style="text-align:right">
-			15.
-		  </td><td></td><td>
-			Preview
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body15" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title15" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body15" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title16" class="textTitle"><td width="24 px" style="text-align:right">
-			16.
-		  </td><td></td><td>
-			Full Message
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body16" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title16" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body16" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		  <tr id="title17" class="textTitle"><td width="24 px" style="text-align:right">
-			17.
-		  </td><td></td><td>
-			Order Number
-		  </td></tr><tr><td colspan="2"></td><td colspan="3" id="body17" class="textBody">
-			[placeholder]
-		  </td></tr>
+		  <span id="title17" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		  </span><span id="body17" class="textBody">
+			</span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		<tr id="title18" class="textTitle"><td width="24 px" style="text-align:right">
-		  18.
-		</td><td></td><td>
-		  Time Stamp
-		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body18" class="textBody bottomSection">
-		  [placeholder]
-		</td></tr>
+		<span id="title18" class="textTitle"><td width="24 px" style="text-align:right">
+		
+		</span><span id="body18" class="textBody bottomSection">
+		  </span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		<tr id="title19" class="textTitle"><td width="24 px" style="text-align:right">
-		  19.
-		</td><td></td><td>
-		  Token
-		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body19" class="textBody bottomSection">
-		  [placeholder]
-		</td></tr>
+		<span id="title19" class="textTitle"><td width="24 px" style="text-align:right">
+		 
+		</span><span id="body19" class="textBody bottomSection">
+		  </span>
 		<!------------------------------------------------------------->
 		<!------------------------- TEXT BOX -------------------------->
-		<tr id="title19" class="textTitle"><td width="24 px" style="text-align:right">
-		  20.
-		</td><td></td><td>
-		  Greeting
-		</td></tr><tr><td colspan="2"></td><td colspan="3" id="body20" class="textBody bottomSection">
-		  [placeholder]
-		</td></tr>
+		<span id="title19" class="textTitle"><td width="24 px" style="text-align:right">
+	
+		</span><span id="body20" class="textBody bottomSection">
+		  </span>
 		<!------------------------------------------------------------->
 		</table>
 		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
