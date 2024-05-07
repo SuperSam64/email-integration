@@ -30,7 +30,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.09
+        Version 9.10
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -316,13 +316,13 @@
           contactBook = getContactsKey(organization);
           $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
         });
-        Missive.fetchConversations(ids).then((conversations) => {		
-          setTimeout(function() {
-            currentConversation = conversations[0];
+        
+          
+            currentConversation = getConvo();
             update(currentConversation);
             showResults();
-          }, 5000);
-        })				
+          
+        				
       });
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------

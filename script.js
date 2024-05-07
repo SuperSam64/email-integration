@@ -366,6 +366,13 @@ function update (input){
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
 }
+async function getConvo(){
+    var someVar = await Missive.fetchConversations(ids).then((conversations) => {		
+          
+        currentConversation = conversations[0];      
+    })
+    return someVar;
+}
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
