@@ -332,16 +332,8 @@ function getTimeStamp(conversation){
 }
 function getGreeting(conversation) {
     var segment;
-    var timeBased;
     var currentTime = new Date();
     var currentHour = currentTime.getHours();
-    if(customerName.includes(" ") == true){
-        firstName = customerName.replace(" ","[!]").split("[!]")[0]
-        lastName = customerName.replace(" ","[!]").split("[!]")[1]
-    }
-    else {
-        firstName = customerName;
-    }
     if (currentHour > 15) {
         segment = "evening"
     }
@@ -351,9 +343,7 @@ function getGreeting(conversation) {
     else {
         segment = "morning"
     }
-    timeBased = ["Good",segment,firstName]
-    
-    return timeBased.join(" ") + ",<br><br>" + intro;
+    return "Good "+ segment;
 }
 function update (input){
     conversationID = getConversation(input);
@@ -694,8 +684,8 @@ async function cancellationForm(newMessage){
         var subjectField;
         customerName = formData.customerName;
         orderNumber = formData.orderNumber;
-        var firstName = "";
-        var lastName = "";
+        var firstName;
+        var lastName;
         if(customerName.includes(" ") == true){
             firstName = customerName.replace(" ","[!]").split("[!]")[0]
             lastName = customerName.replace(" ","[!]").split("[!]")[1]
@@ -709,7 +699,8 @@ async function cancellationForm(newMessage){
         else {
             subjectField = "";
         }
-        var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+        var fullgreeting = [greeting,firstname];
+        var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.compose({
             deliver:false,
             mailto: {
@@ -726,15 +717,23 @@ async function cancellationForm(newMessage){
     else {
         // do this if it is a reply rather than a new message thread
         var subjectField;
-        var firstName = "";
-        var lastName = "";
+        var firstName;
+        var lastName;
+        if(customerName.includes(" ") == true){
+            firstName = customerName.replace(" ","[!]").split("[!]")[0]
+            lastName = customerName.replace(" ","[!]").split("[!]")[1]
+        }
+        else {
+            firstName = customerName;
+        }
         if(orderNumber.length > 0){
             subjectField = " (Order #" + orderNumber + ")";
         }
         else {
             subjectField = "";
         }
-        var fullString = greeting + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
+        var fullgreeting = [greeting,firstname];
+        var fullString = fullGreeting.join(" ") + "," + [cancelResult[formData.orderCancelled - 1] + trackingResult + returnResult + subscriptionResult[formData.subscriptionCancelled - 1] + closing + trackingFooter];
         Missive.reply({
             deliver:false,
             mailto: {
