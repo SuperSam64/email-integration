@@ -810,11 +810,7 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    var somethingGoesHere;
-    Missive.fetchConversations().then((conversations) => {		
-        somethingGoesHere = conversations[0].id;
-        
-    })
+    somethingGoesHere = Missive.conversations[0].id
     $("#body2").text(somethingGoesHere);  // this can be deleted later, it is only used to show the key
 
     //insertSignature(emailClosing);
