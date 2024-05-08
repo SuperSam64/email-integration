@@ -845,7 +845,7 @@ function button2Clicked() {
     var lastC; 
     Missive.storeSet("lastConversation",currentConversation);
     lastC = Missive.storeGet("lastConversation");
-    $("#body2").text(lastC)
+    $("#body2").text(lastC.id)
 }
 function button3Clicked() {
     insertSignature(emailClosing);
