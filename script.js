@@ -346,6 +346,7 @@ function getGreeting(conversation) {
     return "Good "+ segment;
 }
 function update (input){
+    storeLastConversation(input);
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
     messageTo = getTo(input);
@@ -826,12 +827,12 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     return response.json();
 }*/
-function storeValue(){
-    Missive.storeSet("storedValue","HELLO!");
+function storeLastConversation(conversation){
+    Missive.storeSet("lastConversation",conversation);
 }
-function getValue(){
-    Missive.storeGet("storedValue").then(data => {
-        $("#body4").text(data);
+function getLastConversation(){
+    Missive.storeGet("lastConversation").then(lastConversationID => {
+        return lastConversationID;
     })
 }
 function button1Clicked() {
