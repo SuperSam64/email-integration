@@ -844,7 +844,7 @@ function button1Clicked() {
 function button2Clicked() {
     //cancellationReply(); 
     var lastC = getLastConversation();
-    $("#body2").text(lastC.id)
+    $("#body2").text(lastC)
 }
 function button3Clicked() {
     insertSignature(emailClosing);
