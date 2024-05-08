@@ -837,7 +837,7 @@ function getLastConversation(){
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
     //$("#body1").text(data);
-    storeLastConversation(currentConversation);
+    storeLastConversation(currentConversation.id);
     //cancellationNew();    
 }
 function button2Clicked() {
