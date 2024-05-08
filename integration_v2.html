@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.44
+        Version 9.45
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -326,6 +326,7 @@
       Missive.on('change:conversations', (ids) => {
 				Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
+          storeLastConversation(conversations[0]);
           update(currentConversation);
           showResults();
 				})
