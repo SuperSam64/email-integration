@@ -810,7 +810,16 @@ function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    var temporary = Missive.fetchConversations([0]).id
+    var temporary;
+
+    Missive.fetchConversations([0]).then((conversations) => {
+        
+        temporary = conversations.id
+        
+      });
+
+
+
         $("#body2").text(temporary);  // this can be deleted later, it is only used to show the key
       
 
