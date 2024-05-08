@@ -844,10 +844,19 @@ function button1Clicked() {
 }
 function button2Clicked() {
     //cancellationReply(); 
-    var lastC; 
-    Missive.storeSet("someTest","Hello!");
-    lastC = Missive.storeGet("someTest");
-    $("#body2").text(lastC)
+    const userData = {
+        id: '1234',
+        name: 'John Doe',
+        email: 'john.doe@example.com'
+      };
+      
+      Missive.storeSet('userData', userData);
+      
+      Missive.storeGet('userData')
+        .then(data => {
+          console.log(data);
+        });
+    $("#body2").text(data)
 }
 function button3Clicked() {
     insertSignature(emailClosing);
