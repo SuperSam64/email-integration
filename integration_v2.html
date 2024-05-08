@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.40
+        Version 9.41
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -301,7 +301,6 @@
               title = "Client Relationship Manager";
             }
         });
-        currentConversation = getLastConversation();
         var fullName = currentUser.first_name + " " + currentUser.last_name;
         $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
         $("#name").text(fullName);
@@ -316,7 +315,7 @@
           });
           token = getKey(organization);
           contactBook = getContactsKey(organization);
-          currentConverssation = getLastConversation();
+          currentConversation = getLastConversation();
           update(currentConversation);
           showResults();
           $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
