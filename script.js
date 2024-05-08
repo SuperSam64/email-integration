@@ -845,8 +845,8 @@ function button1Clicked() {
 function button2Clicked() {
     //cancellationReply(); 
     var lastC; 
-    Missive.storeSet("lastConversation","Hello!");
-    lastC = Missive.storeGet("lastConversation");
+    Missive.storeSet("someTest","Hello!");
+    lastC = Missive.storeGet("someTest");
     $("#body2").text(lastC)
 }
 function button3Clicked() {
