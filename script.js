@@ -838,12 +838,13 @@ function getLastConversation(){
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
     //$("#body1").text(data);
-    storeValue();
+    storeLastConversation();
     //cancellationNew();    
 }
 function button2Clicked() {
     //cancellationReply(); 
-    getValue();
+    var lastC = getLastConversation();
+    $("#body2").text(lastC.id)
 }
 function button3Clicked() {
     insertSignature(emailClosing);
