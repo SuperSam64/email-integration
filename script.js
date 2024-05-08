@@ -837,12 +837,12 @@ function getLastConversation(){
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
     //$("#body1").text(data);
-    storeLastConversation(currentConversation.id);
+    //storeLastConversation(currentConversation.id);
     //cancellationNew();    
 }
 function button2Clicked() {
     //cancellationReply(); 
-    var lastC = getLastConversation();
+    var lastC = currentConversation.id;
     $("#body2").text(lastC)
 }
 function button3Clicked() {
