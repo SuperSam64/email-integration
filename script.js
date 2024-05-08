@@ -856,7 +856,7 @@ function button2Clicked() {
         .then(data => {
           console.log(data.id);
         });
-    $("#body2").text(data)
+    $("#body2").text(data.id)
 }
 function button3Clicked() {
     insertSignature(emailClosing);
