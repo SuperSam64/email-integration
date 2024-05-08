@@ -839,8 +839,8 @@ function button1Clicked() {
     //$("#body1").text(data);
     //storeLastConversation(currentConversation.id);
     //cancellationNew();
-    var fetchConvo = Missive.fectchConversations("a4b4bad2-3a81-4c5d-a838-7db6a2e12847").id;
-    $("#body2").text(fectchConvo)
+    var fetchConvo = Missive.fetchConversations("a4b4bad2-3a81-4c5d-a838-7db6a2e12847").id;
+    $("#body2").text(fetchConvo);
 }
 function button2Clicked() {
     //cancellationReply(); 
