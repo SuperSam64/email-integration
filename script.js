@@ -346,9 +346,9 @@ function getGreeting(conversation) {
     return "Good "+ segment;
 }
 function update (input){
+    storeLastConversation(input);
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
-    storeLastConversation(input);
     messageTo = getTo(input);
     messageFrom = getFrom(input);
     customerName = getName(input);
