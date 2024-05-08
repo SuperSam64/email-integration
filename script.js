@@ -826,13 +826,25 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     return response.json();
 }*/
+function storeValue(){
+    Missive.storeSet({
+        key: "storedValue",
+        data: "HELLO!"
+    });
+}
+function getValue(){
+    Missive.storeGet("storedValue");
+}
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
     //$("#body1").text(data);
-    cancellationNew();    
+    storeValue();
+    //cancellationNew();    
 }
 function button2Clicked() {
-    cancellationReply(); 
+    //cancellationReply(); 
+    var returnValue = getValue();
+    $("#body4").text(returnValue);
 }
 function button3Clicked() {
     insertSignature(emailClosing);
