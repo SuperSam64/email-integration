@@ -346,7 +346,6 @@ function getGreeting(conversation) {
     return "Good "+ segment;
 }
 function update (input){
-    storeLastConversation(input);
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
     messageTo = getTo(input);
@@ -366,6 +365,7 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
+    storeLastConversation(input);
 }
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
