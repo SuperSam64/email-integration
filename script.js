@@ -365,7 +365,6 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
-    storeLastConversation(input);
 }
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
