@@ -855,8 +855,9 @@ function button2Clicked() {
       Missive.storeGet('userData')
         .then(data => {
           console.log(data.id);
+          $("#body2").text(data.id)
         });
-    $("#body2").text(data.id)
+    
 }
 function button3Clicked() {
     insertSignature(emailClosing);
