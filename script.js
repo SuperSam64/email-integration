@@ -844,13 +844,9 @@ function button1Clicked() {
 }
 function button2Clicked() {
     //cancellationReply(); 
-    const userData = {
-        id: '1234',
-        name: 'John Doe',
-        email: 'john.doe@example.com'
-      };
+    
       
-      Missive.storeSet('userData', userData);
+      Missive.storeSet('userData', currentConversation);
       
       Missive.storeGet('userData')
         .then(data => {
