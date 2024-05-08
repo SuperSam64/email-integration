@@ -827,15 +827,12 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     return response.json();
 }*/
 function storeValue(){
-    Missive.storeSet({
-        key: "storedValue",
-        data: "HELLO!"
-    });
+    Missive.storeSet("storedValue","HELLO!");
 }
 function getValue(){
-    Missive.storeGet({
-        key: "storedValue"
-    });
+    Missive.storeGet("storedValue").then(data => {
+        $("#body4").text(data);
+    })
 }
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
@@ -845,8 +842,7 @@ function button1Clicked() {
 }
 function button2Clicked() {
     //cancellationReply(); 
-    var returnValue = getValue();
-    $("#body4").text(returnValue);
+    getValue();
 }
 function button3Clicked() {
     insertSignature(emailClosing);
