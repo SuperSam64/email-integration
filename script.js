@@ -854,7 +854,7 @@ function button2Clicked() {
       
       Missive.storeGet('userData')
         .then(data => {
-          console.log(data);
+          console.log(data.id);
         });
     $("#body2").text(data)
 }
