@@ -833,7 +833,7 @@ function storeValue(){
     });
 }
 function getValue(){
-    Missive.storeGet("storedValue");
+    Missive.storeGet(storedValue);
 }
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
