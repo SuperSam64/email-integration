@@ -803,27 +803,39 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
+async function lookupContact(customerID){
+    // there is no visual indicator when the action is successful - make one
+    const response = await fetch("https://public.missiveapp.com/v1/contacts", {
+        method: "GET",
+        body: JSON.stringify({
+            "contacts": [{
+                "contact_book": contactBook, // fill this in later
+                "infos": [{
+                    "kind": "custom",
+                    "label": "other",
+                    "custom_label":"Customer ID",
+                    "value": customerID
+                }]
+            }]
+        }),
+        headers: {
+            "Host": "public.missiveapp.com",
+            "Authorization": "Bearer " + token, // fill this in later
+            "Content-type": "application/json"
+        }
+    })
+    return response.json();
+}
 function button1Clicked() {
-    cancellationNew();    
+    const data = await lookupContact("CUS2821").first_name;
+    $("#body1").text(data);
+    // cancellationNew();    
 }
 function button2Clicked() {
     cancellationReply(); 
 }
 function button3Clicked() {
-    var temporary;
-
-    Missive.fetchConversations([0]).then((conversations) => {
-        
-        temporary = conversations.id
-        
-      });
-
-
-
-        $("#body2").text(temporary);  // this can be deleted later, it is only used to show the key
-      
-
-    //insertSignature(emailClosing);
+    insertSignature(emailClosing);
 }
 function button4Clicked() {
     createTasks(purchaseOrderTasks);
