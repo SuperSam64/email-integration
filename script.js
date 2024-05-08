@@ -842,7 +842,9 @@ function button1Clicked() {
 }
 function button2Clicked() {
     //cancellationReply(); 
-    var lastC = currentConversation.id;
+    var lastC; 
+    Missive.storeSet("lastConversation",currentConversation);
+    lastC = Missive.storeGet("lastConversation");
     $("#body2").text(lastC)
 }
 function button3Clicked() {
