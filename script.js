@@ -838,7 +838,9 @@ function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
     //$("#body1").text(data);
     //storeLastConversation(currentConversation.id);
-    //cancellationNew();    
+    //cancellationNew();
+    var fetchConvo = Missive.fectchConversations("a4b4bad2-3a81-4c5d-a838-7db6a2e12847").id;
+    $("#body2").text(fectchConvo)
 }
 function button2Clicked() {
     //cancellationReply(); 
