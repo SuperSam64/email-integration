@@ -143,13 +143,13 @@ function updateFrom(conversation){
         return false;
     }
     else {
-        if (
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
             conversation.messages_count == 1 &&
-            !conversation.latest_message.to_fields &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true       
-        ) {
-            if(conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com"){
+            ) {
                 return true;
             }
             else {
@@ -158,7 +158,7 @@ function updateFrom(conversation){
         }
         else {
             return false;
-        } 
+        }
     }
 }
 function getConversationLink(conversation){
