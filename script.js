@@ -30,7 +30,7 @@ function getFrom(conversation){
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true       
         ) {
-            if(conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&){
+            if(conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com"){
                 switchEmails = true;
             }
             else {
