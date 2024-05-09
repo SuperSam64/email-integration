@@ -5,7 +5,7 @@ function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
 function getTo(conversation){
-    if(!conversation.latest_message || !conversation.latest_message.to_fields){
+    if(!conversation.latest_message || !conversation.latest_message.to_fields[0].address){
         return "[empty]";
     }
     else{
