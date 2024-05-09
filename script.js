@@ -827,21 +827,22 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     return response.json();
 }*/
 function storeLastConversation(){
-    Missive.storeSet('lastConversation', currentConversation);
+    
 }
 function getLastConversation(){
-    Missive.storeGet('lastConversation')
-        .then(conversation => {
-            currentConversation = conversation;
-        });
+    
 }
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
-    storeLastConversation();
+    Missive.storeSet('lastConversation', currentConversation);
 }
 function button2Clicked() {
     //cancellationReply(); 
-    getLastConversation();
+    Missive.storeGet('lastConversation')
+        .then(conversation => {
+            currentConversation = conversation;
+            $("#body2").text(currentConversation.id)
+        });
 }
 function button3Clicked() {
     insertSignature(emailClosing);
