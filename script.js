@@ -24,16 +24,18 @@ function getFrom(conversation){
                 assignedToMe = true;
             }
         }
-        if (!conversation.latest_message.to_fields){
-            switchEmails = false;
-        }
-        else if(   
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true       
-        ) {
-            switchEmails = true;
+            ) {
+                switchEmails = true;
+            }
+            else {
+                switchEmails = false;
+            }
         }
         else {
             switchEmails = false;
@@ -64,16 +66,18 @@ function getName(conversation){
                 assignedToMe = true;
             }
         }
-        if (!conversation.latest_message.to_fields){
-            switchName = false;
-        }
-        else if(   
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true       
-        ) {
-            switchName = true;
+            ) {
+                switchName = true;
+            }
+            else {
+                switchName = false;
+            }
         }
         else {
             switchName = false;
