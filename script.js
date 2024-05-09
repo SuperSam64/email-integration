@@ -818,9 +818,9 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
-/*async function lookupContact(customerID){
+function lookupContact(customerID){
     // there is no visual indicator when the action is successful - make one
-    const response = await fetch("https://public.missiveapp.com/v1/contacts", {
+    fetch("https://public.missiveapp.com/v1/contacts", {
         method: "GET",
         body: JSON.stringify({
             "contacts": [{
@@ -835,7 +835,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     var someResponse = response.json();
     console.log(someResponse);
     return someResponse;
-}*/
+}
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
 }
@@ -847,9 +847,9 @@ function getLastConversation(){
         });
 }
 function button1Clicked() {
-    /*const data = await lookupContact("251475").first_name;
+    data = lookupContact("251475").first_name;
     console.log(data)
-    $("#body2").text(data)*/
+    $("#body2").text(data)
     //cancellationReply();
 }
 function button2Clicked() {
