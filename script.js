@@ -826,33 +826,22 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     return response.json();
 }*/
-function storeLastConversation(conversation){
-    Missive.storeSet("lastConversation",conversation);
+function storeLastConversation(){
+    Missive.storeSet('lastConversation', currentConversation);
 }
 function getLastConversation(){
-    Missive.storeGet("lastConversation").then(lastConversationID => {
-        return lastConversationID;
-    })
+    Missive.storeGet('lastConversation')
+        .then(conversation => {
+            currentConversation = conversation;
+        });
 }
 function button1Clicked() {
     //const data = await lookupContact("CUS2821").first_name;
-    //$("#body1").text(data);
-    //storeLastConversation(currentConversation.id);
-    //cancellationNew();
-    Missive.storeSet('lastConversation', currentConversation);
+    storeLastConversation();
 }
 function button2Clicked() {
     //cancellationReply(); 
-    
-      
-      
-      
-      Missive.storeGet('lastConversation')
-        .then(data => {
-          console.log(data.id);
-          $("#body2").text(data.id)
-        });
-    
+    getLastConversation();
 }
 function button3Clicked() {
     insertSignature(emailClosing);
