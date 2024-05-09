@@ -839,16 +839,15 @@ function button1Clicked() {
     //$("#body1").text(data);
     //storeLastConversation(currentConversation.id);
     //cancellationNew();
-    var fetchConvo = Missive.fetchConversations("a4b4bad2-3a81-4c5d-a838-7db6a2e12847").id;
-    $("#body2").text(fetchConvo);
+    Missive.storeSet('lastConversation', currentConversation);
 }
 function button2Clicked() {
     //cancellationReply(); 
     
       
-      Missive.storeSet('userData', currentConversation);
       
-      Missive.storeGet('userData')
+      
+      Missive.storeGet('lastConversation')
         .then(data => {
           console.log(data.id);
           $("#body2").text(data.id)
