@@ -830,7 +830,12 @@ function lookupContact(customerID){
                 "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
                 "deleted": false
             }]
-        })
+        }),
+        headers: {
+            "Host": "public.missiveapp.com",
+            "Authorization": "Bearer " + token, // fill this in later
+            "Content-type": "application/json"
+        }
     })
     var someResponse = response.json();
     console.log(someResponse);
