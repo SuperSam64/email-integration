@@ -13,7 +13,7 @@ function getTo(conversation){
     }
 }
 function getFrom(conversation){
-    if(!conversation.latest_message){
+    if(!conversation.latest_message || !conversation.latest_message.from_field){
         return "[empty]";
     }
     else {
