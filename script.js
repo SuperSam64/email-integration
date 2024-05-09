@@ -26,11 +26,16 @@ function getFrom(conversation){
         }
         if (
             conversation.messages_count == 1 &&
-            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            !conversation.latest_message.to_fields &&
             conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
             assignedToMe == true       
         ) {
-            switchEmails = true;
+            if(conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&){
+                switchEmails = true;
+            }
+            else {
+                switchEmails = false;
+            }
         }
         else {
             switchEmails = false;
