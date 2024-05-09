@@ -818,7 +818,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
-async function lookupContact(customerID){
+/*async function lookupContact(customerID){
     // there is no visual indicator when the action is successful - make one
     const response = await fetch("https://public.missiveapp.com/v1/contacts", {
         method: "GET",
@@ -835,7 +835,7 @@ async function lookupContact(customerID){
     var someResponse = response.json();
     console.log(someResponse);
     return someResponse;
-}
+}*/
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
 }
