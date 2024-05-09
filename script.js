@@ -847,9 +847,9 @@ function getLastConversation(){
         });
 }
 function button1Clicked() {
-    const data = await lookupContact("251475").first_name;
+    /*const data = await lookupContact("251475").first_name;
     console.log(data)
-    $("#body2").text(data)
+    $("#body2").text(data)*/
     //cancellationReply();
 }
 function button2Clicked() {
