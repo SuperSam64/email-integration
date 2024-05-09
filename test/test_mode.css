@@ -1,0 +1,4 @@
+/*<!--  the test mode style sheet in the main folder will have styling that will hide the testing elements from being displayed to the user.
+        The test mode style sheet in the test folder will contain nothing, to allow the user to see the testing elements. In this way, the
+        content in the html, js and other css on the main page can be the same as on the test page, while not showing the user unnecessary
+        content. consider renaming these pages to something else. mode? -->*/
