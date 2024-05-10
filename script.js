@@ -820,7 +820,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 async function lookupContact(input){
     var contactRecord;
-	var contactRecord;
 	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
 		headers: {
@@ -830,7 +829,6 @@ async function lookupContact(input){
 		}
 	})
 	contactRecord = await contact_URL.json();
-	//parseContact(input);
 	contact = {
 		firstName:"",
 		lastName:"",
@@ -838,34 +836,39 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-	contact.firstName = contactRecord.contacts[0].first_name;
-	contact.lastName = contactRecord.contacts[0].last_name;  
-	for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
-		if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
-			if(contact.phoneNumber == "" && contactRecord.contacts[0].infos[i].kind == "phone_number"){
-				contact.phoneNumber = contactRecord.contacts[0].infos[i].value;
-				contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
-				contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
-				contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
-                contact.phoneNumber = contact.phoneNumber.replaceAll("#","");
-				contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
-				contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
-				contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
-				if(contact.phoneNumber.slice(0, 1) == "1"){
-					contact.phoneNumber = contact.phoneNumber.slice(1, contact.phoneNumber.length)
-				}
-				if(contact.phoneNumber.length == 10){
-					contact.phoneNumber = "(" + contact.phoneNumber.slice(0, 3) + ") " + contact.phoneNumber.slice(3, 6) + "-" + contact.phoneNumber.slice(6, contact.phoneNumber.length);
-				}
-			}
-		}
-	}
-	for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
-		if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
-			if(contact.customerID == "" && contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id"){
-				contact.customerID = contactRecord.contacts[0].infos[i].value;
-			}
-		}
+    if(contact.length == 0){
+        $("#body2").text("NO CONTACT DATA");
+    }
+    else{
+        contact.firstName = contactRecord.contacts[0].first_name;
+        contact.lastName = contactRecord.contacts[0].last_name;  
+        for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+            if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
+                if(contact.phoneNumber == "" && contactRecord.contacts[0].infos[i].kind == "phone_number"){
+                    contact.phoneNumber = contactRecord.contacts[0].infos[i].value;
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("#","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
+                    if(contact.phoneNumber.slice(0, 1) == "1"){
+                        contact.phoneNumber = contact.phoneNumber.slice(1, contact.phoneNumber.length)
+                    }
+                    if(contact.phoneNumber.length == 10){
+                        contact.phoneNumber = "(" + contact.phoneNumber.slice(0, 3) + ") " + contact.phoneNumber.slice(3, 6) + "-" + contact.phoneNumber.slice(6, contact.phoneNumber.length);
+                    }
+                }
+            }
+        }
+        for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+            if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
+                if(contact.customerID == "" && contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id"){
+                    contact.customerID = contactRecord.contacts[0].infos[i].value;
+                }
+            }
+        }
 	}
     $("#body2").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
 }
