@@ -818,28 +818,55 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
-function lookupContact(customerID){
-    // there is no visual indicator when the action is successful - make one
-    fetch("https://public.missiveapp.com/v1/contacts", {
-        method: "GET",
-        body: JSON.stringify({
-            "contacts": [{
-                "order": "last_modified",
-                "limit": 1,  // quotes?
-                "search": customerID, // "251475"
-                "contact_book": "3f307ae0-64df-4bec-b6cc-eebc53fa6cf7",
-                "deleted": false
-            }]
-        }),
-        headers: {
-            "Host": "public.missiveapp.com",
-            "Authorization": "Bearer " + token, // fill this in later
-            "Content-type": "application/json"
-        }
-    })
-    var someResponse = response.json();
-    console.log(someResponse);
-    return someResponse;
+async function lookupContact(input){
+    var contactRecord;
+	var contactRecord;
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=3f307ae0-64df-4bec-b6cc-eebc53fa6cf7&search=" + input,{
+		method: "GET",
+		headers: {
+		"Host": "public.missiveapp.com",
+		"Authorization": "Bearer " + token,
+		"Content-type": "application/json"
+		}
+	})
+	contactRecord = await contact_URL.json();
+	//parseContact(input);
+	contact = {
+		firstName:"",
+		lastName:"",
+		customerID:"",
+		phoneNumber:"",
+		email: input
+	};
+	contact.firstName = contactRecord.contacts[0].first_name;
+	contact.lastName = contactRecord.contacts[0].last_name;  
+	for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+		if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
+			if(contact.phoneNumber == "" && contactRecord.contacts[0].infos[i].kind == "phone_number"){
+				contact.phoneNumber = contactRecord.contacts[0].infos[i].value;
+				contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
+				contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
+				contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
+				contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
+				contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
+				contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
+				if(contact.phoneNumber.slice(0, 1) == "1"){
+					contact.phoneNumber = contact.phoneNumber.slice(1, contact.phoneNumber.length)
+				}
+				if(contact.phoneNumber.length == 10){
+					contact.phoneNumber = "(" + contact.phoneNumber.slice(0, 3) + ") " + contact.phoneNumber.slice(3, 6) + "-" + contact.phoneNumber.slice(6, contact.phoneNumber.length);
+				}
+			}
+		}
+	}
+	for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+		if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
+			if(contact.customerID == "" && contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id"){
+				contact.customerID = contactRecord.contacts[0].infos[i].value;
+			}
+		}
+	}
+    $("#body2").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
 }
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
@@ -852,9 +879,7 @@ function getLastConversation(){
         });
 }
 function button1Clicked() {
-    data = lookupContact("251475").first_name;
-    console.log(data)
-    $("#body2").text(data)
+    lookupContact('samtest2@filtersfast.com');
     //cancellationReply();
 }
 function button2Clicked() {
