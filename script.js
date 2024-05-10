@@ -879,7 +879,7 @@ function getLastConversation(){
         });
 }
 function button1Clicked() {
-    lookupContact('samtest2@filtersfast.com');
+    lookupContact(messageFrom);
     //cancellationReply();
 }
 function button2Clicked() {
