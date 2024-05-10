@@ -836,7 +836,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    if(contact.length == 0){
+    if(typeof contact == 'undefined'){
         $("#body2").text("NO CONTACT DATA");
     }
     else{
