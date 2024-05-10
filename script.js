@@ -836,10 +836,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    if(typeof contact == 'undefined'){
-        $("#body2").text("NO CONTACT DATA");
-    }
-    else{
+    if(typeof contact != 'undefined' && contact.length > 0){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
@@ -869,8 +866,11 @@ async function lookupContact(input){
                 }
             }
         }
-	}
     $("#body2").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
+    }
+    else {
+        $("#body2").text("NO CONTACT DATA");
+    }
 }
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
