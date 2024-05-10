@@ -821,7 +821,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 async function lookupContact(input){
     var contactRecord;
 	var contactRecord;
-	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=3f307ae0-64df-4bec-b6cc-eebc53fa6cf7&search=" + input,{
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
 		headers: {
 		"Host": "public.missiveapp.com",
@@ -847,6 +847,7 @@ async function lookupContact(input){
 				contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
 				contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
 				contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
+                contact.phoneNumber = contact.phoneNumber.replaceAll("#","");
 				contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
 				contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
 				contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
