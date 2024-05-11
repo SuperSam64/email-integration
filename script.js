@@ -191,8 +191,8 @@ async function getOrganization(){
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
           if(this.id.length == 36){
-              //organization = this.organization_id;
-              return this.organization_id;
+              console.log("organization: " + this.organization_id)
+              return await this.organization_id;
           }
         });
         //token = getKey(organization);
