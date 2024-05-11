@@ -390,11 +390,11 @@ function getKey(input){
     }
     var sections = [
         keyArray.slice(0, 8),
-        keyArray.slice(8, 4),
-        keyArray.slice(12, 4),
-        keyArray.slice(16, 4),
-        keyArray.slice(20, 12)
-    ]
+        keyArray.slice(8, 12),
+        keyArray.slice(12, 16),
+        keyArray.slice(16, 20),
+        keyArray.slice(20, 32)
+    ];
     return sections.join("-");
 }
 function getContactsKey(input){
@@ -406,11 +406,11 @@ function getContactsKey(input){
     }
     var sections = [
         keyArray.slice(0, 8),
-        keyArray.slice(8, 4),
-        keyArray.slice(12, 4),
-        keyArray.slice(16, 4),
-        keyArray.slice(20, 12)
-    ]
+        keyArray.slice(8, 12),
+        keyArray.slice(12, 16),
+        keyArray.slice(16, 20),
+        keyArray.slice(20, 32)
+    ];
     return sections.join("-");
 }
 function showResults(){
