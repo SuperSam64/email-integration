@@ -4,6 +4,32 @@ function getConversation(conversation){
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
+async function loadUserProfile(){
+    await Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+          if(this.me){
+              currentUser = this;
+        }
+      });
+      $(adminList).each(function(){
+          if(this == currentUser.id.split("-")[4]){
+            profileType = "master"
+            title = "Administrator";
+          }
+      });
+      $(crmList).each(function(){
+          if(this == currentUser.id.split("-")[4]){
+            profileType = "CRM"
+            title = "Client Relationship Manager";
+          }
+      });
+      var userFullName = currentUser.first_name + " " + currentUser.last_name;
+      $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+      $("#name").text(userFullName);
+      $("#layout").text(title);
+      });
+}
+
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
         return "[empty]";
@@ -837,7 +863,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    if(typeof contact != 'undefined' && contact.length > 0){
+    if(typeof contact != 'undefined' || contact.length > 0){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {

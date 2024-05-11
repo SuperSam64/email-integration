@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.98
+        Version v9.99
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -285,29 +285,7 @@
       }
       // ============ PAGE LOAD ==============
       $(window).on('load',(ids) => {
-        Missive.fetchUsers().then((users) => {
-          $(users).each(function(){
-            if(this.me){
-                currentUser = this;
-          }
-        });
-        $(adminList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-              profileType = "master"
-              title = "Administrator";
-            }
-        });
-        $(crmList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-              profileType = "CRM"
-              title = "Client Relationship Manager";
-            }
-        });
-        var userFullName = currentUser.first_name + " " + currentUser.last_name;
-        $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-        $("#name").text(userFullName);
-        $("#layout").text(title);
-        });
+        loadUserProfile();
         Missive.fetchLabels().then((labels) => {
           var organization
           $(labels).each(function(){
