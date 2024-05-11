@@ -389,11 +389,11 @@ function getKey(input){
         keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
-        keyArray.join("").substr(0, 8),
-        keyArray.join("").substr(8, 4),
-        keyArray.join("").substr(12, 4),
-        keyArray.join("").substr(16, 4),
-        keyArray.join("").substr(20, 12)
+        keyArray.slice(0, 8),
+        keyArray.slice(8, 4),
+        keyArray.slice(12, 4),
+        keyArray.slice(16, 4),
+        keyArray.slice(20, 12)
     ]
     return sections.join("-");
 }
@@ -405,15 +405,15 @@ function getContactsKey(input){
         keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
-        keyArray.join("").substr(0, 8),
-        keyArray.join("").substr(8, 4),
-        keyArray.join("").substr(12, 4),
-        keyArray.join("").substr(16, 4),
-        keyArray.join("").substr(20, 12)
+        keyArray.slice(0, 8),
+        keyArray.slice(8, 4),
+        keyArray.slice(12, 4),
+        keyArray.slice(16, 4),
+        keyArray.slice(20, 12)
     ]
     return sections.join("-");
 }
-function showResults(){
+function showResults(){)
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
     $("#body3").text(messageTo);
