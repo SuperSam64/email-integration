@@ -195,8 +195,8 @@ async function getOrganization(input){
               organization = this.organization_id;
           }
         });
-        token = getKey(organization);
-        contactBook = getContactsKey(organization);
+        //token = getKey(organization);
+        //contactBook = getContactsKey(organization);
       });
 }
 function getConversationLink(conversation){
@@ -919,7 +919,16 @@ async function getLastConversation(){
     await Missive.storeGet('lastConversation')
         .then(conversation => {
         $("#body2").text(currentConversation.id)
+        return 
     });
+}
+async function startup(){
+    await loadUserProfile()
+    await getOrganization();
+    await getLastConversation();
+    token = getKey(organization);
+    contactBook = getContactsKey(organization);
+
 }
 function button1Clicked() {
     lookupContact(messageFrom);
