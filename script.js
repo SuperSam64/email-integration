@@ -413,7 +413,7 @@ function getContactsKey(input){
     ]
     return sections.join("-");
 }
-function showResults(){)
+function showResults(){
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
     $("#body3").text(messageTo);
