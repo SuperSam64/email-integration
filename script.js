@@ -820,15 +820,15 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 async function lookupContact(input){
     var contactRecord;
-	var contactRecord = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
 		headers: {
 		"Host": "public.missiveapp.com",
 		"Authorization": "Bearer " + token,
 		"Content-type": "application/json"
-		}.json()
+		}
 	})
-	//contactRecord = await contact_URL.json();
+	contactRecord = await contact_URL.json();
 	contact = {
 		firstName:"",
 		lastName:"",
