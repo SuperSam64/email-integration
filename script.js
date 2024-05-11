@@ -856,6 +856,8 @@ async function lookupContact(input){
 		}
 	})
 	contactRecord = await contact_URL.json();
+    console.log(contactRecord);
+    console.log(typeof contactRedord == 'undefined')
 	contact = {
 		firstName:"",
 		lastName:"",
@@ -863,7 +865,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    if(typeof contact != 'undefined' || contact.length > 0){
+    if(typeof contact != 'undefined' && contact.length > 0){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
