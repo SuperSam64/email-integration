@@ -191,12 +191,12 @@ async function getOrganization(){
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
           if(this.id.length == 36){
-              console.log("organization: " + this.organization_id)
-              return this.organization_id;
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);
           }
         });
-        //token = getKey(organization);
-        //contactBook = getContactsKey(organization);
       });
 }
 function getConversationLink(conversation){
