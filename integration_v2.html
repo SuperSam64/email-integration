@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version v10.07
+        Version v10.08
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -238,6 +238,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       {//---- VARIABLES ----
+        var initiated = false;
         var conversationActive; // bool
         var token;
         var organization;
@@ -296,13 +297,15 @@
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------
       Missive.on('change:conversations', (ids) => {
-				Missive.fetchConversations(ids).then((conversations) => {		
-          currentConversation = conversations[0];
-          storeLastConversation(conversations[0]);
-          update(currentConversation);
-          showResults();
-          console.log("on change" + currentConversation.id)
-				})
+				if(initiated == true){
+            Missive.fetchConversations(ids).then((conversations) => {		
+            currentConversation = conversations[0];
+            storeLastConversation(conversations[0]);
+            update(currentConversation);
+            showResults();
+            console.log("on change" + currentConversation.id)
+				  })
+        }
 			})
       {//---------------- RESETS ------------------
       $("#title1").click(function () { 

@@ -937,6 +937,7 @@ async function startup(){
     console.log(lastConversation);
     token = getKey(organization);
     contactBook = getContactsKey(organization);
+    initiated = true;
 
 }
 function button1Clicked() {
