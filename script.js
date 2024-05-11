@@ -875,10 +875,11 @@ async function lookupContact(input){
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
 }
-function getLastConversation(){
+async function getLastConversation(){
     Missive.storeGet('lastConversation')
         .then(conversation => {
-            currentConversation = conversation;
+            currentConversation = await conversation;
+            update(currentConversation);
             //$("#body2").text(currentConversation.id)
         });
 }
