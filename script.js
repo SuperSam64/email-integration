@@ -192,7 +192,7 @@ async function getOrganization(){
         $(labels).each(function(){
           if(this.id.length == 36){
               console.log("organization: " + this.organization_id)
-              return await this.organization_id;
+              return this.organization_id;
           }
         });
         //token = getKey(organization);
