@@ -826,7 +826,7 @@ async function lookupContact(input){
 		"Host": "public.missiveapp.com",
 		"Authorization": "Bearer " + token,
 		"Content-type": "application/json"
-		}.json();
+		}.json()
 	})
 	//contactRecord = await contact_URL.json();
 	contact = {
