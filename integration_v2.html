@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.85
+        Version 9.86
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -317,8 +317,8 @@
           });
           token = getKey(organization);
           contactBook = getContactsKey(organization);
-          getLastConversation();
-          //update(currentConversation);
+          currentConversation = getLastConversation();
+          update(currentConversation);
           showResults();
           $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
           console.log("on load" + currentConversation.id)
