@@ -928,6 +928,7 @@ async function startup(){
     await getOrganization();
     console.log(organization)
     await getLastConversation();
+    currentConversation = lastConversation;
     console.log(lastConversation);
     token = getKey(organization);
     contactBook = getContactsKey(organization);
