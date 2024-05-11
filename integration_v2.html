@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version v10.01
+        Version v10.02
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -286,21 +286,14 @@
       // ============ PAGE LOAD ==============
       $(window).on('load',(ids) => {
         loadUserProfile();
-        Missive.fetchLabels().then((labels) => {
-          var organization
-          $(labels).each(function(){
-            if(this.id.length == 36){
-                organization = this.organization_id;
-            }
-          });
-          token = getKey(organization);
-          contactBook = getContactsKey(organization);
-          getLastConversation();
+        getLastConversation();
+        token = getKey(organization);
+        contactBook = getContactsKey(organization);
+          //getLastConversation();
           update(currentConversation);
           showResults();
           $("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
-          console.log("on load" + currentConversation.id)
-        });        				
+          console.log("on load" + currentConversation.id)   				
       });
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------

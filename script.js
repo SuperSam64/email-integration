@@ -187,6 +187,18 @@ function updateFrom(conversation){
         }
     }
 }
+async function getOrganization(input){
+    await Missive.fetchLabels().then((labels) => {
+        var organization
+        $(labels).each(function(){
+          if(this.id.length == 36){
+              organization = this.organization_id;
+          }
+        });
+        token = getKey(organization);
+        contactBook = getContactsKey(organization);
+      });
+}
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
@@ -903,11 +915,11 @@ async function lookupContact(input){
 function storeLastConversation(){
     Missive.storeSet('lastConversation', currentConversation);
 }
-function getLastConversation(){
-    Missive.storeGet('lastConversation')
+async function getLastConversation(){
+    await Missive.storeGet('lastConversation')
         .then(conversation => {
-            $("#body2").text(currentConversation.id)
-        });
+        $("#body2").text(currentConversation.id)
+    });
 }
 function button1Clicked() {
     lookupContact(messageFrom);
