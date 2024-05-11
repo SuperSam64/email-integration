@@ -923,9 +923,12 @@ async function getLastConversation(){
     });
 }
 async function startup(){
-    await loadUserProfile()
+    await loadUserProfile();
+    console.log(userFullName);
     await getOrganization();
+    console.log(organization)
     await getLastConversation();
+    console.log(getLastConversation);
     token = getKey(organization);
     contactBook = getContactsKey(organization);
 
