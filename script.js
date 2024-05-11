@@ -930,12 +930,12 @@ async function getLastConversation(){
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
-    organization = await getOrganization();
+    await getOrganization();
     console.log(organization)
     await getLastConversation();
     console.log(currentConversation);
-    token =  getKey(organization);
-    contactBook = getContactsKey(organization);
+    //token =  getKey(organization);
+    //contactBook = getContactsKey(organization);
     initiated = true;
 
 }
