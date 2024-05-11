@@ -187,13 +187,13 @@ function updateFrom(conversation){
         }
     }
 }
-async function getOrganization(input){
+async function getOrganization(){
     await Missive.fetchLabels().then((labels) => {
         var organization
         $(labels).each(function(){
           if(this.id.length == 36){
-              organization = this.organization_id;
-              return organization;
+              //organization = this.organization_id;
+              return this.organization_id;
           }
         });
         //token = getKey(organization);
@@ -929,12 +929,12 @@ async function getLastConversation(){
 }
 async function startup(){
     await loadUserProfile();
-    console.log(userFullName);
+    console.log(currentUser.first_name);
     organization = await getOrganization();
     console.log(organization)
     currentConversation = await getLastConversation();
     console.log(currentConversation);
-    token = getKey(organization);
+    token =  getKey(organization);
     contactBook = getContactsKey(organization);
     initiated = true;
 
