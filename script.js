@@ -914,13 +914,16 @@ async function lookupContact(input){
     }
 }
 function storeLastConversation(){
-    Missive.storeSet('lastConversation', currentConversation);
+    if(typeof currentConversation != 'undefined'){
+        Missive.storeSet('lastConversation', currentConversation);
+    }
+
 }
 async function getLastConversation(){
     await Missive.storeGet('lastConversation')
         .then(conversation => {
         currentConversation = conversation;
-        $("#body2").text(currentConversation.id)
+        $("#body1").text(currentConversation.id)
         return 
     });
 }
