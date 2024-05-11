@@ -188,8 +188,7 @@ function updateFrom(conversation){
     }
 }
 async function getOrganization(){
-    await Missive.fetchLabels().then((labels) => {
-        var organization
+    Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
           if(this.id.length == 36){
               //organization = this.organization_id;
