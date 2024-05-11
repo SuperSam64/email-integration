@@ -395,6 +395,7 @@ function getKey(input){
         keyArray.slice(16, 20),
         keyArray.slice(20, 32)
     ];
+    console.log(sections.join("-"));
     return sections.join("-");
 }
 function getContactsKey(input){
