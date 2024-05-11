@@ -190,7 +190,7 @@ function updateFrom(conversation){
 async function getOrganization(){
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
-          if(this.id.length == 36){
+          if(this.id.length == 36 && typeof organization != ""){
               organization = this.organization_id;
               token = getKey(organization);
               contactBook = getContactsKey(organization);
@@ -932,7 +932,7 @@ async function startup(){
     console.log(currentUser.first_name);
     organization = await getOrganization();
     console.log(organization)
-    currentConversation = await getLastConversation();
+    await getLastConversation();
     console.log(currentConversation);
     token =  getKey(organization);
     contactBook = getContactsKey(organization);
