@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 9.83
+        Version 9.84
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -238,8 +238,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       {//---- VARIABLES ----
+        var conversationActive; // bool
+        var token;
+        var contactBook;
         var currentUser;
-        var fullName;
+        var userFullName;
         var profileType = "CCA"; // CCA, CRM, master
         var title = "Customer Care Advocate" // default, unless  otherwise specified
         var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
@@ -255,22 +258,20 @@
         var userAssigned;
         var assignDraft;
         var forwarded;
+        var replied;
         var conversationLink;
         var messageLink;
         var labels;
         var isLabeled;
         var preview;
         var fullMessage;
-        var orderNoTest = "Order #CP-12458935"; // this is for testing, delete later
         var orderNumber;
+        var greeting;
+        var intro;
         var signature;
         var emailClosing = "Sincerely";
         var suggestedLabel;
         var timeStamp;
-        var token;
-        var replied;
-        var intro;
-        var greeting;
         var contact = {};
         var purchaseOrderTasks = [
           "Email customer for PO revision",
@@ -302,9 +303,9 @@
               title = "Client Relationship Manager";
             }
         });
-        var fullName = currentUser.first_name + " " + currentUser.last_name;
+        var userFullName = currentUser.first_name + " " + currentUser.last_name;
         $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-        $("#name").text(fullName);
+        $("#name").text(userFullName);
         $("#layout").text(title);
         });
         Missive.fetchLabels().then((labels) => {
