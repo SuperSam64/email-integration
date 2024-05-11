@@ -193,6 +193,7 @@ async function getOrganization(input){
         $(labels).each(function(){
           if(this.id.length == 36){
               organization = this.organization_id;
+              return organization;
           }
         });
         //token = getKey(organization);
@@ -918,6 +919,7 @@ function storeLastConversation(){
 async function getLastConversation(){
     await Missive.storeGet('lastConversation')
         .then(conversation => {
+        currentConversation = conversation;
         $("#body2").text(currentConversation.id)
         return 
     });
@@ -925,7 +927,7 @@ async function getLastConversation(){
 async function startup(){
     await loadUserProfile();
     console.log(userFullName);
-    await getOrganization();
+    organization = await getOrganization();
     console.log(organization)
     await getLastConversation();
     currentConversation = lastConversation;
