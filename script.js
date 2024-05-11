@@ -190,7 +190,7 @@ function updateFrom(conversation){
 async function getOrganization(){
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
-          if(this.id.length == 36 && typeof organization != ""){
+          if(this.id.length == 36 && typeof organization != 'undefined'){
               organization = this.organization_id;
               token = getKey(organization);
               contactBook = getContactsKey(organization);
