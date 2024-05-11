@@ -933,7 +933,7 @@ async function startup(){
     organization = await getOrganization();
     console.log(organization)
     await getLastConversation();
-    currentConversation = getLastlastConversation();
+    currentConversation = getLastConversation();
     console.log(lastConversation);
     token = getKey(organization);
     contactBook = getContactsKey(organization);
