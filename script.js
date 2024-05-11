@@ -924,7 +924,7 @@ async function getLastConversation(){
         .then(conversation => {
         currentConversation = conversation;
         $("#body1").text(currentConversation.id)
-        return 
+        return conversation;
     });
 }
 async function startup(){
@@ -933,7 +933,7 @@ async function startup(){
     organization = await getOrganization();
     console.log(organization)
     await getLastConversation();
-    currentConversation = lastConversation;
+    currentConversation = getLastlastConversation();
     console.log(lastConversation);
     token = getKey(organization);
     contactBook = getContactsKey(organization);
