@@ -188,14 +188,15 @@ function updateFrom(conversation){
     }
 }
 async function getOrganization(){
+    var done = false;
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
-          if(this.id.length == 36 && typeof organization != 'undefined'){
+          if(this.id.length == 36 && done == false){
               organization = this.organization_id;
               token = getKey(organization);
               contactBook = getContactsKey(organization);
               console.log(token + " " + contactBook);
-              return;
+              done = true;
           }
         });
       });
