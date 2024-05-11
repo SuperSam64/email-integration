@@ -195,6 +195,7 @@ async function getOrganization(){
               token = getKey(organization);
               contactBook = getContactsKey(organization);
               console.log(token + " " + contactBook);
+              return;
           }
         });
       });
