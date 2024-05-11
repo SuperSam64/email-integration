@@ -389,11 +389,11 @@ function getKey(input){
         keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
-        keyArray.join().slice(0, 8),
-        keyArray.join().slice(8, 12),
-        keyArray.join().slice(12, 16),
-        keyArray.join().slice(16, 20),
-        keyArray.join().slice(20, 32)
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
     ];
     console.log(sections.join("-"));
     return sections.join("-");
@@ -406,11 +406,11 @@ function getContactsKey(input){
         keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
-        keyArray.join().slice(0, 8),
-        keyArray.join().slice(8, 12),
-        keyArray.join().slice(12, 16),
-        keyArray.join().slice(16, 20),
-        keyArray.join().slice(20, 32)
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
     ];
     return sections.join("-");
 }
