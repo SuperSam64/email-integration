@@ -878,8 +878,7 @@ function storeLastConversation(){
 function getLastConversation(){
     Missive.storeGet('lastConversation')
         .then(conversation => {
-            return conversation;
-            //$("#body2").text(currentConversation.id)
+            $("#body2").text(currentConversation.id)
         });
 }
 function button1Clicked() {
