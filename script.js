@@ -1,5 +1,60 @@
 { // ======== FUNCTIONS ========
-    async function loadUserProfile(){
+async function startup(){
+    await loadUserProfile();
+    console.log(currentUser.first_name);
+    await getOrganization();
+    await getLastConversation();
+    initiated = true;
+}
+function update (input){
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+}
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        conversationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
+}}
+async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
           if(this.me){
@@ -889,61 +944,6 @@ async function lookupContact(input){
         $("#body2").text("NO CONTACT DATA");
     }
 }
-async function startup(){
-    await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
-}
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
-function showResults(){
-    var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
-        messageFrom,
-        customerName,
-        messageSubject,
-        conversationSubject,
-        userAssigned,
-        assignDraft,
-        forwarded,
-        conversationLink,
-        messageLink,
-        labels,
-        isLabeled,
-        preview,
-        fullMessage,
-        orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
-        greeting
-    ]
-    for ( i = 0; i < elements.length; i++ ){
-        $("#body" + (i + 1)).text(elements[i]);
-    }
-}}
 
 { // ======== BUTTONS ========
 function button1Clicked() {
@@ -1030,51 +1030,47 @@ function body20Reset(){
 }}
 
 { /* ======== NOTES ========
-- make the "to" the customer's email. find a way to remove the other email. try array = []
-places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
-assign new drafts
-set these as utitilies
-for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
+- find a way to make a "reply" but without having more than one "to field"
+- parse "full message" to cut off at the right place.
+- make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
+- for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
     opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
-create an array of tasks for POs and for tax exempt and others
-get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4. or if anywhere in the subject or body (html removed) is "order number XXXXXXXX" "order XXXXXXXX" "order no. XXXXXXXX" "order # XXXXXXXX" 
-        get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
-    else
-        order number = "empty"
-* attachments-1.missiveapp.com
-    if order number is given by user, and order number was previosuly "empty", set convo subject to order number
-check for contact by email. if one does not exist, create it. show fields for the user to modify: name, phone number, email, cust ID. when any field is modified, update contact.
-scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
-  - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
-create forms
-**** when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
+- create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
+- get order number from convo subject line [DONE], scan body of message too (?)
+- check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
+- allow for manual entry of order number, set convo subject accordingly
+- check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
+- scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
+- offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
+- create forms for Monday
+- when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
     items that do not have the "sent" label?
-set up branching for forms
-make autoreply templates that can be modified by me, based on the regular templates
-identify time of day when applying a template
-when changing conversations with a Monday panel open, prompt to make sure.
+- set up branching for forms [partially done, use Cancellation form as template for others]
+ - make autoreply templates that can be modified by me, based on the regular templates.
+- identify time of day when applying a template [DONE - except for linking this function to the autoreply]
+- when changing conversations with a Monday panel open, prompt to make sure.
     "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
-    store current convo as last convo
+    store current convo as last convo [DONE]
     get new current convo
     prompt >
         yes: change the integration back to main content
         no: navigate to previous convo by convo ID, do nothing in the integration
-for order number, repalce "# " with "#"
-take contexts for monday forms and for responses
-for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
-link to monday form
-link to monday search
-include link to message in monday form?
-after order number, add note.
+- for order number, repalce "# " with "#" [DONE]
+- take contexts for monday forms and for responses
+- for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
+- link to monday form
+- link to monday search
+- include link to message in monday form? do this as html in the comment
+- after order number, add note.
     Order number
     note 
     ex. convo subject may say: Order #4937718, refund for return. these should be short.
-have a status - if it is waiting on something, denote that
-decide what should be CCA, what should be CRM, and what should be shared, separate accordingly
-come up with functions admins can do with no coding, such as change a person's level
-respond automatically to chatbot requests
-make an "about" page to show version, e tc
-determine whether to say "thanks for reaching out" or "thank you for your reply"
+- have a status - if it is waiting on something, denote that
+- decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
+- come up with functions admins can do with no coding, such as change a person's level
+- respond automatically to chatbot requests
+- make an "about" page to show version, e tc
+- determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
 <div data-missive-collapsable-handle="true"></div>
         ^ previous message
 parse diff formats like gmail, yahoo mail, etc
@@ -1112,7 +1108,7 @@ parse diff formats like gmail, yahoo mail, etc
 
 
     configurable options: wording of closing ex. "Sincerely"
-    Time-based greeting
+    Time-based greeting [on/off]
     Customize "Thank you for reaching out to us!"
     Customize "Thank you for your reply!"
     Toggle auto-assign draft
