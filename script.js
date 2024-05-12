@@ -1,4 +1,4 @@
- // ======== STARTUP ======== 10.46
+ // ======== STARTUP ======== 10.47
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -25,11 +25,11 @@ async function loadUserProfile(){
       });
 }
 function getKey(input){
-    var stringOnly = input.replaceAll("-","");
+    //var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
         keyArray.join("").slice(0, 8),
@@ -38,7 +38,7 @@ function getKey(input){
         keyArray.join("").slice(16, 20),
         keyArray.join("").slice(20, 32)
     ];
-    console.log(sections.join("-"));
+    console.log("this worked" + sections.join("-"));
     return sections.join("-");
 }
 function getContactsKey(input){
