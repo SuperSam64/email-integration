@@ -472,6 +472,7 @@ function showResults(){
     $("#body15").text(preview);
     $("#body17").text(orderNumber);
     $("#body18").text(timeStamp);
+    $("#body19").text(token + " | " + contactBook)
     $("#body20").text(greeting);
 }
 function orderNumberSearch (){
