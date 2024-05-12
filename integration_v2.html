@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 10.50
+        Version 10.51
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -239,7 +239,7 @@
     <script type="text/javascript">
       {//---- VARIABLES ----
         var initialized = false;
-        var conversationActive; // bool
+        var conversationActive; // bool, use this to determine if a screen needs to be shown asking the user to select a conversation
         var token;
         var organization;
         var contactBook;
@@ -288,13 +288,6 @@
       // ============ PAGE LOAD ==============
       $(window).on('load',(ids) => {
         startup();
-        //console.log("at startup: " + token);
-        //console.log("at startup: " + contactBook);
-          //loadData();
-          //update(currentConversation);
-          //showResults();
-          //$("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
-          //console.log("on load" + currentConversation.id);
       });
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------

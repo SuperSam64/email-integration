@@ -1,4 +1,4 @@
- // ======== STARTUP ======== 10.50
+ // ======== STARTUP ========
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
