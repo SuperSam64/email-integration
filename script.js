@@ -465,7 +465,7 @@ function showResults(){
         userAssigned,
         assignDraft,
         forwarded,
-        convesationLink,
+        conversationLink,
         messageLink,
         labels,
         isLabeled,
