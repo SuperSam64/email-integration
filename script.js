@@ -1,4 +1,4 @@
-{ // ======== FUNCTIONS ========
+{ // ======== STARTUP ========
 async function loadUserProfile(){
 await Missive.fetchUsers().then((users) => {
     $(users).each(function(){
@@ -134,14 +134,10 @@ function getContactsKey(input){
         keyArray.join("").slice(20, 32)
     ];
     return sections.join("-");
-}
-async function startup(){
-    await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
-}
+}}
+
+
+{ // ======== FUNCTIONS ========
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
         return "[empty]";
@@ -943,6 +939,13 @@ function storeLastConversation(){
         Missive.storeSet('lastConversation', currentConversation);
     }
 
+}
+async function startup(){
+    await loadUserProfile();
+    console.log(currentUser.first_name);
+    await getOrganization();
+    await getLastConversation();
+    initiated = true;
 }}
 
 { // ======== BUTTONS ========
