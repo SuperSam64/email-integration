@@ -1,4 +1,4 @@
-{ // ======== STARTUP ======== 10.45
+ // ======== STARTUP ======== 10.46
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -144,7 +144,7 @@ async function startup(){
     await getOrganization();
     await getLastConversation();
     initiated = true;
-}}
+}
 
 { // ======== FUNCTIONS ========
 function getMessageCount(conversation){
