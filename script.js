@@ -1,4 +1,4 @@
-// 10.42
+// 10.43
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -137,6 +137,13 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
+}
+async function startup(){
+    await loadUserProfile();
+    console.log(currentUser.first_name);
+    await getOrganization();
+    await getLastConversation();
+    initiated = true;
 }
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
@@ -940,13 +947,7 @@ async function lookupContact(input){
     }
 }
 
-async function startup(){
-    await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
-}
+
 { // ======== BUTTONS ========
     function button1Clicked() {
         lookupContact(messageFrom);
