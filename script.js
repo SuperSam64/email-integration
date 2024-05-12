@@ -904,7 +904,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    if(typeof contactRedord != 'undefined'){
+    if(typeof contactRecord != 'undefined'){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
@@ -944,7 +944,6 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    console.log(messageFrom)
     lookupContact(messageFrom);
     //cancellationReply();
 }
