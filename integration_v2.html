@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 10.22
+        Version 10.23
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -288,6 +288,8 @@
       // ============ PAGE LOAD ==============
       $(window).on('load',(ids) => {
         startup();
+        console.log("at startup: " + token);
+        console.log("at startup: " + contactBook);
           //getLastConversation();
           //update(currentConversation);
           //showResults();

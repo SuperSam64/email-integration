@@ -189,19 +189,17 @@ function updateFrom(conversation){
 }
 async function getOrganization(){
     var done = false;
-    var something;
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
           if(this.id.length == 36 && done == false){
-              something = this.organization_id;
-              token = getKey(something);
-              contactBook = getContactsKey(something);
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
               console.log(token + " " + contactBook);
               done = true;
             }
         });
     });
-    organization = something;
 }
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
