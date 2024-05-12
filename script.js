@@ -924,6 +924,8 @@ async function getLastConversation(){
     await Missive.storeGet('lastConversation')
         .then(conversation => {
         currentConversation = conversation;
+        update(currentConversation);
+        showResults();
         $("#body1").text(currentConversation.id)
         return conversation;
     });
@@ -934,11 +936,7 @@ async function startup(){
     await getOrganization();
     console.log(organization)
     await getLastConversation();
-    console.log(currentConversation);
-    //token =  getKey(organization);
-    //contactBook = getContactsKey(organization);
     initiated = true;
-
 }
 function button1Clicked() {
     console.log(token + " " + organization)
