@@ -456,7 +456,8 @@ function getContactsKey(input){
 function showResults(){
     var frame = document.getElementById("textFrame");
     var textCount = frame.getElementsByClassName("textBody");
-    console.log(textcount.length);
+    console.log(textCount.length);
+    for (i = 0; i < textcount.length)
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
     $("#body3").text(messageTo);
