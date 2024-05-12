@@ -940,9 +940,7 @@ async function startup(){
     initiated = true;
 }
 function button1Clicked() {
-    console.log(token + " " + organization)
-    console.log(currentConversation)
-    //lookupContact(messageFrom);
+    lookupContact(messageFrom);
     //cancellationReply();
 }
 function button2Clicked() {
