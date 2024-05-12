@@ -1,27 +1,28 @@
+{ // ======== FUNCTIONS ========
 async function loadUserProfile(){
-    await Missive.fetchUsers().then((users) => {
-        $(users).each(function(){
-          if(this.me){
-              currentUser = this;
+await Missive.fetchUsers().then((users) => {
+    $(users).each(function(){
+        if(this.me){
+            currentUser = this;
+    }
+    });
+    $(adminList).each(function(){
+        if(this == currentUser.id.split("-")[4]){
+        profileType = "master"
+        title = "Administrator";
         }
-      });
-      $(adminList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
-            profileType = "master"
-            title = "Administrator";
-          }
-      });
-      $(crmList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
-            profileType = "CRM"
-            title = "Client Relationship Manager";
-          }
-      });
-      var userFullName = currentUser.first_name + " " + currentUser.last_name;
-      $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-      $("#name").text(userFullName);
-      $("#layout").text(title);
-      });
+    });
+    $(crmList).each(function(){
+        if(this == currentUser.id.split("-")[4]){
+        profileType = "CRM"
+        title = "Client Relationship Manager";
+        }
+    });
+    var userFullName = currentUser.first_name + " " + currentUser.last_name;
+    $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+    $("#name").text(userFullName);
+    $("#layout").text(title);
+    });
 }
 async function getOrganization(){
     var done = false;
@@ -100,6 +101,46 @@ function showResults(){
     for ( i = 0; i < elements.length; i++ ){
         $("#body" + (i + 1)).text(elements[i]);
     }
+}
+function getKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    console.log(sections.join("-"));
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
+}
+async function startup(){
+    await loadUserProfile();
+    console.log(currentUser.first_name);
+    await getOrganization();
+    await getLastConversation();
+    initiated = true;
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -258,7 +299,6 @@ function updateFrom(conversation){
         }
     }
 }
-
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
@@ -458,41 +498,6 @@ function getGreeting(conversation) {
     }
     return "Good "+ segment;
 }
-
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    console.log(sections.join("-"));
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
-
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
 }
@@ -938,15 +943,8 @@ function storeLastConversation(){
         Missive.storeSet('lastConversation', currentConversation);
     }
 
-}
+}}
 
-async function startup(){
-    await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
-}
 { // ======== BUTTONS ========
     function button1Clicked() {
         lookupContact(messageFrom);
