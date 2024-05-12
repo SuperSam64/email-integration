@@ -941,7 +941,8 @@ async function startup(){
 
 }
 function button1Clicked() {
-    console.log(token + " " + organization + " " + currentConversation)
+    console.log(token + " " + organization)
+    console.log(currentConversation)
     //lookupContact(messageFrom);
     //cancellationReply();
 }
