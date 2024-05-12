@@ -1,4 +1,4 @@
-// 10.43
+{ // ======== STARTUP ======== 10.44
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -90,6 +90,27 @@ async function getLastConversation(){
 function getConversation(conversation){
     return conversation.id;
 }
+function update (input){
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+}
 function showResults(){
     var elements = [
         conversationID,
@@ -117,34 +138,15 @@ function showResults(){
         $("#body" + (i + 1)).text(elements[i]);
     }
 }
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
     await getOrganization();
     await getLastConversation();
     initiated = true;
-}
+}}
+
+{ // ======== FUNCTIONS ========
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
@@ -504,8 +506,6 @@ function getGreeting(conversation) {
     }
     return "Good "+ segment;
 }
-
-
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
 }
@@ -945,8 +945,7 @@ async function lookupContact(input){
         console.log(contact.length);
         $("#body2").text("NO CONTACT DATA");
     }
-}
-
+}}
 
 { // ======== BUTTONS ========
     function button1Clicked() {
