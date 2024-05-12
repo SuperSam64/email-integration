@@ -141,7 +141,7 @@ async function startup(){
     initialized = true;
 }
 
-{ // ======== FUNCTIONS ========
+// ======== FUNCTIONS ========
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
@@ -940,32 +940,32 @@ async function lookupContact(input){
         console.log(contact.length);
         $("#body2").text("NO CONTACT DATA");
     }
-}}
+}
 
-{ // ======== BUTTONS ========
-    function button1Clicked() {
-        console.log(messageFrom)
-        //lookupContact(messageFrom);
-        //cancellationReply();
-    }
-    function button2Clicked() {
-        cancellationNew(); 
-        
-    }
-    function button3Clicked() {
-        insertSignature(emailClosing);
-    }
-    function button4Clicked() {
-        createTasks(purchaseOrderTasks);
-    }
-    function button5Clicked() {
-        createReply()
-    }
-    function button6Clicked() {
-        saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
-}}
+// ======== BUTTONS ========
+function button1Clicked() {
+    console.log(messageFrom)
+    lookupContact(messageFrom);
+    //cancellationReply();
+}
+function button2Clicked() {
+    cancellationNew(); 
+    
+}
+function button3Clicked() {
+    insertSignature(emailClosing);
+}
+function button4Clicked() {
+    createTasks(purchaseOrderTasks);
+}
+function button5Clicked() {
+    createReply()
+}
+function button6Clicked() {
+    saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
+}
 
-{ // ======== RESETS ========
+// ======== RESETS ========
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -1025,7 +1025,7 @@ function body19Reset(){
 }
 function body20Reset(){
     $("#body20").text("[ready]")
-}}
+}
 
 { /* ======== NOTES ========
 - find a way to make a "reply" but without having more than one "to field"
