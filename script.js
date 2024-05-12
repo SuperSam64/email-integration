@@ -465,7 +465,7 @@ function showResults(){
         userAssigned,
         assignDraft,
         forwarded,
-        convesationLink,
+        conversationLink,
         messageLink,
         labels,
         isLabeled,
@@ -964,154 +964,154 @@ async function startup(){
     }
     function button6Clicked() {
         saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
-    }}
-    
-    { // ======== RESETS ========
-    function body1Reset(){
-        $("#body1").text("[ready]")
-    }
-    function body2Reset(){
-        $("#body2").text("[ready]")
-    }
-    function body3Reset(){
-        $("#body3").text("[ready]")
-    }
-    function body4Reset(){
-        $("#body4").text("[ready]")
-    }
-    function body6Reset(){
-        $("#body6").text("[ready]")
-    }
-    function body7Reset(){
-        $("#body7").text("[ready]")
-    }
-    function body8Reset(){
-        $("#body8").text("[ready]")
-    }
-    function body9Reset(){
-        $("#body9").text("[ready]")
-    }
-    function body10Reset(){
-        $("#body10").text("[ready]")
-    }
-    function body11Reset(){
-        $("#body11").text("[ready]")
-    }
-    function body12Reset(){
-        $("#body12").text("[ready]")
-    }
-    function body5Reset(){
-        $("#body5").text("[ready]")
-    }
-    function body13Reset(){
-        $("#body13").text("[ready]")
-    }
-    function body14Reset(){
-        $("#body14").text("[ready]")
-    }
-    function body15Reset(){
-        $("#body15").text("[ready]")
-    }
-    function body16Reset(){
-        $("#body16").text("[ready]")
-    }
-    function body17Reset(){
-        $("#body17").text("[ready]")
-    }
-    function body18Reset(){
-        $("#body18").text("[ready]")
-    }
-    function body19Reset(){
-        $("#body19").text("[ready]")
-    }
-    function body20Reset(){
-        $("#body20").text("[ready]")
-    }}
-    
-    { /* ======== NOTES ========
-    - find a way to make a "reply" but without having more than one "to field"
-    - parse "full message" to cut off at the right place.
-    - make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
-    - for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
-        opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
-    - create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
-    - get order number from convo subject line [DONE], scan body of message too (?)
-    - check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
-    - allow for manual entry of order number, set convo subject accordingly
-    - check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
-    - scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
-    - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
-    - create forms for Monday
-    - when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
-        items that do not have the "sent" label?
-    - set up branching for forms [partially done, use Cancellation form as template for others]
-     - make autoreply templates that can be modified by me, based on the regular templates.
-    - identify time of day when applying a template [DONE - except for linking this function to the autoreply]
-    - when changing conversations with a Monday panel open, prompt to make sure.
-        "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
-        store current convo as last convo [DONE]
-        get new current convo
-        prompt >
-            yes: change the integration back to main content
-            no: navigate to previous convo by convo ID, do nothing in the integration
-    - for order number, repalce "# " with "#" [DONE]
-    - take contexts for monday forms and for responses
-    - for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
-    - link to monday form
-    - link to monday search
-    - include link to message in monday form? do this as html in the comment
-    - after order number, add note.
-        Order number
-        note 
-        ex. convo subject may say: Order #4937718, refund for return. these should be short.
-    - have a status - if it is waiting on something, denote that
-    - decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
-    - come up with functions admins can do with no coding, such as change a person's level
-    - respond automatically to chatbot requests
-    - make an "about" page to show version, e tc
-    - determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
-    <div data-missive-collapsable-handle="true"></div>
-            ^ previous message
-    parse diff formats like gmail, yahoo mail, etc
-         - 
-            - has attachments?
-            - function to do all starting operations
-            - create task
-            - link within extension
-            - link to other extension
-            - link outside of extension
-            - assign label
-    
-        things to show on master list
-        - final from email
-        - to email
-        - message count
-        - will assign draft
-        - preview
-        - body
-        - link to convo
-        - link to message
-        - customer's name
-        - labels
-        - is label? (with example)
-        - new message for caddis warning
-    
-        order number
-        order no
-        order no.
-        order #
-        order number is
-        order no is
-        order no. is
-        order # is
-    
-    
-        configurable options: wording of closing ex. "Sincerely"
-        Time-based greeting [on/off]
-        Customize "Thank you for reaching out to us!"
-        Customize "Thank you for your reply!"
-        Toggle auto-assign draft
-        Toggle auto-correct return email
-        Customize name for Monday posts "Post Monday as:"
-    
-    */}
+}}
+
+{ // ======== RESETS ========
+function body1Reset(){
+    $("#body1").text("[ready]")
+}
+function body2Reset(){
+    $("#body2").text("[ready]")
+}
+function body3Reset(){
+    $("#body3").text("[ready]")
+}
+function body4Reset(){
+    $("#body4").text("[ready]")
+}
+function body6Reset(){
+    $("#body6").text("[ready]")
+}
+function body7Reset(){
+    $("#body7").text("[ready]")
+}
+function body8Reset(){
+    $("#body8").text("[ready]")
+}
+function body9Reset(){
+    $("#body9").text("[ready]")
+}
+function body10Reset(){
+    $("#body10").text("[ready]")
+}
+function body11Reset(){
+    $("#body11").text("[ready]")
+}
+function body12Reset(){
+    $("#body12").text("[ready]")
+}
+function body5Reset(){
+    $("#body5").text("[ready]")
+}
+function body13Reset(){
+    $("#body13").text("[ready]")
+}
+function body14Reset(){
+    $("#body14").text("[ready]")
+}
+function body15Reset(){
+    $("#body15").text("[ready]")
+}
+function body16Reset(){
+    $("#body16").text("[ready]")
+}
+function body17Reset(){
+    $("#body17").text("[ready]")
+}
+function body18Reset(){
+    $("#body18").text("[ready]")
+}
+function body19Reset(){
+    $("#body19").text("[ready]")
+}
+function body20Reset(){
+    $("#body20").text("[ready]")
+}}
+
+{ /* ======== NOTES ========
+- find a way to make a "reply" but without having more than one "to field"
+- parse "full message" to cut off at the right place.
+- make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
+- for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
+    opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
+- create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
+- get order number from convo subject line [DONE], scan body of message too (?)
+- check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
+- allow for manual entry of order number, set convo subject accordingly
+- check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
+- scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
+- offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
+- create forms for Monday
+- when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
+    items that do not have the "sent" label?
+- set up branching for forms [partially done, use Cancellation form as template for others]
+    - make autoreply templates that can be modified by me, based on the regular templates.
+- identify time of day when applying a template [DONE - except for linking this function to the autoreply]
+- when changing conversations with a Monday panel open, prompt to make sure.
+    "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
+    store current convo as last convo [DONE]
+    get new current convo
+    prompt >
+        yes: change the integration back to main content
+        no: navigate to previous convo by convo ID, do nothing in the integration
+- for order number, repalce "# " with "#" [DONE]
+- take contexts for monday forms and for responses
+- for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
+- link to monday form
+- link to monday search
+- include link to message in monday form? do this as html in the comment
+- after order number, add note.
+    Order number
+    note 
+    ex. convo subject may say: Order #4937718, refund for return. these should be short.
+- have a status - if it is waiting on something, denote that
+- decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
+- come up with functions admins can do with no coding, such as change a person's level
+- respond automatically to chatbot requests
+- make an "about" page to show version, e tc
+- determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
+<div data-missive-collapsable-handle="true"></div>
+        ^ previous message
+parse diff formats like gmail, yahoo mail, etc
+        - 
+        - has attachments?
+        - function to do all starting operations
+        - create task
+        - link within extension
+        - link to other extension
+        - link outside of extension
+        - assign label
+
+    things to show on master list
+    - final from email
+    - to email
+    - message count
+    - will assign draft
+    - preview
+    - body
+    - link to convo
+    - link to message
+    - customer's name
+    - labels
+    - is label? (with example)
+    - new message for caddis warning
+
+    order number
+    order no
+    order no.
+    order #
+    order number is
+    order no is
+    order no. is
+    order # is
+
+
+    configurable options: wording of closing ex. "Sincerely"
+    Time-based greeting [on/off]
+    Customize "Thank you for reaching out to us!"
+    Customize "Thank you for your reply!"
+    Toggle auto-assign draft
+    Toggle auto-correct return email
+    Customize name for Monday posts "Post Monday as:"
+
+*/}
