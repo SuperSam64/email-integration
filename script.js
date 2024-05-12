@@ -1,10 +1,5 @@
-function getConversation(conversation){
-    return conversation.id;
-}
-function getMessageCount(conversation){
-    return (currentConversation.messages_count);
-}
-async function loadUserProfile(){
+{ // ======== FUNCTIONS ========
+    async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
           if(this.me){
@@ -28,6 +23,75 @@ async function loadUserProfile(){
       $("#name").text(userFullName);
       $("#layout").text(title);
       });
+}
+async function getOrganization(){
+    var done = false;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+          if(this.id.length == 36 && done == false){
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);
+              done = true;
+            }
+        });
+    });
+}
+function getKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    console.log(sections.join("-"));
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
+}
+function storeLastConversation(){
+    if(typeof currentConversation != 'undefined'){
+        Missive.storeSet('lastConversation', currentConversation);
+    }
+
+}
+async function getLastConversation(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        currentConversation = conversation;
+        update(currentConversation);
+        showResults();
+        $("#body1").text(currentConversation.id)
+        return conversation;
+    });
+}
+function getConversation(conversation){
+    return conversation.id;
+}
+function getMessageCount(conversation){
+    return (currentConversation.messages_count);
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -76,6 +140,35 @@ function getFrom(conversation){
         else{
             var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
             return email;
+        }
+    }
+}
+function updateFrom(conversation){ 
+    var assignedToMe = false;
+    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+        if(conversation.assignees[i].id == currentUser.id){
+            assignedToMe = true;
+        }
+    }
+    if(!conversation.latest_message){
+        return false;
+    }
+    else {
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
+            conversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            assignedToMe == true       
+            ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
         }
     }
 }
@@ -156,49 +249,6 @@ function checkDraft(conversation){
     else {
         return false;
     }
-}
-function updateFrom(conversation){ 
-    var assignedToMe = false;
-    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
-        if(conversation.assignees[i].id == currentUser.id){
-            assignedToMe = true;
-        }
-    }
-    if(!conversation.latest_message){
-        return false;
-    }
-    else {
-        if (conversation.latest_message.to_fields.length > 0){
-            if(   
-            conversation.messages_count == 1 &&
-            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            assignedToMe == true       
-            ) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
-        }
-    }
-}
-async function getOrganization(){
-    var done = false;
-    Missive.fetchLabels().then((labels) => {
-        $(labels).each(function(){
-          if(this.id.length == 36 && done == false){
-              organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);
-              done = true;
-            }
-        });
-    });
 }
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
@@ -398,87 +448,6 @@ function getGreeting(conversation) {
         segment = "morning"
     }
     return "Good "+ segment;
-}
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    console.log(sections.join("-"));
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
-function showResults(){
-    var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
-        messageFrom,
-        customerName,
-        messageSubject,
-        conversationSubject,
-        userAssigned,
-        assignDraft,
-        forwarded,
-        conversationLink,
-        messageLink,
-        labels,
-        isLabeled,
-        preview,
-        fullMessage,
-        orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
-        greeting
-    ]
-    for ( i = 0; i < elements.length; i++ ){
-        $("#body" + (i + 1)).text(elements[i]);
-    }
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
@@ -920,30 +889,63 @@ async function lookupContact(input){
         $("#body2").text("NO CONTACT DATA");
     }
 }
-function storeLastConversation(){
-    if(typeof currentConversation != 'undefined'){
-        Missive.storeSet('lastConversation', currentConversation);
-    }
-
-}
-async function getLastConversation(){
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        currentConversation = conversation;
-        update(currentConversation);
-        showResults();
-        $("#body1").text(currentConversation.id)
-        return conversation;
-    });
-}
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
     await getOrganization();
-    console.log(organization)
     await getLastConversation();
     initiated = true;
 }
+function update (input){
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+}
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        conversationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
+}}
+
+{ // ======== BUTTONS ========
 function button1Clicked() {
     lookupContact(messageFrom);
     //cancellationReply();
@@ -963,7 +965,9 @@ function button5Clicked() {
 }
 function button6Clicked() {
     saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
-}
+}}
+
+{ // ======== RESETS ========
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -1023,9 +1027,9 @@ function body19Reset(){
 }
 function body20Reset(){
     $("#body20").text("[ready]")
-}
+}}
 
-/*        NOTES
+{ /* ======== NOTES ========
 - make the "to" the customer's email. find a way to remove the other email. try array = []
 places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
 assign new drafts
@@ -1115,4 +1119,4 @@ parse diff formats like gmail, yahoo mail, etc
     Toggle auto-correct return email
     Customize name for Monday posts "Post Monday as:"
 
-*/
+*/}
