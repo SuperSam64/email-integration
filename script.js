@@ -29,7 +29,6 @@ async function loadUserProfile(){
       $("#layout").text(title);
       });
 }
-
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
         return "[empty]";
@@ -455,6 +454,9 @@ function getContactsKey(input){
     return sections.join("-");
 }
 function showResults(){
+    var frame = document.getElementById("textFrame");
+    var textCount = frame.getElementsByClassName("textBody");
+    console.log(textcount.length);
     $("#body1").text(conversationID);
     $("#body2").text(conversationCount);
     $("#body3").text(messageTo);
