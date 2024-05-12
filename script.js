@@ -1,4 +1,4 @@
- // ======== STARTUP ======== 10.48
+ // ======== STARTUP ======== 10.49
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -23,6 +23,14 @@ async function loadUserProfile(){
       $("#name").text(userFullName);
       $("#layout").text(title);
       });
+}
+async function loadData(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        currentConversation = conversation;
+        update(currentConversation);
+        showResults();
+    });
 }
 function getKey(input){
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
@@ -73,14 +81,6 @@ function storeLastConversation(){
     if(typeof currentConversation != 'undefined'){
         Missive.storeSet('lastConversation', currentConversation);
     }
-}
-async function getLastConversation(){
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        currentConversation = conversation;
-        update(currentConversation);
-        showResults();
-    });
 }
 function getConversation(conversation){
     return conversation.id;
@@ -135,10 +135,10 @@ function update (input){
 }
 async function startup(){
     await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
+    console.log(currentUser.first_name); // delete later
+    await loadData();
+    await getOrganization();    
+    initialized = true;
 }
 
 { // ======== FUNCTIONS ========
@@ -754,7 +754,7 @@ async function cancellationForm(newMessage){
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
             " If you wish to set up a return you may do so by logging into your filtersfast.com account.",
-            " I have initiated a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
+            " I have initialized a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
             " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s).",
             " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
         ];

@@ -31,7 +31,7 @@
       </div>
       <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
         <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 10.48
+        Version 10.49
         <!----------------------------------------------------------------------------->
       </div>
     </div>
@@ -238,7 +238,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
       {//---- VARIABLES ----
-        var initiated = false;
+        var initialized = false;
         var conversationActive; // bool
         var token;
         var organization;
@@ -290,7 +290,7 @@
         startup();
         //console.log("at startup: " + token);
         //console.log("at startup: " + contactBook);
-          //getLastConversation();
+          //loadData();
           //update(currentConversation);
           //showResults();
           //$("#body19").text(token + " | " + contactBook);  // this can be deleted later, it is only used to show the key
@@ -299,7 +299,7 @@
       // =====================================
       //------- WHEN CONVERSATION CHANGES ---------
       Missive.on('change:conversations', (ids) => {
-				if(initiated == true){
+				if(initialized == true){
             Missive.fetchConversations(ids).then((conversations) => {		
             currentConversation = conversations[0];
             storeLastConversation(conversations[0]);
