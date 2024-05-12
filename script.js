@@ -454,29 +454,31 @@ function getContactsKey(input){
     return sections.join("-");
 }
 function showResults(){
-    var frame = document.getElementById("textFrame");
-    var textCount = frame.getElementsByClassName("textBody");
-    console.log(textCount.length);
-    for (i = 0; i < textcount.length)
-    $("#body1").text(conversationID);
-    $("#body2").text(conversationCount);
-    $("#body3").text(messageTo);
-    $("#body4").text(messageFrom);
-    $("#body5").text(customerName);
-    $("#body6").text(messageSubject); 
-    $("#body7").text(conversationSubject);
-    $("#body8").text(userAssigned);
-    $("#body9").text(assignDraft);
-    $("#body10").text(forwarded);
-    $("#body11").text(conversationLink);
-    $("#body12").text(messageLink);
-    $("#body13").text(labels);
-    $("#body14").text(isLabeled);
-    $("#body15").text(preview);
-    $("#body17").text(orderNumber);
-    $("#body18").text(timeStamp);
-    $("#body19").text(token + " | " + contactBook)
-    $("#body20").text(greeting);
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        convesationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
