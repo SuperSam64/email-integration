@@ -1,9 +1,3 @@
-function getConversation(conversation){
-    return conversation.id;
-}
-function getMessageCount(conversation){
-    return (currentConversation.messages_count);
-}
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -28,6 +22,84 @@ async function loadUserProfile(){
       $("#name").text(userFullName);
       $("#layout").text(title);
       });
+}
+async function getOrganization(){
+    var done = false;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+          if(this.id.length == 36 && done == false){
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);
+              done = true;
+            }
+        });
+    });
+}
+async function getLastConversation(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        currentConversation = conversation;
+        update(currentConversation);
+        showResults();
+        $("#body1").text(currentConversation.id)
+        return conversation;
+    });
+}
+function getConversation(conversation){
+    return conversation.id;
+}
+function getMessageCount(conversation){
+    return (currentConversation.messages_count);
+}
+function update (input){
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+}
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        conversationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -186,20 +258,7 @@ function updateFrom(conversation){
         }
     }
 }
-async function getOrganization(){
-    var done = false;
-    Missive.fetchLabels().then((labels) => {
-        $(labels).each(function(){
-          if(this.id.length == 36 && done == false){
-              organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);
-              done = true;
-            }
-        });
-    });
-}
+
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
@@ -399,27 +458,7 @@ function getGreeting(conversation) {
     }
     return "Good "+ segment;
 }
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
+
 function getKey(input){
     var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
@@ -453,33 +492,7 @@ function getContactsKey(input){
     ];
     return sections.join("-");
 }
-function showResults(){
-    var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
-        messageFrom,
-        customerName,
-        messageSubject,
-        conversationSubject,
-        userAssigned,
-        assignDraft,
-        forwarded,
-        conversationLink,
-        messageLink,
-        labels,
-        isLabeled,
-        preview,
-        fullMessage,
-        orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
-        greeting
-    ]
-    for ( i = 0; i < elements.length; i++ ){
-        $("#body" + (i + 1)).text(elements[i]);
-    }
-}
+
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
 }
@@ -926,21 +939,11 @@ function storeLastConversation(){
     }
 
 }
-async function getLastConversation(){
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        currentConversation = conversation;
-        update(currentConversation);
-        showResults();
-        $("#body1").text(currentConversation.id)
-        return conversation;
-    });
-}
+
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
     await getOrganization();
-    console.log(organization)
     await getLastConversation();
     initiated = true;
 }
