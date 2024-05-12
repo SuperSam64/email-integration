@@ -1,3 +1,4 @@
+// 10.42
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -22,6 +23,39 @@ async function loadUserProfile(){
       $("#name").text(userFullName);
       $("#layout").text(title);
       });
+}
+function getKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    console.log(sections.join("-"));
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
 }
 async function getOrganization(){
     var done = false;
@@ -463,39 +497,7 @@ function getGreeting(conversation) {
     }
     return "Good "+ segment;
 }
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    console.log(sections.join("-"));
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
+
 
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
