@@ -1,4 +1,95 @@
 { // ======== FUNCTIONS ========
+async function loadUserProfile(){
+    await Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+            if(this.me){
+                currentUser = this;
+        }
+        });
+        $(adminList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+            profileType = "master"
+            title = "Administrator";
+            }
+        });
+        $(crmList).each(function(){
+            if(this == currentUser.id.split("-")[4]){
+            profileType = "CRM"
+            title = "Client Relationship Manager";
+            }
+        });
+        var userFullName = currentUser.first_name + " " + currentUser.last_name;
+        $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+        $("#name").text(userFullName);
+        $("#layout").text(title);
+        });
+}
+function getKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    console.log(sections.join("-"));
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
+}
+async function getOrganization(){
+    var done = false;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+          if(this.id.length == 36 && done == false){
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);
+              done = true;
+            }
+        });
+    });
+}
+function storeLastConversation(){
+    if(typeof currentConversation != 'undefined'){
+        Missive.storeSet('lastConversation', currentConversation);
+    }
+
+}
+async function getLastConversation(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        currentConversation = conversation;
+        update(currentConversation);
+        showResults();
+        $("#body1").text(currentConversation.id)
+        return conversation;
+    });
+}
+function getConversation(conversation){
+    return conversation.id;
+}
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
@@ -54,97 +145,10 @@ function showResults(){
         $("#body" + (i + 1)).text(elements[i]);
     }
 }}
-async function loadUserProfile(){
-    await Missive.fetchUsers().then((users) => {
-        $(users).each(function(){
-          if(this.me){
-              currentUser = this;
-        }
-      });
-      $(adminList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
-            profileType = "master"
-            title = "Administrator";
-          }
-      });
-      $(crmList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
-            profileType = "CRM"
-            title = "Client Relationship Manager";
-          }
-      });
-      var userFullName = currentUser.first_name + " " + currentUser.last_name;
-      $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-      $("#name").text(userFullName);
-      $("#layout").text(title);
-      });
-}
-async function getOrganization(){
-    var done = false;
-    Missive.fetchLabels().then((labels) => {
-        $(labels).each(function(){
-          if(this.id.length == 36 && done == false){
-              organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);
-              done = true;
-            }
-        });
-    });
-}
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    console.log(sections.join("-"));
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
-function storeLastConversation(){
-    if(typeof currentConversation != 'undefined'){
-        Missive.storeSet('lastConversation', currentConversation);
-    }
 
-}
-async function getLastConversation(){
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        currentConversation = conversation;
-        update(currentConversation);
-        showResults();
-        $("#body1").text(currentConversation.id)
-        return conversation;
-    });
-}
-function getConversation(conversation){
-    return conversation.id;
-}
+
+
+
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
 }
