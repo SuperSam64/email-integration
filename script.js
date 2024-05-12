@@ -1,4 +1,4 @@
- // ======== STARTUP ======== 10.49
+ // ======== STARTUP ======== 10.50
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -63,7 +63,7 @@ function getContactsKey(input){
     ];
     return sections.join("-");
 }
-async function getOrganization(){
+async function getTokens(){
     var scan = true;
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
@@ -134,10 +134,10 @@ function update (input){
     greeting = getGreeting(input);
 }
 async function startup(){
+    await getTokens(); 
     await loadUserProfile();
     console.log(currentUser.first_name); // delete later
-    await loadData();
-    await getOrganization();    
+    await loadData();   
     initialized = true;
 }
 
