@@ -1,4 +1,4 @@
- // ======== STARTUP ======== 10.47
+ // ======== STARTUP ======== 10.48
 async function loadUserProfile(){
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
@@ -25,7 +25,6 @@ async function loadUserProfile(){
       });
 }
 function getKey(input){
-    //var stringOnly = input.replaceAll("-","");
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var keyArray = [];
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
@@ -38,15 +37,14 @@ function getKey(input){
         keyArray.join("").slice(16, 20),
         keyArray.join("").slice(20, 32)
     ];
-    console.log("this worked" + sections.join("-"));
+    console.log(sections.join("-"));  // can be removed
     return sections.join("-");
 }
 function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
     var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
     var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
     }
     var sections = [
         keyArray.join("").slice(0, 8),
@@ -58,15 +56,15 @@ function getContactsKey(input){
     return sections.join("-");
 }
 async function getOrganization(){
-    var done = false;
+    var scan = true;
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
-          if(this.id.length == 36 && done == false){
+          if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
               token = getKey(organization);
               contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);
-              done = true;
+              console.log(token + " " + contactBook);  // can be removed
+              scan = false;
             }
         });
     });
@@ -75,7 +73,6 @@ function storeLastConversation(){
     if(typeof currentConversation != 'undefined'){
         Missive.storeSet('lastConversation', currentConversation);
     }
-
 }
 async function getLastConversation(){
     await Missive.storeGet('lastConversation')
@@ -83,8 +80,6 @@ async function getLastConversation(){
         currentConversation = conversation;
         update(currentConversation);
         showResults();
-        $("#body1").text(currentConversation.id)
-        return conversation;
     });
 }
 function getConversation(conversation){
