@@ -37,6 +37,12 @@ async function getOrganization(){
         });
     });
 }
+function storeLastConversation(){
+    if(typeof currentConversation != 'undefined'){
+        Missive.storeSet('lastConversation', currentConversation);
+    }
+
+}
 async function getLastConversation(){
     await Missive.storeGet('lastConversation')
         .then(conversation => {
@@ -50,8 +56,32 @@ async function getLastConversation(){
 function getConversation(conversation){
     return conversation.id;
 }
-function getMessageCount(conversation){
-    return (currentConversation.messages_count);
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        conversationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
 }
 function update (input){
     conversationID = getConversation(input);
@@ -73,6 +103,9 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
+}
+function getMessageCount(conversation){
+    return (currentConversation.messages_count);
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -463,33 +496,7 @@ function getContactsKey(input){
     ];
     return sections.join("-");
 }
-function showResults(){
-    var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
-        messageFrom,
-        customerName,
-        messageSubject,
-        conversationSubject,
-        userAssigned,
-        assignDraft,
-        forwarded,
-        conversationLink,
-        messageLink,
-        labels,
-        isLabeled,
-        preview,
-        fullMessage,
-        orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
-        greeting
-    ]
-    for ( i = 0; i < elements.length; i++ ){
-        $("#body" + (i + 1)).text(elements[i]);
-    }
-}
+
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
 }
@@ -930,12 +937,7 @@ async function lookupContact(input){
         $("#body2").text("NO CONTACT DATA");
     }
 }
-function storeLastConversation(){
-    if(typeof currentConversation != 'undefined'){
-        Missive.storeSet('lastConversation', currentConversation);
-    }
 
-}
 async function startup(){
     await loadUserProfile();
     console.log(currentUser.first_name);
