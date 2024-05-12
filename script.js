@@ -944,7 +944,8 @@ async function lookupContact(input){
 
 { // ======== BUTTONS ========
     function button1Clicked() {
-        lookupContact(messageFrom);
+        console.log(messageFrom)
+        //lookupContact(messageFrom);
         //cancellationReply();
     }
     function button2Clicked() {
