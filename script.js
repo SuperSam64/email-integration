@@ -1,156 +1,33 @@
-{ // ======== FUNCTIONS ========
-async function loadUserProfile(){
-    await Missive.fetchUsers().then((users) => {
-        $(users).each(function(){
-            if(this.me){
-                currentUser = this;
-        }
-        });
-        $(adminList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-            profileType = "master"
-            title = "Administrator";
-            }
-        });
-        $(crmList).each(function(){
-            if(this == currentUser.id.split("-")[4]){
-            profileType = "CRM"
-            title = "Client Relationship Manager";
-            }
-        });
-        var userFullName = currentUser.first_name + " " + currentUser.last_name;
-        $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-        $("#name").text(userFullName);
-        $("#layout").text(title);
-        });
-}
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    console.log(sections.join("-"));
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
-async function getOrganization(){
-    var done = false;
-    Missive.fetchLabels().then((labels) => {
-        $(labels).each(function(){
-          if(this.id.length == 36 && done == false){
-              organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);
-              done = true;
-            }
-        });
-    });
-}
-function storeLastConversation(){
-    if(typeof currentConversation != 'undefined'){
-        Missive.storeSet('lastConversation', currentConversation);
-    }
-
-}
-async function getLastConversation(){
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        currentConversation = conversation;
-        update(currentConversation);
-        showResults();
-        $("#body1").text(currentConversation.id)
-        return conversation;
-    });
-}
 function getConversation(conversation){
     return conversation.id;
 }
-async function startup(){
-    await loadUserProfile();
-    console.log(currentUser.first_name);
-    await getOrganization();
-    await getLastConversation();
-    initiated = true;
-}
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
-function showResults(){
-    var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
-        messageFrom,
-        customerName,
-        messageSubject,
-        conversationSubject,
-        userAssigned,
-        assignDraft,
-        forwarded,
-        conversationLink,
-        messageLink,
-        labels,
-        isLabeled,
-        preview,
-        fullMessage,
-        orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
-        greeting
-    ]
-    for ( i = 0; i < elements.length; i++ ){
-        $("#body" + (i + 1)).text(elements[i]);
-    }
-}}
-
-
-
-
 function getMessageCount(conversation){
     return (currentConversation.messages_count);
+}
+async function loadUserProfile(){
+    await Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+          if(this.me){
+              currentUser = this;
+        }
+      });
+      $(adminList).each(function(){
+          if(this == currentUser.id.split("-")[4]){
+            profileType = "master"
+            title = "Administrator";
+          }
+      });
+      $(crmList).each(function(){
+          if(this == currentUser.id.split("-")[4]){
+            profileType = "CRM"
+            title = "Client Relationship Manager";
+          }
+      });
+      var userFullName = currentUser.first_name + " " + currentUser.last_name;
+      $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+      $("#name").text(userFullName);
+      $("#layout").text(title);
+      });
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -199,35 +76,6 @@ function getFrom(conversation){
         else{
             var email = (conversation.latest_message.body.split("mailto:")[1]).split('"')[0]
             return email;
-        }
-    }
-}
-function updateFrom(conversation){ 
-    var assignedToMe = false;
-    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
-        if(conversation.assignees[i].id == currentUser.id){
-            assignedToMe = true;
-        }
-    }
-    if(!conversation.latest_message){
-        return false;
-    }
-    else {
-        if (conversation.latest_message.to_fields.length > 0){
-            if(   
-            conversation.messages_count == 1 &&
-            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            assignedToMe == true       
-            ) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        else {
-            return false;
         }
     }
 }
@@ -308,6 +156,49 @@ function checkDraft(conversation){
     else {
         return false;
     }
+}
+function updateFrom(conversation){ 
+    var assignedToMe = false;
+    for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
+        if(conversation.assignees[i].id == currentUser.id){
+            assignedToMe = true;
+        }
+    }
+    if(!conversation.latest_message){
+        return false;
+    }
+    else {
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
+            conversation.messages_count == 1 &&
+            conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
+            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            assignedToMe == true       
+            ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+}
+async function getOrganization(){
+    var done = false;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+          if(this.id.length == 36 && done == false){
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);
+              done = true;
+            }
+        });
+    });
 }
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
@@ -507,6 +398,87 @@ function getGreeting(conversation) {
         segment = "morning"
     }
     return "Good "+ segment;
+}
+function update (input){
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+}
+function getKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    console.log(sections.join("-"));
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var stringOnly = input.replaceAll("-","");
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < stringOnly.length; i ++ ) {
+        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
+}
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        forwarded,
+        convesationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
@@ -948,175 +920,198 @@ async function lookupContact(input){
         $("#body2").text("NO CONTACT DATA");
     }
 }
+function storeLastConversation(){
+    if(typeof currentConversation != 'undefined'){
+        Missive.storeSet('lastConversation', currentConversation);
+    }
 
+}
+async function getLastConversation(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        currentConversation = conversation;
+        update(currentConversation);
+        showResults();
+        $("#body1").text(currentConversation.id)
+        return conversation;
+    });
+}
+async function startup(){
+    await loadUserProfile();
+    console.log(currentUser.first_name);
+    await getOrganization();
+    console.log(organization)
+    await getLastConversation();
+    initiated = true;
+}
 { // ======== BUTTONS ========
-function button1Clicked() {
-    lookupContact(messageFrom);
-    //cancellationReply();
-}
-function button2Clicked() {
-    cancellationNew(); 
+    function button1Clicked() {
+        lookupContact(messageFrom);
+        //cancellationReply();
+    }
+    function button2Clicked() {
+        cancellationNew(); 
+        
+    }
+    function button3Clicked() {
+        insertSignature(emailClosing);
+    }
+    function button4Clicked() {
+        createTasks(purchaseOrderTasks);
+    }
+    function button5Clicked() {
+        createReply()
+    }
+    function button6Clicked() {
+        saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
+    }}
     
-}
-function button3Clicked() {
-    insertSignature(emailClosing);
-}
-function button4Clicked() {
-    createTasks(purchaseOrderTasks);
-}
-function button5Clicked() {
-    createReply()
-}
-function button6Clicked() {
-    saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
-}}
-
-{ // ======== RESETS ========
-function body1Reset(){
-    $("#body1").text("[ready]")
-}
-function body2Reset(){
-    $("#body2").text("[ready]")
-}
-function body3Reset(){
-    $("#body3").text("[ready]")
-}
-function body4Reset(){
-    $("#body4").text("[ready]")
-}
-function body6Reset(){
-    $("#body6").text("[ready]")
-}
-function body7Reset(){
-    $("#body7").text("[ready]")
-}
-function body8Reset(){
-    $("#body8").text("[ready]")
-}
-function body9Reset(){
-    $("#body9").text("[ready]")
-}
-function body10Reset(){
-    $("#body10").text("[ready]")
-}
-function body11Reset(){
-    $("#body11").text("[ready]")
-}
-function body12Reset(){
-    $("#body12").text("[ready]")
-}
-function body5Reset(){
-    $("#body5").text("[ready]")
-}
-function body13Reset(){
-    $("#body13").text("[ready]")
-}
-function body14Reset(){
-    $("#body14").text("[ready]")
-}
-function body15Reset(){
-    $("#body15").text("[ready]")
-}
-function body16Reset(){
-    $("#body16").text("[ready]")
-}
-function body17Reset(){
-    $("#body17").text("[ready]")
-}
-function body18Reset(){
-    $("#body18").text("[ready]")
-}
-function body19Reset(){
-    $("#body19").text("[ready]")
-}
-function body20Reset(){
-    $("#body20").text("[ready]")
-}}
-
-{ /* ======== NOTES ========
-- find a way to make a "reply" but without having more than one "to field"
-- parse "full message" to cut off at the right place.
-- make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
-- for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
-    opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
-- create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
-- get order number from convo subject line [DONE], scan body of message too (?)
-- check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
-- allow for manual entry of order number, set convo subject accordingly
-- check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
-- scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
-- offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
-- create forms for Monday
-- when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
-    items that do not have the "sent" label?
-- set up branching for forms [partially done, use Cancellation form as template for others]
- - make autoreply templates that can be modified by me, based on the regular templates.
-- identify time of day when applying a template [DONE - except for linking this function to the autoreply]
-- when changing conversations with a Monday panel open, prompt to make sure.
-    "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
-    store current convo as last convo [DONE]
-    get new current convo
-    prompt >
-        yes: change the integration back to main content
-        no: navigate to previous convo by convo ID, do nothing in the integration
-- for order number, repalce "# " with "#" [DONE]
-- take contexts for monday forms and for responses
-- for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
-- link to monday form
-- link to monday search
-- include link to message in monday form? do this as html in the comment
-- after order number, add note.
-    Order number
-    note 
-    ex. convo subject may say: Order #4937718, refund for return. these should be short.
-- have a status - if it is waiting on something, denote that
-- decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
-- come up with functions admins can do with no coding, such as change a person's level
-- respond automatically to chatbot requests
-- make an "about" page to show version, e tc
-- determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
-<div data-missive-collapsable-handle="true"></div>
-        ^ previous message
-parse diff formats like gmail, yahoo mail, etc
-     - 
-        - has attachments?
-        - function to do all starting operations
-        - create task
-        - link within extension
-        - link to other extension
-        - link outside of extension
-        - assign label
-
-    things to show on master list
-    - final from email
-    - to email
-    - message count
-    - will assign draft
-    - preview
-    - body
-    - link to convo
-    - link to message
-    - customer's name
-    - labels
-    - is label? (with example)
-    - new message for caddis warning
-
-    order number
-    order no
-    order no.
-    order #
-    order number is
-    order no is
-    order no. is
-    order # is
-
-
-    configurable options: wording of closing ex. "Sincerely"
-    Time-based greeting [on/off]
-    Customize "Thank you for reaching out to us!"
-    Customize "Thank you for your reply!"
-    Toggle auto-assign draft
-    Toggle auto-correct return email
-    Customize name for Monday posts "Post Monday as:"
-
-*/}
+    { // ======== RESETS ========
+    function body1Reset(){
+        $("#body1").text("[ready]")
+    }
+    function body2Reset(){
+        $("#body2").text("[ready]")
+    }
+    function body3Reset(){
+        $("#body3").text("[ready]")
+    }
+    function body4Reset(){
+        $("#body4").text("[ready]")
+    }
+    function body6Reset(){
+        $("#body6").text("[ready]")
+    }
+    function body7Reset(){
+        $("#body7").text("[ready]")
+    }
+    function body8Reset(){
+        $("#body8").text("[ready]")
+    }
+    function body9Reset(){
+        $("#body9").text("[ready]")
+    }
+    function body10Reset(){
+        $("#body10").text("[ready]")
+    }
+    function body11Reset(){
+        $("#body11").text("[ready]")
+    }
+    function body12Reset(){
+        $("#body12").text("[ready]")
+    }
+    function body5Reset(){
+        $("#body5").text("[ready]")
+    }
+    function body13Reset(){
+        $("#body13").text("[ready]")
+    }
+    function body14Reset(){
+        $("#body14").text("[ready]")
+    }
+    function body15Reset(){
+        $("#body15").text("[ready]")
+    }
+    function body16Reset(){
+        $("#body16").text("[ready]")
+    }
+    function body17Reset(){
+        $("#body17").text("[ready]")
+    }
+    function body18Reset(){
+        $("#body18").text("[ready]")
+    }
+    function body19Reset(){
+        $("#body19").text("[ready]")
+    }
+    function body20Reset(){
+        $("#body20").text("[ready]")
+    }}
+    
+    { /* ======== NOTES ========
+    - find a way to make a "reply" but without having more than one "to field"
+    - parse "full message" to cut off at the right place.
+    - make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
+    - for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
+        opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
+    - create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
+    - get order number from convo subject line [DONE], scan body of message too (?)
+    - check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
+    - allow for manual entry of order number, set convo subject accordingly
+    - check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
+    - scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
+    - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
+    - create forms for Monday
+    - when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
+        items that do not have the "sent" label?
+    - set up branching for forms [partially done, use Cancellation form as template for others]
+     - make autoreply templates that can be modified by me, based on the regular templates.
+    - identify time of day when applying a template [DONE - except for linking this function to the autoreply]
+    - when changing conversations with a Monday panel open, prompt to make sure.
+        "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
+        store current convo as last convo [DONE]
+        get new current convo
+        prompt >
+            yes: change the integration back to main content
+            no: navigate to previous convo by convo ID, do nothing in the integration
+    - for order number, repalce "# " with "#" [DONE]
+    - take contexts for monday forms and for responses
+    - for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
+    - link to monday form
+    - link to monday search
+    - include link to message in monday form? do this as html in the comment
+    - after order number, add note.
+        Order number
+        note 
+        ex. convo subject may say: Order #4937718, refund for return. these should be short.
+    - have a status - if it is waiting on something, denote that
+    - decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
+    - come up with functions admins can do with no coding, such as change a person's level
+    - respond automatically to chatbot requests
+    - make an "about" page to show version, e tc
+    - determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
+    <div data-missive-collapsable-handle="true"></div>
+            ^ previous message
+    parse diff formats like gmail, yahoo mail, etc
+         - 
+            - has attachments?
+            - function to do all starting operations
+            - create task
+            - link within extension
+            - link to other extension
+            - link outside of extension
+            - assign label
+    
+        things to show on master list
+        - final from email
+        - to email
+        - message count
+        - will assign draft
+        - preview
+        - body
+        - link to convo
+        - link to message
+        - customer's name
+        - labels
+        - is label? (with example)
+        - new message for caddis warning
+    
+        order number
+        order no
+        order no.
+        order #
+        order number is
+        order no is
+        order no. is
+        order # is
+    
+    
+        configurable options: wording of closing ex. "Sincerely"
+        Time-based greeting [on/off]
+        Customize "Thank you for reaching out to us!"
+        Customize "Thank you for your reply!"
+        Toggle auto-assign draft
+        Toggle auto-correct return email
+        Customize name for Monday posts "Post Monday as:"
+    
+    */}
