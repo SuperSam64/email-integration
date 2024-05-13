@@ -1153,5 +1153,6 @@ parse diff formats like gmail, yahoo mail, etc
     Toggle auto-assign draft
     Toggle auto-correct return email
     Customize name for Monday posts "Post Monday as:"
+    https://mail.missiveapp.com/#inbox/conversations/19dcf950-0143-4214-a45b-fbcf2f189d94
 
 */}
