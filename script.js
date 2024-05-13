@@ -754,7 +754,7 @@ async function cancellationForm(newMessage){
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
             " If you wish to set up a return you may do so by logging into your filtersfast.com account.",
-            " I have initialized a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
+            " I have initialized a return, and you will be emailed a prepaid return label which can be used to send your order back for a refund.",
             " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s).",
             " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
         ];
@@ -962,6 +962,48 @@ function button5Clicked() {
 }
 function button6Clicked() {
     saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
+}
+function button7Clicked() {
+    
+}
+function button8Clicked() {
+    
+}
+function button9Clicked() {
+    
+}
+function button10Clicked() {
+    
+}
+function button11Clicked() {
+    
+}
+function button12Clicked() {
+    
+}
+function button13Clicked() {
+    
+}
+function button14Clicked() {
+    
+}
+function button15Clicked() {
+    
+}
+function button16Clicked() {
+    
+}
+function button17Clicked() {
+    
+}
+function button18Clicked() {
+    
+}
+function button19Clicked() {
+    
+}
+function button20Clicked() {
+    
 }
 
 // ======== RESETS ========
