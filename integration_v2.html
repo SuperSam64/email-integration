@@ -8,94 +8,54 @@
     <script src="script.js"></script>
   </head>
   <body style="width:92%;height:96%;margin:auto">
-    <!---------------------------HEADER--------------------------------->
     <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
       <div class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
-        <table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
-          <tbody>
-            <tr>
-              <td rowspan="2">
-                <span id="avatar" style="border:4px solid var(--accent-color);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
-              </td>
-              <td>
-                <span id="name" style="margin-left:8px" class="text-xlarge text-600"></span>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
-        <!---------------------------  [[  VERSION  ]]  ------------------------------->
-        Version 10.55
-        <!----------------------------------------------------------------------------->
-      </div>
-    </div>
-    <!-------------------------- BUTTON -------------------------------------->
+    <!------------------------------- HEADER ---------------------------------><span>
+      <table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
+        <tbody>
+          <tr>
+            <td rowspan="2">
+              <span id="avatar" style="border:4px solid var(--accent-color);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
+            </td>
+            <td>
+              <span id="name" style="margin-left:8px" class="text-xlarge text-600"></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="layout" style="margin-left:8px;vertical-align:top;font-style: italic" class="text-small text-c"></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <!------------------------------------------------------------------------></span>
+    <!--------------------------- [[  VERSION  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
+    <!-------------------->        Version 10.56        <!-------------------->
+    <!------------------------------------------------------------------------></div></div>
+    <!------------------------------- BUTTONS --------------------------------><span>
     <span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button3">Insert Signature</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button4">Insert Tasks</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
     <span class="button column padding testButton" id="button6">Save Contact</span><br>
+    <span class="button column padding testButton hidden" id="button7">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button8">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button9">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button10">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button11">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button12">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button13">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button14">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button15">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button16">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button17">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button18">[button label]</span><br>
+    <span class="button column padding testButton hidden" id="button19">[button label]</span><br>
     <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button7">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button8">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button9">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button10">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button11">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button12">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button13">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button14">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button15">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button16">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button17">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button18">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button19">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <!-------------------------- BUTTON -------------------------------------->
-    <span class="button column padding testButton" style="display:none" id="button20">[button label]</span><br>
-    <!------------------------------------------------------------------------>
-    <table class="textFrame" id="textFrame"> <!-- Table of results -->
+    <span class="button column padding testButton hidden" id="button20">[button label]</span><br>
+    <!------------------------------------------------------------------------></span>
+    <!--------------------------- TABLE OF RESULTS ---------------------------><table class="textFrame" id="textFrame">
     <!------------------------- TEXT BOX -------------------------->
     <tr id="title1" class="textTitle"><td width="24 px" style="text-align:right">
       1.
@@ -276,199 +236,202 @@
       [placeholder]
     </td></tr>
     <!------------------------------------------------------------->
-    </table>
+    <!------------------------------------------------------------------------></table>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
-      {//---- VARIABLES ----
-        var initialized = false;
-        var conversationActive; // bool, use this to determine if a screen needs to be shown asking the user to select a conversation
-        var token;
-        var organization;
-        var contactBook;
-        var currentUser;
-        var userFullName;
-        var profileType = "CCA"; // CCA, CRM, master
-        var title = "Customer Care Advocate" // default, unless  otherwise specified
-        var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
-        var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
-        var currentConversation;
-        var conversationID;
-        var conversationCount;
-        var messageTo;
-        var messageFrom;
-        var customerName;
-        var messageSubject;
-        var conversationSubject;
-        var userAssigned;
-        var assignDraft;
-        var forwarded;
-        var replied;
-        var conversationLink;
-        var messageLink;
-        var labels;
-        var isLabeled;
-        var preview;
-        var fullMessage;
-        var orderNumber;
-        var greeting;
-        var intro;
-        var signature;
-        var emailClosing = "Sincerely";
-        var suggestedLabel;
-        var timeStamp;
-        var contact = {};
-        var purchaseOrderTasks = [
-          "Email customer for PO revision",
-          "PO prepared",
-          "Customer is on terms (Limit: $)",
-          "- or - Email customer that order needs payment",
-          "Take payment",
-          "Send confirmation email",
-          "Sending shippng info to [DC](https://filtersfast.monday.com/boards/768866444) | [Purchasing](https://filtersfast.monday.com/boards/768866444)"
-        ]
+    {//----------------------------- VARIABLES --------------------------------
+      var initialized = false;
+      var conversationActive; // bool, use this to determine if a screen needs to be shown asking the user to select a conversation
+      var token;
+      var organization;
+      var contactBook;
+      var currentUser;
+      var userFullName;
+      var profileType = "CCA"; // CCA, CRM, master
+      var title = "Customer Care Advocate" // default, unless  otherwise specified
+      var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
+      var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
+      var currentConversation;
+      var conversationID;
+      var conversationCount;
+      var messageTo;
+      var messageFrom;
+      var customerName;
+      var messageSubject;
+      var conversationSubject;
+      var userAssigned;
+      var assignDraft;
+      var forwarded;
+      var replied;
+      var conversationLink;
+      var messageLink;
+      var labels;
+      var isLabeled;
+      var preview;
+      var fullMessage;
+      var orderNumber;
+      var greeting;
+      var intro;
+      var signature;
+      var emailClosing = "Sincerely";
+      var suggestedLabel;
+      var timeStamp;
+      var contact = {};
+      var purchaseOrderTasks = [
+        "Email customer for PO revision",
+        "PO prepared",
+        "Customer is on terms (Limit: $)",
+        "- or - Email customer that order needs payment",
+        "Take payment",
+        "Send confirmation email",
+        "Sending shippng info to [DC](https://filtersfast.monday.com/boards/768866444) | [Purchasing](https://filtersfast.monday.com/boards/768866444)"
+      ]
+    }
+    //-------------------------------------------------------------------------
+    // ----------------------------- PAGE LOAD --------------------------------
+    $(window).on('load',(ids) => {
+      startup();
+    });
+    // ------------------------------------------------------------------------
+    //---------------------- WHEN CONVERSATION CHANGES ------------------------
+    Missive.on('change:conversations', (ids) => {
+      if(initialized == true){
+          Missive.fetchConversations(ids).then((conversations) => {		
+          currentConversation = conversations[0];
+          storeLastConversation(conversations[0]);
+          update(currentConversation);
+          showResults();
+          console.log("on change" + currentConversation.id)
+        })
       }
-      // ============ PAGE LOAD ==============
-      $(window).on('load',(ids) => {
-        startup();
-      });
-      // =====================================
-      //------- WHEN CONVERSATION CHANGES ---------
-      Missive.on('change:conversations', (ids) => {
-				if(initialized == true){
-            Missive.fetchConversations(ids).then((conversations) => {		
-            currentConversation = conversations[0];
-            storeLastConversation(conversations[0]);
-            update(currentConversation);
-            showResults();
-            console.log("on change" + currentConversation.id)
-				  })
-        }
-			})
-      {//---------------- RESETS ------------------
-      $("#title1").click(function () { 
-        body1Reset();
-      });
-      $("#body1").click(function () { 
-        body1Reset();
-      });
-      $("#title2").click(function () { 
-        body2Reset();
-      });
-      $("#body2").click(function () { 
-        body2Reset();
-      });
-      $("#title3").click(function () { 
-        body3Reset();
-      });
-      $("#body3").click(function () { 
-        body3Reset();
-      });
-      $("#title4").click(function () { 
-        body4Reset();
-      });
-      $("#body4").click(function () { 
-        body4Reset();
-      });
-      $("#title5").click(function () { 
-        body5Reset();
-      });
-      $("#body5").click(function () { 
-        body5Reset();
-      });
-      $("#title6").click(function () { 
-        body6Reset();
-      });
-      $("#body6").click(function () { 
-        body6Reset();
-      });
-      $("#title7").click(function () { 
-        body7Reset();
-      });
-      $("#body7").click(function () { 
-        body7Reset();
-      });
-      $("#title8").click(function () { 
-        body8Reset();
-      });
-      $("#body8").click(function () { 
-        body8Reset();
-      });
-      $("#title9").click(function () { 
-        body9Reset();
-      });
-      $("#body9").click(function () { 
-        body9Reset();
-      });
-      $("#title10").click(function () { 
-        body10Reset();
-      });
-      $("#body10").click(function () { 
-        body10Reset();
-      });
-      $("#title11").click(function () { 
-        body11Reset();
-      });
-      $("#body11").click(function () { 
-        body11Reset();
-      });
-      $("#title12").click(function () { 
-        body12Reset();
-      });
-      $("#body12").click(function () { 
-        body12Reset();
-      });
-      $("#title13").click(function () { 
-        body13Reset();
-      });
-      $("#body13").click(function () { 
-        body13Reset();
-      });
-      $("#title14").click(function () { 
-        body14Reset();
-      });
-      $("#body14").click(function () { 
-        body14Reset();
-      });
-      $("#body15").click(function () { 
-        body15Reset();
-      });
-      $("#body16").click(function () { 
-        body16Reset();
-      });
-      $("#body17").click(function () { 
-        body17Reset();
-      });
-      $("#body18").click(function () { 
-        body18Reset();
-      });
-      $("#body19").click(function () { 
-        body19Reset();
-      });
-      $("#body20").click(function () { 
-        body20Reset();
-      });
-      $("#button1").click(function () { 
-        button1Clicked();
-      });
-      $("#button2").click(function () { 
-        button2Clicked();
-      });
-      $("#button3").click(function () { 
-        button3Clicked();
-      });
-      $("#button4").click(function () { 
-        button4Clicked();
-      });
-      $("#button5").click(function () { 
-        button5Clicked();
-      });
-      $("#button6").click(function () { 
-        button6Clicked();
-      });
-      $("#version_number").click(function (){
-        Missive.reload();
-      });
-      }
+    })
+    //-------------------------------------------------------------------------
+    {//----------------------------- RESETS -----------------------------------
+    $("#title1").click(function () { 
+      body1Reset();
+    });
+    $("#body1").click(function () { 
+      body1Reset();
+    });
+    $("#title2").click(function () { 
+      body2Reset();
+    });
+    $("#body2").click(function () { 
+      body2Reset();
+    });
+    $("#title3").click(function () { 
+      body3Reset();
+    });
+    $("#body3").click(function () { 
+      body3Reset();
+    });
+    $("#title4").click(function () { 
+      body4Reset();
+    });
+    $("#body4").click(function () { 
+      body4Reset();
+    });
+    $("#title5").click(function () { 
+      body5Reset();
+    });
+    $("#body5").click(function () { 
+      body5Reset();
+    });
+    $("#title6").click(function () { 
+      body6Reset();
+    });
+    $("#body6").click(function () { 
+      body6Reset();
+    });
+    $("#title7").click(function () { 
+      body7Reset();
+    });
+    $("#body7").click(function () { 
+      body7Reset();
+    });
+    $("#title8").click(function () { 
+      body8Reset();
+    });
+    $("#body8").click(function () { 
+      body8Reset();
+    });
+    $("#title9").click(function () { 
+      body9Reset();
+    });
+    $("#body9").click(function () { 
+      body9Reset();
+    });
+    $("#title10").click(function () { 
+      body10Reset();
+    });
+    $("#body10").click(function () { 
+      body10Reset();
+    });
+    $("#title11").click(function () { 
+      body11Reset();
+    });
+    $("#body11").click(function () { 
+      body11Reset();
+    });
+    $("#title12").click(function () { 
+      body12Reset();
+    });
+    $("#body12").click(function () { 
+      body12Reset();
+    });
+    $("#title13").click(function () { 
+      body13Reset();
+    });
+    $("#body13").click(function () { 
+      body13Reset();
+    });
+    $("#title14").click(function () { 
+      body14Reset();
+    });
+    $("#body14").click(function () { 
+      body14Reset();
+    });
+    $("#body15").click(function () { 
+      body15Reset();
+    });
+    $("#body16").click(function () { 
+      body16Reset();
+    });
+    $("#body17").click(function () { 
+      body17Reset();
+    });
+    $("#body18").click(function () { 
+      body18Reset();
+    });
+    $("#body19").click(function () { 
+      body19Reset();
+    });
+    $("#body20").click(function () { 
+      body20Reset();
+    });
+    $("#button1").click(function () { 
+      button1Clicked();
+    });
+    $("#button2").click(function () { 
+      button2Clicked();
+    });
+    $("#button3").click(function () { 
+      button3Clicked();
+    });
+    $("#button4").click(function () { 
+      button4Clicked();
+    });
+    $("#button5").click(function () { 
+      button5Clicked();
+    });
+    $("#button6").click(function () { 
+      button6Clicked();
+    });
+    $("#version_number").click(function (){
+      Missive.reload();
+    });
+    }
+    //-------------------------------------------------------------------------
     </script>
 </body>
 </html>
