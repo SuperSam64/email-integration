@@ -132,6 +132,7 @@ function update (input){
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
+    lookupContact(messageFrom);
 }
 async function startup(){
     await getTokens(); 
@@ -966,11 +967,11 @@ async function lookupContact(input){
                 }
             }
         }
-        $("#body2").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
+        $("#body21").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
     }
     else {
         console.log(contact.length);
-        $("#body2").text("NO CONTACT DATA");
+        $("#body21").text("NO CONTACT DATA");
     }
 }
 
