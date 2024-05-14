@@ -527,7 +527,7 @@ function getGreeting(conversation) {
         firstName = customerName;
     }
     console.log("step 2: " + firstName + "!")
-    greeting = ("Good " + segment + " " + firstName + ",").replace(" ,","") + intro;
+    greeting = ("Good " + segment + " " + firstName + ",").replace(" ,",",") + intro;
     console.log(greeting)
     return greeting;    
 }
