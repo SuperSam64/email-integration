@@ -196,7 +196,7 @@ function getFrom(conversation){
         }
     }
 }
-function getName(conversation){
+async function getName(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
