@@ -511,7 +511,8 @@ function getGreeting(conversation) {
     }
     console.log("step 1: " + customerName + "!")
     if(customerName == "[empty]" || typeof customerName == 'undefined'){
-        firstName = ""
+        firstName = "";
+        console.log("step 2.5: " + firstName)
     }
     else if (customerName.trim().includes(" ")){
         firstName = customerName.split(" ")[0];
@@ -526,7 +527,7 @@ function getGreeting(conversation) {
         firstName = customerName;
     }
     console.log("step 2: " + firstName + "!")
-    greeting = ["Good",segment,firstName].join(" ") + "," + intro;
+    greeting = ["Good",segment,firstName].join().split(" ") + "," + intro;
     console.log(greeting)
     return greeting;    
 }
