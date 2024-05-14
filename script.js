@@ -919,7 +919,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 async function lookupContact(input){
-    console.log("getFrom = " + input)
     var contactRecord;
 	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
@@ -937,8 +936,7 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    console.log("Contact record: " + contact )
-    if(!!contact){
+    if(contactRecord.contacts.length = 0){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
