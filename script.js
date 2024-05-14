@@ -509,6 +509,7 @@ function getGreeting(conversation) {
             scan = false;
         }
     }
+    console.log("step 1: " + firstName + "!")
     if(customerName == "[empty]"){
         firstName = ""
     }
@@ -524,7 +525,8 @@ function getGreeting(conversation) {
     else {
         firstName = customerName;
     }
-    greeting = ["Good",segment,firstName].join(" ").replace(" ,",",") + "," + intro;
+    console.log("step 2: " + firstName + "!")
+    greeting = ["Good",segment,firstName].join(" ") + "," + intro;
     console.log(greeting)
     return greeting;    
 }
