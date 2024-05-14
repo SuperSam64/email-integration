@@ -929,6 +929,7 @@ async function lookupContact(input){
 		}
 	})
 	contactRecord = await contact_URL.json();
+    console.log(contactRecord.contacts[0]);
 	contact = {
 		firstName:"",
 		lastName:"",
