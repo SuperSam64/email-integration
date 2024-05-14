@@ -487,7 +487,7 @@ function getTimeStamp(conversation){
     }    
 }
 function getGreeting(conversation) {
-    getFrom(conversation);
+    customerName = getName(input);
     var scan = true;
     var segment;
     var currentTime = new Date();
