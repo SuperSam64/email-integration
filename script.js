@@ -936,7 +936,7 @@ async function lookupContact(input){
 		email: input
 	};
     console.log("Contact record: " + contactRecord )
-    if(typeof contactRecord != 'undefined'){
+    if(!!contactRecord){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
@@ -976,8 +976,7 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    lookupContact(messageFrom);
-    //cancellationReply();
+    cancellationReply();
 }
 function button2Clicked() {
     cancellationNew(); 
