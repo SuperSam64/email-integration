@@ -518,7 +518,7 @@ function getGreeting(conversation) {
             firstName = firstName.toUpperCase();
         }
         else {
-            firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+            firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
         }
     }
     else {
