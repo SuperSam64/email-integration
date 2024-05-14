@@ -509,7 +509,7 @@ function getGreeting(conversation) {
             scan = false;
         }
     }
-    console.log("step 1: " + firstName + "!")
+    console.log("step 1: " + customerName + "!")
     if(customerName == "[empty]" || typeof customerName == 'undefined'){
         firstName = ""
     }
