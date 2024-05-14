@@ -937,8 +937,8 @@ async function lookupContact(input){
 		phoneNumber:"",
 		email: input
 	};
-    console.log("Contact record: " + contactRecord )
-    if(!!contactRecord){
+    console.log("Contact record: " + contact )
+    if(!!contact){
         contact.firstName = contactRecord.contacts[0].first_name;
         contact.lastName = contactRecord.contacts[0].last_name;  
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
