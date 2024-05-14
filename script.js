@@ -510,7 +510,7 @@ function getGreeting(conversation) {
         }
     }
     console.log("step 1: " + firstName + "!")
-    if(customerName == "[empty]"){
+    if(customerName == "[empty]" || typeof customerName == 'undefined'){
         firstName = ""
     }
     else if (customerName.trim().includes(" ")){
