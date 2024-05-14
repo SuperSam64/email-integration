@@ -30,7 +30,7 @@
       </table>
     <!------------------------------------------------------------------------></span>
     <!--------------------------- [[  VERSION  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
-    <!-------------------->        Version 10.63        <!-------------------->
+    <!-------------------->        Version 10.64        <!-------------------->
     <!------------------------------------------------------------------------></div></div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
@@ -230,11 +230,20 @@
     </td></tr>
     <!------------------------------------------------------------->
     <!------------------------- TEXT BOX -------------------------->
-    <tr id="title19" class="textTitle"><td width="24 px" style="text-align:right">
+    <tr id="title20" class="textTitle"><td width="24 px" style="text-align:right">
       20.
     </td><td></td><td>
-      Greeting
+      [placeholder]
     </td></tr><tr><td colspan="2"></td><td colspan="3" id="body20" class="textBody bottomSection">
+      [placeholder]
+    </td></tr>
+    <!------------------------------------------------------------->
+    <!------------------------- TEXT BOX -------------------------->
+    <tr id="title21" class="textTitle"><td width="24 px" style="text-align:right">
+      21.
+    </td><td></td><td>
+      Greeting
+    </td></tr><tr><td colspan="2"></td><td colspan="3" id="body21" class="textBody bottomSection">
       [placeholder]
     </td></tr>
     <!------------------------------------------------------------->
@@ -263,7 +272,7 @@
       var conversationSubject;
       var userAssigned;
       var assignDraft;
-      var forwarded;
+      //var forwarded;
       var replied;
       var conversationLink;
       var messageLink;
@@ -410,6 +419,9 @@
     });
     $("#body20").click(function () { 
       body20Reset();
+    });
+    $("#body21").click(function () { 
+      body21Reset();
     });
     $("#button1").click(function () { 
       button1Clicked();

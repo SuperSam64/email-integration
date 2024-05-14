@@ -96,7 +96,7 @@ function showResults(){
         conversationSubject,
         userAssigned,
         assignDraft,
-        forwarded,
+        "not displayed",//forwarded,
         conversationLink,
         messageLink,
         labels,
@@ -122,11 +122,11 @@ function update (input){
     conversationSubject = getConversationSubject(input);
     userAssigned = checkAssigned(input);
     assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
+    //forwarded = updateFrom(input);
     conversationLink = getConversationLink(input);
     messageLink = getMessageLink(input);
     labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    isLabeled = labelCheck("1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
@@ -143,7 +143,7 @@ async function startup(){
 
 // ======== FUNCTIONS ========
 function getMessageCount(conversation){
-    return (currentConversation.messages_count);
+    return (conversation.messages_count);
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
@@ -169,7 +169,7 @@ function getFrom(conversation){
             if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
             assignedToMe == true       
             ) {
                 switchEmails = true;
@@ -211,7 +211,7 @@ function getName(conversation){
             if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
             assignedToMe == true       
             ) {
                 switchName = true;
@@ -273,7 +273,7 @@ function checkDraft(conversation){
         return false;
     }
 }
-function updateFrom(conversation){ 
+/*function updateFrom(conversation){ 
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -288,7 +288,7 @@ function updateFrom(conversation){
             if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
             assignedToMe == true       
             ) {
                 return true;
@@ -301,7 +301,7 @@ function updateFrom(conversation){
             return false;
         }
     }
-}
+}*/
 function getConversationLink(conversation){
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
@@ -334,7 +334,7 @@ function getLabels(conversation){
     }
     return labels;// +  " | " + replied;
 }
-function labelCheck(conversation, labelID){
+function labelCheck(labelID){
     var labeled = false;
     $(labels).each(function(){
         if(this.split("-")[4] == labelID){
@@ -487,9 +487,12 @@ function getTimeStamp(conversation){
     }    
 }
 function getGreeting(conversation) {
+    var scan = true;
     var segment;
     var currentTime = new Date();
     var currentHour = currentTime.getHours();
+    var firstName;
+    intro = "<br><br>Thank you for reaching out to us!";
     if (currentHour > 15) {
         segment = "evening"
     }
@@ -499,7 +502,31 @@ function getGreeting(conversation) {
     else {
         segment = "morning"
     }
-    return "Good "+ segment;
+    for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+        var prefix = conversation.labels[i].id.split("-")[0];
+        if(prefix == "sent" && scan == true){
+            intro = "<br><br>Thank you for your reply!";
+            scan = false;
+        }
+    }
+    if(customerName == "[empty]"){
+        firstName = ""
+    }
+    else if (customerName.trim().includes(" ")){
+        firstName = customerName.split(" ")[0];
+        if (firstName.length == 1){
+            firstName = firstName.toUpperCase();
+        }
+        else {
+            firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        }
+    }
+    else {
+        firstName = customerName;
+    }
+    greeting = ["Good",segment,firstName].join(" ") + "," + intro;
+    console.log(greeting)
+    return greeting;    
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
