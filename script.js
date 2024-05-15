@@ -196,7 +196,7 @@ function getFrom(conversation){
         }
     }
 }
-async function getName(conversation){
+function getName(conversation){
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -490,8 +490,8 @@ function getTimeStamp(conversation){
 function getGreeting(conversation) {
     customerName = getName(conversation);
     console.log("Customer Name 1: " + customerName)
-    customerName = await getName(conversation);
-    console.log("Customer Name 2: " + customerName)
+    //customerName = getName(conversation);
+    //console.log("Customer Name 2: " + customerName)
     var scan = true;
     var segment;
     var currentTime = new Date();
