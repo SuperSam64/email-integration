@@ -525,7 +525,7 @@ function getGreeting(conversation) {
             firstName = firstName.toUpperCase();
         }
         else {
-            console.log("made it this far!")
+            console.log("made it this far! " + firstName)
             firstName = /*firstName[0].toUpperCase() +*/ firstName.slice(1).toLowerCase();
         }
     }
