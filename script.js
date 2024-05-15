@@ -521,6 +521,7 @@ function getGreeting(conversation) {
     }
     else if (customerName.trim().includes(" ")){
         firstName = customerName.split(" ")[0];
+        console.log("what is the first name? " + firstName)
         if (firstName.length == 1){
             firstName = firstName.toUpperCase();
         }
