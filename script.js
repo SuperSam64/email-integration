@@ -489,7 +489,6 @@ function getTimeStamp(conversation){
 }
 function getGreeting(conversation) {
     customerName = getName(conversation);
-    console.log("Customer Name 1: " + customerName)
     //customerName = getName(conversation);
     //console.log("Customer Name 2: " + customerName)
     var scan = true;
@@ -514,29 +513,22 @@ function getGreeting(conversation) {
             scan = false;
         }
     }
-    console.log("step 1: " + customerName + "!")
     if(customerName == "[empty]" || typeof customerName == 'undefined'){
         firstName = "";
-        console.log("step 2.5: " + firstName)
     }
     else if (customerName.trim().includes(" ")){
-        console.log("what is the first name split array? " + customerName.split(" "))
         firstName = customerName.trim().split(" ")[0];
-        console.log("what is the first name length? " + firstName.length)
         if (firstName.length == 1){
             firstName = firstName.toUpperCase();
         }
         else {
-            console.log("made it this far! " + firstName)
             firstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
         }
     }
     else {
         firstName = customerName.trim().toUpperCase()[0] + customerName.trim().toLowerCase().slice(1);
     }
-    console.log("step 2: " + firstName + "!")
     greeting = ("Good " + segment + " " + firstName + ",").replace(" ,",",") + intro;
-    console.log(greeting)
     return greeting;    
 }
 function orderNumberSearch (){
@@ -935,7 +927,6 @@ async function lookupContact(input){
 		}
 	})
 	contactRecord = await contact_URL.json();
-    console.log(contactRecord.contacts[0]);
 	contact = {
 		firstName:"",
 		lastName:"",
