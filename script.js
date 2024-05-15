@@ -520,8 +520,9 @@ function getGreeting(conversation) {
         console.log("step 2.5: " + firstName)
     }
     else if (customerName.trim().includes(" ")){
+        console.log("what is the first name split array? " + customerName.split(" "))
         firstName = customerName.split(" ")[0];
-        console.log("what is the first name? " + firstName)
+        console.log("what is the first name length? " + firstName.length)
         if (firstName.length == 1){
             firstName = firstName.toUpperCase();
         }
