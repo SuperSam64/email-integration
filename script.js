@@ -521,18 +521,18 @@ function getGreeting(conversation) {
     }
     else if (customerName.trim().includes(" ")){
         console.log("what is the first name split array? " + customerName.split(" "))
-        firstName = customerName.split(" ")[0];
+        firstName = customerName.trim().split(" ")[0];
         console.log("what is the first name length? " + firstName.length)
         if (firstName.length == 1){
             firstName = firstName.toUpperCase();
         }
         else {
             console.log("made it this far! " + firstName)
-            firstName = /*firstName[0].toUpperCase() +*/ firstName.slice(1).toLowerCase();
+            firstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
         }
     }
     else {
-        firstName = customerName;
+        firstName = customerName.trim().toUpperCase()[0] + customerName.trim().toLowerCase().slice(1);
     }
     console.log("step 2: " + firstName + "!")
     greeting = ("Good " + segment + " " + firstName + ",").replace(" ,",",") + intro;
