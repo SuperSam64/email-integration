@@ -143,6 +143,27 @@ async function startup(){
 }
 
 // ======== FUNCTIONS ========
+/* ENABLE THIS WHEN READY TO TEST IT
+function getLastReceived(conversation){
+    var scan = true;
+    var received = false;
+    var currentMessage = "no message received";
+    if(!!conversation.latest_message){
+        for (message = conversation.messages_count; message >= 0; message --){
+            for ( var label = 0, labelCount = conversation.labels.length; label < labelCount; label++ ) {	
+                var prefix = conversation.labels[label].id.split("-")[0];
+                if(prefix != "sent"){
+                    received = true;
+                } 
+            }
+            if (received == true && scan == true){
+                currentMessage = conversation.messages[message];
+                scan = false;
+            }
+        }
+    }
+    return currentMessage;
+}*/
 function getMessageCount(conversation){
     return (conversation.messages_count);
 }
@@ -489,8 +510,6 @@ function getTimeStamp(conversation){
 }
 function getGreeting(conversation) {
     customerName = getName(conversation);
-    //customerName = getName(conversation);
-    //console.log("Customer Name 2: " + customerName)
     var scan = true;
     var segment;
     var currentTime = new Date();
@@ -1098,6 +1117,8 @@ function body20Reset(){
 }
 
 { /* ======== NOTES ========
+- determine which message was the last RECEIVED, and base everything on that. make it a for loop, starting  from the end. if
+  the message does NOT have the "sent" label, that's the one, stop doing other stuff. do this for "current conversation"
 - find a way to make a "reply" but without having more than one "to field"
 - parse "full message" to cut off at the right place.
 - make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
