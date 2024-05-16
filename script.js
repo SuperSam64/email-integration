@@ -1,43 +1,70 @@
  // ======== STARTUP ========
 async function loadUserProfile(){
+    // Cycle through all users
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
-          if(this.me){
-              currentUser = this;
+            // if the selected user is me
+            if(this.me){
+                // set me as the current user
+                currentUser = this;
         }
       });
+      // Cycle through the list of IDs set as admin
+      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs. get a temp var for the last segment of ID, not needed outside this function
       $(adminList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
+        // if the selected user is me  
+        if(this == currentUser.id.split("-")[4]){
+            // set profile type to master
             profileType = "master"
+            // set title to administrator
+            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
             title = "Administrator";
           }
       });
+      // Cycle through the list of IDs set as CRM
+      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs
       $(crmList).each(function(){
-          if(this == currentUser.id.split("-")[4]){
+        // if the selected user is me    
+        if(this == currentUser.id.split("-")[4]){
+            // set profile type to CRM
+            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
             profileType = "CRM"
             title = "Client Relationship Manager";
-          }
-      });
-      var userFullName = currentUser.first_name + " " + currentUser.last_name;
-      $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
-      $("#name").text(userFullName);
-      $("#layout").text(title);
-      });
+        }
+        });
+    // user the user's first and last name to get their full name
+    var userFullName = currentUser.first_name + " " + currentUser.last_name; // consider deleting this, no need for userFullName var unless it needs to be used later.
+    // set avatar image
+    $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+    // display user's full name
+    $("#name").text(userFullName);
+    // show user's access level
+    $("#layout").text(title); // consider changing the name of this from layout to access_level or something similar
+    // set style sheets here based on access level
+    });
 }
 async function loadData(){
+    // upon loading the integration, get the ID of the last conversation
     await Missive.storeGet('lastConversation')
         .then(conversation => {
+        // set the current conversation as the last conversation since no conversation has been selected yet
         currentConversation = conversation;
+        // update the data based on the newly set current conversation
         update(currentConversation);
+        // fill in applicable fields with the results
         showResults();
     });
 }
 function getKey(input){
+    // array containing values to add or subtract to get key
     var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var keyArray = [];
+    // for each item in the array
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+        // add or subtract the offest value
         keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
     }
+    // divide the resulting value into sections
     var sections = [
         keyArray.join("").slice(0, 8),
         keyArray.join("").slice(8, 12),
@@ -45,7 +72,9 @@ function getKey(input){
         keyArray.join("").slice(16, 20),
         keyArray.join("").slice(20, 32)
     ];
+    // separate sections by dashes
     console.log(sections.join("-"));  // can be removed
+    // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
     return sections.join("-");
 }
 function getContactsKey(input){
@@ -78,11 +107,14 @@ async function getTokens(){
     });
 }
 function storeLastConversation(){
+    // if no conversation is currently selected
     if(typeof currentConversation != 'undefined'){
+        // set the last selected conversation as the current conversation
         Missive.storeSet('lastConversation', currentConversation);
     }
 }
 function getConversation(conversation){
+    // THIS DOESN'T NEED TO BE A FUNCTION
     return conversation.id;
 }
 function showResults(){
@@ -113,6 +145,7 @@ function showResults(){
     }
 }
 function update (input){
+    // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
     messageTo = getTo(input);
