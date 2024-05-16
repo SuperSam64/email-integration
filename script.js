@@ -173,6 +173,7 @@ async function startup(){
     console.log(currentUser.first_name); // delete later
     await loadData();   
     initialized = true;
+    // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
 // ======== FUNCTIONS ========
