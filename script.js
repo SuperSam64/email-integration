@@ -148,8 +148,8 @@ function update (input){
     // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
+    /*messageTo = getTo(input);
+    messageFrom = getFrom(input);*/
     customerName = getName(input);
     messageSubject = getMessageSubject(input);
     conversationSubject = getConversationSubject(input);
