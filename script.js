@@ -148,9 +148,9 @@ function update (input){
     // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
-    /*messageTo = getTo(input);
-    messageFrom = getFrom(input);*/
-    //customerName = getName(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
     messageSubject = getMessageSubject(input);
     conversationSubject = getConversationSubject(input);
     userAssigned = checkAssigned(input);
@@ -168,10 +168,10 @@ function update (input){
     lookupContact(messageFrom);
 }
 async function startup(){
-    await getTokens(); 
-    await loadUserProfile();
+    //await getTokens(); 
+    //await loadUserProfile();
     console.log(currentUser.first_name); // delete later
-    await loadData();   
+    //await loadData();   
     initialized = true;
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
@@ -1184,6 +1184,8 @@ function body20Reset(){
 
 { /* ======== NOTES ========
 // CUST ID SHOULD BE GREEN
+// CHECK FOR ACTIVE SUBSCRIPTIONS BY EMAIL AND BY CUSTOMER ID, MAKE A LINK TO GO TO THAT PAGE
+// SAME WITH TEXTS ("this customer may have contacted us via text") (go by last 30 days)
 - determine which message was the last RECEIVED, and base everything on that. make it a for loop, starting  from the end. if
   the message does NOT have the "sent" label, that's the one, stop doing other stuff. do this for "current conversation"
 - find a way to make a "reply" but without having more than one "to field"
