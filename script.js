@@ -563,6 +563,7 @@ function formatDate(date){
     return formattedDate;
 }
 function getTimeStamp(conversation){  
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -939,6 +940,7 @@ async function cancellationForm(newMessage){
     $("#body1").text(fullString);
     
 }
+// COMBINE "NEW" AND "REPLY" TO TAKE THE ARGUMENTS NEW OR REPLY. FOLLOW THIS PATTERN WITH NEW FORMS
 function cancellationReply() {
     cancellationForm(true);
 }
@@ -1055,9 +1057,9 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    cancellationReply();
-    // currentConversation.someProperty = "did this work?"
-    // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
+    //cancellationReply();
+     currentConversation.someProperty = "did this work?"
+     console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
     cancellationNew(); 
