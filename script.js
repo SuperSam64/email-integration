@@ -272,6 +272,7 @@ function getFrom(conversation){
     }
 }
 function getName(conversation){
+    // COOMBINE GET FROM, UPDATE FROM AND GET NAME
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -314,6 +315,7 @@ function getName(conversation){
     }
 }
 function getMessageSubject(conversation){
+    // DOES NOT NEED TO BE A FUNCTION
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -322,6 +324,7 @@ function getMessageSubject(conversation){
     }
 }
 function getConversationSubject(conversation){
+    // DOES NOT NEED TO BE A FUNCTION
     return conversation.subject;
 }
 function checkAssigned(conversation){
@@ -331,7 +334,7 @@ function checkAssigned(conversation){
             assignedToMe = true;
         }
     }
-    return assignedToMe;
+    return assignedToMe;  // THIS ONLY NEEDS TO RETURN A TRUE OR FALS, SO IF (ASSIGNEDTOME()) CAN BBVC NFBN vbc VBMNF vbnm
 }
 function checkDraft(conversation){ 
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
@@ -349,7 +352,7 @@ function checkDraft(conversation){
         return false;
     }
 }
-/*function updateFrom(conversation){ 
+function updateFrom(conversation){ 
     var assignedToMe = false;
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
         if(conversation.assignees[i].id == currentUser.id){
@@ -377,11 +380,13 @@ function checkDraft(conversation){
             return false;
         }
     }
-}*/
+}
 function getConversationLink(conversation){
+    // FUNCTION NOT NEEDED
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
 function getMessageLink(conversation){
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -390,6 +395,7 @@ function getMessageLink(conversation){
     }
 }
 function getLabels(conversation){
+    // REPLY TEXT NOT NEEDED HERE
     var labels = ["No labels"]
     replied = false;
     intro = "<br><br>Thank you for reaching out to us!";
@@ -411,6 +417,7 @@ function getLabels(conversation){
     return labels;// +  " | " + replied;
 }
 function labelCheck(labelID){
+    // RENAME, POSSIBLY "LABELED" SINCE RETURNS T/F AND TAKES LABEL ARGUMENT
     var labeled = false;
     $(labels).each(function(){
         if(this.split("-")[4] == labelID){
@@ -420,6 +427,7 @@ function labelCheck(labelID){
     return labeled;
 }
 function getPreview(conversation){
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -1047,9 +1055,9 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    //cancellationReply();
-    currentConversation.someProperty = "did this work?"
-    console.log(currentConversation.id + currentConversation.someProperty)
+    cancellationReply();
+    // currentConversation.someProperty = "did this work?"
+    // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
     cancellationNew(); 
