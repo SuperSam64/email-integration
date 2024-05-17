@@ -7,7 +7,7 @@ async function loadUserProfile(){
             if(this.me){
                 // set me as the current user
                 currentUser = this;
-        }
+            }
       });
       // Cycle through the list of IDs set as admin
       // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs. get a temp var for the last segment of ID, not needed outside this function
@@ -155,7 +155,7 @@ function update (input){
     conversationSubject = getConversationSubject(input);
     userAssigned = checkAssigned(input);
     assignDraft = checkDraft(input);
-    //forwarded = updateFrom(input);
+    forwarded = updateFrom(input);
     conversationLink = getConversationLink(input);
     messageLink = getMessageLink(input);
     labels = getLabels(input);
@@ -168,10 +168,10 @@ function update (input){
     lookupContact(messageFrom);
 }
 async function startup(){
-    //await getTokens(); 
-    //await loadUserProfile();
-    //console.log(currentUser.first_name); // delete later
-    //await loadData();   
+    await getTokens(); 
+    await loadUserProfile();
+    console.log(currentUser.first_name); // delete later
+    await loadData();   
     initialized = true;
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
