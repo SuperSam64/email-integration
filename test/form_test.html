@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>Form</title>
+        <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
+		<link href="profile-visibility.css" rel="stylesheet">
+		<script src="https://integrations.missiveapp.com/missive.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	</head>
+	<body>
+        <div style="text-align:center;vertical-align:middle;position:fixed;display:block;z-index:-1">
+            <div style="width:50%;position:fixed; top: 50%;left: 50%;transform: translate(-50%, -50%);justify-content:center">
+                <img id="mondaylogo" src="logo_white.png" style="filter:drop-shadow(1px 0px 0px #2d2e2d) drop-shadow(0px 1px 0px #2d2e2d) drop-shadow(-1px 0px 0px #2d2e2d) drop-shadow(0px -1px 0px #2d2e2d) drop-shadow(4px 4px 5px rgba(0,0,0,0.4));width:80%"></img>
+            </div>
+        </div>
+        <div style="z-index:1;position:fixed;top:0px;width:100%;background-color:#77777777">
+            <table style="padding:12px 8px 12px;font-weight:bold;margin:0 auto;width:100%">
+                <tr>
+                    <td><span id="back-button" style="color:white;padding:6px;background-color:#3a82f7;border-radius:6px">Go back</span></td>
+                    <td style="text-align:right"><span id="reset-button" style="color:white;padding:6px;background-color:#3a82f7;border-radius:6px">Reload</span></td>
+                </tr>
+            </table>
+        </div>
+        <iframe id="params" src="https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1" style="border:none;width:100%;height:100%;display:block;margin:auto;padding:0px"></iframe>
+    <script>
+        //6569f606f2885ca49f8eef1f265c27ad
+        var name;
+        var ordernum;
+        var custID;
+        var phonenum;
+        var reasoncode;
+        var refundReship;
+        var verifyAddress;
+        var itemQty;
+        var comments;
+        function myFunction(){
+            $("#mondaylogo").fadeOut(1500);
+            var color = $("#mainColor").css( "background-color" );
+            var iframe_html = document.getElementById('params').contentWindow.document.body.innerHTML
+    
+
+            //alert("hi");
+            var URLstring = window.location.href.split("?")
+            var parameters = URLstring[1];
+            
+            var yourElement = document.getElementById('params');
+            var extendedURL = 'https://forms.monday.com/forms/embed/6569f606f2885ca49f8eef1f265c27ad?r=use1&' + parameters
+            yourElement.setAttribute('src', extendedURL);
+            //window.location.replace("integration.html")
+        }
+        function functionToRun(){
+            alert("Hi!");
+        }
+        function goBack() {
+            Missive.reload();
+        }
+        function reset() {
+            var myFrame = document.getElementById('params')
+            var splitURL = window.location.href.split("?")[0]
+
+            myFrame.setAttribute('src', splitURL);
+        }
+        $("#reset-button").click(function (){
+            reset();
+        });
+        $("#back-button").click(function (){
+            goBack();
+        });
+        window.onload = myFunction();
+        
+    </script>
+    </body>
+</html>
+    

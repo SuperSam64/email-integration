@@ -170,7 +170,7 @@ function update (input){
 async function startup(){
     //await getTokens(); 
     //await loadUserProfile();
-    console.log(currentUser.first_name); // delete later
+    //console.log(currentUser.first_name); // delete later
     //await loadData();   
     initialized = true;
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
