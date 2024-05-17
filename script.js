@@ -198,7 +198,27 @@ function getLastReceived(conversation){
     }
     return currentMessage;
 }*/
+function chatbotRequest(){
+    /* if assigned to me, and labeled chatbot requests, and no draft exists (do this by a variable, this way if it is created and deleted it won't keep recreating it (?))
+        set "to" field (use getFrom)
+        set message subject to Chat request // + (Order #12345678) when applicable
+        set conversation subject to Chat request - OR - Order #12345678
+        set name to customer's name (or leave blank if not applicable)
+        create a new message in current conversation, use info above ^
+        insert signature
+        insert original message as quoteblock
+        create a link to get to this item on the Monday board // see if this can be done via API
+        check for contact data
+            if no contact data, and customer ID is present in request, save new contact data
+
+        on SEND, delete the chatbot request, and mark as done automatically on Monday board (if possible)
+        after SEND, unlabel
+        this should be a utility
+        thre should also be a button on the bar in this context in case the user accidentally deletes the draft
+    */
+}
 function getMessageCount(conversation){
+    //  DOESN'T NEED TO BE A FUNCTION
     return (conversation.messages_count);
 }
 function getTo(conversation){
@@ -1027,7 +1047,9 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    cancellationReply();
+    //cancellationReply();
+    currentConversation.someProperty = "did this work?"
+    console.log(currentConversation.id + currentConversation.someProperty)
 }
 function button2Clicked() {
     cancellationNew(); 
