@@ -9,28 +9,27 @@ async function loadUserProfile(){
                 currentUser = this;
             }
       });
-      // Cycle through the list of IDs set as admin
-      $(adminList).each(function(){
+    // Cycle through the list of IDs set as admin
+    $(adminList).each(function(){
         // if the selected user is me  
         if(this == currentUser.id.split("-")[4]){
             // set profile type to master
             profileType = "Administrator"
           }
-      });
-      // Cycle through the list of IDs set as CRM
-      $(crmList).each(function(){
+     });
+    // Cycle through the list of IDs set as CRM
+    $(crmList).each(function(){
         // if the selected user is me    
         if(this == currentUser.id.split("-")[4]){
             // set profile type to CRM
             profileType = "Client Relationship Manager";
         }
-        });
+    });
     // user the user's first and last name to get their full name
-    var userFullName = currentUser.first_name + " " + currentUser.last_name; // consider deleting this, no need for userFullName var unless it needs to be used later.
     // set avatar image
     $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
     // display user's full name
-    $("#name").text(userFullName);
+    $("#name").text(currentUser.first_name + " " + currentUser.last_name);
     // show user's access level
     $("#layout").text(profileType); // consider changing the name of this from layout to access_level or something similar
     // set style sheets here based on access level
@@ -50,15 +49,15 @@ async function loadData(){
 }
 function createTokens(input){
     // array containing values to add or subtract to get key
-    var organizationOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var contactsOffeset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var organizationOffset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var contactsOffset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
     var organizationArray = [];
     var contactsArray = [];
     // for each item in the array
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
         // add or subtract the offest value
-        organizationArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + organizationOffeset[i]));
-        contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffeset[i]));   
+        organizationArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + organizationOffset[i]));
+        contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffset[i]));   
     }
     // divide the resulting value into sections
     var organizationSections = [
@@ -79,7 +78,6 @@ function createTokens(input){
     // make array of keys
     return [organizationSections.join("-"),contactsSections.join("-")];
 }
-
 async function getTokens(){
     var scan = true;
     Missive.fetchLabels().then((labels) => {
@@ -93,7 +91,7 @@ async function getTokens(){
     });
 }
 function storeLastConversation(){
-    // if no conversation is currently selected
+    // if a conversation is currently selected
     if(typeof currentConversation != 'undefined'){
         // set the last selected conversation as the current conversation
         Missive.storeSet('lastConversation', currentConversation);
@@ -384,13 +382,11 @@ function getLabels(conversation){
     // REPLY TEXT NOT NEEDED HERE
     var labels = ["No labels"]
     replied = false;
-    intro = "<br><br>Thank you for reaching out to us!";
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
         if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
-                intro = "<br><br>Thank you for your reply!";
             }
             else{
                 labels.push(conversation.labels[i].id) // this can be .name or .id
@@ -512,9 +508,9 @@ function getOrderNumber(conversation){
 }
 function formatDate(date){
     const weekdaysShort = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
-    const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    // const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
-    const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    // const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     var timestampDate = new Date(1000*date);;
     var weekday = weekdaysShort[timestampDate.getDay()];
     var hours;
