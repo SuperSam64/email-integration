@@ -1,5 +1,5 @@
- // ======== STARTUP ========
- async function loadUserProfile(){
+// ======== STARTUP ========
+async function loadUserProfile(){
     // Cycle through all users
     await Missive.fetchUsers().then((users) => {
         $(users).each(function(){
