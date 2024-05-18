@@ -53,7 +53,7 @@ async function loadData(){
         showResults();
     });
 }
-function getKey(input){
+function createTokens(input){
     // array containing values to add or subtract to get key
     var organizationOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var contactsOffeset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
@@ -92,9 +92,7 @@ async function getTokens(){
         $(labels).each(function(){
           if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
-              tokens = getKey(organization);
-              //contactBook = getKey(organization)[1];
-              console.log(tokens[0] + " " + tokens[1]);  // can be removed
+              tokens = createTokens(organization);
               scan = false;
             }
         });
