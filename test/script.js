@@ -103,17 +103,17 @@ function getConversation(conversation){
 }
 function showResults(){
     var elements = [
-        conversationID,
-        conversationCount,
+        currentConversation.id,
+        currentConversation.messages_count,
         messageTo,
         messageFrom,
         customerName,
         messageSubject,
-        conversationSubject,
+        currentConversation.subject,
         userAssigned,
         assignDraft,
         "not displayed",//forwarded,
-        conversationLink,
+        currentConversation.link,
         messageLink,
         labels,
         isLabeled,
