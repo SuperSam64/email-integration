@@ -14,10 +14,7 @@ async function loadUserProfile(){
         // if the selected user is me  
         if(this == currentUser.id.split("-")[4]){
             // set profile type to master
-            profileType = "master"
-            // set title to administrator
-            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
-            title = "Administrator";
+            profileType = "Administrator"
           }
       });
       // Cycle through the list of IDs set as CRM
@@ -25,9 +22,7 @@ async function loadUserProfile(){
         // if the selected user is me    
         if(this == currentUser.id.split("-")[4]){
             // set profile type to CRM
-            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
-            profileType = "CRM"
-            title = "Client Relationship Manager";
+            profileType = "Client Relationship Manager";
         }
         });
     // user the user's first and last name to get their full name
@@ -37,7 +32,7 @@ async function loadUserProfile(){
     // display user's full name
     $("#name").text(userFullName);
     // show user's access level
-    $("#layout").text(title); // consider changing the name of this from layout to access_level or something similar
+    $("#layout").text(profileType); // consider changing the name of this from layout to access_level or something similar
     // set style sheets here based on access level
     });
 }
