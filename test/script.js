@@ -92,7 +92,7 @@ async function getTokens(){
         $(labels).each(function(){
           if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
-              tokens = getKey(organization)[0];
+              tokens = getKey(organization);
               //contactBook = getKey(organization)[1];
               console.log(tokens[0] + " " + tokens[1]);  // can be removed
               scan = false;
