@@ -105,7 +105,7 @@ function showResults(){
     var elements = [
         currentConversation.id,
         currentConversation.messages_count,
-        messageTo,
+        currentConversation.messageTo,
         messageFrom,
         customerName,
         messageSubject,
@@ -117,7 +117,7 @@ function showResults(){
         messageLink,
         labels,
         isLabeled,
-        preview,
+        currentConversation.preview,
         fullMessage,
         orderNumber,
         timeStamp,
@@ -132,7 +132,7 @@ function update (input){
     // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
+    currentConversation.messageTo = getTo(input);
     messageFrom = getFrom(input);
     customerName = getName(input);
     messageSubject = getMessageSubject(input);
@@ -144,7 +144,7 @@ function update (input){
     messageLink = getMessageLink(input);
     labels = getLabels(input);
     isLabeled = labeled("1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
+    currentConversation.preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
     timeStamp = getTimeStamp(input);
