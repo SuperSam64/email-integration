@@ -58,6 +58,7 @@ function getKey(input){
     var tokenOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var contactsOffeset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
     var tokenArray = [];
+    var contactsArray = [];
     // for each item in the array
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
         // add or subtract the offest value
