@@ -55,23 +55,23 @@ async function loadData(){
 }
 function getKey(input){
     // array containing values to add or subtract to get key
-    var tokenOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var organizationOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var contactsOffeset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var tokenArray = [];
+    var organizationArray = [];
     var contactsArray = [];
     // for each item in the array
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
         // add or subtract the offest value
-        tokenArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + tokenOffeset[i]));
+        organizationArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + organizationOffeset[i]));
         contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffeset[i]));   
     }
     // divide the resulting value into sections
-    var tokenSections = [
-        tokenArray.join("").slice(0, 8),
-        tokenArray.join("").slice(8, 12),
-        tokenArray.join("").slice(12, 16),
-        tokenArray.join("").slice(16, 20),
-        tokenArray.join("").slice(20, 32)
+    var organizationSections = [
+        organizationArray.join("").slice(0, 8),
+        organizationArray.join("").slice(8, 12),
+        organizationArray.join("").slice(12, 16),
+        organizationArray.join("").slice(16, 20),
+        organizationArray.join("").slice(20, 32)
     ];
     var contactsSections = [
         contactsArray.join("").slice(0, 8),
@@ -81,9 +81,9 @@ function getKey(input){
         contactsArray.join("").slice(20, 32)
     ];
     // separate sections by dashes
-    console.log(tokenSections.join("-"));  // can be removed
+    console.log(organizationSections.join("-"));  // can be removed
     // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
-    return [tokenSections.join("-"),contactsSections.join("-")];
+    return [organizationSections.join("-"),contactsSections.join("-")];
 }
 
 async function getTokens(){
@@ -92,9 +92,9 @@ async function getTokens(){
         $(labels).each(function(){
           if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
-              token = getKey(organization)[0];
-              contactBook = getKey(organization)[1];
-              console.log(token + " " + contactBook);  // can be removed
+              tokens = getKey(organization)[0];
+              //contactBook = getKey(organization)[1];
+              console.log(tokens[0] + " " + tokens[1]);  // can be removed
               scan = false;
             }
         });
@@ -131,7 +131,7 @@ function showResults(){
         fullMessage,
         orderNumber,
         timeStamp,
-        token + " | " + contactBook,
+        tokens[0] + " | " + tokens[1],
         greeting
     ]
     for ( i = 0; i < elements.length; i++ ){
@@ -966,7 +966,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
-                "contact_book": contactBook, // fill this in later
+                "contact_book": tokens[1], // fill this in later
                 "first_name": firstName,
                 "last_name": lastName,
                 "infos": [{
@@ -987,7 +987,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         }),
         headers: {
             "Host": "public.missiveapp.com",
-            "Authorization": "Bearer " + token, // fill this in later
+            "Authorization": "Bearer " + tokens[0], // fill this in later
             "Content-type": "application/json"
         }
     })
@@ -995,11 +995,11 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 async function lookupContact(input){
     var contactRecord;
-	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + tokens[1] + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
 		headers: {
 		"Host": "public.missiveapp.com",
-		"Authorization": "Bearer " + token,
+		"Authorization": "Bearer " + tokens[0],
 		"Content-type": "application/json"
 		}
 	})
