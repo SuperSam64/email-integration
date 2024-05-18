@@ -80,7 +80,7 @@ function getKey(input){
         contactsArray.join("").slice(16, 20),
         contactsArray.join("").slice(20, 32)
     ];
-    // separate sections by dashes
+    // separate sections by dashes 
     console.log(organizationSections.join("-"));  // can be removed
     // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
     return [organizationSections.join("-"),contactsSections.join("-")];
