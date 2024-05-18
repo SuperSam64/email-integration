@@ -1,4 +1,4 @@
-// ======== STARTUP ========
+// ======== STARTUP =========
 async function loadUserProfile(){
     // Cycle through all users
     await Missive.fetchUsers().then((users) => {
@@ -10,7 +10,6 @@ async function loadUserProfile(){
             }
       });
       // Cycle through the list of IDs set as admin
-      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs. get a temp var for the last segment of ID, not needed outside this function
       $(adminList).each(function(){
         // if the selected user is me  
         if(this == currentUser.id.split("-")[4]){
@@ -22,7 +21,6 @@ async function loadUserProfile(){
           }
       });
       // Cycle through the list of IDs set as CRM
-      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs
       $(crmList).each(function(){
         // if the selected user is me    
         if(this == currentUser.id.split("-")[4]){
@@ -57,49 +55,44 @@ async function loadData(){
 }
 function getKey(input){
     // array containing values to add or subtract to get key
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
+    var tokenOffeset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var contactsOffeset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var tokenArray = [];
     // for each item in the array
     for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
         // add or subtract the offest value
-        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
+        tokenArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + tokenOffeset[i]));
+        contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffeset[i]));   
     }
     // divide the resulting value into sections
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
+    var tokenSections = [
+        tokenArray.join("").slice(0, 8),
+        tokenArray.join("").slice(8, 12),
+        tokenArray.join("").slice(12, 16),
+        tokenArray.join("").slice(16, 20),
+        tokenArray.join("").slice(20, 32)
+    ];
+    var contactsSections = [
+        contactsArray.join("").slice(0, 8),
+        contactsArray.join("").slice(8, 12),
+        contactsArray.join("").slice(12, 16),
+        contactsArray.join("").slice(16, 20),
+        contactsArray.join("").slice(20, 32)
     ];
     // separate sections by dashes
-    console.log(sections.join("-"));  // can be removed
+    console.log(tokenSections.join("-"));  // can be removed
     // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
-    return sections.join("-");
+    return [tokenSections.join("-"),contactsSections.join("-")];
 }
-function getContactsKey(input){
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
-        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
-    ];
-    return sections.join("-");
-}
+
 async function getTokens(){
     var scan = true;
     Missive.fetchLabels().then((labels) => {
         $(labels).each(function(){
           if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
+              token = getKey(organization)[0];
+              contactBook = getKey(organization)[1];
               console.log(token + " " + contactBook);  // can be removed
               scan = false;
             }
