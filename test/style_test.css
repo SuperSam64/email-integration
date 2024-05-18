@@ -1,4 +1,3 @@
-
 .CRM{
     color:black;
 }
@@ -34,6 +33,9 @@
     width:160px;
     margin-bottom:4px;
     border-radius:6px;
+}
+.hiddenButton{
+    display:none;
 }
 
 

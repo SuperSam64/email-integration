@@ -1,11 +1,228 @@
+ // ======== STARTUP ========
+ async function loadUserProfile(){
+    // Cycle through all users
+    await Missive.fetchUsers().then((users) => {
+        $(users).each(function(){
+            // if the selected user is me
+            if(this.me){
+                // set me as the current user
+                currentUser = this;
+            }
+      });
+      // Cycle through the list of IDs set as admin
+      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs. get a temp var for the last segment of ID, not needed outside this function
+      $(adminList).each(function(){
+        // if the selected user is me  
+        if(this == currentUser.id.split("-")[4]){
+            // set profile type to master
+            profileType = "master"
+            // set title to administrator
+            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
+            title = "Administrator";
+          }
+      });
+      // Cycle through the list of IDs set as CRM
+      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs
+      $(crmList).each(function(){
+        // if the selected user is me    
+        if(this == currentUser.id.split("-")[4]){
+            // set profile type to CRM
+            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
+            profileType = "CRM"
+            title = "Client Relationship Manager";
+        }
+        });
+    // user the user's first and last name to get their full name
+    var userFullName = currentUser.first_name + " " + currentUser.last_name; // consider deleting this, no need for userFullName var unless it needs to be used later.
+    // set avatar image
+    $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
+    // display user's full name
+    $("#name").text(userFullName);
+    // show user's access level
+    $("#layout").text(title); // consider changing the name of this from layout to access_level or something similar
+    // set style sheets here based on access level
+    });
+}
+async function loadData(){
+    // upon loading the integration, get the ID of the last conversation
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        // set the current conversation as the last conversation since no conversation has been selected yet
+        currentConversation = conversation;
+        // update the data based on the newly set current conversation
+        update(currentConversation);
+        // fill in applicable fields with the results
+        showResults();
+    });
+}
+function getKey(input){
+    // array containing values to add or subtract to get key
+    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var keyArray = [];
+    // for each item in the array
+    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+        // add or subtract the offest value
+        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
+    }
+    // divide the resulting value into sections
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    // separate sections by dashes
+    console.log(sections.join("-"));  // can be removed
+    // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
+    return sections.join("-");
+}
+function getContactsKey(input){
+    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var keyArray = [];
+    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
+    }
+    var sections = [
+        keyArray.join("").slice(0, 8),
+        keyArray.join("").slice(8, 12),
+        keyArray.join("").slice(12, 16),
+        keyArray.join("").slice(16, 20),
+        keyArray.join("").slice(20, 32)
+    ];
+    return sections.join("-");
+}
+async function getTokens(){
+    var scan = true;
+    Missive.fetchLabels().then((labels) => {
+        $(labels).each(function(){
+          if(this.id.length == 36 && scan == true){
+              organization = this.organization_id;
+              token = getKey(organization);
+              contactBook = getContactsKey(organization);
+              console.log(token + " " + contactBook);  // can be removed
+              scan = false;
+            }
+        });
+    });
+}
+function storeLastConversation(){
+    // if no conversation is currently selected
+    if(typeof currentConversation != 'undefined'){
+        // set the last selected conversation as the current conversation
+        Missive.storeSet('lastConversation', currentConversation);
+    }
+}
 function getConversation(conversation){
+    // THIS DOESN'T NEED TO BE A FUNCTION
     return conversation.id;
 }
+function showResults(){
+    var elements = [
+        conversationID,
+        conversationCount,
+        messageTo,
+        messageFrom,
+        customerName,
+        messageSubject,
+        conversationSubject,
+        userAssigned,
+        assignDraft,
+        "not displayed",//forwarded,
+        conversationLink,
+        messageLink,
+        labels,
+        isLabeled,
+        preview,
+        fullMessage,
+        orderNumber,
+        timeStamp,
+        token + " | " + contactBook,
+        greeting
+    ]
+    for ( i = 0; i < elements.length; i++ ){
+        $("#body" + (i + 1)).text(elements[i]);
+    }
+}
+function update (input){
+    // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
+    conversationID = getConversation(input);
+    conversationCount = getMessageCount(input);
+    messageTo = getTo(input);
+    messageFrom = getFrom(input);
+    customerName = getName(input);
+    messageSubject = getMessageSubject(input);
+    conversationSubject = getConversationSubject(input);
+    userAssigned = checkAssigned(input);
+    assignDraft = checkDraft(input);
+    forwarded = updateFrom(input);
+    conversationLink = getConversationLink(input);
+    messageLink = getMessageLink(input);
+    labels = getLabels(input);
+    isLabeled = labelCheck("1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    preview = getPreview(input);
+    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = getOrderNumber(input);
+    timeStamp = getTimeStamp(input);
+    greeting = getGreeting(input);
+    lookupContact(messageFrom);
+}
+async function startup(){
+    await getTokens(); 
+    await loadUserProfile();
+    console.log(currentUser.first_name); // delete later
+    await loadData();   
+    initialized = true;
+    // IMPORTANT - make a separate set of functions that run in the background which can be split off
+}
+
+// ======== FUNCTIONS ========
+/* ENABLE THIS WHEN READY TO TEST IT
+function getLastReceived(conversation){
+    var scan = true;
+    var received = false;
+    var currentMessage = "no message received";
+    if(!!conversation.latest_message){
+        for (message = conversation.messages_count; message >= 0; message --){
+            for ( var label = 0, labelCount = conversation.labels.length; label < labelCount; label++ ) {	
+                var prefix = conversation.labels[label].id.split("-")[0];
+                if(prefix != "sent"){
+                    received = true;
+                } 
+            }
+            if (received == true && scan == true){
+                currentMessage = conversation.messages[message];
+                scan = false;
+            }
+        }
+    }
+    return currentMessage;
+}*/
+function chatbotRequest(){
+    /* if assigned to me, and labeled chatbot requests, and no draft exists (do this by a variable, this way if it is created and deleted it won't keep recreating it (?))
+        set "to" field (use getFrom)
+        set message subject to Chat request // + (Order #12345678) when applicable
+        set conversation subject to Chat request - OR - Order #12345678
+        set name to customer's name (or leave blank if not applicable)
+        create a new message in current conversation, use info above ^
+        insert signature
+        insert original message as quoteblock
+        create a link to get to this item on the Monday board // see if this can be done via API
+        check for contact data
+            if no contact data, and customer ID is present in request, save new contact data
+
+        on SEND, delete the chatbot request, and mark as done automatically on Monday board (if possible)
+        after SEND, unlabel
+        this should be a utility
+        thre should also be a button on the bar in this context in case the user accidentally deletes the draft
+    */
+}
 function getMessageCount(conversation){
-    return (currentConversation.messages_count);
+    //  DOESN'T NEED TO BE A FUNCTION
+    return (conversation.messages_count);
 }
 function getTo(conversation){
-    if(!conversation.latest_message){
+    if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
         return "[empty]";
     }
     else{
@@ -13,7 +230,7 @@ function getTo(conversation){
     }
 }
 function getFrom(conversation){
-    if(!conversation.latest_message){
+    if(!conversation.latest_message || !conversation.latest_message.from_field){
         return "[empty]";
     }
     else {
@@ -24,13 +241,18 @@ function getFrom(conversation){
                 assignedToMe = true;
             }
         }
-        if (
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
             assignedToMe == true       
-        ) {
-            switchEmails = true;
+            ) {
+                switchEmails = true;
+            }
+            else {
+                switchEmails = false;
+            }
         }
         else {
             switchEmails = false;
@@ -50,6 +272,7 @@ function getFrom(conversation){
     }
 }
 function getName(conversation){
+    // COOMBINE GET FROM, UPDATE FROM AND GET NAME
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -61,17 +284,22 @@ function getName(conversation){
                 assignedToMe = true;
             }
         }
-        if (
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
             conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            assignedToMe == true        
-        ) {
-            switchName = true;
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
+            assignedToMe == true       
+            ) {
+                switchName = true;
+            }
+            else {
+                switchName = false;
+            }
         }
         else {
             switchName = false;
-        }    
+        }
         if(switchName == false){
             if(!conversation.latest_message.from_field.name){
                 return "[empty]";
@@ -87,6 +315,7 @@ function getName(conversation){
     }
 }
 function getMessageSubject(conversation){
+    // DOES NOT NEED TO BE A FUNCTION
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -95,6 +324,7 @@ function getMessageSubject(conversation){
     }
 }
 function getConversationSubject(conversation){
+    // DOES NOT NEED TO BE A FUNCTION
     return conversation.subject;
 }
 function checkAssigned(conversation){
@@ -104,7 +334,7 @@ function checkAssigned(conversation){
             assignedToMe = true;
         }
     }
-    return assignedToMe;
+    return assignedToMe;  // THIS ONLY NEEDS TO RETURN A TRUE OR FALS, SO IF (ASSIGNEDTOME()) CAN BBVC NFBN vbc VBMNF vbnm
 }
 function checkDraft(conversation){ 
     for ( var i = 0, assignee = conversation.assignees.length; i < assignee; i++ ) {	
@@ -133,13 +363,18 @@ function updateFrom(conversation){
         return false;
     }
     else {
-        if (
-            currentConversation.messages_count == 1 &&
+        if (conversation.latest_message.to_fields.length > 0){
+            if(   
+            conversation.messages_count == 1 &&
             conversation.latest_message.to_fields[0].address.split("@")[1] == "filtersfast.com" &&
-            conversation.latest_message.from_field.address == "boldsales@filtersfast.com" &&
-            assignedToMe == true        
-        ) {
-            return true;
+            conversation.latest_message.from_field.address.split("@")[1] == "filtersfast.com" &&
+            assignedToMe == true       
+            ) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
             return false;
@@ -147,9 +382,11 @@ function updateFrom(conversation){
     }
 }
 function getConversationLink(conversation){
+    // FUNCTION NOT NEEDED
     return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id;
 }
 function getMessageLink(conversation){
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -158,6 +395,7 @@ function getMessageLink(conversation){
     }
 }
 function getLabels(conversation){
+    // REPLY TEXT NOT NEEDED HERE
     var labels = ["No labels"]
     replied = false;
     intro = "<br><br>Thank you for reaching out to us!";
@@ -178,7 +416,8 @@ function getLabels(conversation){
     }
     return labels;// +  " | " + replied;
 }
-function labelCheck(conversation, labelID){
+function labelCheck(labelID){
+    // RENAME, POSSIBLY "LABELED" SINCE RETURNS T/F AND TAKES LABEL ARGUMENT
     var labeled = false;
     $(labels).each(function(){
         if(this.split("-")[4] == labelID){
@@ -188,6 +427,7 @@ function labelCheck(conversation, labelID){
     return labeled;
 }
 function getPreview(conversation){
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -323,6 +563,7 @@ function formatDate(date){
     return formattedDate;
 }
 function getTimeStamp(conversation){  
+    // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
         return "[empty]";
     }
@@ -331,9 +572,13 @@ function getTimeStamp(conversation){
     }    
 }
 function getGreeting(conversation) {
+    customerName = getName(conversation);
+    var scan = true;
     var segment;
     var currentTime = new Date();
     var currentHour = currentTime.getHours();
+    var firstName;
+    intro = "<br><br>Thank you for reaching out to us!";
     if (currentHour > 15) {
         segment = "evening"
     }
@@ -343,80 +588,30 @@ function getGreeting(conversation) {
     else {
         segment = "morning"
     }
-    return "Good "+ segment;
-}
-function update (input){
-    conversationID = getConversation(input);
-    conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
-    messageFrom = getFrom(input);
-    customerName = getName(input);
-    messageSubject = getMessageSubject(input);
-    conversationSubject = getConversationSubject(input);
-    userAssigned = checkAssigned(input);
-    assignDraft = checkDraft(input);
-    forwarded = updateFrom(input);
-    conversationLink = getConversationLink(input);
-    messageLink = getMessageLink(input);
-    labels = getLabels(input);
-    isLabeled = labelCheck(input, "1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
-    fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
-    orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
-    greeting = getGreeting(input);
-}
-function getKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
+        var prefix = conversation.labels[i].id.split("-")[0];
+        if(prefix == "sent" && scan == true){
+            intro = "<br><br>Thank you for your reply!";
+            scan = false;
+        }
     }
-    var sections = [
-        keyArray.join("").substr(0, 8),
-        keyArray.join("").substr(8, 4),
-        keyArray.join("").substr(12, 4),
-        keyArray.join("").substr(16, 4),
-        keyArray.join("").substr(20, 12)
-    ]
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var stringOnly = input.replaceAll("-","");
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < stringOnly.length; i ++ ) {
-        keyArray[i] = String.fromCharCode((stringOnly.charCodeAt(i) + offsetArray[i]));    
+    if(customerName == "[empty]" || typeof customerName == 'undefined'){
+        firstName = "";
     }
-    var sections = [
-        keyArray.join("").substr(0, 8),
-        keyArray.join("").substr(8, 4),
-        keyArray.join("").substr(12, 4),
-        keyArray.join("").substr(16, 4),
-        keyArray.join("").substr(20, 12)
-    ]
-    return sections.join("-");
-}
-function showResults(){
-    $("#body1").text(conversationID);
-    $("#body2").text(conversationCount);
-    $("#body3").text(messageTo);
-    $("#body4").text(messageFrom);
-    $("#body5").text(customerName);
-    $("#body6").text(messageSubject); 
-    $("#body7").text(conversationSubject);
-    $("#body8").text(userAssigned);
-    $("#body9").text(assignDraft);
-    $("#body10").text(forwarded);
-    $("#body11").text(conversationLink);
-    $("#body12").text(messageLink);
-    $("#body13").text(labels);
-    $("#body14").text(isLabeled);
-    $("#body15").text(preview);
-    $("#body17").text(orderNumber);
-    $("#body18").text(timeStamp);
-    $("#body20").text(greeting);
+    else if (customerName.trim().includes(" ")){
+        firstName = customerName.trim().split(" ")[0];
+        if (firstName.length == 1){
+            firstName = firstName.toUpperCase();
+        }
+        else {
+            firstName = firstName[0].toUpperCase() + firstName.slice(1).toLowerCase();
+        }
+    }
+    else {
+        firstName = customerName.trim().toUpperCase()[0] + customerName.trim().toLowerCase().slice(1);
+    }
+    greeting = ("Good " + segment + " " + firstName + ",").replace(" ,",",") + intro;
+    return greeting;    
 }
 function orderNumberSearch (){
     // use this to search the body for an order number if one is not present in the subject.
@@ -671,7 +866,7 @@ async function cancellationForm(newMessage){
     if(formData.orderCancelled == 2) {
         returnResultOptions = [
             " If you wish to set up a return you may do so by logging into your filtersfast.com account.",
-            " I have initiated a return, and you will be emailed a prepaid return lable which can be used to send your order back for a refund.",
+            " I have initialized a return, and you will be emailed a prepaid return label which can be used to send your order back for a refund.",
             " I have created a refund-only return, which means your order does not need to be sent back, but we will refund it for you. Please allow 3-7 days for your refund to apply to the original method of payment, and feel free to donate or discard the item(s).",
             " Our custom air filters are non-returnable, however, if a new order is placed, we can offer a full refund for the original order. If you do not wish to place a new order at this time, we can still offer a refund of 50%."
         ];
@@ -745,6 +940,7 @@ async function cancellationForm(newMessage){
     $("#body1").text(fullString);
     
 }
+// COMBINE "NEW" AND "REPLY" TO TAKE THE ARGUMENTS NEW OR REPLY. FOLLOW THIS PATTERN WITH NEW FORMS
 function cancellationReply() {
     cancellationForm(true);
 }
@@ -803,11 +999,71 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
+async function lookupContact(input){
+    var contactRecord;
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
+		method: "GET",
+		headers: {
+		"Host": "public.missiveapp.com",
+		"Authorization": "Bearer " + token,
+		"Content-type": "application/json"
+		}
+	})
+	contactRecord = await contact_URL.json();
+	contact = {
+		firstName:"",
+		lastName:"",
+		customerID:"",
+		phoneNumber:"",
+		email: input
+	};
+    if(typeof contactRecord.contacts[0] != 'undefined'){
+        contact.firstName = contactRecord.contacts[0].first_name;
+        contact.lastName = contactRecord.contacts[0].last_name;  
+        for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+            if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
+                if(contact.phoneNumber == "" && contactRecord.contacts[0].infos[i].kind == "phone_number"){
+                    contact.phoneNumber = contactRecord.contacts[0].infos[i].value;
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("#","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
+                    contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
+                    if(contact.phoneNumber.slice(0, 1) == "1"){
+                        contact.phoneNumber = contact.phoneNumber.slice(1, contact.phoneNumber.length)
+                    }
+                    if(contact.phoneNumber.length == 10){
+                        contact.phoneNumber = "(" + contact.phoneNumber.slice(0, 3) + ") " + contact.phoneNumber.slice(3, 6) + "-" + contact.phoneNumber.slice(6, contact.phoneNumber.length);
+                    }
+                }
+            }
+        }
+        for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
+            if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
+                if(contact.customerID == "" && contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id"){
+                    contact.customerID = contactRecord.contacts[0].infos[i].value;
+                }
+            }
+        }
+        $("#body21").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
+    }
+    else {
+        console.log(contact.length);
+        $("#body21").text("NO CONTACT DATA");
+    }
+}
+
+// ======== BUTTONS ========
 function button1Clicked() {
-    cancellationNew();    
+    //cancellationReply();
+     currentConversation.someProperty = "did this work?"
+     console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
-    cancellationReply(); 
+    cancellationNew(); 
+    
 }
 function button3Clicked() {
     insertSignature(emailClosing);
@@ -821,6 +1077,50 @@ function button5Clicked() {
 function button6Clicked() {
     saveContact("Sam","Test","sam_test@filtersfast.com","866-438-3458","12345")
 }
+function button7Clicked() {
+    
+}
+function button8Clicked() {
+    
+}
+function button9Clicked() {
+    
+}
+function button10Clicked() {
+    
+}
+function button11Clicked() {
+    
+}
+function button12Clicked() {
+    
+}
+function button13Clicked() {
+    
+}
+function button14Clicked() {
+    
+}
+function button15Clicked() {
+    
+}
+function button16Clicked() {
+    
+}
+function button17Clicked() {
+    
+}
+function button18Clicked() {
+    
+}
+function button19Clicked() {
+    
+}
+function button20Clicked() {
+    
+}
+
+// ======== RESETS ========
 function body1Reset(){
     $("#body1").text("[ready]")
 }
@@ -882,56 +1182,57 @@ function body20Reset(){
     $("#body20").text("[ready]")
 }
 
-/*        NOTES
-- make the "to" the customer's email. find a way to remove the other email. try array = []
-places to cut off message, replaceAll with [end of messge], and then cut off only if [end of message] exists:
-assign new drafts
-set these as utitilies
-for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
+{ /* ======== NOTES ========
+// CUST ID SHOULD BE GREEN
+// CHECK FOR ACTIVE SUBSCRIPTIONS BY EMAIL AND BY CUSTOMER ID, MAKE A LINK TO GO TO THAT PAGE
+// SAME WITH TEXTS ("this customer may have contacted us via text") (go by last 30 days)
+- determine which message was the last RECEIVED, and base everything on that. make it a for loop, starting  from the end. if
+  the message does NOT have the "sent" label, that's the one, stop doing other stuff. do this for "current conversation"
+- find a way to make a "reply" but without having more than one "to field"
+- parse "full message" to cut off at the right place.
+- make utility for assign new drafts and swapping emails, so the integration doesn't have to be open to work.
+- for chatbot requests, make a popup show automatically when the convo is selected. popup will have a cancel button, which will take the user to the last selected convo. if the user
     opens the app to an unanswered chatbot request, it will take them to the first non-chatbot request in their inbox. if none exists - figure out something here
-create an array of tasks for POs and for tax exempt and others
-get order number from convo subject line - split by space. if [0] lowercase is "order" and array length is less than 4. or if anywhere in the subject or body (html removed) is "order number XXXXXXXX" "order XXXXXXXX" "order no. XXXXXXXX" "order # XXXXXXXX" 
-        get all of the array but [0] and combine into 1 string. remove spaces, remove "CP", remove "-", remove "#"
-    else
-        order number = "empty"
-* attachments-1.missiveapp.com
-    if order number is given by user, and order number was previosuly "empty", set convo subject to order number
-check for contact by email. if one does not exist, create it. show fields for the user to modify: name, phone number, email, cust ID. when any field is modified, update contact.
-scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
-  - offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
-create forms
-**** when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
+- create an array of tasks for tax exempt and others and other things that can have preset tasks. POs are already done.
+- get order number from convo subject line [DONE], scan body of message too (?)
+- check for attachments, attachments-1.missiveapp.com (check consol.log for the conversation object, it shows attachments).
+- allow for manual entry of order number, set convo subject accordingly
+- check for contact by email. [DONE] If one does not exist, create it. [partially done - in progress] Show fields for the user to modify: name, phone number, email, cust ID, NOTES. when any field is modified, update contact.
+- scan subject and body for keywords and phrases to identify the intention of the emails. put this in a place where it can be easily modified by the user (or me at least)
+- offer presets based on what the email appears to be about in a dropdown menu. the most likely response will be first, but others will be available.
+- create forms for Monday
+- when getting most recent message, make sure it's the most recent RECEIVED message, otherwise no customer info. this should still work for forwarded messages. Could maybe do
     items that do not have the "sent" label?
-set up branching for forms
-make autoreply templates that can be modified by me, based on the regular templates
-identify time of day when applying a template
-when changing conversations with a Monday panel open, prompt to make sure.
+- set up branching for forms [partially done, use Cancellation form as template for others]
+    - make autoreply templates that can be modified by me, based on the regular templates.
+- identify time of day when applying a template [DONE - except for linking this function to the autoreply]
+- when changing conversations with a Monday panel open, prompt to make sure.
     "The data you have entered into your Monday request will not be saved, are you sure you want to proceed?"
-    store current convo as last convo
+    store current convo as last convo [DONE]
     get new current convo
     prompt >
         yes: change the integration back to main content
         no: navigate to previous convo by convo ID, do nothing in the integration
-for order number, repalce "# " with "#"
-take contexts for monday forms and for responses
-for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
-link to monday form
-link to monday search
-include link to message in monday form?
-after order number, add note.
+- for order number, repalce "# " with "#" [DONE]
+- take contexts for monday forms and for responses
+- for certain values entered into integration form, save the info automatically (order numbers, tracking numbers, etc.)
+- link to monday form
+- link to monday search
+- include link to message in monday form? do this as html in the comment
+- after order number, add note.
     Order number
     note 
     ex. convo subject may say: Order #4937718, refund for return. these should be short.
-have a status - if it is waiting on something, denote that
-decide what should be CCA, what should be CRM, and what should be shared, separate accordingly
-come up with functions admins can do with no coding, such as change a person's level
-respond automatically to chatbot requests
-make an "about" page to show version, e tc
-determine whether to say "thanks for reaching out" or "thank you for your reply"
+- have a status - if it is waiting on something, denote that
+- decide what should be CCA, what should be CRM, and what should be shared, separate accordingly. change the stylesheet to determine what to allow.
+- come up with functions admins can do with no coding, such as change a person's level
+- respond automatically to chatbot requests
+- make an "about" page to show version, e tc
+- determine whether to say "thanks for reaching out" or "thank you for your reply" [in progress]
 <div data-missive-collapsable-handle="true"></div>
         ^ previous message
 parse diff formats like gmail, yahoo mail, etc
-     - 
+        - 
         - has attachments?
         - function to do all starting operations
         - create task
@@ -965,11 +1266,12 @@ parse diff formats like gmail, yahoo mail, etc
 
 
     configurable options: wording of closing ex. "Sincerely"
-    Time-based greeting
+    Time-based greeting [on/off]
     Customize "Thank you for reaching out to us!"
     Customize "Thank you for your reply!"
     Toggle auto-assign draft
     Toggle auto-correct return email
     Customize name for Monday posts "Post Monday as:"
+    https://mail.missiveapp.com/#inbox/conversations/19dcf950-0143-4214-a45b-fbcf2f189d94
 
-*/
+*/}
