@@ -120,7 +120,7 @@ function showResults(){
         currentConversation.preview,
         fullMessage,
         orderNumber,
-        timeStamp,
+        currentConversation.timeStamp,
         tokens[0] + " | " + tokens[1],
         greeting
     ]
@@ -147,7 +147,7 @@ function update (input){
     currentConversation.preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
+    currentConversation.timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
     lookupContact(messageFrom);
 }
