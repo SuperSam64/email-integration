@@ -1057,9 +1057,9 @@ async function lookupContact(input){
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    //cancellationReply();
-     currentConversation.someProperty = "did this work?"
-     console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
+    cancellationReply();
+    // currentConversation.someProperty = "did this work?" // this DOES work
+    // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
     cancellationNew(); 
