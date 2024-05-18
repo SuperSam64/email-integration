@@ -81,8 +81,7 @@ function createTokens(input){
         contactsArray.join("").slice(20, 32)
     ];
     // separate sections by dashes 
-    console.log(organizationSections.join("-"));  // can be removed
-    // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
+    // make array of keys
     return [organizationSections.join("-"),contactsSections.join("-")];
 }
 
@@ -151,7 +150,7 @@ function update (input){
     conversationLink = getConversationLink(input);
     messageLink = getMessageLink(input);
     labels = getLabels(input);
-    isLabeled = labelCheck("1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    isLabeled = labeled("1d53229eb9e1"); // this can be moved - does not need to happen at startup
     preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
@@ -408,15 +407,14 @@ function getLabels(conversation){
     }
     return labels;// +  " | " + replied;
 }
-function labelCheck(labelID){
-    // RENAME, POSSIBLY "LABELED" SINCE RETURNS T/F AND TAKES LABEL ARGUMENT
-    var labeled = false;
+function labeled(labelID){
+    var isLabeled = false;
     $(labels).each(function(){
         if(this.split("-")[4] == labelID){
-          labeled = true;
+          isLabeled = true;
         }
     });
-    return labeled;
+    return isLabeled;
 }
 function getPreview(conversation){
     // FUNCTION NOT NEEDED
