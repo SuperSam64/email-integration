@@ -45,15 +45,15 @@ async function loadUserProfile(){
 }
 async function loadData(){
     // upon loading the integration, get the ID of the last conversation
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
+    ////await Missive.storeGet('lastConversation')
+        ////.then(conversation => {
         // set the current conversation as the last conversation since no conversation has been selected yet
-        currentConversation = conversation;
+        //currentConversation = conversation;
         // update the data based on the newly set current conversation
-        update(currentConversation);
+        //update(currentConversation);
         // fill in applicable fields with the results
-        showResults();
-    });
+        //showResults();
+    ////});
 }
 function getKey(input){
     // array containing values to add or subtract to get key
