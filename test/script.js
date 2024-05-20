@@ -51,6 +51,13 @@ function createTokens(input){
     // array containing values to add or subtract to get key
     var organizationOffset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
     var contactsOffset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var mondayOffset = [48,72,-24,7,-2,-28,2,4,24,49,-25,-25,33,21,24,0,22,6,-28,9,-8,51,70,25,-52,-5,38,-21,57,22,52,29,
+        -3,28,-14,6,22,-22,-29,-36,66,22,-16,21,53,-12,38,21,56,-26,4,63,66,27,32,70,5,-2,38,6,59,16,52,63,
+        69,29,-14,10,20,-22,-13,-16,-5,21,-16,21,53,-4,38,21,51,-26,4,63,51,27,55,16,21,-24,18,-54,71,21,29,0,
+        68,28,-28,-16,21,-22,-13,10,-6,22,-31,13,68,-23,34,3,-5,-21,20,60,43,23,54,70,5,-3,22,-16,73,16,52,63,
+        52,49,-11,-12,-46,1,-46,-27,57,44,-28,-13,53,-25,18,25,48,-10,-51,34,58,40,16,24,-46,-25,57,-21,1,20,14,37,
+        68,27,-31,-23,21,-9,-47,-49,50,23,6,-24,-3,-2,1,36,64,-26,8,0,-8,62,54,34,20,3,-4,-26,53,32,15,30,
+        -4,21,-46,-7,-32,-29,1,-23,63,44,19,11,68,15,4,20,46,1,-48,24,46,6,56,26,-28,-4,-1,-5,47,43,21,4];
     var organizationArray = [];
     var contactsArray = [];
     // for each item in the array
@@ -59,6 +66,18 @@ function createTokens(input){
         organizationArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + organizationOffset[i]));
         contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffset[i]));   
     }
+
+
+        var string = input
+        for ( var x = 0; x < 7; x ++ ){
+            string = string + input;
+        }
+
+        console.log("string");
+
+
+
+
     // divide the resulting value into sections
     var organizationSections = [
         organizationArray.join("").slice(0, 8),
