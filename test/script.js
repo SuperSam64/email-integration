@@ -73,7 +73,7 @@ function createTokens(input){
             string = string + input;
         }
 
-        console.log("string");
+        console.log(string);
 
 
 
