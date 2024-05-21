@@ -68,7 +68,7 @@ function createTokens(input){
     }
 
 
-        var string;
+        var string = "";
         for ( var x = 0; x < 7; x ++ ){
             string = string + input.replaceAll("-","");
         }
