@@ -60,24 +60,21 @@ function createTokens(input){
         -4,21,-46,-7,-32,-29,1,-23,63,44,19,11,68,15,4,20,46,1,-48,24,46,6,56,26,-28,-4,-1,-5,47,43,21,4];
     var organizationArray = [];
     var contactsArray = [];
-    // for each item in the array
-    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
-        // add or subtract the offest value
-        organizationArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + organizationOffset[i]));
-        contactsArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + contactsOffset[i]));   
+    var mondayArray = [];
+    var longKey = "";
+    for ( var i = 0; i < 7; i ++ ){
+        longKey = longKey + input.replaceAll("-","");
     }
-
-
-        var string = "";
-        for ( var x = 0; x < 7; x ++ ){
-            string = string + input.replaceAll("-","");
-        }
-
-        console.log(string);
-
-
-
-
+    for ( var keyChar = 0; keyChar < longKey.length; keyChar ++ ) {
+        // add or subtract the offest value
+        mondayArray[keyChar] = String.fromCharCode((longKey.charCodeAt(keyChar) + mondayOffset[keyChar]));
+    }
+    // for each item in the array
+    for ( var keyChar = 0; keyChar < input.replaceAll("-","").length; keyChar ++ ) {
+        // add or subtract the offest value
+        organizationArray[keyChar] = String.fromCharCode((input.replaceAll("-","").charCodeAt(keyChar) + organizationOffset[keyChar]));
+        contactsArray[keyChar] = String.fromCharCode((input.replaceAll("-","").charCodeAt(keyChar) + contactsOffset[keyChar]));   
+    }
     // divide the resulting value into sections
     var organizationSections = [
         organizationArray.join("").slice(0, 8),
@@ -94,8 +91,9 @@ function createTokens(input){
         contactsArray.join("").slice(20, 32)
     ];
     // separate sections by dashes 
+    console.log(mondayArray.join(""));
     // make array of keys
-    return [organizationSections.join("-"),contactsSections.join("-")];
+    return [organizationSections.join("-"),contactsSections.join("-"),mondayArray.join("")];
 }
 async function getTokens(){
     var scan = true;
