@@ -70,7 +70,7 @@ function createTokens(input){
 
         var string = input
         for ( var x = 0; x < 7; x ++ ){
-            string = string + input;
+            string = string + input.replaceAll("-","");
         }
 
         console.log(string);
