@@ -4,7 +4,9 @@
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
 	</head>
 	<body style="background-color:va(--missive-light-blue-color)"><!--</body>onload="buttonTrigger()">-->
-		<div id="mondaySection"><div id="test" style="color:white;text-align:center;font-style:italic">LOADING...</div></div>
+</html>
+</html>
+		<div id="mondaySection"><div id="test" style="background-color:black;color:white;text-align:center;font-style:italic" onclick="buttonTrigger()">LOADING...</div></div>
 		<script>
 			var theme = "light";
 			function buttonTrigger(){
@@ -12,7 +14,7 @@
 				element.setAttribute("style", "background-color: var(--missive-light-blue-color)");
 				let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
 				console.log(color)
-				console.log("V1.7")
+				console.log("V1.8")
 				if(1==1)
 				{
 					theme = "dark";
