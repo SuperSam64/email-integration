@@ -8,11 +8,10 @@
 		<div id="mondaySection"><div class="loading" style="color:white;text-align:center;font-style:italic">LOADING...</div></div>
 		<script type="text/javascript" src="monday_colors.js"></script>
 		<script>
-			
-			
-			
-			
-			
+			function buttonTrigger(){
+                var myColor = window.getComputedStyle( document.body ,null).getPropertyValue('background-color');
+                console.log(myColor);
+            }	
 		</script>
 	</body>
 </html>
