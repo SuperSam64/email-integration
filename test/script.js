@@ -208,8 +208,10 @@ function getLastReceived(conversation){
     }
     return currentMessage;
 }*/
-function relatedRequests(){
-   
+
+
+function buttonTrigger(){ // THIS FUNCTION WILL GO IN THE BUTTON OR OTHER TRIGGER WHEN THIS IS IN MISSIVE
+    searchMondayPosts("16205565","5174273","7733083612","scott.youngs@psrmechanical.com");
 }
 
 function chatbotRequest(){
@@ -1073,7 +1075,8 @@ function button1Clicked() {
     // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
-    cancellationNew(); 
+    //cancellationNew(); 
+    buttonTrigger();
     
 }
 function button3Clicked() {
