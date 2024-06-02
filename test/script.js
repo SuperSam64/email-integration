@@ -176,10 +176,9 @@ async function startup(){
     initialized = true;
     const element = document.getElementById("topBanner");
     let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
-    if(1 == 1){
+    if(color == "rgb(21, 22, 23)"){
         theme = "dark";
     }
-    console.log(color);
     console.log(theme);
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
