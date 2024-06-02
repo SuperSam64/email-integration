@@ -175,11 +175,14 @@ async function startup(){
     await loadData();   
     initialized = true;
     const element = document.getElementById("topBanner");
+    var monVarColor = "#CCE5FF";
     let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
     if(color == "rgb(21, 22, 23)"){
         theme = "dark";
+        monVarColor = "#133774";
     }
     console.log(theme);
+    console.log(monVarColor);
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
