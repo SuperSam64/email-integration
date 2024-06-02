@@ -6,12 +6,18 @@
 	<body  onload="buttonTrigger()">
 		<div id="mondaySection"><div id="test" style="color:white;text-align:center;font-style:italic">LOADING...</div></div>
 		<script>
+			var theme = "light";
 			function buttonTrigger(){
                 const element = document.getElementById("test");
-				element.setAttribute("style", "background-color: var(--missive-light-active-color)");
+				element.setAttribute("style", "background-color: red");
 				let color = window.getComputedStyle(element).getPropertyValue("background-color");
 				console.log(color)
-				console.log("V1.3")
+				console.log("V1.4")
+				if(1==1)
+				{
+					theme = "dark";
+				}
+				console.log(theme)
             }	
 		</script>
 	</body>
