@@ -174,7 +174,7 @@ async function startup(){
     console.log(currentUser.first_name); // delete later
     await loadData();   
     initialized = true;
-    let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
+    let color = window.getComputedStyle(document.body, null).getPropertyValue("background-color");
     if(1 == 1){
         theme = "dark";
     }
