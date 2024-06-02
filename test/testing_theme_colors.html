@@ -2,17 +2,16 @@
 <html>
 	<head>
 		<link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
-		<link rel="stylesheet" href="monday.css">
 	</head>
 	<body  onload="buttonTrigger()">
-		<div id="mondaySection"><div class="test" style="background-color:red;color:white;text-align:center;font-style:italic">LOADING...</div></div>
+		<div id="mondaySection"><div class="test" style="background-color:var(--missive-light-active-color);color:white;text-align:center;font-style:italic">LOADING...</div></div>
 		<script>
 			function buttonTrigger(){
                 const element = document.getElementById("test");
 				const cssObj = window.getComputedStyle(element, null);
 				let bgColor = cssObj.getPropertyValue("background-color");
 				console.log(bgColor)
-				console.log(V1)
+				console.log(V1.1)
             }	
 		</script>
 	</body>
