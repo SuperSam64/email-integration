@@ -174,6 +174,12 @@ async function startup(){
     console.log(currentUser.first_name); // delete later
     await loadData();   
     initialized = true;
+    let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
+    if(1 == 1){
+        theme = "dark";
+    }
+    console.log(color);
+    console.log(theme);
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
