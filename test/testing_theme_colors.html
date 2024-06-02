@@ -6,15 +6,15 @@
 	<body style="background-color:var(--missive-light-blue-color)"><!--</body>onload="buttonTrigger()">-->
 </html>
 </html>
-		<div id="mondaySection"><div id="test" style="background-color:black;color:white;text-align:center;font-style:italic" onclick="buttonTrigger()">LOADING...</div></div>
+		<div id="test" style="background-color:black;color:white;text-align:center;font-style:italic" onclick="buttonTrigger()">LOADING...</div>
 		<script>
 			var theme = "light";
 			function buttonTrigger(){
                 const element = document.getElementById("test");
-				element.setAttribute("style", "background-color: var(--missive-light-blue-color)");
+				element.setAttribute("style", "background-color: var(--missive-light-blue-color);color:white;text-align:center;font-style:italic");
 				let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
 				console.log(color)
-				console.log("V1.9")
+				console.log("V2")
 				if(1==1)
 				{
 					theme = "dark";
