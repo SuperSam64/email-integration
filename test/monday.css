@@ -11,6 +11,8 @@ text-shadow:none;
   }
 }
 #mondaySection{
+	padding:12px;
+	margin:12px;
 	border-radius:8px;
 	background-color:black;
 }
