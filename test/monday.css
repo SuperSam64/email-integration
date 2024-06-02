@@ -1,0 +1,81 @@
+#mondaySection{
+	padding:12px;
+	margin:12px;
+	border-radius:8px;
+	background-color:black;
+}
+.noResults{
+	color:gray;
+	font-style:italic;
+	font-size:small;
+	text-align:center;
+}
+.mondayList{
+	color:white;				/* change this to missive var */
+	text-align:center;
+	margin-bottom:6px;
+}
+.mondayContainer{
+	margin-top:8px;
+	padding-bottom:2px;	
+	border-radius:4px;
+	background-color:#232221;
+	overflow:auto;
+	white-space:nowrap;
+}
+.mondayContainer:hover {
+	box-shadow: 0px 0px 12px orange; 	/* try other colors */
+}
+.mondayLink{
+	text-decoration:none;
+	border-radius:4px;
+}
+.titleBar{
+	display:block;
+	background-color:#2d2e2d;
+	font-size:small;
+	line-height:12px;
+	margin-bottom:2px;
+	padding: 4px 0px 4px 8px;		/* top right bottom left */			/* change this to missive var */
+	border-radius: 4px 4px 0px 0px;
+	
+}
+.mondayBoard{		
+	display:inline;
+	color:white;
+	
+}
+.mondayDate{
+	display:inline;
+	font-style:italic;
+	color:gray;  				/* change this to missive var */
+	margin-left:8px;
+}
+.mondayTitle{
+	display:inline-block;
+	color:white; 				/* change this to missive var */
+	font-weight:550;
+	line-height:12px;
+	vertical-align:middle;
+	margin:2px 4px 2px 8px;
+}
+.mondayStatusPrimary{
+	display:inline-block;
+	color:white; 				/* change this to missive var */
+	font-size:small;
+	line-height:14px;
+	vertical-align:middle;
+	margin:6px 2px 6px 2px;
+	padding:4px 6px 4px 6px;
+	border-radius:4px;
+}
+.mondayStatusSecondary{
+	display:inline-block;
+	color:white;
+	font-size:small;
+	line-height:14px;
+	vertical-align:middle;
+	margin:6px 2px 6px 2px;
+	padding:4px 6px 4px 6px;
+	border-radius:4px;
+}

@@ -199,6 +199,10 @@ function getLastReceived(conversation){
     }
     return currentMessage;
 }*/
+function relatedRequests(){
+   
+}
+
 function chatbotRequest(){
     /* if assigned to me, and labeled chatbot requests, and no draft exists (do this by a variable, this way if it is created and deleted it won't keep recreating it (?))
         set "to" field (use getFrom)
