@@ -11,8 +11,9 @@ text-shadow:none;
   }
 }
 #mondaySection{
+	padding:12px 0px 12 px 0px;
+	margin:12px 0px 12 px 0px;
 	border-radius:8px;
-	background-color:var(--missive-background-color);
 }
 .noResults{
 	color:gray;
