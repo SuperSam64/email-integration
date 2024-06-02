@@ -9,13 +9,13 @@
   </head>
   <body style="width:92%;height:96%;margin:auto">
     <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
-      <div class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
+      <div id="topBanner" class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
     <!------------------------------- HEADER ---------------------------------><span>
       <table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
         <tbody>
           <tr>
             <td rowspan="2">
-              <span id="avatar" style="border:4px solid red;display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span><!--var(--accent-color)-->
+              <span id="avatar" style="border:4px solid var(--accent-color);display:block;background-image: url('profileplaceholder.png');height:54px;width:54px;background-size:cover;background-position: center center;border-radius:32px"></span>
             </td>
             <td>
               <span id="name" style="margin-left:8px" class="text-xlarge text-600"></span>
@@ -253,7 +253,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "18";
-      var scriptVersion = "23";
+      var scriptVersion = "24";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
