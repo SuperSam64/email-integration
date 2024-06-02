@@ -29,8 +29,8 @@
         </tbody>
       </table>
     <!------------------------------------------------------------------------></span>
-    <!--------------------------- [[  VERSION  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
-    <!-------------------->     Version 11.18 (1.18)    <!-------------------->
+    <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
+    <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
@@ -251,6 +251,11 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
+      var baseVersion = "11";
+      var revisionNumber = "18";
+      var scriptVersion = "18";
+      var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
+      console.log(version)
       var initialized = false;
       var conversationActive; // bool, use this to determine if a screen needs to be shown asking the user to select a conversation
       var token;
