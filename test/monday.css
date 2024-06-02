@@ -14,7 +14,7 @@ text-shadow:none;
 	padding:12px;
 	margin:12px;
 	border-radius:8px;
-	background-color:black;
+	background-color:var(--missive-background-color);
 }
 .noResults{
 	color:gray;
