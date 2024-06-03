@@ -41,7 +41,7 @@
 	border:1px solid var(--missive-conversation-list-border-color);
 }
 .mondayLink{
-	
+	text-decoration:none;
 	border-radius:4px;
 }
 .titleBar{
@@ -54,27 +54,15 @@
 	border-radius: 4px 4px 0px 0px;
 	
 }
-.titleBar:hover{
-	text-decoration:none;	
-}
-.titleBar:hover{
-	text-decoration:none;
-}
 .mondayBoard{		
 	display:inline;
 	color:var(--missive-text-color-a);
-}
-.mondayBoard:hover{
-	text-decoration:none;
 }
 .mondayDate{
 	display:inline;
 	font-style:italic;
 	color:var(--missive-text-color-b);  				/* change this to missive var */
 	margin-left:8px;
-}
-.mondayDate:hover{
-	text-decoration:none;
 }
 .mondayReplies{
 	display:inline;
@@ -94,7 +82,7 @@
 }
 .mondayStatusPrimary{
 	display:inline-block;
-	color:white; 				/* change this to missive var */
+	color:var(white); 				/* change this to missive var */
 	font-size:small;
 	line-height:14px;
 	vertical-align:middle;
