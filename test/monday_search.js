@@ -23,7 +23,6 @@ var mondayKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
     '1F4ZDFbNvdvmxt5Efd6Hd8kKHb0a_dK4'
 // =======================================================================================================
 // =======================================================================================================
-var theme = "dark";
 var allPosts = [];
 async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail){
     // If no order number provided, fill with "[undefined]" (this will keep from searching an empty string,
