@@ -36,7 +36,7 @@
 	white-space:nowrap;
 }
 .mondayContainer:hover {
-	box-shadow: 0px 0px 12px orange; 	/* try other colors */
+	box-shadow: 0px 0px 12px var(--missive-orange-color); 	/* try other colors */
 	text-decoration: none;
 	border:1px solid var(--missive-conversation-list-border-color);
 }
