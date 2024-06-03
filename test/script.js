@@ -1064,9 +1064,9 @@ async function lookupContact(input){
         $("#body21").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
     }
     else {
-        console.log(contact.length);
         $("#body21").text("NO CONTACT DATA");
     }
+    console.log(contact)
 }
 
 // ======== BUTTONS ========
