@@ -37,6 +37,7 @@
 .mondayContainer:hover {
 	box-shadow: 0px 0px 12px orange; 	/* try other colors */
 	text-decoration: none;
+	border:1px solid var(--missive-conversation-list-border-color);
 }
 .mondayLink{
 	text-decoration:none;
@@ -51,6 +52,9 @@
 	padding: 4px 0px 4px 8px;		/* top right bottom left */			/* change this to missive var */
 	border-radius: 4px 4px 0px 0px;
 	
+}
+.titleBar:hover{
+	text-decoration:none;
 }
 .mondayBoard{		
 	display:inline;
