@@ -1,6 +1,6 @@
 .loading{
 	animation: blinker 1.5s linear infinite;
-	color:white;
+	color:var(--missive-text-color-a);
 	opacity: 0.8;
 	text-shadow:none;
 }
@@ -16,13 +16,13 @@
 	border-radius:8px;
 }
 .noResults{
-	color:gray;
+	color:var(--missive-text-color-b);
 	font-style:italic;
 	font-size:small;
 	text-align:center;
 }
 .mondayList{
-	color:white;				/* change this to missive var */
+	color:var(--missive-text-color-a);				/* change this to missive var */
 	text-align:center;
 	margin-bottom:6px;
 }
@@ -44,7 +44,7 @@
 }
 .titleBar{
 	display:block;
-	background-color:#2d2e2d;
+	background-color:var(--missive-light-active-color);
 	font-size:small;
 	line-height:12px;
 	margin-bottom:2px;
@@ -54,26 +54,25 @@
 }
 .mondayBoard{		
 	display:inline;
-	color:white;
-	
+	color:var(--missive-text-color-a);
 }
 .mondayDate{
 	display:inline;
 	font-style:italic;
-	color:gray;  				/* change this to missive var */
+	color:var(--missive-text-color-b);  				/* change this to missive var */
 	margin-left:8px;
 }
 .mondayReplies{
 	display:inline;
 	font-style:italic;
-	color:green;  				/* change this to missive var */
+	color:var(--missive-green-color);  				/* change this to missive var */
 	padding-right:8px;
 	font-size: small;
 	float:right;
 }
 .mondayTitle{
 	display:inline-block;
-	color:white; 				/* change this to missive var */
+	color:var(--missive-text-color-a); 				/* change this to missive var */
 	font-weight:550;
 	line-height:12px;
 	vertical-align:middle;
@@ -81,7 +80,7 @@
 }
 .mondayStatusPrimary{
 	display:inline-block;
-	color:white; 				/* change this to missive var */
+	color:var(--missive-text-color-a); 				/* change this to missive var */
 	font-size:small;
 	line-height:14px;
 	vertical-align:middle;
@@ -91,7 +90,7 @@
 }
 .mondayStatusSecondary{
 	display:inline-block;
-	color:white;
+	color:var(--missive-text-color-a);
 	font-size:small;
 	line-height:14px;
 	vertical-align:middle;
