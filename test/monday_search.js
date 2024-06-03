@@ -396,9 +396,10 @@ function assignColors(input,status,colors){
 // Assign colors by looking up the index in the list array and matching it to the index in the
 // corresponding color array
 function buildItem(object){
-    var rounded = "";
+    var roundlabel = "";
     if(object.board == "Requests for Purchasing"){
-        var rounded = "border-radius:50px;";
+        roundlabel.borderRadius = "border-radius:50px;";
+        roundlabel.textColor = "color:var(--missive-text-color-a);";
     }
     var HTMLstring ='<a title="[preview]" class="mondayLink" target="_blank" href="' + object.link + '">' +
     '<div class="mondayContainer">' +
@@ -464,7 +465,7 @@ function buildItem(object){
         if(object.reason.length > 12){
             object.reason = object.reason.slice(0,12).trim() + "...";
         }
-        HTMLstring = HTMLstring.replace("[reason]",'<span class="mondayStatusPrimary" style="' + rounded + 'background-color:' +
+        HTMLstring = HTMLstring.replace("[reason]",'<span class="mondayStatusPrimary" style="' + roundlabel.borderRadius + roundlabel.textColor + 'background-color:' +
             object.reasonColor + '">' +
             object.reason +
             '</span>');

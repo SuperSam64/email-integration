@@ -85,7 +85,7 @@
 }
 .mondayStatusPrimary{
 	display:inline-block;
-	color:var(--missive-background-color); 				/* change this to missive var */
+	color:white; 				/* change this to missive var */
 	font-size:small;
 	line-height:14px;
 	vertical-align:middle;
@@ -95,7 +95,7 @@
 }
 .mondayStatusSecondary{
 	display:inline-block;
-	color:var(--missive-background-color);
+	color:white;
 	font-size:small;
 	line-height:14px;
 	vertical-align:middle;
