@@ -477,7 +477,7 @@ function buildItem(object){
         if(object.status.length > 12){
             object.status = object.status.slice(0,12).trim() + "...";
         }
-        HTMLstring = HTMLstring.replace("[status]",'<span class="mondayStatusSecondary" style="' + rounded + 'background-color:' +
+        HTMLstring = HTMLstring.replace("[status]",'<span class="mondayStatusSecondary" style="' + roundlabel.borderRadius + roundlabel.textColor + 'background-color:' +
             object.statusColor + '">' +
             object.status +
             '</span>');
