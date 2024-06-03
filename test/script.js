@@ -183,6 +183,7 @@ async function startup(){
     }
     console.log(theme);
     console.log(monVarColor);
+    buttonTrigger();
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
@@ -1075,9 +1076,7 @@ function button1Clicked() {
     // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
-    //cancellationNew(); 
-    buttonTrigger();
-    
+    cancellationNew();    
 }
 function button3Clicked() {
     insertSignature(emailClosing);
