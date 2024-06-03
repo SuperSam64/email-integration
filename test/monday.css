@@ -30,7 +30,7 @@
 	margin-top:8px;
 	padding-bottom:2px;	
 	border-radius:4px;
-	background-color:var(--missive-background-color232221);
+	background-color:var(--missive-background-color);
 	overflow:auto;
 	white-space:nowrap;
 }
