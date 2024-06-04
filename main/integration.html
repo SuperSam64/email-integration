@@ -32,19 +32,18 @@
         </tbody>
       </table>
     <!------------------------------------------------------------------------></span>
-    <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
+    <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="display:none;margin:auto;width:100%;padding-bottom:12px">
     <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="margin-top:160px;border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
-    <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
-    <span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
-    <span class="button column padding testButton" id="button3">Insert Signature</span><br>
-    <span class="button column padding testButton" id="button4">Insert Tasks</span><br>
-    <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
-    <span class="button column padding testButton" id="button6">Save Contact</span><br>
-    <!---------------------------- HIDDEN BUTTONS ---------------------------->
-    <span class="hiddenButton"></span>
+    <span class="hiddenButton">
+      <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
+      <span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
+      <span class="button column padding testButton" id="button3">Insert Signature</span><br>
+      <span class="button column padding testButton" id="button4">Insert Tasks</span><br>
+      <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
+      <span class="button column padding testButton" id="button6">Save Contact</span><br>    
       <span class="button column padding testButton" id="button7">[button label]</span><br>
       <span class="button column padding testButton" id="button8">[button label]</span><br>
       <span class="button column padding testButton" id="button9">[button label]</span><br>
@@ -60,7 +59,7 @@
       <span class="button column padding testButton" id="button19">[button label]</span><br>
       <span class="button column padding testButton" id="button20">[button label]</span><br>
     </span>
-    <!------------------------------------------------------------------------></span>
+    <!------------------------------------------------------------------------>
     <!--------------------------- TABLE OF RESULTS ---------------------------><table class="textFrame" id="textFrame">
     <!------------------------- TEXT BOX -------------------------->
     <tr id="title1" class="textTitle"><td width="24 px" style="text-align:right">
@@ -256,8 +255,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "33";
-      var scriptVersion = "60";
+      var revisionNumber = "34";
+      var scriptVersion = "61";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
