@@ -183,7 +183,7 @@ async function startup(){
     }
     console.log(theme);
     console.log(monVarColor);
-    buttonTrigger();
+    //buttonTrigger();
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
@@ -212,7 +212,7 @@ function getLastReceived(conversation){
 
 
 function buttonTrigger(){ // THIS FUNCTION WILL GO IN THE BUTTON OR OTHER TRIGGER WHEN THIS IS IN MISSIVE
-    searchMondayPosts("16164973","5174273","7733083612","scott.youngs@psrmechanical.com",tokens[2]);
+    //searchMondayPosts("16164973","5174273","7733083612","scott.youngs@psrmechanical.com",tokens[2]);
 }
 
 function chatbotRequest(){
@@ -1066,7 +1066,7 @@ async function lookupContact(input){
     else {
         $("#body21").text("NO CONTACT DATA");
     }
-    console.log(contact)
+    searchMondayPosts("16164973","5174273","7733083612","scott.youngs@psrmechanical.com",tokens[2]);
 }
 
 // ======== BUTTONS ========
