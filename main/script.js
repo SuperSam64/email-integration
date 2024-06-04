@@ -116,7 +116,12 @@ function storeLastConversation(){
 }
 function getConversation(conversation){
     // THIS DOESN'T NEED TO BE A FUNCTION
-    return conversation.id;
+    if(typeof conversation == 'undefined'){
+        return "dae534c2-a355-45ac-8e78-e78327efda1b";
+    }
+    else {
+        return conversation.id;
+    }
 }
 function showResults(){
     var elements = [
