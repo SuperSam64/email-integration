@@ -106,7 +106,6 @@ async function getTokens(){
             }
         });
     });
-    console.log(tokens[2])
 }
 function storeLastConversation(){
     // if a conversation is currently selected
