@@ -13,14 +13,15 @@ retreive these values, I just need to link the 2.) Some notes
 - Clicking a post will open the post in a new tab
 - Loading text will display while data is being retreived
 - Some fields will not show for CCAs. if profileType is anything besides "Customer Care Advocate"
-they will show. 			*/
-var mondayKey = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
+they will show. 	 		*/
+var mondayKey = tokens[2];
+console.log(tokens[2]);/*'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
     '2MTgzMDAyNSwiYWFpIjoxMSwidWlkIjo' +
     'zNTkxMTU2MSwiaWFkIjoiMjAyNC0wNS0' +
     'yMFQyMTo1NDoxNS43NzlaIiwicGVyIjo' +
     'ibWU6d3JpdGUiLCJhY3RpZCI6MjQ1MDU' +
     'yLCJyZ24iOiJ1c2UxIn0.piSxi-LeYEN' +
-    '1F4ZDFbNvdvmxt5Efd6Hd8kKHb0a_dK4'
+    '1F4ZDFbNvdvmxt5Efd6Hd8kKHb0a_dK4'*/
 // =======================================================================================================
 // =======================================================================================================
 var allPosts = [];
