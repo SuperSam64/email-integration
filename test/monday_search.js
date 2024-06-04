@@ -27,7 +27,7 @@ they will show. 	 		*/
 var allPosts = [];
 async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail,key){
     allPosts = [];
-    document.getElementById('mondaySection').innerHTML = "<div class="loading" style="text-align:center;font-style:italic">LOADING...</div>";
+    document.getElementById('mondaySection').innerHTML = '<div class="loading" style="text-align:center;font-style:italic">LOADING...</div>';
     // If no order number provided, fill with "[undefined]" (this will keep from searching an empty string,
     // which will return everything)
     if(searchOrder == ""){
