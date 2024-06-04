@@ -1,4 +1,4 @@
-// ======== STARTUP ========
+// ======== STARTUP =========
 async function loadUserProfile(){
     // Cycle through all users
     await Missive.fetchUsers().then((users) => {
@@ -9,37 +9,29 @@ async function loadUserProfile(){
                 currentUser = this;
             }
       });
-      // Cycle through the list of IDs set as admin
-      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs. get a temp var for the last segment of ID, not needed outside this function
-      $(adminList).each(function(){
+    // Cycle through the list of IDs set as admin
+    $(adminList).each(function(){
         // if the selected user is me  
         if(this == currentUser.id.split("-")[4]){
             // set profile type to master
-            profileType = "master"
-            // set title to administrator
-            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
-            title = "Administrator";
+            profileType = "Administrator"
           }
-      });
-      // Cycle through the list of IDs set as CRM
-      // THIS CAN BE COMBINED WITH THE PREVIOUS STEP, nesting ifs
-      $(crmList).each(function(){
+     });
+    // Cycle through the list of IDs set as CRM
+    $(crmList).each(function(){
         // if the selected user is me    
         if(this == currentUser.id.split("-")[4]){
             // set profile type to CRM
-            // PROFILE TYPE AND TITLE CAN BE THE SAME, no need for 2 separate variables
-            profileType = "CRM"
-            title = "Client Relationship Manager";
+            profileType = "Client Relationship Manager";
         }
-        });
+    });
     // user the user's first and last name to get their full name
-    var userFullName = currentUser.first_name + " " + currentUser.last_name; // consider deleting this, no need for userFullName var unless it needs to be used later.
     // set avatar image
     $("#avatar").css("background-image","url(" + currentUser.avatar_url + ")");
     // display user's full name
-    $("#name").text(userFullName);
+    $("#name").text(currentUser.first_name + " " + currentUser.last_name);
     // show user's access level
-    $("#layout").text(title); // consider changing the name of this from layout to access_level or something similar
+    $("#layout").text(profileType); // consider changing the name of this from layout to access_level or something similar
     // set style sheets here based on access level
     });
 }
@@ -55,42 +47,53 @@ async function loadData(){
         showResults();
     });
 }
-function getKey(input){
+function createTokens(input){
     // array containing values to add or subtract to get key
-    var offsetArray = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
-    var keyArray = [];
-    // for each item in the array
-    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
+    var organizationOffset = [3,-1,-46,-45,-2,-49,-47,1,-1,-7,-45,-43,0,-1,7,3,41,0,-53,7,-2,48,6,53,-50,-1,-1,-5,6,41,0,51];
+    var contactsOffset = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
+    var mondayOffset = [48,72,-24,7,-2,-28,2,4,24,49,-25,-25,33,21,24,0,22,6,-28,9,-8,51,70,25,-52,-5,38,-21,57,22,52,29,
+        -3,28,-14,6,22,-22,-29,-36,66,22,-16,21,53,-12,38,21,56,-26,4,63,66,27,32,70,5,-2,38,6,59,16,52,63,
+        69,29,-14,10,20,-22,-13,-16,-5,21,-16,21,53,-4,38,21,51,-26,4,63,51,27,55,16,21,-24,18,-54,71,21,29,0,
+        68,28,-28,-16,21,-22,-13,10,-6,22,-31,13,68,-23,34,3,-5,-21,20,60,43,23,54,70,5,-3,22,-16,73,16,52,63,
+        52,49,-11,-12,-46,1,-46,-27,57,44,-28,-13,53,-25,18,25,48,-10,-51,34,58,40,16,24,-46,-25,57,-21,1,20,14,37,
+        68,27,-31,-23,21,-9,-47,-49,50,23,6,-24,-3,-2,1,36,64,-26,8,0,-8,62,54,34,20,3,-4,-26,53,32,15,30,
+        -4,21,-46,-7,-32,-29,1,-23,63,44,19,11,68,15,4,20,46,1,-48,24,46,6,56,26,-28,-4,-1,-5,47,43,21,4];
+    var organizationArray = [];
+    var contactsArray = [];
+    var mondayArray = [];
+    var longKey = "";
+    for ( var i = 0; i < 7; i ++ ){
+        longKey = longKey + input.replaceAll("-","");
+    }
+    for ( var keyChar = 0; keyChar < longKey.length; keyChar ++ ) {
         // add or subtract the offest value
-        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
+        mondayArray[keyChar] = String.fromCharCode((longKey.charCodeAt(keyChar) + mondayOffset[keyChar]));
+    }
+    // for each item in the array
+    for ( var keyChar = 0; keyChar < input.replaceAll("-","").length; keyChar ++ ) {
+        // add or subtract the offest value
+        organizationArray[keyChar] = String.fromCharCode((input.replaceAll("-","").charCodeAt(keyChar) + organizationOffset[keyChar]));
+        contactsArray[keyChar] = String.fromCharCode((input.replaceAll("-","").charCodeAt(keyChar) + contactsOffset[keyChar]));   
     }
     // divide the resulting value into sections
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
+    var organizationSections = [
+        organizationArray.join("").slice(0, 8),
+        organizationArray.join("").slice(8, 12),
+        organizationArray.join("").slice(12, 16),
+        organizationArray.join("").slice(16, 20),
+        organizationArray.join("").slice(20, 32)
     ];
-    // separate sections by dashes
-    console.log(sections.join("-"));  // can be removed
-    // CONSIDER COMBINING THIS, GETCONTACTSKEY AND GETTOKENS INTO A SINGLE FUNCTION
-    return sections.join("-");
-}
-function getContactsKey(input){
-    var offsetArray = [-2,53,-47,-49,-45,-2,4,-53,-1,-4,1,4,0,-3,52,50,42,-45,-3,51,47,51,47,50,-47,-51,53,-5,6,42,48,7];
-    var keyArray = [];
-    for ( var i = 0; i < input.replaceAll("-","").length; i ++ ) {
-        keyArray[i] = String.fromCharCode((input.replaceAll("-","").charCodeAt(i) + offsetArray[i]));    
-    }
-    var sections = [
-        keyArray.join("").slice(0, 8),
-        keyArray.join("").slice(8, 12),
-        keyArray.join("").slice(12, 16),
-        keyArray.join("").slice(16, 20),
-        keyArray.join("").slice(20, 32)
+    var contactsSections = [
+        contactsArray.join("").slice(0, 8),
+        contactsArray.join("").slice(8, 12),
+        contactsArray.join("").slice(12, 16),
+        contactsArray.join("").slice(16, 20),
+        contactsArray.join("").slice(20, 32)
     ];
-    return sections.join("-");
+    // separate sections by dashes 
+    console.log(mondayArray.join(""));
+    // make array of keys
+    return [organizationSections.join("-"),contactsSections.join("-"),mondayArray.join("")];
 }
 async function getTokens(){
     var scan = true;
@@ -98,16 +101,14 @@ async function getTokens(){
         $(labels).each(function(){
           if(this.id.length == 36 && scan == true){
               organization = this.organization_id;
-              token = getKey(organization);
-              contactBook = getContactsKey(organization);
-              console.log(token + " " + contactBook);  // can be removed
+              tokens = createTokens(organization);
               scan = false;
             }
         });
     });
 }
 function storeLastConversation(){
-    // if no conversation is currently selected
+    // if a conversation is currently selected
     if(typeof currentConversation != 'undefined'){
         // set the last selected conversation as the current conversation
         Missive.storeSet('lastConversation', currentConversation);
@@ -119,25 +120,25 @@ function getConversation(conversation){
 }
 function showResults(){
     var elements = [
-        conversationID,
-        conversationCount,
-        messageTo,
+        currentConversation.id,
+        currentConversation.messages_count,
+        currentConversation.messageTo,
         messageFrom,
         customerName,
         messageSubject,
-        conversationSubject,
+        currentConversation.subject,
         userAssigned,
         assignDraft,
         "not displayed",//forwarded,
-        conversationLink,
+        currentConversation.link,
         messageLink,
         labels,
         isLabeled,
-        preview,
+        currentConversation.preview,
         fullMessage,
         orderNumber,
-        timeStamp,
-        token + " | " + contactBook,
+        currentConversation.timeStamp,
+        tokens[0] + " | " + tokens[1],
         greeting
     ]
     for ( i = 0; i < elements.length; i++ ){
@@ -148,7 +149,7 @@ function update (input){
     // CHECK THESE TO SEE IF ANY CAN BE SIMPLIFIED/REMOVED
     conversationID = getConversation(input);
     conversationCount = getMessageCount(input);
-    messageTo = getTo(input);
+    currentConversation.messageTo = getTo(input);
     messageFrom = getFrom(input);
     customerName = getName(input);
     messageSubject = getMessageSubject(input);
@@ -159,11 +160,11 @@ function update (input){
     conversationLink = getConversationLink(input);
     messageLink = getMessageLink(input);
     labels = getLabels(input);
-    isLabeled = labelCheck("1d53229eb9e1"); // this can be moved - does not need to happen at startup
-    preview = getPreview(input);
+    isLabeled = labeled("1d53229eb9e1"); // this can be moved - does not need to happen at startup
+    currentConversation.preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
     orderNumber = getOrderNumber(input);
-    timeStamp = getTimeStamp(input);
+    currentConversation.timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
     lookupContact(messageFrom);
 }
@@ -173,6 +174,16 @@ async function startup(){
     console.log(currentUser.first_name); // delete later
     await loadData();   
     initialized = true;
+    const element = document.getElementById("topBanner");
+    var monVarColor = "#CCE5FF";
+    let color = window.getComputedStyle(element, null).getPropertyValue("background-color");
+    if(color == "rgb(21, 22, 23)"){
+        theme = "dark";
+        monVarColor = "#133774";
+    }
+    console.log(theme);
+    console.log(monVarColor);
+    //buttonTrigger();
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
 
@@ -198,6 +209,12 @@ function getLastReceived(conversation){
     }
     return currentMessage;
 }*/
+
+
+function buttonTrigger(){ // THIS FUNCTION WILL GO IN THE BUTTON OR OTHER TRIGGER WHEN THIS IS IN MISSIVE
+    //searchMondayPosts("16164973","5174273","7733083612","scott.youngs@psrmechanical.com",tokens[2]);
+}
+
 function chatbotRequest(){
     /* if assigned to me, and labeled chatbot requests, and no draft exists (do this by a variable, this way if it is created and deleted it won't keep recreating it (?))
         set "to" field (use getFrom)
@@ -398,13 +415,11 @@ function getLabels(conversation){
     // REPLY TEXT NOT NEEDED HERE
     var labels = ["No labels"]
     replied = false;
-    intro = "<br><br>Thank you for reaching out to us!";
     for ( var i = 0, labelCount = conversation.labels.length; i < labelCount; i++ ) {	
         var prefix = conversation.labels[i].id.split("-")[0];
         if(prefix != "closed" && prefix != "assigned" && prefix != "assigned_to_others" && prefix != "unassigned" && prefix != "archive"){
             if(prefix == "sent"){
                 replied = true;
-                intro = "<br><br>Thank you for your reply!";
             }
             else{
                 labels.push(conversation.labels[i].id) // this can be .name or .id
@@ -416,15 +431,14 @@ function getLabels(conversation){
     }
     return labels;// +  " | " + replied;
 }
-function labelCheck(labelID){
-    // RENAME, POSSIBLY "LABELED" SINCE RETURNS T/F AND TAKES LABEL ARGUMENT
-    var labeled = false;
+function labeled(labelID){
+    var isLabeled = false;
     $(labels).each(function(){
         if(this.split("-")[4] == labelID){
-          labeled = true;
+          isLabeled = true;
         }
     });
-    return labeled;
+    return isLabeled;
 }
 function getPreview(conversation){
     // FUNCTION NOT NEEDED
@@ -527,9 +541,9 @@ function getOrderNumber(conversation){
 }
 function formatDate(date){
     const weekdaysShort = ["Sun","Mon","Tues","Wed","Thurs","Fri","Sat"];
-    const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    // const weekdaysFull = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const monthsShort = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sept","Oct","Nov","Dec"];
-    const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    // const monthsFull = ["January","February","March","April","May","June","July","August","September","October","November","December"];
     var timestampDate = new Date(1000*date);;
     var weekday = weekdaysShort[timestampDate.getDay()];
     var hours;
@@ -972,7 +986,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         method: "POST",
         body: JSON.stringify({
             "contacts": [{
-                "contact_book": contactBook, // fill this in later
+                "contact_book": tokens[1], // fill this in later
                 "first_name": firstName,
                 "last_name": lastName,
                 "infos": [{
@@ -993,7 +1007,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
         }),
         headers: {
             "Host": "public.missiveapp.com",
-            "Authorization": "Bearer " + token, // fill this in later
+            "Authorization": "Bearer " + tokens[0], // fill this in later
             "Content-type": "application/json"
         }
     })
@@ -1001,11 +1015,11 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 async function lookupContact(input){
     var contactRecord;
-	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + contactBook + "&limit=1&order=last_modified&search=" + input,{
+	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + tokens[1] + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
 		headers: {
 		"Host": "public.missiveapp.com",
-		"Authorization": "Bearer " + token,
+		"Authorization": "Bearer " + tokens[0],
 		"Content-type": "application/json"
 		}
 	})
@@ -1050,20 +1064,19 @@ async function lookupContact(input){
         $("#body21").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
     }
     else {
-        console.log(contact.length);
         $("#body21").text("NO CONTACT DATA");
     }
+    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 
 // ======== BUTTONS ========
 function button1Clicked() {
-    //cancellationReply();
-     currentConversation.someProperty = "did this work?"
-     console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
+    cancellationReply();
+    // currentConversation.someProperty = "did this work?" // this DOES work
+    // console.log(currentConversation.id + currentConversation.someProperty) // delete this later, this is to show that storing properties works. do it in json format
 }
 function button2Clicked() {
-    cancellationNew(); 
-    
+    cancellationNew();    
 }
 function button3Clicked() {
     insertSignature(emailClosing);

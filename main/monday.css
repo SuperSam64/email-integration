@@ -1,0 +1,102 @@
+.loading{
+	animation: blinker 1.5s linear infinite;
+	color:var(--missive-text-color-a);
+	opacity: 0.8;
+	text-shadow:none;
+}
+@keyframes blinker {
+  50% {
+    opacity: 1;
+	text-shadow: 0px 0px 4px white, 0px 0px 8px white, 0px 0px 16px white, 0px 0px 32px white;
+  }
+}
+#mondaySection{
+	padding:12px 12px 12px 12px;
+	margin:12px 0x 12px 0px;
+	border-radius:8px;
+}
+.noResults{
+	color:var(--missive-text-color-b);
+	font-style:italic;
+	font-size:small;
+	text-align:center;
+}
+.mondayList{
+	color:var(--missive-text-color-a);				/* change this to missive var */
+	text-align:center;
+	margin-bottom:6px;
+}
+.mondayContainer{
+	margin-top:8px;
+	padding-bottom:2px;	
+	border-radius:4px;
+	background-color:var(--missive-background-color);
+	border:1px solid var(--missive-conversation-list-border-color);
+	overflow:auto;
+	white-space:nowrap;
+}
+.mondayContainer:hover {
+	box-shadow: 0px 0px 12px var(--missive-orange-color); 	/* try other colors */
+	text-decoration: none;
+	border:1px solid var(--missive-conversation-list-border-color);
+}
+.mondayLink{
+	text-decoration:none;
+	border-radius:4px;
+}
+.titleBar{
+	display:block;
+	background-color:var(--missive-light-active-color);
+	font-size:small;
+	line-height:12px;
+	margin-bottom:2px;
+	padding: 4px 0px 4px 8px;		/* top right bottom left */			/* change this to missive var */
+	border-radius: 4px 4px 0px 0px;
+	
+}
+.mondayBoard{		
+	display:inline;
+	color:var(--missive-text-color-a);
+}
+.mondayDate{
+	display:inline;
+	font-style:italic;
+	color:var(--missive-text-color-b);  				/* change this to missive var */
+	margin-left:8px;
+}
+.mondayReplies{
+	display:inline;
+	font-style:italic;
+	color:var(--missive-green-color);  				/* change this to missive var */
+	padding-right:8px;
+	font-size: small;
+	float:right;
+}
+.mondayTitle{
+	display:inline-block;
+	color:var(--missive-text-color-a); 				/* change this to missive var */
+	font-weight:550;
+	line-height:12px;
+	vertical-align:middle;
+	margin:2px 4px 2px 8px;
+}
+.mondayStatusPrimary{
+	display:inline-block;
+	color:white; 				/* change this to missive var */
+	font-size:small;
+	line-height:14px;
+	vertical-align:middle;
+	margin:6px 2px 6px 2px;
+	padding:4px 6px 4px 6px;
+	border-radius:4px;
+}
+.mondayStatusSecondary{
+	display:inline-block;
+	color:white;
+	font-size:small;
+	line-height:14px;
+	vertical-align:middle;
+	margin:6px 2px 6px 2px;
+	padding:4px 6px 4px 6px;
+	border-radius:4px;
+}

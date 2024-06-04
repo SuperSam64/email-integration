@@ -3,13 +3,16 @@
     <title>V2</title>
     <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
     <link id="access-level" href="access_level_cca.css" rel="stylesheet">
+    <link rel="stylesheet" href="monday.css">
     <link href="style.css" rel="stylesheet">
     <script src="https://integrations.missiveapp.com/missive.js"></script>
+    <script type="text/javascript" src="monday_colors.js"></script>
+    <script type="text/javascript" src="monday_search.js"></script>
     <script src="script.js"></script>
   </head>
   <body style="width:92%;height:96%;margin:auto">
     <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
-      <div class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
+      <div id="topBanner" class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
     <!------------------------------- HEADER ---------------------------------><span>
       <table cellspacing="0" cellpadding="0" style="margin:auto;border:none">
         <tbody>
@@ -29,18 +32,19 @@
         </tbody>
       </table>
     <!------------------------------------------------------------------------></span>
-    <!--------------------------- [[  VERSION  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
-    <!-------------------->        Version 11.14 (1.00)        <!-------------------->
+    <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
+    <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
     <!------------------------------- BUTTONS --------------------------------><span>
-    <span class="button column padding testButton" style="margin-top:160px" id="button1">Cancellation (Reply)</span><br>
+    <div id="mondaySection" style="margin-top:160px;border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
+    <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
     <span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
     <span class="button column padding testButton" id="button3">Insert Signature</span><br>
     <span class="button column padding testButton" id="button4">Insert Tasks</span><br>
     <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
     <span class="button column padding testButton" id="button6">Save Contact</span><br>
     <!---------------------------- HIDDEN BUTTONS ---------------------------->
-    <span class="hiddenButton">
+    <span class="hiddenButton"></span>
       <span class="button column padding testButton" id="button7">[button label]</span><br>
       <span class="button column padding testButton" id="button8">[button label]</span><br>
       <span class="button column padding testButton" id="button9">[button label]</span><br>
@@ -251,6 +255,12 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
+      var baseVersion = "11";
+      var revisionNumber = "33";
+      var scriptVersion = "60";
+      var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
+      console.log(version)
+      var theme = "light";
       var initialized = false;
       var conversationActive; // bool, use this to determine if a screen needs to be shown asking the user to select a conversation
       var token;
@@ -258,14 +268,13 @@
       var contactBook;
       var currentUser;
       var userFullName;
-      var profileType = "CCA"; // CCA, CRM, master
-      var title = "Customer Care Advocate" // default, unless  otherwise specified
+      var profileType = "Customer Care Advocate"; // CCA, CRM, master
       var crmList = ["fd1f7da207de","a50d68b28cfd","cc4c53720ddf","37e9dbc091a3","f77b171dc34c"]; // (Gema, Isabel, Kaitlyn, Kylee, Alli)
       var adminList = ["dfbf5285907d","eebc81b9f454","aaa5d13aaeb2"] // (Sam, David, Amelia)
       var currentConversation;
       var conversationID;
       var conversationCount;
-      var messageTo;
+      //var messageTo;
       var messageFrom;
       var customerName;
       var messageSubject;
@@ -278,7 +287,7 @@
       var messageLink;
       var labels;
       var isLabeled;
-      var preview;
+      //var preview;
       var fullMessage;
       var orderNumber;
       var greeting;
@@ -286,7 +295,7 @@
       var signature;
       var emailClosing = "Sincerely";
       var suggestedLabel;
-      var timeStamp;
+      // var timeStamp;
       var contact = {};
       var purchaseOrderTasks = [
         "Email customer for PO revision",
