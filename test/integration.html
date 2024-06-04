@@ -35,13 +35,18 @@
     <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
     <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
-    <div style="margin-top:160px">Contact Form</div>
+    <div>
       <form action="/action_page.php">
-        <table>
+        <table style="margin-top:160px">
           <tbody>
             <tr>
+              <td colspan="2" style="text-align:center">
+                Edit Contact Details
+              </td>
+            </tr>
+            <tr>
               <td style="border-right: 4px solid rgba(0,0,0,0);border-bottom: 2px solid rgba(0,0,0,0)">
-                <label for="firstname">
+                <label for="firstname" value="Sam">
                   First Name
                 </label>
               </td>
@@ -120,7 +125,7 @@
     <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
     <span class="button column padding testButton" id="button6">Save Contact</span><br>
     <!---------------------------- HIDDEN BUTTONS ---------------------------->
-    <span class="hiddenButton"></span>
+    <span class="hiddenButton">
       <span class="button column padding testButton" id="button7">[button label]</span><br>
       <span class="button column padding testButton" id="button8">[button label]</span><br>
       <span class="button column padding testButton" id="button9">[button label]</span><br>
@@ -135,7 +140,7 @@
       <span class="button column padding testButton" id="button18">[button label]</span><br>
       <span class="button column padding testButton" id="button19">[button label]</span><br>
       <span class="button column padding testButton" id="button20">[button label]</span><br>
-    </span>
+    </span></span>
     <!------------------------------------------------------------------------></span>
     <!--------------------------- TABLE OF RESULTS ---------------------------><table class="textFrame" id="textFrame">
     <!------------------------- TEXT BOX -------------------------->
@@ -333,7 +338,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "35";
-      var scriptVersion = "62";
+      var scriptVersion = "63";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
