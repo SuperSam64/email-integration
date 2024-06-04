@@ -14,8 +14,8 @@ retreive these values, I just need to link the 2.) Some notes
 - Loading text will display while data is being retreived
 - Some fields will not show for CCAs. if profileType is anything besides "Customer Care Advocate"
 they will show. 	 		*/
-var mondayKey = tokens[2];
-console.log(tokens[2]);/*'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
+
+/*'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
     '2MTgzMDAyNSwiYWFpIjoxMSwidWlkIjo' +
     'zNTkxMTU2MSwiaWFkIjoiMjAyNC0wNS0' +
     'yMFQyMTo1NDoxNS43NzlaIiwicGVyIjo' +
@@ -25,7 +25,7 @@ console.log(tokens[2]);/*'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjM' +
 // =======================================================================================================
 // =======================================================================================================
 var allPosts = [];
-async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail){
+async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail,key){
     // If no order number provided, fill with "[undefined]" (this will keep from searching an empty string,
     // which will return everything)
     if(searchOrder == ""){
@@ -99,7 +99,7 @@ async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail
         method: 'post',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization' : mondayKey,
+            'Authorization' : key,
             'API-Version' : '2024-04'
         },
         body: JSON.stringify({
@@ -108,8 +108,8 @@ async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail
     })
     return response.json();
 }
-async function searchMondayPosts(ordernumInput,custIDInput,phonenumInput,emailInput){
-    const monObj = await getMondayData(ordernumInput,custIDInput,phonenumInput,emailInput);
+async function searchMondayPosts(ordernumInput,custIDInput,phonenumInput,emailInput,keyInput){
+    const monObj = await getMondayData(ordernumInput,custIDInput,phonenumInput,emailInput,keyInput);
     // Run the following functions to check each board
     CCAformList(monObj.data.CCAform[0].items_page.items, ordernumInput,
         custIDInput, phonenumInput,	emailInput,	profileType);
