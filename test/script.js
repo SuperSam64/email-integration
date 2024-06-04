@@ -1066,7 +1066,7 @@ async function lookupContact(input){
     else {
         $("#body21").text("NO CONTACT DATA");
     }
-    searchMondayPosts("16164973","5174273","7733083612","scott.youngs@psrmechanical.com",tokens[2]);
+    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 
 // ======== BUTTONS ========
