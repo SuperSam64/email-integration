@@ -250,8 +250,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "37";
-      var scriptVersion = "65";
+      var revisionNumber = "38";
+      var scriptVersion = "66";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
@@ -304,6 +304,7 @@
     //-------------------------------------------------------------------------
     // ----------------------------- PAGE LOAD --------------------------------
     $(window).on('load',(ids) => {
+      Missive.storeSet('lastConversation', "0272d11b-a6fa-496b-a5e8-790e95076179");
       startup();
     });
     // ------------------------------------------------------------------------

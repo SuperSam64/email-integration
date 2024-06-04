@@ -116,13 +116,12 @@ function storeLastConversation(){
 }
 function getConversation(conversation){
     // THIS DOESN'T NEED TO BE A FUNCTION
-    /*if(typeof conversation == 'undefined'){
+    if(typeof conversation == 'undefined'){
         return "dae534c2-a355-45ac-8e78-e78327efda1b";
     }
     else {
         return conversation.id;
-    }*/
-    return "7987befa-bb27-4611-8fe2-5d1124790d94";
+    }
 }
 function showResults(){
     var elements = [
