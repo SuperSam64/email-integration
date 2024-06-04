@@ -251,7 +251,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "44";
-      var scriptVersion = "68";
+      var scriptVersion = "69";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
@@ -304,20 +304,20 @@
     //-------------------------------------------------------------------------
     // ----------------------------- PAGE LOAD --------------------------------
     $(window).on('load',(ids) => {
-      startup();
+      //startup();
     });
     // ------------------------------------------------------------------------
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
-      if(initialized == true){
+      // if(initialized == true){
           Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
           storeLastConversation(conversations[0]);
-          update(currentConversation);
-          showResults();
-          //console.log(currentConversation)
+          //update(currentConversation);
+          //showResults();
+          console.log(currentConversation)
         })
-      }
+      //}
     })
     //-------------------------------------------------------------------------
     {//----------------------------- RESETS -----------------------------------

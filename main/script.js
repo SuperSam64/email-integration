@@ -109,10 +109,11 @@ async function getTokens(){
 }
 function storeLastConversation(){
     // if a conversation is currently selected
-    if(typeof currentConversation != 'undefined'){
+    //if(typeof currentConversation != 'undefined'){
         // set the last selected conversation as the current conversation
         Missive.storeSet('lastConversation', currentConversation);
-    }
+        console.log("stored")
+    //}
 }
 function getConversation(conversation){
     // THIS DOESN'T NEED TO BE A FUNCTION
