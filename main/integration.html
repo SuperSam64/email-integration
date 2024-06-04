@@ -10,7 +10,7 @@
     <script type="text/javascript" src="monday_search.js"></script>
     <script src="script.js"></script>
   </head>
-  <body style="width:92%;height:96%;margin:auto">
+  <body style="width:92%;margin:auto;overflow:hidden">
     <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
       <div id="topBanner" class="column-vertical padding margin section" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color: var(--missive-conversation-list-background-color)">
     <!------------------------------- HEADER ---------------------------------><span>
@@ -43,21 +43,7 @@
       <span class="button column padding testButton" id="button3">Insert Signature</span><br>
       <span class="button column padding testButton" id="button4">Insert Tasks</span><br>
       <span class="button column padding testButton" id="button5">Insert Reply Draft</span><br>
-      <span class="button column padding testButton" id="button6">Save Contact</span><br>    
-      <span class="button column padding testButton" id="button7">[button label]</span><br>
-      <span class="button column padding testButton" id="button8">[button label]</span><br>
-      <span class="button column padding testButton" id="button9">[button label]</span><br>
-      <span class="button column padding testButton" id="button10">[button label]</span><br>
-      <span class="button column padding testButton" id="button11">[button label]</span><br>
-      <span class="button column padding testButton" id="button12">[button label]</span><br>
-      <span class="button column padding testButton" id="button13">[button label]</span><br>
-      <span class="button column padding testButton" id="button14">[button label]</span><br>
-      <span class="button column padding testButton" id="button15">[button label]</span><br>
-      <span class="button column padding testButton" id="button16">[button label]</span><br>
-      <span class="button column padding testButton" id="button17">[button label]</span><br>
-      <span class="button column padding testButton" id="button18">[button label]</span><br>
-      <span class="button column padding testButton" id="button19">[button label]</span><br>
-      <span class="button column padding testButton" id="button20">[button label]</span><br>
+      <span class="button column padding testButton" id="button6">Save Contact</span><br>  
     </span>
     <!------------------------------------------------------------------------>
     <!--------------------------- TABLE OF RESULTS ---------------------------><table style="display:none" class="textFrame" id="textFrame">
@@ -255,7 +241,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "36";
+      var revisionNumber = "37";
       var scriptVersion = "61";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
