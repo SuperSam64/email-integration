@@ -250,7 +250,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "42";
+      var revisionNumber = "43";
       var scriptVersion = "68";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
@@ -312,13 +312,13 @@
       // if(initialized == true){
           Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
-          storeLastConversation(conversations[0]);
+          //storeLastConversation(conversations[0]);
+          Missive.storeSet('lastConversation', currentConversation)
           //update(currentConversation);
           //showResults();
-          //console.log("on change" + currentConversation.id)
+          console.log(currentConversation)
         })
       //}
-      console.log(currentConversation.id);
     })
     //-------------------------------------------------------------------------
     {//----------------------------- RESETS -----------------------------------
