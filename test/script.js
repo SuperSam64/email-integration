@@ -1075,8 +1075,7 @@ function contactFormSave(first,second,third){
     console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID);
 }
 function contactFormCancel(){
-    var formSection = document.getElementById('contactForm').value;
-    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('contactForm').style.display = 'none';
     console.log("cancelled");
 }
 // ======== BUTTONS ========
