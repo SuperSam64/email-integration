@@ -2,7 +2,7 @@
     --border-color: rgba(0,0,0,0);
     --inner-thickness: 4px;
     --outer-thickness: 8px;
-      --panel-border-radius:4px;
+      --panel-border-radius:6px;
       --panel-background-color:var(--missive-conversation-list-background-color);
       --panel-border: 1px solid var(--missive-conversation-list-border-color);
   }
