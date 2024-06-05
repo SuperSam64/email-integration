@@ -10,7 +10,7 @@
       border:var(--panel-border);
       background-color:var(--panel-background-color);
       border-radius:var(--panel-border-radius);
-      padding:0px;
+      padding:4px;
       margin:0px
   }
   table{
