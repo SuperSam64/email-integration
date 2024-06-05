@@ -1068,7 +1068,12 @@ async function lookupContact(input){
     }
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
-
+function contactFormSave(first,second,third){
+    console.log("saved, " + first  + ", " + second  + ", " + third );
+}
+function contactFormCancel(){
+    console.log("cancelled");
+}
 // ======== BUTTONS ========
 function button1Clicked() {
     cancellationReply();
