@@ -3,8 +3,8 @@
     --inner-thickness: 4px;
     --outer-thickness: 8px;
       --panel-border-radius:4px;
-      --panel-background-color:#232221;
-      --panel-border: 1px solid black;
+      --panel-background-color:var(--missive-conversation-list-background-color);
+      --panel-border: 1px solid var(--missive-conversation-list-border-color);
   }
   .panel{
       border:var(--panel-border);
