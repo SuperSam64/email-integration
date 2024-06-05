@@ -1,8 +1,8 @@
 <html>
   <head>
     <title>V2</title>
-    <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
     <link rel="stylesheet" href="form.css">
+    <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
     <link id="access-level" href="access_level_cca.css" rel="stylesheet">
     <link rel="stylesheet" href="monday.css">
     <link href="style.css" rel="stylesheet">
@@ -37,82 +37,83 @@
     <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
     <div>
-      <form action="/action_page.php">
-        <table style="margin-top:160px" class="form">
-          <th colspan="2">
-            Title
-          </th>
-          <tr>
-            <td class="left middle caption">
-              <label for="firstname">
-                First Name
-              </label>
-            </td>
-            <td class="right middle caption">
-              <label for=" lastname">
-                Last Name
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td class="left middle input">
-              <input type="text" id="firstname" name="firstname" value="Sam">
-            </td>
-            <td class="right middle input">
-              <input type="text" id="lastname" name="lastname" value="Nimmo">
-            </td>
-          </tr>
-          <tr>
-            <td class="left middle caption">
-              <label for="custID">
-                Customer ID
-              </label>
-            </td>
-            <td class="right middle caption">
-              <label for="ordernum">
-                Order Number
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td class="left middle input">
-              <input type="text" id="custID" name="custID" value="7654321">
-            </td>
-            <td class="right middle input">
-              <input type="text" id="ordernum" name="ordernum" value="12345678">
-            </td>
-          </tr>
-          <tr>
-            <td class="left middle caption">
-              <label for="phonenum">
-                Phone Number
-              </label>
-            </td>
-            <td class="right middle caption">
-              <label for="phonenum">
-                Email
-              </label>
-            </td>
-          </tr>
-          <tr>
-            <td class="left middle input">
-              <input type="text" id="phonenum" name="phonenum" value="(704) 555-5555">
-            </td>
-            <td class="right middle input">
-              <input type="text" id="email" name="email" value="sampson@filtersfast.com">
-            </td>
-          </tr>
-          <tr>
-            <td  class="bottom left button">
-              <input class="button form-left, form-bottom" style="width:100%" type="submit" value="Save Contact">
-            </td>
-            <td class="bottom right button">
-              <input class="button" style="width:100%" type="submit" value="Cancel">
-            </td>
-          </tr>
-        </table>
-      </form>
-    </div>
+      <div class="panel" style="margin-top:160px">
+        <form action="/action_page.php">
+          <table class="form">
+            <th colspan="2">
+              Title
+            </th>
+            <tr>
+              <td class="left middle caption">
+                <label for="firstname">
+                  First Name
+                </label>
+              </td>
+              <td class="right middle caption">
+                <label for=" lastname">
+                  Last Name
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="left middle input">
+                <input type="text" id="firstname" name="firstname" value="Sam">
+              </td>
+              <td class="right middle input">
+                <input type="text" id="lastname" name="lastname" value="Nimmo">
+              </td>
+            </tr>
+            <tr>
+              <td class="left middle caption">
+                <label for="custID">
+                  Customer ID
+                </label>
+              </td>
+              <td class="right middle caption">
+                <label for="ordernum">
+                  Order Number
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="left middle input">
+                <input type="text" id="custID" name="custID" value="7654321">
+              </td>
+              <td class="right middle input">
+                <input type="text" id="ordernum" name="ordernum" value="12345678">
+              </td>
+            </tr>
+            <tr>
+              <td class="left middle caption">
+                <label for="phonenum">
+                  Phone Number
+                </label>
+              </td>
+              <td class="right middle caption">
+                <label for="phonenum">
+                  Email
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="left middle input">
+                <input type="text" id="phonenum" name="phonenum" value="(704) 555-5555">
+              </td>
+              <td class="right middle input">
+                <input type="text" id="email" name="email" value="sampson@filtersfast.com">
+              </td>
+            </tr>
+            <tr>
+              <td  class="bottom left button">
+                <input style="width:100%" type="submit" value="Save Contact">
+              </td>
+              <td class="bottom right button">
+                <input style="width:100%" type="submit" value="Cancel">
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
     <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
@@ -334,7 +335,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "37";
+      var revisionNumber = "38";
       var scriptVersion = "64";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
