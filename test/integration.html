@@ -38,7 +38,7 @@
     <!------------------------------------------------------------------------></div></div>
     <div>
       <div class="panel" style="margin-top:160px;margin-bottom:12px">
-        <form action="/action_page.php">
+        <form id="contactForm" action="/action_page.php">
           <table class="form">
             <th colspan="2">
               Title
@@ -57,10 +57,10 @@
             </tr>
             <tr>
               <td class="left middle input">
-                <input type="text" id="firstname" name="firstname" value="Sam">
+                <input type="text" id="firstname" name="formFirstname" value="Sam">
               </td>
               <td class="right middle input">
-                <input type="text" id="lastname" name="lastname" value="Nimmo">
+                <input type="text" id="lastname" name="formLastname" value="Nimmo">
               </td>
             </tr>
             <tr>
@@ -77,7 +77,7 @@
             </tr>
             <tr>
               <td class="left middle input">
-                <input type="text" id="custID" name="custID" value="7654321">
+                <input type="text" id="custID" name="formCustID" value="7654321">
               </td>
               <td class="right middle input">
                 <input type="text" id="ordernum" name="ordernum" value="12345678">
@@ -335,8 +335,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "39";
-      var scriptVersion = "66";
+      var revisionNumber = "40";
+      var scriptVersion = "67";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

@@ -1069,9 +1069,14 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(first,second,third){
-    console.log("saved, " + first  + ", " + second  + ", " + third );
+    var formFirstname = document.getElementById('formFirstname').value;
+    var formLastname = document.getElementById('formLastname').value;
+    var formCustID = document.getElementById('formCustID').value;
+    console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID);
 }
 function contactFormCancel(){
+    var formSection = document.getElementById('contactForm').value;
+    document.getElementById('formSection').style.display = 'none';
     console.log("cancelled");
 }
 // ======== BUTTONS ========

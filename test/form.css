@@ -7,7 +7,8 @@
       --panel-border: 1px solid var(--missive-conversation-list-border-color);
   }
   .panel{
-      border:var(--panel-border);
+    font-size:16;  
+    border:var(--panel-border);
       background-color:var(--panel-background-color);
       border-radius:var(--panel-border-radius);
       padding:4px;
