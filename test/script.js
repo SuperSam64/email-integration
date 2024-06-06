@@ -1082,8 +1082,7 @@ function contactFormSave(first,second,third){
                 .replaceAll("| ","").replaceAll(" |","");
         }
     }
-    formFirstname = ((formFirstname + " |").split(" ")[0].slice(0,1).toUpperCase() + 
-                    formFirstname + " |").split(" ")[0].slice(0,1).toUpperCase();
+    
     var formLastname = document.getElementById('formLastname').value;
     var formCustID = document.getElementById('formCustID').value;
     var formPhoneNumber = document.getElementById('formPhoneNumber').value;
