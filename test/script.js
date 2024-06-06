@@ -1069,13 +1069,27 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(first,second,third){
-    var formFirstname = document.getElementById('formFirstname').value;
+    var formFirstname = document.getElementById('formFirstname').value.trim();
+    // if empty, empty. if contains @, it's an email, save nothing. if 1 character, capitalize. if > 1 character, capitalize first letter. remove spaces from beginning and end.
+    if(formFirstName.replaceAll(" ","") != "" && !formFirstName.includes("@")){
+        if(formFirstName.length.replaceAll(" ","") == 1){
+            formFirstName = formFirstName.toUpperCase();
+        }
+        else{
+            formFirstName = (
+                "|" + formFirstName.slice(0,1).toUpperCase() + 
+                formFirstName.slice(1,formFirstName.length).toLowerCase() + "|")
+                .replaceAll("| ","").replaceAll(" |","");
+        }
+    }
+    firstname = ((firstname + " |").split(" ")[0].slice(0,1).toUpperCase() + 
+                    firstname + " |").split(" ")[0].slice(0,1).toUpperCase();
     var formLastname = document.getElementById('formLastname').value;
     var formCustID = document.getElementById('formCustID').value;
     var formPhoneNumber = document.getElementById('formPhoneNumber').value;
     var formEmail = document.getElementById('formLasformEmailtname').value;
     var formOrderNumbers = ("|," + document.getElementById('formOrderNumbers').value).trim().split(",").shift();
-    //for loops to normalize order numbers, emails, customer IDs, names, and order numbers
+    //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID  + ", " + formPhoneNumber  + ", " + formEmail  + ", " + formOrderNumbers);
 }
 function contactFormCancel(){
