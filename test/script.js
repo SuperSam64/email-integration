@@ -1086,7 +1086,7 @@ function contactFormSave(first,second,third){
     var formLastname = document.getElementById('formLastname').value;
     var formCustID = document.getElementById('formCustID').value;
     var formPhoneNumber = document.getElementById('formPhoneNumber').value;
-    var formEmail = document.getElementById('formLasformEmailtname').value;
+    var formEmail = document.getElementById('formEmail').value;
     var formOrderNumbers = ("|," + document.getElementById('formOrderNumbers').value).trim().split(",").shift();
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID  + ", " + formPhoneNumber  + ", " + formEmail  + ", " + formOrderNumbers);
