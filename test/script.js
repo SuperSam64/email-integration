@@ -1071,19 +1071,19 @@ async function lookupContact(input){
 function contactFormSave(first,second,third){
     var formFirstname = document.getElementById('formFirstname').value.trim();
     // if empty, empty. if contains @, it's an email, save nothing. if 1 character, capitalize. if > 1 character, capitalize first letter. remove spaces from beginning and end.
-    if(formFirstName.replaceAll(" ","") != "" && !formFirstName.includes("@")){
-        if(formFirstName.length.replaceAll(" ","") == 1){
-            formFirstName = formFirstName.toUpperCase();
+    if(formFirstname.replaceAll(" ","") != "" && !formFirstname.includes("@")){
+        if(formFirstname.length.replaceAll(" ","") == 1){
+            formFirstname = formFirstname.toUpperCase();
         }
         else{
             formFirstName = (
-                "|" + formFirstName.slice(0,1).toUpperCase() + 
-                formFirstName.slice(1,formFirstName.length).toLowerCase() + "|")
+                "|" + formFirstname.slice(0,1).toUpperCase() + 
+                formFirstname.slice(1,formFirstname.length).toLowerCase() + "|")
                 .replaceAll("| ","").replaceAll(" |","");
         }
     }
-    firstname = ((firstname + " |").split(" ")[0].slice(0,1).toUpperCase() + 
-                    firstname + " |").split(" ")[0].slice(0,1).toUpperCase();
+    formFirstname = ((formFirstname + " |").split(" ")[0].slice(0,1).toUpperCase() + 
+                    formFirstname + " |").split(" ")[0].slice(0,1).toUpperCase();
     var formLastname = document.getElementById('formLastname').value;
     var formCustID = document.getElementById('formCustID').value;
     var formPhoneNumber = document.getElementById('formPhoneNumber').value;
