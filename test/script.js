@@ -1072,7 +1072,7 @@ function contactFormSave(first,second,third){
     var formFirstname = document.getElementById('formFirstname').value.trim();
     // if empty, empty. if contains @, it's an email, save nothing. if 1 character, capitalize. if > 1 character, capitalize first letter. remove spaces from beginning and end.
     if(formFirstname.replaceAll(" ","") != "" && !formFirstname.includes("@")){
-        if(formFirstname.length.replaceAll(" ","") == 1){
+        if(formFirstname.replaceAll(" ","").length == 1){
             formFirstname = formFirstname.toUpperCase();
         }
         else{
