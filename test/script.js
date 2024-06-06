@@ -1072,7 +1072,11 @@ function contactFormSave(first,second,third){
     var formFirstname = document.getElementById('formFirstname').value;
     var formLastname = document.getElementById('formLastname').value;
     var formCustID = document.getElementById('formCustID').value;
-    console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID);
+    var formPhoneNumber = document.getElementById('formPhoneNumber').value;
+    var formEmail = document.getElementById('formLasformEmailtname').value;
+    var formOrderNumbers = ("|," + document.getElementById('formOrderNumbers').value).trim().split(",").shift();
+    //for loops to normalize order numbers, emails, customer IDs, names, and order numbers
+    console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formCustID  + ", " + formPhoneNumber  + ", " + formEmail  + ", " + formOrderNumbers);
 }
 function contactFormCancel(){
     document.getElementById('contactForm').style.display = 'none';
