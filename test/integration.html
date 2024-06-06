@@ -40,110 +40,120 @@
       <div class="panel" style="margin-top:160px;margin-bottom:12px">
         <form id="contactForm" action="/action_page.php">
           <table class="form">
-            <th colspan="2">
-              Edit Contact Information
-            </th>
-            <tr>
-              <td class="left middle caption">
-                <label for="firstname">
-                  First Name
-                </label>
-              </td>
-              <td class="right middle caption">
-                <label for=" lastname">
-                  Last Name
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="left middle input">
-                <input type="text" id="formFirstname" name="formFirstname" value="Sam">
-              </td>
-              <td class="right middle input">
-                <input type="text" id="formLastname" name="formLastname" value="Nimmo">
-              </td>
-            </tr>
-            <tr>
-              <td class="left middle caption">
-                <label for="custID">
-                  Customer ID
-                </label>
-              </td>
-              <td class="right middle caption">
-                <label for="ordernum">
-                  Order Number
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="left middle input">
-                <input type="text" id="formCustID" name="formCustID" value="7654321">
-              </td>
-              <td class="right middle input">
-                <input type="text" id="ordernum" name="ordernum" value="12345678">
-              </td>
-            </tr>
-            <tr>
-              <td class="left middle caption">
-                <label for="phonenum">
-                  Phone Number
-                </label>
-              </td>
-              <td class="right middle caption">
-                <label for="phonenum">
-                  Email
-                </label>
-              </td>
-            </tr>
-            <tr>
-              <td class="left middle input">
-                <input type="text" id="phonenum" name="phonenum" value="(704) 555-5555">
-              </td>
-              <td class="right middle input">
-                <input type="text" id="email" name="email" value="sampson@filtersfast.com">
-              </td>
-            </tr>
-            <tr>
-              <td class="bottom left">
-                <input class="button" style="width:100%" type="button" value="Save Contact" onclick="contactFormSave('1','2','3')">
-              </td>
-              <td class="bottom right ">
-                <input class="button" style="width:100%" type="button" value="Cancel" onclick="contactFormCancel()">
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <th colspan="6">
+                  Edit Customer Information
+                </th>
+              </tr>
+              <tr>
+                <td colspan="2" class="left middle caption">
+                  <label for="firstname">
+                    First Name
+                  </label>
+                </td>
+                <td colspan="2" class="middle caption">
+                  <label for="lastname">
+                    Last Name
+                  </label>
+                </td>
+                  <td colspan="2" class="right middle caption">
+                  <label for="custID">
+                    CID
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="left middle input">
+                  <input type="text" id="formFirstname" name="formFirstname" value="Sam">
+                </td>
+                <td colspan="2" class="middle input">
+                  <input type="text" id="formLastname" name="formLastname" value="Nimmo">
+                </td>
+                  <td colspan="2" class="right middle input">
+                  <input type="text" id="formCustID" name="formCustID" value="Nimmo">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="left middle caption">
+                  <label for="phonenum">
+                    Phone Number
+                  </label>
+                </td>
+                <td colspan="3" class="right middle caption">
+                  <label for="email">
+                    Email
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="left middle input">
+                  <input type="text" id="phonenum" name="phonenum" value="(704) 555-5555">
+                </td>
+                <td colspan="3" class="right middle input">
+                  <input type="text" id="email" name="email" value="sampson@filtersfast.com">
+                </td>
+              </tr>
+            </tbody>
           </table>
-        </form>
-      </div>
-      <div class="panel" style="margin-top:160px;margin-bottom:12px">
-        <table class="form">
-          <th colspan="2">
-            Contact Information
-          </th>
-          <tr>
-            <td class="left middle">
-              Sam Nimmo
-            </td>
-            <td class="right middle">
-              CID 1234567
-            </td>
-          </tr>
-          <tr>
-            <td class="left right">
-              sampson@filtersfast.com
-            </td>
-          </tr>
-          <tr>
-            <td class="left right">
-              (704) 555-5555
-            </td>
-          </tr>
-          <tr>
-            <td class="left right">
-              Order #12345678
-            </td>
-          </tr>
-        </table>
-      </div>
+        <div style="border-top:1px solid var(--missive-light-border-color)"><table class="form">
+          <table>
+            <tbody>
+              <tr>
+                <td colspan="6" class="left middle caption">
+                  <label for="orderNumbers">
+                    Order Number(s) (Separated by commas)
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="6" class="left middle input">
+                  <input type="text" id="orderNumbers" name="orderNumbers" value="12345678">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" class="bottom left">
+                  <input class="button" style="margin-top:12px;width:100%" type="button" value="Save Contact" onclick="contactFormSave('1','2','3')">
+                </td>
+                <td colspan="3" class="bottom right ">
+                  <input class="button" style="margin-top:12px;width:100%;color:gray" type="button" value="Cancel" onclick="contactFormCancel()">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+    <div class="panel" style="margin-top:160px;margin-bottom:12px">
+      <table class="form">
+        <th colspan="2">
+          Contact Information
+        </th>
+        <tr>
+          <td class="left middle">
+            Sam Nimmo
+          </td>
+          <td class="right middle">
+            CID 1234567
+          </td>
+        </tr>
+        <tr>
+          <td class="left right">
+            sampson@filtersfast.com
+          </td>
+        </tr>
+        <tr>
+          <td class="left right">
+            (704) 555-5555
+          </td>
+        </tr>
+        <tr>
+          <td class="left right">
+            Order #12345678
+          </td>
+        </tr>
+      </table>
+    </div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
     <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
@@ -365,7 +375,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "43";
+      var revisionNumber = "44";
       var scriptVersion = "69";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
