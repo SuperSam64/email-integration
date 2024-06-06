@@ -96,27 +96,27 @@
               </tr>
             </tbody>
           </table>
-        <div style="border-top:1px solid var(--missive-light-border-color)"><table class="form">
-          <table>
+        <div style="border-top:1px solid var(--missive-light-border-color)">
+          <table class="form">
             <tbody>
               <tr>
-                <td colspan="6" class="left middle caption">
+                <td colspan="2" class="left right caption">
                   <label for="orderNumbers">
                     Order Number(s) (Separated by commas)
                   </label>
                 </td>
               </tr>
               <tr>
-                <td colspan="6" class="left middle input">
+                <td colspan="2" class="left right input">
                   <input type="text" id="orderNumbers" name="orderNumbers" value="12345678">
                 </td>
               </tr>
               <tr>
-                <td colspan="3" class="bottom left">
+                <td class="bottom left">
                   <input class="button" style="margin-top:12px;width:100%" type="button" value="Save Contact" onclick="contactFormSave('1','2','3')">
                 </td>
-                <td colspan="3" class="bottom right ">
-                  <input class="button" style="margin-top:12px;width:100%;color:gray" type="button" value="Cancel" onclick="contactFormCancel()">
+                <td class="bottom right ">
+                  <input class="button" style="margin-top:12px;width:100%;background-color:gray" type="button" value="Cancel" onclick="contactFormCancel()">
                 </td>
               </tr>
             </tbody>
@@ -375,7 +375,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "44";
+      var revisionNumber = "45";
       var scriptVersion = "69";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
