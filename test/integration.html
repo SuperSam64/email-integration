@@ -127,7 +127,7 @@
     <div class="panel" style="margin-top:160px;margin-bottom:12px">
       <table class="form">
         <th colspan="2">
-          Contact Information
+          Customer Information
         </th>
         <tr>
           <td class="left middle">
@@ -141,18 +141,23 @@
           <td class="left right">
             sampson@filtersfast.com
           </td>
-        </tr>
-        <tr>
           <td class="left right">
             (704) 555-5555
           </td>
         </tr>
-        <tr>
-          <td class="left right">
-            Order #12345678
-          </td>
-        </tr>
       </table>
+      <div style="border-top:1px solid var(--missive-light-border-color)">
+        <table>
+          <tbody>
+            <tr>
+              <td class="left right">
+                Order Number #12345678
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </form>
     </div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
@@ -375,7 +380,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "45";
+      var revisionNumber = "46";
       var scriptVersion = "69";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
