@@ -1081,7 +1081,7 @@ function contactFormSave(first,second,third){
     if(formLastName.includes("@")){
         formLastName = "";
     }
-    else if( formLastNamereplaceAll(".","").length > 2 && formLastName.toUpperCase() === formLastName){
+    else if( formLastName.replaceAll(".","").length > 2 && formLastName.toUpperCase() === formLastName){
         formLastName = formLastName.slice(0,1).toUpperCase() + formLastName.slice(1,formLastName.length).toLowerCase();
     }
     var formFullname = [formFirstName, formLastName].join(" ");
