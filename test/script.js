@@ -1076,7 +1076,7 @@ function contactFormSave(first,second,third){
             formFirstname = formFirstname.toUpperCase();
         }
         else{
-            formFirstName = (
+            formFirstname = (
                 "|" + formFirstname.slice(0,1).toUpperCase() + 
                 formFirstname.slice(1,formFirstname.length).toLowerCase() + "|")
                 .replaceAll("| ","").replaceAll(" |","");
