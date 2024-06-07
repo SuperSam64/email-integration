@@ -1070,35 +1070,49 @@ async function lookupContact(input){
 }
 function contactFormSave(first,second,third){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
-    var formFirstname = ("|" + document.getElementById('formFirstname').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
-    if(formFirstname.includes("@")){
-        formFirstname = "";
+    var formFirstName = ("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
+    if(formFirstName.includes("@")){
+        formFirstName = "";
     }
-    else if( formFirstname.length.replaceAll(".","") > 2 && formFirstname.toUperCase() === formFirstname){
-        formFirstname = formFirstname.slice(0,1).toUperCase() + formFirstname.slice(1,formFirstname.length).toLowerCase();
+    else if( formFirstName.replaceAll(".","").length > 2 && formFirstName.toUperCase() === formFirstName){
+        formFirstName = formFirstName.slice(0,1).toUperCase() + formFirstName.slice(1,formFirstName.length).toLowerCase();
     }
-    var formLastname = ("|" + document.getElementById('formLastname').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
-    if(formLastname.includes("@")){
-        formLastname = "";
+    var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
+    if(formLastName.includes("@")){
+        formLastName = "";
     }
-    else if( formLastname.length > 2 && formLastname.toUperCase() === formLastname){
-        formLastname = formLastname.slice(0,1).toUperCase() + formLastname.slice(1,formLastname.length).toLowerCase();
+    else if( formLastNamereplaceAll(".","").length > 2 && formLastName.toUperCase() === formLastName){
+        formLastName = formLastName.slice(0,1).toUperCase() + formLastName.slice(1,formLastName.length).toLowerCase();
     }
-    var formFullname = [formFirstname, formLastname].join(" ");
+    var formFullname = [formFirstName, formLastName].join(" ");
     
     // blank leading spaces CUS2904 0012345 CUS-123 #1234
-    var formCustID = document.getElementById('formCustID').value;
+    var formCustID = document.getElementById('formCustID').value.trim().replaceAll(" ","");
     if(formCustID.slice(0,3).toUpperCase() != "CUS" && formCustID != ""){
         formCustID = formCustID * 1
     }
     // various formats, blank, longer than 10 digits, extensions
-    var formPhoneNumber = document.getElementById('formPhoneNumber').value;
+    var formPhoneNumber = (document.getElementById('formPhoneNumber').value.trim()
+    .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
+    if(formPhoneNumber.slice(0,1) == "1"){
+        formPhoneNumber = formPhoneNumber.slice(1,formPhoneNumber.length);
+    }
+    if(formPhoneNumber.length > 6){
+        if(formPhoneNumber.length > 10){
+            formPhoneNumber = ("(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + 
+            formPhoneNumber.slice(6,10) + " " + formPhoneNumber.slice(10,formPhoneNumber.length));
+        }
+        else{
+            formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
+        }
+    }
+    
     // blank, leading spaces, mix of capitalization
-    var formEmail = document.getElementById('formEmail').value;
+    var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
     var formOrderNumbers = ("|," + document.getElementById('formOrderNumbers').value).trim().split(",").shift();
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
-    console.log("saved, " + formFirstname  + ", " + formLastname  + ", " + formFullname  + ", " + formCustID  + ", " + formPhoneNumber  + ", " + formEmail  + ", " + formOrderNumbers);
+    console.log("saved, " + formFirstName  + ", " + formLastName  + ", " + formFullname  + ", " + formCustID  + ", " + formPhoneNumber  + ", " + formEmail  + ", " + formOrderNumbers);
 }
 function contactFormCancel(){
     document.getElementById('contactForm').style.display = 'none';
