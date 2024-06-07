@@ -84,8 +84,8 @@ async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail
         [addField("text30","order",searchOrder),addField("text57","ID",searchCustID),
             addField("text6","email",searchEmail),addField("text24","phone",searchPhoneNum)].join(",")) +
     buildBoard( // REJECTED ORDERS BOARD
-        "rejectedOrder","5440532825",["date","status","text9","text50","phone_number__1"].join('","'),
-        [addField("text50","ID",searchCustID),addField("phone_number__1","phone",searchPhoneNum),
+        "rejectedOrder","5440532825",["date","status","text9","text50","phone_number5__1"].join('","'),
+        [addField("text50","ID",searchCustID),addField("phone_number5__1","phone",searchPhoneNum),
             addField("text9","email",searchEmail)].join(",")) +
     buildBoard( // RETURN COMMENTS BOARD
         "returnComments","6635923540",["last_updated4__1","status","text8__1","text__1"].join('","'),
