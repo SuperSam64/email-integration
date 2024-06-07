@@ -1075,7 +1075,7 @@ function contactFormSave(first,second,third){
         formFirstName = "";
     }
     else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
-        if(formFirstName.toUpperCase() !== formFirstName){
+        if(formFirstName.toUpperCase() === formFirstName){
             document.getElementById('valuePlaceholder').innerText = formFirstName;
             document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
             formFirstName = document.getElementById('valuePlaceholder').innerText;
@@ -1090,7 +1090,7 @@ function contactFormSave(first,second,third){
         formLastName = "";
     }
     else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2){
-        if(formFirstName.toUpperCase() !== formFirstName){
+        if(formFirstName.toUpperCase() === formFirstName){
             document.getElementById('valuePlaceholder').innerText = formLastName;
             document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
             formLastName = document.getElementById('valuePlaceholder').innerText;
