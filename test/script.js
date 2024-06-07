@@ -1077,9 +1077,10 @@ function contactFormSave(first,second,third){
     else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2 && formFirstName.toUpperCase() !== formFirstName){
         document.getElementById('valuePlaceholder').innerText = formFirstName;
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
         formFirstName = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
+        document.getElementById('valuePlaceholder').innerText = formFirstName;
+        document.getElementById('valuePlaceholder').style.textTransform = "uppercase";
+        formFirstName = document.getElementById('valuePlaceholder').innerText;
     }
     var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formLastName.includes("@")){
@@ -1088,7 +1089,9 @@ function contactFormSave(first,second,third){
     else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2 && formLastName.toUpperCase() === formLastName){
         document.getElementById('valuePlaceholder').innerText = formLastName;
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
+        formLastName = document.getElementById('valuePlaceholder').innerText;
+        document.getElementById('valuePlaceholder').innerText = formLastName;
+        document.getElementById('valuePlaceholder').style.textTransform = "uppercase";
         formLastName = document.getElementById('valuePlaceholder').innerText;
         document.getElementById('valuePlaceholder').innerText ="";
     }
