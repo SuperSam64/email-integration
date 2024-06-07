@@ -1074,7 +1074,7 @@ function contactFormSave(first,second,third){
     if(formFirstName.includes("@")){
         formFirstName = "";
     }
-    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2 && formFirstName.toUpperCase() !== formFirstName){
+    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
         document.getElementById('valuePlaceholder').innerText = formFirstName;
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
         formFirstName = document.getElementById('valuePlaceholder').innerText;
@@ -1086,7 +1086,7 @@ function contactFormSave(first,second,third){
     if(formLastName.includes("@")){
         formLastName = "";
     }
-    else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2 && formLastName.toUpperCase() === formLastName){
+    else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2){
         document.getElementById('valuePlaceholder').innerText = formLastName;
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
         formLastName = document.getElementById('valuePlaceholder').innerText;
