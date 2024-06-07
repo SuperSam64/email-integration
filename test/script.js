@@ -1079,7 +1079,7 @@ function contactFormSave(first,second,third){
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
         formFirstName = document.getElementById('valuePlaceholder').innerText;
         document.getElementById('valuePlaceholder').innerText = formFirstName;
-        document.getElementById('valuePlaceholder').style.textTransform = "uppercase";
+        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
         formFirstName = document.getElementById('valuePlaceholder').innerText;
     }
     var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
@@ -1091,7 +1091,7 @@ function contactFormSave(first,second,third){
         document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
         formLastName = document.getElementById('valuePlaceholder').innerText;
         document.getElementById('valuePlaceholder').innerText = formLastName;
-        document.getElementById('valuePlaceholder').style.textTransform = "uppercase";
+        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
         formLastName = document.getElementById('valuePlaceholder').innerText;
         document.getElementById('valuePlaceholder').innerText ="";
     }
