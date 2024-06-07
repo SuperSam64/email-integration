@@ -1075,21 +1075,26 @@ function contactFormSave(first,second,third){
         formFirstName = "";
     }
     else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
-        document.getElementById('valuePlaceholder').innerText = formFirstName;
-        document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-        formFirstName = document.getElementById('valuePlaceholder').innerText;
+        if(formFirstName.toUpperCase() !== formFirstName){
+            document.getElementById('valuePlaceholder').innerText = formFirstName;
+            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
+            formFirstName = document.getElementById('valuePlaceholder').innerText;
+        }
         document.getElementById('valuePlaceholder').innerText = formFirstName;
         document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
         formFirstName = document.getElementById('valuePlaceholder').innerText;
+        document.getElementById('valuePlaceholder').innerText ="";
     }
     var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formLastName.includes("@")){
         formLastName = "";
     }
     else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2){
-        document.getElementById('valuePlaceholder').innerText = formLastName;
-        document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-        formLastName = document.getElementById('valuePlaceholder').innerText;
+        if(formFirstName.toUpperCase() !== formFirstName){
+            document.getElementById('valuePlaceholder').innerText = formLastName;
+            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
+            formLastName = document.getElementById('valuePlaceholder').innerText;
+        }
         document.getElementById('valuePlaceholder').innerText = formLastName;
         document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
         formLastName = document.getElementById('valuePlaceholder').innerText;
