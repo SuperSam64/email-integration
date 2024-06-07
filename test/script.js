@@ -1070,14 +1070,16 @@ async function lookupContact(input){
 }
 function contactFormSave(first,second,third){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
-    var formFirstName = ("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
+    var formFirstName = ("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formFirstName.includes("@")){
         formFirstName = "";
     }
-    else if( formFirstName.replaceAll(".","").length > 2 && formFirstName.toUpperCase() === formFirstName){
-        formFirstName = formFirstName.slice(0,1).toUpperCase() + formFirstName.slice(1,formFirstName.length).toLowerCase();
+    else if( formFirstName.replaceAll(".","").length > 2 && formFirstName.toUpperCase() !== formFirstName){
+        document.getElementById('valuePlaceholder').innerText = formFirstName;
+        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
+        formFirstName = document.getElementById('valuePlaceholder').innerText;
     }
-    var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
+    var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formLastName.includes("@")){
         formLastName = "";
     }
