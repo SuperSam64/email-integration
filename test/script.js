@@ -1074,15 +1074,15 @@ function contactFormSave(first,second,third){
     if(formFirstName.includes("@")){
         formFirstName = "";
     }
-    else if( formFirstName.replaceAll(".","").length > 2 && formFirstName.toUperCase() === formFirstName){
-        formFirstName = formFirstName.slice(0,1).toUperCase() + formFirstName.slice(1,formFirstName.length).toLowerCase();
+    else if( formFirstName.replaceAll(".","").length > 2 && formFirstName.toUpperCase() === formFirstName){
+        formFirstName = formFirstName.slice(0,1).toUpperCase() + formFirstName.slice(1,formFirstName.length).toLowerCase();
     }
     var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("||","");
     if(formLastName.includes("@")){
         formLastName = "";
     }
-    else if( formLastNamereplaceAll(".","").length > 2 && formLastName.toUperCase() === formLastName){
-        formLastName = formLastName.slice(0,1).toUperCase() + formLastName.slice(1,formLastName.length).toLowerCase();
+    else if( formLastNamereplaceAll(".","").length > 2 && formLastName.toUpperCase() === formLastName){
+        formLastName = formLastName.slice(0,1).toUpperCase() + formLastName.slice(1,formLastName.length).toLowerCase();
     }
     var formFullname = [formFirstName, formLastName].join(" ");
     
