@@ -394,7 +394,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var firstRun = true;
       var baseVersion = "11";
-      var revisionNumber = "60";
+      var revisionNumber = "61";
       var scriptVersion = "91";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
@@ -462,6 +462,8 @@
     Missive.on('change:conversations', (ids) => {
       //if(firstRun){
         //startup();
+        var convoExists = Missive.storeGet('lastConversation');
+        console.log(convoExists)
       //}
       if(initialized == true){
           Missive.fetchConversations(ids).then((conversations) => {		
