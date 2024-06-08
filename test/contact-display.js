@@ -45,7 +45,8 @@ function copyToClipboard(type, duration) {
 		else{
 			clipboard = remove[index];
 		}
-        document.execCommand("copy")
+        clipboard.select();
+        document.execCommand("copy");
         /*navigator.permissions.query({
             name: "clipboard-write"
         }).then((result) => {
