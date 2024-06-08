@@ -394,7 +394,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var firstRun = true;
       var baseVersion = "11";
-      var revisionNumber = "59";
+      var revisionNumber = "60";
       var scriptVersion = "91";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
@@ -449,7 +449,7 @@
     // ----------------------------- PAGE LOAD --------------------------------
     $(window).on('load',(ids) => {
       try{
-        startup();
+        //startup();
         console.log("tried startup")
       }
       catch(err){
