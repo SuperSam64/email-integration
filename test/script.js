@@ -1129,7 +1129,6 @@ function contactFormSave(first,second,third){
             formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
         }
     }
-    
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
