@@ -392,9 +392,9 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
-      var firstRun = false;
+      var firstRun = true;
       var baseVersion = "11";
-      var revisionNumber = "58";
+      var revisionNumber = "59";
       var scriptVersion = "91";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
@@ -454,7 +454,7 @@
       }
       catch(err){
         firstRun = true;
-        console.log("coudlnt' startup")
+        console.log(err.message);
       }
     });
     // ------------------------------------------------------------------------
