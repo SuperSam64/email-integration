@@ -9,7 +9,7 @@ function copyToClipboard(type, duration) {
 		var orderPosition = (type.slice(5,6) * 1);
 		var clipboard = document.getElementById("orderField" + orderPosition).innerText;
 		clipboard = clipboard.replace("Order #","");
-		navigator.clipboard.writeText(clipboard);
+		//navigator.clipboard.writeText(clipboard);
 		var popup = document.getElementById("orderPopup" + orderPosition);
 		popup.innerText = "Order #" + clipboard + " copied!";
 	}
