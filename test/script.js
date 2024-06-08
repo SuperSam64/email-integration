@@ -1135,6 +1135,20 @@ function contactFormCancel(){
     document.getElementById('contactForm').style.display = 'none';
     console.log("cancelled");
 }
+async function firstRunCheck(){
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        // set the current conversation as the last conversation since no conversation has been selected yet
+        currentConversation = conversation;
+        // update the data based on the newly set current conversation
+        if(typeof currentConversation == 'undefined'){
+            console.log("is not defined")
+        }
+        else{
+            console.log("variable exists")
+        }
+    });
+}
 // ======== BUTTONS ========
 function button1Clicked() {
     cancellationReply();
