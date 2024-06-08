@@ -45,7 +45,20 @@ function copyToClipboard(type, duration) {
 		else{
 			clipboard = remove[index];
 		}
-        document.execCommand( 'copy', false, clipboard);
+
+
+        const textArea = document.createElement("textarea");
+        textArea.value = clipboard;
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+        } catch (err) {
+            console.error('Unable to copy to clipboard', err);
+        }
+        document.body.removeChild(textArea);
+
         navigator.permissions.query({
             name: "clipboard-write"
         }).then((result) => {
