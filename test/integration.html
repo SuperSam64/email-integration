@@ -4,11 +4,13 @@
     <link rel="stylesheet" href="form.css">
     <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
     <link id="access-level" href="access_level_cca.css" rel="stylesheet">
+    <link rel="stylesheet" href="contact-display.css">
     <link rel="stylesheet" href="monday.css">
     <link href="style.css" rel="stylesheet">
     <script src="https://integrations.missiveapp.com/missive.js"></script>
     <script type="text/javascript" src="monday_colors.js"></script>
     <script type="text/javascript" src="monday_search.js"></script>
+    <script type="text/javascript" src="contact-display.js"></script>
     <script src="script.js"></script>
   </head>
   <body style="width:92%;height:96%;margin:auto">
@@ -127,40 +129,41 @@
       </form>
     </div>
     <div class="panel" style="margin-top:160px;margin-bottom:12px">
-      <table class="form">
-        <th colspan="2">
-          Customer Information
-        </th>
-        <tr>
-          <td class="left middle">
-            Sam Nimmo
-          </td>
-          <td class="right middle">
-            CID 1234567
-          </td>
-        </tr>
-        <tr>
-          <td class="left right">
-            sampson@filtersfast.com
-          </td>
-          <td class="left right">
-            (704) 555-5555
-          </td>
-        </tr>
-      </table>
-      <div style="border-top:1px solid var(--missive-light-border-color)">
-        <table class="form">
-          <tbody>
-            <tr>
-              <td class="left right">
-                Order Number #12345678
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </form>
-    </div>
+			<table class="form">
+				<th colspan="2">
+					Customer Information
+				</th>
+				<tr>
+					<td class="left middle fieldText" id="nameField" onclick="copyToClipboard('name',animationLength)">
+						Sam Nimmo
+						<span class="popup" id="namePopup"></span>
+					</td>
+					<td class="right middle fieldText" id="CIDField" onclick="copyToClipboard('CID',animationLength)">
+						01234567
+						<span class="popup" id="CIDPopup"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="left right fieldText" id="phoneField" onclick="copyToClipboard('phone',animationLength)">
+						(705-555-5555)
+						<span class="popup" id="phonePopup"></span>
+					</td>
+					<td class="left right fieldText" id="emailField" onclick="copyToClipboard('email',animationLength)">
+						bob@bobsmith.com
+						<span class="popup" id="emailPopup"></span>
+					</td>
+				</tr>
+			</table>
+			<div style="border-top:1px solid var(--missive-light-border-color)">
+				<table class="form">
+					<tbody>
+						<tr>
+							<td class="left right" id="orderNumberList"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
     <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
@@ -382,8 +385,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "53";
-      var scriptVersion = "87";
+      var revisionNumber = "54";
+      var scriptVersion = "88";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

@@ -1,0 +1,74 @@
+/* Popup container - can be anything you want */
+:root{
+	--fade: 0.5s;
+}
+.fieldText {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/* The actual popup */
+.fieldText .popup {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+/* Popup arrow */
+.fieldText .popup:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+/* Toggle this class - hide and show the popup */
+.fieldText .show {
+  visibility:visible;
+  -webkit-animation: fadeIn var(--fade);
+  animation: fadeIn var(--fade);
+}
+.fieldText .hide {
+  -webkit-animation: fadeOut var(--fade);
+  animation: fadeOut var(--fade);
+}
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+  from{visibility:visible};
+  to{visibility:hidden};
+}
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity:0 ;}
+  from{visibility:visible};
+  to{visibility:hidden};
+}
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+  from{visibility:hidden};
+  to{visibility:visible};
+}
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+  from{visibility:hidden};
+  to{visibility:visible};
+}

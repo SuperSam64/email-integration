@@ -1066,6 +1066,7 @@ async function lookupContact(input){
     else {
         $("#body21").text("NO CONTACT DATA");
     }
+    buildOrderNumbersList(orderNumbersList);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(first,second,third){
