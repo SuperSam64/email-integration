@@ -45,15 +45,16 @@ function copyToClipboard(type, duration) {
 		else{
 			clipboard = remove[index];
 		}
-        clipboard.select();
-        document.execCommand("copy");
-        /*navigator.permissions.query({
+        navigator.permissions.query({
             name: "clipboard-write"
         }).then((result) => {
             if (result.state === "granted" || result.state === "prompt"){
                 navigator.clipboard.writeText(clipboard);
             }
-        });*/
+            else{
+                console.log("no permission")
+            }
+        })
 		var popup = document.getElementById(type + "Popup");
 		popup.innerText = messages[index];
 	}
