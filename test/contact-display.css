@@ -18,8 +18,8 @@
 .fieldText .popup {
   visibility: hidden;
   width: 160px;
-  background-color: var(--missive-text-color-b);
-  color:var(--missive-background-color);
+  background-color: var(--missive-background-color);
+  color:var(--missive-text-color-a);
   text-align: center;
   border-radius: 6px;
   padding: 8px 0;
