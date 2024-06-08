@@ -4,8 +4,8 @@ var orderNumbersList = [
 	"98765432"
 ];
 var animationLength = 1.4;
-function copyToClipboard(type, duration) {
-	if(type.slice(0,5) == "order"){
+function copyToClipboard(type, duration) {    
+    if(type.slice(0,5) == "order"){
 		var orderPosition = (type.slice(5,6) * 1);
 		var clipboard = document.getElementById("orderField" + orderPosition).innerText;
 		clipboard = clipboard.replace("Order #","");
@@ -45,7 +45,13 @@ function copyToClipboard(type, duration) {
 		else{
 			clipboard = remove[index];
 		}
-		navigator.clipboard.writeText(clipboard);
+        navigator.permissions.query({
+            name: "clipboard-write"
+        }).then((result) => {
+            if (result.state === "granted" || result.state === "prompt"){
+                navigator.clipboard.writeText(clipboard);
+            }
+        });
 		var popup = document.getElementById(type + "Popup");
 		popup.innerText = messages[index];
 	}
