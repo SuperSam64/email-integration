@@ -1138,12 +1138,10 @@ function contactFormSave(first,second,third){
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
     );
-    formOrderNumbers.shift();
-    console.log("11. (shift) " + formOrderNumbers);
+    //formOrderNumbers.shift();
     for(var orderItems = 0; orderItems < orderItems.length; orderItems ++){
         if(formOrderNumbers[orderItmes] == !""){
             formOrderNumbers[orderItmes] = "Order #" + formOrderNumbers[orderItmes];
-            console.log("12. (shift) " + formOrderNumbers);
         }
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
