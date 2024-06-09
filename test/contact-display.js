@@ -83,11 +83,13 @@ function transition(input){
 }
 function buildOrderNumbersList(list){
 	if(list.length < 1){
-		document.getElementById("orderNumberList").style = "display:none";
+		document.getElementById("orderNumberList").classList.add = "hidden";
 	}
 	else{
+		document.getElementById("orderNumberList").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
+			conseole.log("iteration " + i);
 			orderArray.push(
 				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
