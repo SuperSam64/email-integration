@@ -1187,7 +1187,7 @@ function showEditPanel(){
     var previousCID = "3692481";
     var previousPhoneNumber = "(866) 438-3458";
     var previousEmail = "john@filtersfast.com";
-    var previousOrderNumbers = "1234,5678";
+    var previousOrderNumbers = document.getElementById('orderNumberList').innerText.replace('Order #','').replaceAll('Order #',', ');
     if(previousFirstName == "First name"){
         previousFirstName = "";
     }
