@@ -1079,7 +1079,7 @@ async function lookupContact(input){
     else {
         $("#body21").text("NO CONTACT DATA");
     }
-    buildOrderNumbersList(orderNumbersList);
+    buildOrderNumbersList(["1","2","3"]);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(){
