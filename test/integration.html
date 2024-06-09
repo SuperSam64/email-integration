@@ -38,143 +38,145 @@
     <!---------------------------- [[  RELOAD  ]] ----------------------------></div><div id="version_number" class="button-link margin section align-center" style="margin:auto;width:100%;padding-bottom:12px">
     <!--------------------->     Reload Integration    <!--------------------->
     <!------------------------------------------------------------------------></div></div>
-    <div>
-      <span id="valuePlaceholder">
-      </span>
-      <div id="contactEdit" class="panel" style="margin-top:160px;margin-bottom:12px;display:none">
-        <form id="contactForm" action="/action_page.php">
+    <div style="margin-top:160px;margin-bottom:12px">
+      <div>
+        <span id="valuePlaceholder">
+        </span>
+        <div id="contactEdit" class="panel">
+          <form id="contactForm" action="/action_page.php">
+            <table class="form">
+              <tbody>
+                <tr>
+                  <th colspan="6">
+                    Edit Customer Information
+                  </th>
+                </tr>
+                <tr>
+                  <td colspan="2" class="left middle caption">
+                    <label for="firstname">
+                      First Name
+                    </label>
+                  </td>
+                  <td colspan="2" class="middle caption">
+                    <label for="lastname">
+                      Last Name
+                    </label>
+                  </td>
+                    <td colspan="2" class="right middle caption">
+                    <label for="custID">
+                      CID
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="left middle input">
+                    <input type="text" id="formFirstName" name="formFirstName" style="text-transform:capitalize" value="Sam">
+                  </td>
+                  <td colspan="2" class="middle input">
+                    <input type="text" id="formLastName" name="formLastName" style="text-transform:capitalize" value="Nimmo">
+                  </td>
+                    <td colspan="2" class="right middle input">
+                    <input type="text" id="formCustID" name="formCustID" value="7654321">
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" class="left middle caption">
+                    <label for="phonenum">
+                      Phone Number
+                    </label>
+                  </td>
+                  <td colspan="3" class="right middle caption">
+                    <label for="email">
+                      Email
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="3" class="left middle input">
+                    <input type="text" id="formPhoneNumber" name="phonenum" value="(704) 555-5555">
+                  </td>
+                  <td colspan="3" class="right middle input">
+                    <input type="text" id="formEmail" name="email" value="sampson@filtersfast.com">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          <div style="border-top:1px solid var(--missive-light-border-color)">
+            <table class="form">
+              <tbody>
+                <tr>
+                  <td colspan="2" class="left right caption">
+                    <label for="orderNumbers">
+                      Order Numbers (separated by commas)
+                    </label>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" class="left right input">
+                    <input type="text" id="formOrderNumbers" name="orderNumbers" value="12345678">
+                  </td>
+                </tr>
+                <tr>
+                  <td class="bottom left">
+                    <input class="button" style="margin-top:12px;width:100%" type="button" value="Save Contact" onclick="contactFormSave()">
+                  </td>
+                  <td class="bottom right ">
+                    <input class="button" style="margin-top:12px;width:100%;background-color:var(--missive-orange-color)" type="button" value="Cancel" onclick="contactFormCancel()">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+      <div id="contactInfoSection" class="panel">
+        <table class="form">
+          <th colspan="2">
+            Customer Information
+          </th>
+          <tr>
+            <td class="left middle">
+              <span class="fieldText" id="nameField" onclick="copyToClipboard('name',animationLength)">
+                Sam Nimmo
+                <span class="popup" id="namePopup"></span>
+              </span>
+            </td>
+            <td class="right middle">
+              <span class="fieldText" id="CIDField" onclick="copyToClipboard('CID',animationLength)">
+                01234567
+                <span class="popup" id="CIDPopup"></span>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td class="left right">
+              <span class="fieldText" id="phoneField" onclick="copyToClipboard('phone',animationLength)">
+                (705-555-5555)
+                <span class="popup" id="phonePopup"></span>
+              </span>
+            </td>
+            <td class="left right">
+              <span class="fieldText" id="emailField" onclick="copyToClipboard('email',animationLength)">
+                bob@bobsmith.com
+                <span class="popup" id="emailPopup"></span>
+              </span>
+            </td>
+          </tr>
+        </table>
+        <div id="ordersSection" style="border-top:1px solid var(--missive-light-border-color)">
           <table class="form">
             <tbody>
               <tr>
-                <th colspan="6">
-                  Edit Customer Information
-                </th>
-              </tr>
-              <tr>
-                <td colspan="2" class="left middle caption">
-                  <label for="firstname">
-                    First Name
-                  </label>
-                </td>
-                <td colspan="2" class="middle caption">
-                  <label for="lastname">
-                    Last Name
-                  </label>
-                </td>
-                  <td colspan="2" class="right middle caption">
-                  <label for="custID">
-                    CID
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" class="left middle input">
-                  <input type="text" id="formFirstName" name="formFirstName" style="text-transform:capitalize" value="Sam">
-                </td>
-                <td colspan="2" class="middle input">
-                  <input type="text" id="formLastName" name="formLastName" style="text-transform:capitalize" value="Nimmo">
-                </td>
-                  <td colspan="2" class="right middle input">
-                  <input type="text" id="formCustID" name="formCustID" value="7654321">
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3" class="left middle caption">
-                  <label for="phonenum">
-                    Phone Number
-                  </label>
-                </td>
-                <td colspan="3" class="right middle caption">
-                  <label for="email">
-                    Email
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3" class="left middle input">
-                  <input type="text" id="formPhoneNumber" name="phonenum" value="(704) 555-5555">
-                </td>
-                <td colspan="3" class="right middle input">
-                  <input type="text" id="formEmail" name="email" value="sampson@filtersfast.com">
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        <div style="border-top:1px solid var(--missive-light-border-color)">
-          <table class="form">
-            <tbody>
-              <tr>
-                <td colspan="2" class="left right caption">
-                  <label for="orderNumbers">
-                    Order Numbers (separated by commas)
-                  </label>
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2" class="left right input">
-                  <input type="text" id="formOrderNumbers" name="orderNumbers" value="12345678">
-                </td>
-              </tr>
-              <tr>
-                <td class="bottom left">
-                  <input class="button" style="margin-top:12px;width:100%" type="button" value="Save Contact" onclick="contactFormSave()">
-                </td>
-                <td class="bottom right ">
-                  <input class="button" style="margin-top:12px;width:100%;background-color:var(--missive-orange-color)" type="button" value="Cancel" onclick="contactFormCancel()">
-                </td>
+                <td class="left right" id="orderNumberList"></td>
               </tr>
             </tbody>
           </table>
         </div>
-      </form>
-    </div>
-    <div id="contactInfoSection" class="panel" style="margin-top:160px;margin-bottom:12px">
-			<table class="form">
-				<th colspan="2">
-					Customer Information
-				</th>
-				<tr>
-					<td class="left middle">
-            <span class="fieldText" id="nameField" onclick="copyToClipboard('name',animationLength)">
-              Sam Nimmo
-              <span class="popup" id="namePopup"></span>
-            </span>
-					</td>
-					<td class="right middle">
-            <span class="fieldText" id="CIDField" onclick="copyToClipboard('CID',animationLength)">
-              01234567
-              <span class="popup" id="CIDPopup"></span>
-            </span>
-					</td>
-				</tr>
-				<tr>
-					<td class="left right">
-            <span class="fieldText" id="phoneField" onclick="copyToClipboard('phone',animationLength)">
-              (705-555-5555)
-              <span class="popup" id="phonePopup"></span>
-            </span>
-					</td>
-					<td class="left right">
-            <span class="fieldText" id="emailField" onclick="copyToClipboard('email',animationLength)">
-              bob@bobsmith.com
-              <span class="popup" id="emailPopup"></span>
-            </span>
-					</td>
-				</tr>
-			</table>
-			<div id="ordersSection" style="border-top:1px solid var(--missive-light-border-color)">
-				<table class="form">
-					<tbody>
-						<tr>
-							<td class="left right" id="orderNumberList"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-      <div id="add-edit" class="button-token" onclick="showEditPanel()">
-        EDIT						
+        <div id="add-edit" class="button-token" onclick="showEditPanel()">
+          EDIT						
+        </div>
       </div>
-		</div>
+    </div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
     <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
@@ -396,7 +398,7 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "75";
+      var revisionNumber = "76";
       var scriptVersion = "119";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
