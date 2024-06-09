@@ -89,7 +89,7 @@ function buildOrderNumbersList(list){
 		document.getElementById("orderNumberList").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
-			conseole.log("iteration " + i);
+			console.log("iteration " + i);
 			orderArray.push(
 				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
