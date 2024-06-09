@@ -1133,13 +1133,13 @@ function contactFormSave(){
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
     var formOrderNumbers;
-    var formOrderString = (
+    var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
     );
-    if(formOrderString == ""){
+    if(formOrdersString == ""){
         formOrderNumbers = [""];
         document.getElementById('orderSection').classList.toggle("hidden");
     }
