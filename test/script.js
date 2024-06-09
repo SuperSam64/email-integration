@@ -1148,7 +1148,7 @@ function contactFormSave(){
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
     );
     if(formOrdersString == ""){
-        //formOrderNumbers = [""];
+        formOrderNumbers = [""];
         document.getElementById('ordersSection').classList.toggle("hidden");
     }
     else{
