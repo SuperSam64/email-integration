@@ -1162,6 +1162,7 @@ function contactFormSave(){
         Missive.setSubject(newSubject);
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
+    console.log(([formFullname,formPhoneNumber,formCustID,formCustEmail]).join(", "));
     console.log(formOrderNumbers);
     document.getElementById('contactInfoSection').classList.toggle("hidden");
     document.getElementById('contactEdit').classList.toggle("hidden");
@@ -1183,10 +1184,10 @@ function showEditPanel(){
     if(previousLastName == "Last name"){
         previousLastName = "";
     }
-    if(previousCID = "CID"){
-        previousCID == "";
+    if(previousCID == "CID"){
+        previousCID = "";
     }
-    if(previousPhoneNumber = "Phone number"){
+    if(previousPhoneNumber == "Phone number"){
         previousPhoneNumber = "";
     }
     if(previousEmail == "Email"){
