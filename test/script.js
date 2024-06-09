@@ -1139,7 +1139,7 @@ function contactFormSave(){
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
     );
     formOrderArray.shift();
-    if(){
+    if(formOrderArray.length == 1 && formOrderArray[0] == ""){
         document.getElementById('orderSection').style.display = 'none';
     }
     else{
@@ -1152,6 +1152,10 @@ function contactFormSave(){
 }
 function contactFormCancel(){
     document.getElementById('contactEdit').style.display = 'none';
+}
+function showEditPanel(){
+    document.getElementById('contactEdit').style.display = 'visible';
+    document.getElementById('contactInfoSection').style.display = 'none';
 }
 
 // ======== BUTTONS ========

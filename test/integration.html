@@ -41,7 +41,7 @@
     <div>
       <span id="valuePlaceholder">
       </span>
-      <div id="contactEdit" class="panel" style="margin-top:160px;margin-bottom:12px">
+      <div id="contactEdit" class="panel" style="margin-top:160px;margin-bottom:12px;display:none">
         <form id="contactForm" action="/action_page.php">
           <table class="form">
             <tbody>
@@ -175,8 +175,10 @@
 				<table class="form">
 					<tbody>
 						<tr>
-							<td class="left right" id="add-edit-option" style="color:var(--accent-color);font-size:small;text-align:center;text-shadow: 0px 0px 4px var(--accent-color)">
-                EDIT
+							<td class="left right" id="add-edit-option">
+                <span style="color:var(--accent-color);font-size:small;text-align:center;text-shadow: 0px 0px 4px var(--accent-color)" onclick="">
+                  EDIT
+                </span>
               </td>
 						</tr>
 					</tbody>
@@ -404,8 +406,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "73";
-      var scriptVersion = "116";
+      var revisionNumber = "74";
+      var scriptVersion = "117";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
