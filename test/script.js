@@ -1173,9 +1173,7 @@ function contactFormSave(){
     document.getElementById('CIDField').innerText = formCustID;
     document.getElementById('phoneField').innerText = formPhoneNumber;
     document.getElementById('emailField').innerText = formEmail;
-    console.log("Here it is " + formOrdersString)
-    console.log("another " + formOrdersString.split(","))
-    buildOrderNumbersList(formOrdersString);
+    buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 }
