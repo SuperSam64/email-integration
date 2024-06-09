@@ -1149,16 +1149,16 @@ function contactFormSave(){
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(formOrderNumbers);
-    document.getElementById('contactInfoSection').style.visibility = 'visible';
-    document.getElementById('contactEdit').style.visibility = 'none';      
+    document.getElementById('contactInfoSection').classList.toggle("hidden");
+    document.getElementById('contactEdit').classList.toggle("hidden");
 }
 function contactFormCancel(){
-    document.getElementById('contactInfoSection').style.visibility = 'visible';
-    document.getElementById('contactEdit').style.visibility = 'none';    
+    document.getElementById('contactInfoSection').classList.toggle("hidden");
+    document.getElementById('contactEdit').classList.toggle("hidden");
 }
 function showEditPanel(){
-    document.getElementById('contactEdit').style.visibility = 'visible';
-    document.getElementById('contactInfoSection').style.visibility = 'none';
+    document.getElementById('contactEdit').classList.toggle("hidden");
+    document.getElementById('contactInfoSection').classList.toggle("hidden");
 }
 
 // ======== BUTTONS ========

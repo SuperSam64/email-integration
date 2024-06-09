@@ -61,6 +61,9 @@
   -webkit-animation: fadeOut var(--fade);
   animation: fadeOut var(--fade);
 }
+.hidden{
+  display:none;
+}
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeOut {
   from {opacity: 1;}
