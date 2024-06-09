@@ -1132,20 +1132,19 @@ function contactFormSave(){
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
-    var formOrderArray = (
-        ("|," + document.getElementById('formOrderNumbers').value).trim()
+    var formOrderNumbers;
+    var formOrderString = (
+        document.getElementById('formOrderNumbers').value.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
-        .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
+        .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
     );
-    formOrderArray.shift();
-    if(formOrderArray.length == 1 && formOrderArray[0] == ""){
-        document.getElementById('orderSection').style.display = 'none';
+    if(formOrderString == ""){
+        formOrderNumbers = [""];
+        document.getElementById('orderSection').classList.toggle("hidden");
     }
     else{
-        for(var orderItems = 0; orderItems < formOrderArray.length; orderItems ++){
-            formOrderArray[orderItmes] = "Order #" + formOrderArray[orderItmes];
-        }
+        formOrderNumbers =("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(formOrderNumbers);
