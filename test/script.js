@@ -1076,76 +1076,7 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(first,second,third){
-    // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
-    var formFirstName = ("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(formFirstName.includes("@")){
-        formFirstName = "";
-    }
-    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
-        if(formFirstName.toUpperCase() === formFirstName){
-            document.getElementById('valuePlaceholder').innerText = formFirstName;
-            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            formFirstName = document.getElementById('valuePlaceholder').innerText;
-        }
-        document.getElementById('valuePlaceholder').innerText = formFirstName;
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        formFirstName = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
-    }
-    var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(formLastName.includes("@")){
-        formLastName = "";
-    }
-    else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2){
-        if(formFirstName.toUpperCase() === formFirstName){
-            document.getElementById('valuePlaceholder').innerText = formLastName;
-            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            formLastName = document.getElementById('valuePlaceholder').innerText;
-        }
-        document.getElementById('valuePlaceholder').innerText = formLastName;
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        formLastName = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
-    }
-    var formFullname = [formFirstName, formLastName].join(" ");
-    
-    // blank leading spaces CUS2904 0012345 CUS-123 #1234
-    var formCustID = document.getElementById('formCustID').value.trim().replaceAll(" ","");
-    if(formCustID.slice(0,3).toUpperCase() != "CUS" && formCustID != ""){
-        formCustID = formCustID * 1
-    }
-    // various formats, blank, longer than 10 digits, extensions
-    var formPhoneNumber = (document.getElementById('formPhoneNumber').value.trim()
-    .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
-    if(formPhoneNumber.slice(0,1) == "1"){
-        formPhoneNumber = formPhoneNumber.slice(1,formPhoneNumber.length);
-    }
-    if(formPhoneNumber.length > 6){
-        if(formPhoneNumber.length > 10){
-            formPhoneNumber = ("(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + 
-            formPhoneNumber.slice(6,10) + " " + formPhoneNumber.slice(10,formPhoneNumber.length));
-        }
-        else{
-            formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
-        }
-    }
-    // blank, leading spaces, mix of capitalization
-    var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
-    // keep CP09 but remove CP, - # . all spaces
-    var formOrderNumbers = (
-        ("|," + document.getElementById('formOrderNumbers').value).trim()
-        .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
-        .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
-        .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
-    );
-    //formOrderNumbers.shift();
-    //for(var orderItems = 0; orderItems < orderItems.length; orderItems ++){
-     //   if(formOrderNumbers[orderItmes] == !""){
-      //      formOrderNumbers[orderItmes] = "Order #" + formOrderNumbers[orderItmes];
-       // }
-    //}
-    //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
-    console.log("13. (shift) " + formOrderNumbers);
+    console.log("got this far 1");
 }
 function contactFormCancel(){
     document.getElementById('contactEdit').style.display = 'none';
