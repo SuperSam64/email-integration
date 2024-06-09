@@ -1120,7 +1120,6 @@ function contactFormSave(){
     if(formPhoneNumber.slice(0,1) == "1"){
         formPhoneNumber = formPhoneNumber.slice(1,formPhoneNumber.length);
     }
-    console.log("got this far 2");
     if(formPhoneNumber.length > 6){
         if(formPhoneNumber.length > 10){
             formPhoneNumber = ("(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + 
@@ -1133,21 +1132,23 @@ function contactFormSave(){
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
-    var formOrderNumbers = (
+    var formOrderArray = (
         ("|," + document.getElementById('formOrderNumbers').value).trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
     );
-    formOrderNumbers.shift();
-    for(var orderItems = 0; orderItems < orderItems.length; orderItems ++){
-       if(formOrderNumbers[orderItmes] == !""){
-          formOrderNumbers[orderItmes] = "Order #" + formOrderNumbers[orderItmes];
+    formOrderArray.shift();
+    if(){
+        document.getElementById('orderSection').style.display = 'none';
+    }
+    else{
+        for(var orderItems = 0; orderItems < formOrderArray.length; orderItems ++){
+            formOrderArray[orderItmes] = "Order #" + formOrderArray[orderItmes];
         }
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(formOrderNumbers);
-    
 }
 function contactFormCancel(){
     document.getElementById('contactEdit').style.display = 'none';
