@@ -1141,7 +1141,7 @@ function contactFormSave(){
     );
     if(formOrdersString == ""){
         formOrderNumbers = [""];
-        document.getElementById('orderSection').classList.toggle("hidden");
+        document.getElementById('ordersSection').classList.toggle("hidden");
     }
     else{
         formOrderNumbers =("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
