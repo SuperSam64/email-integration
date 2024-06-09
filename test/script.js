@@ -1139,11 +1139,11 @@ function contactFormSave(first,second,third){
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",").split(",")
     );
     //formOrderNumbers.shift();
-    for(var orderItems = 0; orderItems < orderItems.length; orderItems ++){
-        if(formOrderNumbers[orderItmes] == !""){
-            formOrderNumbers[orderItmes] = "Order #" + formOrderNumbers[orderItmes];
-        }
-    }
+    //for(var orderItems = 0; orderItems < orderItems.length; orderItems ++){
+     //   if(formOrderNumbers[orderItmes] == !""){
+      //      formOrderNumbers[orderItmes] = "Order #" + formOrderNumbers[orderItmes];
+       // }
+    //}
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log("13. (shift) " + formOrderNumbers);
 }
