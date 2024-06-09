@@ -1079,6 +1079,7 @@ function contactFormSave(){
     Missive.alert("I HATE YOU");
 }
 function contactFormCancel(){
+    console.log("show a message");
     document.getElementById('contactEdit').style.display = 'none';
 }
 
