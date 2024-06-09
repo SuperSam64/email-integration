@@ -517,7 +517,13 @@ function getFullMessage(conversation,element){  // in progress
 function getOrderNumber(conversation){
     var subject = conversation.subject.toLowerCase();
     var orderString;
-    if(subject.includes("order")){
+    if(
+        subject.slice(0,6) == "orders" && subject.includes("#") && subject.includes(",") &&
+        ((subject.length - 1) - subject.replaceAll(" ","").length) == (subject.length - subject.replaceAll(",","").length)
+    ){
+        orderString = subject.replaceAll(" ","").slice(6,subject.length);
+    }
+    else if(subject.includes("order")){
         orderString = subject.trim() + " ]"
         orderString = "[" + orderString.split("order")[1]
         orderString = orderString.replace("#","");
@@ -543,6 +549,7 @@ function getOrderNumber(conversation){
     else {
         orderString = "[empty]";
     }
+    console.log(orderString);
     return orderString;
 }
 function formatDate(date){
@@ -1164,6 +1171,33 @@ function contactFormCancel(){
     document.getElementById('contactEdit').classList.toggle("hidden");
 }
 function showEditPanel(){
+    var previousFirstName = "John";
+    var previousLastName = "Doe";
+    var previousCID = "3692481";
+    var previousPhoneNumber = "(866) 438-3458";
+    var previousEmail = "john@filtersfast.com";
+    var previousOrderNumbers = "1234,5678";
+    if(previousFirstName = "First name"){
+        previousFirstName = "";
+    }
+    if(previousLastName = "Last name"){
+        previousLastName = "";
+    }
+    if(previousCID = "First name"){
+        previousCID = "CID";
+    }
+    if(previousPhoneNumber = "Phone number"){
+        previousPhoneNumber = "";
+    }
+    if(previousEmail = "Email"){
+        previousEmail = "";
+    }    
+    document.getElementById('formFirstName').value = fname;
+    document.getElementById('formLastName').value = lname;
+    document.getElementById('formCustID').value = CID;
+    document.getElementById('formPhoneNumbers').value = phone;
+    document.getElementById('formEmail').value = email;
+    document.getElementById('formOrderNumbers').value = orders;
     document.getElementById('contactEdit').classList.toggle("hidden");
     document.getElementById('contactInfoSection').classList.toggle("hidden");
 }
