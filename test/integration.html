@@ -42,7 +42,7 @@
       <div>
         <span id="valuePlaceholder">
         </span>
-        <div id="contactEdit" class="panel">
+        <div id="contactEdit" class="panel" style="display:none">
           <form id="contactForm" action="/action_page.php">
             <table class="form">
               <tbody>
@@ -172,13 +172,15 @@
             </tbody>
           </table>
         </div>
-        <div id="add-edit" class="button-token" onclick="showEditPanel()">
-          EDIT						
+        <div id="add-edit">
+          <span class="button-token" onclick="showEditPanel()">
+            EDIT
+          </span> 			
         </div>
       </div>
     </div>
     <!------------------------------- BUTTONS --------------------------------><span>
-    <div id="mondaySection" style="border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
+    <div id="mondaySection" style="margin-top:12px;border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
     <span class="button column padding testButton" style="margin-top:12px" id="button1">Cancellation (Reply)</span><br>
     <span class="button column padding testButton" id="button2">Cancellation (New thread)</span><br>
     <span class="button column padding testButton" id="button3">Insert Signature</span><br>
@@ -398,8 +400,8 @@
     <script type="text/javascript">
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
-      var revisionNumber = "76";
-      var scriptVersion = "119";
+      var revisionNumber = "77";
+      var scriptVersion = "120";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

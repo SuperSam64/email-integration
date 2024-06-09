@@ -1149,9 +1149,12 @@ function contactFormSave(){
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(formOrderNumbers);
+    document.getElementById('contactEdit').style.display = 'none';
+    document.getElementById('contactInfoSection').style.display = 'visible';
 }
 function contactFormCancel(){
     document.getElementById('contactEdit').style.display = 'none';
+    document.getElementById('contactInfoSection').style.display = 'visible';
 }
 function showEditPanel(){
     document.getElementById('contactInfoSection').style.display = 'none';
