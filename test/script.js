@@ -1154,7 +1154,7 @@ function contactFormSave(){
     else{
         formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
         if(formOrderNumbers.length > 1){
-            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","").join(", ")
+            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","");
         }
         else{
             newSubject = formOrderNumbers;
