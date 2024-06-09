@@ -1162,7 +1162,7 @@ function contactFormSave(){
         Missive.setSubject(newSubject);
     }
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
-    console.log(([formFullname,formPhoneNumber,formCustID,formCustEmail]).join(", "));
+    console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
     document.getElementById('contactInfoSection').classList.toggle("hidden");
     document.getElementById('contactEdit').classList.toggle("hidden");
