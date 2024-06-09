@@ -1150,7 +1150,7 @@ function contactFormSave(){
     if(formOrdersString == ""){
         formOrderNumbers = [""];
         if(currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #"){
-            Missive.setSubject("");
+            Missive.setSubject('');
         }
         document.getElementById('ordersSection').classList.add("hidden");
     }
