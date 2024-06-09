@@ -1153,11 +1153,11 @@ function contactFormSave(){
     }
     else{
         formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
-        if(formOrderNumbers > 1){
-            newSubject = "Orders #" + formOrderNumbers.join(", ")
+        if(formOrderNumbers.length > 1){
+            newSubject = "Orders #" + formOrdersString.replaceAll("Order #").join(", ")
         }
         else{
-            newSubject = "Order #" + formOrderNumbers;
+            newSubject = formOrderNumbers;
         }
         Missive.setSubject(newSubject);
     }
