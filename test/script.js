@@ -1177,19 +1177,19 @@ function showEditPanel(){
     var previousPhoneNumber = "(866) 438-3458";
     var previousEmail = "john@filtersfast.com";
     var previousOrderNumbers = "1234,5678";
-    if(previousFirstName = "First name"){
+    if(previousFirstName == "First name"){
         previousFirstName = "";
     }
-    if(previousLastName = "Last name"){
+    if(previousLastName == "Last name"){
         previousLastName = "";
     }
-    if(previousCID = "First name"){
-        previousCID = "CID";
+    if(previousCID = "CID"){
+        previousCID == "";
     }
     if(previousPhoneNumber = "Phone number"){
         previousPhoneNumber = "";
     }
-    if(previousEmail = "Email"){
+    if(previousEmail == "Email"){
         previousEmail = "";
     }    
     document.getElementById('formFirstName').value = previousFirstName;
