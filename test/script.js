@@ -1158,7 +1158,7 @@ function contactFormCancel(){
 }
 function showEditPanel(){
     document.getElementById('contactEdit').style.display = 'visible';
-    document.getElementById('contactInfoSection').style.display = 'none';
+    //document.getElementById('contactInfoSection').style.display = 'none';
     
 }
 
