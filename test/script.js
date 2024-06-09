@@ -1075,12 +1075,11 @@ async function lookupContact(input){
     buildOrderNumbersList(orderNumbersList);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
-function contactFormSave(first,second,third){
-    console.log("got this far 1");
+function contactFormSave(){
+    Missive.alert("I HATE YOU");
 }
 function contactFormCancel(){
     document.getElementById('contactEdit').style.display = 'none';
-    console.log("cancelled");
 }
 
 // ======== BUTTONS ========

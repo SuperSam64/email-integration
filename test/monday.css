@@ -15,7 +15,7 @@
 	margin:12px 0x 12px 0px;
 	border-radius:8px;
 }
-#mondaySection #a{
+#mondaySection #a:hover{
 	text-decoration: none;
 }
 .noResults{
