@@ -1192,12 +1192,12 @@ function showEditPanel(){
     if(previousEmail = "Email"){
         previousEmail = "";
     }    
-    document.getElementById('formFirstName').value = fname;
-    document.getElementById('formLastName').value = lname;
-    document.getElementById('formCustID').value = CID;
-    document.getElementById('formPhoneNumbers').value = phone;
-    document.getElementById('formEmail').value = email;
-    document.getElementById('formOrderNumbers').value = orders;
+    document.getElementById('formFirstName').value = previousFirstName;
+    document.getElementById('formLastName').value = previousLastName;
+    document.getElementById('formCustID').value = previousCID;
+    document.getElementById('formPhoneNumbers').value = previousPhoneNumber;
+    document.getElementById('formEmail').value = previousEmail;
+    document.getElementById('formOrderNumbers').value = previousOrderNumbers;
     document.getElementById('contactEdit').classList.toggle("hidden");
     document.getElementById('contactInfoSection').classList.toggle("hidden");
 }
