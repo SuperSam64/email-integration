@@ -1132,7 +1132,7 @@ function contactFormSave(first,second,third){
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
-    var formOrderNumbers = "|,Order #" + document.getElementById('formOrderNumbers').value.trim().replaceAll("CP09","[prefix]")
+    var formOrderNumbers = ("|,Order #" + document.getElementById('formOrderNumbers').value).trim().replaceAll("CP09","[prefix]")
         .replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","").replaceAll("-","")
         .replaceAll("#","").replaceAll(" ","").replaceAll("[prefix]","CP09-").replaceAll(",,",",").replaceAll(",",",Order #").split(",").shift();
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
