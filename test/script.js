@@ -1115,7 +1115,6 @@ function contactFormSave(){
         document.getElementById('valuePlaceholder').innerText ="";
     }
     var formFullname = [formFirstName, formLastName].join(" ");
-    
     // blank leading spaces CUS2904 0012345 CUS-123 #1234
     var formCustID = document.getElementById('formCustID').value.trim().replaceAll(" ","");
     if(formCustID.slice(0,3).toUpperCase() != "CUS" && formCustID != ""){
@@ -1170,6 +1169,11 @@ function contactFormSave(){
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
+    document.getElementById('nameField').innerText = formFullname;
+    document.getElementById('CIDField').innerText = formCustID;
+    document.getElementById('phoneField').innerText = formPhoneNumber;
+    document.getElementById('emailField').innerText = formEmail;
+    document.getElementById('orderNumbersList').innerText = "1\n2\n3";
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 }
