@@ -1149,7 +1149,9 @@ function contactFormSave(){
     );
     if(formOrdersString == ""){
         formOrderNumbers = [""];
-        if(currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #"){
+        if(
+            currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
+            currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
             Missive.setSubject('');
         }
         document.getElementById('ordersSection').classList.add("hidden");
