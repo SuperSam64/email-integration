@@ -93,7 +93,7 @@ function buildOrderNumbersList(list){
 			orderArray.push(
 				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
-				'Order #' + orderNumbersList[i] + '<span class="popup" id="orderPopup' + i +
+				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
 		}
