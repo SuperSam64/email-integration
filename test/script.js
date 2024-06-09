@@ -1195,7 +1195,7 @@ function showEditPanel(){
     document.getElementById('formFirstName').value = previousFirstName;
     document.getElementById('formLastName').value = previousLastName;
     document.getElementById('formCustID').value = previousCID;
-    document.getElementById('formPhoneNumbers').value = previousPhoneNumber;
+    document.getElementById('formPhoneNumber').value = previousPhoneNumber;
     document.getElementById('formEmail').value = previousEmail;
     document.getElementById('formOrderNumbers').value = previousOrderNumbers;
     document.getElementById('contactEdit').classList.toggle("hidden");
