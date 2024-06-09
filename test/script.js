@@ -1157,7 +1157,7 @@ function contactFormSave(){
             newSubject = "Orders #" + formOrdersString.replaceAll("Order #","").replaceAll(",",", ");
         }
         else{
-            //newSubject = formOrderNumbers;
+            newSubject = formOrderNumbers[0];
         }
         Missive.setSubject(newSubject);
     }
