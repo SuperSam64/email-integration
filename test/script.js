@@ -1076,7 +1076,9 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(){
+    console.log("show a message");
     Missive.alert("I HATE YOU");
+    
 }
 function contactFormCancel(){
     console.log("show a message");
