@@ -1149,9 +1149,13 @@ function contactFormSave(){
     );
     if(formOrdersString == ""){
         formOrderNumbers = [""];
-        document.getElementById('ordersSection').classList.toggle("hidden");
+        if(currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #"){
+            Missive.setSubject("");
+        }
+        document.getElementById('ordersSection').classList.add("hidden");
     }
     else{
+        document.getElementById('ordersSection').classList.remove("hidden");
         formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
         if(formOrderNumbers.length > 1){
             newSubject = "Orders #" + formOrdersString.replaceAll("Order #","").replaceAll(",",", ");
@@ -1164,12 +1168,12 @@ function contactFormSave(){
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
-    document.getElementById('contactInfoSection').classList.toggle("hidden");
-    document.getElementById('contactEdit').classList.toggle("hidden");
+    document.getElementById('contactInfoSection').classList.remove("hidden");
+    document.getElementById('contactEdit').classList.add("hidden");
 }
 function contactFormCancel(){
-    document.getElementById('contactInfoSection').classList.toggle("hidden");
-    document.getElementById('contactEdit').classList.toggle("hidden");
+    document.getElementById('contactInfoSection').classList.remove("hidden");
+    document.getElementById('contactEdit').classList.add("hidden");
 }
 function showEditPanel(){
     var previousFirstName = "John";
@@ -1199,8 +1203,8 @@ function showEditPanel(){
     document.getElementById('formPhoneNumber').value = previousPhoneNumber;
     document.getElementById('formEmail').value = previousEmail;
     document.getElementById('formOrderNumbers').value = previousOrderNumbers;
-    document.getElementById('contactEdit').classList.toggle("hidden");
-    document.getElementById('contactInfoSection').classList.toggle("hidden");
+    document.getElementById('contactEdit').classList.remove("hidden");
+    document.getElementById('contactInfoSection').classList.add("hidden");
 }
 
 // ======== BUTTONS ========
