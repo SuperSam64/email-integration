@@ -1148,7 +1148,7 @@ function contactFormSave(first,second,third){
     console.log("13. (shift) " + formOrderNumbers);
 }
 function contactFormCancel(){
-    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('contactEdit').style.display = 'none';
     console.log("cancelled");
 }
 
