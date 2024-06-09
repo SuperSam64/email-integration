@@ -1170,7 +1170,7 @@ function contactFormSave(){
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
     document.getElementById('nameField').innerText = formFullname;
-    document.getElementById('CIDField').innerText = formCustID;
+    document.getElementById('CIDField').innerText = "CID " + formCustID;
     document.getElementById('phoneField').innerText = formPhoneNumber;
     document.getElementById('emailField').innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
@@ -1187,7 +1187,7 @@ function showEditPanel(){
     var previousCID = "3692481";
     var previousPhoneNumber = "(866) 438-3458";
     var previousEmail = "john@filtersfast.com";
-    var previousOrderNumbers = document.getElementById('orderNumberList').innerText.replace('Order #','').replaceAll('Order #',', ');
+    var previousOrderNumbers = document.getElementById('orderNumberList').innerText.trim().replace('Order #','').replaceAll('Order #',', ');
     if(previousFirstName == "First name"){
         previousFirstName = "";
     }
