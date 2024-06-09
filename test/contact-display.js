@@ -96,6 +96,7 @@ function buildOrderNumbersList(list){
 			);
 		}
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
+            // <div style="text-align:center;margin-top:8px;padding-top:8px;color:var(--accent-color);font-size:small;text-shadow:0px 0px 3px var(--accent-color);border-top:1px solid gray;">EDIT</div>
 	}
 }
 function trigger(){
