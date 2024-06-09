@@ -1148,16 +1148,16 @@ function contactFormSave(){
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
     );
     if(formOrdersString == ""){
-        formOrderNumbers = [""];
+        //formOrderNumbers = [""];
         document.getElementById('ordersSection').classList.toggle("hidden");
     }
     else{
         formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
         if(formOrderNumbers.length > 1){
-            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","");
+            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","").replaceAll(",",", ");
         }
         else{
-            newSubject = formOrderNumbers;
+            //newSubject = formOrderNumbers;
         }
         Missive.setSubject(newSubject);
     }
