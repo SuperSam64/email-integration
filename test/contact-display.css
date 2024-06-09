@@ -2,6 +2,15 @@
 :root{
 	--fade: 0.5s;
 }
+#add-edit{
+  color:var(--accent-color);
+  font-size:small;
+  padding:10px;
+  text-align:center;
+  text-shadow: 0px 0px 4px var(--accent-color);
+  width:100%;
+  border-top:1px solid var(--missive-light-border-color);
+}
 .form td{
     overflow:visible;
 }
