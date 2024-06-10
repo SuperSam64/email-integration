@@ -173,7 +173,8 @@
           </table>
         </div>
         <div id="add-edit">
-          <span class="button-token" onclick="showEditPanel()">
+          <!--<span class="button-token" onclick="showEditPanel()">-->
+          <span class="button-token" onclick="console.log(normalizePhoneNumber('5555555555',true))">
             EDIT
           </span> 			
         </div>
@@ -401,7 +402,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "79";
-      var scriptVersion = "169";
+      var scriptVersion = "170";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

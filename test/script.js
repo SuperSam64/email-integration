@@ -1285,21 +1285,84 @@ function showEditPanel(){
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
 // normalizePhoneNumber("formPhoneNumber")
-function normalizeFirstName(input){
-    var output = "";
-    return output;
+function normalizeFirstName(input,placeholder){
+    // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
+    if(placeholder && input.trim().replaceAll(" ","") == ""){
+        return "First name";
+    }
+    else{
+        // remove any spaces at the beginning and the end, but leave spaces in between words (removing duplicates)
+        var output = ("|" + document.getElementById(input).value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+        // if the name contains @, it's an email address; return the placeholder
+        if(output.includes("@")){
+            output = "First name";
+        }
+        // as long as the first part of the name has more than 2 letters
+        else if(output.replaceAll(".","").replaceAll("","").length > 2){
+            // if the name is all caps, lowercase everything but the first letter
+            if(output.toUpperCase() === output){
+                document.getElementById(output).innerText = output;
+                document.getElementById(output).style.textTransform = "lowercase";
+                output = document.getElementById(output).innerText;
+            }
+            // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
+            document.getElementById(output).innerText = output;
+            document.getElementById(output).style.textTransform = "capitalize";
+            output = document.getElementById(output).innerText;
+            document.getElementById(output).innerText ="";
+        }
+        return output;
+    }
 }
-function normalizeLastName(input){
-    var output = "";
-    return output;
+function normalizeLastName(input,placeholder){
+    // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
+    if(placeholder && input.trim().replaceAll(" ","") == ""){
+        return "Last name";
+    }
+    else{
+        // remove any spaces at the beginning and the end, but leave spaces in between words (removing duplicates)
+        var output = ("|" + document.getElementById(input).value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+        // if the name contains @, it's an email address; return the placeholder
+        if(output.includes("@")){
+            output = "Last name";
+        }
+        // as long as the first part of the name has more than 2 letters
+        else if(output.replaceAll(".","").replaceAll("","").length > 2){
+            // if the name is all caps, lowercase everything but the first letter
+            if(output.toUpperCase() === output){
+                document.getElementById(output).innerText = output;
+                document.getElementById(output).style.textTransform = "lowercase";
+                output = document.getElementById(output).innerText;
+            }
+            // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
+            document.getElementById(output).innerText = output;
+            document.getElementById(output).style.textTransform = "capitalize";
+            output = document.getElementById(output).innerText;
+            document.getElementById(output).innerText ="";
+        }
+        return output;
+    }
 }
-function normalizeFullName(first,last){
-    var output = ([normalizeFirstName(first),normalizeLasttName(last)]).join(" ");
-    return output;
+function normalizeFullName(first,last,placeholder){
+    var output = ([normalizeFirstName(first,false),normalizeLasttName(last,false)]).join(" ");
+    if(placeholder && output == ""){
+        return "Name";
+    }
+    else{
+        return output;
+    }
 }
-function normalizeCID(input){
-    var output = "";
-    return output;
+function normalizeCID(input,placeholder){
+    if(placehoder && input == ""){
+        return "Customer ID"
+    }
+    else{
+        var output = document.getElementById(input).value.trim().replaceAll(" ","");
+        if(input.slice(0,3).toUpperCase() != "CUS" && input != ""){
+            input = input * 1
+        }
+        return output;
+    }
 }
 function normalizePhoneNumber(input){
     var output = (document.getElementById(input).value.trim()
