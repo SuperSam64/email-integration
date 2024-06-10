@@ -16,6 +16,15 @@ Email - if blank, pass "Email address" to the text, consider this "blank" and ap
 Phone - if blank, pass "Phone number"
 FOR ALL BLANKS - disable the copy function
 
+to make these more modular, for each item, have an:
+    element name for the txt
+    element name for the form
+    empty value
+    these can be objects with the attrbutes
+    function for each type to remove unneeded charcaters (ex parseCustID) - have different parsing for both types (text would be the same as input, but with extra steps)
+    
+    
+
 */
 
 
@@ -1203,7 +1212,15 @@ function contactFormSave(){
     newPhoneNumber = document.getElementById('phoneField')
     newEmail = document.getElementById('emailField')
     newName.innerText = formFullname;
-    newCID.innerText = "CID " + formCustID; // only if not blank, otherwise, "customer ID"
+    if(formCustID.trim().replaceAll(" ","") == ""){
+        newCID.innerText = "Customer ID";
+        document.getElementById('CIDField').classList.add("inactive");
+    }
+    else{
+        newCID.innerText = "CID " + formCustID; // only if not blank, otherwise, "customer ID"
+        document.getElementById('CIDField').classList.remove("inactive");
+    }
+    
     newPhoneNumber.innerText = formPhoneNumber;
     newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
