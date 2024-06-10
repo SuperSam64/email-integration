@@ -1374,8 +1374,8 @@ function normalizePhoneNumber(input,placeholder){
         if(output.slice(0,1) == "1"){
             output = output.slice(1,output.length);
         }
-        if(formPhoneNumber.length > 6){
-            if(formPhoneNumber.length > 10){
+        if(output.length > 6){
+            if(output.length > 10){
                 output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
                 output.slice(6,10) + " " + output.slice(10,output.length));
             }
