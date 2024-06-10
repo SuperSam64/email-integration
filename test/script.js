@@ -1194,7 +1194,7 @@ function showEditPanel(){
         previousLastName = "";
     }
     else if(previousFullName.includes(" ")){
-        previousFirstName = previousFullName.split(" ")[o];
+        previousFirstName = previousFullName.split(" ")[0];
         previousLastName = previousFullName.replace((previousFirstName + " "),"");
     }
     else{
