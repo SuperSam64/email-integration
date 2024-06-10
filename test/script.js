@@ -1364,22 +1364,27 @@ function normalizeCID(input,placeholder){
         return output;
     }
 }
-function normalizePhoneNumber(input){
-    var output = (document.getElementById(input).value.trim()
-    .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
-    if(output.slice(0,1) == "1"){
-        output = output.slice(1,output.length);
+function normalizePhoneNumber(input,placeholder){
+    if(placeholder && input == ""){
+        return "Phone number"
     }
-    if(formPhoneNumber.length > 6){
-        if(formPhoneNumber.length > 10){
-            output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
-            output.slice(6,10) + " " + output.slice(10,output.length));
+    else{
+        var output = (document.getElementById(input).value.trim()
+        .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
+        if(output.slice(0,1) == "1"){
+            output = output.slice(1,output.length);
         }
-        else{
-            output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
+        if(formPhoneNumber.length > 6){
+            if(formPhoneNumber.length > 10){
+                output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
+                output.slice(6,10) + " " + output.slice(10,output.length));
+            }
+            else{
+                output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
+            }
         }
-    }
-    return output;
+        return output;
+}
 }
 function normalizeEmail(input){
     var output = "";
