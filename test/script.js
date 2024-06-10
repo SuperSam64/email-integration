@@ -1285,8 +1285,24 @@ function showEditPanel(){
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
 // normalizePhoneNumber("formPhoneNumber")
+function normalizeFirstName(input){
+    var output = "";
+    return output;
+}
+function normalizeLastName(input){
+    var output = "";
+    return output;
+}
+function normalizeFullName(first,last){
+    var output = ([normalizeFirstName(first),normalizeLasttName(last)]).join(" ");
+    return output;
+}
+function normalizeCID(input){
+    var output = "";
+    return output;
+}
 function normalizePhoneNumber(input){
-    var output = (document.getElementById(' + input + ').value.trim()
+    var output = (document.getElementById(input).value.trim()
     .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
     if(output.slice(0,1) == "1"){
         output = output.slice(1,output.length);
@@ -1300,6 +1316,10 @@ function normalizePhoneNumber(input){
             output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
         }
     }
+    return output;
+}
+function normalizeEmail(input){
+    var output = "";
     return output;
 }
 
