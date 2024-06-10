@@ -61,6 +61,10 @@
   -webkit-animation: fadeOut var(--fade);
   animation: fadeOut var(--fade);
 }
+.inactive{
+  font-style: italic;
+  color: var(--missive-text-color-c);
+}
 .hidden{
   display:none;
 }

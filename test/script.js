@@ -1159,7 +1159,7 @@ function contactFormSave(){
         document.getElementById('ordersSection').classList.remove("hidden");
         formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
         if(formOrderNumbers.length > 1){
-            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","").replaceAll(",",", ");
+            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
         }
         else{
             newSubject = formOrderNumbers[0];
