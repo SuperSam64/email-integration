@@ -1163,7 +1163,9 @@ function contactFormSave(){
         formCustID = formCustID * 1
     }
     // various formats, blank, longer than 10 digits, extensions
-    var formPhoneNumber = (document.getElementById('formPhoneNumber').value.trim()
+    var formPhoneNumber = normalizePhoneNumber('formPhoneNumber');
+    
+    /*var formPhoneNumber = (document.getElementById('formPhoneNumber').value.trim()
     .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
     if(formPhoneNumber.slice(0,1) == "1"){
         formPhoneNumber = formPhoneNumber.slice(1,formPhoneNumber.length);
@@ -1176,7 +1178,7 @@ function contactFormSave(){
         else{
             formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
         }
-    }
+    }*/
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
     // keep CP09 but remove CP, - # . all spaces
@@ -1227,28 +1229,7 @@ function contactFormSave(){
     if(formCustID.trim().replaceAll(" ","") == ""){
         newCID.innerText = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
-    }
-    else{
-        newCID.innerText = "CID " + formCustID; // only if not blank, otherwise, "customer ID"
-        document.getElementById('CIDField').classList.remove("inactive");
-    }
-    if(formPhoneNumber.trim().replaceAll(" ","") == ""){
-        newPhoneNumber.innerText = "Phone Number";
-        document.getElementById('phoneField').classList.add("inactive");
-    }
-    else{
-        newPhoneNumber.innerText = formPhoneNumber; // only if not blank, otherwise, "customer ID"
-        document.getElementById('phoneField').classList.remove("inactive");
-    }
-    if(formEmail.trim().replaceAll(" ","") == ""){
-        newEmail.innerText = "Email address";
-        document.getElementById('emailField').classList.add("inactive");
-    }
-    else{
-        newEmail.innerText =  formEmail; // only if not blank, otherwise, "customer ID"
-        document.getElementById('emailField').classList.remove("inactive");
-    }
-    
+    }    
     newPhoneNumber.innerText = formPhoneNumber;
     newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
@@ -1319,6 +1300,7 @@ function normalizePhoneNumber(input){
             output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
         }
     }
+    return output;
 }
 
 // ======== BUTTONS ========
