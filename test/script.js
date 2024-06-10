@@ -1169,10 +1169,14 @@ function contactFormSave(){
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
-    document.getElementById('nameField').innerText = formFullname;
-    document.getElementById('CIDField').innerText = "CID " + formCustID;
-    document.getElementById('phoneField').innerText = formPhoneNumber;
-    document.getElementById('emailField').innerText = formEmail;
+    newName = document.getElementById('nameField')
+    newCID = document.getElementById('CIDField')
+    newPhoneNumber = document.getElementById('phoneField')
+    newEmail = document.getElementById('emailField')
+    newName.innerText = formFullname;
+    newCID.innerText = "CID " + formCustID;
+    newPhoneNumber.innerText = formPhoneNumber;
+    newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
@@ -1182,11 +1186,24 @@ function contactFormCancel(){
     document.getElementById('contactEdit').classList.add("hidden");
 }
 function showEditPanel(){
-    var previousFirstName = "John";
-    var previousLastName = "Doe";
-    var previousCID = "3692481";
-    var previousPhoneNumber = "(866) 438-3458";
-    var previousEmail = "john@filtersfast.com";
+    var previousFullName = document.getElementById('nameField').innerText;
+    var previousFirstName;
+    var previousLastName;
+    if(previousFullName == ""){
+        previousFirstName = "";
+        previousLastName = "";
+    }
+    else if(previousFullName.includes(" ")){
+        previousFirstName = previousFullName.split(" ")[o];
+        previousLastName = previousFullName.replace((previousFirstName + " "),"");
+    }
+    else{
+        previousFirstName = previousFullName;
+        previousLastName = "";
+    }
+    var previousCID = "CID " + document.getElementById('CIDField').innerText;
+    var previousPhoneNumber = document.getElementById('phoneField').innerText;
+    var previousEmail = document.getElementById('emailField').innerText;
     var previousOrderNumbers = document.getElementById('orderNumberList').innerText.trim().replace('Order #','').replaceAll('Order #',', ');
     if(previousFirstName == "First name"){
         previousFirstName = "";
