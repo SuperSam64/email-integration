@@ -1369,7 +1369,7 @@ function normalizePhoneNumber(input,placeholder){
         return "Phone number"
     }
     else{*/
-        var output = /*(*/document.getElementById("'" + input + "'").value/*.trim()
+        var output = /*(*/document.getElementById('input').value/*.trim()
         .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
         if(output.slice(0,1) == "1"){
             output = output.slice(1,output.length);
