@@ -1365,12 +1365,12 @@ function normalizeCID(input,placeholder){
     }
 }
 function normalizePhoneNumber(input,placeholder){
-    /*if(placeholder && input == ""){
+    if(placeholder && input == ""){
         return "Phone number"
     }
-    else{*/
-        var output = input; /*(document.getElementById(element).value.trim()
-        .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
+    else{
+        var output = input.trim()
+        .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#","");
         if(output.slice(0,1) == "1"){
             output = output.slice(1,output.length);
         }
@@ -1383,8 +1383,8 @@ function normalizePhoneNumber(input,placeholder){
                 output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
             }
         }
-        */return output;
-    //}
+        return output;
+    }
 }
 function normalizeEmail(input){
     var output = "";
