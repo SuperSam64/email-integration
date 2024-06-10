@@ -1,3 +1,24 @@
+/*
+CID - should remove "CID " when going from the text to the form
+CID - should add back the "CID " when going from the form to the text
+CID - "CID" (or "Customer ID"(?)) should be considered empty.
+    for any related formulas, consider this blank
+    apply "inactive" attribuet to make it italic and gray
+    test for leading 0s
+Name - should combine first and last when going from the form to the text
+Name - should split into 2 when going from the text to the form unless:
+    blank. Then pass "Name" to the form, consider this blank and apply "inactive" attribute
+    First name only (as deteremined by no spaces)
+Email - this should always be prefilled unless it ends with @filtersfast.com, in which case, blank.
+Email - if blank, it should be the only required field (see below)
+    document.getElementById("email").removeAttribute("required");
+Email - if blank, pass "Email address" to the text, consider this "blank" and apply "inactive" attribute.
+Phone - if blank, pass "Phone number"
+FOR ALL BLANKS - disable the copy function
+
+*/
+
+
 // ========= STARTUP =========
 async function loadUserProfile(){
     // Cycle through all users
@@ -1182,7 +1203,7 @@ function contactFormSave(){
     newPhoneNumber = document.getElementById('phoneField')
     newEmail = document.getElementById('emailField')
     newName.innerText = formFullname;
-    newCID.innerText = "CID " + formCustID;
+    newCID.innerText = "CID " + formCustID; // only if not blank, otherwise, "customer ID"
     newPhoneNumber.innerText = formPhoneNumber;
     newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
@@ -1209,7 +1230,7 @@ function showEditPanel(){
         previousFirstName = previousFullName;
         previousLastName = "";
     }
-    var previousCID = "CID " + document.getElementById('CIDField').innerText;
+    var previousCID = document.getElementById('CIDField').innerText.replace("CID ","");
     var previousPhoneNumber = document.getElementById('phoneField').innerText;
     var previousEmail = document.getElementById('emailField').innerText;
     var previousOrderNumbers = document.getElementById('orderNumberList').innerText.trim().replace('Order #','').replaceAll('Order #',', ');
