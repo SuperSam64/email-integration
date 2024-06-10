@@ -1192,14 +1192,17 @@ function showEditPanel(){
     if(previousFullName == ""){
         previousFirstName = "";
         previousLastName = "";
+        document.getElementById('nameField').classList.add("inactive");
     }
     else if(previousFullName.includes(" ")){
         previousFirstName = previousFullName.split(" ")[0];
         previousLastName = previousFullName.replace((previousFirstName + " "),"");
+        document.getElementById('nameField').classList.remove("inactive");
     }
     else{
         previousFirstName = previousFullName;
         previousLastName = "";
+        document.getElementById('nameField').classList.remove("inactive");
     }
     var previousCID = "CID " + document.getElementById('CIDField').innerText;
     var previousPhoneNumber = document.getElementById('phoneField').innerText;
