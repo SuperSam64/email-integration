@@ -1300,7 +1300,8 @@ function normalizeFirstName(input,placeholder){
         // as long as the first part of the name has more than 2 letters
         else if(output.replaceAll(".","").replaceAll("","").length > 2){
             // if the name is all caps, lowercase everything but the first letter
-            var element = document.createElement('span');
+            var element = document.createElement('div');
+            document.getElementById("textmod").appendChild(element)
             if(output.toUpperCase() === output){
                 element.innerText = output;
                 element.style.textTransform = "lowercase";
