@@ -1115,6 +1115,14 @@ function contactFormSave(){
         document.getElementById('valuePlaceholder').innerText ="";
     }
     var formFullname = [formFirstName, formLastName].join(" ");
+    if(formFullname == ""){
+        document.getElementById('nameField').classList.add("inactive");
+        formFullname = "Name";
+
+    }
+    else{
+        document.getElementById('nameField').classList.remove("inactive")
+    }
     // blank leading spaces CUS2904 0012345 CUS-123 #1234
     var formCustID = document.getElementById('formCustID').value.trim().replaceAll(" ","");
     if(formCustID.slice(0,3).toUpperCase() != "CUS" && formCustID != ""){
@@ -1192,17 +1200,14 @@ function showEditPanel(){
     if(previousFullName == ""){
         previousFirstName = "";
         previousLastName = "";
-        document.getElementById('nameField').classList.add("inactive");
     }
     else if(previousFullName.includes(" ")){
         previousFirstName = previousFullName.split(" ")[0];
         previousLastName = previousFullName.replace((previousFirstName + " "),"");
-        document.getElementById('nameField').classList.remove("inactive");
     }
     else{
         previousFirstName = previousFullName;
         previousLastName = "";
-        document.getElementById('nameField').classList.remove("inactive");
     }
     var previousCID = "CID " + document.getElementById('CIDField').innerText;
     var previousPhoneNumber = document.getElementById('phoneField').innerText;
