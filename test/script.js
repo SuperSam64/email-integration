@@ -22,7 +22,7 @@ to make these more modular, for each item, have an:
     empty value
     these can be objects with the attrbutes
     function for each type to remove unneeded charcaters (ex parseCustID) - have different parsing for both types (text would be the same as input, but with extra steps)
-    
+    change conversation = cancel changes
     
 
 */
@@ -1212,6 +1212,14 @@ function contactFormSave(){
     newPhoneNumber = document.getElementById('phoneField')
     newEmail = document.getElementById('emailField')
     newName.innerText = formFullname;
+    if(formFullName.trim().replaceAll(" ","") == ""){
+        newName.innerText = "Name";
+        document.getElementById('nameField').classList.add("inactive");
+    }
+    else{
+        newName.innerText = formFullName; // only if not blank, otherwise, "customer ID"
+        document.getElementById('nameField').classList.remove("inactive");
+    }
     if(formCustID.trim().replaceAll(" ","") == ""){
         newCID.innerText = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
@@ -1219,6 +1227,22 @@ function contactFormSave(){
     else{
         newCID.innerText = "CID " + formCustID; // only if not blank, otherwise, "customer ID"
         document.getElementById('CIDField').classList.remove("inactive");
+    }
+    if(formPhoneNumber.trim().replaceAll(" ","") == ""){
+        newPhoneNumber.innerText = "Phone Number";
+        document.getElementById('phoneField').classList.add("inactive");
+    }
+    else{
+        newPhoneNumber.innerText = formPhoneNumber; // only if not blank, otherwise, "customer ID"
+        document.getElementById('phoneField').classList.remove("inactive");
+    }
+    if(formEmail.trim().replaceAll(" ","") == ""){
+        newEmail.innerText = "Email address";
+        document.getElementById('emailField').classList.add("inactive");
+    }
+    else{
+        newEmail.innerText =  formEmail; // only if not blank, otherwise, "customer ID"
+        document.getElementById('emailField').classList.remove("inactive");
     }
     
     newPhoneNumber.innerText = formPhoneNumber;
