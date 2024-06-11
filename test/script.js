@@ -1126,70 +1126,30 @@ function contactFormSave(){
     var formCustID = normalizeCID(document.getElementById('formCustID').value,true);
     var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var formEmail = normalizeEmail(document.getElementById('formEmail').value,true);
-    /*("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(formFirstName.includes("@")){
-        formFirstName = "";
-    }
-    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
-        if(formFirstName.toUpperCase() === formFirstName){
-            document.getElementById('valuePlaceholder').innerText = formFirstName;
-            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            formFirstName = document.getElementById('valuePlaceholder').innerText;
-        }
-        document.getElementById('valuePlaceholder').innerText = formFirstName;
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        formFirstName = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
-    }
-    var formLastName = ("|" + document.getElementById('formLastName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(formLastName.includes("@")){
-        formLastName = "";
-    }
-    else if( formLastName.replaceAll(".","").replaceAll(".","").length > 2){
-        if(formFirstName.toUpperCase() === formFirstName){
-            document.getElementById('valuePlaceholder').innerText = formLastName;
-            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            formLastName = document.getElementById('valuePlaceholder').innerText;
-        }
-        document.getElementById('valuePlaceholder').innerText = formLastName;
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        formLastName = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
-    }
-    var formFullname = [formFirstName, formLastName].join(" ");
-    if(formFullname == ""){
+    if(formFullname == "" || formFullname == "Name"){
         document.getElementById('nameField').classList.add("inactive");
-        formFullname = "Name";
-
     }
     else{
-        document.getElementById('nameField').classList.remove("inactive")
+        document.getElementById('nameField').classList.remove("inactive");
     }
-    // blank leading spaces CUS2904 0012345 CUS-123 #1234
-    var formCustID = document.getElementById('formCustID').value.trim().replaceAll(" ","");
-    if(formCustID.slice(0,3).toUpperCase() != "CUS" && formCustID != ""){
-        formCustID = formCustID * 1
+    if(formCustID == "" || formCustID == "Customer ID"){
+        document.getElementById('CIDField').classList.add("inactive");
     }
-    // various formats, blank, longer than 10 digits, extensions
-    var formPhoneNumber = normalizePhoneNumber('formPhoneNumber');
-    
-    /*var formPhoneNumber = (document.getElementById('formPhoneNumber').value.trim()
-    .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#",""));
-    if(formPhoneNumber.slice(0,1) == "1"){
-        formPhoneNumber = formPhoneNumber.slice(1,formPhoneNumber.length);
+    else{
+        document.getElementById('CIDField').classList.remove("inactive");
     }
-    if(formPhoneNumber.length > 6){
-        if(formPhoneNumber.length > 10){
-            formPhoneNumber = ("(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + 
-            formPhoneNumber.slice(6,10) + " " + formPhoneNumber.slice(10,formPhoneNumber.length));
-        }
-        else{
-            formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
-        }
+    if(formPhoneNumber == "" || formPhoneNumber == "Phone number"){
+        document.getElementById('phoneField').classList.add("inactive");
     }
-    // blank, leading spaces, mix of capitalization
-    var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();*/
-    // keep CP09 but remove CP, - # . all spaces
+    else{
+        document.getElementById('phoneField').classList.remove("inactive");
+    }
+    if(formEmail == "" || formEmail == "Email address"){
+        document.getElementById('emailField').classList.add("inactive");
+    }
+    else{
+        document.getElementById('emailField').classList.remove("inactive");
+    }
     var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
@@ -1215,41 +1175,13 @@ function contactFormSave(){
         }
         Missive.setSubject(newSubject);
     }
-    /*var formOrderNumbers;
-    var formOrdersString = (
-        document.getElementById('formOrderNumbers').value.trim()
-        .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
-        .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
-        .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
-    );
-    if(formOrdersString == ""){
-        formOrderNumbers = [""];
-        if(
-            currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
-            currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
-            Missive.setSubject('');
-        }
-        document.getElementById('ordersSection').classList.add("hidden");
-    }
-    else{
-        document.getElementById('ordersSection').classList.remove("hidden");
-        formOrderNumbers = ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
-        if(formOrderNumbers.length > 1){
-            newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
-        }
-        else{
-            newSubject = formOrderNumbers[0];
-        }
-        Missive.setSubject(newSubject);
-    }*/
-    //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
     newName = document.getElementById('nameField')
     newCID = document.getElementById('CIDField')
     newPhoneNumber = document.getElementById('phoneField')
     newEmail = document.getElementById('emailField')
-    newName.innerText = formFullname;
+    /*newName.innerText = formFullname;
     if(formFullname.trim().replaceAll(" ","") == ""){
         newName.innerText = "Name";
         document.getElementById('nameField').classList.add("inactive");
@@ -1261,7 +1193,7 @@ function contactFormSave(){
     if(formCustID.trim().replaceAll(" ","") == ""){
         newCID.innerText = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
-    }    
+    }    */
     newPhoneNumber.innerText = formPhoneNumber;
     newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
@@ -1273,10 +1205,21 @@ function contactFormCancel(){
     document.getElementById('contactEdit').classList.add("hidden");
 }
 function showEditPanel(){
+    /*var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,false);
+    var formLastName = normalizeLastName(document.getElementById('formLastName').value,false);
+    var formFullname = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,false);
+    var formCustID = normalizeCID(document.getElementById('formCustID').value,false);
+    var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,false);
+    var formEmail = normalizeEmail(document.getElementById('formEmail').value,false);*/
+    
+    
+    
+    
+    
     var previousFullName = document.getElementById('nameField').innerText;
     var previousFirstName;
     var previousLastName;
-    if(previousFullName == ""){
+    if(previousFullName == "" || previousFullName == "Name"){
         previousFirstName = "";
         previousLastName = "";
     }
@@ -1288,25 +1231,25 @@ function showEditPanel(){
         previousFirstName = previousFullName;
         previousLastName = "";
     }
-    var previousCID = document.getElementById('CIDField').innerText.replace("CID ","");
+    var previousCID = document.getElementById('CIDField').innerText.replaceAll(" ","").replace("CID","");
     var previousPhoneNumber = document.getElementById('phoneField').innerText;
     var previousEmail = document.getElementById('emailField').innerText;
     var previousOrderNumbers = document.getElementById('orderNumberList').innerText.trim().replace('Order #','').replaceAll('Order #',', ');
-    if(previousFirstName == "First name"){
+    if(previousFirstName == "" || previousFirstName == "First name"){
         previousFirstName = "";
     }
-    if(previousLastName == "Last name"){
+    if(previousLastName == "" || previousLastName == "Last name"){
         previousLastName = "";
     }
-    if(previousCID == "CID"){
+    if(previousCID == "" || previousCID == "Customer ID"){
         previousCID = "";
     }
-    if(previousPhoneNumber == "Phone number"){
+    if(previousPhoneNumber == "" || previousPhoneNumber == "Phone number"){
         previousPhoneNumber = "";
     }
-    if(previousEmail == "Email"){
+    if(previousEmail == "" || previousEmail == "Email"){
         previousEmail = "";
-    }    
+    }
     document.getElementById('formFirstName').value = previousFirstName;
     document.getElementById('formLastName').value = previousLastName;
     document.getElementById('formCustID').value = previousCID;
@@ -1320,23 +1263,9 @@ function normalizeOrderNumbers(input,string){
     var formOrderNumbers;
     if(string == ""){
         return [""];
-        //if(
-        //    currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
-         //   currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
-          //  Missive.setSubject('');
-        //}
-        //document.getElementById('ordersSection').classList.add("hidden");
     }
     else{
-        //document.getElementById('ordersSection').classList.remove("hidden");
         return ("Order #"+ string).replaceAll(",",",Order #").split(",");
-        //if(formOrderNumbers.length > 1){
-          //  newSubject = "Orders #" + string.replaceAll("Order #","#").replaceAll(",",", ");
-        //}
-        //else{
-          //  newSubject = formOrderNumbers[0];
-        //}
-        //Missive.setSubject(newSubject);
     }
 }
 function normalizeFirstName(input,placeholder){
@@ -1400,7 +1329,7 @@ function normalizeCID(input,placeholder){
     }
     else{
         var output = input.trim().replaceAll(" ","");
-        if(input.trim().replaceAll(" ","").slice(0,3).toUpperCase() != "CUS" && input != ""){
+        if(output.slice(0,3).toUpperCase() != "CUS" && input != ""){
             output = ("!" + (input * 1)).replace("!","");
         }
         else{
