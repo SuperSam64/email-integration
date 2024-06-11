@@ -1188,8 +1188,8 @@ function contactFormSave(){
         }
         Missive.setSubject(newSubject);
     }
-    console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
-    console.log(formOrderNumbers);
+    //console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
+    //console.log(formOrderNumbers);
     
     /*newName.innerText = formFullname;
     if(formFullname.trim().replaceAll(" ","") == ""){
