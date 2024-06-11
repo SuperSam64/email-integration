@@ -1190,7 +1190,13 @@ function contactFormSave(){
     // blank, leading spaces, mix of capitalization
     var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();*/
     // keep CP09 but remove CP, - # . all spaces
-    var formOrderNumbers = normalizeOrderNumbers(document.getElementById('formOrderNumbers').value);
+    var formOrdersString = (
+        document.getElementById('formOrderNumbers').value.trim()
+        .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
+        .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
+        .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
+    );
+    var formOrderNumbers = normalizeOrderNumbers(document.getElementById('formOrderNumbers').value,formOrderString);
     if(formOrderNumbers[0] == ""){
         if(
              currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
@@ -1202,7 +1208,7 @@ function contactFormSave(){
     else{
         document.getElementById('ordersSection').classList.remove("hidden");
         if(formOrderNumbers.length > 1){
-          //newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", "); COME BACK HERE LATER
+          newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
         }
         else{
           newSubject = formOrderNumbers[0];
@@ -1310,15 +1316,9 @@ function showEditPanel(){
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
-function normalizeOrderNumbers(input){
+function normalizeOrderNumbers(input,string){
     var formOrderNumbers;
-    var formOrdersString = (
-        input.trim()
-        .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
-        .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
-        .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
-    );
-    if(formOrdersString == ""){
+    if(string == ""){
         return [""];
         //if(
         //    currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
@@ -1329,9 +1329,9 @@ function normalizeOrderNumbers(input){
     }
     else{
         //document.getElementById('ordersSection').classList.remove("hidden");
-        return ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
+        return ("Order #"+ string).replaceAll(",",",Order #").split(",");
         //if(formOrderNumbers.length > 1){
-          //  newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
+          //  newSubject = "Orders #" + string.replaceAll("Order #","#").replaceAll(",",", ");
         //}
         //else{
           //  newSubject = formOrderNumbers[0];
