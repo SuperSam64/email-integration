@@ -40,7 +40,7 @@
     <!------------------------------------------------------------------------></div></div>
     <div style="margin-top:160px;margin-bottom:12px">
       <div>
-        <span id="valuePlaceholder">
+        <span id="textmod">
         </span>
         <div id="contactEdit" class="panel hidden">
           <form id="contactForm" action="/action_page.php">
@@ -179,7 +179,6 @@
           </span>		
         </div>
       </div>
-      <span id="textmod" class="hidden capitalize"></span>
     </div>
     <!------------------------------- BUTTONS --------------------------------><span>
     <div id="mondaySection" style="margin-top:12px;border:1px solid var(--missive-conversation-list-border-color);border-radius:6px;background-color:var(--missive-conversation-list-background-color)"><div class="loading" style="text-align:center;font-style:italic">LOADING...</div></div>
@@ -403,7 +402,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "80";
-      var scriptVersion = "185";
+      var scriptVersion = "186";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

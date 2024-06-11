@@ -1286,48 +1286,47 @@ function showEditPanel(){
 }
 // normalizePhoneNumber("formPhoneNumber")
 function normalizeFirstName(input,placeholder){
-    var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(output.includes("@")){
-        output = "";
+    if(placeholder && input.trim().replaceAll(" ","") == ""){
+        return "First name";
     }
-    else if( output.replaceAll(".","").replaceAll("","").length > 2){
-        if(output.toUpperCase() === output){
-            document.getElementById('valuePlaceholder').innerText = output;
-            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            output = document.getElementById('valuePlaceholder').innerText;
+    else{
+        var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+        if(output.includes("@")){
+            output = "";
         }
-        document.getElementById('valuePlaceholder').innerText = output;
-        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        output = document.getElementById('valuePlaceholder').innerText;
-        document.getElementById('valuePlaceholder').innerText ="";
+        else if( output.replaceAll(".","").replaceAll("","").length > 2){
+            if(output.toUpperCase() === output){
+                document.getElementById('textmod').innerText = output;
+                document.getElementById('textmod').style.textTransform = "lowercase";
+                output = document.getElementById('textmod').innerText;
+            }
+            document.getElementById('textmod').innerText = output;
+            document.getElementById('textmod').style.textTransform = "capitalize";
+            output = document.getElementById('textmod').innerText;
+            document.getElementById('textmod').innerText ="";
+        }
+        return output;
     }
-    return output;
 }
 function normalizeLastName(input,placeholder){
-    // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
     if(placeholder && input.trim().replaceAll(" ","") == ""){
         return "Last name";
     }
     else{
-        // remove any spaces at the beginning and the end, but leave spaces in between words (removing duplicates)
-        var output = ("|" + input.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-        // if the name contains @, it's an email address; return the placeholder
+        var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
         if(output.includes("@")){
-            return "Last name";
+            output = "";
         }
-        // as long as the first part of the name has more than 2 letters
-        else if(output.replaceAll(".","").replaceAll("","").length > 2){
-            // if the name is all caps, lowercase everything but the first letter
+        else if( output.replaceAll(".","").replaceAll("","").length > 2){
             if(output.toUpperCase() === output){
-                document.getElementById(output).innerText = output;
-                document.getElementById(output).style.textTransform = "lowercase";
-                output = document.getElementById(output).innerText;
+                document.getElementById('textmod').innerText = output;
+                document.getElementById('textmod').style.textTransform = "lowercase";
+                output = document.getElementById('textmod').innerText;
             }
-            // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
-            document.getElementById(output).innerText = output;
-            document.getElementById(output).style.textTransform = "capitalize";
-            output = document.getElementById(output).innerText;
-            document.getElementById(output).innerText ="";
+            document.getElementById('textmod').innerText = output;
+            document.getElementById('textmod').style.textTransform = "capitalize";
+            output = document.getElementById('textmod').innerText;
+            document.getElementById('textmod').innerText ="";
         }
         return output;
     }
