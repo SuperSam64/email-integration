@@ -1375,7 +1375,9 @@ function normalizePhoneNumber(input,placeholder){
     }
 }
 function normalizeEmail(input){
-    var output = "";
+    if(placeholder && input.trim().replaceAll(" ","") == ""){
+        return "Email address"
+    }
     return output;
 }
 
