@@ -1286,29 +1286,22 @@ function showEditPanel(){
 }
 // normalizePhoneNumber("formPhoneNumber")
 function normalizeFirstName(input,placeholder){
-    // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "First name";
+    var formFirstName = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    if(formFirstName.includes("@")){
+        formFirstName = "";
     }
-    else{
-        // remove any spaces at the beginning and the end, but leave spaces in between words (removing duplicates)
-        var output = ("|" + input.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-        // if the name contains @, it's an email address; return the placeholder
-        if(output.includes("@")){
-            return "First name";
+    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
+        if(formFirstName.toUpperCase() === formFirstName){
+            document.getElementById('valuePlaceholder').innerText = formFirstName;
+            document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
+            formFirstName = document.getElementById('valuePlaceholder').innerText;
         }
-        // as long as the first part of the name has more than 2 letters
-        else if(output.replaceAll(".","").replaceAll("","").length > 2){
-            // if the name is all caps, lowercase everything but the first letter
-            if(output.toUpperCase() === output){
-                output = output.toLowerCase();
-            }
-            // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
-            document.getElementById('textmod').innerHTML = "<span style='text-transform:output'>" + output + "</span>";
-            output = document.getElementById('textmod').innerText;
-            return output;
-        }
+        document.getElementById('valuePlaceholder').innerText = formFirstName;
+        document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
+        formFirstName = document.getElementById('valuePlaceholder').innerText;
+        document.getElementById('valuePlaceholder').innerText ="";
     }
+    return formFirstName;
 }
 function normalizeLastName(input,placeholder){
     // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
