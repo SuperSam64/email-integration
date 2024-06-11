@@ -1132,7 +1132,7 @@ function contactFormSave(){
     var newPhoneNumber = document.getElementById('phoneField');
     var newEmail = document.getElementById('emailField');
     if(nameField.trim().replaceAll(" ","") == "" || nameField.trim() == "Name"){
-        newName.innerHTML = '"Name"' + <span class="popup" id="emailPopup"></span>;
+        newName.innerHTML = 'Name' + '<span class="popup" id="emailPopup"></span>';
         newName.classList.add("inactive");
     }
     else{
