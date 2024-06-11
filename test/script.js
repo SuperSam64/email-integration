@@ -1386,7 +1386,7 @@ function normalizeLastName(input,placeholder){
     }
 }
 function normalizeFullName(first,last,placeholder){
-    var output = ([normalizeFirstName(first,false),normalizeLasttName(last,false)]).join(" ");
+    var output = ([normalizeFirstName(first,false),normalizeLastName(last,false)]).join(" ");
     if(placeholder && output == ""){
         return "Name";
     }
