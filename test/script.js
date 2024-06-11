@@ -1346,8 +1346,11 @@ function normalizeCID(input,placeholder){
     }
     else{
         var output = input.trim().replaceAll(" ","");
-        if(input.slice(0,3).toUpperCase() != "CUS" && input != ""){
-            input = input * 1
+        if(input.trim().replaceAll(" ","").toUpperCase() != "CUS" && input != ""){
+            output = input * 1
+        }
+        else{
+            output = input.trim().replaceAll(" ","").toUpperCase();
         }
         return output;
     }
@@ -1378,9 +1381,11 @@ function normalizeEmail(input){
     if(placeholder && input.trim().replaceAll(" ","") == ""){
         return "Email address"
     }
-    return output;
+    else{
+        output == input.trim().replaceAll(" ","").toLowerCase();
+        return output;
+    }
 }
-
 // ======== BUTTONS ========
 function button1Clicked() {
     cancellationReply();
