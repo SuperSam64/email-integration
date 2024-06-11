@@ -1253,13 +1253,13 @@ function showEditPanel(){
     if(previousLastName == "" || previousLastName == "Last name"){
         previousLastName = "";
     }
-    if(previousCID == "" || previousCID == "Customer ID"){
+    if(previousCID == "" || previousCID == "CustomerID"){
         previousCID = "";
     }
     if(previousPhoneNumber == "" || previousPhoneNumber == "Phone number"){
         previousPhoneNumber = "";
     }
-    if(previousEmail == "" || previousEmail == "Email"){
+    if(previousEmail == "" || previousEmail == "Email address"){
         previousEmail = "";
     }
     document.getElementById('formFirstName').value = previousFirstName;
