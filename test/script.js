@@ -1120,34 +1120,40 @@ function contactFormSave(){
     console.log("made it this far");
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
     var newSubject = "";
-    var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,true);
-    var formLastName = normalizeLastName(document.getElementById('formLastName').value,true);
-    var formFullname = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
-    var formCustID = normalizeCID(document.getElementById('formCustID').value,true);
-    var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
-    var formEmail = normalizeEmail(document.getElementById('formEmail').value,true);
+    var nameField = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
+    var CIDField = normalizeCID(document.getElementById('formCustID').value,true);
+    var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
+    var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
     if(formFullname == "" || formFullname == "Name"){
+        document.getElementById('nameField').classList.value = "Name";
         document.getElementById('nameField').classList.add("inactive");
     }
     else{
+        document.getElementById('nameField').classList.value = nameField;
         document.getElementById('nameField').classList.remove("inactive");
     }
     if(formCustID == "" || formCustID == "Customer ID"){
+        document.getElementById('CIDField').classList.value = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
     }
     else{
-        document.getElementById('CIDField').classList.remove("inactive");
+        document.getElementById('CIDField').classList.value = CIDField;
+        document.getElementById('CIDField').classList.remove("inactive");        
     }
     if(formPhoneNumber == "" || formPhoneNumber == "Phone number"){
+        document.getElementById('phoneField').classList.value = "Phone number";
         document.getElementById('phoneField').classList.add("inactive");
     }
     else{
-        document.getElementById('phoneField').classList.remove("inactive");
+        document.getElementById('phoneField').classList.value = phoneField;
+        document.getElementById('phoneField').classList.remove("inactive");        
     }
     if(formEmail == "" || formEmail == "Email address"){
-        document.getElementById('emailField').classList.add("inactive");
+        document.getElementById('emailField').classList.value = "Email address";
+        document.getElementById('emailField').classList.add("inactive");        
     }
     else{
+        document.getElementById('emailField').classList.value = emailField;
         document.getElementById('emailField').classList.remove("inactive");
     }
     var formOrdersString = (
