@@ -1436,8 +1436,7 @@ function normalizeEmail(input,placeholder){
         return "Email address"
     }
     else{
-        output == input.trim().replaceAll(" ","").toLowerCase();
-        return output;
+        return input.trim().replaceAll(" ","").toLowerCase();
     }
 }
 // ======== BUTTONS ========
