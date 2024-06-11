@@ -14,9 +14,7 @@
   text-shadow: 0px 0px 4px var(--accent-color);
 }
 .form td{
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space: nowrap;
+    overflow:visible;
 }
 .fieldText {
   position: relative;
