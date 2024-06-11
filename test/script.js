@@ -1129,35 +1129,35 @@ function contactFormSave(){
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
     if(formFirstName == "" || formFullname == "Name"){
-        document.getElementById('nameField').classList.value = "Name";
+        document.getElementById('nameField').value = "Name";
         document.getElementById('nameField').classList.add("inactive");
     }
     else{
-        document.getElementById('nameField').classList.value = nameField;
+        document.getElementById('nameField').value = nameField;
         document.getElementById('nameField').classList.remove("inactive");
     }
     if(formCustID == "" || formCustID == "Customer ID"){
-        document.getElementById('CIDField').classList.value = "Customer ID";
+        document.getElementById('CIDField').value = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
     }
     else{
-        document.getElementById('CIDField').classList.value = CIDField;
+        document.getElementById('CIDField').value = CIDField;
         document.getElementById('CIDField').classList.remove("inactive");        
     }
     if(formPhoneNumber == "" || formPhoneNumber == "Phone number"){
-        document.getElementById('phoneField').classList.value = "Phone number";
+        document.getElementById('phoneField').value = "Phone number";
         document.getElementById('phoneField').classList.add("inactive");
     }
     else{
-        document.getElementById('phoneField').classList.value = phoneField;
+        document.getElementById('phoneField').value = phoneField;
         document.getElementById('phoneField').classList.remove("inactive");        
     }
     if(formEmail == "" || formEmail == "Email address"){
-        document.getElementById('emailField').classList.value = "Email address";
+        document.getElementById('emailField').value = "Email address";
         document.getElementById('emailField').classList.add("inactive");        
     }
     else{
-        document.getElementById('emailField').classList.value = emailField;
+        document.getElementById('emailField').value = emailField;
         document.getElementById('emailField').classList.remove("inactive");
     }
     var formOrdersString = (
