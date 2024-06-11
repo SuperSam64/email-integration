@@ -1121,11 +1121,11 @@ function contactFormSave(){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
     var newSubject = "";
     var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,true);
-    var formLastName = normalizeFirstName(document.getElementById('formFirstName').value,true);
-    var formFullname = normalizeFirstName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
-    var formCustID = normalizeFirstName(document.getElementById('formCustID').value,true);
-    var formPhoneNumber = normalizeFirstName(document.getElementById('formPhoneNumber').value,true);
-    var formEmail = normalizeFirstName(document.getElementById('formEmail').value,true);
+    var formLastName = normalizeLastName(document.getElementById('formLastName').value,true);
+    var formFullname = normalizeFullname(document.getElementById('formFirstname').value,document.getElementById('formLastName').value,true);
+    var formCustID = normalizeCID(document.getElementById('formCustID').value,true);
+    var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
+    var formEmail = normalizeEmail(document.getElementById('formEmail').value,true);
     /*("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formFirstName.includes("@")){
         formFirstName = "";
