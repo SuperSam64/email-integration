@@ -7,25 +7,25 @@ var animationLength = 1.4;
 function copyToClipboard(type, duration) {    
 	var showTooltip = true;
 	var elementValue ;
-	if(type="name"){
+	if(type == "name"){
 		elementValue = document.getElementById('nameField').innerText.trim().replaceAll(" ","");
 		if(elementValue == "" || elementValue == "Name"){
 			showTooltip = false;
 		}
 	}
-	if(type="CID"){
+	if(type  == "CID"){
 		elementValue = document.getElementById('CIDField').innerText.trim().replaceAll(" ","");
 		if(elementValue == "" || elementValue == "CustomerID"){
 			showTooltip = false;
 		}
 	}
-	if(type="phone"){
+	if(type  == "phone"){
 		elementValue = document.getElementById('phoneField').innerText.trim().replaceAll(" ","");
 		if(elementValue == "" || elementValue == "Phone number"){
 			showTooltip = false;
 		}
 	}
-	if(type="email"){
+	if(type  == "email"){
 		elementValue = document.getElementById('emailField').innerText.trim().replaceAll(" ","");
 		if(elementValue == "" || elementValue == "Email address"){
 			showTooltip = false;
