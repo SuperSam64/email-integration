@@ -1122,7 +1122,7 @@ function contactFormSave(){
     var newSubject = "";
     var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,true);
     var formLastName = normalizeLastName(document.getElementById('formLastName').value,true);
-    var formFullname = normalizeFullName(document.getElementById('formFirstname').value,document.getElementById('formLastName').value,true);
+    var formFullname = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
     var formCustID = normalizeCID(document.getElementById('formCustID').value,true);
     var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var formEmail = normalizeEmail(document.getElementById('formEmail').value,true);
