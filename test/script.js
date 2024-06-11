@@ -1127,11 +1127,11 @@ function contactFormSave(){
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
     var newSubject = "";
-    var newName = document.getElementById('nameField')
-    var newCID = document.getElementById('CIDField')
-    var newPhoneNumber = document.getElementById('phoneField')
-    var newEmail = document.getElementById('emailField')
-    if(nameField == "" || nameField == "Name"){
+    var newName = document.getElementById('nameField');
+    var newCID = document.getElementById('CIDField');
+    var newPhoneNumber = document.getElementById('phoneField');
+    var newEmail = document.getElementById('emailField');
+    if(nameField.trim().replaceAll(" ","") == "" || nameField.trim() == "Name"){
         newName.innerText = "Name";
         newName.classList.add("inactive");
     }
@@ -1139,7 +1139,7 @@ function contactFormSave(){
         newName.innerText = nameField;
         newName.classList.remove("inactive");
     }
-    if(CIDField == "" || CIDField == "Customer ID"){
+    if(CIDField.trim().replaceAll(" ","") == "" || CIDField.trim() == "Customer ID"){
         newCID.innerText = "Customer ID";
         newCID.classList.add("inactive");
     }
@@ -1147,7 +1147,7 @@ function contactFormSave(){
         newCID.innerText = CIDField;
         newCID.classList.remove("inactive");        
     }
-    if(phoneField == "" || phoneField == "Phone number"){
+    if(phoneField.trim().replaceAll(" ","") == "" || phoneField.trim() == "Phone number"){
         newPhoneNumber.innerText = "Phone number";
         newPhoneNumber.classList.add("inactive");
     }
@@ -1155,7 +1155,7 @@ function contactFormSave(){
         newPhoneNumber.innerText = phoneField;
         newPhoneNumber.classList.remove("inactive");        
     }
-    if(emailField == "" || emailField == "Email address"){
+    if(emailField.trim().replaceAll(" ","") == "" || emailField.trim() == "Email address"){
         newEmail.innerText = "Email address";
         newEmail.classList.add("inactive");        
     }
@@ -1341,7 +1341,7 @@ function normalizeCID(input,placeholder){
     }
     else{
         var output = input.trim().replaceAll(" ","");
-        if(output.slice(0,3).toUpperCase() != "CUS" && input != ""){
+        if(output.slice(0,3).toUpperCase() != "CUS" || input != ""){
             output = ("!" + (input * 1)).replace("!","");
         }
         else{
