@@ -1131,7 +1131,7 @@ function contactFormSave(){
     var newCID = document.getElementById('CIDField')
     var newPhoneNumber = document.getElementById('phoneField')
     var newEmail = document.getElementById('emailField')
-    if(formFirstName == "" || formFullname == "Name"){
+    if(nameField == "" || nameField == "Name"){
         newName.innerText = "Name";
         newName.classList.add("inactive");
     }
@@ -1139,7 +1139,7 @@ function contactFormSave(){
         newName.innerText = nameField;
         newName.classList.remove("inactive");
     }
-    if(formCustID == "" || formCustID == "Customer ID"){
+    if(CIDField == "" || CIDField == "Customer ID"){
         newCID.innerText = "Customer ID";
         newCID.classList.add("inactive");
     }
@@ -1147,7 +1147,7 @@ function contactFormSave(){
         newCID.innerText = CIDField;
         newCID.classList.remove("inactive");        
     }
-    if(formPhoneNumber == "" || formPhoneNumber == "Phone number"){
+    if(phoneField == "" || phoneField == "Phone number"){
         newPhoneNumber.innerText = "Phone number";
         newPhoneNumber.classList.add("inactive");
     }
@@ -1155,7 +1155,7 @@ function contactFormSave(){
         newPhoneNumber.innerText = phoneField;
         newPhoneNumber.classList.remove("inactive");        
     }
-    if(formEmail == "" || formEmail == "Email address"){
+    if(emailField == "" || emailField == "Email address"){
         newEmail.innerText = "Email address";
         newEmail.classList.add("inactive");        
     }
