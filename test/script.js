@@ -1119,12 +1119,16 @@ async function lookupContact(input){
 function contactFormSave(){
     console.log("made it this far");
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
+
+    var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,false);
+    var formLastName = normalizeLastName(document.getElementById('formLastName').value,false);
+    var formFullname = normalizeFullName(formFirstName,formLastName.value,true);
     var newSubject = "";
     var nameField = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
     var CIDField = normalizeCID(document.getElementById('formCustID').value,true);
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
-    if(formFullname == "" || formFullname == "Name"){
+    if(formFirstName == "" || formFullname == "Name"){
         document.getElementById('nameField').classList.value = "Name";
         document.getElementById('nameField').classList.add("inactive");
     }
