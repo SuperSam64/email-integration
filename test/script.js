@@ -1401,7 +1401,7 @@ function normalizeCID(input,placeholder){
     else{
         var output = input.trim().replaceAll(" ","");
         if(input.trim().replaceAll(" ","").slice(0,3).toUpperCase() != "CUS" && input != ""){
-            output = input * 1;
+            output = ("!" + (input * 1)).replace("!","");
         }
         else{
             output = input.trim().replaceAll(" ","").toUpperCase();
