@@ -1196,7 +1196,7 @@ function contactFormSave(){
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
     );
-    var formOrderNumbers = normalizeOrderNumbers(document.getElementById('formOrderNumbers').value,formOrderString);
+    var formOrderNumbers = normalizeOrderNumbers(document.getElementById('formOrderNumbers').value,formOrdersString);
     if(formOrderNumbers[0] == ""){
         if(
              currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
