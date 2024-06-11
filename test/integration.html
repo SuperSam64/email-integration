@@ -137,13 +137,13 @@
           <tr>
             <td class="left middle">
               <span class="fieldText" id="nameField" onclick="copyToClipboard('name',animationLength)">
-                Sam Nimmo
+                <span id="nameFieldInner">Sam Nimmo</span>
                 <span class="popup" id="namePopup"></span>
               </span>
             </td>
             <td class="right middle">
               <span class="fieldText" id="CIDField" onclick="copyToClipboard('CID',animationLength)">
-                01234567
+                <span id="CIDFieldInner"></span>01234567</span>
                 <span class="popup" id="CIDPopup"></span>
               </span>
             </td>
@@ -151,13 +151,13 @@
           <tr>
             <td class="left right">
               <span class="fieldText" id="phoneField" onclick="copyToClipboard('phone',animationLength)">
-                (705-555-5555)
+                <span id="phoneFieldInner"></span>(705-555-5555)</span>
                 <span class="popup" id="phonePopup"></span>
               </span>
             </td>
             <td class="left right">
               <span class="fieldText" id="emailField" onclick="copyToClipboard('email',animationLength)">
-                bob@bobsmith.com
+                <span id="emailFieldInner"></span>bob@bobsmith.com</span>
                 <span class="popup" id="emailPopup"></span>
               </span>
             </td>
@@ -401,7 +401,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "80";
-      var scriptVersion = "216";
+      var scriptVersion = "217";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

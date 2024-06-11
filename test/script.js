@@ -1127,12 +1127,12 @@ function contactFormSave(){
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
     var newSubject = "";
-    var newName = document.getElementById('nameField');
-    var newCID = document.getElementById('CIDField');
-    var newPhoneNumber = document.getElementById('phoneField');
-    var newEmail = document.getElementById('emailField');
+    var newName = document.getElementById('nameFieldInner');
+    var newCID = document.getElementById('CIDFieldInner');
+    var newPhoneNumber = document.getElementById('phoneFieldInner');
+    var newEmail = document.getElementById('emailFieldInner');
     if(nameField.trim().replaceAll(" ","") == "" || nameField.trim() == "Name"){
-        newName.innerHTML = 'Name' + '<span class="popup" id="emailPopup"></span>';
+        newName.innerHTML = 'Name';
         newName.classList.add("inactive");
     }
     else{
