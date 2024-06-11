@@ -1117,7 +1117,7 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(){
-    console.log("made it this far")
+    console.log("made it this far");
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
     var newSubject = "";
     var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,true);
@@ -1202,7 +1202,7 @@ function contactFormSave(){
     else{
         document.getElementById('ordersSection').classList.remove("hidden");
         if(formOrderNumbers.length > 1){
-          newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
+          //newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", "); COME BACK HERE LATER
         }
         else{
           newSubject = formOrderNumbers[0];
