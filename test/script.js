@@ -1286,22 +1286,22 @@ function showEditPanel(){
 }
 // normalizePhoneNumber("formPhoneNumber")
 function normalizeFirstName(input,placeholder){
-    var formFirstName = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(formFirstName.includes("@")){
-        formFirstName = "";
+    var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    if(output.includes("@")){
+        output = "";
     }
-    else if( formFirstName.replaceAll(".","").replaceAll("","").length > 2){
-        if(formFirstName.toUpperCase() === formFirstName){
-            document.getElementById('valuePlaceholder').innerText = formFirstName;
+    else if( output.replaceAll(".","").replaceAll("","").length > 2){
+        if(output.toUpperCase() === output){
+            document.getElementById('valuePlaceholder').innerText = output;
             document.getElementById('valuePlaceholder').style.textTransform = "lowercase";
-            formFirstName = document.getElementById('valuePlaceholder').innerText;
+            output = document.getElementById('valuePlaceholder').innerText;
         }
-        document.getElementById('valuePlaceholder').innerText = formFirstName;
+        document.getElementById('valuePlaceholder').innerText = output;
         document.getElementById('valuePlaceholder').style.textTransform = "capitalize";
-        formFirstName = document.getElementById('valuePlaceholder').innerText;
+        output = document.getElementById('valuePlaceholder').innerText;
         document.getElementById('valuePlaceholder').innerText ="";
     }
-    return formFirstName;
+    return output;
 }
 function normalizeLastName(input,placeholder){
     // if a placeholder is requested for blank values, and the value is blank, return the placeholder.
