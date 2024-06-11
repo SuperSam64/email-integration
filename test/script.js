@@ -1395,7 +1395,7 @@ function normalizeFullName(first,last,placeholder){
     }
 }
 function normalizeCID(input,placeholder){
-    if(placehoder && input.trim().replaceAll(" ","") == ""){
+    if(placeholder && input.trim().replaceAll(" ","") == ""){
         return "Customer ID"
     }
     else{
