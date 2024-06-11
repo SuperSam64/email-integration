@@ -1396,12 +1396,12 @@ function normalizeFullName(first,last,placeholder){
 }
 function normalizeCID(input,placeholder){
     if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "Customer ID"
+        return "Customer ID";
     }
     else{
         var output = input.trim().replaceAll(" ","");
-        if(input.trim().replaceAll(" ","").toUpperCase() != "CUS" && input != ""){
-            output = input * 1
+        if(input.trim().replaceAll(" ","").slice(0,3).toUpperCase() != "CUS" && input != ""){
+            output = input * 1;
         }
         else{
             output = input.trim().replaceAll(" ","").toUpperCase();
