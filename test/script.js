@@ -1120,45 +1120,48 @@ function contactFormSave(){
     console.log("made it this far");
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
 
-    var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,false);
-    var formLastName = normalizeLastName(document.getElementById('formLastName').value,false);
-    var formFullname = normalizeFullName(formFirstName,formLastName.value,true);
-    var newSubject = "";
+    
+    
     var nameField = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
     var CIDField = normalizeCID(document.getElementById('formCustID').value,true);
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
+    var newSubject = "";
+    var newName = document.getElementById('nameField')
+    var newCID = document.getElementById('CIDField')
+    var newPhoneNumber = document.getElementById('phoneField')
+    var newEmail = document.getElementById('emailField')
     if(formFirstName == "" || formFullname == "Name"){
-        document.getElementById('nameField').value = "Name";
-        document.getElementById('nameField').classList.add("inactive");
+        newName.innerText = "Name";
+        newName.classList.add("inactive");
     }
     else{
-        document.getElementById('nameField').value = nameField;
-        document.getElementById('nameField').classList.remove("inactive");
+        newName.innerText = nameField;
+        newName.classList.remove("inactive");
     }
     if(formCustID == "" || formCustID == "Customer ID"){
-        document.getElementById('CIDField').value = "Customer ID";
-        document.getElementById('CIDField').classList.add("inactive");
+        newCID.innerText = "Customer ID";
+        newCID.classList.add("inactive");
     }
     else{
-        document.getElementById('CIDField').value = CIDField;
-        document.getElementById('CIDField').classList.remove("inactive");        
+        newCID.innerText = CIDField;
+        newCID.classList.remove("inactive");        
     }
     if(formPhoneNumber == "" || formPhoneNumber == "Phone number"){
-        document.getElementById('phoneField').value = "Phone number";
-        document.getElementById('phoneField').classList.add("inactive");
+        newPhoneNumber.innerText = "Phone number";
+        newPhoneNumber.classList.add("inactive");
     }
     else{
-        document.getElementById('phoneField').value = phoneField;
-        document.getElementById('phoneField').classList.remove("inactive");        
+        newPhoneNumber.innerText = phoneField;
+        newPhoneNumber.classList.remove("inactive");        
     }
     if(formEmail == "" || formEmail == "Email address"){
-        document.getElementById('emailField').value = "Email address";
-        document.getElementById('emailField').classList.add("inactive");        
+        newEmail.innerText = "Email address";
+        newEmail.classList.add("inactive");        
     }
     else{
-        document.getElementById('emailField').value = emailField;
-        document.getElementById('emailField').classList.remove("inactive");
+        newEmail.innerText = emailField;
+        newEmail.classList.remove("inactive");
     }
     var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
@@ -1187,10 +1190,7 @@ function contactFormSave(){
     }
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
-    newName = document.getElementById('nameField')
-    newCID = document.getElementById('CIDField')
-    newPhoneNumber = document.getElementById('phoneField')
-    newEmail = document.getElementById('emailField')
+    
     /*newName.innerText = formFullname;
     if(formFullname.trim().replaceAll(" ","") == ""){
         newName.innerText = "Name";
@@ -1204,8 +1204,10 @@ function contactFormSave(){
         newCID.innerText = "Customer ID";
         document.getElementById('CIDField').classList.add("inactive");
     }    */
-    newPhoneNumber.innerText = formPhoneNumber;
-    newEmail.innerText = formEmail;
+    //newPhoneNumber.innerText = formPhoneNumber;
+    //newEmail.innerText = formEmail;
+    //newPhoneNumber.innerText = formPhoneNumber;
+    //newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
