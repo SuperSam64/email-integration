@@ -1118,7 +1118,14 @@ async function lookupContact(input){
 }
 function contactFormSave(){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
-    var formFirstName = ("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    var newSubject = "";
+    var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,true);
+    var formLastName = normalizeFirstName(document.getElementById('formFirstName').value,true);
+    var formFullname = normalizeFirstName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
+    var formCustID = normalizeFirstName(document.getElementById('formCustID').value,true);
+    var formPhoneNumber = normalizeFirstName(document.getElementById('formPhoneNumber').value,true);
+    var formEmail = normalizeFirstName(document.getElementById('formEmail').value,true);
+    /*("|" + document.getElementById('formFirstName').value.trim() + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     if(formFirstName.includes("@")){
         formFirstName = "";
     }
@@ -1178,12 +1185,30 @@ function contactFormSave(){
         else{
             formPhoneNumber = "(" + formPhoneNumber.slice(0,3) + ") " + formPhoneNumber.slice(3,6) + "-" + formPhoneNumber.slice(6,formPhoneNumber.length)
         }
-    }*/
+    }
     // blank, leading spaces, mix of capitalization
-    var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();
+    var formEmail = document.getElementById('formEmail').value.trim().replaceAll(" ","").toLowerCase();*/
     // keep CP09 but remove CP, - # . all spaces
-    var newSubject = "";
-    var formOrderNumbers;
+    var formOrderNumbers = normalizeOrderNumbers(document.getElementById('formOrderNumbers').value);
+    if(formOrderNumbers[0] == ""){
+        if(
+             currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
+            currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
+            Missive.setSubject('');
+        }
+        document.getElementById('ordersSection').classList.add("hidden");
+    }
+    else{
+        document.getElementById('ordersSection').classList.remove("hidden");
+        if(formOrderNumbers.length > 1){
+          newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
+        }
+        else{
+          newSubject = formOrderNumbers[0];
+        }
+        Missive.setSubject(newSubject);
+    }
+    /*var formOrderNumbers;
     var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
@@ -1209,7 +1234,7 @@ function contactFormSave(){
             newSubject = formOrderNumbers[0];
         }
         Missive.setSubject(newSubject);
-    }
+    }*/
     //for loops to normalize order numbers, emails, customer IDs, names, and order numbers. consider empty values.
     console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
     console.log(formOrderNumbers);
@@ -1284,7 +1309,35 @@ function showEditPanel(){
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
-// normalizePhoneNumber("formPhoneNumber")
+function normalizeOrderNumbers(input){
+    var formOrderNumbers;
+    var formOrdersString = (
+        input.trim()
+        .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
+        .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
+        .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
+    );
+    if(formOrdersString == ""){
+        return [""];
+        //if(
+        //    currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
+         //   currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
+          //  Missive.setSubject('');
+        //}
+        //document.getElementById('ordersSection').classList.add("hidden");
+    }
+    else{
+        //document.getElementById('ordersSection').classList.remove("hidden");
+        return ("Order #"+ formOrdersString).replaceAll(",",",Order #").split(",");
+        //if(formOrderNumbers.length > 1){
+          //  newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
+        //}
+        //else{
+          //  newSubject = formOrderNumbers[0];
+        //}
+        //Missive.setSubject(newSubject);
+    }
+}
 function normalizeFirstName(input,placeholder){
     if(placeholder && input.trim().replaceAll(" ","") == ""){
         return "First name";

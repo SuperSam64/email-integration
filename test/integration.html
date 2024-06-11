@@ -121,8 +121,7 @@
                     <input class="button" style="margin-top:12px;width:100%" type="button" value="Save Contact" onclick="contactFormSave()">
                   </td>
                   <td class="bottom right ">
-                    <!--<input class="button" style="margin-top:12px;width:100%;background-color:var(--missive-orange-color)" type="button" value="Cancel" onclick="contactFormCancel()">-->
-                    <input class="button" style="margin-top:12px;width:100%;background-color:var(--missive-orange-color)" type="button" value="Cancel" onclick="console.log(normalizeFirstName('  bob ',true));console.log(normalizeFirstName('bob',true));console.log(normalizeFirstName('BOB',true))">
+                    <input class="button" style="margin-top:12px;width:100%;background-color:var(--missive-orange-color)" type="button" value="Cancel" onclick="contactFormCancel()">
                   </td>
                 </tr>
               </tbody>
@@ -402,7 +401,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "80";
-      var scriptVersion = "189";
+      var scriptVersion = "190";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
