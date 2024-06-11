@@ -1341,10 +1341,10 @@ function normalizeCID(input,placeholder){
     }
     else{
         var output = input.trim().replaceAll(" ","");
-        if(output.slice(0,3).toUpperCase() != "CUS" || input != ""){
+        if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
             output = ("!" + (input * 1)).replace("!","");
         }
-        else{
+        else if(output != "Customer ID"){
             output = input.trim().replaceAll(" ","").toUpperCase();
         }
         return output;
