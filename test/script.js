@@ -1127,16 +1127,16 @@ function contactFormSave(){
     var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
     var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
     var newSubject = "";
-    var newName = document.getElementById('nameFieldInner');
-    var newCID = document.getElementById('CIDFieldInner');
-    var newPhoneNumber = document.getElementById('phoneFieldInner');
-    var newEmail = document.getElementById('emailFieldInner');
+    var newName = document.getElementById('nameField');
+    var newCID = document.getElementById('CIDField');
+    var newPhoneNumber = document.getElementById('phoneField');
+    var newEmail = document.getElementById('emailField');
     if(nameField.trim().replaceAll(" ","") == "" || nameField.trim() == "Name"){
-        newName.innerHTML = 'Name';
+        newName.innerText = 'Name';
         newName.classList.add("inactive");
     }
     else{
-        newName.innerText = nameField;
+        newName.innerHTML = nameField + '<span class="popup" id="namePopup"></span>';
         newName.classList.remove("inactive");
     }
     if(CIDField.trim().replaceAll(" ","") == "" || CIDField.trim() == "Customer ID"){
@@ -1144,7 +1144,7 @@ function contactFormSave(){
         newCID.classList.add("inactive");
     }
     else{
-        newCID.innerText = CIDField;
+        newCID.innerHTML = CIDField  + '<span class="popup" id="CIDPopup"></span>';
         newCID.classList.remove("inactive");        
     }
     if(phoneField.trim().replaceAll(" ","") == "" || phoneField.trim() == "Phone number"){
@@ -1152,7 +1152,7 @@ function contactFormSave(){
         newPhoneNumber.classList.add("inactive");
     }
     else{
-        newPhoneNumber.innerText = phoneField;
+        newPhoneNumber.innerHTML = phoneField  + '<span class="popup" id="phonePopup"></span>';
         newPhoneNumber.classList.remove("inactive");        
     }
     if(emailField.trim().replaceAll(" ","") == "" || emailField.trim() == "Email address"){
@@ -1160,7 +1160,7 @@ function contactFormSave(){
         newEmail.classList.add("inactive");        
     }
     else{
-        newEmail.innerText = emailField;
+        newEmail.innerHTML = emailField  + '<span class="popup" id="emailPopup"></span>';
         newEmail.classList.remove("inactive");
     }
     var formOrdersString = (
