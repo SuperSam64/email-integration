@@ -1304,9 +1304,8 @@ function normalizeFirstName(input,placeholder){
                 output = output.toLowerCase();
             }
             // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
-            var element = document.getElementById("textmod");
-            element.innerText = output;
-            output = element.innerText;
+            document.getElementById('textmod').innerText = output;
+            output = (document.getElementById('textmod').innerText);
             return output;
         }
     }
