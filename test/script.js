@@ -1300,18 +1300,13 @@ function normalizeFirstName(input,placeholder){
         // as long as the first part of the name has more than 2 letters
         else if(output.replaceAll(".","").replaceAll("","").length > 2){
             // if the name is all caps, lowercase everything but the first letter
-            var element = document.createElement('div');
-            document.getElementById("textmod").appendChild(element)
             if(output.toUpperCase() === output){
-                element.innerText = output;
-                element.style.textTransform = "lowercase";
-                output = element.innerText;
+                output = output.toLowerCase();
             }
             // if name is lowercase or mixed case (ex. McDonald), change to caplitalize first letter. This will leave other caps in tact
+            var element = document.getElementById("textmod");
             element.innerText = output;
-            element.style.textTransform = "capitalize";
             output = element.innerText;
-            element.remove();
             return output;
         }
     }

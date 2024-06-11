@@ -68,6 +68,9 @@
 .hidden{
   display:none;
 }
+.capitalize{
+  text-transform: capitalize;
+}
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeOut {
   from {opacity: 1;}
