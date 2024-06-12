@@ -1086,21 +1086,21 @@ async function lookupContact(input){
         contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"input",true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
-                if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != "" && contactRecord.contacts[0].infos[i].value != "Phone number"){
+                if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
                     contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"input",true);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
-                if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" && contactRecord.contacts[0].infos[i].value != "Customer ID"){
+                if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" ){
                     contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"input",true);
                 }
             }
         }
         contactExists =  true;
     }
-    contact.email = normalizeEmail(input,"input",true);
+    contact.email = normalizeEmail(input,"edit",true);
     console.log("First name " + contact.firstName);
     console.log("Last name " +  contact.lastName);
     console.log("CID " + contact.customerID);
