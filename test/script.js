@@ -1084,6 +1084,9 @@ async function lookupContact(input){
     if(typeof contactRecord.contacts[0] != 'undefined'){
         console.log("First name " + contactRecord.contacts[0].first_name);
         console.log("Last name " + contactRecord.contacts[0].last_name);
+        console.log("CID " + contactRecord.contacts[0].infos[i].value);
+        console.log("Phone number" + contactRecord.contacts[0].infos[i].value);
+        console.log("Email " + input);
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
         contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"edit");
         contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"edit",false);
@@ -1137,9 +1140,9 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var emailField = document.getElementById('emailField');
 
     nameField.innerHTML = normalizeFullName(firstName,lastName,"info-panel",true);
-    CIDField.innerHTML = normalizeFullName(CID,"info-panel",true);
-    phoneField.innerHTML = normalizeFullName(phoneNum,"info-panel",true);
-    emailField.innerHTML = normalizeFullName(email,"info-panel",true);
+    CIDField.innerHTML = normalizeCID(CID,"info-panel",true);
+    phoneField.innerHTML = normalizePhone(phoneNum,"info-panel",true);
+    emailField.innerHTML = normalizeEmail(email,"info-panel",true);
 
 
 
