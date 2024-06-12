@@ -1386,8 +1386,13 @@ function normalizeFullName(first,last,placeholder){
     }
 }
 function normalizeCID(input,placeholder){
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "Customer ID";
+    if(input.trim().replaceAll(" ","") == "" || input.trim().replaceAll(" ","") == "customerid"){
+        if(placeholder){
+            return "Customer ID";
+        }
+        else{
+            return "";
+        }
     }
     else{
         var output = input.trim().replaceAll(" ","");
