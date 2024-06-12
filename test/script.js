@@ -1100,12 +1100,12 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,true);
     if(
-        currentConversation.subject.slice(0,6) == "Orders" &&
-        currentConversation.subject.length - currentConversation.subjec.replaceAll("#","").length > 1 &&
-        currentConversation.subject.length - currentConversation.subjec.replaceAll("#","").length ==
-        currentConversation.subject.length - currentConversation.subjec.replaceAll(",","").length &&
-        currentConversation.subject.length - currentConversation.subjec.replaceAll(" ","").length ==
-        (currentConversation.subject.length - currentConversation.subjec.replaceAll(",","").length) + 1
+        conversationSubject.slice(0,6) == "Orders" &&
+        conversationSubject.length - currentConversation.subjec.replaceAll("#","").length > 1 &&
+        conversationSubject.length - currentConversation.subjec.replaceAll("#","").length ==
+        conversationSubject.length - currentConversation.subjec.replaceAll(",","").length &&
+        conversationSubject.length - currentConversation.subjec.replaceAll(" ","").length ==
+        (conversationSubject.length - currentConversation.subjec.replaceAll(",","").length) + 1
 
     ){
         var orders = currentConversation.subject.replace("Orders $","").split(", #");
