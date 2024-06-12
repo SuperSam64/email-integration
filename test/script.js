@@ -1103,8 +1103,9 @@ async function lookupContact(input){
     contact.email = normalizeEmail(input,"edit",true);
     console.log("First name " + contact.firstName);
     console.log("Last name " +  contact.lastName);
+    console.log("Full name " +  contact.fullName);
     console.log("CID " + contact.customerID);
-    console.log("Phone number" + contact.phoneNumber);
+    console.log("Phone number " + contact.phoneNumber);
     console.log("Email " + contact.email);
 
     /*if(
