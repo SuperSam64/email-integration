@@ -1074,46 +1074,39 @@ async function lookupContact(input){
 	contact = {
 		firstName:"",
 		lastName:"",
+        fullName:"",
 		customerID:"",
 		phoneNumber:"",
 		email: input
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
-        contact.firstName = contactRecord.contacts[0].first_name;
-        contact.lastName = contactRecord.contacts[0].last_name;  
+        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,false);
+        contact.lastName = normalizeFirstLast(contactRecord.contacts[0].lasst_name,false);
+        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contact.phoneNumber == "" && contactRecord.contacts[0].infos[i].kind == "phone_number"){
-                    contact.phoneNumber = contactRecord.contacts[0].infos[i].value;
-                    contact.phoneNumber = contact.phoneNumber.replaceAll("(","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll(")","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll("+","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll("#","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll("-","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll(".","");
-                    contact.phoneNumber = contact.phoneNumber.replaceAll(" ","");
-                    if(contact.phoneNumber.slice(0, 1) == "1"){
-                        contact.phoneNumber = contact.phoneNumber.slice(1, contact.phoneNumber.length)
-                    }
-                    if(contact.phoneNumber.length == 10){
-                        contact.phoneNumber = "(" + contact.phoneNumber.slice(0, 3) + ") " + contact.phoneNumber.slice(3, 6) + "-" + contact.phoneNumber.slice(6, contact.phoneNumber.length);
-                    }
+                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,false);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
                 if(contact.customerID == "" && contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id"){
-                    contact.customerID = contactRecord.contacts[0].infos[i].value;
+                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,true);
                 }
             }
         }
-        $("#body21").text(contact.firstName + " | " + contact.lastName + " | " + contact.email + " | " + contact.phoneNumber + " | " + contact.customerID);
     }
     else {
-        $("#body21").text("NO CONTACT DATA");
+        contact.firstName = "";
+		contact.lastName = "";
+        contact.fullName = "Name";
+		contact.customerID = "Customer ID";
+		contact.phoneNumber = "Phone Number";
     }
-    buildOrderNumbersList(["1","2","3"]);
+    contact.email = normalizeEmail(input,true);
+    buildOrderNumbersList(["11","22","33"]);
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
@@ -1122,25 +1115,25 @@ async function lookupContact(input){
     CIDField.innerHTML = normalizeCID(contact.customerID,true) + '<span class="popup" id="CIDPopup"></span>';
     phoneField.innerHTML = normalizePhoneNumber(contact.phoneNumber,true) + '<span class="popup" id="phonePopup"></span>';
     emailField.innerHTML = normalizeEmail(contact.email,true) + '<span class="popup" id="emailPopup"></span>';
-    if(nameField.innerHTML.trim().replaceAll(" ","") == "" || nameField.innerHTML.trim() == "Name"){
+    if(contact.fullName == "" || contact.fullName == "Name"){
         nameField.classList.add("inactive");
     }
     else{
         nameField.classList.remove("inactive");
     }
-    if(CIDField.innerHTML.trim().replaceAll(" ","") == "" || CIDField.innerHTML.trim() == "Customer ID"){
+    if(contact.customerID == "" || contact.customerID == "Customer ID"){
         CIDField.classList.add("inactive");
     }
     else{
         CIDField.classList.remove("inactive");        
     }
-    if(phoneField.innerHTML.trim().replaceAll(" ","") == "" || phoneField.innerHTML.trim() == "Phone number"){
+    if(contact.phoneNumber == "" || contact.phoneNumber == "Phone number"){
         phoneField.classList.add("inactive");
     }
     else{
         phoneField.classList.remove("inactive");        
     }
-    if(emailField.innerHTML.trim().replaceAll(" ","") == "" || emailField.innerHTML.trim() == "Email address"){
+    if(contact.email == "" || contact.email == "Email address"){
         emailField.classList.add("inactive");        
     }
     else{
