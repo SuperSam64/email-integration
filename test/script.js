@@ -1101,11 +1101,11 @@ async function lookupContact(input){
     contact.email = normalizeEmail(input,true);
     if(
         conversationSubject.slice(0,6) == "Orders" &&
-        conversationSubject.length - currentConversation.subjec.replaceAll("#","").length > 1 &&
-        conversationSubject.length - currentConversation.subjec.replaceAll("#","").length ==
-        conversationSubject.length - currentConversation.subjec.replaceAll(",","").length &&
-        conversationSubject.length - currentConversation.subjec.replaceAll(" ","").length ==
-        (conversationSubject.length - currentConversation.subjec.replaceAll(",","").length) + 1
+        conversationSubject.length - conversationSubject.replaceAll("#","").length > 1 &&
+        conversationSubject.length - conversationSubject.replaceAll("#","").length ==
+        conversationSubject.length - conversationSubject.replaceAll(",","").length &&
+        conversationSubject.length - conversationSubject.replaceAll(" ","").length ==
+        (conversationSubject.length - cconversationSubject.replaceAll(",","").length) + 1
 
     ){
         var orders = currentConversation.subject.replace("Orders $","").split(", #");
