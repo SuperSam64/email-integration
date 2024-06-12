@@ -1114,10 +1114,10 @@ async function lookupContact(input){
         $("#body21").text("NO CONTACT DATA");
     }
     buildOrderNumbersList(["1","2","3"]);
-    var nameField = document.getElementById('formFirstName');
-    var CIDField = document.getElementById('formCustID');
-    var phoneField = document.getElementById('formPhoneNumber');
-    var emailField = document.getElementById('formEmail');
+    var nameField = document.getElementById('nameField');
+    var CIDField = document.getElementById('CIDField');
+    var phoneField = document.getElementById('phoneField');
+    var emailField = document.getElementById('emailField');
     nameField.innerHTML = normalizeFullName(contact.firstName,contact.lastName,true) + '<span class="popup" id="namePopup"></span>';
     CIDField.innerHTML = normalizeCID(contact.customerID,true) + '<span class="popup" id="CIDPopup"></span>';
     phoneField.innerHTML = normalizePhoneNumber(contact.phoneNumber,true) + '<span class="popup" id="phonePopup"></span>';
