@@ -1081,7 +1081,7 @@ async function lookupContact(input){
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,false);
-        contact.lastName = normalizeFirstLast(contactRecord.contacts[0].lasst_name,false);
+        contact.lastName = normalizeFirstLast(contactRecord.contacts[0].last_name,false);
         contact.fullName = normalizeFullName(contact.firstName,contact.lastName,true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
