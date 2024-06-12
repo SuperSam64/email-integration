@@ -1111,7 +1111,7 @@ async function lookupContact(input){
         var orders = currentConversation.subject.replace("Orders $","").split(", #");
         buildOrderNumbersList(orders);
     }
-    else{
+    else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }
     var nameField = document.getElementById('nameField');
@@ -1373,8 +1373,13 @@ function normalizeLastName(input,placeholder){
 }
 function normalizeFullName(first,last,placeholder){
     var output = ([normalizeFirstName(first,false),normalizeLastName(last,false)]).join(" ");
-    if(placeholder && output == ""){
-        return "Name";
+    if(output.trim().replaceAll(" ","").toLowerCase() == "name" || output.trim().replaceAll(" ","") == ""){
+        if(placeholder){
+            return "Name";
+        }
+        else{
+            return "";
+        }
     }
     else{
         return output;
@@ -1396,8 +1401,13 @@ function normalizeCID(input,placeholder){
     }
 }
 function normalizePhoneNumber(input,placeholder){
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "Phone number"
+    if(input.trim().replaceAll(" ","").toLowerCase() == "phonenumber" || input.trim().replaceAll(" ","") == ""){
+        if(placeholder){
+            return "Phone number";
+        }
+        else{
+            return "";
+        }
     }
     else{
         var output = input.trim()
