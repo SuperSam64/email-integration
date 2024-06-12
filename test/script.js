@@ -1291,7 +1291,7 @@ function showEditPanel(){
     if(previousPhoneNumber == "" || previousPhoneNumber == "Phone number"){
         previousPhoneNumber = "";
     }
-    if(previousEmail == "" || previousEmail == "Email address"){
+    if(previousEmail.trim().replaceAll(" ","") == "emailaddress" || previousEmail.trim().replaceAll(" ","") == ""){
         previousEmail = "";
         document.getElementById('formEmail').disabled = true;
         document.getElementById('formEmail').classList.add = "inactive";
