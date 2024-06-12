@@ -1445,6 +1445,15 @@ function normalizeEmail(input,placeholder){
         return input.trim().replaceAll(" ","").toLowerCase();
     }
 }
+function resetContactInfo(){
+    document.getElementById('nameField').value = "Name";
+    document.getElementById('CIDField').value = "Customer ID";
+    document.getElementById('phoneField').value = "Phone number";
+    document.getElementById('emailField').value = "Email address";
+    document.getElementById("contactInfoSection").classList.remove("hidden");
+    document.getElementById("contactEdit").classList.add("hidden");
+}
+
 // ======== BUTTONS ========
 function button1Clicked() {
     cancellationReply();
