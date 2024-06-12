@@ -1061,6 +1061,8 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 async function lookupContact(input){
+    var contactExists = false;
+    resetContactInfo();
     var contactRecord;
 	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + tokens[1] + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
@@ -1080,26 +1082,29 @@ async function lookupContact(input){
 		email: input
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
-        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,false);
-        contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,false);
-        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,true);
+        console.log("First name " + contactRecord.contacts[0].first_name);
+        console.log("Last name " + contactRecord.contacts[0].last_name);
+        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
+        contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"edit");
+        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"edit",false);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != "" && contactRecord.contacts[0].infos[i].value != "Phone number"){
-                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,false);
+                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"edit",false);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" && contactRecord.contacts[0].infos[i].value != "Customer ID"){
-                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,true);
+                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"edit",false);
                 }
             }
         }
+        contactExists =  true;
     }
-    contact.email = normalizeEmail(input,true);
-    if(
+    contact.email = normalizeEmail(input,"edit",false);
+    /*if(
         conversationSubject.slice(0,6) == "Orders" &&
         conversationSubject.length - conversationSubject.replaceAll("#","").length > 1 &&
         conversationSubject.length - conversationSubject.replaceAll("#","").length ==
@@ -1113,88 +1118,47 @@ async function lookupContact(input){
     }
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
-    }
+    }*/
+    contactFormSave(contact.firstName,contact.lastName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
+    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+}
+function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
+    console.log("made it this far");
+    // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
+
+    var formFirstName = document.getElementById('formFirstName');
+    var formLastName = document.getElementById('formLastName');
+    var formCustID = document.getElementById('formCustID');
+    var formPhone = document.getElementById('formPhone');
+    var formCustID = document.getElementById('formCustID');
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-    nameField.innerHTML = normalizeFullName(contact.firstName,contact.lastName,true) + '<span class="popup" id="namePopup"></span>';
-    CIDField.innerHTML = normalizeCID(contact.customerID,true) + '<span class="popup" id="CIDPopup"></span>';
-    phoneField.innerHTML = normalizePhoneNumber(contact.phoneNumber,true) + '<span class="popup" id="phonePopup"></span>';
-    emailField.innerHTML = normalizeEmail(contact.email,true) + '<span class="popup" id="emailPopup"></span>';
-    if(contact.fullName == "" || contact.fullName == "Name"){
-        nameField.classList.add("inactive");
-    }
-    else{
-        nameField.classList.remove("inactive");
-    }
-    if(contact.customerID == "" || contact.customerID == "Customer ID"){
-        CIDField.classList.add("inactive");
-    }
-    else{
-        CIDField.classList.remove("inactive");        
-    }
-    if(contact.phoneNumber == "" || contact.phoneNumber == "Phone number"){
-        phoneField.classList.add("inactive");
-    }
-    else{
-        phoneField.classList.remove("inactive");        
-    }
-    if(contact.email == "" || contact.email == "Email address"){
-        emailField.classList.add("inactive");        
-    }
-    else{
-        emailField.classList.remove("inactive");
-    }
-    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
-}
-function contactFormSave(){
-    console.log("made it this far");
-    // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
+
+    nameField.innerHTML = normalizeFullName(firstName,lastName,"info-panel",true);
+    CIDField.innerHTML = normalizeFullName(CID,"info-panel",true);
+    phoneField.innerHTML = normalizeFullName(phoneNum,"info-panel",true);
+    emailField.innerHTML = normalizeFullName(email,"info-panel",true);
+
+
 
     
-    
-    var nameField = normalizeFullName(document.getElementById('formFirstName').value,document.getElementById('formLastName').value,true);
-    var CIDField = normalizeCID(document.getElementById('formCustID').value,true);
-    var phoneField = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,true);
-    var emailField = normalizeEmail(document.getElementById('formEmail').value,true);
-    var newSubject = "";
-    var newName = document.getElementById('nameField');
-    var newCID = document.getElementById('CIDField');
-    var newPhoneNumber = document.getElementById('phoneField');
-    var newEmail = document.getElementById('emailField');
-    if(nameField.trim().replaceAll(" ","") == "" || nameField.trim() == "Name"){
-        newName.innerText = 'Name';
-        newName.classList.add("inactive");
-    }
-    else{
-        newName.innerHTML = nameField + '<span class="popup" id="namePopup"></span>';
-        newName.classList.remove("inactive");
-    }
-    if(CIDField.trim().replaceAll(" ","") == "" || CIDField.trim() == "Customer ID"){
-        newCID.innerText = "Customer ID";
-        newCID.classList.add("inactive");
-    }
-    else{
-        newCID.innerHTML = CIDField  + '<span class="popup" id="CIDPopup"></span>';
-        newCID.classList.remove("inactive");        
-    }
-    if(phoneField.trim().replaceAll(" ","") == "" || phoneField.trim() == "Phone number"){
-        newPhoneNumber.innerText = "Phone number";
-        newPhoneNumber.classList.add("inactive");
-    }
-    else{
-        newPhoneNumber.innerHTML = phoneField  + '<span class="popup" id="phonePopup"></span>';
-        newPhoneNumber.classList.remove("inactive");        
-    }
-    if(emailField.trim().replaceAll(" ","") == "" || emailField.trim() == "Email address"){
-        newEmail.innerText = "Email address";
-        newEmail.classList.add("inactive");        
-    }
-    else{
-        newEmail.innerHTML = emailField  + '<span class="popup" id="emailPopup"></span>';
-        newEmail.classList.remove("inactive");
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
@@ -1220,29 +1184,14 @@ function contactFormSave(){
         }
         Missive.setSubject(newSubject);
     }
-    //console.log(([formFullname,formPhoneNumber,formCustID,formEmail]).join(", "));
-    //console.log(formOrderNumbers);
-    
-    /*newName.innerText = formFullname;
-    if(formFullname.trim().replaceAll(" ","") == ""){
-        newName.innerText = "Name";
-        document.getElementById('nameField').classList.add("inactive");
-    }
-    else{
-        newName.innerText = formFullname; // only if not blank, otherwise, "customer ID"
-        document.getElementById('nameField').classList.remove("inactive");
-    }
-    if(formCustID.trim().replaceAll(" ","") == ""){
-        newCID.innerText = "Customer ID";
-        document.getElementById('CIDField').classList.add("inactive");
-    }    */
-    //newPhoneNumber.innerText = formPhoneNumber;
-    //newEmail.innerText = formEmail;
-    //newPhoneNumber.innerText = formPhoneNumber;
-    //newEmail.innerText = formEmail;
     buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
+
+
+
+
+    // searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormCancel(){
     document.getElementById('contactInfoSection').classList.remove("hidden");
@@ -1325,133 +1274,266 @@ function normalizeOrderNumbers(input,string){
         return ("Order #"+ string).replaceAll(",",",Order #").split(",");
     }
 }
-function normalizeFirstName(input,placeholder){
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "First name";
+function normalizeFirstName(input,type){
+    // remove any leading and traling spaces
+    var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    // if this is an email address,
+    if(output.includes("@")){
+        // get rid of it
+        output = "";
     }
-    else{
-        var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-        if(output.includes("@")){
-            output = "";
-        }
-        else if( output.replaceAll(".","").replaceAll("","").length > 2){
-            if(output.toUpperCase() === output){
-                document.getElementById('textmod').innerText = output;
-                document.getElementById('textmod').style.textTransform = "lowercase";
-                output = document.getElementById('textmod').innerText;
-            }
+    // if the length is greater than 2 letters
+    else if( output.replaceAll(".","").replaceAll("","").length > 2){
+        // if it's all  caps
+        if(output.toUpperCase() === output){
+            // make it lowercase, and then capital case
             document.getElementById('textmod').innerText = output;
-            document.getElementById('textmod').style.textTransform = "capitalize";
+            document.getElementById('textmod').style.textTransform = "lowercase";
             output = document.getElementById('textmod').innerText;
-            document.getElementById('textmod').innerText ="";
         }
-        return output;
+        // otherwise just make it capital case
+        document.getElementById('textmod').innerText = output;
+        document.getElementById('textmod').style.textTransform = "capitalize";
+        output = document.getElementById('textmod').innerText;
+        document.getElementById('textmod').innerText ="";
     }
+    // if grabbing the full name from the info panel,
+    if (type == "info-panel"){
+        // separate out the first name
+        if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes("")){
+            output = output.split(" ")[0];
+        }
+    }
+    return output;
 }
-function normalizeLastName(input,placeholder){
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "Last name";
+function normalizeLastName(input,type){
+    var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    if(output.includes("@")){
+        output = "";
     }
-    else{
-        var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-        if(output.includes("@")){
-            output = "";
-        }
-        else if( output.replaceAll(".","").replaceAll("","").length > 2){
-            if(output.toUpperCase() === output){
-                document.getElementById('textmod').innerText = output;
-                document.getElementById('textmod').style.textTransform = "lowercase";
-                output = document.getElementById('textmod').innerText;
-            }
+    else if( output.replaceAll(".","").replaceAll("","").length > 2){
+        if(output.toUpperCase() === output){
             document.getElementById('textmod').innerText = output;
-            document.getElementById('textmod').style.textTransform = "capitalize";
+            document.getElementById('textmod').style.textTransform = "lowercase";
             output = document.getElementById('textmod').innerText;
-            document.getElementById('textmod').innerText ="";
         }
-        return output;
+        document.getElementById('textmod').innerText = output;
+        document.getElementById('textmod').style.textTransform = "capitalize";
+        output = document.getElementById('textmod').innerText;
+        document.getElementById('textmod').innerText ="";
     }
-}
-function normalizeFullName(first,last,placeholder){
-    var output = ([normalizeFirstName(first,false),normalizeLastName(last,false)]).join(" ");
-    if(output.trim().replaceAll(" ","").toLowerCase() == "name" || output.trim().replaceAll(" ","") == ""){
-        if(placeholder){
-            return "Name";
+    if (type == "info-panel"){
+        if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes(" ")){
+            output = output.replace((output.split(" ")[0] + " "),"");
         }
-        else{
-            return "";
+    }
+    return output;
+}
+function normalizeFullName(first,last,type,updateElements){
+    // get the emelment
+    var element = document.getElementById("nameField")
+    // compose the full name of the normalized first and last names
+    var output = ([normalizeFirstName(first),normalizeLastName(last)]).join(" ");
+    // if empty
+    if(output.trim().replaceAll(" ","") == "" || output.trim().replaceAll(" ","") == "Name"){
+        // if this is for the info panel
+        if(type == "info-panel"){
+            output = "Name";
+            if(updateElements){
+                element.classList.add("inactive");
+            }
+            else if(updateElements){
+                element.classList.remove("inactive");
+                output = output + '<span class="popup" id="namePopup"></span>';
+            }
+        }
+        else if(type == "reset" && updateElements){
+            output = "Name";
+            element.classList.add("inactive");
+        }
+    }
+    return output;
+}
+function normalizeCID(input,type,updateElements){
+    var element = document.getElementById("CIDField")
+    var output = input.trim().replaceAll(" ","");
+    if(output == "" || output.toLowerCase() == "customerid"){
+        output == "";
+        if(updateElements){
+            element.classList.add("inactive");
         }
     }
     else{
-        return output;
-    }
-}
-function normalizeCID(input,placeholder){
-    if(input.trim().replaceAll(" ","") == "" || input.trim().replaceAll(" ","") == "customerid"){
-        if(placeholder){
-            return "Customer ID";
-        }
-        else{
-            return "";
-        }
-    }
-    else{
-        var output = input.trim().replaceAll(" ","");
+        output = output.replace("CID ","").trim().replaceAll(" ","");
         if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
-            output = ("!" + (input * 1)).replace("!","");
+            output = ("!" + (output * 1)).replace("!","");
         }
         else if(output != "Customer ID"){
-            output = input.trim().replaceAll(" ","").toUpperCase();
+            output = output.trim().replaceAll(" ","").toUpperCase();
         }
-        return output;
     }
-}
-function normalizePhoneNumber(input,placeholder){
-    if(input.trim().replaceAll(" ","").toLowerCase() == "phonenumber" || input.trim().replaceAll(" ","") == ""){
-        if(placeholder){
-            return "Phone number";
+    if(type == "info-panel"){
+        if(output == ""){  
+            output = "Customer ID"
+            if(updateElements){
+                element.classList.add("inactive");
+            }
+        }
+        else if(updateElements){
+            element.classList.remove("inactive");
+            output = output + '<span class="popup" id="namePopup"></span>';
+        }
+    }
+    else if(type == "edit"){
+        if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
+            output = "";
+        }
+    }
+    else if(type == "clipboard"){
+        if(output == "" || output.toLowerCase == "customerid"){
+            output = "";
         }
         else{
-            return "";
+            output = output.toUpperCase().replace("CID ","");
         }
     }
-    else{
-        var output = input.trim()
-        .replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","").replaceAll("#","");
-        if(output.slice(0,1) == "1"){
-            output = output.slice(1,output.length);
+    else if(type == "reset" && updateElements){
+        output = "Name";
+        element.classList.add("inactive");
+    }
+    return output;
+}
+function normalizePhoneNumber(input,type,updateElements){
+    var element = document.getElementById("phoneField");
+    var output = input.trim().replaceAll("#","").replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","");
+    if(output.slice(0,1) == 1){
+        output = output(replace("1",""));
+    }
+    if(output.length > 6){
+        if(output.length > 10){
+            output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
+            output.slice(6,10) + " " + output.slice(10,output.length));
         }
-        if(output.length > 6){
-            if(output.length > 10){
-                output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
-                output.slice(6,10) + " " + output.slice(10,output.length));
+        else{
+            output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
+        }
+    }
+    if(output == "" || output.toLowerCase() == "phonenumber"){
+        if(placeholder){
+            output =  "";
+            if(updateElements){
+                element.classList.add("inactive");
+            }
+        }
+    }
+    if(type == "info-panel"){
+        if(output == ""){
+            output == "Phone number" ;
+            if(updateElements){
+                element.classList.add("inactive");
+            }
+        }
+        else if(updateElements){
+            output = output + '<span class="popup" id="phonePopup"></span>';
+            element.classList.remove("inactive");
+        }
+    }
+    else if(type == "clipboard"){
+        if(output != ""){
+            var rawNumber = output.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
+            if(rawNumber.length > 10){
+                
+                rawNumber = rawNumber(0,10) + " " + rawNumber(10,rawNumber.length);
+                output = rawNumber;
             }
             else{
-                output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
+                output = rawNumber;
             }
         }
-        return output;
     }
+    else if(type == "reset" && updateElements){
+        output = "Name";
+        element.classList.add("inactive");
+    }
+    return output;
 }
-function normalizeEmail(input,placeholder){
-    if(input.trim().replaceAll(" ","").toLowerCase() == "emailaddress" || input.trim().replaceAll(" ","") == ""){
-        if(placeholder){
-            return "Email address";
+function normalizeEmail(input,type,updateElements){
+    // Get elements
+    var element = document.getElementById("emailField");
+    var inputElement = document.getElementById("formEmail");
+    // Convert to lowercase with no spaces
+    var output = input.trim().replaceAll(" ","").toLowerCase();
+    // If blank or placeholder
+    if(output == "" || output == "email"){
+        // Keep blank
+        output = "";
+        if(updateElements){
+            element.classList.add("inactive");
         }
-        else{
-            return "";
-        }        
     }
     else{
-        return input.trim().replaceAll(" ","").toLowerCase();
+        // For the info panel
+        if(type == "info-panel"){
+            // if updating elements
+            if(updateElements){
+                // make the element active
+                element.classList.remove("inactive");
+                // add the div for the clipboard popup
+                output = output + '<span class="popup" id="emailPopup"></span>';
+            }
+            // otherwise
+            else{
+                // mark as inactive
+                element.classList.add("inactive");
+            }
+        }
+        // otherwise, if this is an email address
+        else if(type == "edit" && output.includes("@")){
+            // and ends in filtersfast.com
+            if(output.split("@")[1].toLowerCase() == "filtersfast.com"){
+                // make the value blank
+                output = "";
+                // set the field to active
+                inputElement.classList.remove("inactive");
+                // set the field to enabled
+                inputElement.disabled = false;
+            }
+            else{
+                // set the field to inactive
+                inputElement.classList.add("inactive");
+                // set the field to disabled
+                inputElement.disabled = true;
+            }
+        }
+        else if(type == "reset" && updateElements){
+            output = "Name";
+            element.classList.add("inactive");
+        }
+        else if(type == "reset" && updateElements){
+            output = "Name";
+            element.classList.add("inactive");
+        }
     }
+    return output;
 }
 function resetContactInfo(){
-    document.getElementById('nameField').value = "Name";
-    document.getElementById('CIDField').value = "Customer ID";
-    document.getElementById('phoneField').value = "Phone number";
-    document.getElementById('emailField').value = "Email address";
+    var name = document.getElementById("nameField");
+    var CID = document.getElementById("CIDField");
+    var phone = document.getElementById("phoneField");
+    var email = document.getElementById("emailField");
+    name.classList.add("inactive");
+    CID.classList.add("inactive");
+    phone.classList.add("inactive");
+    email.classList.add("inactive");
+    name.innerText = "Name";
+    CID.innerText = "Customer ID";
+    phone.innerText = "Phone number";
+    email.innerText = "Email address";
     document.getElementById("contactInfoSection").classList.remove("hidden");
     document.getElementById("contactEdit").classList.add("hidden");
+}
+function selectFields(field,type,value){
+
 }
 
 // ======== BUTTONS ========
