@@ -1114,6 +1114,14 @@ async function lookupContact(input){
         $("#body21").text("NO CONTACT DATA");
     }
     buildOrderNumbersList(["1","2","3"]);
+    var nameField = document.getElementById('nameField');
+    var CIDField = document.getElementById('CIDField');
+    var phoneField = document.getElementById('phoneField');
+    var emailField = document.getElementById('emailField');
+    nameField.innerText = normalizeFullName(contact.firstName,contact.lastName,true);
+    CIDField.innerText = normalizeFullName(contact.customerID,true);
+    phoneField.innerText = normalizeFullName(contact.phoneNumber,true);
+    emailField.innerText = normalizeFullName(contact.email,true);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(){
@@ -1262,14 +1270,17 @@ function showEditPanel(){
     if(previousEmail == "" || previousEmail == "Email address"){
         previousEmail = "";
         document.getElementById('formEmail').disabled = true;
+        document.getElementById('formEmail').classList.add = "inactive";
     }
     else if(previousEmail.trim().replaceAll(" ","").toLowerCase().includes("@")){
-        if(previousEmail.trim().replaceAll(" ","").toLowerCase().split("@")[0] == "filtersfast.com"){
+        if(previousEmail.trim().replaceAll(" ","").toLowerCase().split("@")[1] == "filtersfast.com"){
             document.getElementById('formEmail').disabled = false;
+            document.getElementById('formEmail').classList.remove = "inactive";
             previousEmail = "";
         }
         else{
             document.getElementById('formEmail').disabled = true;
+            document.getElementById('formEmail').classList.add = "inactive";
         }
     }
     document.getElementById('formFirstName').value = previousFirstName;
