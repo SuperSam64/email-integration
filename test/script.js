@@ -280,7 +280,7 @@ function getMessageCount(conversation){
 }
 function getTo(conversation){
     if(!conversation.latest_message || conversation.latest_message.to_fields.length == 0){
-        return "[empty]";
+        return "";
     }
     else{
         return conversation.latest_message.to_fields[0].address;
@@ -288,7 +288,7 @@ function getTo(conversation){
 }
 function getFrom(conversation){
     if(!conversation.latest_message || !conversation.latest_message.from_field){
-        return "[empty]";
+        return "";
     }
     else {
         var switchEmails;
@@ -316,7 +316,7 @@ function getFrom(conversation){
         }
         if(switchEmails == false){
             if(!conversation.latest_message.from_field.address){
-                return "[empty]";
+                return "";
             }
             else{
                 return conversation.latest_message.from_field.address;
@@ -331,7 +331,7 @@ function getFrom(conversation){
 function getName(conversation){
     // COOMBINE GET FROM, UPDATE FROM AND GET NAME
     if(!conversation.latest_message){
-        return "[empty]";
+        return "";
     }
     else {
         var switchName;
@@ -359,7 +359,7 @@ function getName(conversation){
         }
         if(switchName == false){
             if(!conversation.latest_message.from_field.name){
-                return "[empty]";
+                return "";
             }
             else{
                 return conversation.latest_message.from_field.name;
@@ -374,7 +374,7 @@ function getName(conversation){
 function getMessageSubject(conversation){
     // DOES NOT NEED TO BE A FUNCTION
     if(!conversation.latest_message){
-        return "[empty]";
+        return "";
     }
     else{
         return conversation.latest_message.subject;
@@ -445,7 +445,7 @@ function getConversationLink(conversation){
 function getMessageLink(conversation){
     // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
-        return "[empty]";
+        return "";
     }
     else{
         return "https://mail.missiveapp.com/#inbox/conversations/" + conversation.id + "/messages/" + conversation.latest_message.id;
@@ -483,7 +483,7 @@ function labeled(labelID){
 function getPreview(conversation){
     // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
-        return "[empty]";
+        return "";
     }
     else{
         return conversation.latest_message.preview;
@@ -491,7 +491,7 @@ function getPreview(conversation){
 }
 function getFullMessage(conversation,element){  // in progress
     if(!conversation.latest_message){
-        $("#" + element).text("[empty]")
+        $("#" + element).text("")
     }
     else{
         var bodyHTML = currentConversation.latest_message.body;
@@ -577,11 +577,11 @@ function getOrderNumber(conversation){
         orderString = orderString.split(" ")[0];
         //orderString = orderString + " | " + orderString.length; // for testing, remove later
         if(orderString.length != 8 && orderString.length != 12){
-            orderString = "[empty]";
+            orderString = "";
         }
     }
     else {
-        orderString = "[empty]";
+        orderString = "";
     }
     console.log(orderString);
     return orderString;
@@ -626,7 +626,7 @@ function formatDate(date){
 function getTimeStamp(conversation){  
     // FUNCTION NOT NEEDED
     if(!conversation.latest_message){
-        return "[empty]";
+        return "";
     }
     else{
         return formatDate(conversation.latest_message.delivered_at);
@@ -656,7 +656,7 @@ function getGreeting(conversation) {
             scan = false;
         }
     }
-    if(customerName == "[empty]" || typeof customerName == 'undefined'){
+    if(customerName == "" || typeof customerName == 'undefined'){
         firstName = "";
     }
     else if (customerName.trim().includes(" ")){
