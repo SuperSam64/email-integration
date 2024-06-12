@@ -1099,7 +1099,21 @@ async function lookupContact(input){
         }
     }
     contact.email = normalizeEmail(input,true);
-    buildOrderNumbersList(["11","22","33"]);
+    if(
+        currentConversation.subject.slice(0,6) == "Orders" &&
+        currentConversation.subject.length - currentConversation.subjec.replaceAll("#","").length > 1 &&
+        currentConversation.subject.length - currentConversation.subjec.replaceAll("#","").length ==
+        currentConversation.subject.length - currentConversation.subjec.replaceAll(",","").length &&
+        currentConversation.subject.length - currentConversation.subjec.replaceAll(" ","").length ==
+        (currentConversation.subject.length - currentConversation.subjec.replaceAll(",","").length) + 1
+
+    ){
+        var orders = currentConversation.subject.replace("Orders $","").split(", #");
+        buildOrderNumbersList(orders);
+    }
+    else{
+        buildOrderNumbersList(orderNumber);
+    }
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
