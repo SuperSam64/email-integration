@@ -1261,14 +1261,15 @@ function showEditPanel(){
     }
     if(previousEmail == "" || previousEmail == "Email address"){
         previousEmail = "";
-        document.getElementById('formEmail').disabled = false;
+        document.getElementById('formEmail').disabled = true;
     }
     else if(previousEmail.trim().replaceAll(" ","").toLowerCase().includes("@")){
         if(previousEmail.trim().replaceAll(" ","").toLowerCase().split("@")[0] == "filtersfast.com"){
-            document.getElementById('formEmail').disabled = true;
+            document.getElementById('formEmail').disabled = false;
+            previousEmail = "";
         }
         else{
-            document.getElementById('formEmail').disabled = false;
+            document.getElementById('formEmail').disabled = true;
         }
     }
     document.getElementById('formFirstName').value = previousFirstName;
