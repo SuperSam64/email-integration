@@ -1062,7 +1062,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
 }
 async function lookupContact(input){
     var contactExists = false;
-    resetContactInfo();
     var contactRecord;
 	var contact_URL = await fetch("https://public.missiveapp.com/v1/contacts?contact_book=" + tokens[1] + "&limit=1&order=last_modified&search=" + input,{
 		method: "GET",
@@ -1082,11 +1081,6 @@ async function lookupContact(input){
 		email: input
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
-        console.log("First name " + contactRecord.contacts[0].first_name);
-        console.log("Last name " + contactRecord.contacts[0].last_name);
-        console.log("CID " + contactRecord.contacts[0].infos[i].value);
-        console.log("Phone number" + contactRecord.contacts[0].infos[i].value);
-        console.log("Email " + input);
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
         contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"edit");
         contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"edit",false);
@@ -1107,6 +1101,12 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"edit",false);
+    console.log("First name " + contact.firstName);
+    console.log("Last name " +  contact.lastName);
+    console.log("CID " + customerID);
+    console.log("Phone number" + phoneNumber);
+    console.log("Email " + email);
+
     /*if(
         conversationSubject.slice(0,6) == "Orders" &&
         conversationSubject.length - conversationSubject.replaceAll("#","").length > 1 &&
