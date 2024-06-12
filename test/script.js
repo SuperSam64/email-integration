@@ -1112,7 +1112,7 @@ async function lookupContact(input){
         buildOrderNumbersList(orders);
     }
     else{
-        buildOrderNumbersList(orderNumber);
+        buildOrderNumbersList([orderNumber]);
     }
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
@@ -1418,8 +1418,13 @@ function normalizePhoneNumber(input,placeholder){
     }
 }
 function normalizeEmail(input,placeholder){
-    if(placeholder && input.trim().replaceAll(" ","") == ""){
-        return "Email address"
+    if(input.trim().replaceAll(" ","").toLowerCase() == "emailaddress" || input.trim().replaceAll(" ","") == ""){
+        if(placeholder){
+            return "Email address";
+        }
+        else{
+            return "";
+        }        
     }
     else{
         return input.trim().replaceAll(" ","").toLowerCase();
