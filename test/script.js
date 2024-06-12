@@ -1082,7 +1082,13 @@ async function lookupContact(input){
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
+        if(contact.firstName.toLowerCase ==  'undefined'){
+            contact.firstName == "";
+        }
         contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"edit");
+        if(contact.lastName.toLowerCase() ==  'undefined'){
+            contact.lastName == "";
+        }
         contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"input",true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
@@ -1282,7 +1288,7 @@ function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     // if this is an email address,
-    if(output.includes("@")){
+    if(input.includes("@")){
         // get rid of it
         output = "";
     }
@@ -1312,7 +1318,7 @@ function normalizeFirstName(input,type){
 }
 function normalizeLastName(input,type){
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(output.includes("@")){
+    if(input.includes("@")){
         output = "";
     }
     else if( output.replaceAll(".","").replaceAll("","").length > 2){
