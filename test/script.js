@@ -1114,14 +1114,38 @@ async function lookupContact(input){
         $("#body21").text("NO CONTACT DATA");
     }
     buildOrderNumbersList(["1","2","3"]);
-    var nameField = document.getElementById('nameField');
-    var CIDField = document.getElementById('CIDField');
-    var phoneField = document.getElementById('phoneField');
-    var emailField = document.getElementById('emailField');
-    nameField.innerText = normalizeFullName(contact.firstName,contact.lastName,true);
-    CIDField.innerText = normalizeFullName(contact.customerID,true);
-    phoneField.innerText = normalizeFullName(contact.phoneNumber,true);
-    emailField.innerText = normalizeFullName(contact.email,true);
+    var nameField = document.getElementById('formFirstName');
+    var CIDField = document.getElementById('formCustID');
+    var phoneField = document.getElementById('formPhoneNumber');
+    var emailField = document.getElementById('formEmail');
+    nameField.innerHTML = normalizeFullName(contact.firstName,contact.lastName,true) + '<span class="popup" id="namePopup"></span>';
+    CIDField.innerHTML = normalizeCID(contact.customerID,true) + '<span class="popup" id="CIDPopup"></span>';
+    phoneField.innerHTML = normalizePhoneNumber(contact.phoneNumber,true) + '<span class="popup" id="phonePopup"></span>';
+    emailField.innerHTML = normalizeEmail(contact.email,true) + '<span class="popup" id="emailPopup"></span>';
+    if(nameField.innerHTML.trim().replaceAll(" ","") == "" || nameField.innerHTML.trim() == "Name"){
+        nameField.classList.add("inactive");
+    }
+    else{
+        nameField.classList.remove("inactive");
+    }
+    if(CIDField.innerHTML.trim().replaceAll(" ","") == "" || CIDField.innerHTML.trim() == "Customer ID"){
+        CIDField.classList.add("inactive");
+    }
+    else{
+        CIDField.classList.remove("inactive");        
+    }
+    if(phoneField.innerHTML.trim().replaceAll(" ","") == "" || phoneField.innerHTML.trim() == "Phone number"){
+        phoneField.classList.add("inactive");
+    }
+    else{
+        phoneField.classList.remove("inactive");        
+    }
+    if(emailField.innerHTML.trim().replaceAll(" ","") == "" || emailField.innerHTML.trim() == "Email address"){
+        emailField.classList.add("inactive");        
+    }
+    else{
+        emailField.classList.remove("inactive");
+    }
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(){
