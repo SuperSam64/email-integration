@@ -1393,9 +1393,9 @@ function normalizeFullName(first,last,type,updateElements){
 }
 function normalizeCID(input,type,updateElements){
     var output;
-    var raw = (" " + input).trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
+    var raw = input.toString().trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
     if(raw.slice(0,3) != "CUS"){
-        raw = ("!" + (raw * 1)).replace("!","");
+        raw = (raw * 1).toString().replace("!","");
     }
     var empty = (raw == "" || raw == "CID");
     var field = document.getElementById("CIDField");
@@ -1432,10 +1432,12 @@ function normalizeCID(input,type,updateElements){
 }
 function normalizePhoneNumber(input,type,updateElements){
     var output;
-    var raw = (" " + input).trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    var raw = input.toString().trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    console.log("A " + raw)
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
+    console.log("B "  + raw)
     var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
