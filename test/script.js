@@ -1156,11 +1156,11 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     console.log("1.6 " + nameField.innerText);
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
         console.log("1.7")
-        if(messageFrom != "" && messageFrom != "Name" && messageFrom != 'undefined' && typeof messageFrom != 'undefined' && messageFrom.includes("@") == false){
-            console.log("4. " + normalizeFirstName(messageFrom,"panel"))
-            console.log("5. " + normalizeLastName(messageFrom,"panel"))
-            console.log("6. " + normalizeFullName(normalizeFirstName(messageFrom,"panel"),normalizeLastName(messageFrom,"panel"),"panel",true))
-            nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom,"panel"),normalizeLastName(messageFrom,"panel"),"panel",true);
+        if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
+            console.log("4. " + normalizeFirstName(customerName,"panel"))
+            console.log("5. " + normalizeLastName(customerName,"panel"))
+            console.log("6. " + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true))
+            nameField.innerHTML = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
         }
     }
         
