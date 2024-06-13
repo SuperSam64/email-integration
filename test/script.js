@@ -1141,28 +1141,19 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
+    console.log("1 " + CIDField)
 
     nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true)
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
     phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
     emailField.innerHTML = normalizeEmail(email,"panel",true);
-
-    console.log("1 " + firstName);
-    console.log("1.1 " + lastName);
-    console.log("1.2 " + normalizeFirstName(firstName,"panel"));
-    console.log("1.3 " + normalizeLastName(lastName,"panel"));
-    console.log("1.4 " + normalizeFullName(firstName,lastName,"panel",true));
-    console.log("1.5 " + nameField.innerHTML);
-    console.log("1.6 " + nameField.innerText);
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
-        console.log("1.7")
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
-            console.log("4. " + normalizeFirstName(customerName,"panel"))
-            console.log("5. " + normalizeLastName(customerName,"panel"))
-            console.log("6. " + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true))
             nameField.innerHTML = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
         }
     }
+    customerName = nameField.innerHTML;
+    console.log(customerName);
         
     
     
@@ -1307,7 +1298,6 @@ function normalizeOrderNumbers(input,string){
 function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    console.log("2. " + output)
     // if this is an email address,
     if(input.includes("@")){
         // get rid of it
@@ -1339,7 +1329,6 @@ function normalizeFirstName(input,type){
 }
 function normalizeLastName(input,type){
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    console.log("3. " + output)
     if(input.includes("@")){
         output = "";
     }
