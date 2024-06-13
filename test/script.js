@@ -1364,11 +1364,16 @@ function normalizeFullName(first,last,type,updateElements){
             element.classList.add("inactive");
         }
     }
+    else{
+        element.classList.remove("inactive");
+        output = output + '<span class="popup" id="namePopup"></span>';
+    }
     return output;
 }
 function normalizeCID(input,type,updateElements){
     var element = document.getElementById("CIDField")
     var output = input.trim().replaceAll(" ","");
+    console.log(output);
     if(output == "" || output.toLowerCase() == "customerid"){
         output == "";
         if(updateElements){
