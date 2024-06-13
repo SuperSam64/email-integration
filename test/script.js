@@ -1142,7 +1142,17 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true);
+    if(messageFrom == "" || messageFrom == 'undefined' || typeof messageFrom == 'undefined'){
+        if(messageFrom.includes() == false){
+            nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true);
+        }
+        else{
+            nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom),normalizeFirstName(messageFrom),"panel",true);
+        }
+    }
+    else{
+        nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom),normalizeFirstName(messageFrom),"panel",true);
+    }
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
     phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
     emailField.innerHTML = normalizeEmail(email,"panel",true);
