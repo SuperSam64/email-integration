@@ -1078,7 +1078,7 @@ async function lookupContact(input){
         fullName:"Name",
 		customerID:"Customer ID",
 		phoneNumber:"Phone Number",
-		email: input
+		email: "Email"
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
@@ -1469,34 +1469,25 @@ function normalizePhoneNumber(input,type,updateElements){
     return output;
 }
 function normalizeEmail(input,type,updateElements){
-    console.log("2) " + input);
     // Get elements
     var element = document.getElementById("emailField");
     var inputElement = document.getElementById("formEmail");
     // Convert to lowercase with no spaces
     var output = input.trim().replaceAll(" ","").toLowerCase();
-    console.log("3) " + output);
     // If blank or placeholder
     if(output == "" || output == "Email address"){
-        console.log("4a) checkpoint");
         // For the info panel
         if(type == "info-panel"){
             output = "Email";
-            console.log("5a) " + output);
             // if updating elements
             if(updateElements){
-                console.log("6a)  checkpoint");
                 // make the element active
                 element.classList.add("inactive");
                 // add the div for the clipboard popup
-                console.log("7) " + output);
             }
-            console.log("7.1")
         }
-        console.log("7.2")
     }
     else{
-        console.log("4b) checkpoint");
         element.classList.remove("inactive");
         // otherwise, if this is an email address
         if(type == "edit" && output.includes("@")){
@@ -1515,20 +1506,16 @@ function normalizeEmail(input,type,updateElements){
                 // set the field to disabled
                 inputElement.disabled = true;
             }
-            console.log("5b) " + output);
         }
         else if(type == "reset" && updateElements){
             output = "Name";
             element.classList.add("inactive");
-            console.log("6b) " + output);    
         }
         else if(type == "reset" && updateElements){
             output = "Name";
             element.classList.add("inactive");
-            console.log("7b) " + output);
         }
     }
-    console.log("8) " + output);
     return output;
 }
 function resetContactInfo(){
