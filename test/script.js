@@ -1152,7 +1152,10 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     console.log("1.2 " + normalizeFirstName(firstName,"panel"));
     console.log("1.3 " + normalizeLastName(lastName,"panel"));
     console.log("1.4 " + normalizeFullName(firstName,lastName,"panel",true));
-    if(nameField.innerHTML == "" || nameField.innerHTML == "Name" || nameField.innerHTML.includes("@")){
+    console.log("1.5 " + nameField.innerHTML);
+    console.log("1.6 " + nameField.innerText);
+    if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
+        console.log("1.7")
         if(messageFrom != "" && messageFrom != "Name" && messageFrom != 'undefined' && typeof messageFrom != 'undefined' && messageFrom.includes("@") == false){
             console.log("4. " + normalizeFirstName(messageFrom,"panel"))
             console.log("5. " + normalizeLastName(messageFrom,"panel"))
