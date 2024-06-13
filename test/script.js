@@ -1107,7 +1107,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     console.log("1) " + input);
-    contact.email = normalizeEmail(input,"edit",true);
+    contact.email = normalizeEmail(input,"info-edit",true);
     console.log("First name " + contact.firstName);
     console.log("Last name " +  contact.lastName);
     console.log("Full name " +  contact.fullName);
