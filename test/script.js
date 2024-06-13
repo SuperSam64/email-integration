@@ -1189,7 +1189,7 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
         else{
           newSubject = formOrderNumbers[0];
         }
-        Missive.setSubject(newSubject);
+        //Missive.setSubject(newSubject);
         //Missive.setSubject('');
             // come back here =======================================================================================================================
     }
