@@ -1397,24 +1397,34 @@ function normalizeFullName(first,last,type,updateElements){
     return output;
 }
 function normalizeCID(input,type,updateElements){
+    console.log("2. " + input);
     var output;
     var raw = input.toString()
+    console.log("3. " + raw);
     raw = raw.trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
+    console.log("4. " + raw);
     if(raw.slice(0,3) != "CUS"){
         raw = (raw * 1).toString().replace("!","");
+        console.log("4.5 " + raw);
     }
     var empty = (raw == "" || raw == "CID");
+    console.log("5. " + empty);
     var field = document.getElementById("CIDField");
     var textInput = document.getElementById("formCID");
     if(empty){
+        console.log("6. " + "empty");
         if(type == "panel"){
+            console.log("7. " + "panel");
             output = "Customer ID";
+            console.log("8. " + output);
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("9. " + "edit")
             output = raw;
+            console.log("10. " + output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS========================================
             }
@@ -1422,13 +1432,17 @@ function normalizeCID(input,type,updateElements){
     }
     else{
         if(type == "panel"){
+            console.log("11. " + "panel")
             output = "CID " + raw + '<span class="popup" id="CIDPopup"></span>';
+            console.log("12. " + output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("13. " + "edit")
             output = raw;
+            console.log("9. " + output)
             if(updateElements){
                 /////=========================================================================
             }
