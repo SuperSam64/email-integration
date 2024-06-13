@@ -1381,35 +1381,33 @@ function normalizeCID(input,type,updateElements){
                 element.classList.add("inactive");
             }
         }
-        else if(updateElements){
-            element.classList.remove("inactive");
-            output = output + '<span class="popup" id="CIDPopup"></span>';
-        }
-    }
-    else{
-        output = output.replace("CID ","").trim().replaceAll(" ","");
-        if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
-            output = ("!" + (output * 1)).replace("!","");
-        }
-        element.classList.remove("inactive");
-        output = output + '<span class="popup" id="CIDPopup"></span>';
-    }
-    if(type == "edit"){
-        if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
-            output = "";
-        }
-    }
-    else if(type == "clipboard"){
-        if(output == "" || output.toLowerCase == "customerid"){
-            output = "";
-        }
         else{
-            output = output.toUpperCase().replace("CID ","");
+            output = output.replace("CID ","").trim().replaceAll(" ","");
+            if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
+                    output = ("!" + (output * 1)).replace("!","");
+            }
+            if(updateElements){
+                element.classList.remove("inactive");
+                output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>'
+            }
         }
-    }
-    else if(type == "reset" && updateElements){
-        output = "Name";
-        element.classList.add("inactive");
+        if(type == "edit"){
+            if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
+                output = "";
+            }
+        }
+        else if(type == "clipboard"){
+            if(output == "" || output.toLowerCase == "customerid"){
+                output = "";
+            }
+            else{
+                output = output.toUpperCase().replace("CID ","");
+            }
+        }
+        else if(type == "reset" && updateElements){
+            output = "Name";
+            element.classList.add("inactive");
+        }
     }
     return output;
 }
