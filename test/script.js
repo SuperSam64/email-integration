@@ -1496,7 +1496,7 @@ function normalizeEmail(input,type,updateElements){
             output = raw;
             if(updateElements){
                 textInput.classList.remove("inactive");
-                textInput.disabled = false;
+                textInput.setAttribute("disabled", "false");
             }
         }
     }
@@ -1512,11 +1512,12 @@ function normalizeEmail(input,type,updateElements){
             if(updateElements){
                 if(raw.split("@")[1] == "filtersfast.com"){
                     field.classList.remove("inactive");
-                    textInput.disabled = false;
+                    textInput.value = "";
+                    textInput.setAttribute("disabled", "false");
                 }
                 else{
                     field.classList.add("inactive");
-                    textInput.disabled = false;
+                    textInput.setAttribute("disabled", "true");
                 }
             }
         }

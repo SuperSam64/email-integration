@@ -71,6 +71,10 @@
 .capitalize{
   text-transform: capitalize;
 }
+#formEmail input[disabled] {
+  color: gray;
+  font-style: italic;
+}
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeOut {
   from {opacity: 1;}
