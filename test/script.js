@@ -1456,6 +1456,7 @@ function normalizePhoneNumber(input,type,updateElements){
         }
     }
     else{
+        console.log(">>> "+ raw)
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
