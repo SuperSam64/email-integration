@@ -1081,33 +1081,33 @@ async function lookupContact(input){
 		email: "Email"
 	};
     if(typeof contactRecord.contacts[0] != 'undefined'){
-        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"edit");
+        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"panel");
         if(contact.firstName.toLowerCase ==  'undefined'){
             contact.firstName == "";
         }
-        contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"edit");
+        contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"panel");
         if(contact.lastName.toLowerCase() ==  'undefined'){
             contact.lastName == "";
         }
-        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"input",true);
+        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"panel",true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
-                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"input",true);
+                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" ){
-                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"input",true);
+                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         contactExists =  true;
     }
     console.log("1) " + input);
-    contact.email = normalizeEmail(input,"info-edit",true);
+    contact.email = normalizeEmail(input,"panel",true);
     console.log("First name " + contact.firstName);
     console.log("Last name " +  contact.lastName);
     console.log("Full name " +  contact.fullName);
@@ -1314,7 +1314,7 @@ function normalizeFirstName(input,type){
         document.getElementById('textmod').innerText ="";
     }
     // if grabbing the full name from the info panel,
-    if (type == "info-panel"){
+    if (type == "panel"){
         // separate out the first name
         if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes("")){
             output = output.split(" ")[0];
@@ -1338,7 +1338,7 @@ function normalizeLastName(input,type){
         output = document.getElementById('textmod').innerText;
         document.getElementById('textmod').innerText ="";
     }
-    if (type == "info-panel"){
+    if (type == "panel"){
         if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes(" ")){
             output = output.replace((output.split(" ")[0] + " "),"");
         }
