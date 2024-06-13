@@ -1405,7 +1405,7 @@ function normalizeCID(input,type,updateElements){
     raw = raw.trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
     console.log("4. " + raw);
     if(raw.slice(0,3) != "CUS"){
-        raw = (raw * 1).toString();
+        raw = raw * 1;
         console.log("4.5 " + raw);
     }
     var empty = (raw == "" || raw == "CID");
