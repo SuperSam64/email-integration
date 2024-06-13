@@ -1375,9 +1375,15 @@ function normalizeCID(input,type,updateElements){
     var output = input.trim().replaceAll(" ","");
     console.log(output);
     if(output == "" || output.toLowerCase() == "customerid"){
-        output == "";
-        if(updateElements){
-            element.classList.add("inactive");
+        if(type == "info-panel"){
+            output == "Customer ID";
+            if(updateElements){
+                element.classList.add("inactive");
+            }
+        }
+        else if(updateElements){
+            element.classList.remove("inactive");
+            output = output + '<span class="popup" id="CIDPopup"></span>';
         }
     }
     else{
@@ -1385,23 +1391,10 @@ function normalizeCID(input,type,updateElements){
         if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
             output = ("!" + (output * 1)).replace("!","");
         }
-        else if(output != "Customer ID"){
-            output = output.trim().replaceAll(" ","").toUpperCase();
-        }
+        element.classList.remove("inactive");
+        output = output + '<span class="popup" id="CIDPopup"></span>';
     }
-    if(type == "info-panel"){
-        if(output == ""){  
-            output = "Customer ID"
-            if(updateElements){
-                element.classList.add("inactive");
-            }
-        }
-        else if(updateElements){
-            element.classList.remove("inactive");
-            output = output + '<span class="popup" id="namePopup"></span>';
-        }
-    }
-    else if(type == "edit"){
+    if(type == "edit"){
         if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
             output = "";
         }
