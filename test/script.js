@@ -1489,7 +1489,6 @@ function normalizeEmail(input,type,updateElements){
                 // make the element active
                 element.classList.add("inactive");
                 // add the div for the clipboard popup
-                output = output + '<span class="popup" id="emailPopup"></span>';
                 console.log("7) " + output);
             }
         }
@@ -1527,6 +1526,7 @@ function normalizeEmail(input,type,updateElements){
             console.log("7b) " + output);
         }
     }
+    console.log(output);
     return output;
 }
 function resetContactInfo(){
