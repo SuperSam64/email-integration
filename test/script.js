@@ -1355,8 +1355,8 @@ function normalizeFullName(first,last,type,updateElements){
     var output;
     var raw = ([first,last]).join(" ");
     var empty = (
-        ([first,last]).join(" ").trim.replaceAll(" ","") == "" ||
-        ([first,last]).join(" ").trim.replaceAll(" ","").toLowerCase() == "name" ||
+        ([first,last]).join(" ").trim().replaceAll(" ","") == "" ||
+        ([first,last]).join(" ").trim().replaceAll(" ","").toLowerCase() == "name" ||
         ([first,last]).join(" ").includes("@")
     );
     var field = document.getElementById("nameField");
