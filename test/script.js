@@ -1395,7 +1395,7 @@ function normalizeCID(input,type,updateElements){
     var output;
     var raw = (" " + input).trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
     if(raw.slice(0,3) != "CUS"){
-        raw = raw * 1;
+        raw = ("!" + (raw * 1)).replace("!","");
     }
     var empty = (raw == "" || raw == "CID");
     var field = document.getElementById("CIDField");
@@ -1459,12 +1459,15 @@ function normalizePhoneNumber(input,type,updateElements){
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
+            console.log("2.1 " + formatted)
         }
         else if (raw.length > 6){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,raw.length);
+            console.log("2.2 " + formatted)
         }
         else{
             formatted = raw;
+            console.log("2.3 " + formatted)
         }
         if(type == "panel"){
             output = formatted + '<span class="popup" id="phonePopup"></span>';
