@@ -1342,9 +1342,10 @@ function normalizeLastName(input,type){
 }
 function normalizeFullName(first,last,type,updateElements){
     // get the emelment
-    var element = document.getElementById("nameField")
+    var element = document.getElementById("nameField");
     // compose the full name of the normalized first and last names
-    var output = ([normalizeFirstName(first),normalizeLastName(last)]).join(" ");
+    var output = ([normalizeFirstName(first,type),normalizeLastName(last,type)]).join(" ");
+    console.log(output);
     // if empty
     if(output.trim().replaceAll(" ","") == "" || output.trim().replaceAll(" ","") == "Name"){
         // if this is for the info panel
@@ -1353,10 +1354,10 @@ function normalizeFullName(first,last,type,updateElements){
             if(updateElements){
                 element.classList.add("inactive");
             }
-            else if(updateElements){
-                element.classList.remove("inactive");
-                output = output + '<span class="popup" id="namePopup"></span>';
-            }
+        }
+        else if(updateElements){
+            element.classList.remove("inactive");
+            output = output + '<span class="popup" id="namePopup"></span>';
         }
         else if(type == "reset" && updateElements){
             output = "Name";
