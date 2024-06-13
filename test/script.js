@@ -1402,7 +1402,7 @@ function normalizeCID(input,type,updateElements){
     var textInput = document.getElementById("formCID");
     if(empty){
         if(type == "panel"){
-            output = "Email";
+            output = "Customer ID";
             if(updateElements){
                 field.classList.add("inactive");
             }
