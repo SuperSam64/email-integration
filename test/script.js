@@ -1142,23 +1142,19 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    if(messageFrom == "" || messageFrom == 'undefined' || typeof messageFrom == 'undefined'){
-        if(messageFrom.includes() == false){
-            nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true);
-        }
-        else{
-            nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom),normalizeFirstName(messageFrom),"panel",true);
-        }
-    }
-    else{
-        nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom),normalizeFirstName(messageFrom),"panel",true);
-    }
+    nameField.innerHTML = normalizeCID(firstName,lastName,"panel",true)
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
     phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
     emailField.innerHTML = normalizeEmail(email,"panel",true);
 
 
-
+    if(nameField.innerHTML == "" || nameField.innerHTML == "Name" || nameField.innerHTML.includes("@")){
+        if(messageFrom != "" && messageFrom != "Name" && messageFrom != "undefined" && typeof messageFrom != "undefined" && messageFrom.includes("@") == false){
+            nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom,"panel"),normalizeLastName(messageFrom,"panel"),"panel",true);
+        }
+    }
+        
+    
     
 
 
