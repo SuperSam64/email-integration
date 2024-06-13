@@ -1142,12 +1142,16 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    nameField.innerHTML = normalizeCID(firstName,lastName,"panel",true)
+    nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true)
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
     phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
     emailField.innerHTML = normalizeEmail(email,"panel",true);
 
-    console.log("1. " + nameField.innerHTML)
+    console.log("1 " + firstName);
+    console.log("1.1 " + lastName);
+    console.log("1.2 " + normalizeFirstName(firstName,"panel"));
+    console.log("1.3 " + normalizeLastName(lastName,"panel"));
+    console.log("1.4 " + normalizeFullName(firstName,lastName,"panel",true));
     if(nameField.innerHTML == "" || nameField.innerHTML == "Name" || nameField.innerHTML.includes("@")){
         if(messageFrom != "" && messageFrom != "Name" && messageFrom != 'undefined' && typeof messageFrom != 'undefined' && messageFrom.includes("@") == false){
             console.log("4. " + normalizeFirstName(messageFrom,"panel"))
