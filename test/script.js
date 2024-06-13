@@ -131,7 +131,6 @@ function createTokens(input){
         contactsArray.join("").slice(20, 32)
     ];
     // separate sections by dashes 
-    console.log(mondayArray.join(""));
     // make array of keys
     return [organizationSections.join("-"),contactsSections.join("-"),mondayArray.join("")];
 }
@@ -221,8 +220,6 @@ async function startup(){
         theme = "dark";
         monVarColor = "#133774";
     }
-    console.log(theme);
-    console.log(monVarColor);
     //buttonTrigger();
     // IMPORTANT - make a separate set of functions that run in the background which can be split off
 }
@@ -1106,7 +1103,6 @@ async function lookupContact(input){
         }
         contactExists =  true;
     }
-    console.log("1) " + input);
     contact.email = normalizeEmail(input,"panel",true);
     console.log("First name " + contact.firstName);
     console.log("Last name " +  contact.lastName);
@@ -1134,7 +1130,6 @@ async function lookupContact(input){
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
-    console.log("made it this far");
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
 
     var formFirstName = document.getElementById('formFirstName');
@@ -1181,7 +1176,8 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
         if(
              currentConversation.subject.slice(0,8) == "Orders #" || currentConversation.subject.slice(0,7) == "Order #" ||
             currentConversation.subject == "" || currentConversation.subject == "No subject" || typeof currentConversation.subject == 'undefined'){
-            Missive.setSubject('');
+            //Missive.setSubject('');
+            // come back here =======================================================================================================================
         }
         document.getElementById('ordersSection').classList.add("hidden");
     }
@@ -1194,6 +1190,8 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
           newSubject = formOrderNumbers[0];
         }
         Missive.setSubject(newSubject);
+        //Missive.setSubject('');
+            // come back here =======================================================================================================================
     }
     buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
@@ -1435,61 +1433,50 @@ function normalizePhoneNumber(input,type,updateElements){
     var output;
     var raw = input.toString()
     raw = raw.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
-    console.log("A " + raw)
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
-    console.log("B "  + raw)
     var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
     if(empty){
         if(type == "panel"){
             output = "Phone Number";
-            console.log("1."+output)
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
             output = raw;
-            console.log("2."+output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
             }
         }
     }
     else{
-        console.log(">>> "+ raw)
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
-            console.log("2.1 " + formatted)
         }
         else if (raw.length > 6){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,raw.length);
-            console.log("2.2 " + formatted)
         }
         else{
             formatted = raw;
-            console.log("2.3 " + formatted)
         }
         if(type == "panel"){
             output = formatted + '<span class="popup" id="phonePopup"></span>';
-            console.log("3."+output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
             output = formatted;
-            console.log("4."+output)
             if(updateElements){
                 //=======================================================================
             }
         }
     }
-    console.log("5."+output)
     return output;
 }
 function normalizeEmail(input,type,updateElements){
