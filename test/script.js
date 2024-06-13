@@ -1432,7 +1432,7 @@ function normalizeCID(input,type,updateElements){
 }
 function normalizePhoneNumber(input,type,updateElements){
     var output;
-    var raw = input.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    var raw = (" " + input).trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
@@ -1481,7 +1481,7 @@ function normalizePhoneNumber(input,type,updateElements){
 }
 function normalizeEmail(input,type,updateElements){
     var output;
-    var raw = input.trim().replaceAll(" ","").toLowerCase();
+    var raw = (" " + input).trim().replaceAll(" ","").toLowerCase();
     var empty = (raw == "" || raw == "emailaddress" || raw.includes("@") == false);
     var field = document.getElementById("emailField");
     var textInput = document.getElementById("formEmail");
