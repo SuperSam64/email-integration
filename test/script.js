@@ -1409,6 +1409,10 @@ function normalizeCID(input,type,updateElements){
             element.classList.add("inactive");
         }
     }
+    else if(updateElements){
+        element.classList.remove("inactive");
+        output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>'
+    }
     return output;
 }
 function normalizePhoneNumber(input,type,updateElements){
@@ -1504,7 +1508,7 @@ function normalizeEmail(input,type,updateElements){
                 inputElement.disabled = true;
             }
         }
-        else if(type == "reset" && updateElements){
+        else if(type == "edit" && updateElements){
             output = "Name";
             element.classList.add("inactive");
         }
