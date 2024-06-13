@@ -1150,6 +1150,8 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
 
     if(nameField.innerHTML == "" || nameField.innerHTML == "Name" || nameField.innerHTML.includes("@")){
         if(messageFrom != "" && messageFrom != "Name" && messageFrom != "undefined" && typeof messageFrom != "undefined" && messageFrom.includes("@") == false){
+            console.log(normalizeFirstName(messageFrom,"panel"))
+            console.log(normalizeLastName(messageFrom,"panel"))
             nameField.innerHTML = normalizeFullName(normalizeFirstName(messageFrom,"panel"),normalizeLastName(messageFrom,"panel"),"panel",true);
         }
     }
@@ -1297,6 +1299,7 @@ function normalizeOrderNumbers(input,string){
 function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
+    console.log(output)
     // if this is an email address,
     if(input.includes("@")){
         // get rid of it
