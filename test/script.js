@@ -1147,10 +1147,10 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    nameField.innerHTML = normalizeFullName(firstName,lastName,"info-panel",true);
-    CIDField.innerHTML = normalizeCID(CID,"info-panel",true);
-    phoneField.innerHTML = normalizePhoneNumber(phoneNum,"info-panel",true);
-    emailField.innerHTML = normalizeEmail(email,"info-panel",true);
+    nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true);
+    CIDField.innerHTML = normalizeCID(CID,"panel",true);
+    phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
+    emailField.innerHTML = normalizeEmail(email,"panel",true);
 
 
 
@@ -1285,6 +1285,11 @@ function normalizeOrderNumbers(input,string){
         return ("Order #"+ string).replaceAll(",",",Order #").split(",");
     }
 }
+
+
+
+
+
 function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
@@ -1340,166 +1345,181 @@ function normalizeLastName(input,type){
     }
     return output;
 }
+
+
+
+
+
+
 function normalizeFullName(first,last,type,updateElements){
-    // get the emelment
-    var element = document.getElementById("nameField");
-    // compose the full name of the normalized first and last names
-    var output = ([normalizeFirstName(first,type),normalizeLastName(last,type)]).join(" ");
-    console.log(output);
-    // if empty
-    if(output.trim().replaceAll(" ","") == "" || output.trim().replaceAll(" ","") == "Name"){
-        // if this is for the info panel
-        if(type == "info-panel"){
+    var output;
+    var raw = ([first,last]).join(" ");
+    var empty = (
+        ([first,last]).join(" ").trim.replaceAll(" ","") == "" ||
+        ([first,last]).join(" ").trim.replaceAll(" ","").toLowerCase() == "name" ||
+        ([first,last]).join(" ").includes("@")
+    );
+    var field = document.getElementById("nameField");
+    var textInput = document.getElementById("formName");
+    if(empty){
+        if(type == "panel"){
             output = "Name";
             if(updateElements){
-                element.classList.add("inactive");
+                field.classList.add("inactive");
             }
         }
-        else if(updateElements){
-            element.classList.remove("inactive");
-            output = output + '<span class="popup" id="namePopup"></span>';
-        }
-        else if(type == "reset" && updateElements){
-            output = "Name";
-            element.classList.add("inactive");
+        else if (type == "edit"){
+            output = raw;
+            if(updateElements){
+                // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS
+            }
         }
     }
     else{
-        element.classList.remove("inactive");
-        output = output + '<span class="popup" id="namePopup"></span>';
+        if(type == "panel"){
+            output = raw + '<span class="popup" id="namePopup"></span>';
+            if(updateElements){
+                field.classList.remove("inactive");
+            }
+        }
+        else if (type == "edit"){
+            output = raw;
+            if(updateElements){
+
+            }
+        }
     }
     return output;
 }
 function normalizeCID(input,type,updateElements){
-    var element = document.getElementById("CIDField")
-    var output = input.trim().replaceAll(" ","");
-    console.log(output);
-    if(output == "" || output.toLowerCase() == "customerid"){
-        if(type == "info-panel"){
-            output == "Customer ID";
+    var output;
+    var raw = input.replace("Customer ID").replace("CID").trim().replaceAll(" ","").toUpperCase();
+    if(raw.slice(0,3) != "CUS"){
+        raw = raw * 1;
+    }
+    var empty = (raw == "" || raw == "CID");
+    var field = document.getElementById("CIDField");
+    var textInput = document.getElementById("formCID");
+    if(empty){
+        if(type == "panel"){
+            output = "Email";
             if(updateElements){
-                element.classList.add("inactive");
+                field.classList.add("inactive");
             }
         }
-        else{
-            output = output.replace("CID ","").trim().replaceAll(" ","");
-            if(output.slice(0,3).toUpperCase() != "CUS" && output != ""){
-                    output = ("!" + (output * 1)).replace("!","");
-            }
+        else if (type == "edit"){
+            output = raw;
             if(updateElements){
-                element.classList.remove("inactive")
-            }
-            if(type == "info-panel"){
-                output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>';
-            }
-            else if(type == "edit"){
-                if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
-                    output = "";
-                }
-            }
-            else if(type == "clipboard"){
-                if(output == "" || output.toLowerCase == "customerid"){
-                    output = "";
-                }
-                else{
-                    output = output.toUpperCase().replace("CID ","");
-                }
-            }
-            else if(type == "reset" && updateElements){
-                output = "Name";
-                element.classList.add("inactive");
-            }
-        }
-    }
-    else if(updateElements){
-        element.classList.remove("inactive");
-        output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>'
-    }
-    return output;
-}
-function normalizePhoneNumber(input,type,updateElements){
-    var element = document.getElementById("phoneField");
-    var output = input.trim().replaceAll("#","").replaceAll(" ","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","").replaceAll(".","");
-    if(output.slice(0,1) == 1){
-        output = output(replace("1",""));
-    }
-    if(output.length > 6 && output.trim().replaceAll(" ","").toLowerCase() != "phonenumber"){
-        if(output.length > 10){
-            output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
-            output.slice(6,10) + " " + output.slice(10,output.length));
-        }
-        else{
-            output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
-        }
-    }
-    if(output == "" || output.toLowerCase() == "phonenumber"){
-        if(type == "info-panel"){
-            output =  "Phone number";
-            if(updateElements){
-                element.classList.add("inactive");
+                // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS========================================
             }
         }
     }
     else{
-        if(updateElements){
-            output = output + '<span class="popup" id="phonePopup"></span>';
-            element.classList.remove("inactive");
+        if(type == "panel"){
+            output = "CID " + raw + '<span class="popup" id="CIDPopup"></span>';
+            if(updateElements){
+                field.classList.remove("inactive");
+            }
         }
-        if(type == "reset" && updateElements){
-            output = "Name";
-            element.classList.add("inactive");
+        else if (type == "edit"){
+            output = raw;
+            if(updateElements){
+                /////=========================================================================
+            }
+        }
+    }
+    return output;
+}
+function normalizePhoneNumber(input,type,updateElements){
+    var output;
+    var raw = input.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    if(raw.slice(0,1) == 1){
+        raw = raw.replace("1","");
+    }
+    var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
+    var field = document.getElementById("phoneField");
+    var textInput = document.getElementById("formPhone");
+    if(empty){
+        if(type == "panel"){
+            output = "Phone Number";
+            if(updateElements){
+                field.classList.add("inactive");
+            }
+        }
+        else if (type == "edit"){
+            output = raw;
+            if(updateElements){
+                // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
+            }
+        }
+    }
+    else{
+        var formatted;
+        if(raw.length > 10){
+            formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
+        }
+        else if (raw.length > 6){
+            formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,raw.length);
+        }
+        else{
+            formatted = raw;
+        }
+        if(type == "panel"){
+            output = formatted + '<span class="popup" id="phonePopup"></span>';
+            if(updateElements){
+                field.classList.remove("inactive");
+            }
+        }
+        else if (type == "edit"){
+            output = formatted;
+            if(updateElements){
+                //=======================================================================
+            }
         }
     }
     return output;
 }
 function normalizeEmail(input,type,updateElements){
-    // Get elements
-    var element = document.getElementById("emailField");
-    var inputElement = document.getElementById("formEmail");
-    // Convert to lowercase with no spaces
-    var output = input.trim().replaceAll(" ","").toLowerCase();
-    // If blank or placeholder
-    if(output == "" || output == "Email address"){
-        // For the info panel
-        if(type == "info-panel"){
+    var output;
+    var raw = input.trim().replaceAll(" ","").toLowerCase();
+    var empty = (raw == "" || raw == "emailaddress" || raw.includes("@") == false);
+    var field = document.getElementById("emailField");
+    var textInput = document.getElementById("formEmail");
+    if(empty){
+        if(type == "panel"){
             output = "Email";
-            // if updating elements
             if(updateElements){
-                // make the element active
-                element.classList.add("inactive");
-                // add the div for the clipboard popup
+                field.classList.add("inactive");
+            }
+        }
+        else if (type == "edit"){
+            output = raw;
+            if(updateElements){
+                textInput.classList.remove("inactive");
+                textInput.disabled = false;
             }
         }
     }
     else{
-        element.classList.remove("inactive");
-        // otherwise, if this is an email address
-        if(type == "edit" && output.includes("@")){
-            // and ends in filtersfast.com
-            if(output.split("@")[1].toLowerCase() == "filtersfast.com"){
-                // make the value blank
-                output = "";
-                // set the field to active
-                inputElement.classList.remove("inactive");
-                // set the field to enabled
-                inputElement.disabled = false;
-            }
-            else{
-                // set the field to inactive
-                inputElement.classList.add("inactive");
-                // set the field to disabled
-                inputElement.disabled = true;
+        if(type == "panel"){
+            output = raw + '<span class="popup" id="emailPopup"></span>';
+            if(updateElements){
+                field.classList.remove("inactive");
             }
         }
-        else if(type == "edit" && updateElements){
-            output = "Name";
-            element.classList.add("inactive");
+        else if(type == "edit"){
+            output = raw;
+            if(updateElements){
+                if(raw.split("@")[1] == "filtersfast.com"){
+                    field.classList.remove("inactive");
+                    textInput.disabled = false;
+                }
+                else{
+                    field.classList.add("inactive");
+                    textInput.disabled = false;
+                }
+            }
         }
-        else if(type == "reset" && updateElements){
-            output = "Name";
-            element.classList.add("inactive");
-        }
-        output = output + '<span class="popup" id="emailPopup"></span>';
     }
     return output;
 }
