@@ -1475,30 +1475,23 @@ function normalizeEmail(input,type,updateElements){
     var output = input.trim().replaceAll(" ","").toLowerCase();
     // If blank or placeholder
     if(output == "" || output == "email"){
-        // Keep blank
-        output = "";
-        if(updateElements){
-            element.classList.add("inactive");
-        }
-    }
-    else{
         // For the info panel
         if(type == "info-panel"){
+            output = "Email";
             // if updating elements
             if(updateElements){
                 // make the element active
-                element.classList.remove("inactive");
+                element.classList.add("inactive");
                 // add the div for the clipboard popup
                 output = output + '<span class="popup" id="emailPopup"></span>';
             }
             // otherwise
-            else{
-                // mark as inactive
-                element.classList.add("inactive");
-            }
         }
+    }
+    else{
+        element.classList.remove("inactive");
         // otherwise, if this is an email address
-        else if(type == "edit" && output.includes("@")){
+        if(type == "edit" && output.includes("@")){
             // and ends in filtersfast.com
             if(output.split("@")[1].toLowerCase() == "filtersfast.com"){
                 // make the value blank
