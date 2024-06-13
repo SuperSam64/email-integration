@@ -1485,7 +1485,7 @@ function normalizeEmail(input,type,updateElements){
             console.log("5a) " + output);
             // if updating elements
             if(updateElements){
-                console.log("6a) " + checkpoint);
+                console.log("6a)  checkpoint");
                 // make the element active
                 element.classList.add("inactive");
                 // add the div for the clipboard popup
