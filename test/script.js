@@ -1393,6 +1393,7 @@ function normalizeFullName(first,last,type,updateElements){
 }
 function normalizeCID(input,type,updateElements){
     var output;
+    console.log(input)
     var raw = input.replace("Customer ID","").replace("CID","").trim().replaceAll(" ","").toUpperCase();
     if(raw.slice(0,3) != "CUS"){
         raw = raw * 1;
