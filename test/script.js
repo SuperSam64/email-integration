@@ -1493,7 +1493,7 @@ function normalizeEmail(input,type,updateElements){
             }
         }
     }
-    else{
+    /*else{
         console.log("4b) checkpoint");
         element.classList.remove("inactive");
         // otherwise, if this is an email address
@@ -1525,8 +1525,8 @@ function normalizeEmail(input,type,updateElements){
             element.classList.add("inactive");
             console.log("7b) " + output);
         }
-    }
-    console.log(output);
+    }*/
+    console.log("8) " + output);
     return output;
 }
 function resetContactInfo(){
