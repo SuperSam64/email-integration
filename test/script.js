@@ -1145,6 +1145,7 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
 
     nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true)
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
+    console.log("1.5 " + normalizeCID(CID,"panel",true));
     phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
     emailField.innerHTML = normalizeEmail(email,"panel",true);
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
@@ -1404,7 +1405,7 @@ function normalizeCID(input,type,updateElements){
     raw = raw.trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
     console.log("4. " + raw);
     if(raw.slice(0,3) != "CUS"){
-        raw = (raw * 1).toString().replace("!","");
+        raw = (raw * 1).toString();
         console.log("4.5 " + raw);
     }
     var empty = (raw == "" || raw == "CID");
