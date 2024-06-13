@@ -1442,12 +1442,14 @@ function normalizePhoneNumber(input,type,updateElements){
     if(empty){
         if(type == "panel"){
             output = "Phone Number";
+            console.log("1."+output)
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
             output = raw;
+            console.log("2."+output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
             }
@@ -1466,17 +1468,20 @@ function normalizePhoneNumber(input,type,updateElements){
         }
         if(type == "panel"){
             output = formatted + '<span class="popup" id="phonePopup"></span>';
+            console.log("3."+output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
             output = formatted;
+            console.log("4."+output)
             if(updateElements){
                 //=======================================================================
             }
         }
     }
+    console.log("5."+output)
     return output;
 }
 function normalizeEmail(input,type,updateElements){
