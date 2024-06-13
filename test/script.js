@@ -1491,9 +1491,11 @@ function normalizeEmail(input,type,updateElements){
                 // add the div for the clipboard popup
                 console.log("7) " + output);
             }
+            console.log("7.1")
         }
+        console.log("7.2")
     }
-    /*else{
+    else{
         console.log("4b) checkpoint");
         element.classList.remove("inactive");
         // otherwise, if this is an email address
@@ -1525,7 +1527,7 @@ function normalizeEmail(input,type,updateElements){
             element.classList.add("inactive");
             console.log("7b) " + output);
         }
-    }*/
+    }
     console.log("8) " + output);
     return output;
 }
