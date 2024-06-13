@@ -1387,26 +1387,28 @@ function normalizeCID(input,type,updateElements){
                     output = ("!" + (output * 1)).replace("!","");
             }
             if(updateElements){
-                element.classList.remove("inactive");
-                output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>'
+                element.classList.remove("inactive")
             }
-        }
-        if(type == "edit"){
-            if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
-                output = "";
+            if(type == "info-panel"){
+                output = output.replace("CID ","") + '<span class="popup" id="CIDPopup"></span>';
             }
-        }
-        else if(type == "clipboard"){
-            if(output == "" || output.toLowerCase == "customerid"){
-                output = "";
+            else if(type == "edit"){
+                if(output.trim().replaceAll(" ").toLowerCase() == "customerid"){
+                    output = "";
+                }
             }
-            else{
-                output = output.toUpperCase().replace("CID ","");
+            else if(type == "clipboard"){
+                if(output == "" || output.toLowerCase == "customerid"){
+                    output = "";
+                }
+                else{
+                    output = output.toUpperCase().replace("CID ","");
+                }
             }
-        }
-        else if(type == "reset" && updateElements){
-            output = "Name";
-            element.classList.add("inactive");
+            else if(type == "reset" && updateElements){
+                output = "Name";
+                element.classList.add("inactive");
+            }
         }
     }
     else if(updateElements){
@@ -1421,7 +1423,7 @@ function normalizePhoneNumber(input,type,updateElements){
     if(output.slice(0,1) == 1){
         output = output(replace("1",""));
     }
-    if(output.length > 6){
+    if(output.length > 6 && output.trim().replaceAll(" ","").toLowerCase() != "phonenumber"){
         if(output.length > 10){
             output = ("(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + 
             output.slice(6,10) + " " + output.slice(10,output.length));
@@ -1497,6 +1499,7 @@ function normalizeEmail(input,type,updateElements){
             output = "Name";
             element.classList.add("inactive");
         }
+        output = output + '<span class="popup" id="emailPopup"></span>';
     }
     return output;
 }
