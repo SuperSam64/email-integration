@@ -1431,41 +1431,30 @@ function normalizePhoneNumber(input,type,updateElements){
         }
     }
     if(output == "" || output.toLowerCase() == "phonenumber"){
-        if(placeholder){
-            output =  "";
+        if(type == "info-panel"){
+            output =  "Phone number";
             if(updateElements){
                 element.classList.add("inactive");
             }
         }
     }
-    if(type == "info-panel"){
-        if(output == ""){
-            output == "Phone number" ;
-            if(updateElements){
-                element.classList.add("inactive");
-            }
+    else{
+        var rawNumber = output.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
+        if(rawNumber.length > 10){
+            rawNumber = rawNumber(0,10) + " " + rawNumber(10,rawNumber.length);
+            output = rawNumber;
         }
-        else if(updateElements){
+        else{
+            output = rawNumber;
+        }
+        if(updateElements){
             output = output + '<span class="popup" id="phonePopup"></span>';
             element.classList.remove("inactive");
         }
-    }
-    else if(type == "clipboard"){
-        if(output != ""){
-            var rawNumber = output.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
-            if(rawNumber.length > 10){
-                
-                rawNumber = rawNumber(0,10) + " " + rawNumber(10,rawNumber.length);
-                output = rawNumber;
-            }
-            else{
-                output = rawNumber;
-            }
+        if(type == "reset" && updateElements){
+            output = "Name";
+            element.classList.add("inactive");
         }
-    }
-    else if(type == "reset" && updateElements){
-        output = "Name";
-        element.classList.add("inactive");
     }
     return output;
 }
