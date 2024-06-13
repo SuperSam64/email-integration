@@ -1441,8 +1441,12 @@ function normalizePhoneNumber(input,type,updateElements){
     else{
         var rawNumber = output.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
         if(rawNumber.length > 10){
-            rawNumber = rawNumber(0,10) + " " + rawNumber(10,rawNumber.length);
+            rawNumber = rawNumber.slice(0,10) + " " + rawNumber.slice(10,rawNumber.length);
             output = rawNumber;
+        }
+        else if(rawNumber.length > 6){
+            output = rawNumber;
+            output = "(" + output.slice(0,3) + ") " + output.slice(3,6) + "-" + output.slice(6,output.length)
         }
         else{
             output = rawNumber;
