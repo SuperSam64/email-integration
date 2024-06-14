@@ -1466,6 +1466,7 @@ function normalizePhoneNumber(input,type,updateElements){
     console.log("-6 " + raw)
     var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
     console.log("-7 " + empty)
+    console.log("-7.5 " + raw)
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
     if(empty){
@@ -1487,6 +1488,7 @@ function normalizePhoneNumber(input,type,updateElements){
         }
     }
     else{
+        console.log("-11.5 " + raw)
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
@@ -1497,6 +1499,7 @@ function normalizePhoneNumber(input,type,updateElements){
             console.log("-13 formatted " + formatted)
         }
         else{
+            console.log("-13.5 " + raw)
             formatted = raw;
             console.log("-14 " + formatted)
         }
