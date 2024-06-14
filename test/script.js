@@ -1077,6 +1077,7 @@ async function lookupContact(input){
 		phoneNumber:"Phone Number",
 		email: "Email"
 	};
+    resetContactInfo();
     if(typeof contactRecord.contacts[0] != 'undefined'){
         contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"panel");
         if(contact.firstName.toLowerCase ==  'undefined'){
@@ -1090,6 +1091,8 @@ async function lookupContact(input){
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
+                    console.log("-1 " + contactRecord.contacts[0].infos[i].value,"panel",true)
+                    console.log("-last " + normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true))
                     contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
@@ -1451,24 +1454,33 @@ function normalizeCID(input,type,updateElements){
     return output;
 }
 function normalizePhoneNumber(input,type,updateElements){
+    console.log("-3 " + input)
     var output;
     var raw = input.toString()
+    console.log("-4 " + raw)
     raw = raw.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    console.log("-5 " + raw)
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
+        console.log("-6 " + raw)
     }
     var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
+    console.log("-7 " + empty)
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
     if(empty){
         if(type == "panel"){
+            console.log("-8 " + "panel")
             output = "Phone Number";
+            console.log("-9 " + output)
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("-10 " + "edit")
             output = raw;
+            console.log("-11 " + output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
             }
@@ -1478,21 +1490,28 @@ function normalizePhoneNumber(input,type,updateElements){
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
+            console.log("-12 formatted " + formatted)
         }
         else if (raw.length > 6){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,raw.length);
+            console.log("-13 formatted " + formatted)
         }
         else{
             formatted = raw;
+            console.log("-14 " + formatted)
         }
         if(type == "panel"){
+            console.log("-15 " + "panel")
             output = formatted + '<span class="popup" id="phonePopup"></span>';
+            console.log("-16 " + output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("-17 " + "edit")
             output = formatted;
+            console.log("-18 " + output)
             if(updateElements){
                 //=======================================================================
             }
