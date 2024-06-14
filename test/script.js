@@ -1083,7 +1083,7 @@ async function lookupContact(input){
         if(contact.firstName.toLowerCase ==  'undefined'){
             contact.firstName == "";
         }
-        contact.lastName = normalizeFirstName(contactRecord.contacts[0].last_name,"panel");
+        contact.lastName = normalizeLastName(contactRecord.contacts[0].last_name,"panel");
         if(contact.lastName.toLowerCase() ==  'undefined'){
             contact.lastName == "";
         }
