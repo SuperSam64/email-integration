@@ -1091,8 +1091,6 @@ async function lookupContact(input){
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
-                    console.log("-1 " + contactRecord.contacts[0].infos[i].value,"panel",true)
-                    console.log("-last " + normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true))
                     contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
@@ -1107,12 +1105,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"panel",true);
-    console.log("First name " + contact.firstName);
-    console.log("Last name " +  contact.lastName);
-    console.log("Full name " +  contact.fullName);
-    console.log("CID " + contact.customerID);
-    console.log("Phone number " + contact.phoneNumber);
-    console.log("Email " + contact.email);
+    
 
     /*if(
         conversationSubject.slice(0,6) == "Orders" &&
@@ -1144,7 +1137,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-    console.log("1 " + CID)
+    
 
     nameField.innerHTML = fullName;
     CIDField.innerHTML = CID;
@@ -1156,7 +1149,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         }
     }
     customerName = nameField.innerHTML;
-    console.log(customerName);
+    
         
     
     
@@ -1310,13 +1303,13 @@ function normalizeOrderNumbers(input,string){
 }
 
 
-function convoChange(){(ids) => {
+/*function convoChange(ids){(ids) => {
     Missive.fetchConversations(ids).then((conversations) => {
         currentConversation = conversations[0];
         console.log("CURRENT CONVO: " + currentConversation);
         return ("CURRENT CONVERSATION " + currentConversation.id)
     })
-}}
+}}*/
 
 
 function normalizeFirstName(input,type){
@@ -1420,35 +1413,25 @@ function normalizeFullName(first,last,type,updateElements){
     }
     return output;
 }
-function normalizeCID(input,type,updateElements){
-    console.log("2. " + input);
+function normalizeCID(input,type,updateElements){    
     var output;
-    var raw = input.toString()
-    console.log("3. " + raw);
-    raw = raw.trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();
-    console.log("4. " + raw);
+    var raw = input.toString()    
+    raw = raw.trim().replace("Customer ID","").replace("CID","").replaceAll(" ","").toUpperCase();    
     if(raw.slice(0,3) != "CUS"){
-        raw = raw * 1;
-        console.log("4.5 " + raw);
+        raw = raw * 1;        
     }
-    var empty = (raw == "" || raw == "CID");
-    console.log("5. " + empty);
+    var empty = (raw == "" || raw == "CID");    
     var field = document.getElementById("CIDField");
     var textInput = document.getElementById("formCID");
-    if(empty){
-        console.log("6. " + "empty");
-        if(type == "panel"){
-            console.log("7. " + "panel");
+    if(empty){        
+        if(type == "panel"){            
             output = "Customer ID";
-            console.log("8. " + output);
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
-            console.log("9. " + "edit")
             output = raw;
-            console.log("10. " + output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS========================================
             }
@@ -1456,17 +1439,13 @@ function normalizeCID(input,type,updateElements){
     }
     else{
         if(type == "panel"){
-            console.log("11. " + "panel")
             output = "CID " + raw + '<span class="popup" id="CIDPopup"></span>';
-            console.log("12. " + output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
-            console.log("13. " + "edit")
             output = raw;
-            console.log("9. " + output)
             if(updateElements){
                 /////=========================================================================
             }
@@ -1475,67 +1454,48 @@ function normalizeCID(input,type,updateElements){
     return output;
 }
 function normalizePhoneNumber(input,type,updateElements){
-    console.log("-3 " + input)
     var output;
     var raw = input.toString()
-    console.log("-4 " + raw)
     raw = raw.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
-    console.log("-5 " + raw)
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
-    console.log("-6 " + raw)
     var empty = (raw == "" || raw.toLowerCase() == "phonenumber");
-    console.log("-7 " + empty)
-    console.log("-7.5 " + raw)
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
     if(empty){
         if(type == "panel"){
-            console.log("-8 " + "panel")
             output = "Phone Number";
-            console.log("-9 " + output)
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
-            console.log("-10 " + "edit")
             output = raw;
-            console.log("-11 " + output)
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
             }
         }
     }
     else{
-        console.log("-11.5 " + raw)
         var formatted;
         if(raw.length > 10){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,10) + " " + raw.slice(10,raw.length);
-            console.log("-12 formatted " + formatted)
         }
         else if (raw.length > 6){
             formatted = "(" + raw.slice(0,3)  + ") " + raw.slice(3,6) + "-" + raw.slice(6,raw.length);
-            console.log("-13 formatted " + formatted)
         }
         else{
-            console.log("-13.5 " + raw)
             formatted = raw;
-            console.log("-14 " + formatted)
         }
         if(type == "panel"){
-            console.log("-15 " + "panel")
             output = formatted + '<span class="popup" id="phonePopup"></span>';
-            console.log("-16 " + output)
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
-            console.log("-17 " + "edit")
             output = formatted;
-            console.log("-18 " + output)
             if(updateElements){
                 //=======================================================================
             }
