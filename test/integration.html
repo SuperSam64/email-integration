@@ -393,7 +393,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "80";
-      var scriptVersion = "301";
+      var scriptVersion = "302";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";
@@ -451,7 +451,8 @@
     // ------------------------------------------------------------------------
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
-        if(initialized == true){
+      convoChange();  
+      if(initialized == true){
           resetContactInfo();
           Missive.fetchConversations(ids).then((conversations) => {		
           currentConversation = conversations[0];
