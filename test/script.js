@@ -1462,8 +1462,8 @@ function normalizePhoneNumber(input,type,updateElements){
     console.log("-5 " + raw)
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
-        console.log("-6 " + raw)
     }
+    console.log("-6 " + raw)
     var empty = (raw = "" || raw.toLowerCase() == "phonenumber");
     console.log("-7 " + empty)
     var field = document.getElementById("phoneField");
