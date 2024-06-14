@@ -1141,7 +1141,7 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-    console.log("1 " + CIDField)
+    console.log("1 " + CID)
 
     nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true)
     CIDField.innerHTML = normalizeCID(CID,"panel",true);
