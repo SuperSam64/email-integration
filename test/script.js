@@ -1229,11 +1229,11 @@ function showEditPanel(){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    formFirstName.value = normalizeFirstName(nameField,"edit");
-    formLastName.value = normalizeLastName(nameField,"edit");
-    formCustID.value = normalizeCID(CIDField,"edit",false);
-    formPhone.value = normalizePhoneNumber(phoneField,"edit",false);
-    formCustID.value = normalizeEmail(emailField,"edit",false);
+    formFirstName.innerText = normalizeFirstName(nameField,"edit");
+    formLastName.innerText = normalizeLastName(nameField,"edit");
+    formCustID.innerText = normalizeCID(CIDField,"edit",false);
+    formPhone.innerText = normalizePhoneNumber(phoneField,"edit",false);
+    formCustID.innerText = normalizeEmail(emailField,"edit",false);
     
     
     /*var previousFullName = document.getElementById('nameField').innerText;
