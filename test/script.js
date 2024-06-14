@@ -1145,7 +1145,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
     nameField.innerHTML = fullName;
     CIDField.innerHTML = CID;
-    phoneField.innerHTML = phone;
+    phoneField.innerHTML = phoneNum;
     emailField.innerHTML = email;
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
