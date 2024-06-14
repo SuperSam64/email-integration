@@ -1310,10 +1310,11 @@ function normalizeOrderNumbers(input,string){
 }
 
 
-async function convoChange(){(ids) => {
+function convoChange(){(ids) => {
     Missive.fetchConversations(ids).then((conversations) => {
         currentConversation = conversations[0];
         console.log("CURRENT CONVO: " + currentConversation);
+        return ("CURRENT CONVERSATION " + currentConversation.id)
     })
 }}
 
