@@ -1126,10 +1126,10 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(contact.firstName,contact.lastName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
+    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
-function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
+function contactFormSave(fullName,CID,phoneNum,email,exists){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
 
     var formFirstName = document.getElementById('formFirstName');
@@ -1143,11 +1143,10 @@ function contactFormSave(firstName,lastName,CID,phoneNum,email,exists){
     var emailField = document.getElementById('emailField');
     console.log("1 " + CID)
 
-    nameField.innerHTML = normalizeFullName(firstName,lastName,"panel",true)
-    CIDField.innerHTML = normalizeCID(CID,"panel",true);
-    console.log("1.5 " + normalizeCID(CID,"panel",true));
-    phoneField.innerHTML = normalizePhoneNumber(phoneNum,"panel",true);
-    emailField.innerHTML = normalizeEmail(email,"panel",true);
+    nameField.innerHTML = fullName;
+    CIDField.innerHTML = CID;
+    phoneField.innerHTML = phone;
+    emailField.innerHTML = email;
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
             nameField.innerHTML = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
