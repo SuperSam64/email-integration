@@ -1225,10 +1225,25 @@ function showEditPanel(){
     var formEmail = normalizeEmail(document.getElementById('formEmail').value,false);*/
     
     
+    var formFirstName = document.getElementById('formFirstName');
+    var formLastName = document.getElementById('formLastName');
+    var formCustID = document.getElementById('formCustID');
+    var formPhone = document.getElementById('formPhone');
+    var formCustID = document.getElementById('formCustID');
+
+    var nameField = document.getElementById('nameField');
+    var CIDField = document.getElementById('CIDField');
+    var phoneField = document.getElementById('phoneField');
+    var emailField = document.getElementById('emailField');
+
+    formFirstName.value = normalizeFirstName(nameField,"edit");
+    formLastName.value = normalizeLastName(nameField,"edit");
+    formCustID.value = normalizeCID(CIDField,"edit",false);
+    formPhone.value = normalizePhoneNumber(phoneField,"edit",false);
+    formCustID.value = normalizeEmail(emailField,"edit",false);
     
     
-    
-    var previousFullName = document.getElementById('nameField').innerText;
+    /*var previousFullName = document.getElementById('nameField').innerText;
     var previousFirstName;
     var previousLastName;
     if(previousFullName == "" || previousFullName == "Name"){
@@ -1280,7 +1295,7 @@ function showEditPanel(){
     document.getElementById('formCustID').value = previousCID;
     document.getElementById('formPhoneNumber').value = previousPhoneNumber;
     document.getElementById('formEmail').value = previousEmail;
-    document.getElementById('formOrderNumbers').value = previousOrderNumbers;
+    document.getElementById('formOrderNumbers').value = previousOrderNumbers;*/
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
@@ -1538,8 +1553,8 @@ function normalizeEmail(input,type,updateElements){
         else if (type == "edit"){
             output = raw;
             if(updateElements){
-                textInput.classList.remove("inactive");
-                textInput.setAttribute("disabled", "false");
+                textInput.disabled = false;
+                textInput.style = 'color:var(--missive-text-color-a);font-style:none';
             }
         }
     }
@@ -1554,13 +1569,13 @@ function normalizeEmail(input,type,updateElements){
             output = raw;
             if(updateElements){
                 if(raw.split("@")[1] == "filtersfast.com"){
-                    field.classList.remove("inactive");
+                    textInput.disabled = false;
+                    textInput.style = 'color:var(--missive-text-color-a);font-style:none';
                     textInput.value = "";
-                    textInput.setAttribute("disabled", "false");
                 }
                 else{
-                    field.classList.add("inactive");
-                    textInput.setAttribute("disabled", "true");
+                    textInput.disabled = true;
+                    textInput.style = 'color:var(--missive-text-color-d);font-style:italic';
                 }
             }
         }
