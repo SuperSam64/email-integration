@@ -1105,7 +1105,10 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"panel",true);
-    
+    console.log(contact.fullName);
+    console.log(contact.customerID);
+    console.log(contact.phoneNumber);
+    console.log(contact.email);
     
 
     /*if(
@@ -1124,16 +1127,13 @@ async function lookupContact(input){
         buildOrderNumbersList([orderNumber]);
     }*/
     contactFormSave(
-        '<div style="width:92%">' + contact.fullNameHTML, + '</div>',
+        '<div style="width:92%">' + contact.fullName, + '</div>',
         '<div style="width:92%">' + contact.customerID + '</div>',
         '<div style="width:92%">' + contact.phoneNumber + '</div>',
         '<div style="width:92%">' + contact.email + '</div>',
         contactExists
     );
-    console.log(messageFrom);
-    console.log(contact.customerID);
-    console.log(contact.phoneNumber);
-    console.log(contact.email);
+    
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 
