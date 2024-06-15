@@ -1552,7 +1552,7 @@ function normalizeEmail(input,type,updateElements){
             output = "Email";
             if(updateElements){
                 field.classList.add("inactive");
-                setFieldHover("nameField", "");
+                setFieldHover("emailField", "");
             }
         }
         else if (type == "edit"){
@@ -1570,7 +1570,7 @@ function normalizeEmail(input,type,updateElements){
             if(updateElements){
                 field.classList.remove("inactive");
                 console.log("hover " + hover)
-                setFieldHover("nameField", hover);
+                setFieldHover("emailField", hover);
             }
         }
         else if(type == "edit"){
