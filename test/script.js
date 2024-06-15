@@ -1143,7 +1143,7 @@ function contactSavedShow(){
 	var custInfo = document.getElementById("custInfo")
 	custInfo.classList.add("contact-saved");
 	element.classList.innerText = "Contact information saved!";
-	setTimeout(contactSavedFade,1000,custInfo);
+	setTimeout(contactSavedFade,5000,custInfo);
 }
 
 
@@ -1254,6 +1254,7 @@ function setFieldHover(element,value){
 function contactFormCancel(){
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
+    contactSavedShow(); // GET RID OF THIS LATER AND PUT IT IN SAVE INSTEAD - HERE JUST FOR EASIER TESTING
 }
 function showEditPanel(){
     /*var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,false);
