@@ -1131,7 +1131,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var formFirstName = document.getElementById('formFirstName');
     var formLastName = document.getElementById('formLastName');
     var formCustID = document.getElementById('formCustID');
-    var formPhone = document.getElementById('formPhone');
+    var formPhoneNumber = document.getElementById('formPhoneNumber');
     var formCustID = document.getElementById('formCustID');
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
@@ -1233,7 +1233,7 @@ function showEditPanel(){
     var formFirstName = document.getElementById('formFirstName');
     var formLastName = document.getElementById('formLastName');
     var formCustID = document.getElementById('formCustID');
-    var formPhone = document.getElementById('formPhone');
+    var formPhoneNumber = document.getElementById('formPhoneNumber');
     var formCustID = document.getElementById('formCustID');
 
     var nameField = document.getElementById('nameField');
@@ -1245,7 +1245,7 @@ function showEditPanel(){
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
     console.log("1. " + phoneField.innerText);
-    formPhone.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
+    formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
     formCustID.value = normalizeEmail(emailField.innerText,"edit",false);
     
     
@@ -1478,7 +1478,7 @@ function normalizePhoneNumber(input,type,updateElements){
     var empty = (raw == "" || raw.toLowerCase() == "phonenumber");
     console.log("4. " + empty);
     var field = document.getElementById("phoneField");
-    var textInput = document.getElementById("formPhone");
+    var textInput = document.getElementById("formPhoneNumber");
     console.log("4.1 " + type);
     if(empty){
         console.log("4.2 empty");
