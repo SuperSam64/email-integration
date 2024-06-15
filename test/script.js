@@ -1126,8 +1126,7 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(('<div style="width:92%">' + contact.fullName, + '</div>'),
-        contact.customerID,contact.phoneNumber,contact.email,contact.email);
+    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
         /*'<div style="width:92%">' + contact.fullName, + '</div>',
         '<div style="width:92%">' + contact.customerID + '</div>',
         '<div style="width:92%">' + contact.phoneNumber + '</div>',
@@ -1165,23 +1164,18 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var emailField = document.getElementById('emailField');
     
 
-    nameField.innerHTML = fullName;
-    CIDField.innerHTML = CID;
-    phoneField.innerHTML = phoneNum;
-    emailField.innerHTML = email;
+    nameField.innerHTML = '<div style="width:92%">' + fullName, + '</div>';
+    CIDField.innerHTML = '<div style="width:92%">' + CID, + '</div>';
+    phoneField.innerHTML = '<div style="width:92%">' + phoneNum, + '</div>';
+    emailField.innerHTML = '<div style="width:92%">' + email, + '</div>';
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
-            nameField.innerHTML = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
+            nameField.innerHTML = '<div style="width:92%">' + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true) + '</div>';
         }
     }
     customerName = nameField.innerHTML;
     
-        
-    
-    
-
-
-
+       
 
 
 
