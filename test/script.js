@@ -1075,7 +1075,7 @@ async function lookupContact(input){
         fullName:"Name",
 		customerID:"Customer ID",
 		phoneNumber:"Phone Number",
-		email: "Email"
+		email: "Email address"
 	};
     resetContactInfo();
     if(typeof contactRecord.contacts[0] != 'undefined'){
@@ -1616,7 +1616,7 @@ function normalizeEmail(input,type,updateElements){
     var textInput = document.getElementById("formEmail");
     if(empty){
         if(type == "panel"){
-            output = "Email";
+            output = "Email address";
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
