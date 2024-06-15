@@ -1260,7 +1260,11 @@ function showEditPanel(){
     var formCustID = normalizeCID(document.getElementById('formCustID').value,false);
     var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,false);
     var formEmail = normalizeEmail(document.getElementById('formEmail').value,false);*/
-    
+    document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); });
     
     var formFirstName = document.getElementById('formFirstName');
     var formLastName = document.getElementById('formLastName');
@@ -1482,7 +1486,7 @@ function normalizeCID(input,type,updateElements){
     }
     var empty = (raw == "" || raw == "CID");    
     var field = document.getElementById("CIDField");
-    var textInput = document.getElementById("formCID");
+    var textInput = document.getElementById("formCustID");
     if(empty){        
         if(type == "panel"){            
             output = "Customer ID";
