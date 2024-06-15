@@ -1210,7 +1210,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
 function setFieldHover(element,value){
 	var tooltip = value + `
-    (Click to copy)`;
+(Click to copy)`;
     document.getElementById(element).setAttribute("title",tooltip);
 }
 
