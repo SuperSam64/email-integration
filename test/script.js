@@ -1418,6 +1418,7 @@ function normalizeFullName(first,last,type,updateElements){
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
+                setFieldHover("emailField", "");
             }
         }
         else if (type == "edit"){
@@ -1429,10 +1430,12 @@ function normalizeFullName(first,last,type,updateElements){
     }
     else{
         if(type == "panel"){
+            var hover = raw;
             output = '<div style="width:92%">' + raw + '<span class="popup" id="namePopup"></span></div>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
+                setFieldHover("nameField", hover);
             }
         }
         else if (type == "edit"){
@@ -1460,6 +1463,7 @@ function normalizeCID(input,type,updateElements){
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
+                setFieldHover("CIDField", "");
             }
         }
         else if (type == "edit"){
@@ -1471,10 +1475,12 @@ function normalizeCID(input,type,updateElements){
     }
     else{
         if(type == "panel"){
+            var hover = raw;
             output = '<div style="width:92%">CID ' + raw + '<span class="popup" id="CIDPopup"></span></div>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
+                setFieldHover("CIDField", hover);
             }
         }
         else if (type == "edit"){
@@ -1509,6 +1515,7 @@ function normalizePhoneNumber(input,type,updateElements){
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
+                setFieldHover("phoneField", "");
             }
         }
         else if (type == "edit"){
@@ -1534,10 +1541,12 @@ function normalizePhoneNumber(input,type,updateElements){
         console.log("7. " + formatted);
         if(type == "panel"){
             console.log("8. " + "panel");
+            var hover = formatted;
             output = '<div style="width:92%"> ' + formatted + '<span class="popup" id="phonePopup"></span></div>';            
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
+                setFieldHover("phoneField", hover);
             }
         }
         else if (type == "edit"){
