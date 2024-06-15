@@ -1209,7 +1209,8 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
 
 function setFieldHover(element,value){
-	document.getElementById(element).setAttribute("title", value + "&#013;(Click to copy)");
+	var tooltip = value + "&#013;(Click to copy)";
+    document.getElementById(element).setAttribute("title",tooltip);
 }
 
 
@@ -1328,7 +1329,7 @@ function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     // if this is an email address,
-    if(input.includes("@")){
+    if(input.includes("@") || input.toLowerCase() == "name" || input == ""){
         // get rid of it
         output = "";
     }
@@ -1364,7 +1365,7 @@ function normalizeFirstName(input,type){
 }
 function normalizeLastName(input,type){
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(input.includes("@")){
+    if(input.includes("@") || input.toLowerCase() == "name" || input == ""){
         output = "";
     }
     else if( output.replaceAll(".","").replaceAll("","").length > 2){
@@ -1454,7 +1455,7 @@ function normalizeCID(input,type,updateElements){
             }
         }
         else if (type == "edit"){
-            output = raw;
+            output = "";
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS========================================
             }
@@ -1568,6 +1569,7 @@ function normalizeEmail(input,type,updateElements){
             output = raw + '<span class="popup" id="emailPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                console.log("hover " + hover)
                 setFieldHover("nameField", hover);
             }
         }
