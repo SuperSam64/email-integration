@@ -33,7 +33,7 @@
 /* The actual popup */
 .fieldText .popup {
   visibility: hidden;
-  max-width:92%;
+  max-width:100;
   background-color: var(--missive-background-color);
   color:var(--missive-text-color-a);
   text-align: center;
@@ -65,6 +65,10 @@
 .fieldText .hide {
   -webkit-animation: fadeOut var(--fade);
   animation: fadeOut var(--fade);
+}
+.active{
+  font-style: none;
+  color: var(--missive-text-color-a);
 }
 .inactive{
   font-style: italic;

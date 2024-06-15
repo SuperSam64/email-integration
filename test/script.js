@@ -1214,46 +1214,7 @@ function setFieldHover(element,value){
     document.getElementById(element).setAttribute("title",tooltip);
 }
 
-$(function () {
-    var formFirstName;
-    $(document).on('focus', 'input', function () {
-        if (formFirstName == this) return; //already focused, return so user can now place cursor at specific point in input.
-        formFirstName = this;
-        setTimeout(function () { formFirstName.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
-    });
-});
-$(function () {
-    var formLastName;
-    $(document).on('focus', 'input', function () {
-        if (formLastName == this) return; //already focused, return so user can now place cursor at specific point in input.
-        formLastName = this;
-        setTimeout(function () { formLastName.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
-    });
-});
-$(function () {
-    var formCustID;
-    $(document).on('focus', 'input', function () {
-        if (formCustID == this) return; //already focused, return so user can now place cursor at specific point in input.
-        formCustID = this;
-        setTimeout(function () { formCustID.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
-    });
-});
-$(function () {
-    var formPhoneNumber;
-    $(document).on('focus', 'input', function () {
-        if (formPhoneNumber == this) return; //already focused, return so user can now place cursor at specific point in input.
-        formPhoneNumber = this;
-        setTimeout(function () { formPhoneNumber.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
-    });
-});
-$(function () {
-    var formEmail;
-    $(document).on('focus', 'input', function () {
-        if (formEmail == this) return; //already focused, return so user can now place cursor at specific point in input.
-        formEmail = this;
-        setTimeout(function () { formEmail.select(); }, 100); //select all text in any field on focus for easy re-entry. Delay sightly to allow focus to "stick" before selecting.
-    });
-});
+
 
 
 
