@@ -1491,8 +1491,9 @@ function normalizePhoneNumber(input,type,updateElements){
             }
         }
         else if (type == "edit"){
-            console.log("6. " + edit);
+            console.log("6. " + "edit");
             output = raw;
+            console.log("6.1 " + raw);
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
             }
@@ -1519,6 +1520,7 @@ function normalizePhoneNumber(input,type,updateElements){
         }
         else if (type == "edit"){
             console.log("8. " + "edit");
+            console.log("8. " + formatted);
             output = formatted;
             if(updateElements){
                 //=======================================================================
