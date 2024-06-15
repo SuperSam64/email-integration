@@ -1244,9 +1244,8 @@ function showEditPanel(){
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
-    console.log("1. " + phoneField.innerText);
     formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
-    formCustID.value = normalizeEmail(emailField.innerText,"edit",false);
+    formEmail.value = normalizeEmail(emailField.innerText,"edit",false);
     
     
     /*var previousFullName = document.getElementById('nameField').innerText;
@@ -1355,6 +1354,12 @@ function normalizeFirstName(input,type){
             output = output.split(" ")[0];
         }
     }
+    if (type == "edit"){
+        // separate out the first name
+        if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes("")){
+            output = output.split(" ")[0];
+        }
+    }
     return output;
 }
 function normalizeLastName(input,type){
@@ -1374,6 +1379,11 @@ function normalizeLastName(input,type){
         document.getElementById('textmod').innerText ="";
     }
     if (type == "panel"){
+        if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes(" ")){
+            output = output.replace((output.split(" ")[0] + " "),"");
+        }
+    }
+    if (type == "edit"){
         if(("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","").includes(" ")){
             output = output.replace((output.split(" ")[0] + " "),"");
         }
