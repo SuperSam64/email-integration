@@ -1126,13 +1126,13 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(
-        '<div style="width:92%">' + contact.fullName, + '</div>',
+    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
+        /*'<div style="width:92%">' + contact.fullName, + '</div>',
         '<div style="width:92%">' + contact.customerID + '</div>',
         '<div style="width:92%">' + contact.phoneNumber + '</div>',
         '<div style="width:92%">' + contact.email + '</div>',
         contactExists
-    );
+    );*/
     
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
@@ -1523,7 +1523,7 @@ function normalizeCID(input,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = 'CID' + raw + '<span class="popup" id="CIDPopup"></span>';
+            output = 'CID ' + raw + '<span class="popup" id="CIDPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1635,7 +1635,6 @@ function normalizeEmail(input,type,updateElements){
         if(type == "panel"){
             var hover = raw;
             output = raw + '<span class="popup" id="emailPopup"></span>';
-            
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
