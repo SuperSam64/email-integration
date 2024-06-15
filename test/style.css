@@ -37,6 +37,11 @@
 .hiddenButton{
     display:none;
 }
-
+.td{
+    color:var(--missive-text-color-a);
+}
+.th{
+    color:var(--missive-text-color-a);
+}
 
 

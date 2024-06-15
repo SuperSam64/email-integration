@@ -1123,6 +1123,10 @@ async function lookupContact(input){
         buildOrderNumbersList([orderNumber]);
     }*/
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
+    console.log(contact.customerID);
+    console.log(contact.phoneNumber);
+    console.log(contact.phoneNumber,messageFrom,tokens[2]);
+    console.log(messageFrom);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSave(fullName,CID,phoneNum,email,exists){

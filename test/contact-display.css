@@ -17,6 +17,7 @@
     overflow:visible;
 }
 .fieldText {
+  width:100%;
   position: relative;
   display: inline-block;
   cursor: pointer;
