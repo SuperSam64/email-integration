@@ -12,139 +12,7 @@
     <script type="text/javascript" src="monday_search.js"></script>
     <script type="text/javascript" src="contact-display.js"></script>
     <script src="script.js"></script>
-    <style>
-
-
-
-
-
-
-
-
-
-
-/* Popup container - can be anything you want */
-:root{
-	--fade: 0.5s;
-}
-#add-edit{
-  color:var(--accent-color);
-  font-size:small;
-  padding:6px;
-  text-align:center;
-  width:100%;
-  border-top:1px solid var(--missive-light-border-color);
-}
-#add-edit:hover{
-  text-shadow: 0px 0px 4px var(--accent-color);
-}
-.form td{
-    overflow:visible;
-}
-.fieldText {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.fieldText > div{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-/* The actual popup */
-.fieldText .popup {
-  visibility: hidden;
-  max-width:100;
-  background-color: var(--missive-background-color);
-  color:var(--missive-text-color-a);
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
-}
-/* Popup arrow */
-.fieldText .popup:after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--missive-background-color);
-}
-/* Toggle this class - hide and show the popup */
-.fieldText .show {
-  visibility:visible;
-  -webkit-animation: fadeIn var(--fade);
-  animation: fadeIn var(--fade);
-}
-.fieldText .hide {
-  -webkit-animation: fadeOut var(--fade);
-  animation: fadeOut var(--fade);
-}
-.active{
-  font-style: none;
-  color: var(--missive-text-color-a);
-}
-.inactive{
-  font-style: italic;
-  color: var(--missive-text-color-c);
-}
-.hidden{
-  display:none;
-}
-.capitalize{
-  text-transform: capitalize;
-}
-#formEmail input[disabled] {
-  color: gray;
-  font-style: italic;
-}
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeOut {
-  from {opacity: 1;}
-  to {opacity: 0;}
-  from{visibility:visible};
-  to{visibility:hidden};
-}
-@keyframes fadeOut {
-  from {opacity: 1;}
-  to {opacity:0 ;}
-  from{visibility:visible};
-  to{visibility:hidden};
-}
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-  from{visibility:hidden};
-  to{visibility:visible};
-}
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
-  from{visibility:hidden};
-  to{visibility:visible};
-}
-
-
-
-
-
-
-
-
-
-
-    </style>
+    
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div style="position:fixed;top:0px;left:0px;margin:0px;padding:0px;z-index:1;width:100%;background-color:var(--missive-background-color)">
@@ -526,7 +394,7 @@
     {//----------------------------- VARIABLES --------------------------------
       var baseVersion = "11";
       var revisionNumber = "80";
-      var scriptVersion = "326";
+      var scriptVersion = "328";
       var version = "Version " + baseVersion + "." + revisionNumber + "." + scriptVersion; // Base version > revision number > script version
       console.log(version)
       var theme = "light";

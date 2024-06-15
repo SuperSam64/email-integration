@@ -1425,7 +1425,7 @@ function normalizeFullName(first,last,type,updateElements){
     }
     else{
         if(type == "panel"){
-            output = raw + '<span class="popup" id="namePopup"></span>';
+            output = '<div style="width:92%">' + raw + '<span class="popup" id="namePopup"></span></div>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1467,7 +1467,7 @@ function normalizeCID(input,type,updateElements){
     }
     else{
         if(type == "panel"){
-            output = "CID " + raw + '<span class="popup" id="CIDPopup"></span>';
+            output = '<div style="width:92%">CID ' + raw + '<span class="popup" id="CIDPopup"></span></div>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1530,7 +1530,7 @@ function normalizePhoneNumber(input,type,updateElements){
         console.log("7. " + formatted);
         if(type == "panel"){
             console.log("8. " + "panel");
-            output = formatted + '<span class="popup" id="phonePopup"></span>';
+            output = '<div style="width:92%"> ' + formatted + '<span class="popup" id="phonePopup"></span></div>';            
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1574,7 +1574,8 @@ function normalizeEmail(input,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = raw + '<span class="popup" id="emailPopup"></span>';
+            output = '<div style="width:92%">' + raw + '<span class="popup" id="emailPopup"></span></div>';
+            
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
