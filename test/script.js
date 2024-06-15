@@ -1126,7 +1126,8 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
+    contactFormSave(('<div style="width:92%">' + contact.fullName, + '</div>'),
+        contact.customerID,contact.phoneNumber,contact.email,contact.email);
         /*'<div style="width:92%">' + contact.fullName, + '</div>',
         '<div style="width:92%">' + contact.customerID + '</div>',
         '<div style="width:92%">' + contact.phoneNumber + '</div>',

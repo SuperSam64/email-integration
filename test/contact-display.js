@@ -27,7 +27,7 @@ function copyToClipboard(type, duration) {
 	}
 	if(type == "email"){
 		elementValue = document.getElementById('emailField').innerText.trim().replaceAll(" ","");
-		if(elementValue == "" || elementValue == "Emailaddress"){
+		if(elementValue == "" || elementValue == "emailaddress"){
 			showTooltip = false;
 		}
 	}
