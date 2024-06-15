@@ -1128,10 +1128,10 @@ async function lookupContact(input){
         buildOrderNumbersList([orderNumber]);
     }*/
     contactFormSave(contact.fullNameHTML,contact.customerIDHTML,contact.phoneNumberHTML,contact.emailHTML,contactExists);
+    console.log(messageFrom);
     console.log(contact.customerID);
     console.log(contact.phoneNumber);
-    console.log(contact.phoneNumber,messageFrom,tokens[2]);
-    console.log(messageFrom);
+    console.log(contact.email);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 
@@ -1233,9 +1233,11 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
 function getPlaintext(input) {
     var span = document.getElementById('textmod');
+    var store = span.innerHTML;
     span.innerHTML = input;
-    output = input;
+    output = span.innerText;
     span.innerText = "";
+    span.innerHTML = store;
     return span.innerText;
   };
 
