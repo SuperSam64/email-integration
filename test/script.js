@@ -1134,6 +1134,20 @@ async function lookupContact(input){
     console.log(messageFrom);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
+
+function contactSavedFade(element){
+	element.classList.remove("contact-saved");
+	element.classList.innerText = "Customer Information";
+}
+function contactSavedShow(){
+	var custInfo = document.getElementById("custInfo")
+	custInfo.classList.add("contact-saved");
+	element.classList.innerText = "Contact information saved!";
+	setTimeout(contactSavedFade,1000,custInfo);
+}
+
+
+        
 function contactFormSave(fullName,CID,phoneNum,email,exists){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
 

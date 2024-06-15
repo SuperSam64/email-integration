@@ -11,7 +11,7 @@
   border-top:1px solid var(--missive-light-border-color);
 }
 #add-edit:hover{
-  text-shadow: 0px 0px 4px var(--accent-color);
+  text-decoration: underline;
 }
 .form td{
     overflow:visible;
@@ -60,6 +60,11 @@
   visibility:visible;
   -webkit-animation: fadeIn var(--fade);
   animation: fadeIn var(--fade);
+}
+.contact-saved {
+  -webkit-animation: fadeOut var(--fade);
+  animation: fadeOut var(--fade);
+  color:var(--missive-blue-color);
 }
 .fieldText .hide {
   -webkit-animation: fadeOut var(--fade);
