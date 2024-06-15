@@ -1479,7 +1479,10 @@ function normalizePhoneNumber(input,type,updateElements){
     console.log("4. " + empty);
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
+    console.log("4.1 " + type);
     if(empty){
+        console.log("4.2 empty");
+        console.log("4.3 " + type)
         if(type == "panel"){
             console.log("5. " + "panel");
             output = "Phone Number";
