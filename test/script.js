@@ -1087,30 +1087,25 @@ async function lookupContact(input){
         if(contact.lastName.toLowerCase() ==  'undefined'){
             contact.lastName == "";
         }
-        contact.fullNameHTML = normalizeFullName(contact.firstName,contact.lastName,"panel",true);
+        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"panel",true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
-                    contact.phoneNumberHTML = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
+                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" ){
-                    contact.customerIDHTML = normalizeCID(contactRecord.contacts[0].infos[i].value,"panel",true);
+                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         contactExists =  true;
     }
-    contact.emailHTML = normalizeEmail(input,"panel",true);
+    contact.email = normalizeEmail(input,"panel",true);
     
-    console.log()
-    contact.fullName = getPlaintext(contact.fullNameHTML);
-    contact.customerID = getPlaintext(contact.customerIDHTML);
-    contact.phoneNumber = getPlaintext(contact.phoneNumberHTML);
-    contact.email = getPlaintext(contact.emailHTML);
 
     /*if(
         conversationSubject.slice(0,6) == "Orders" &&
@@ -1127,7 +1122,13 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(contact.fullNameHTML,contact.customerIDHTML,contact.phoneNumberHTML,contact.emailHTML,contactExists);
+    contactFormSave(
+        '<div style="width:92%">' + contact.fullNameHTML, + '</div>',
+        '<div style="width:92%">' + contact.customerID + '</div>',
+        '<div style="width:92%">' + contact.phoneNumber + '</div>',
+        '<div style="width:92%">' + contact.email + '</div>',
+        contactExists
+    );
     console.log(messageFrom);
     console.log(contact.customerID);
     console.log(contact.phoneNumber);
@@ -1244,7 +1245,7 @@ function getPlaintext(input) {
     if(store == "undefined"){
         store == "it's undefined"
     }
-    span.innerHTML = input;
+    span.innerHTML = input.innerHTML;
     output = span.innerText;
     span.innerText = "";
     span.innerHTML = store;
@@ -1476,7 +1477,7 @@ function normalizeFullName(first,last,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = '<div style="width:92%">' + raw + '<span class="popup" id="namePopup"></span></div>';
+            output = raw + '<span class="popup" id="namePopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1521,7 +1522,7 @@ function normalizeCID(input,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = '<div style="width:92%">CID ' + raw + '<span class="popup" id="CIDPopup"></span></div>';
+            output = 'CID' + raw + '<span class="popup" id="CIDPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1587,7 +1588,7 @@ function normalizePhoneNumber(input,type,updateElements){
         if(type == "panel"){
             console.log("8. " + "panel");
             var hover = raw;
-            output = '<div style="width:92%"> ' + formatted + '<span class="popup" id="phonePopup"></span></div>';            
+            output = formatted + '<span class="popup" id="phonePopup"></span>';            
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -1632,7 +1633,7 @@ function normalizeEmail(input,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = '<div style="width:92%">' + raw + '<span class="popup" id="emailPopup"></span></div>';
+            output = raw + '<span class="popup" id="emailPopup"></span>';
             
             if(updateElements){
                 field.classList.remove("inactive");
