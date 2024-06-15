@@ -1234,6 +1234,8 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 function getPlaintext(input) {
     var span = document.getElementById('textmod');
     span.innerHTML = input;
+    output = input;
+    span.innerText = "";
     return span.innerText;
   };
 
