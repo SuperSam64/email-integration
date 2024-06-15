@@ -1492,7 +1492,7 @@ function normalizePhoneNumber(input,type,updateElements){
         }
         else if (type == "edit"){
             console.log("6. " + "edit");
-            output = raw;
+            output = "";
             console.log("6.1 " + raw);
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
