@@ -1244,6 +1244,7 @@ function showEditPanel(){
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
+    console.log("1. " + phoneField.innerText);
     formPhone.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
     formCustID.value = normalizeEmail(emailField.innerText,"edit",false);
     
@@ -1468,21 +1469,26 @@ function normalizeCID(input,type,updateElements){
 function normalizePhoneNumber(input,type,updateElements){
     var output;
     var raw = input.toString()
+    console.log("2. " + raw);
     raw = raw.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
+    console.log("3. " + raw);
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
     var empty = (raw == "" || raw.toLowerCase() == "phonenumber");
+    console.log("4. " + empty);
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhone");
     if(empty){
         if(type == "panel"){
+            console.log("5. " + "panel");
             output = "Phone Number";
             if(updateElements){
                 field.classList.add("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("6. " + edit);
             output = raw;
             if(updateElements){
                 // NOTHING, PLACEHOLDER FOR OTHER FUNCTIONS==========================================
@@ -1500,19 +1506,23 @@ function normalizePhoneNumber(input,type,updateElements){
         else{
             formatted = raw;
         }
+        console.log("7. " + formatted);
         if(type == "panel"){
+            console.log("8. " + "panel");
             output = formatted + '<span class="popup" id="phonePopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
             }
         }
         else if (type == "edit"){
+            console.log("8. " + "edit");
             output = formatted;
             if(updateElements){
                 //=======================================================================
             }
         }
     }
+    console.log("9. " + output);
     return output;
 }
 function normalizeEmail(input,type,updateElements){
