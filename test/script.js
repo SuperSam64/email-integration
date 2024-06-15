@@ -1106,11 +1106,11 @@ async function lookupContact(input){
     }
     contact.emailHTML = normalizeEmail(input,"panel",true);
     
-
+    console.log()
     contact.fullName = getPlaintext(contact.fullNameHTML);
     contact.customerID = getPlaintext(contact.customerIDHTML);
-    contact.phoneNumber = getPlaintext(contact.customerIDHTML);
-    contact.email = getPlaintext(contact.customerIDHTML);
+    contact.phoneNumber = getPlaintext(contact.phoneNumberHTML);
+    contact.email = getPlaintext(contact.emailHTML);
 
     /*if(
         conversationSubject.slice(0,6) == "Orders" &&
@@ -1234,6 +1234,16 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 function getPlaintext(input) {
     var span = document.getElementById('textmod');
     var store = span.innerHTML;
+    console.log("inner text " + input)
+    if(store == ""){
+        store == "it's blank"
+    }
+    if(typeof store == "undefined"){
+        store == "it's typeof undefined"
+    }
+    if(store == "undefined"){
+        store == "it's undefined"
+    }
     span.innerHTML = input;
     output = span.innerText;
     span.innerText = "";
