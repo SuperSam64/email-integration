@@ -1087,25 +1087,30 @@ async function lookupContact(input){
         if(contact.lastName.toLowerCase() ==  'undefined'){
             contact.lastName == "";
         }
-        contact.fullName = normalizeFullName(contact.firstName,contact.lastName,"panel",true);
+        contact.fullNameHTML = normalizeFullName(contact.firstName,contact.lastName,"panel",true);
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].kind != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].kind == "phone_number" && contactRecord.contacts[0].infos[i].value != ""){
-                    contact.phoneNumber = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
+                    contact.phoneNumberHTML = normalizePhoneNumber(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         for ( var i = 0; i < contactRecord.contacts[0].infos.length; i++ ) {
             if(typeof contactRecord.contacts[0].infos[i].custom_label != 'undefined') {
                 if(contactRecord.contacts[0].infos[i].custom_label.toLowerCase() == "customer id" && contactRecord.contacts[0].infos[i].value != "" ){
-                    contact.customerID = normalizeCID(contactRecord.contacts[0].infos[i].value,"panel",true);
+                    contact.customerIDHTML = normalizeCID(contactRecord.contacts[0].infos[i].value,"panel",true);
                 }
             }
         }
         contactExists =  true;
     }
-    contact.email = normalizeEmail(input,"panel",true);
+    contact.emailHTML = normalizeEmail(input,"panel",true);
     
+
+    contact.fullName = getPlaintext(contact.fullNameHTML);
+    contact.customerID = getPlaintext(contact.customerIDHTML);
+    contact.phoneNumber = getPlaintext(contact.customerIDHTML);
+    contact.email = getPlaintext(contact.customerIDHTML);
 
     /*if(
         conversationSubject.slice(0,6) == "Orders" &&
@@ -1122,7 +1127,7 @@ async function lookupContact(input){
     else if(orderNumber != ""){
         buildOrderNumbersList([orderNumber]);
     }*/
-    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
+    contactFormSave(contact.fullNameHTML,contact.customerIDHTML,contact.phoneNumberHTML,contact.emailHTML,contactExists);
     console.log(contact.customerID);
     console.log(contact.phoneNumber);
     console.log(contact.phoneNumber,messageFrom,tokens[2]);
@@ -1210,6 +1215,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     // searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 
+
+
+function getPlaintext(input) {
+    var span = getElementById('textmod');
+    span.innerHTML = input;
+    return span.innerText;
+  };
 
 
 function setFieldHover(element,value){
