@@ -1142,7 +1142,7 @@ function contactSavedFade(element){
 function contactSavedShow(){
 	var custInfo = document.getElementById("custInfo")
 	custInfo.classList.add("contact-saved");
-	element.classList.innerText = "Contact information saved!";
+	custInfo.classList.innerText = "Contact information saved!";
 	setTimeout(contactSavedFade,5000,custInfo);
 }
 
