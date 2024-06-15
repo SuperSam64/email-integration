@@ -1316,13 +1316,13 @@ function normalizeOrderNumbers(input,string){
 }
 
 
-/*function convoChange(ids){(ids) => {
+function convoChange(){(ids) => {
     Missive.fetchConversations(ids).then((conversations) => {
         currentConversation = conversations[0];
         console.log("CURRENT CONVO: " + currentConversation);
         return ("CURRENT CONVERSATION " + currentConversation.id)
     })
-}}*/
+}}
 
 
 function normalizeFirstName(input,type){
