@@ -1209,7 +1209,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
 
 function setFieldHover(element,value){
-	document.getElementById(element).setAttribute("title", (emailvariable + "&#013;(Click to copy)"));
+	document.getElementById(element).setAttribute("title", value + "&#013;(Click to copy)");
 }
 
 
