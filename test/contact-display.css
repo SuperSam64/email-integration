@@ -25,10 +25,15 @@
   -ms-user-select: none;
   user-select: none;
 }
+.fieldText > div{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
 /* The actual popup */
 .fieldText .popup {
   visibility: hidden;
-  width: 160px;
+  max-width:92%;
   background-color: var(--missive-background-color);
   color:var(--missive-text-color-a);
   text-align: center;

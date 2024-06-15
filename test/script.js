@@ -1205,6 +1205,18 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
     // searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
+
+
+
+function setFieldHover(element,value){
+	document.getElementById(element).setAttribute("title", (emailvariable + "&#013;(Click to copy)"));
+}
+
+
+
+
+
+
 function contactFormCancel(){
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
@@ -1229,11 +1241,11 @@ function showEditPanel(){
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
 
-    formFirstName.value = normalizeFirstName(nameField,"edit").innerText;
-    formLastName.value = normalizeLastName(nameField,"edit").innerText;
-    formCustID.value = normalizeCID(CIDField,"edit",false).innerText;
-    formPhone.value = normalizePhoneNumber(phoneField,"edit",false).innerText;
-    formCustID.value = normalizeEmail(emailField,"edit",false).innerText;
+    formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
+    formLastName.value = normalizeLastName(nameField.innerText,"edit");
+    formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
+    formPhone.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
+    formCustID.value = normalizeEmail(emailField.innerText,"edit",false);
     
     
     /*var previousFullName = document.getElementById('nameField').innerText;
@@ -1514,6 +1526,7 @@ function normalizeEmail(input,type,updateElements){
             output = "Email";
             if(updateElements){
                 field.classList.add("inactive");
+                setFieldHover("nameField", "");
             }
         }
         else if (type == "edit"){
@@ -1526,9 +1539,11 @@ function normalizeEmail(input,type,updateElements){
     }
     else{
         if(type == "panel"){
+            var hover = raw;
             output = raw + '<span class="popup" id="emailPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                setFieldHover("nameField", hover);
             }
         }
         else if(type == "edit"){
