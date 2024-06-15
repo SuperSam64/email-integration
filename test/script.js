@@ -1232,7 +1232,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
 
 function getPlaintext(input) {
-    var span = getElementById('textmod');
+    var span = document.getElementById('textmod');
     span.innerHTML = input;
     return span.innerText;
   };
