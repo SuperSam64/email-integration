@@ -1,4 +1,6 @@
-/* Popup container - can be anything you want */
+
+
+ /* Popup container - can be anything you want 
 :root{
 	--fade: 0.5s;
 }
@@ -30,7 +32,7 @@
   overflow:hidden;
   text-overflow:ellipsis;
 }
-/* The actual popup */
+ The actual popup 
 .fieldText .popup {
   visibility: hidden;
   max-width:100;
@@ -45,7 +47,7 @@
   left: 50%;
   margin-left: -80px;
 }
-/* Popup arrow */
+ Popup arrow 
 .fieldText .popup:after {
   content: "";
   position: absolute;
@@ -56,7 +58,7 @@
   border-style: solid;
   border-color: var(--missive-background-color);
 }
-/* Toggle this class - hide and show the popup */
+ Toggle this class - hide and show the popup 
 .fieldText .show {
   visibility:visible;
   -webkit-animation: fadeIn var(--fade);
@@ -84,7 +86,7 @@
   color: gray;
   font-style: italic;
 }
-/* Add animation (fade in the popup) */
+ Add animation (fade in the popup) 
 @-webkit-keyframes fadeOut {
   from {opacity: 1;}
   to {opacity: 0;}
@@ -108,4 +110,4 @@
   to {opacity:1 ;}
   from{visibility:hidden};
   to{visibility:visible};
-}
+}*/
