@@ -21,13 +21,13 @@ function copyToClipboard(type, duration) {
 	}
 	if(type == "phone"){
 		elementValue = document.getElementById('phoneField').innerText.trim().replaceAll(" ","");
-		if(elementValue == "" || elementValue == "Phone number"){
+		if(elementValue == "" || elementValue == "Phonenumber"){
 			showTooltip = false;
 		}
 	}
 	if(type == "email"){
 		elementValue = document.getElementById('emailField').innerText.trim().replaceAll(" ","");
-		if(elementValue == "" || elementValue == "Email address"){
+		if(elementValue == "" || elementValue == "Emailaddress"){
 			showTooltip = false;
 		}
 	}
