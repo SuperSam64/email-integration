@@ -1541,7 +1541,7 @@ function normalizePhoneNumber(input,type,updateElements){
         console.log("7. " + formatted);
         if(type == "panel"){
             console.log("8. " + "panel");
-            var hover = formatted;
+            var hover = raw;
             output = '<div style="width:92%"> ' + formatted + '<span class="popup" id="phonePopup"></span></div>';            
             if(updateElements){
                 field.classList.remove("inactive");
