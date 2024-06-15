@@ -1412,6 +1412,7 @@ function normalizeFullName(first,last,type,updateElements){
         if(type == "panel"){
             output = "Name";
             if(updateElements){
+                field.classList.remove("active");
                 field.classList.add("inactive");
             }
         }
@@ -1427,6 +1428,7 @@ function normalizeFullName(first,last,type,updateElements){
             output = raw + '<span class="popup" id="namePopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                field.classList.add("active");
             }
         }
         else if (type == "edit"){
@@ -1452,6 +1454,7 @@ function normalizeCID(input,type,updateElements){
         if(type == "panel"){            
             output = "Customer ID";
             if(updateElements){
+                field.classList.remove("active");
                 field.classList.add("inactive");
             }
         }
@@ -1467,6 +1470,7 @@ function normalizeCID(input,type,updateElements){
             output = "CID " + raw + '<span class="popup" id="CIDPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                field.classList.add("active");
             }
         }
         else if (type == "edit"){
@@ -1499,6 +1503,7 @@ function normalizePhoneNumber(input,type,updateElements){
             console.log("5. " + "panel");
             output = "Phone Number";
             if(updateElements){
+                field.classList.remove("active");
                 field.classList.add("inactive");
             }
         }
@@ -1528,6 +1533,7 @@ function normalizePhoneNumber(input,type,updateElements){
             output = formatted + '<span class="popup" id="phonePopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                field.classList.add("active");
             }
         }
         else if (type == "edit"){
@@ -1552,6 +1558,7 @@ function normalizeEmail(input,type,updateElements){
         if(type == "panel"){
             output = "Email";
             if(updateElements){
+                field.classList.remove("active");
                 field.classList.add("inactive");
                 setFieldHover("emailField", "");
             }
@@ -1570,6 +1577,7 @@ function normalizeEmail(input,type,updateElements){
             output = raw + '<span class="popup" id="emailPopup"></span>';
             if(updateElements){
                 field.classList.remove("inactive");
+                field.classList.add("active");
                 console.log("hover " + hover)
                 setFieldHover("emailField", hover);
             }
@@ -1596,6 +1604,10 @@ function resetContactInfo(){
     var CID = document.getElementById("CIDField");
     var phone = document.getElementById("phoneField");
     var email = document.getElementById("emailField");
+    name.classList.remove("active");
+    CID.classList.remove("active");
+    phone.classList.remove("active");
+    email.classList.remove("active");
     name.classList.add("inactive");
     CID.classList.add("inactive");
     phone.classList.add("inactive");
