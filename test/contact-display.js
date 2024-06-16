@@ -86,7 +86,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     })
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
-function showEditPanel(){
+function showEditPanel(selected){
     document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
@@ -114,6 +114,9 @@ function showEditPanel(){
 	}
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
+	if(selected == "phone"){
+		document.selecteElementByID('formPhoneNumber').select();
+	}
 }
 function contactFormCancel(){
     document.getElementById('nameField').classList.remove("show");
@@ -623,7 +626,7 @@ function copyToClipboard(type, duration) {
 		setTimeout(transition,(duration * 1000), popup);
 	}
 	else{
-		showEditPanel();
+		showEditPanel("phone");
 	}
 }
 function transition(input){
