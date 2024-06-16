@@ -1,3 +1,7 @@
+var baseVersion = "11";
+var revisionNumber = "80";
+var scriptVersion = "367";
+
 /*
 CID - should remove "CID " when going from the text to the form
 CID - should add back the "CID " when going from the form to the text
