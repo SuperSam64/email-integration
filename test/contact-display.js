@@ -6,6 +6,7 @@ var orderNumbersList = [
 var animationLength = 1.4;
 function copyToClipboard(type, duration) {    
 	var showTooltip = true;
+	console.log("1. clipboard type " + type)
 	var elementValue ;
 	if(type == "name"){
 		elementValue = document.getElementById('nameField').innerText.trim().replaceAll(" ","");
@@ -20,18 +21,21 @@ function copyToClipboard(type, duration) {
 		}
 	}
 	if(type == "phone"){
+		console.log("2. passed = " + type)
 		elementValue = document.getElementById('phoneField').innerText.trim().replaceAll(" ","").toLowerCase();
-		if(elementValue == "" || elementValue == "Phonenumber"){
+		if(elementValue == "" || elementValue.toLowerCase() == "phonenumber"){
 			showTooltip = false;
 		}
 	}
 	if(type == "email"){
+		console.log("2. passed = " + type)
 		elementValue = document.getElementById('emailField').innerText.trim().replaceAll(" ","").toLowerCase();
-		if(elementValue == "" || elementValue == "emailaddress"){
+		if(elementValue == "" || elementValue.toLowerCase() == "emailaddress"){
 			showTooltip = false;
 		}
 	}
 	if(showTooltip){
+		console.log("3. passed = " + showToolTip)
 		if(type.slice(0,5) == "order"){
 			var orderPosition = (type.slice(5,6) * 1);
 			var clipboard = document.getElementById("orderField" + orderPosition).innerText;
@@ -55,6 +59,7 @@ function copyToClipboard(type, duration) {
 		else{
 			var index = 0;
 			var clipboard = document.getElementById(type + "Field").innerText;
+			console.log("4. innter text " + type)
 			var fieldType = [
 				"name",
 				"CID",
@@ -78,12 +83,18 @@ function copyToClipboard(type, duration) {
 					index = i;
 				}
 			}
+			console.log("5a " + type)
+			console.log("5b " + index)
+			console.log("5c " + fieldType[index])
+			console.log("5d " + messages[index])
+			console.log("5e " + remove[index])
 			if(index == 1 && remove[index].slice(0,3).toUpperCase() != "CUS"){
 				clipboard = remove[index] * 1;
 			}
 			else{
 				clipboard = remove[index];
 			}
+			console.log("5b " + remove[index])
 			const textArea = document.createElement("textarea");
 			textArea.value = clipboard;
 			//document.body.appendChild(textArea);
@@ -98,6 +109,8 @@ function copyToClipboard(type, duration) {
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
 			var popup = document.getElementById(type + "Popup");
+			console.log("6a " + popup)
+			console.log("6b " + messages[index])
 			popup.innerText = messages[index];
 		}
 		popup.classList.remove("hide");
