@@ -37,7 +37,6 @@
   }
   .form .button{
       padding-top:8px;
-  
   }
   .form td{
       overflow: hidden;
@@ -57,10 +56,12 @@
       border-bottom: var(--inner-thickness) solid var(--border-color);
   }
   .form .left{
-          border-right: var(--inner-thickness) solid var(--border-color);
+    border-right: var(--inner-thickness) solid var(--border-color);
+    border-left:none;
   }
   .form .right{
-      border-right:none;
+    border-left: var(--inner-thickness) solid var(--border-color);
+    border-right:none;
   }
   .form .top{
       border-bottom: var(--inner-thickness) solid var(--border-color);
