@@ -1144,13 +1144,13 @@ function contactSavedEnd(element){
 
 function contactSavedFade(element){
 	element.classList.add("contact-saved-fade");
-    setTimeout(contactSavedEnd,1400,element);
+    setTimeout(contactSavedEnd,400,element);
 }
 function contactSavedShow(){
 	var custInfo = document.getElementById("custInfo");
 	custInfo.innerText = "Contact information saved!";
     custInfo.classList.add("contact-saved");
-	setTimeout(contactSavedFade,1400,custInfo);
+	setTimeout(contactSavedFade,800,custInfo);
 }
 
 
