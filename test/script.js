@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "378";
+scriptVersion = "379";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -556,7 +556,7 @@ function getOrderNumber(conversation){
         subject.slice(0,6) == "orders" && subject.includes("#") && subject.includes(",") &&
         ((subject.length - 1) - subject.replaceAll(" ","").length) == (subject.length - subject.replaceAll(",","").length)
     ){
-        orderString = subject.replaceAll(" ","").slice(6,subject.length);
+        orderString = subject.replaceAll("#","").replaceAll(" ","").slice(6,subject.length);
     }
     else if(subject.includes("order")){
         orderString = subject.trim() + " ]"
