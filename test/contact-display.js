@@ -158,6 +158,14 @@ function resetContactInfo(){
     CID.classList.add("inactive");
     phone.classList.add("inactive");
     email.classList.add("inactive");
+	nameField.classList.remove("hide");
+	CIDField.classList.remove("hide");
+	phoneField.classList.remove("hide");
+	emailField.classList.remove("hide");
+	nameField.classList.remove("show");
+	CIDField.classList.remove("show");
+	phoneField.classList.remove("show");
+	emailField.classList.remove("show");
     name.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
     CID.innerHTML = '<div style="padding:2px;width:92%">Customer ID"</div>';
     phone.innerHTML = '<div style="padding:2px;width:92%">Phone number</div>';
@@ -217,6 +225,9 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 function contactFormSaveButton(){
     if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
         document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
+		console.log('1. element not defined ' + !document.getElementById('formEmail'));
+		console.log('2. element value not defined' + !document.getElementById('formEmail').value);
+		console.log('3. value is empty' + document.getElementById('formEmail').value == '');
     }
     else{
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
