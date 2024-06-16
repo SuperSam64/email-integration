@@ -1,6 +1,6 @@
-var baseVersion = "11";
-var revisionNumber = "80";
-var scriptVersion = "367";
+baseVersion = "11";
+revisionNumber = "80";
+scriptVersion = "369";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -1158,7 +1158,7 @@ function contactSavedShow(){
 
 function contactFormSaveButton(){
     if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || !document.getElementById('formEmail').value == ''){
-        document.getElementById('formEmail').classList.add('required-border');
+        document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
     }
     else{
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
@@ -1287,7 +1287,7 @@ function contactFormCancel(){
     document.getElementById('CIDField').classList.remove("show");
     document.getElementById('phoneField').classList.remove("show");
     document.getElementById('foremailFieldmEmail').classList.remove("show");
-    document.getElementById('formEmail').classList.remove('required-border');
+    document.getElementById('formEmail').style='';
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 }
@@ -1302,7 +1302,7 @@ function showEditPanel(){
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
     document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); this.classList.remove('required-border');});
+    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); this.style = '';});
     
     var formFirstName = document.getElementById('formFirstName');
     var formLastName = document.getElementById('formLastName');
