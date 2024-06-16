@@ -1074,7 +1074,7 @@ async function lookupContact(input){
 		lastName:"",
         fullName:"Name",
 		customerID:"Customer ID",
-		phoneNumber:"Phone Number",
+		phoneNumber:"Phone number",
 		email: "Email address"
 	};
     resetContactInfo();
@@ -1279,6 +1279,10 @@ function setFieldHover(element,value){
 
 
 function contactFormCancel(){
+    document.getElementById('nameField').classList.remove("show");
+    document.getElementById('CIDField').classList.remove("show");
+    document.getElementById('phoneField').classList.remove("show");
+    document.getElementById('foremailFieldmEmail').classList.remove("show");
     document.getElementById('formEmail').classList.remove('required-border');
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
@@ -1577,7 +1581,7 @@ function normalizePhoneNumber(input,type,updateElements){
         console.log("4.3 " + type)
         if(type == "panel"){
             console.log("5. " + "panel");
-            output = "Phone Number";
+            output = "Phone number";
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
