@@ -172,6 +172,7 @@ function resetContactInfo(){
     email.innerHTML = '<div style="padding:2px;width:92%">Email address</div>';
     document.getElementById("contactInfoSection").classList.remove("hidden");
     document.getElementById("contactEdit").classList.add("hidden");
+	document.getElementById("ordersSection").classList.add("hidden");
 }
 function contactFormSave(fullName,CID,phoneNum,email,exists){
     var nameField = document.getElementById('nameField');
@@ -186,6 +187,9 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
             nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true) + '</div>';
         }
+		else{
+			nameField.classList.add("inactive");
+		}
     }
     customerName = nameField.innerHTML;
 	var formOrdersString = (
