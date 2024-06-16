@@ -1133,7 +1133,6 @@ async function lookupContact(input){
         '<div style="width:92%">' + contact.email + '</div>',
         contactExists
     );*/
-    contactSavedShow(); // GET RID OF THIS LATER AND PUT IT IN SAVE INSTEAD - HERE JUST FOR EASIER TESTING
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactSavedEnd(element){
@@ -1154,13 +1153,14 @@ function contactSavedShow(){
 }
 
 function contactFormSaveButton(){
-    var formFirstName = document.getElementById('formFirstName');
-    var formLastName = document.getElementById('formLastName');
+    var formFirstName = document.getElementById('formFirstName').value;
+    var formLastName = document.getElementById('formLastName').value;
     var fullName = ([formFirstName,formLastName]).join(" ");
-    var formCustID = document.getElementById('formCustID');
-    var formPhoneNumber = document.getElementById('formPhoneNumber');
-    var formEmail = document.getElementById('formEmail')
+    var formCustID = document.getElementById('formCustID').value;
+    var formPhoneNumber = document.getElementById('formPhoneNumber').value;
+    var formEmail = document.getElementById('formEmail').value
     contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
+    contactSavedShow();
 }
         
 function contactFormSave(fullName,CID,phoneNum,email,exists){
