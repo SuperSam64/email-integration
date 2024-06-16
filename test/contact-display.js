@@ -35,7 +35,7 @@ function copyToClipboard(type, duration) {
 		}
 	}
 	if(showTooltip){
-		console.log("3. passed = " + showToolTip)
+		console.log("3. passed = " + showTooltip)
 		if(type.slice(0,5) == "order"){
 			var orderPosition = (type.slice(5,6) * 1);
 			var clipboard = document.getElementById("orderField" + orderPosition).innerText;
