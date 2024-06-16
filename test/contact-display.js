@@ -234,10 +234,10 @@ function selectFields(field,type,value){
 }
 function buildOrderNumbersList(list){
 	if(list.length < 1){
-		document.getElementById("orderNumberList").classList.add = "hidden";
+		document.getElementById("ordersSection").classList.add = "hidden";
 	}
 	else{
-		document.getElementById("orderNumberList").classList.remove = "hidden";
+		document.getElementById("ordersSection").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
 			orderArray.push(
@@ -247,7 +247,7 @@ function buildOrderNumbersList(list){
 				'"></span></span></div>'
 			);
 		}
-		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
+		document.getElementById("ordersSection").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
 function normalizeOrderNumbers(input,string){
