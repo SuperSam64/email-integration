@@ -237,14 +237,11 @@ function buildOrderNumbersList(list){
 	console.log(list.length)
 	if(list.length < 1){
 		document.getElementById("ordersSection").classList.add = "hidden";
-		console.log("only 0")
 	}
 	else{
-		console.log("more than 0")
 		document.getElementById("ordersSection").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
-			console.log("order " + i + " " + list[i])
 			orderArray.push(
 				'<span class="fieldText" title="' + list[i] + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
@@ -252,9 +249,12 @@ function buildOrderNumbersList(list){
 				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
+			console.log("order array 1")
 			console.log(orderArray)
 		}
+		console.log("order array 2")
 		console.log(orderArray)
+		console.log("order array 3")
 		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''))
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
