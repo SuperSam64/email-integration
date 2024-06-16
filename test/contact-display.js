@@ -201,7 +201,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 		nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(fullName,"panel"),normalizeLastName(fullName,"panel"),"panel",true) + '</div>';
 		nameField.classList.remove("inactive");
 	}
-    if(customername == "Name"){
+    if(customerName == "Name"){
 		customerName = "";
 	}
 	else{
