@@ -1381,14 +1381,13 @@ function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     // if this is an email address,
-    if(input.toLowerCase() == "name" || input == ""){
+    if(typeof input == 'undefined'){
+        output = "";
+    }
+    else if(input.includes("@") ||input.toLowerCase() == "name" || input == ""){
         // get rid of it
         output = "";
     }
-    else if(input.includes("@")){
-        output = "";
-    }
-    // if the length is greater than 2 letters
     else if( output.replaceAll(".","").replaceAll("","").length > 2){
         // if it's all  caps
         if(output.toUpperCase() === output){
@@ -1420,10 +1419,11 @@ function normalizeFirstName(input,type){
 }
 function normalizeLastName(input,type){
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(input.toLowerCase() == "name" || input == ""){
+    if(typeof input == 'undefined'){
         output = "";
     }
-    else if(input.includes("@")){
+    else if(input.includes("@") ||input.toLowerCase() == "name" || input == ""){
+        // get rid of it
         output = "";
     }
     else if( output.replaceAll(".","").replaceAll("","").length > 2){
