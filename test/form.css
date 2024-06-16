@@ -57,10 +57,8 @@
   }
   .form .left{
     border-right: var(--inner-thickness) solid var(--border-color);
-    border-left:none;
   }
   .form .right{
-    border-left: var(--inner-thickness) solid var(--border-color);
     border-right:none;
   }
   .form .top{

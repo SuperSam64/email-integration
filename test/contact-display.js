@@ -118,8 +118,17 @@ function showEditPanel(selected){
 	}
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
+	if(selected == "name"){
+		document.getElementById('formFirstName').focus();
+	}
+	if(selected == "CID"){
+		document.getElementById('formCustID').focus();
+	}
 	if(selected == "phone"){
 		document.getElementById('formPhoneNumber').focus();
+	}
+	if(selected == "email"){
+		document.getElementById('formEmail').focus();
 	}
 }
 function contactFormCancel(){
@@ -630,7 +639,7 @@ function copyToClipboard(type, duration) {
 		setTimeout(transition,(duration * 1000), popup);
 	}
 	else{
-		showEditPanel("phone");
+		showEditPanel(type);
 	}
 }
 function transition(input){
