@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "398";
+scriptVersion = "399";
 
 /*
 CID - should remove "CID " when going from the text to the form
