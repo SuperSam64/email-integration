@@ -1417,7 +1417,10 @@ function normalizeFirstName(input,type){
 }
 function normalizeLastName(input,type){
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
-    if(input.includes("@") || input.toLowerCase() == "name" || input == ""){
+    if(input.toLowerCase() == "name" || input == ""){
+        output = "";
+    }
+    else if(input.includes("@")){
         output = "";
     }
     else if( output.replaceAll(".","").replaceAll("","").length > 2){
