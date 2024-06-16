@@ -115,7 +115,7 @@ function showEditPanel(selected){
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 	if(selected == "phone"){
-		document.selecteElementById('formPhoneNumber').focus();
+		document.selectElementById('formPhoneNumber').focus();
 	}
 }
 function contactFormCancel(){
