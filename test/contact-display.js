@@ -50,6 +50,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"panel",true);
+	console.log(getOrderNumber(currentConversation));
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
@@ -105,6 +106,12 @@ function showEditPanel(){
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
     formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
     formEmail.value = normalizeEmail(emailField.innerText,"edit",true);
+	if(1==2){
+
+	}
+	else{
+
+	}
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
