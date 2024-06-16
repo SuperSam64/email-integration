@@ -622,6 +622,9 @@ function copyToClipboard(type, duration) {
 		popup.classList.add("show");
 		setTimeout(transition,(duration * 1000), popup);
 	}
+	else{
+		showEditPanel();
+	}
 }
 function transition(input){
     input.classList.add("hide");
