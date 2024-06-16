@@ -232,7 +232,6 @@ function buildOrderNumbersList(list){
 		document.getElementById("orderNumberList").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
-			console.log("iteration " + i);
 			orderArray.push(
 				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
@@ -240,7 +239,6 @@ function buildOrderNumbersList(list){
 				'"></span></span>'
 			);
 		}
-		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''));
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
@@ -410,22 +408,15 @@ function normalizeCID(input,type,updateElements){
 function normalizePhoneNumber(input,type,updateElements){
     var output;
     var raw = input.toString()
-    console.log("2. " + raw);
     raw = raw.trim().replaceAll(" ","").replaceAll("#","").replaceAll(".","").replaceAll("-","").replaceAll("+","").replaceAll("(","").replaceAll(")","");
-    console.log("3. " + raw);
     if(raw.slice(0,1) == 1){
         raw = raw.replace("1","");
     }
     var empty = (raw == "" || raw.toLowerCase() == "phonenumber");
-    console.log("4. " + empty);
     var field = document.getElementById("phoneField");
     var textInput = document.getElementById("formPhoneNumber");
-    console.log("4.1 " + type);
     if(empty){
-        console.log("4.2 empty");
-        console.log("4.3 " + type)
         if(type == "panel"){
-            console.log("5. " + "panel");
             output = "Phone number";
             if(updateElements){
                 field.classList.remove("active");
@@ -434,9 +425,7 @@ function normalizePhoneNumber(input,type,updateElements){
             }
         }
         else if (type == "edit"){
-            console.log("6. " + "edit");
             output = "";
-            console.log("6.1 " + raw);
         }
     }
     else{
@@ -450,9 +439,7 @@ function normalizePhoneNumber(input,type,updateElements){
         else{
             formatted = raw;
         }
-        console.log("7. " + formatted);
         if(type == "panel"){
-            console.log("8. " + "panel");
             var hover = raw;
             output = formatted + '<span class="popup" id="phonePopup"></span>';            
             if(updateElements){
@@ -462,29 +449,22 @@ function normalizePhoneNumber(input,type,updateElements){
             }
         }
         else if (type == "edit"){
-            console.log("8. " + "edit");
-            console.log("8. " + formatted);
             output = formatted;
         }
     }
-    console.log("9. " + output);
     return output;
 }
 function normalizeEmail(input,type,updateElements){
     var output;
     var raw = (" " + input).trim().replaceAll(" ","").toLowerCase();
-	console.log("1. " + raw);
     var empty = (raw == "" || raw == "emailaddress" || raw.includes("@") == false);
-	console.log("2. " + empty)
 	if((raw + "@|").split("@")[1].toLowerCase() == "filtersfast.com"){
 		empty = true;
 	}
     var field = document.getElementById("emailField");
     var textInput = document.getElementById("formEmail");
     if(empty){
-		console.log("3. empty")
         if(type == "panel"){
-			console.log("4. panel")
             output = "Email address";
             if(updateElements){
                 field.classList.remove("active");
@@ -493,9 +473,7 @@ function normalizeEmail(input,type,updateElements){
             }
         }
         else if (type == "edit"){
-			console.log("4. edit")
             output = "";
-			console.log("5. " + raw)
             if(updateElements){
                 textInput.disabled = false;
                 textInput.style = 'color:var(--missive-text-color-a);font-style:none';
@@ -509,7 +487,6 @@ function normalizeEmail(input,type,updateElements){
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
-                console.log("hover " + hover)
                 setFieldHover("emailField", hover);
             }
         }
@@ -532,7 +509,6 @@ function normalizeEmail(input,type,updateElements){
 }
 function copyToClipboard(type, duration) {    
 	var showTooltip = true;
-	console.log("1. clipboard type " + type)
 	var elementValue ;
 	if(type == "name"){
 		elementValue = document.getElementById('nameField').innerText.trim().replaceAll(" ","");
@@ -547,21 +523,18 @@ function copyToClipboard(type, duration) {
 		}
 	}
 	if(type == "phone"){
-		console.log("2. passed = " + type)
 		elementValue = document.getElementById('phoneField').innerText.trim().replaceAll(" ","").toLowerCase();
 		if(elementValue == "" || elementValue.toLowerCase() == "phonenumber"){
 			showTooltip = false;
 		}
 	}
 	if(type == "email"){
-		console.log("2. passed = " + type)
 		elementValue = document.getElementById('emailField').innerText.trim().replaceAll(" ","").toLowerCase();
 		if(elementValue == "" || elementValue.toLowerCase() == "emailaddress"){
 			showTooltip = false;
 		}
 	}
 	if(showTooltip){
-		console.log("3. passed = " + showTooltip)
 		if(type.slice(0,5) == "order"){
 			var orderPosition = (type.slice(5,6) * 1);
 			var clipboard = document.getElementById("orderField" + orderPosition).innerText;
@@ -583,7 +556,6 @@ function copyToClipboard(type, duration) {
 		else{
 			var index = 0;
 			var clipboard = document.getElementById(type + "Field").innerText;
-			console.log("4. innter text " + type)
 			var fieldType = [
 				"name",
 				"CID",
@@ -607,18 +579,12 @@ function copyToClipboard(type, duration) {
 					index = i;
 				}
 			}
-			console.log("5a " + type)
-			console.log("5b " + index)
-			console.log("5c " + fieldType[index])
-			console.log("5d " + messages[index])
-			console.log("5e " + remove[index])
 			if(index == 1 && remove[index].slice(0,3).toUpperCase() != "CUS"){
 				clipboard = remove[index] * 1;
 			}
 			else{
 				clipboard = remove[index];
 			}
-			console.log("5b " + remove[index])
 			const textArea = document.createElement("textarea");
 			textArea.value = clipboard;
 			//document.body.appendChild(textArea);
@@ -633,8 +599,6 @@ function copyToClipboard(type, duration) {
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
 			var popup = document.getElementById(type + "Popup");
-			console.log("6a " + popup)
-			console.log("6b " + messages[index])
 			popup.innerText = messages[index];
 		}
 		popup.classList.remove("hide");
