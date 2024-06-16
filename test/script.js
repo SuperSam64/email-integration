@@ -1133,7 +1133,7 @@ async function lookupContact(input){
         '<div style="width:92%">' + contact.email + '</div>',
         contactExists
     );*/
-    
+    contactSavedShow(); // GET RID OF THIS LATER AND PUT IT IN SAVE INSTEAD - HERE JUST FOR EASIER TESTING
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactSavedEnd(element){
@@ -1150,10 +1150,18 @@ function contactSavedShow(){
 	var custInfo = document.getElementById("custInfo");
 	custInfo.innerText = "Contact information saved!";
     custInfo.classList.add("contact-saved");
-	setTimeout(contactSavedFade,800,custInfo);
+	setTimeout(contactSavedFade,1000,custInfo);
 }
 
-
+function contactFormSaveButton(){
+    var formFirstName = document.getElementById('formFirstName');
+    var formLastName = document.getElementById('formLastName');
+    var fullName = ([formFirstName,formLastName]).join(" ");
+    var formCustID = document.getElementById('formCustID');
+    var formPhoneNumber = document.getElementById('formPhoneNumber');
+    var formEmail = document.getElementById('formEmail')
+    contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
+}
         
 function contactFormSave(fullName,CID,phoneNum,email,exists){
     // blank leading spaces john JOHN JT J.T SAM joe-jack 'p thomas' exclude emails
@@ -1162,7 +1170,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var formLastName = document.getElementById('formLastName');
     var formCustID = document.getElementById('formCustID');
     var formPhoneNumber = document.getElementById('formPhoneNumber');
-    var formCustID = document.getElementById('formCustID');
+    var formEmail = document.getElementById('formEmail');
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
@@ -1268,7 +1276,6 @@ function setFieldHover(element,value){
 function contactFormCancel(){
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
-    contactSavedShow(); // GET RID OF THIS LATER AND PUT IT IN SAVE INSTEAD - HERE JUST FOR EASIER TESTING
 }
 function showEditPanel(){
     /*var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,false);
