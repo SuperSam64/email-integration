@@ -233,6 +233,7 @@ function selectFields(field,type,value){
 
 }
 function buildOrderNumbersList(list){
+	console.log(list)
 	if(list.length < 1){
 		document.getElementById("ordersSection").classList.add = "hidden";
 	}
