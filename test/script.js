@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "370";
+scriptVersion = "371";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -1157,7 +1157,7 @@ function contactSavedShow(){
 }
 
 function contactFormSaveButton(){
-    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || !document.getElementById('formEmail').value == ''){
+    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
         document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
     }
     else{
