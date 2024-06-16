@@ -234,20 +234,27 @@ function selectFields(field,type,value){
 }
 function buildOrderNumbersList(list){
 	console.log(list)
+	console.log(list.length)
 	if(list.length < 1){
 		document.getElementById("ordersSection").classList.add = "hidden";
+		console.log("only 0")
 	}
 	else{
+		console.log("more than 0")
 		document.getElementById("ordersSection").classList.remove = "hidden";
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
+			console.log("order " + i + " " + list[i])
 			orderArray.push(
 				'<div style="width:92%"><span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span></div>'
 			);
+			console.log(orderArray)
 		}
+		console.log(orderArray)
+		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''))
 		document.getElementById("ordersSection").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
