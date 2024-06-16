@@ -104,7 +104,7 @@ function showEditPanel(){
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
     formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
-    formEmail.value = normalizeEmail(emailField.innerText,"edit",false);
+    formEmail.value = normalizeEmail(emailField.innerText,"edit",true);
     document.getElementById('contactEdit').classList.remove("hidden");
     document.getElementById('contactInfoSection').classList.add("hidden");
 }
