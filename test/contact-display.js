@@ -87,7 +87,7 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function showEditPanel(selected){
-    document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
+	document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
     document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
@@ -101,6 +101,10 @@ function showEditPanel(selected){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
+	nameField.classList.remove("hide");
+	CIDField.classList.remove("hide");
+	phoneField.classList.remove("hide");
+	emailField.classList.remove("hide");
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
