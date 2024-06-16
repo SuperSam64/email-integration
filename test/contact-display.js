@@ -476,6 +476,9 @@ function normalizeEmail(input,type,updateElements){
 	console.log("1. " + raw);
     var empty = (raw == "" || raw == "emailaddress" || raw.includes("@") == false);
 	console.log("2. " + empty)
+	if((raw + "@|").split("@")[1].toLowerCase() == "filtersfast.com"){
+		empty = true;
+	}
     var field = document.getElementById("emailField");
     var textInput = document.getElementById("formEmail");
     if(empty){
@@ -491,7 +494,7 @@ function normalizeEmail(input,type,updateElements){
         }
         else if (type == "edit"){
 			console.log("4. edit")
-            output = raw;
+            output = "";
 			console.log("5. " + raw)
             if(updateElements){
                 textInput.disabled = false;
@@ -514,8 +517,8 @@ function normalizeEmail(input,type,updateElements){
             output = raw;
             if(updateElements){
                 if(raw.split("@")[1] == "filtersfast.com"){
-                    textInput.disabled = false;
-                    textInput.style = 'color:var(--missive-text-color-a);font-style:none';
+                    textInput.disabled = true;
+                    textInput.style = 'color:var(--missive-text-color-d);font-style:italic';
                     textInput.value = "";
                 }
                 else{
