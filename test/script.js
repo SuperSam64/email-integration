@@ -1381,8 +1381,11 @@ function normalizeFirstName(input,type){
     // remove any leading and traling spaces
     var output = ("|" + input + "|").replaceAll("| ","").replaceAll(" |","").replaceAll("|","");
     // if this is an email address,
-    if(input.includes("@") || input.toLowerCase() == "name" || input == ""){
+    if(input.toLowerCase() == "name" || input == ""){
         // get rid of it
+        output = "";
+    }
+    else if(input.includes("@")){
         output = "";
     }
     // if the length is greater than 2 letters
