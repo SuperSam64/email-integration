@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "369";
+scriptVersion = "370";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -1286,7 +1286,7 @@ function contactFormCancel(){
     document.getElementById('nameField').classList.remove("show");
     document.getElementById('CIDField').classList.remove("show");
     document.getElementById('phoneField').classList.remove("show");
-    document.getElementById('foremailFieldmEmail').classList.remove("show");
+    document.getElementById('emailField').classList.remove("show");
     document.getElementById('formEmail').style='';
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
