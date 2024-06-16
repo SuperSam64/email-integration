@@ -246,16 +246,17 @@ function buildOrderNumbersList(list){
 		for(var i = 0; i < list.length; i++){
 			console.log("order " + i + " " + list[i])
 			orderArray.push(
-				'<div style="width:92%"><span class="fieldText" style="margin-top:6px" id="orderField' + i +
+				'<span class="fieldText" title="' + list[i] + `
+(Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
-				'"></span></span></div>'
+				'"></span></span>'
 			);
 			console.log(orderArray)
 		}
 		console.log(orderArray)
 		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''))
-		document.getElementById("ordersSection").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
+		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
 function normalizeOrderNumbers(input,string){
