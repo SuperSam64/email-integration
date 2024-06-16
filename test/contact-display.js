@@ -153,13 +153,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-    nameField.innerHTML = '<div style="width:92%">' + fullName, + '</div>';
-    CIDField.innerHTML = '<div style="width:92%">' + CID, + '</div>';
-    phoneField.innerHTML = '<div style="width:92%">' + phoneNum, + '</div>';
-    emailField.innerHTML = '<div style="width:92%">' + email, + '</div>';
+    nameField.innerHTML = '<div style="padding:2px;width:92%">' + fullName, + '</div>';
+    CIDField.innerHTML = '<div style="padding:2px;width:92%">' + CID, + '</div>';
+    phoneField.innerHTML = '<div style="padding:2px;width:92%">' + phoneNum, + '</div>';
+    emailField.innerHTML = '<div style="padding:2px;width:92%">' + email, + '</div>';
     if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
-            nameField.innerHTML = '<div style="width:92%">' + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true) + '</div>';
+            nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true) + '</div>';
         }
     }
     customerName = nameField.innerHTML;

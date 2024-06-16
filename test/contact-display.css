@@ -82,7 +82,7 @@
   font-style: italic;
   color: var(--missive-text-color-c); 
   border-radius:4px;
-  border:1px solid var(--missive-text-color-c);
+  border:1px solid var(--missive-light-active-color);
   padding: 2px;
 }
 .required-border{
