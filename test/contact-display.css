@@ -62,6 +62,7 @@
   animation: fadeIn var(--fade);
 }
 .contact-saved {
+  visibility:hidden;
   -webkit-animation: fadeOut var(--fade);
   animation: fadeOut var(--fade);
   color:var(--missive-blue-color);
