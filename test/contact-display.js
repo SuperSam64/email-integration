@@ -188,7 +188,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         //Missive.setSubject('');
         // come back here =======================================================================================================================
     }
-    buildOrderNumbersList(formOrdersString.split(","));
+	document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
@@ -240,10 +240,10 @@ function buildOrderNumbersList(list){
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
 			orderArray.push(
-				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
+				'<div style="width:92%"><span class="fieldText" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
-				'"></span></span>'
+				'"></span></span></div>'
 			);
 		}
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
