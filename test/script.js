@@ -1154,7 +1154,7 @@ function contactSavedShow(){
 
 function contactFormSaveButton(){
     if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || !document.getElementById('formEmail').value == ''){
-        document.getElementById('formEmail').select();
+        document.getElementById('formEmail').classList.add('required-border');
     }
     else{
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
@@ -1279,6 +1279,7 @@ function setFieldHover(element,value){
 
 
 function contactFormCancel(){
+    document.getElementById('formEmail').classList.remove('required-border');
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 }
@@ -1293,7 +1294,7 @@ function showEditPanel(){
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
     document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); this.classList.remove('required-border');});
     
     var formFirstName = document.getElementById('formFirstName');
     var formLastName = document.getElementById('formLastName');
@@ -1678,6 +1679,7 @@ function normalizeEmail(input,type,updateElements){
     return output;
 }
 function resetContactInfo(){
+    contactFormCancel();
     var name = document.getElementById("nameField");
     var CID = document.getElementById("CIDField");
     var phone = document.getElementById("phoneField");
