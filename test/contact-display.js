@@ -105,6 +105,10 @@ function showEditPanel(selected){
 	CIDField.classList.remove("hide");
 	phoneField.classList.remove("hide");
 	emailField.classList.remove("hide");
+	nameField.classList.remove("show");
+	CIDField.classList.remove("show");
+	phoneField.classList.remove("show");
+	emailField.classList.remove("show");
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
