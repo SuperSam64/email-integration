@@ -1138,14 +1138,14 @@ async function lookupContact(input){
 }
 
 function contactSavedFade(element){
-	element.classList.remove("contact-saved");
+	element.classList.add("contact-saved");
 	element.innerText = "Customer Information";
 }
 function contactSavedShow(){
 	var custInfo = document.getElementById("custInfo")
 	custInfo.innerText = "Contact information saved!";
     custInfo.classList.add("contact-saved");
-	setTimeout(contactSavedFade,1400,custInfo);
+	//setTimeout(contactSavedFade,1400,custInfo);
 }
 
 
