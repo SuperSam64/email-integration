@@ -1,35 +1,7 @@
-function saveContact(firstName,lastName,email,phoneNumber,customerID){
-    fetch("https://public.missiveapp.com/v1/contacts", {
-        method: "POST",
-        body: JSON.stringify({
-            "contacts": [{
-                "contact_book": tokens[1], // fill this in later
-                "first_name": firstName,
-                "last_name": lastName,
-                "infos": [{
-                    "kind": "phone_number",
-                    "label": "main",
-                    "value": phoneNumber
-                }, {
-                    "kind": "email",
-                    "label": "personal",
-                    "value": email
-                }, {
-                    "kind": "custom",
-                    "label": "other",
-                    "custom_label":"Customer ID",
-                    "value": customerID
-                }]
-            }]
-        }),
-        headers: {
-            "Host": "public.missiveapp.com",
-            "Authorization": "Bearer " + tokens[0], // fill this in later
-            "Content-type": "application/json"
-        }
-    })
-    Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
-}
+var orderNumbersList = [
+	// ================================================================================= for later use
+];
+var animationLength = 1.4;
 async function lookupContact(input){
     var contactExists = false;
     var contactRecord;
@@ -78,42 +50,93 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"panel",true);
-    console.log(contact.fullName);
-    console.log(contact.customerID);
-    console.log(contact.phoneNumber);
-    console.log(contact.email);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
-function contactSavedEnd(element){
-	custInfo.innerText = "Contact information";
-    element.classList.remove("contact-saved");
-    element.classList.remove("contact-saved-fade");
+function saveContact(firstName,lastName,email,phoneNumber,customerID){
+    fetch("https://public.missiveapp.com/v1/contacts", {
+        method: "POST",
+        body: JSON.stringify({
+            "contacts": [{
+                "contact_book": tokens[1], // fill this in later
+                "first_name": firstName,
+                "last_name": lastName,
+                "infos": [{
+                    "kind": "phone_number",
+                    "label": "main",
+                    "value": phoneNumber
+                }, {
+                    "kind": "email",
+                    "label": "personal",
+                    "value": email
+                }, {
+                    "kind": "custom",
+                    "label": "other",
+                    "custom_label":"Customer ID",
+                    "value": customerID
+                }]
+            }]
+        }),
+        headers: {
+            "Host": "public.missiveapp.com",
+            "Authorization": "Bearer " + tokens[0], // fill this in later
+            "Content-type": "application/json"
+        }
+    })
+    Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
-function contactSavedFade(element){
-	element.classList.add("contact-saved-fade");
-    setTimeout(contactSavedEnd,400,element);
+function showEditPanel(){
+    document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); this.style = '';});
+    var formFirstName = document.getElementById('formFirstName');
+    var formLastName = document.getElementById('formLastName');
+    var formCustID = document.getElementById('formCustID');
+    var formPhoneNumber = document.getElementById('formPhoneNumber');
+    var formCustID = document.getElementById('formCustID');
+    var nameField = document.getElementById('nameField');
+    var CIDField = document.getElementById('CIDField');
+    var phoneField = document.getElementById('phoneField');
+    var emailField = document.getElementById('emailField');
+    formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
+    formLastName.value = normalizeLastName(nameField.innerText,"edit");
+    formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
+    formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
+    formEmail.value = normalizeEmail(emailField.innerText,"edit",false);
+    document.getElementById('contactEdit').classList.remove("hidden");
+    document.getElementById('contactInfoSection').classList.add("hidden");
 }
-function contactSavedShow(){
-	var custInfo = document.getElementById("custInfo");
-	custInfo.innerText = "Contact information saved!";
-    custInfo.classList.add("contact-saved");
-	setTimeout(contactSavedFade,1000,custInfo);
+function contactFormCancel(){
+    document.getElementById('nameField').classList.remove("show");
+    document.getElementById('CIDField').classList.remove("show");
+    document.getElementById('phoneField').classList.remove("show");
+    document.getElementById('emailField').classList.remove("show");
+    document.getElementById('formEmail').style='';
+    document.getElementById('contactInfoSection').classList.remove("hidden");
+    document.getElementById('contactEdit').classList.add("hidden");
 }
-function contactFormSaveButton(){
-    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
-        document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
-    }
-    else{
-        var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
-        var formLastName = normalizeLastName(document.getElementById('formLastName').value,"panel");
-        var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
-        var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
-        var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
-        var formEmail = normalizeEmail(document.getElementById('formEmail').value,"email",true);
-        contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
-        contactSavedShow();
-    }
+function resetContactInfo(){
+    contactFormCancel();
+    var name = document.getElementById("nameField");
+    var CID = document.getElementById("CIDField");
+    var phone = document.getElementById("phoneField");
+    var email = document.getElementById("emailField");
+    name.classList.remove("active");
+    CID.classList.remove("active");
+    phone.classList.remove("active");
+    email.classList.remove("active");
+    name.classList.add("inactive");
+    CID.classList.add("inactive");
+    phone.classList.add("inactive");
+    email.classList.add("inactive");
+    name.innerText = "Name";
+    CID.innerText = "Customer ID";
+    phone.innerText = "Phone number";
+    email.innerText = "Email address";
+    document.getElementById("contactInfoSection").classList.remove("hidden");
+    document.getElementById("contactEdit").classList.add("hidden");
 }
 function contactFormSave(fullName,CID,phoneNum,email,exists){
     var formFirstName = document.getElementById('formFirstName');
@@ -168,61 +191,58 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
-function getPlaintext(input) {
-    var span = document.getElementById('textmod');
-    var store = span.innerHTML;
-    console.log("inner text " + input)
-    if(store == ""){
-        store == "it's blank"
+function contactFormSaveButton(){
+    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
+        document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
     }
-    if(typeof store == "undefined"){
-        store == "it's typeof undefined"
+    else{
+        var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
+        var formLastName = normalizeLastName(document.getElementById('formLastName').value,"panel");
+        var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
+        var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
+        var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
+        var formEmail = normalizeEmail(document.getElementById('formEmail').value,"email",true);
+        contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
+        contactSavedShow();
     }
-    if(store == "undefined"){
-        store == "it's undefined"
-    }
-    span.innerHTML = input.innerHTML;
-    output = span.innerText;
-    span.innerText = "";
-    span.innerHTML = store;
-    return span.innerText;
-  };
-	function setFieldHover(element,value){
-	var tooltip = value + `
-(Click to copy)`;
-    document.getElementById(element).setAttribute("title",tooltip);
 }
-function contactFormCancel(){
-    document.getElementById('nameField').classList.remove("show");
-    document.getElementById('CIDField').classList.remove("show");
-    document.getElementById('phoneField').classList.remove("show");
-    document.getElementById('emailField').classList.remove("show");
-    document.getElementById('formEmail').style='';
-    document.getElementById('contactInfoSection').classList.remove("hidden");
-    document.getElementById('contactEdit').classList.add("hidden");
+function contactSavedShow(){
+	var custInfo = document.getElementById("custInfo");
+	custInfo.innerText = "Contact information saved!";
+    custInfo.classList.add("contact-saved");
+	setTimeout(contactSavedFade,1000,custInfo);
 }
-function showEditPanel(){
-    document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
-    document.getElementById("formEmail").addEventListener("focus", function() { this.select(); this.style = '';});
-    var formFirstName = document.getElementById('formFirstName');
-    var formLastName = document.getElementById('formLastName');
-    var formCustID = document.getElementById('formCustID');
-    var formPhoneNumber = document.getElementById('formPhoneNumber');
-    var formCustID = document.getElementById('formCustID');
-    var nameField = document.getElementById('nameField');
-    var CIDField = document.getElementById('CIDField');
-    var phoneField = document.getElementById('phoneField');
-    var emailField = document.getElementById('emailField');
-    formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
-    formLastName.value = normalizeLastName(nameField.innerText,"edit");
-    formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
-    formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
-    formEmail.value = normalizeEmail(emailField.innerText,"edit",false);
-    document.getElementById('contactEdit').classList.remove("hidden");
-    document.getElementById('contactInfoSection').classList.add("hidden");
+function contactSavedFade(element){
+	element.classList.add("contact-saved-fade");
+    setTimeout(contactSavedEnd,400,element);
+}
+function contactSavedEnd(element){
+	custInfo.innerText = "Contact information";
+    element.classList.remove("contact-saved");
+    element.classList.remove("contact-saved-fade");
+}
+function selectFields(field,type,value){
+
+}
+function buildOrderNumbersList(list){
+	if(list.length < 1){
+		document.getElementById("orderNumberList").classList.add = "hidden";
+	}
+	else{
+		document.getElementById("orderNumberList").classList.remove = "hidden";
+		var orderArray = [];
+		for(var i = 0; i < list.length; i++){
+			console.log("iteration " + i);
+			orderArray.push(
+				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
+				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
+				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
+				'"></span></span>'
+			);
+		}
+		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''));
+		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
+	}
 }
 function normalizeOrderNumbers(input,string){
     var formOrderNumbers;
@@ -453,11 +473,15 @@ function normalizePhoneNumber(input,type,updateElements){
 function normalizeEmail(input,type,updateElements){
     var output;
     var raw = (" " + input).trim().replaceAll(" ","").toLowerCase();
+	console.log("1. " + raw);
     var empty = (raw == "" || raw == "emailaddress" || raw.includes("@") == false);
+	console.log("2. " + empty)
     var field = document.getElementById("emailField");
     var textInput = document.getElementById("formEmail");
     if(empty){
+		console.log("3. empty")
         if(type == "panel"){
+			console.log("4. panel")
             output = "Email address";
             if(updateElements){
                 field.classList.remove("active");
@@ -466,7 +490,9 @@ function normalizeEmail(input,type,updateElements){
             }
         }
         else if (type == "edit"){
+			console.log("4. edit")
             output = raw;
+			console.log("5. " + raw)
             if(updateElements){
                 textInput.disabled = false;
                 textInput.style = 'color:var(--missive-text-color-a);font-style:none';
@@ -501,34 +527,6 @@ function normalizeEmail(input,type,updateElements){
     }
     return output;
 }
-function resetContactInfo(){
-    contactFormCancel();
-    var name = document.getElementById("nameField");
-    var CID = document.getElementById("CIDField");
-    var phone = document.getElementById("phoneField");
-    var email = document.getElementById("emailField");
-    name.classList.remove("active");
-    CID.classList.remove("active");
-    phone.classList.remove("active");
-    email.classList.remove("active");
-    name.classList.add("inactive");
-    CID.classList.add("inactive");
-    phone.classList.add("inactive");
-    email.classList.add("inactive");
-    name.innerText = "Name";
-    CID.innerText = "Customer ID";
-    phone.innerText = "Phone number";
-    email.innerText = "Email address";
-    document.getElementById("contactInfoSection").classList.remove("hidden");
-    document.getElementById("contactEdit").classList.add("hidden");
-}
-function selectFields(field,type,value){
-
-}
-var orderNumbersList = [
-	// ================================================================================= for later use
-];
-var animationLength = 1.4;
 function copyToClipboard(type, duration) {    
 	var showTooltip = true;
 	console.log("1. clipboard type " + type)
@@ -645,23 +643,27 @@ function transition(input){
     input.classList.add("hide");
     input.classList.remove("show");
 }
-function buildOrderNumbersList(list){
-	if(list.length < 1){
-		document.getElementById("orderNumberList").classList.add = "hidden";
-	}
-	else{
-		document.getElementById("orderNumberList").classList.remove = "hidden";
-		var orderArray = [];
-		for(var i = 0; i < list.length; i++){
-			console.log("iteration " + i);
-			orderArray.push(
-				'<span class="fieldText" style="margin-top:6px" id="orderField' + i +
-				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
-				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
-				'"></span></span>'
-			);
-		}
-		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''));
-		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
-	}
+function getPlaintext(input) {
+    var span = document.getElementById('textmod');
+    var store = span.innerHTML;
+    console.log("inner text " + input)
+    if(store == ""){
+        store == "it's blank"
+    }
+    if(typeof store == "undefined"){
+        store == "it's typeof undefined"
+    }
+    if(store == "undefined"){
+        store == "it's undefined"
+    }
+    span.innerHTML = input.innerHTML;
+    output = span.innerText;
+    span.innerText = "";
+    span.innerHTML = store;
+    return span.innerText;
+}
+function setFieldHover(element,value){
+	var tooltip = value + `
+(Click to copy)`;
+    document.getElementById(element).setAttribute("title",tooltip);
 }
