@@ -189,7 +189,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // come back here =======================================================================================================================
     }
 	// document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+	document.getElementById('orderNumberList').innerHTML = buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
