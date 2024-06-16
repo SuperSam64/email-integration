@@ -1,6 +1,6 @@
 :root {
     --border-color: rgba(0,0,0,0);
-    --inner-thickness: 4px;
+    --inner-thickness: 8px;
     --outer-thickness: 8px;
       --panel-border-radius:6px;
       --panel-background-color:var(--missive-conversation-list-background-color);
