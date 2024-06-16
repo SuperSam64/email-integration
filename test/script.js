@@ -1153,14 +1153,19 @@ function contactSavedShow(){
 }
 
 function contactFormSaveButton(){
-    var formFirstName = document.getElementById('formFirstName').value;
-    var formLastName = document.getElementById('formLastName').value;
-    var fullName = ([formFirstName,formLastName]).join(" ");
-    var formCustID = document.getElementById('formCustID').value;
-    var formPhoneNumber = document.getElementById('formPhoneNumber').value;
-    var formEmail = document.getElementById('formEmail').value
-    contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
-    contactSavedShow();
+    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || !document.getElementById('formEmail').value == ''){
+        document.getElementById('formEmail').select();
+    }
+    else{
+        var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
+        var formLastName = normalizeLastName(document.getElementById('formLastName').value,"panel");
+        var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
+        var formCustID = normalizeCustID(document.getElementById('formCustID').value,"panel",true);
+        var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
+        var formEmail = normalizeEmail(document.getElementById('formEmail').value,"email",true);
+        contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
+        contactSavedShow();
+    }
 }
         
 function contactFormSave(fullName,CID,phoneNum,email,exists){
