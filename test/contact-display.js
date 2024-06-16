@@ -139,11 +139,6 @@ function resetContactInfo(){
     document.getElementById("contactEdit").classList.add("hidden");
 }
 function contactFormSave(fullName,CID,phoneNum,email,exists){
-    var formFirstName = document.getElementById('formFirstName');
-    var formLastName = document.getElementById('formLastName');
-    var formCustID = document.getElementById('formCustID');
-    var formPhoneNumber = document.getElementById('formPhoneNumber');
-    var formEmail = document.getElementById('formEmail');
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
@@ -201,7 +196,12 @@ function contactFormSaveButton(){
         var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
         var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
         var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
-        var formEmail = normalizeEmail(document.getElementById('formEmail').value,"email",true);
+        var formEmail = normalizeEmail(document.getElementById('formEmail').value,"panel",true);
+		document.getElementById("nameField").classList.remove("show");
+		document.getElementById("CIDField").classList.remove("show");
+		document.getElementById("phoneField").classList.remove("show");
+		document.getElementById("emailField").classList.remove("show");
+		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }

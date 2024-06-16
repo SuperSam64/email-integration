@@ -414,7 +414,7 @@ function buildItem(object){
         HTMLstring = HTMLstring.replace("[date]","");
     }
     else {
-        HTMLstring = HTMLstring.replace("[date]",'<span class="mondayDate">' +
+        HTMLstring = HTMLstring.replace("[date]",'<span class="mondayDate text-label">' +
             object.date +
             '</span>');
     }
@@ -427,12 +427,12 @@ function buildItem(object){
         }
         replies = object.updates[(object.updates.length - 1)].replies.length;
         if(replies > 1){
-            HTMLstring = HTMLstring.replace("[replies]",'<span class="mondayReplies">' +
+            HTMLstring = HTMLstring.replace("[replies]",'<span class="mondayReplies text-label">' +
             replies + " REPLIES" +
             '</span>');
         }
         else if (replies == 1){
-            HTMLstring = HTMLstring.replace("[replies]",'<span class="mondayReplies">' +
+            HTMLstring = HTMLstring.replace("[replies]",'<span class="mondayReplies text-label">' +
             replies + " REPLY" +
             '</span>');
         }

@@ -56,7 +56,7 @@
 .titleBar{
 	display:block;
 	background-color:var(--missive-light-active-color);
-	line-height:12px;
+	line-height:16px;
 	margin-bottom:2px;
 	padding: 4px 0px 4px 8px;		/* top right bottom left */			/* change this to missive var */
 	border-radius: 4px 4px 0px 0px;
@@ -68,9 +68,9 @@
 }
 .mondayDate{
 	display:inline;
-	font-style:italic;
-	color:var(--missive-text-color-b);  				/* change this to missive var */
-	margin-left:8px;
+	font-style:normal;
+	color:var(--missive-text-color-c);				/* change this to missive var */
+	margin-left:6px;
 }
 .mondayReplies{
 	display:inline;
