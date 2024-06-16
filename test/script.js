@@ -1136,16 +1136,21 @@ async function lookupContact(input){
     
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
+function contactSavedEnd(element){
+	custInfo.innerText = "Contact information";
+    element.classList.remove("contact-saved");
+    element.classList.remove("contact-saved-fade");
+}
 
 function contactSavedFade(element){
-	element.classList.add("contact-saved");
-	element.innerText = "Customer Information";
+	element.classList.add("contact-saved-fade");
+    setTimeout(contactSavedEnd,1400,element);
 }
 function contactSavedShow(){
-	var custInfo = document.getElementById("custInfo")
+	var custInfo = document.getElementById("custInfo");
 	custInfo.innerText = "Contact information saved!";
     custInfo.classList.add("contact-saved");
-	//setTimeout(contactSavedFade,1400,custInfo);
+	setTimeout(contactSavedFade,1400,custInfo);
 }
 
 
