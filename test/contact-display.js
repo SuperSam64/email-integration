@@ -154,10 +154,10 @@ function resetContactInfo(){
     CID.classList.add("inactive");
     phone.classList.add("inactive");
     email.classList.add("inactive");
-    name.innerHTML = '<div style="padding:2px;width:92%">"Name"</div>';
-    CID.innerHTML = '<div style="padding:2px;width:92%">"Customer ID"</div>';
-    phone.innerHTML = '<div style="padding:2px;width:92%">"Phone number"</div>';
-    email.innerHTML = '<div style="padding:2px;width:92%">"Email address"</div>';
+    name.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
+    CID.innerHTML = '<div style="padding:2px;width:92%">Customer ID"</div>';
+    phone.innerHTML = '<div style="padding:2px;width:92%">Phone number</div>';
+    email.innerHTML = '<div style="padding:2px;width:92%">Email address</div>';
     document.getElementById("contactInfoSection").classList.remove("hidden");
     document.getElementById("contactEdit").classList.add("hidden");
 }
