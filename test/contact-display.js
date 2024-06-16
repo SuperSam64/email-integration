@@ -242,7 +242,9 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSaveButton(){
-    if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
+    
+	document.getElementById('ordersSection').classList.add('hidden');
+	if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
         document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
 		console.log('1. element not defined ' + !document.getElementById('formEmail'));
 		console.log('2. element value not defined' + !document.getElementById('formEmail').value);
