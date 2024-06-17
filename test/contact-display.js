@@ -50,7 +50,6 @@ async function lookupContact(input){
         contactExists =  true;
     }
     contact.email = normalizeEmail(input,"panel",true);
-	console.log(getOrderNumber(currentConversation));
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
@@ -168,7 +167,6 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     phoneField.innerHTML = '<div style="padding:2px;width:92%">' + phoneNum, + '</div>';
     emailField.innerHTML = '<div style="padding:2px;width:92%">' + email, + '</div>';
     // IF THE CONTENT OF THE NAME FIELD IS NOT VALID
-	console.log("(1) " + nameField.innerHTML)
 	/* NOT TRUE ========> */ if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
 		// IF CUSTOMERNAME IS VALID
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
@@ -184,7 +182,6 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 	// IF THE CONTENT OF THE NAME FIELD IS VALID
 	else{
 		nameField.innerHTML = fullName;
-		console.log("(2) " + nameField.innerHTML)
 		nameField.classList.remove("inactive");
 	}
     if(customerName == "Name"){
@@ -192,7 +189,6 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 	}
 	else{
 		customerName = nameField.innerText;
-		console.log("(3) " + customerName)
 	}
 	/*var formOrdersString = (
         //document.getElementById('formOrderNumbers').value.trim()
@@ -237,9 +233,6 @@ function contactFormSaveButton(){
 	//document.getElementById('ordersSection').classList.add('hidden');============================================================================
 	if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
         document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
-		console.log('1. element not defined ' + !document.getElementById('formEmail'));
-		console.log('2. element value not defined' + !document.getElementById('formEmail').value);
-		console.log('3. value is empty' + document.getElementById('formEmail').value == '');
     }
     else{
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
@@ -272,9 +265,6 @@ function selectFields(field,type,value){
 
 }
 function buildOrderNumbersList(list){
-	console.log(list)
-	console.log(list.length)
-    console.log(list[0]);
 	if(list.length < 1){
 		hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
@@ -287,7 +277,6 @@ function buildOrderNumbersList(list){
 		show("ordersSection");
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
-			console.log("list i " + list[i])
             orderArray.push(
 				'<span class="fieldText" title="' + list[i].replace("Order #","") + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
@@ -295,13 +284,7 @@ function buildOrderNumbersList(list){
 				 list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
-			console.log("order array 1")
-			console.log(orderArray)
 		}
-		console.log("order array 2")
-		console.log(orderArray)
-		console.log("order array 3")
-		console.log(orderArray.join("<br>").replace('style="margin-top:6px" ',''))
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
@@ -394,7 +377,6 @@ function normalizeLastName(input,type){
 function normalizeFullName(first,last,type,updateElements){
     var output;
     var raw = ([first,last]).join(" ");
-	console.log("raw 1 " + raw)
     var empty = (
         ([first,last]).join(" ").trim().replaceAll(" ","") == "" ||
         ([first,last]).join(" ").trim().replaceAll(" ","").toLowerCase() == "name" ||
@@ -420,9 +402,7 @@ function normalizeFullName(first,last,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-			console.log("hover " + hover)
             output = raw + '<span class="popup" id="namePopup"></span>';  //xxxxxxxxxxxxxxxxxxxxxxxx
-			console.log("output " + output)
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -433,7 +413,6 @@ function normalizeFullName(first,last,type,updateElements){
             output = raw;
         }
     }
-	console.log("output 2 " + output)
     return output;
 }
 function normalizeCID(input,type,updateElements){    
@@ -685,7 +664,6 @@ function transition(input){
 function getPlaintext(input) {
     var span = document.getElementById('textmod');
     var store = span.innerHTML;
-    console.log("inner text " + input)
     if(store == ""){
         store == "it's blank"
     }
