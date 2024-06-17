@@ -224,7 +224,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // come back here =======================================================================================================================
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	document.getElementById('orderNumberList').innerHTML = orderNumber;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+	document.getElementById('orderNumberList').innerHTML = normalizeOrderNumbers(orderNumber,"panel");//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
@@ -294,13 +294,18 @@ function buildOrderNumbersList(list){
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
 	}
 }
-function normalizeOrderNumbers(input,string){
+function normalizeOrderNumbers(string,type){
     var formOrderNumbers;
     if(string == ""){
         return [""];
     }
     else{
-        return ("Order #"+ string).replaceAll(",",",Order #").split(",");
+        if(type == "panel"){
+            return string.split(",");
+        }
+        else{
+            return ("Order #"+ string).replaceAll(",",",Order #").split(",");
+        }
     }
 }
 function normalizeFirstName(input,type){
