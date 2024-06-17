@@ -276,10 +276,10 @@ function buildOrderNumbersList(list){
 	console.log(list.length)
     console.log(list[0]);
 	if(list.length < 1){
-		//document.getElementById("ordersSection").classList.add = "hidden"; =========================================================================
+		hide("ordersSection");
 	}
 	else{
-		//document.getElementById("ordersSection").classList.remove = "hidden";===========================================================
+		show("ordersSection");
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
 			console.log("list i " + list[i])
