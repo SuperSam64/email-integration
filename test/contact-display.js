@@ -87,10 +87,6 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function showEditPanel(selected){
-	document.getElementById("namePopup").classList.remove("show");
-	document.getElementById("CIDPopup").classList.remove("show");
-	document.getElementById("phonePopup").classList.remove("show");
-	document.getElementById("emailPopup").classList.remove("show");
 	document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
