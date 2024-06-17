@@ -132,9 +132,11 @@
       </div>
       <div id="contactInfoSection" class="panel">
         <table style="table-layout:fixed;width:100%" class="form">
-          <th  id="custInfo" colspan="2">
+          <td onclick="var tempVar = document.getElementById('ordersSection');tempVar.classList.add('hidden')">--add--</td>
+          <th  onclick="var tempVar = document.getElementById('ordersSection');tempVar.toggle.remove('hidden')" id="custInfo" colspan="2">
             Customer Information
           </th>
+          <td onclick="var tempVar = document.getElementById('ordersSection');tempVar.classList.remove('hidden')">--remove--</td>
           <tr>
             <td class="left middle">
               <span class="fieldText" id="nameField" onclick="copyToClipboard('name',animationLength)">
@@ -160,7 +162,7 @@
             </td>
           </tr>
         </table>
-        <div id="ordersSection" style="border-top:1px solid var(--missive-light-border-color)" class="hidden">
+        <div id="ordersSection" style="border-top:1px solid var(--missive-light-border-color)">
           <table class="form">
             <tbody>
               <tr>

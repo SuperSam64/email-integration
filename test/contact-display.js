@@ -160,7 +160,7 @@ function resetContactInfo(){
     email.innerHTML = '<div style="padding:2px;width:92%">Email address</div>';
     document.getElementById("contactInfoSection").classList.remove("hidden");
     document.getElementById("contactEdit").classList.add("hidden");
-	document.getElementById("ordersSection").classList.add("hidden");
+	//document.getElementById("ordersSection").classList.add("hidden"); =========================================================================================
 }
 function contactFormSave(fullName,CID,phoneNum,email,exists){
     var nameField = document.getElementById('nameField');
@@ -212,7 +212,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 			//Missive.setSubject('');
             // come back here =======================================================================================================================
         }
-        document.getElementById('ordersSection').classList.add("hidden");
+        // document.getElementById('ordersSection').classList.add("hidden"); ========================================================================
     }
     else{
         document.getElementById('ordersSection').classList.remove("hidden");
@@ -233,7 +233,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSaveButton(){
-	document.getElementById('ordersSection').classList.add('hidden');
+	//document.getElementById('ordersSection').classList.add('hidden');============================================================================
 	if(!document.getElementById('formEmail') || !document.getElementById('formEmail').value || document.getElementById('formEmail').value == ''){
         document.getElementById('formEmail').style='border:1px solid var(--missive-red-color)';
 		console.log('1. element not defined ' + !document.getElementById('formEmail'));
@@ -274,7 +274,7 @@ function buildOrderNumbersList(list){
 	console.log(list)
 	console.log(list.length)
 	if(list.length < 1){
-		document.getElementById("ordersSection").classList.add = "hidden";
+		//document.getElementById("ordersSection").classList.add = "hidden"; =========================================================================
 	}
 	else{
 		document.getElementById("ordersSection").classList.remove = "hidden";
