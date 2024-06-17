@@ -87,6 +87,10 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function showEditPanel(selected){
+	document.getElementById("namePopup").classList.remove("show");
+	document.getElementById("CIDPopup").classList.remove("show");
+	document.getElementById("phonePopup").classList.remove("show");
+	document.getElementById("emailPopup").classList.remove("show");
 	document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
@@ -101,14 +105,6 @@ function showEditPanel(selected){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-	nameField.classList.remove("hide");
-	CIDField.classList.remove("hide");
-	phoneField.classList.remove("hide");
-	emailField.classList.remove("hide");
-	nameField.classList.remove("show");
-	CIDField.classList.remove("show");
-	phoneField.classList.remove("show");
-	emailField.classList.remove("show");
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
@@ -158,7 +154,7 @@ function resetContactInfo(){
     CID.classList.add("inactive");
     phone.classList.add("inactive");
     email.classList.add("inactive");
-    name.innerHTML = '<div style="padding:2px;width:92%" class="putting something here as a test">Name</div>';
+    name.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
     CID.innerHTML = '<div style="padding:2px;width:92%">Customer ID</div>';
     phone.innerHTML = '<div style="padding:2px;width:92%">Phone number</div>';
     email.innerHTML = '<div style="padding:2px;width:92%">Email address</div>';
@@ -249,10 +245,6 @@ function contactFormSaveButton(){
         var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
         var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
         var formEmail = normalizeEmail(document.getElementById('formEmail').value,"panel",true);
-		document.getElementById("namePopup").classList.remove("show");
-		document.getElementById("CIDPopup").classList.remove("show");
-		document.getElementById("phonePopup").classList.remove("show");
-		document.getElementById("emailPopup").classList.remove("show");
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
@@ -400,7 +392,7 @@ function normalizeFullName(first,last,type,updateElements){
             if(updateElements){
                 field.classList.remove("active");
                 field.classList.add("inactive");
-                setFieldHover("emailField", "");
+                setFieldHover("nameField", "");
             }
         }
         else if (type == "edit"){
@@ -421,9 +413,6 @@ function normalizeFullName(first,last,type,updateElements){
         }
         else if (type == "edit"){
             output = raw;
-            if(updateElements){
-
-            }
         }
     }
     return output;
