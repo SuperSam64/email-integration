@@ -106,7 +106,7 @@ function showEditPanel(selected){
     //Missive.setSubject("Orders #" + list);
     var orderNumberList = document.getElementById('orderNumberList').innerText;
     orderNumberList = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
-    Missive.setSubject("orderNumberList");
+    formOrderNumbers = orderNumberList;
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
@@ -257,6 +257,17 @@ function contactFormSaveButton(){
         var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
         var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
         var formEmail = normalizeEmail(document.getElementById('formEmail').value,"panel",true);
+        var formOrderNumbers = document.getElementById('formOrderNumbers').value;
+        formOrderNumbers = formOrderNumbers.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", #");
+        if(formOrderNumbers != ""){
+            if(formOrderNumbers.includes(",")){
+                formOrderNumbers = "Orders #" + formOrderNumbers;
+            }
+            else{
+                formOrderNumbers = "Order #" + formOrderNumbers
+            };
+        }
+        Missive.setSubject("orderNumberList"); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
