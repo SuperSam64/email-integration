@@ -287,7 +287,7 @@ function buildOrderNumbersList(list){
 				'<span class="fieldText" title="' + list[i].replace("Order #","") + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
-				 + list[i] + '<span class="popup" id="orderPopup' + i +
+				 list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
 			console.log("order array 1")
