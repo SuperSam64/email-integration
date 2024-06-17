@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "449";
+scriptVersion = "450";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -34,7 +34,9 @@ to make these more modular, for each item, have an:
     Normalize order #
 
 */
-
+function getFromNew(){
+    // 
+}
 function show(input){
     var element = document.getElementById(input);
     element.classList.add('visible');

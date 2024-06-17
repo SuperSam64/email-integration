@@ -86,7 +86,8 @@ function saveContact(firstName,lastName,email,phoneNumber,customerID){
     Missive.alert({title: "Contact added",message:"Contact has been added to your contact list.", note: "Click below to continue..."})
 }
 function showEditPanel(selected){
-	document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
+	document.getElementById("orderNumberList").addEventListener("focus", function() { this.select(); });
+    document.getElementById("formFirstName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formLastName").addEventListener("focus", function() { this.select(); });
     document.getElementById("formCustID").addEventListener("focus", function() { this.select(); });
     document.getElementById("formPhoneNumber").addEventListener("focus", function() { this.select(); });
@@ -100,11 +101,18 @@ function showEditPanel(selected){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
+    //Missive.setSubject("");
+    //Missive.setSubject("Order #" + list[0]);
+    //Missive.setSubject("Orders #" + list);
+    var orderNumberList = document.getElementById('orderNumberList');
+    orderNumberList = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
+    Missive.setSubject("orderNumberList");
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
     formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
     formEmail.value = normalizeEmail(emailField.innerText,"edit",true);
+    formOrderNumbers.value = orderNumberList;
 	if(1==2){
 
 	}
@@ -276,12 +284,10 @@ function buildOrderNumbersList(list){
 	if(list.length < 1 || list[0] == ""){
 		hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
-        Missive.setSubject("");
 	}
     else if(list.length == 1 && list[0] == ""){
         hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
-        Missive.setSubject("Order #" + list[0]);
     }
 	else{
 		show("ordersSection");
@@ -289,13 +295,12 @@ function buildOrderNumbersList(list){
 		for(var i = 0; i < list.length; i++){
             orderArray.push(
 				'<span class="fieldText" title="' + list[i].replace("Order #","") + `
-(Click to copy)`+ '" style="margin-top:6px;margin-left:2px;" id="orderField' + i +
+(Click to copy)`+ '" style="margin-top:6px;margin-left:4px;" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				 list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
 		}
-        Missive.setSubject("Orders #" + list);
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('margin-top:6px;','');
 	}
 }
