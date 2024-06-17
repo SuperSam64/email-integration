@@ -215,7 +215,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // document.getElementById('ordersSection').classList.add("hidden"); ========================================================================
     }
     else{
-        document.getElementById('ordersSection').classList.remove("hidden");
+        //document.getElementById('ordersSection').classList.remove("hidden");=====================================================================
         if(formOrderNumbers.length > 1){
           newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
         }
@@ -277,7 +277,7 @@ function buildOrderNumbersList(list){
 		//document.getElementById("ordersSection").classList.add = "hidden"; =========================================================================
 	}
 	else{
-		document.getElementById("ordersSection").classList.remove = "hidden";
+		//document.getElementById("ordersSection").classList.remove = "hidden";===========================================================
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
 			orderArray.push(

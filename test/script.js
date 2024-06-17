@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "419";
+scriptVersion = "420";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -34,6 +34,17 @@ to make these more modular, for each item, have an:
     Normalize order #
 
 */
+
+function show(input){
+    var element = document.getElementById(input);
+    element.classList.add('visible');
+    element.classList.remove('hidden');
+}
+function hide(input){
+    var element = document.getElementById(input);
+    element.classList.add('hidden');
+    element.classList.remove('visible');
+}
 
 function addIt(){
     var element = document.getElementById('ordersSection');
