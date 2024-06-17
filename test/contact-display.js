@@ -273,7 +273,7 @@ function selectFields(field,type,value){
 
 }
 function buildOrderNumbersList(list){
-	if(list.length < 1){
+	if(list.length < 1 || list[0] == ""){
 		hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
         Missive.setSubject("");
