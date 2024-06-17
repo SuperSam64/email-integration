@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "80";
-scriptVersion = "416";
+scriptVersion = "417";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -35,7 +35,18 @@ to make these more modular, for each item, have an:
 
 */
 
-
+function addIt(){
+    var element = document.getElementById('ordersSection');
+    element.classList.add('hidden');
+}
+function removeIt(){
+    var element = document.getElementById('ordersSection');
+    element.classList.toggle('hidden');
+}
+function toggleIt(){
+    var element = document.getElementById('ordersSection');
+    element.classList.remove('hidden');
+}
 // ========= STARTUP =========
 async function loadUserProfile(){
     // Cycle through all users
