@@ -295,7 +295,7 @@ function buildOrderNumbersList(list){
 				'"></span></span>'
 			);
 		}
-        Missive.setSubject("Orders #" + orderArray.join(", #"));
+        Missive.setSubject("Orders #" + list);
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('margin-top:6px;','');
 	}
 }
