@@ -104,7 +104,7 @@ function showEditPanel(selected){
     //Missive.setSubject("");
     //Missive.setSubject("Order #" + list[0]);
     //Missive.setSubject("Orders #" + list);
-    var orderNumberList = document.getElementById('orderNumberList');
+    var orderNumberList = document.getElementById('orderNumberList').innerText;
     orderNumberList = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
     Missive.setSubject("orderNumberList");
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
