@@ -77,6 +77,7 @@
 .active{
   font-style: none;
   color: var(--missive-text-color-a);
+  margin-left:4px;
 }
 .inactive{
   font-style: italic;
