@@ -276,10 +276,12 @@ function buildOrderNumbersList(list){
 	if(list.length < 1){
 		hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
+        Missive.setSubject("");
 	}
     else if(list.length == 1 && list[0] == ""){
         hide("ordersSection");
         document.getElementById("orderNumberList").innerHTML = "";
+        Missive.setSubject("Order #" + list[0]);
     }
 	else{
 		show("ordersSection");
@@ -293,6 +295,7 @@ function buildOrderNumbersList(list){
 				'"></span></span>'
 			);
 		}
+        //Missive.setSubject("Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", "));
 		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('margin-top:6px;','');
 	}
 }
