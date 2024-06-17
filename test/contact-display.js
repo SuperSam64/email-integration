@@ -224,7 +224,11 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // come back here =======================================================================================================================
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	document.getElementById('orderNumberList').innerHTML = buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+	var test1= normalizeOrderNumbers(orderNumber,"panel");
+    var test2=buildOrderNumbersList();
+    console.log("test1 " + test1);
+    console.log("test2 " + test2);
+    document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
