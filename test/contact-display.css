@@ -91,6 +91,9 @@
 .hidden{
   display:none;
 }
+.visible{
+  display:block;
+}
 .capitalize{
   text-transform: capitalize;
 }
