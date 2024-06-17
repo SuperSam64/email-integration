@@ -173,21 +173,21 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     emailField.innerHTML = '<div style="padding:2px;width:92%">' + email, + '</div>';
     // IF THE CONTENT OF THE NAME FIELD IS NOT VALID
 	console.log("(1) " + nameField.innerHTML)
-	if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
+	/* NOT TRUE ========> */ if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
 		// IF CUSTOMERNAME IS VALID
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
-            nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true) + '</div>';
+            nameField.innerHTML = customerName;
 			nameField.classList.remove("inactive");
         }
 		// IF CUSTOMERNAME IS ALSO NOT VALID
 		else{
-			nameField.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
+			nameField.innerHTML = 'Name';
 			nameField.classList.add("inactive");
 		}
     }
 	// IF THE CONTENT OF THE NAME FIELD IS VALID
 	else{
-		nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(fullName,"panel"),normalizeLastName(fullName,"panel"),"panel",true) + '</div>';
+		nameField.innerHTML = fullName;
 		console.log("(2) " + nameField.innerHTML)
 		nameField.classList.remove("inactive");
 	}
