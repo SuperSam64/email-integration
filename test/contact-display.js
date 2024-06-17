@@ -277,7 +277,12 @@ function buildOrderNumbersList(list){
     console.log(list[0]);
 	if(list.length < 1){
 		hide("ordersSection");
+        document.getElementById("orderNumberList").innerHTML = "";
 	}
+    else if(list.length == 1 && list[0] == ""){
+        hide("ordersSection");
+        document.getElementById("orderNumberList").innerHTML = "";
+    }
 	else{
 		show("ordersSection");
 		var orderArray = [];
