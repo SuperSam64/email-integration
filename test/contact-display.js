@@ -198,7 +198,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 		customerName = nameField.innerText;
 		console.log("(3) " + customerName)
 	}
-	var formOrdersString = (
+	/*var formOrdersString = (
         //document.getElementById('formOrderNumbers').value.trim()
         orderNumber.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
@@ -226,9 +226,9 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 		//Missive.setSubject(newSubject);
         //Missive.setSubject('');
         // come back here =======================================================================================================================
-    }
-	// document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	document.getElementById('orderNumberList').innerHTML = buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+    }*/
+	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
+	document.getElementById('orderNumberList').innerHTML = orderNumber;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
