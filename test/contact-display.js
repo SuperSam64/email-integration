@@ -274,6 +274,7 @@ function selectFields(field,type,value){
 function buildOrderNumbersList(list){
 	console.log(list)
 	console.log(list.length)
+    console.log(list[0]);
 	if(list.length < 1){
 		//document.getElementById("ordersSection").classList.add = "hidden"; =========================================================================
 	}
