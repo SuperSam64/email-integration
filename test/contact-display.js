@@ -231,7 +231,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     console.log("CID | ")
     console.log("Phone number | ")
     console.log("Email | ")
-    console.log("Order number(s) | ")
+    console.log("Order number(s) | " +  normalizeOrderNumbers(orderNumber,"panel"))
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
