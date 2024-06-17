@@ -225,6 +225,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     //console.log("test1 " + test1);
     //console.log("test2 " + test2);
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+
+    console.log("First name | ");
+    console.log("Last name | ")
+    console.log("CID | ")
+    console.log("Phone number | ")
+    console.log("Email | ")
+    console.log("Order number(s) | ")
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
@@ -279,13 +286,13 @@ function buildOrderNumbersList(list){
 		for(var i = 0; i < list.length; i++){
             orderArray.push(
 				'<span class="fieldText" title="' + list[i].replace("Order #","") + `
-(Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
+(Click to copy)`+ '" style="margin-top:6px;margin-left:2px;" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				 list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
 		}
-		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('style="margin-top:6px" ','');
+		document.getElementById("orderNumberList").innerHTML = orderArray.join("<br>").replace('margin-top:6px;','');
 	}
 }
 function normalizeOrderNumbers(string,type){
