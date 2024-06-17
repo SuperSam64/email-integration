@@ -358,7 +358,7 @@ function normalizeLastName(input,type){
     if(typeof input == 'undefined'){
         output = "";
     }
-    else if(input.includes("@") ||input.toLowerCase() == "name" || input == ""){
+    else if(input.includes("@") ||input.toLowerCase() == "name" || input == "" || input.includes(" ") == false){
         // get rid of it
         output = "";
     }
