@@ -282,7 +282,7 @@ function buildOrderNumbersList(list){
 				'<span class="fieldText" title="' + list[i] + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
-				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
+				'Order #' + list[i] + '<span class="popup THISISWRONG3" id="orderPopup' + i +
 				'"></span></span>'
 			);
 			console.log("order array 1")
@@ -404,7 +404,7 @@ function normalizeFullName(first,last,type,updateElements){
     else{
         if(type == "panel"){
             var hover = raw;
-            output = raw + '<span class="popup" id="namePopup"></span>';
+            output = raw + '<span class="popup" id="namePopup">THIS IS WRONG</span>';
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -648,7 +648,7 @@ function copyToClipboard(type, duration) {
 			}
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
-			var popup = document.getElementById(type + "Popup");
+			var popup = document.getElementById(type + "Popup 2 THIS IS WRONG");
 			popup.innerText = messages[index];
 		}
 		popup.classList.remove("hide");
