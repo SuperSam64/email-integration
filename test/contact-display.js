@@ -199,7 +199,8 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 		console.log("(3) " + customerName)
 	}
 	var formOrdersString = (
-        document.getElementById('formOrderNumbers').value.trim()
+        //document.getElementById('formOrderNumbers').value.trim()
+        orderNumber.trim()
         .replaceAll("CP09","[prefix]").replaceAll("Cp","").replaceAll("cP","").replaceAll("cp","").replaceAll("CP","")
         .replaceAll("-","").replaceAll("#","").replaceAll(" ","")
         .replaceAll("[prefix]","CP09-").replaceAll(",,",",")
@@ -215,7 +216,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // document.getElementById('ordersSection').classList.add("hidden"); ========================================================================
     }
     else{
-        //document.getElementById('ordersSection').classList.remove("hidden");=====================================================================
+        //document.getElementById('ordersSection').classList.remove("hidden");======================================================================
         if(formOrderNumbers.length > 1){
           newSubject = "Orders #" + formOrdersString.replaceAll("Order #","#").replaceAll(",",", ");
         }
