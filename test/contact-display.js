@@ -225,10 +225,10 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
 	var test1= normalizeOrderNumbers(orderNumber,"panel");
-    var test2=buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));
-    console.log("test1 " + test1);
-    console.log("test2 " + test2);
-    document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+    buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));
+    //console.log("test1 " + test1);
+    //console.log("test2 " + test2);
+    //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
