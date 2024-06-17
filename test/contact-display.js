@@ -282,8 +282,9 @@ function buildOrderNumbersList(list){
 		//document.getElementById("ordersSection").classList.remove = "hidden";===========================================================
 		var orderArray = [];
 		for(var i = 0; i < list.length; i++){
-			orderArray.push(
-				'<span class="fieldText" title="' + list[i] + `
+			console.log("list i " + list[i])
+            orderArray.push(
+				'<span class="fieldText" title="' + list[i].replace("Order #","") + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
 				 + list[i] + '<span class="popup" id="orderPopup' + i +
