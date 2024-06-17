@@ -172,6 +172,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     phoneField.innerHTML = '<div style="padding:2px;width:92%">' + phoneNum, + '</div>';
     emailField.innerHTML = '<div style="padding:2px;width:92%">' + email, + '</div>';
     // IF THE CONTENT OF THE NAME FIELD IS NOT VALID
+	console.log("(1) " + nameField.innerHTML)
 	if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
 		// IF CUSTOMERNAME IS VALID
         if(customerName != "Filters Fast Customer Service" && customerName != "" && customerName != "Name" && customerName != 'undefined' && typeof customerName != 'undefined' && customerName.includes("@") == false){
@@ -180,13 +181,14 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         }
 		// IF CUSTOMERNAME IS ALSO NOT VALID
 		else{
-			'<div style="padding:2px;width:92%">Name</div>';
+			nameField.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
 			nameField.classList.add("inactive");
 		}
     }
-	// IF THE CONTECNT OF THE NAME FIELD IS VALID
+	// IF THE CONTENT OF THE NAME FIELD IS VALID
 	else{
 		nameField.innerHTML = '<div style="padding:2px;width:92%">' + normalizeFullName(normalizeFirstName(fullName,"panel"),normalizeLastName(fullName,"panel"),"panel",true) + '</div>';
+		console.log("(2) " + nameField.innerHTML)
 		nameField.classList.remove("inactive");
 	}
     if(customerName == "Name"){
@@ -194,6 +196,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 	}
 	else{
 		customerName = nameField.innerText;
+		console.log("(3) " + customerName)
 	}
 	var formOrdersString = (
         document.getElementById('formOrderNumbers').value.trim()
