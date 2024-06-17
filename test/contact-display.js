@@ -224,7 +224,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // come back here =======================================================================================================================
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	document.getElementById('orderNumberList').innerHTML = normalizeOrderNumbers(orderNumber,"panel");//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
+	document.getElementById('orderNumberList').innerHTML = buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
@@ -281,7 +281,7 @@ function buildOrderNumbersList(list){
 				'<span class="fieldText" title="' + list[i] + `
 (Click to copy)`+ '" style="margin-top:6px" id="orderField' + i +
 				'" onclick="copyToClipboard(' + "'order" + i + "'" + ',' + animationLength + ')">' +
-				'Order #' + list[i] + '<span class="popup" id="orderPopup' + i +
+				 + list[i] + '<span class="popup" id="orderPopup' + i +
 				'"></span></span>'
 			);
 			console.log("order array 1")
@@ -301,10 +301,10 @@ function normalizeOrderNumbers(string,type){
     }
     else{
         if(type == "panel"){
-            return string.split(",");
+            return ("Order #"+ string).replaceAll(",",",Order #").split(",");
         }
         else{
-            return ("Order #"+ string).replaceAll(",",",Order #").split(",");
+            return string.split(",");
         }
     }
 }
