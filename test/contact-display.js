@@ -434,16 +434,23 @@ function normalizeLastName(input,type){
     return output;
 }
 function normalizeFullName(first,last,type,updateElements){
+    console.log("first " + first);
+    console.log("last " + last);
+    console.log("type " + type);
+    console.log("updateElements " + updateElements)
     var output;
     var raw = ([first,last]).join(" ");
+    console.log("raw 1 " + raw);
     var empty = (
         ([first,last]).join(" ").trim().replaceAll(" ","") == "" ||
         ([first,last]).join(" ").trim().replaceAll(" ","").toLowerCase() == "name" ||
         ([first,last]).join(" ").includes("@")
     );
+    console.log("empty " + empty)
     var field = document.getElementById("nameField");
     var textInput = document.getElementById("formName");
     if(empty){
+        console.log("is empty")
         if(type == "panel"){
             output = "Name";
             if(updateElements){
@@ -469,9 +476,11 @@ function normalizeFullName(first,last,type,updateElements){
             }
         }
         else if (type == "edit"){
+            console.log("NOT panel")
             output = raw;
         }
     }
+    console.log(output)
     return output;
 }
 function normalizeCID(input,type,updateElements){    
