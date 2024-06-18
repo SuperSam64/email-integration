@@ -61,7 +61,7 @@ async function lookupContact(input){
     console.log(contact.customerID)
     console.log(contact.phoneNumber)
     console.log(contact.email)
-    searchMondayPosts(('"' + orderNumber.replaceAll(',','","') + '"'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+    searchMondayPosts(('[' + orderNumber.replaceAll(',','","') + ']'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
     fetch("https://public.missiveapp.com/v1/contacts", {
