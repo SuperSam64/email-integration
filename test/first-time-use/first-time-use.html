@@ -39,14 +39,23 @@
             if(conversations.length == 0){
                 currentConversation = empty;
                 console.log(currentConversation);
+                document.getElementById('readout').innerText = 'No conversation selected';
             }
             else{
                 conversations[0].subject = "Order"
                 currentConversation = conversations[0];
+                document.getElementById('readout').innerText = currentConversation;
                 console.log(currentConversation);
             }
         })
     })
+    let myPromise = new Promise(function(myResolve,myReject){
+        myResolve();
+        myReject();
+    });
+    myPromise.then(function(value){  },
+        function(error){  }
+    );
     
     </script>
 </body>
