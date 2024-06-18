@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "472";
+scriptVersion = "473";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -102,7 +102,7 @@ async function loadUserProfile(){
 }
 async function loadData(){
     // upon loading the integration, get the ID of the last conversation
-    await Missive.storeGet('7e94ae47-bdb5-415a-a494-9be757abc47e')//'lastConversation')
+    await Missive.storeGet('lastConversation')
         .then(conversation => {
         // set the current conversation as the last conversation since no conversation has been selected yet
         currentConversation = conversation;
