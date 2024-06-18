@@ -101,7 +101,6 @@ async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail
                 'query' : query
         })
     })
-    console.log(query)
     return response.json();
 }
 async function searchMondayPosts(ordernumInput,custIDInput,phonenumInput,emailInput,keyInput){
