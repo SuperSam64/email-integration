@@ -269,12 +269,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     //console.log("test2 " + test2);
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
 
-    console.log("First name | ");
-    console.log("Last name | ")
-    console.log("CID | ")
-    console.log("Phone number | ")
-    console.log("Email | ")
+    console.log("First name | " + normalizeFullName(contact.firstName,"panel"));
+    console.log("Last name | "  + normalizeFullName(contact.lastName,"panel"))
+    console.log("CID | " + contact.customerID)
+    console.log("Phone number | " + contact.phoneNumber)
+    console.log("Email | " + email)
     console.log("Order number(s) | " +  normalizeOrderNumbers(orderNumber,"panel"))
+    console.log("Contact exists? | " +  "")
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
