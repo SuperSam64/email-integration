@@ -313,7 +313,7 @@ function contactFormSaveButton(){
         var phoneParameter;
         var orderParam;
         if(formCustID != "" && formCustID != "Customer ID"){
-            CIDparameter =  formCustID.replace("CID ","");
+            CIDparameter =  formCustID.replace("CID ","").replace('<span class="popup" id="CIDPopup"></span>',"");
         }
         else{
             CIDparameter = "";
@@ -337,7 +337,7 @@ function contactFormSaveButton(){
         console.log(CIDparameter)
         console.log(CIDparameter.value)
         console.log("CID | " + CIDparameter.innerText)
-        console.log("Phone number | " + phoneParameter.innerText)
+        console.log("Phone number | " + phoneParameter)
         console.log("Email | " + formEmail.innerText)
         console.log("Order number(s) | " +  orderParam)
         console.log("Contact exists? | " +  contactExists)
