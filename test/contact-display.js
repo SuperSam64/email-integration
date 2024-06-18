@@ -205,10 +205,10 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
-    nameField.innerHTML = '<div style="padding:2px;width:92%">' + fullName, + '</div>';
-    CIDField.innerHTML = '<div style="padding:2px;width:92%">' + CID, + '</div>';
-    phoneField.innerHTML = '<div style="padding:2px;width:92%">' + phoneNum, + '</div>';
-    emailField.innerHTML = '<div style="padding:2px;width:92%">' + email, + '</div>';
+    nameField.innerHTML = '<div style="padding:2px;width:92%">' + fullName + '</div>';
+    CIDField.innerHTML = '<div style="padding:2px;width:92%">' + CID + '</div>';
+    phoneField.innerHTML = '<div style="padding:2px;width:92%">' + phoneNum + '</div>';
+    emailField.innerHTML = '<div style="padding:2px;width:92%">' + email + '</div>';
     // IF THE CONTENT OF THE NAME FIELD IS NOT VALID
 	/* NOT TRUE ========> */ if(nameField.innerText == "" || nameField.innerText == "Name" || nameField.innerText.includes("@")){
 		// IF CUSTOMERNAME IS VALID
@@ -269,17 +269,17 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     //console.log("test2 " + test2);
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
 
-    console.log("First name | " + normalizeFullName(nameField.innerText,"panel"));
-    console.log("Last name | "  + normalizeFullName(nameField.innerText,"panel"))
+    console.log("First name | " + normalizeFirstName(nameField.innerText,"panel"))
+    console.log("Last name | "  + normalizeLastName(nameField.innerText,"panel"))
     var CIDparameter;
     var phoneParameter;
-    if(contact.customerID != "" && contact.customerID != "Customer ID"){
-        CIDparameter =  contact.customerID.replace("CID ","");
+    if(CID.innerText != "" && CID.innerText != "Customer ID"){
+        CIDparameter =  CID.innerText.replace("CID ","");
     }
     else{
         CIDparameter = "";
     }
-    if(phoneNum != "" && phoneNum != "Phone number"){
+    if(phoneNum.innerText != "" && phoneNum.innerText != "Phone number"){
         phoneParameter =  phoneNum.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
     }
     else{
