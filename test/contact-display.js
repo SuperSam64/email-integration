@@ -50,7 +50,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     else if(customerName != "" && customerName != 'undefined' && typeof customerName != 'undefined'){
-        contact.fullName = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLasstName(customerName,"panel"),"panel",true);
+        contact.fullName = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
@@ -269,10 +269,24 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     //console.log("test2 " + test2);
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
 
-    console.log("First name | " + normalizeFullName(contact.firstName,"panel"));
-    console.log("Last name | "  + normalizeFullName(contact.lastName,"panel"))
-    console.log("CID | " + contact.customerID)
-    console.log("Phone number | " + contact.phoneNumber)
+    console.log("First name | " + normalizeFullName(nameField.innerText,"panel"));
+    console.log("Last name | "  + normalizeFullName(nameField.innerText,"panel"))
+    var CIDparameter;
+    var phoneParameter;
+    if(contact.customerID != "" && contact.customerID != "Customer ID"){
+        CIDparameter =  contact.customerID.replace("CID ","");
+    }
+    else{
+        CIDparameter = "";
+    }
+    if(phoneNum != "" && phoneNum != "Phone number"){
+        phoneParameter =  phoneNum.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
+    }
+    else{
+        phoneParameter = "";
+    }
+    console.log("CID | " + CIDparameter)
+    console.log("Phone number | " + phoneParameter)
     console.log("Email | " + email)
     console.log("Order number(s) | " +  normalizeOrderNumbers(orderNumber,"panel"))
     console.log("Contact exists? | " +  "")
