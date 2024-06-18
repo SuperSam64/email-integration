@@ -25,8 +25,9 @@
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
-            // currentConversation = conversations[0];
-            console.log("conversation change")
+            console.log("conversation change");
+            currentConversation = conversations[0];
+            console.log(currentConversation);
         })
     })
     
