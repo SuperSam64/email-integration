@@ -60,7 +60,7 @@ async function lookupContact(input){
     console.log("LOOKUP CONTACT ORDER #" + orderNumber.replaceAll(',','","'))
     console.log(contact.customerID)
     console.log(contact.phoneNumber)
-    console.log(customer.email)
+    console.log(contact.email)
     searchMondayPosts(orderNumber.replaceAll(',','","'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
