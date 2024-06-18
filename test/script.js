@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "470";
+scriptVersion = "471";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -181,7 +181,7 @@ function storeLastConversation(){
     // if a conversation is currently selected
     if(typeof currentConversation != 'undefined'){
         // set the last selected conversation as the current conversation
-        Missive.storeSet('lastConversation', currentConversation);
+        Missive.storeSet('lastConversation', 'c8f9bbd7-633c-490b-8866-42fc6a8e50d7');//currentConversation);
     }
 }
 function getConversation(conversation){

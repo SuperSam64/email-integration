@@ -179,6 +179,7 @@ function contactFormCancel(){
     document.getElementById('contactEdit').classList.add("hidden");
 }
 function resetContactInfo(){
+    orderNumber="";
     contactFormCancel();
     var name = document.getElementById("nameField");
     var CID = document.getElementById("CIDField");
@@ -286,8 +287,8 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     else{
         phoneParameter = "";
     }
-    if(normalizeOrderNumbers(orderNumber,"panel") != ""){
-        orderParameter =  normalizeOrderNumbers(orderNumber,"panel").replaceAll(",","").replaceAll("Order #");
+    if(orderNumber != "" ){
+        orderParameter =  orderNumber;
     }
     else{
         orderParameter = "";
