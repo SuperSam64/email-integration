@@ -143,14 +143,13 @@ function showEditPanel(selected){
     //Missive.setSubject("Order #" + list[0]);
     //Missive.setSubject("Orders #" + list);
     var orderNumberList = document.getElementById('orderNumberList').innerText;
-    orderNumberList = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
+    orderNumberList = orderNumberList.replaceAll(",","").replaceAll("s","").replaceAll("Order","").replaceAll("#",",").replaceAll(" ","").replaceAll(",",", ").replace(",","");
     formOrderNumbers.value = orderNumberList;
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
     formPhoneNumber.value = normalizePhoneNumber(phoneField.innerText,"edit",false);
     formEmail.value = normalizeEmail(emailField.innerText,"edit",true);
-    formOrderNumbers.value = orderNumberList;
 	if(1==2){
 
 	}
