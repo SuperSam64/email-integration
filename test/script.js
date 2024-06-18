@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "474";
+scriptVersion = "475";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -101,23 +101,7 @@ async function loadUserProfile(){
     });
 }
 async function loadData(){
-    // upon loading the integration, get the ID of the last conversation
-    Missive.storeSet(lastConversation,'35718285-dcba-4446-b94b-b169c30b6cdb')
-    await Missive.storeGet('lastConversation')
-        .then(conversation => {
-        // set the current conversation as the last conversation since no conversation has been selected yet
-        currentConversation = conversation;
-        // update the data based on the newly set current conversation
-        if(typeof currentConversation == 'undefined'){
-            console.log("is not defined")
-        }
-        else{
-            // update the data based on the newly set current conversation
-            update(currentConversation);
-            // fill in applicable fields with the results
-            showResults();
-        }
-    });
+
 }
 function createTokens(input){
     // array containing values to add or subtract to get key
@@ -182,7 +166,7 @@ function storeLastConversation(){
     // if a conversation is currently selected
     if(typeof currentConversation != 'undefined'){
         // set the last selected conversation as the current conversation
-        Missive.storeSet('lastConversation', 'c8f9bbd7-633c-490b-8866-42fc6a8e50d7');//currentConversation);
+        Missive.storeSet('lastConversation', currentConversation);
     }
 }
 function getConversation(conversation){
