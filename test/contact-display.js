@@ -713,6 +713,8 @@ function copyToClipboard(type, duration) {
 			}
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
+            console.log("=== TYPE " + type)
+            console.log("=== TYPEPOPUP " + type + "Popup")
 			var popup = document.getElementById(type + "Popup");
             console.log("=== POPUP " + popup)
 			
