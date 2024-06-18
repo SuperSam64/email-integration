@@ -57,7 +57,7 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
-    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+    //searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);============================================================================
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
     fetch("https://public.missiveapp.com/v1/contacts", {
@@ -144,7 +144,7 @@ function showEditPanel(selected){
     //Missive.setSubject("Orders #" + list);
     var orderNumberList = document.getElementById('orderNumberList').innerText;
     orderNumberList.value = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
-    formOrderNumbers = orderNumberList;
+    formOrderNumbers.value = orderNumberList;
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
     formCustID.value = normalizeCID(CIDField.innerText,"edit",false);
@@ -346,8 +346,11 @@ function contactFormSaveButton(){
         Missive.setSubject(formOrderNumbers); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         if(contactExists == false){
-            // saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)
+            //saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)
         }
+
+
+        searchMondayPosts(orderParam,CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }
