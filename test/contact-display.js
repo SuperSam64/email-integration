@@ -288,10 +288,10 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         phoneParameter = "";
     }
     if(orderNumber != "" ){
-        orderParameter =  orderNumber;
+        orderParam =  orderNumber;
     }
     else{
-        orderParameter = "";
+        orderParam = "";
     }
     console.log("CID | " + CIDparameter)
     console.log("Phone number | " + phoneParameter)
