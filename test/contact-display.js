@@ -324,7 +324,7 @@ function contactFormSaveButton(){
             phoneParameter = "";
         }
         if(formOrderNumbers != "" ){
-            orderParam =  formOrderNumbers.replaceAll("Order #","").replaceAll(" ","").replaceAll(",",", ");
+            orderParam =  formOrderNumbers.replaceAll("Order #","").replaceAll(" ","").replaceAll(',','","');
         }
         else{
             orderParam = "";
