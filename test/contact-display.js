@@ -357,7 +357,7 @@ function contactFormSaveButton(){
         }
 
         
-        searchMondayPosts(('"' + orderParam + '"'),CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
+        searchMondayPosts(('["' + orderParam + '"]'),CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }
