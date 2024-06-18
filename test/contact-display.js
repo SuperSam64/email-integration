@@ -57,11 +57,11 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
-    console.log("LOOKUP CONTACT ORDER #" + orderNumber.replaceAll(',','","'))
+    console.log("LOOKUP CONTACT ORDER #" + '"' + orderNumber.replaceAll(',','","') + '"')
     console.log(contact.customerID)
     console.log(contact.phoneNumber)
     console.log(contact.email)
-    searchMondayPosts(orderNumber.replaceAll(',','","'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+    searchMondayPosts(('"' + orderNumber.replaceAll(',','","') + '"'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
     fetch("https://public.missiveapp.com/v1/contacts", {
@@ -356,8 +356,8 @@ function contactFormSaveButton(){
             //saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)
         }
 
-
-        searchMondayPosts(orderParam,CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
+        
+        searchMondayPosts(('"' + orderParam + '"'),CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }
