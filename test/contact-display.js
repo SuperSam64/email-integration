@@ -556,7 +556,10 @@ function normalizePhoneNumber(input,type,updateElements){
         }
         if(type == "panel"){
             var hover = raw;
-            output = formatted + '<span class="popup" id="phonePopup"></span>';            
+            console.log("!!1 " + raw)
+            console.log("!!2 " + formatted)
+            output = formatted + '<span class="popup" id="phonePopup"></span>';    
+            console.log("!!3 " + output)        
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -567,6 +570,7 @@ function normalizePhoneNumber(input,type,updateElements){
             output = formatted;
         }
     }
+    console.log("!!4 " + type)
     return output;
 }
 function normalizeEmail(input,type,updateElements){
