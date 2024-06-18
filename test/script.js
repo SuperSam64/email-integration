@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "475";
+scriptVersion = "476";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -101,7 +101,22 @@ async function loadUserProfile(){
     });
 }
 async function loadData(){
-
+    // upon loading the integration, get the ID of the last conversation
+    await Missive.storeGet('lastConversation')
+        .then(conversation => {
+        // set the current conversation as the last conversation since no conversation has been selected yet
+        currentConversation = conversation;
+        // update the data based on the newly set current conversation
+        if(typeof currentConversation == 'undefined'){
+            console.log("is not defined")
+        }
+        else{
+            // update the data based on the newly set current conversation
+            update(currentConversation);
+            // fill in applicable fields with the results
+            showResults();
+        }
+    });
 }
 function createTokens(input){
     // array containing values to add or subtract to get key
