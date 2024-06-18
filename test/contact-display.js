@@ -50,7 +50,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     else if(customerName != "" && customerName != 'undefined' && typeof customerName != 'undefined'){
-        contact.firstName = normalizeFirstName(contactRecord.contacts[0].first_name,"panel");
+        contact.firstName = normalizeFirstName(customerName,"panel");
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
