@@ -27,6 +27,7 @@
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
             console.log("conversation change");
+            console.log(conversations.length);
             currentConversation = conversations[0];
             console.log(currentConversation);
         })
