@@ -285,7 +285,6 @@ function contactFormSaveButton(){
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
         var formLastName = normalizeLastName(document.getElementById('formLastName').value,"panel");
         var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
-        console.log("FULL NAME " + fullName)
         var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
         var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
         var formEmail = normalizeEmail(document.getElementById('formEmail').value,"panel",true);
@@ -715,7 +714,13 @@ function copyToClipboard(type, duration) {
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
 			var popup = document.getElementById(type + "Popup");
-			popup.innerText = messages[index];
+			
+            console.log("=== MESSAGES " + messages)
+            
+            console.log("=== INDEX " + index)          
+            console.log("=== MESSAGESINDEX " + messages[index])
+            
+            popup.innerText = messages[index];
 		}
 		popup.classList.remove("hide");
 		popup.classList.add("show");
