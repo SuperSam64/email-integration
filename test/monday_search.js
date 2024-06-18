@@ -488,7 +488,7 @@ function addField(name,type,value){
     var output;
     switch(type){
         case "order":
-            output = '{ column_id: "' + name + '", compare_value: "' + value + '", operator: contains_text }';
+            output = '{ column_id: "' + name + '", compare_value: ' + value + ', operator: contains_text }';
             break;
         case "ID":
             output = '{ column_id: "' + name + '", compare_value: ' + value + ', operator: any_of }';
