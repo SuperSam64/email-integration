@@ -57,6 +57,7 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
+    console.log("LOOKUP CONTACT ORDER #" + orderNumber)
     searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
@@ -293,7 +294,7 @@ function contactFormSaveButton(){
                 formOrderNumbers = "Orders #" + formOrderNumbers;
             }
             else{
-                formOrderNumbers = "Order #" + formOrderNumbers
+                formOrderNumbers = "Order #" + formOrderNumbers;
             };
         }
         
@@ -323,7 +324,7 @@ function contactFormSaveButton(){
             phoneParameter = "";
         }
         if(formOrderNumbers != "" ){
-            orderParam =  formOrderNumbers.replaceAll("Order #","").replaceAll(" ","").replaceAll(',','","');
+            orderParam =  formOrderNumbers.replaceAll("Order","").replaceAll(" ","").replaceAll(',','","').replaceAll("s","").replaceAll("#","");
         }
         else{
             orderParam = "";
