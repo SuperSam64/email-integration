@@ -18,7 +18,13 @@ they will show. 	 		*/
 // =======================================================================================================
 // =======================================================================================================
 var allPosts = [];
+var matchType = 'contains_text';
 async function getMondayData(searchOrder,searchCustID,searchPhoneNum,searchEmail,key){
+    if(searchOrder != ""){
+        if(searchOrder.includes(",")){
+            matchType = 'any_of';
+        }
+    }
     allPosts = [];
     document.getElementById('mondaySection').innerHTML = '<div class="loading" style="text-align:center;font-style:italic">LOADING...</div>';
     // If no order number provided, fill with "[undefined]" (this will keep from searching an empty string,
@@ -484,10 +490,9 @@ function buildItem(object){
 }
 // Compose each section of the item's HTML based on the passed parameters
 function addField(name,type,value){
-    var output;
     switch(type){
         case "order":
-            output = '{ column_id: "' + name + '", compare_value: ' + value + ', operator: contains_text }';
+            output = '{ column_id: "' + name + '", compare_value: ' + value + ', operator: ' + matchType + ' }';
             break;
         case "ID":
             output = '{ column_id: "' + name + '", compare_value: ' + value + ', operator: any_of }';
