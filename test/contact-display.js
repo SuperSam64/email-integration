@@ -182,7 +182,6 @@ function contactFormCancel(){
     document.getElementById('contactEdit').classList.add("hidden");
 }
 function resetContactInfo(){
-    orderNumber="";
     contactFormCancel();
     var name = document.getElementById("nameField");
     var CID = document.getElementById("CIDField");

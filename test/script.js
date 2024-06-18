@@ -1,6 +1,6 @@
 baseVersion = "11";
 revisionNumber = "81";
-scriptVersion = "479";
+scriptVersion = "480";
 
 /*
 CID - should remove "CID " when going from the text to the form
@@ -233,6 +233,7 @@ function update (input){
     isLabeled = labeled("1d53229eb9e1"); // this can be moved - does not need to happen at startup
     currentConversation.preview = getPreview(input);
     fullMessage = getFullMessage(input,"body16"); // this is linked to a specific element - change it in script.js as needed
+    orderNumber = "";
     orderNumber = getOrderNumber(input);
     currentConversation.timeStamp = getTimeStamp(input);
     greeting = getGreeting(input);
