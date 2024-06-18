@@ -714,6 +714,7 @@ function copyToClipboard(type, duration) {
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
 			var popup = document.getElementById(type + "Popup");
+            console.log("=== POPUP " + popup)
 			
             console.log("=== MESSAGES " + messages)
             
