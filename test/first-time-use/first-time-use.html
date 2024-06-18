@@ -28,6 +28,9 @@
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
+            if(Missive.storeGet('lastConversation') == 'undefined'){
+                console.log('undefined');
+            }
             console.log("conversation change");
             if(conversations.length == 0){
                 currentConversation = empty;
