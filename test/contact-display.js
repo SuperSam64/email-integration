@@ -273,13 +273,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     console.log("Last name | "  + normalizeLastName(nameField.innerText,"panel"))
     var CIDparameter;
     var phoneParameter;
-    if(CID.innerText != "" && CID.innerText != "Customer ID"){
-        CIDparameter =  CID.innerText.replace("CID ","");
+    if(CIDField.innerText != "" && CIDField.innerText != "Customer ID"){
+        CIDparameter =  CIDField.innerText.replace("CID ","");
     }
     else{
         CIDparameter = "";
     }
-    if(phoneNum.innerText != "" && phoneNum.innerText != "Phone number"){
+    if(phoneField.innerText != "" && phoneField.innerText != "Phone number"){
         phoneParameter =  phoneNum.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
     }
     else{
