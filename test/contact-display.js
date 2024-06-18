@@ -261,7 +261,6 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         // come back here =======================================================================================================================
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
-	var test1= normalizeOrderNumbers(orderNumber,"panel");
     buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));
     //console.log("test1 " + test1);
     //console.log("test2 " + test2);
@@ -286,6 +285,7 @@ function contactFormSaveButton(){
         var formFirstName = normalizeFirstName(document.getElementById('formFirstName').value,"panel");
         var formLastName = normalizeLastName(document.getElementById('formLastName').value,"panel");
         var fullName = normalizeFullName(formFirstName,formLastName,"panel",true)
+        console.log("FULL NAME " + fullName)
         var formCustID = normalizeCID(document.getElementById('formCustID').value,"panel",true);
         var formPhoneNumber = normalizePhoneNumber(document.getElementById('formPhoneNumber').value,"panel",true);
         var formEmail = normalizeEmail(document.getElementById('formEmail').value,"panel",true);
