@@ -16,7 +16,7 @@
     
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
-    <div id="readout">7</div>
+    <div id="readout">8</div>
    <script>
     var previousConversation;
     var empty = {};
@@ -44,7 +44,7 @@
             else{
                 conversations[0].subject = "Order"
                 currentConversation = conversations[0];
-                document.getElementById('readout').innerText = currentConversation;
+                document.getElementById('readout').innerText = currentConversation.id;
                 console.log(currentConversation);
             }
         })
