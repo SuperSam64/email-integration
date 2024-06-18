@@ -16,7 +16,7 @@
     
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
-    <div id="readout">5</div>
+    <div id="readout">6</div>
    <script>
     var previousConversation;
     var empty = {};
@@ -30,6 +30,10 @@
         Missive.fetchConversations(ids).then((conversations) => {		
             if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
+            }
+            else{
+                var x = Missive.storeGet('lastConversation');
+                console.log(x)
             }
             console.log("conversation change");
             if(conversations.length == 0){
