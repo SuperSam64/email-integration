@@ -50,7 +50,7 @@ async function lookupContact(input){
         contactExists =  true;
     }
     else if(customerName != "" && customerName != 'undefined' && typeof customerName != 'undefined'){
-        contact.fullName = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeFirstName(customerName,"panel"),"panel",true);
+        contact.fullName = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLasstName(customerName,"panel"),"panel",true);
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
@@ -218,13 +218,13 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
         }
 		// IF CUSTOMERNAME IS ALSO NOT VALID
 		else{
-			nameField.innerHTML = 'Name';
+			nameField.innerHTML = '<div style="padding:2px;width:92%">Name</div>';
 			nameField.classList.add("inactive");
 		}
     }
 	// IF THE CONTENT OF THE NAME FIELD IS VALID
 	else{
-		nameField.innerHTML = fullName;
+		nameField.innerHTML = '<div style="padding:2px;width:92%">' + fullName + '</div>';
 		nameField.classList.remove("inactive");
 	}
     if(customerName == "Name"){
