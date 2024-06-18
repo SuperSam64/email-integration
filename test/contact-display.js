@@ -273,6 +273,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     console.log("Last name | "  + normalizeLastName(nameField.innerText,"panel"))
     var CIDparameter;
     var phoneParameter;
+    var orderParam;
     if(CIDField.innerText != "" && CIDField.innerText != "Customer ID"){
         CIDparameter =  CIDField.innerText.replace("CID ","");
     }
@@ -285,10 +286,16 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     else{
         phoneParameter = "";
     }
+    if(normalizeOrderNumbers(orderNumber,"panel") != ""){
+        orderParameter =  normalizeOrderNumbers(orderNumber,"panel").replaceAll(",","").replaceAll("Order #");
+    }
+    else{
+        orderParameter = "";
+    }
     console.log("CID | " + CIDparameter)
     console.log("Phone number | " + phoneParameter)
-    console.log("Email | " + email)
-    console.log("Order number(s) | " +  normalizeOrderNumbers(orderNumber,"panel"))
+    console.log("Email | " + emailField.innerText)
+    console.log("Order number(s) | " +  orderParam)
     console.log("Contact exists? | " +  "")
     document.getElementById('contactInfoSection').classList.remove("hidden");
     document.getElementById('contactEdit').classList.add("hidden");
