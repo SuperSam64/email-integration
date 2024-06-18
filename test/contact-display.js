@@ -56,7 +56,7 @@ async function lookupContact(input){
         contactExists =  false;
     }
     contact.email = normalizeEmail(input,"panel",true);
-    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
+    contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contactExists);
     console.log("LOOKUP CONTACT ORDER #" + '["' + orderNumber.replaceAll(',','","') + '"]')
     console.log(contact.customerID)
     console.log(contact.phoneNumber)
@@ -276,6 +276,11 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
 
     
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+    if(exists)
+    {
+            //saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    }
+
 }
 function contactFormSaveButton(){
 	//document.getElementById('ordersSection').classList.add('hidden');============================================================================
@@ -336,9 +341,9 @@ function contactFormSaveButton(){
         console.log(formCustID)
         console.log(CIDparameter)
         console.log(CIDparameter.value)
-        console.log("CID | " + CIDparameter.innerText)
+        console.log("CID | " + CIDparameter)
         console.log("Phone number | " + phoneParameter)
-        console.log("Email | " + formEmail.innerText)
+        console.log("Email | " + formEmail)
         console.log("Order number(s) | " +  orderParam)
         console.log("Contact exists? | " +  contactExists)
 
@@ -352,12 +357,12 @@ function contactFormSaveButton(){
         document.getElementById('contactEdit').classList.add("hidden");
         Missive.setSubject(formOrderNumbers); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
-        if(contactExists == false){
-            //saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)
-        }
+        
+        
+        
 
         
-        searchMondayPosts(('["' + orderParam + '"]'),CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
+        //searchMondayPosts(('["' + orderParam + '"]'),CIDparameter.innerText,phoneParameter.innerText,formEmail.innerText,tokens[2]);
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }
