@@ -57,8 +57,11 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
-    console.log("LOOKUP CONTACT ORDER #" + orderNumber)
-    searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
+    console.log("LOOKUP CONTACT ORDER #" + orderNumber.replaceAll(',','","'))
+    console.log(contact.customerID)
+    console.log(contact.phoneNumber)
+    console.log(customer.email)
+    searchMondayPosts(orderNumber.replaceAll(',','","'),contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function saveContact(firstName,lastName,email,phoneNumber,customerID){
     fetch("https://public.missiveapp.com/v1/contacts", {
@@ -268,8 +271,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     }*/
 	//document.getElementById('ordersSection').innerHTML = buildOrderNumbersList(formOrdersString.split(","));
     buildOrderNumbersList(normalizeOrderNumbers(orderNumber,"panel"));
-    //console.log("test1 " + test1);
-    //console.log("test2 " + test2);
+
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
 
     
@@ -306,8 +308,7 @@ function contactFormSaveButton(){
         
         
         
-        console.log("First name | " + formFirstName)
-        console.log("Last name | "  + formLastName)
+        
         var CIDparameter;
         var phoneParameter;
         var orderParam;
@@ -329,6 +330,12 @@ function contactFormSaveButton(){
         else{
             orderParam = "";
         }
+        console.log("======1")
+        console.log("First name | " + formFirstName)
+        console.log("Last name | "  + formLastName)
+        console.log(formCustID)
+        console.log(CIDparameter)
+        console.log(CIDparameter.value)
         console.log("CID | " + CIDparameter.innerText)
         console.log("Phone number | " + phoneParameter.innerText)
         console.log("Email | " + formEmail.innerText)
@@ -484,23 +491,16 @@ function normalizeLastName(input,type){
     return output;
 }
 function normalizeFullName(first,last,type,updateElements){
-    console.log("first " + first);
-    console.log("last " + last);
-    console.log("type " + type);
-    console.log("updateElements " + updateElements)
     var output;
     var raw = ([first,last]).join(" ");
-    console.log("raw 1 " + raw);
     var empty = (
         ([first,last]).join(" ").trim().replaceAll(" ","") == "" ||
         ([first,last]).join(" ").trim().replaceAll(" ","").toLowerCase() == "name" ||
         ([first,last]).join(" ").includes("@")
     );
-    console.log("empty " + empty)
     var field = document.getElementById("nameField");
     var textInput = document.getElementById("formName");
     if(empty){
-        console.log("is empty")
         if(type == "panel"){
             output = "Name";
             if(updateElements){
@@ -526,11 +526,9 @@ function normalizeFullName(first,last,type,updateElements){
             }
         }
         else if (type == "edit"){
-            console.log("NOT panel")
             output = raw;
         }
     }
-    console.log(output)
     return output;
 }
 function normalizeCID(input,type,updateElements){    
@@ -607,10 +605,7 @@ function normalizePhoneNumber(input,type,updateElements){
         }
         if(type == "panel"){
             var hover = raw;
-            console.log("!!1 " + raw)
-            console.log("!!2 " + formatted)
             output = formatted + '<span class="popup" id="phonePopup"></span>';    
-            console.log("!!3 " + output)        
             if(updateElements){
                 field.classList.remove("inactive");
                 field.classList.add("active");
@@ -621,7 +616,6 @@ function normalizePhoneNumber(input,type,updateElements){
             output = formatted;
         }
     }
-    console.log("!!4 " + type)
     return output;
 }
 function normalizeEmail(input,type,updateElements){
@@ -768,16 +762,7 @@ function copyToClipboard(type, duration) {
 			}
 			document.getElementById("contactInfoSection").removeChild(textArea);
 			//document.body;
-            console.log("=== TYPE " + type)
-            console.log("=== TYPEPOPUP " + type + "Popup")
-			var popup = document.getElementById(type + "Popup");
-            console.log("=== POPUP " + popup)
-			
-            console.log("=== MESSAGES " + messages)
-            
-            console.log("=== INDEX " + index)          
-            console.log("=== MESSAGESINDEX " + messages[index])
-            
+			var popup = document.getElementById(type + "Popup");            
             popup.innerText = messages[index];
 		}
 		popup.classList.remove("hide");
