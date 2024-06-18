@@ -105,7 +105,7 @@ function showEditPanel(selected){
     //Missive.setSubject("Order #" + list[0]);
     //Missive.setSubject("Orders #" + list);
     var orderNumberList = document.getElementById('orderNumberList').innerText;
-    orderNumberList = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
+    orderNumberList.value = orderNumberList.replaceAll(" ","").replaceAll("s","").replaceAll("Order","").replaceAll(",",", ");
     formOrderNumbers = orderNumberList;
     formFirstName.value = normalizeFirstName(nameField.innerText,"edit");;
     formLastName.value = normalizeLastName(nameField.innerText,"edit");
@@ -267,7 +267,7 @@ function contactFormSaveButton(){
                 formOrderNumbers = "Order #" + formOrderNumbers
             };
         }
-        Missive.setSubject("orderNumberList"); 
+        Missive.setSubject(orderNumberList); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
