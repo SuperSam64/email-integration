@@ -19,6 +19,8 @@
     <div id="readout"></div>
    <script>
     var previousConversation;
+    var empty = {};
+    empty.status = "empty";
     $(window).on('load',(ids) => {
         console.log("startup")
     });
@@ -27,9 +29,14 @@
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
             console.log("conversation change");
-            console.log(conversations.length);
-            currentConversation = conversations[0];
-            console.log(currentConversation);
+            if(conversations.length == 0){
+                currentConversation = empty;
+                console.log(currentConversation);
+            }
+            else{
+                currentConversation = conversations[0];
+                console.log(currentConversation);
+            }
         })
     })
     
