@@ -57,7 +57,7 @@ async function lookupContact(input){
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
-    console.log("LOOKUP CONTACT ORDER #" + '"' + orderNumber.replaceAll(',','","') + '"')
+    console.log("LOOKUP CONTACT ORDER #" + '["' + orderNumber.replaceAll(',','","') + '"]')
     console.log(contact.customerID)
     console.log(contact.phoneNumber)
     console.log(contact.email)
