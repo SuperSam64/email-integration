@@ -96,11 +96,43 @@ function showEditPanel(selected){
     var formLastName = document.getElementById('formLastName');
     var formCustID = document.getElementById('formCustID');
     var formPhoneNumber = document.getElementById('formPhoneNumber');
-    var formCustID = document.getElementById('formCustID');
+    var formEmail = document.getElementById('formEmail');
+    var formOrderNumbers = document.getElementById('formOrderNumbers');
     var nameField = document.getElementById('nameField');
     var CIDField = document.getElementById('CIDField');
     var phoneField = document.getElementById('phoneField');
     var emailField = document.getElementById('emailField');
+    formFirstName.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    formLastName.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    formCustID.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    formPhoneNumber.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    formEmail.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    formOrderNumbers.addEventListener("keyup", function(event) {
+        if (event.key === "Enter") {
+            contactFormSaveButton();
+        }
+    });
+    
     //Missive.setSubject("");
     //Missive.setSubject("Order #" + list[0]);
     //Missive.setSubject("Orders #" + list);
