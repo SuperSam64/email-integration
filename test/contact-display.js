@@ -324,14 +324,14 @@ function contactFormSaveButton(){
             phoneParameter = "";
         }
         if(formOrderNumbers != "" ){
-            orderParam =  formOrderNumbers;
+            orderParam =  formOrderNumbers.replaceAll("Order #","").replaceAll(" ","").replaceAll(",",", ");
         }
         else{
             orderParam = "";
         }
-        console.log("CID | " + CIDparameter)
-        console.log("Phone number | " + phoneParameter)
-        console.log("Email | " + formEmail)
+        console.log("CID | " + CIDparameter.innerText)
+        console.log("Phone number | " + phoneParameter.innerText)
+        console.log("Email | " + formEmail.innerText)
         console.log("Order number(s) | " +  orderParam)
         console.log("Contact exists? | " +  contactExists)
 
@@ -346,7 +346,7 @@ function contactFormSaveButton(){
         Missive.setSubject(formOrderNumbers); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         if(contactExists == false){
-            // saveContact(formFirstName,formLastName,formEmail,phoneParameter,CIDparameter)
+            // saveContact(formFirstName,formLastName,formEmail.innerText,phoneParameter.innerText,CIDparameter.innerText)
         }
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
