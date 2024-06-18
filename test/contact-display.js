@@ -47,10 +47,13 @@ async function lookupContact(input){
                 }
             }
         }
-        contactExists =  true;
     }
     else if(customerName != "" && customerName != 'undefined' && typeof customerName != 'undefined'){
         contact.fullName = normalizeFullName(normalizeFirstName(customerName,"panel"),normalizeLastName(customerName,"panel"),"panel",true);
+        contactExists =  false;
+    }
+    else{
+        contactExists =  false;
     }
     contact.email = normalizeEmail(input,"panel",true);
     contactFormSave(contact.fullName,contact.customerID,contact.phoneNumber,contact.email,contact.email);
@@ -270,36 +273,7 @@ function contactFormSave(fullName,CID,phoneNum,email,exists){
     //console.log("test2 " + test2);
     //document.getElementById('orderNumberList').innerHTML = test1;//buildOrderNumbersList(getOrderNumber(currentConversation).split(","));
 
-    console.log("First name | " + normalizeFirstName(nameField.innerText,"panel"))
-    console.log("Last name | "  + normalizeLastName(nameField.innerText,"panel"))
-    var CIDparameter;
-    var phoneParameter;
-    var orderParam;
-    if(CIDField.innerText != "" && CIDField.innerText != "Customer ID"){
-        CIDparameter =  CIDField.innerText.replace("CID ","");
-    }
-    else{
-        CIDparameter = "";
-    }
-    if(phoneField.innerText != "" && phoneField.innerText != "Phone number"){
-        phoneParameter =  phoneNum.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
-    }
-    else{
-        phoneParameter = "";
-    }
-    if(orderNumber != "" ){
-        orderParam =  orderNumber;
-    }
-    else{
-        orderParam = "";
-    }
-    console.log("CID | " + CIDparameter)
-    console.log("Phone number | " + phoneParameter)
-    console.log("Email | " + emailField.innerText)
-    console.log("Order number(s) | " +  orderParam)
-    console.log("Contact exists? | " +  "")
-    document.getElementById('contactInfoSection').classList.remove("hidden");
-    document.getElementById('contactEdit').classList.add("hidden");
+    
 	// searchMondayPosts(orderNumber,contact.customerID,contact.phoneNumber,messageFrom,tokens[2]);
 }
 function contactFormSaveButton(){
@@ -324,8 +298,57 @@ function contactFormSaveButton(){
                 formOrderNumbers = "Order #" + formOrderNumbers
             };
         }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        console.log("First name | " + formFirstName)
+        console.log("Last name | "  + formLastName)
+        var CIDparameter;
+        var phoneParameter;
+        var orderParam;
+        if(formCustID != "" && formCustID != "Customer ID"){
+            CIDparameter =  formCustID.replace("CID ","");
+        }
+        else{
+            CIDparameter = "";
+        }
+        if(formPhoneNumber != "" && formPhoneNumber != "Phone number"){
+            phoneParameter =  formPhoneNumber.replaceAll("(","").replaceAll(")","").replaceAll("-","").replaceAll(" ","");
+        }
+        else{
+            phoneParameter = "";
+        }
+        if(formOrderNumbers != "" ){
+            orderParam =  formOrderNumbers;
+        }
+        else{
+            orderParam = "";
+        }
+        console.log("CID | " + CIDparameter)
+        console.log("Phone number | " + phoneParameter)
+        console.log("Email | " + formEmail)
+        console.log("Order number(s) | " +  orderParam)
+        console.log("Contact exists? | " +  contactExists)
+
+
+
+
+
+
+
+        document.getElementById('contactInfoSection').classList.remove("hidden");
+        document.getElementById('contactEdit').classList.add("hidden");
         Missive.setSubject(formOrderNumbers); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
+        if(contactExists == false){
+            // saveContact(formFirstName,formLastName,formEmail,phoneParameter,CIDparameter)
+        }
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
     }
