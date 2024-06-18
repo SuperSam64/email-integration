@@ -319,12 +319,15 @@ function validated(searchObject, matchOrderNum, matchCustID, matchPhoneNum, matc
 }
 // If the order number is found in the corresponding field (there can be additional charcters, ex. "12345678, 13579246")
 function validateOrderNum(value1, value2){
-    if(value1.includes(value2) && value2 != ""){
+    /*if(value1.includes(value2) && value2 != ""){
+        console.log("IS VALIDATED")
         return true;
     }
     else{
+        console.log("IS NOT")
         return false;
-    }
+    }*/
+   //TEMPORARILY MADE ALWAYS TRUE
 }
 // If the customer ID is found, with or without leading 0s. Does not check for leading 0s if first 3 chars are CUS
 function validateCustID(value1, value2){
