@@ -342,7 +342,7 @@ function contactFormSaveButton(){
         console.log(CIDparameter)
         console.log(CIDparameter.value)
         console.log("CID | " + CIDparameter)
-        console.log("Phone number | " + phoneParameter.replace('<span class="popup"id="phonePopup"></span>',''))
+        console.log("Phone number | " + phoneParameter.replace('<spanclass="popup"id="phonePopup"></span>',''))
         console.log("Email | " + formEmail.replace('<span class="popup" id="emailPopup"></span>',''))
         console.log("Order number(s) | " +  orderParam)
         console.log("Contact exists? | " +  contactExists)
