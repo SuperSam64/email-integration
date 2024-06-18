@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>V2</title>
+    <link rel="stylesheet" href="form.css">
+    <link href="https://integrations.missiveapp.com/missive.css" rel="stylesheet">
+    <link id="access-level" href="access_level_cca.css" rel="stylesheet">
+    <link rel="stylesheet" href="contact-display.css">
+    <link rel="stylesheet" href="monday.css">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://integrations.missiveapp.com/missive.js"></script>
+    <script type="text/javascript" src="monday_colors.js"></script>
+    <script type="text/javascript" src="monday_search.js"></script>
+    <script type="text/javascript" src="contact-display.js"></script>
+    <script src="script.js"></script>
+    
+  </head>
+  <body style="width:92%;height:96%;margin:auto;overflow:hidden">
+   <script>
+    $(window).on('load',(ids) => {
+        console.log("startup")
+    });
+    // ------------------------------------------------------------------------
+    //---------------------- WHEN CONVERSATION CHANGES ------------------------
+    Missive.on('change:conversations', (ids) => {
+        Missive.fetchConversations(ids).then((conversations) => {		
+            // currentConversation = conversations[0];
+            console.log("conversation change")
+        })
+    })
+    </script>
+</body>
+</html>

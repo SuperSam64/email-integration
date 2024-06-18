@@ -805,3 +805,91 @@ function setFieldHover(element,value){
 (Click to copy)`;
     document.getElementById(element).setAttribute("title",tooltip);
 }
+
+function phoneNumber(input,type){
+    if(type == "formatted"){
+
+    }
+    else if(type == "numeric"){
+
+    }
+    else if(type == "placeholder"){
+        
+    }
+    else if(type == "element"){
+        
+    }
+}
+function email(input,type){
+    if(type == "first"){
+
+    }
+    else if(type == "last"){
+
+    }
+    else if(type == "full"){
+        
+    }
+    else if(type == "placeholder"){
+        
+    }
+    else if(type == "element"){
+        
+    }
+}
+function CID(input,type){
+    if(type == "formatted"){
+
+    }
+    else if(type == "standard"){
+
+    }
+    else if(type == "prefix"){
+        
+    }
+    else if(type == "placeholder"){
+        
+    }
+    else if(type == "element"){
+        
+    }
+}
+function orderNumber(input,type){
+    if(type == "formatted"){
+
+    }
+    else if(type == "placeholder"){
+
+    }
+    else if(type == "element"){
+        
+    }
+}
+function orderList(input,type){
+    if(type == "formatted"){
+
+    }
+    else if(type == "placeholder"){
+
+    }
+    else if(type == "element"){
+        
+    }
+}
+function name(input,type){
+    if(type == "first"){
+
+    }
+    else if(type == "last"){
+
+    }
+    else if(type == "full"){
+        
+    }
+    else if(type == "placeholder"){
+        
+    }
+    else if(type == "element"){
+        
+    }
+}
