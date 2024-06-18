@@ -298,7 +298,7 @@ function contactFormSaveButton(){
                 formOrderNumbers = "Order #" + formOrderNumbers
             };
         }
-        Missive.setSubject(orderNumberList); 
+        Missive.setSubject(formOrderNumbers); 
 		//document.getElementById("orderPopup" + orderPosition).classList.remove("show");
         contactFormSave(fullName,formCustID,formPhoneNumber,formEmail,true);
         contactSavedShow();
