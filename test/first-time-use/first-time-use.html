@@ -16,7 +16,9 @@
     
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
-    <div id="readout">10</div>
+    <div id="reload" onclick="Missive.reload()">Reload</div>
+    <div>Version 11</div>
+    <div id="conversationID"></div>
    <script>
     var previousConversation;
     var empty = {};
@@ -28,6 +30,8 @@
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
+            
+            myDisplayer(conversations);
             if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
             }
@@ -39,12 +43,12 @@
             if(conversations.length == 0){
                 currentConversation = empty;
                 console.log(currentConversation);
-                document.getElementById('readout').innerText = 'No conversation selected';
+                document.getElementById('conversationID').innerText = 'No conversation selected';
             }
             else{
                 conversations[0].subject = "Order"
                 currentConversation = conversations[0];
-                document.getElementById('readout').innerText = currentConversation.id;
+                document.getElementById('conversationID').innerText = currentConversation.id;
                 console.log(currentConversation);
             }
         })
@@ -60,9 +64,11 @@
             myReject("Error");
         }
     });
-    myPromise.then(function(value){ myDisplayer(value); },
-        function(error){myDisplayer(error);  }
-    );
+
+    function myDisplayer(some) {
+        console.log(some);
+    }
+    
 
     
     /* conversation states -
