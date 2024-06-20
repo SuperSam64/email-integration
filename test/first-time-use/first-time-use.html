@@ -17,7 +17,7 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 17</div>
+    <div>Version 18</div>
     <div id="conversationID"></div>
    <script>
     var previousConversation;
@@ -31,7 +31,7 @@
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
             
-            myDisplayer(conversations);
+            getConversationDetails(conversations);
             /*if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
             }
