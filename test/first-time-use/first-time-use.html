@@ -16,7 +16,7 @@
     
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
-    <div id="readout">8</div>
+    <div id="readout">9</div>
    <script>
     var previousConversation;
     var empty = {};
@@ -50,13 +50,40 @@
         })
     })
     let myPromise = new Promise(function(myResolve,myReject){
-        myResolve();
-        myReject();
+        
+        
+        if(Missive.storeGet('lastConversation') != 'undefined'){
+            myResolve("Okay");
+        }
+        else{
+            myReject("Error");
+        }
     });
-    myPromise.then(function(value){  },
-        function(error){  }
+    myPromise.then(function(value){ myDisplayer(value); },
+        function(error){myDisplayer(error);  }
     );
-    
+
+    function myDisplayer(some) {
+        console.log(some);
+    }
+    /* conversation states -
+        a new draft that I created
+        no outgoing messages
+        no incoming messages
+        forwared from other mailbox
+        chatbot request
+        specific label
+        open
+        closed
+        snoozed
+        has order number
+        does not have order number
+        contact exists
+        customer info (regardless of sent/received)
+    actions
+        create draft
+        craete tasks (different arrays)
+    */
     </script>
 </body>
 </html>
