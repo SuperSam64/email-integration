@@ -17,7 +17,7 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 30</div>
+    <div>Version 31</div>
     <div id="click" onclick="Missive.storeSet('skip1',true)">click me to stop seeing the message below</div>
     <div id="message">here is the message</div>
     <div id="conversationID"></div>
@@ -88,8 +88,13 @@
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
+            console.log("1")
             console.log(getConversation);
-            previousConversation = conversations[0];
+            console.log("2")
+            console.log(conversations[0])
+            previousConversation = conversations[0]
+            console.log("3")
+            console.log(conversations[0])
             Missive.storeSet('lastConversation',previousConversation);
             /*if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
