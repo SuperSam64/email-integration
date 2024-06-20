@@ -17,7 +17,7 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 16</div>
+    <div>Version 17</div>
     <div id="conversationID"></div>
    <script>
     var previousConversation;
@@ -32,7 +32,7 @@
         Missive.fetchConversations(ids).then((conversations) => {		
             
             myDisplayer(conversations);
-            if(Missive.storeGet('lastConversation') == 'undefined'){
+            /*if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
             }
             else{
@@ -50,27 +50,25 @@
                 currentConversation = conversations[0];
                 document.getElementById('conversationID').innerText = currentConversation.id;
                 console.log(currentConversation);
-            }
+            }*/
         })
         
     })
-    let myPromise = new Promise(function(myResolve,myReject){
-        
-        
+    let getConversation = new Promise(function(success,failure){        
         if(Missive.storeGet('lastConversation') != 'undefined'){
-            myResolve("Okay");
+            success("Okay");
         }
         else{
-            myReject("Error");
+            failure("Error");
         }
     });
 
-    myPromise.then(
-        function(value) {myDisplayer(value);},
-        function(error) {myDisplayer(error);}
+    getConversation.then(
+        function(value) {getConversationDetails(value);},
+        function(error) {getConversationDetails(error);}
     );
     
-    function myDisplayer(some) {
+    function getConversationDetails(some) {
         console.log(some);
     }
 
