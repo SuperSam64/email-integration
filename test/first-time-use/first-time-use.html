@@ -23,7 +23,10 @@
     <div id="conversationID"></div>
    <script>
     var previousConversation;
-    var empty = {};
+    var empty = {
+        assignees: '',
+        attachments_count: 0
+    };
     empty.status = "empty";
     $(window).on('load',(ids) => {
         console.log("startup")
@@ -34,6 +37,7 @@
     Missive.on('change:conversations', (ids) => {
         Missive.fetchConversations(ids).then((conversations) => {		
             
+            console.log(empty);
             console.log(getConversation);
             previousConversation = conversations[0];
             Missive.storeSet('lastConversation',previousConversation);
