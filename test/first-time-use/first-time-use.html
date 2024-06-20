@@ -17,7 +17,7 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 18</div>
+    <div>Version 19</div>
     <div id="conversationID"></div>
    <script>
     var previousConversation;
@@ -56,10 +56,10 @@
     })
     let getConversation = new Promise(function(success,failure){        
         if(Missive.storeGet('lastConversation') != 'undefined'){
-            success("Okay");
+            success(Missive.storeGet('lastConversation'));
         }
         else{
-            failure("Error");
+            failure("No last conversation");
         }
     });
 
