@@ -36,7 +36,7 @@
             
             console.log(getConversation);
             previousConversation = conversations[0];
-            Missive.storeSet('lastConversation') = previousConversation;
+            Missive.storeSet('lastConversation',previousConversation);
             /*if(Missive.storeGet('lastConversation') == 'undefined'){
                 console.log('undefined');
             }
