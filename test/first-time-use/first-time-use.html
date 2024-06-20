@@ -17,7 +17,7 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 25</div>
+    <div>Version 26</div>
     <div id="click" onclick="Missive.storeSet('skip1',true)">click me to stop seeing the message below</div>
     <div id="message">here is the message</div>
     <div id="conversationID"></div>
@@ -25,7 +25,60 @@
     var previousConversation;
     var empty = {
         assignees: '',
-        attachments_count: 0
+        attachments_count: 0,
+        authors: [''],
+        color: null,
+        email_addresses: [{
+            address: '',
+            name: '',
+            type: 'email'
+        }],
+        id: 'No conversation selected',
+        labels: [{
+            id: '',
+            name:'',
+            type: '',
+            hierarcchy_delimiter: '',
+            fully_fetched: false
+        }],
+        link: 'https://www.missiveapp.com',
+        messages:[{
+            id: 'No message selected',
+            attachments: [''],
+            author: '',
+            body:'',
+            forwardBody:'',
+            from_field: '',
+            subject: '',
+            text_content:'',
+            to_fields:[{
+                address: '',
+                name: ''
+            }],
+            type: 'message'            
+        }],
+        messages_count:0,
+        organization: [{
+            id: '',
+            avatar: '',
+            name: '',
+            labels: [''],
+            users: ['']
+        }],
+        phone_numbers: [''],
+        subject: '',
+        team: [{
+            id: '',
+            name: '',
+            users: ['']
+        }],
+        users: [{
+            id: '',
+            avatar_url: '',
+            deleted: false,
+            display_name: '',
+            email
+        }]
     };
     empty.status = "empty";
     $(window).on('load',(ids) => {
