@@ -17,7 +17,9 @@
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
     <div id="reload" onclick="Missive.reload()">Reload</div>
-    <div>Version 20</div>
+    <div>Version 21</div>
+    <div id="click" onclick="Missive.storeSet('skip1',true)">click me to stop seeing the message below</div>
+    <div id="message">here is the message</div>
     <div id="conversationID"></div>
    <script>
     var previousConversation;
@@ -25,6 +27,7 @@
     empty.status = "empty";
     $(window).on('load',(ids) => {
         console.log("startup")
+        if(Missive.storeGet('skip1') == true){document.getElementByID('message').style = "display:none"}
     });
     // ------------------------------------------------------------------------
     //---------------------- WHEN CONVERSATION CHANGES ------------------------
