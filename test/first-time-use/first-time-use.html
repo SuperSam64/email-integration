@@ -16,7 +16,7 @@
     
   </head>
   <body style="width:92%;height:96%;margin:auto;overflow:hidden">
-    <div id="readout">9</div>
+    <div id="readout">10</div>
    <script>
     var previousConversation;
     var empty = {};
@@ -48,6 +48,7 @@
                 console.log(currentConversation);
             }
         })
+        
     })
     let myPromise = new Promise(function(myResolve,myReject){
         
@@ -63,9 +64,7 @@
         function(error){myDisplayer(error);  }
     );
 
-    function myDisplayer(some) {
-        console.log(some);
-    }
+    
     /* conversation states -
         a new draft that I created
         no outgoing messages
