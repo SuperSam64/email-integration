@@ -53,6 +53,7 @@ body{
 .confirmation .thank-you{
 	font-size: 4em;
 }
-.confirmation .thank-you-message{
+.confirmation .thank-you .message{
+	font-size: 1em;
 	color:blue;
 }
