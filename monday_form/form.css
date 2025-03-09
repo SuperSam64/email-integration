@@ -49,6 +49,7 @@ body{
 	position: fixed;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 }
 .confirmation .thank-you{
 	font-size: 4em;
