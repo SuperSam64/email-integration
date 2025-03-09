@@ -1200,6 +1200,10 @@ function body19Reset(){
 function body20Reset(){
     $("#body20").text("[ready]")
 }
+function back(){
+	Missive.reload();
+	alert('You have clicked the back button');
+}
 
 { /* ======== NOTES ========
 // CUST ID SHOULD BE GREEN
