@@ -50,9 +50,9 @@ body{
 	align-items: center;
 	justify-content: center;
 }
-h1{
+onfirmation.thank-you{
 	font-size: 4em;
 }
-.thank-you{
+.confirmation.thank-you-message{
 	color:blue;
 }
