@@ -42,3 +42,17 @@ span:hover .buttonText{
 body{
 	overflow:hidden;
 }
+#confirmation {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+}
+h1{
+	font-size: 4em;
+}
+#thank-you{
+	color:blue;
+}
