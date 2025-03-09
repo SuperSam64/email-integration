@@ -3,5 +3,6 @@ window.onload = function() {
 };
 
 function closePanel() {
+  Missive.reload();
   alert('replace this with the function to close the current panel');
 }
