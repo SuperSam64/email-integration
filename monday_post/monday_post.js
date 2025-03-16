@@ -93,7 +93,7 @@ async function createItem(user,boardId,name,columnIds,columnValues,addUpdate){
 }
 
 async function createUpdate(user,itemId,addUpdate){
-	let query = 'mutation{create_update (item_id: '+itemId+', body: "'+update.content+'"){id}}'
+	let query = 'mutation{create_update (item_id: '+itemId+', body: "'+addUpdate.content+'"){id}}'
 	const response = await fetch ("https://api.monday.com/v2", {
 		method: 'POST',
 		headers: headers,
