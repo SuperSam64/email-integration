@@ -1,4 +1,3 @@
-// file:///C:/Users/Sampson/OneDrive%20-%20Filters%20Fast,%20LLC/Projects/Customization/monday%20api%20call/index.html?key=58493819165911490022072701070942
 function decryptKey(){
 	var urlParams = new URLSearchParams(window.location.search);
 	var cypher = parseCypher(urlParams.get('key'));
