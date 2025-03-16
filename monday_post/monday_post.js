@@ -123,7 +123,7 @@ async function notify(user,updateId,addUpdate){
 	})
 }
 
-function getParams(){
+function postToWarehouseDC(){
 	var urlParams = new URLSearchParams(window.location.search);
 	/* customize this based on the columns of the target page
 	
