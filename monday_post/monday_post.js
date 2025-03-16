@@ -4,8 +4,18 @@ var shipper = 'UPS';
 var shipperAccount = '1A2B3C';
 //========
 
+/*
+========================================================================
+========================================================================
+
+ GET URL PARAMETERS FROM LOCAL FOLDER, PASSING CORRECT VALUE WILL DECRYPT KEY
+
+========================================================================
+========================================================================
+*/
+
 // API key here
-var key =${{ secrets.MONDAY_KEY }};
+var key=decryptKey();
 // ID of board the new item will be posted to
 var board=8705198504;
 // ID of group the new item will be created in
@@ -62,8 +72,8 @@ function tagUser(id,userName,displayName){
 	return "<a class='user_tagUser_editor router' href='https://filtersfast.monday.com/users/"+id+"-'"+userName+"' data-tagUser-type='User' data-tagUser-id='"+id+"' target='_blank' rel='noopener noreferrer'>@"+displayName+"</a>";
 }
 
-async function createItem(user,boardId,name,columnIds,columnValues){	
-	var columns=parseColumns(idArray,valueArray);
+async function createItem(user,boardId,name,columnIds,columnValues,addUpdate){	
+	var columns=parseColumns(columnIds,columnValues);
 	let query = 'mutation {create_item (board_id: '+boardId+', group_id: "'+groupId+'", item_name: "'+name+'", column_values: "{'+columns+'}"){id}}';
 	const response = await fetch ("https://api.monday.com/v2", {
 		method: 'POST',
@@ -75,14 +85,14 @@ async function createItem(user,boardId,name,columnIds,columnValues){
 	.then(response => response.json())
 	.then(data => {
 		var itemId=data.data.create_item.id;
-		createUpdate(user,itemId,update);
+		createUpdate(user,itemId,addUpdate);
 	})
 	.catch(error => {
 		console.error('Error:', error);
 	});	
 }
 
-async function createUpdate(user,itemId,update){
+async function createUpdate(user,itemId,addUpdate){
 	let query = 'mutation{create_update (item_id: '+itemId+', body: "'+update.content+'"){id}}'
 	const response = await fetch ("https://api.monday.com/v2", {
 		method: 'POST',
@@ -95,15 +105,15 @@ async function createUpdate(user,itemId,update){
 	.then(data => {
 		
 		var updateId=data.data.create_update.id;
-		notify(user,updateId,update);
+		notify(user,updateId,addUpdate);
 	})
 	.catch(error => {
 		console.error('Error:', error);
 	});	
 }
 
-async function notify(user,updateId,update){
-	let query = 'mutation {create_notification (user_id: '+user+', target_id: '+updateId+', text: "'+update.content+'", target_type: '+update.type+') {text}}';
+async function notify(user,updateId,addUpdate){
+	let query = 'mutation {create_notification (user_id: '+user+', target_id: '+updateId+', text: "'+addUpdate.content+'", target_type: '+addUpdate.type+') {text}}';
 	const response = await fetch ("https://api.monday.com/v2", {
 		method: 'POST',
 		headers: headers,
@@ -114,15 +124,55 @@ async function notify(user,updateId,update){
 }
 
 function getParams(){
-	const urlParams = new URLSearchParams(window.location.search);
+	var urlParams = new URLSearchParams(window.location.search);
+	/* customize this based on the columns of the target page
+	
+	SOME EXAMPLES
+	var urlGroupId='group_title';
+	var urlPostName = 'B2B order #CP09-1234567';
+	var urlUserId=35911561;
+	var urlMention = tagUser(35911561,'sam-nimmo','Sam Nimmo' );
 
-	// Get the value of the 'id' parameter
-	const firstParam = urlParams.get('firstThing');
+	var urulUpdateContent=mentionW+" "+mentionT+" please ship on "+shipper+" account #"+shipperAccount+", thank you!";
+	var uurlUpdateType='Post';
+	var update={
+		'content': urlUpdateContent,
+		'type': urlUpdateType
+	};
+
+	//examples
+	var urlStatusl
+	var urlOrderNum;
+
+	var urlIdArray=[
+		'status',
+		'numeric_mkp2z1xj'
+	];
+	var urlValueArray=[
+		'Working on it',
+		'2'
+	];*/
+	
+	var urlUser = urlParams.get('user');
+	var urlBoard = urlParams.get('board');
+	var urlName = urlParams.get('name');
+	var urlIdArray=[
+		'status',
+		'numeric_mkp2z1xj'
+	];
+	var urlValueArray=[
+		urlParams.get('status'),
+		urlParams.get('number'),
+	];
+	var urlUpdate={
+		'content': urlParams.get('update'),
+		'type': 'Post'
+	};
 
 	// Get all values of the 'tag' parameter
-	const secondParam = urlParams.getAll('secondThing');
+	//alert('User: '+urlUser+'\nBoard: '+urlBoard+'\nName: '+urlName+'\nStatus: '+urlValueArray[0]+'\nNumber: '+urlValueArray[1]+'\nUpdate: '+urlUpdate.content)
 	
-	createItem(userId,board,firstParam+secondParam,idArray,valueArray,update);
+	createItem(urlUser,urlBoard,urlName,urlIdArray,urlValueArray,urlUpdate);    // 
 }
 
 // ================================================================================================================================
