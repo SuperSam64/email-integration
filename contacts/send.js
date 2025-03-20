@@ -2,7 +2,7 @@ makeContact();
 
 
 var key=prompt('Key');
-var convo=prompt('Convo');
+var cust=prompt('Convo');
 
 var url='https://application.textline.com/api/customer/'+cust+'.json?access_token='+key;
 
