@@ -1,27 +1,33 @@
-async function makeContact(e){	
-	var cust=prompt('Customer');
+function makeContact(){
 	var key=prompt('Key');
-	var url='https://application.textline.com/api/customer/'+cust+'.json'
-
-	
-	const response = await fetch (url, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-			'X-TGP-ACCESS-TOKEN' : key
-		},
-		body: JSON.stringify({
-			'customer': {
-				'phone_number': '(222) 222-2222',
-				'email': 'chuck@mycompany.com',
-				'name': 'Chuck Finley',
-				'notes': 'some samples notes for the contact',
-				'tags': 'foo_bar'
+	var url='https://application.textline.com/api/customers.json?access_token='+key;
+	var request = new XMLHttpRequest();
+	var customer={
+		'name':'Sam',
+		'phone':'(704) 555-2222',
+		'email':'sam@gmail.com',
+		'cid':'1234567',
+		'order':'12345678'
+	}
+	request.open('POST', url);
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.onreadystatechange = function () {
+		if (this.readyState === 4) {
+			console.log('Status:', this.status);
+			console.log('Headers:', this.getAllResponseHeaders());
+			console.log('Body:', this.responseText);
+		}
+	};
+	var body = {
+		"customer": {
+			"phone_number": customer.phone,
+			"name": customer.name,
+			"tags": customer.order,
+			"custom_fields": {
+				"f3310f75-3371-4620-a41a-bacad6a73ee0": customer.cid,
+				"47382498-500f-40bf-b958-e355bf8e427d": customer.email
 			}
-		})
-	})
-
-	.catch(error => {
-		console.error('Error:', error);
-	})
+		}
+	};
+	request.send(JSON.stringify(body));
 }
