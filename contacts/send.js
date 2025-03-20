@@ -23,5 +23,5 @@ async function makeContact(e){
 
 	.catch(error => {
 		console.error('Error:', error);
-	}
+	})
 }
