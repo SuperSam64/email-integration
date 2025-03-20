@@ -3,11 +3,11 @@ function makeContact(){
 	var url='https://application.textline.com/api/customers.json?access_token='+key;
 	var request = new XMLHttpRequest();
 	var customer={
-		'name':'Sam',
-		'phone':'(704) 555-2222',
-		'email':'sam@gmail.com',
-		'cid':'1234567',
-		'order':'12345678'
+		'name':'Gary Stewart',
+		'phone':'(415) 606-3653',
+		'email':'joegospel@aol.com',
+		'cid':'2661161',
+		'order':'17191387'
 	}
 	request.open('POST', url);
 	request.setRequestHeader('Content-Type', 'application/json');
