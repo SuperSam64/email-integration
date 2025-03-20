@@ -4,7 +4,7 @@ async function makeContact(e){
 	var url='https://application.textline.com/api/customer/'+cust+'.json'
 
 	
-	const response = await fetch ("https://api.monday.com/v2", {
+	const response = await fetch (url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
