@@ -1,7 +1,7 @@
 async function makeContact(e){	
 	var cust=prompt('Customer');
 	var key=prompt('Key');
-	var url='https://application.textline.com/api/customer/'+cust+'.json
+	var url='https://application.textline.com/api/customer/'+cust+'.json'
 
 	
 	const response = await fetch ("https://api.monday.com/v2", {
