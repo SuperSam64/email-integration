@@ -1,13 +1,11 @@
-makeContact();
-
-
-var key=prompt('Key');
-var cust=prompt('Convo');
 
 var url='https://application.textline.com/api/customer/'+cust+'.json?access_token='+key;
 
 
 function makeContact(){
+	var key=prompt('Key');
+	var convo=prompt('Convo');
+	
 	var request = new XMLHttpRequest();
 
 	request.open('POST', url);
