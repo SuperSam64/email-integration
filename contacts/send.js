@@ -10,7 +10,7 @@ var url='https://application.textline.com/api/customer/'+cust+'.json?access_toke
 function makeContact(){
 	var request = new XMLHttpRequest();
 
-	request.open('POST', url;
+	request.open('POST', url);
 
 	request.setRequestHeader('Content-Type', 'application/json');
 
