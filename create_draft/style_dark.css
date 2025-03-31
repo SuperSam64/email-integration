@@ -24,7 +24,7 @@
   font-size:4vh;
   font-style:italic;
   font-family:'Gill Sans', sans-serif;
-  color:white;text-align:center;
+  text-align:center;
 }
 body{
   background-color:var(--dark);
