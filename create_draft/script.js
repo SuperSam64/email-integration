@@ -13,6 +13,7 @@ function getDetails(){
 		'organization': urlParams.get('organization'),
 		'assignees': [urlParams.get('user')]
 	}
+	alert(output);
 	return output;
 }
 
