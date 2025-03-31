@@ -18,7 +18,7 @@
   max-width:24vw;
 }
 .container p{
-  color:var(light);
+  color:var(--light);
   font-size:4vh;
   font-style:italic;
   font-family:'Gill Sans', sans-serif;
