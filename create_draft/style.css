@@ -1,8 +1,6 @@
 :root{
   --light:rgba(250, 250, 250, 1);
   --dark:rgba(35, 36, 37, 1);
-  --light-text:black;
-  --dark-text:white;
 }
 .container{
   position:fixed;top:50%;
@@ -20,7 +18,7 @@
   max-width:24vw;
 }
 .container p{
-  color:var(--light-text);
+  color:var(--dark);
   font-size:4vh;
   font-style:italic;
   font-family:'Gill Sans', sans-serif;
