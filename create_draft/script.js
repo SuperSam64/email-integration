@@ -13,7 +13,6 @@ function getDetails(){
 		'organization': urlParams.get('organization'),
 		'assignees': [urlParams.get('user')]
 	}
-	alert(output);
 	return output;
 }
 
@@ -85,7 +84,7 @@ function createDraft(details,input=''){
 		var conversationId=data.drafts.conversation;
 		var messageId=data.drafts.id;
 		var url='https://mail.missiveapp.com/#inbox/conversations/'+conversationId+'/messages/'+messageId;
-		window.location.herf=url;
+		window.location.href=url;
 	})	
 }
 
