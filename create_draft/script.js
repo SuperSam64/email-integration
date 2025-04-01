@@ -3,7 +3,8 @@
 // 2) simplify URL params users may need to easily change and put them in an easy-toedit location. Consider making a spreadsheet. (light/dark mode, key, user ID (?))
 // 3) grab page contents
 // 4) tracking
-// 5) 
+// 5) add contact
+// 6) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
 
 var messageDetails=getDetails();
 var key;
