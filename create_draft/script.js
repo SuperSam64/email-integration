@@ -2,10 +2,11 @@
 // 1) apply dark mode by URL param
 // 2) simplify URL params users may need to easily change and put them in an easy-toedit location. Consider making a spreadsheet. (light/dark mode, key, user ID (?))
 // 3) grab page contents
-// 4) tracking
-// 5) add contact
-// 6) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
-// 7) adjust greeting to time of day
+// 4) pass page contents to URL
+// 5) tracking
+// 6) add contact
+// 7) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
+// 8) adjust greeting to time of day
 
 var messageDetails=getDetails();
 var key;
