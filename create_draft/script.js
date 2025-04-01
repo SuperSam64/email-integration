@@ -5,6 +5,7 @@
 // 4) tracking
 // 5) add contact
 // 6) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
+// 7) adjust greeting to time of day
 
 var messageDetails=getDetails();
 var key;
