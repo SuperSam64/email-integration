@@ -7,6 +7,10 @@
 // 6) add contact
 // 7) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
 // 8) adjust greeting to time of day
+// 9) consider adding a submenu while loading, and think about implimentation
+// 10) label conversations
+// 11) set to recognize user wtihout needing ID
+// 12) quote previous message
 
 var messageDetails=getDetails();
 var key;
