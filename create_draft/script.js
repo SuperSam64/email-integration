@@ -15,9 +15,13 @@
 var messageDetails=getDetails();
 var key;
 
+getUserId();
+
 function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
+	var user;////////////////////
+	
 	if(urlParams.order===null){orderNumber=''}
 	key=urlParams.get('key');
 	var output={
@@ -28,6 +32,25 @@ function getDetails(){
 		'assignees': [urlParams.get('user')]
 	}
 	return output;
+}
+
+async function getUserId(){
+	await fetch("https://public.missiveapp.com/v1/users,{  
+		method: "GET",
+		headers: {
+			"Host": "public.missiveapp.com",
+			"Authorization": "Bearer " + key,
+			"Content-type": "application/json"
+		},
+	})
+	.then(response => response.json())
+	.then(data => {
+		for(i=0;i<data.users.length;i++){
+			if(data.users[i].me){
+				alert(data.users[i].id;
+			}
+		}
+	})
 }
 
 async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
