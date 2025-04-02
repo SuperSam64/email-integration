@@ -47,7 +47,7 @@ async function getUserId(){
 	.then(data => {
 		for(i=0;i<data.users.length;i++){
 			if(data.users[i].me){
-				alert(data.users[i].id;
+				alert(data.users[i].id);
 			}
 		}
 	})
