@@ -35,7 +35,7 @@ function getDetails(){
 }
 
 async function getUserId(){
-	await fetch("https://public.missiveapp.com/v1/users,{  
+	await fetch("https://public.missiveapp.com/v1/users",{  
 		method: "GET",
 		headers: {
 			"Host": "public.missiveapp.com",
