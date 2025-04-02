@@ -45,11 +45,13 @@ async function getUserId(){
 	})
 	.then(response => response.json())
 	.then(data => {
+		var user
 		for(i=0;i<data.users.length;i++){
 			if(data.users[i].me){
-				alert(data.users[i].id);
+				user=data.users[i].id;
 			}
 		}
+		// getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
 	})
 }
 
