@@ -16,7 +16,8 @@ var messageDetails;
 var key;
 // avascript:var hour=new Date(input*1000);alert(hour);
 function getDayPart(){
-	var hour=new Date(Date.now());alert(date.getHours())+4;
+	var date=new Date(Date.now());
+	var hour=date.getHours();
 	alert(hour);
 	if(hour>16){
 		return 'evening';
