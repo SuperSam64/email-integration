@@ -5,7 +5,7 @@
 // 4) pass page contents to URL
 // 5) tracking
 // 6) add contact
-// 7) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither
+// 7) wording of "reaching out" vs "reply depending on # of messages, have third optoin of neither: loop through messages > variable outgoing (default false), if outgoing found, outgoing true > AFTER outgoing true, search for reply, do the same > if reply received, alter greeting
 // 8) adjust greeting to time of day
 // 9) consider adding a submenu while loading, and think about implimentation
 // 10) label conversations
@@ -18,7 +18,6 @@ var key;
 function getDayPart(){
 	var date=new Date(Date.now());
 	var hour=date.getHours();
-	alert(hour);
 	if(hour>16){
 		return 'evening';
 	}
