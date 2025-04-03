@@ -32,11 +32,11 @@ function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order'); 
 	if(urlParams.order===null){orderNumber=''};
-	/*if(urlParams.get('theme')!==null){
+	if(urlParams.get('theme')!==null){
 		if(urlParams.get('theme').toLowerCase()=='dark'){
 			document.getElementById('pagestyle').setAttribute('href', 'style_dark.css'); 
 		}
-	}*/
+	}
 	key=urlParams.get('key');
 	var output={
 		'subject': orderNumber==''?'':'Re: order #'+orderNumber,
@@ -45,6 +45,8 @@ function getDetails(){
 		'organization': urlParams.get('organization'),
 		'label':[ urlParams.get('label')]
 	}
+	alert('1');
+	console.log(output);
 	return output;
 }
 
