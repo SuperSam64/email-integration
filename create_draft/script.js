@@ -60,15 +60,17 @@ async function getUserId(){
 	})
 	.then(response => response.json())
 	.then(data => {
-		var user
+		var user;
+		var userName;
 		for(i=0;i<data.users.length;i++){
 			if(data.users[i].me){
-				user=(data.users[i].name).split(' ')[1];
+				user=(data.users[i].id);
+				userName=(data.users[i].name).split(' ')[1];
 			}
 		}
 		messageDetails.assignees=[user];
 		messageDetails.signature=(
-			'<div>--</div><div>Sincerely,</div><div>'+user+'</div><div><br></div>'+
+			'<div>--</div><div>Sincerely,</div><div>'+userName+'</div><div><br></div>'+
 			'<div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">'+
 			'<img src="https://files.missiveusercontent.com/3747ddf5-6f69-4d16-a903-73873a0b8d37/large-FF-shield-logo-Full.png" '+
 			'alt="" title="" width="192" data-missive-resizable-image="true" data-missive-image-resolution="288" style="max-width: 100%"></a></div>'+
@@ -80,7 +82,6 @@ async function getUserId(){
 }
 
 async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
-	alert('sig 1 '+details.signature);
 	var until = currentTime;
 	if(!currentTime){until=Math.round(Date.now()/1000)};
 	var latest;
@@ -116,7 +117,6 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 }
 
 function createDraft(details,input=''){
-	alert('sig 2'+details.signature);
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
