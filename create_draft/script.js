@@ -65,7 +65,7 @@ async function getUserId(){
 		for(i=0;i<data.users.length;i++){
 			if(data.users[i].me){
 				user=(data.users[i].id);
-				userName=(data.users[i].name).split(' ')[1];
+				userName=(data.users[i].name).split(' ')[0];
 			}
 		}
 		messageDetails.assignees=[user];
