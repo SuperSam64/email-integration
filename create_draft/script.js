@@ -103,6 +103,7 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 
 function createDraft(details,time,input=''){
 	alert(getDayPart(time));
+	alert(time);
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
