@@ -12,7 +12,7 @@
 // 11) set to recognize user wtihout needing ID
 // 12) quote previous message
 
-var messageDetails=getDetails();
+var messageDetails;
 var key;
 
 function getDetails(){
@@ -48,13 +48,15 @@ async function getUserId(){
 				user=data.users[i].id;
 			}
 		}
-		getConversationId(messageDetails,user);
+		messageDetails=getDetails();
+		messageDetails.assignees=[user];
+		getConversationId(messageDetails);
 		//getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
 	})
 }
 
-async function getConversationId(details,user,currentTime,searchRange=7,resultsPerPage=50){
-	details.user=user;
+async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
+	
 	var until = currentTime;
 	if(!currentTime){until=Math.round(Date.now()/1000)};
 	
