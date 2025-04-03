@@ -62,6 +62,14 @@ async function getUserId(){
 			}
 		}
 		messageDetails.assignees=[user];
+		messageDetails.signature=(
+			'<div>--</div><div>Sincerely,</div><div>'+user+'</div><div><br></div>'+
+			'<div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">'+
+			'<img src="https://files.missiveusercontent.com/3747ddf5-6f69-4d16-a903-73873a0b8d37/large-FF-shield-logo-Full.png" '+
+			'alt="" title="" width="192" data-missive-resizable-image="true" data-missive-image-resolution="288" style="max-width: 100%"></a></div>'+
+			'<div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp; | &nbsp;📞 <a href="tel:+18664383458">'+
+			'866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div>'
+		)		
 		getConversationId(messageDetails);
 	})
 }
