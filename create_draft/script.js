@@ -15,8 +15,6 @@
 var messageDetails=getDetails();
 var key;
 
-getUserId();
-
 function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
