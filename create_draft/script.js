@@ -26,7 +26,8 @@ function getDetails(){
 		'subject': orderNumber==''?'':'Re: order #'+orderNumber,
 		'firstName': urlParams.get('firstName'),
 		'email':urlParams.get('email'),
-		'organization': urlParams.get('organization')
+		'organization': urlParams.get('organization'),
+		'label':[ urlParams.get('label')]
 	}
 	return output;
 }
@@ -111,7 +112,8 @@ function createDraft(details,input=''){
 					"address": "boldsales@filtersfast.com"
 				},
 				"organization": details.organization,
-				"add_assignees": details.assignees
+				"add_assignees": details.assignees,
+				"add_shared_labels": details.label
 			}
 		}),
 		headers: {
