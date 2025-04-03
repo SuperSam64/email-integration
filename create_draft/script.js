@@ -17,7 +17,9 @@ var key;
 
 function getDayPart(input){
 	var hour=new Date(input*1000).getHours()-1;
-	alert(hour);
+	var testDate=new Date(input);////////
+	alert(testDate);////////
+	alert(hour);////////
 	if(hour>16){
 		return 'evening';
 	}
