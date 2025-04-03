@@ -32,8 +32,6 @@ function getDayPart(input){
 function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
-	var user;////////////////////
-	
 	if(urlParams.order===null){orderNumber=''}
 	key=urlParams.get('key');
 	var output={
@@ -64,18 +62,14 @@ async function getUserId(){
 				user=data.users[i].id;
 			}
 		}
-		
 		messageDetails.assignees=[user];
 		getConversationId(messageDetails);
-		//getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
 	})
 }
 
 async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
-	
 	var until = currentTime;
 	if(!currentTime){until=Math.round(Date.now()/1000)};
-	
 	var latest;
 	await fetch("https://public.missiveapp.com/v1/conversations?all=true&limit="+resultsPerPage+"&until="+until,{  
 		method: "GET",
@@ -115,7 +109,7 @@ function createDraft(details,time,input=''){
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+dayPart(time)+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
+				"body": "Good "+getDayPart(time)+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
 				"to_fields": [
 					{
 						"address": details.email
