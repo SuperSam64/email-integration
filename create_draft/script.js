@@ -43,7 +43,7 @@ function getDetails(){
 		'firstName': urlParams.get('firstName'),
 		'email':urlParams.get('email'),
 		'organization': urlParams.get('organization'),
-		'label':[ urlParams.get('label')]
+		'label':[urlParams.get('label')]
 	}
 	return output;
 }
@@ -80,6 +80,7 @@ async function getUserId(){
 }
 
 async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
+	alert('sig 1 '+details.signature);
 	var until = currentTime;
 	if(!currentTime){until=Math.round(Date.now()/1000)};
 	var latest;
@@ -115,6 +116,7 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 }
 
 function createDraft(details,input=''){
+	alert('sig 2'+details.signature);
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
