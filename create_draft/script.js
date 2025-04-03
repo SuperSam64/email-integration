@@ -14,12 +14,10 @@
 
 var messageDetails;
 var key;
-
-function getDayPart(input){
-	var hour=new Date(input*1000).getHours()-1;
-	var testDate=new Date(input*1000);////////
-	alert(testDate);////////
-	alert(hour);////////
+// avascript:var hour=new Date(input*1000);alert(hour);
+function getDayPart(){
+	var hour=Date.now().getHours();
+	alert(hour);
 	if(hour>16){
 		return 'evening';
 	}
@@ -98,22 +96,21 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 			getConversationId(details,until,searchRange,resultsPerPage);
 		}
 		else{
-			createDraft(details,currentTime);
+			createDraft(details);
 		return;
 		}
 	})
 }
 
-function createDraft(details,time,input=''){
-	alert(getDayPart(time));
-	alert(time);
+function createDraft(details,input=''){
+	alert(getDayPart());
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart(time)+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
+				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
 				"to_fields": [
 					{
 						"address": details.email
