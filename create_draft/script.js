@@ -32,6 +32,7 @@ function getDetails(){
 }
 
 async function getUserId(){
+	messageDetails=getDetails();
 	await fetch("https://public.missiveapp.com/v1/users",{  
 		method: "GET",
 		headers: {
@@ -48,7 +49,7 @@ async function getUserId(){
 				user=data.users[i].id;
 			}
 		}
-		messageDetails=getDetails();
+		
 		messageDetails.assignees=[user];
 		getConversationId(messageDetails);
 		//getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
