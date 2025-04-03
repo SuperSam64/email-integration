@@ -15,6 +15,20 @@
 var messageDetails;
 var key;
 
+function getDayPart(input){
+	var hour=new Date(input*1000).getHours();
+	alert(hour);
+	if(hour>16){
+		return 'evening';
+	}
+	else if(hour>11){
+		return 'afternoon';
+	}
+	else{
+		return 'morning'
+	}
+}
+
 function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
