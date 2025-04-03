@@ -116,7 +116,7 @@ function createDraft(details,input=''){
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
+				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>Thank you for reaching out to us!"+details.signature,
 				"to_fields": [
 					{
 						"address": details.email
