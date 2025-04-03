@@ -120,7 +120,8 @@ function createDraft(details,input=''){
 				},
 				"organization": details.organization,
 				"add_assignees": details.assignees,
-				"add_shared_labels": details.label
+				"add_shared_labels": details.label,
+				"quote_previous_message": true
 			}
 		}),
 		headers: {
