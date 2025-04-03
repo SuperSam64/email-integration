@@ -45,8 +45,6 @@ function getDetails(){
 		'organization': urlParams.get('organization'),
 		'label':[ urlParams.get('label')]
 	}
-	alert('1');
-	console.log(output);
 	return output;
 }
 
@@ -76,7 +74,7 @@ async function getUserId(){
 			'alt="" title="" width="192" data-missive-resizable-image="true" data-missive-image-resolution="288" style="max-width: 100%"></a></div>'+
 			'<div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp; | &nbsp;📞 <a href="tel:+18664383458">'+
 			'866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div>'
-		)		
+		);	
 		getConversationId(messageDetails);
 	})
 }
