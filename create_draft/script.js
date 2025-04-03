@@ -31,6 +31,11 @@ function getDayPart(){
 function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
+	if(urlParams.get('theme')!==null){
+		if(urlParams.get('theme').toLowerCase()=='dark'){
+			document.getElementById('pagestyle').setAttribute('href', 'style_dark.css'); 
+		}
+	} 
 	if(urlParams.order===null){orderNumber=''}
 	key=urlParams.get('key');
 	var output={
