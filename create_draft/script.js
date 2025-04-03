@@ -17,7 +17,6 @@ var key;
 
 function getDayPart(input){
 	var hour=new Date(input*1000).getHours();
-	alert(hour);
 	if(hour>16){
 		return 'evening';
 	}
@@ -103,6 +102,7 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 }
 
 function createDraft(details,time,input=''){
+	alert(getDayPart(time));
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
