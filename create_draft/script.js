@@ -102,20 +102,20 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 			getConversationId(details,until,searchRange,resultsPerPage);
 		}
 		else{
-			createDraft(details);
+			createDraft(details,currentTime);
 		return;
 		}
 	})
 }
 
-function createDraft(details,input=''){
+function createDraft(details,time,input=''){
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good morning "+details.firstName+",<br><br>Thank you for reaching out to us!",
+				"body": "Good "+dayPart(time)+" "+details.firstName+",<br><br>Thank you for reaching out to us!",
 				"to_fields": [
 					{
 						"address": details.email
