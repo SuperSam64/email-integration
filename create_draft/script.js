@@ -50,7 +50,8 @@ async function getUserId(){
 				user=data.users[i].id;
 			}
 		}
-		// getConversationId(messageDetails,user);    getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
+		getConversationId(messageDetails,user);
+		//getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
 	})
 }
 
