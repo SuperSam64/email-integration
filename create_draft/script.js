@@ -14,7 +14,6 @@
 
 var messageDetails;
 var key;
-// avascript:var hour=new Date(input*1000);alert(hour);
 function getDayPart(){
 	var date=new Date(Date.now());
 	var hour=date.getHours();
@@ -103,7 +102,6 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 }
 
 function createDraft(details,input=''){
-	alert(getDayPart());
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
