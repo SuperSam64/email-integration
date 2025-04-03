@@ -16,7 +16,8 @@ var messageDetails;
 var key;
 
 function getDayPart(input){
-	var hour=new Date(input*1000).getHours();
+	var hour=new Date(input*1000).getHours()-1;
+	alert(hours);
 	if(hour>16){
 		return 'evening';
 	}
