@@ -28,8 +28,7 @@ function getDetails(){
 		'subject': orderNumber==''?'':'Re: order #'+orderNumber,
 		'firstName': urlParams.get('firstName'),
 		'email':urlParams.get('email'),
-		'organization': urlParams.get('organization'),
-		'assignees': [urlParams.get('user')]
+		'organization': urlParams.get('organization')
 	}
 	return output;
 }
@@ -51,11 +50,12 @@ async function getUserId(){
 				user=data.users[i].id;
 			}
 		}
-		// getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
+		// getConversationId(messageDetails,user);    getConversationID, pass the user object. not user[].id, just user (so both name and ID can be pulled from it later)
 	})
 }
 
-async function getConversationId(details,currentTime,searchRange=7,resultsPerPage=50){
+async function getConversationId(details,user,currentTime,searchRange=7,resultsPerPage=50){
+	details.user=user;
 	var until = currentTime;
 	if(!currentTime){until=Math.round(Date.now()/1000)};
 	
