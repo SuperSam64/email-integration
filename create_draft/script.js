@@ -118,7 +118,9 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 }
 
 async function getReplyType(details,input=''){
-	var reply=false;
+	var firstContact=true;
+	var incoming=0;
+	var repliesSent=0;
 	await fetch("https://public.missiveapp.com/v1/conversations/"+input+"/messages",{  
 		method: "GET",
 		headers: {
@@ -129,7 +131,22 @@ async function getReplyType(details,input=''){
 	})
 	.then(response => response.json())
 	.then(data => {
-		console.log('testing for reply');
+		for(m=0;m<data.messages.length;m++){
+			var currentMessage;
+			for(s=0;s<data.messages[m].to_fields.length;s++){
+				if(data.messages[m].to_fields[s].address.includes('@filtersfast.com')&&!(data.messages[m].from_field.includes('@filtersfast.com'))){
+					incoming++;
+				}
+				console.log('round '+(m+1)+', incoming: '+incoming);
+				if(incoming>0&&!(data.messages[m].to_fields[s].address.includes('@filtersfast.com'))&&data.messages[m].from_field.includes('@filtersfast.com')){
+					repliesSent++;
+				}
+				console.log('round '+(m+1)+', replies: '+repliesSent);
+			}
+			console.log('final, replies sent: '+repliesSent);
+			if(repliesSent>0){firstContact=false};
+			console.log('first contact: '+firstContact);
+		}
 		alert('checkpoint');
 		createDraft(details,input);
 	})
