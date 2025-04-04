@@ -100,7 +100,6 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 			for(n=0;n<data.conversations[i].external_authors.length;n++){
 				if(data.conversations[i].external_authors[n].address){parsed=data.conversations[i].external_authors[n].address.toLowerCase().trim()}						
 				if(details.email.toLowerCase().trim()==parsed){
-					//createDraft(details,data.conversations[i].id);
 					getReplyType(details,data.conversations[i].id);
 					return data.conversations[i].id;
 				}
@@ -120,7 +119,6 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 async function getReplyType(details,input=''){
 	var firstContact=true;
 	var incoming=0;
-	var repliesSent=0;
 	await fetch("https://public.missiveapp.com/v1/conversations/"+input+"/messages",{  
 		method: "GET",
 		headers: {
@@ -137,29 +135,26 @@ async function getReplyType(details,input=''){
 				if(data.messages[m].to_fields[s].address.includes('@filtersfast.com')&&!(data.messages[m].from_field.address.includes('@filtersfast.com'))){
 					incoming++;
 				}
-				console.log('round '+(m+1)+', incoming: '+incoming);
 				if(incoming>0&&!(data.messages[m].to_fields[s].address.includes('@filtersfast.com'))&&data.messages[m].from_field.address.includes('@filtersfast.com')){
-					repliesSent++;
+					firstContact=false;
 				}
-				console.log('round '+(m+1)+', replies: '+repliesSent);
 			}
-			console.log('final, replies sent: '+repliesSent);
-			if(repliesSent>0){firstContact=false};
-			console.log('first contact: '+firstContact);
 		}
-		alert('checkpoint');
-		createDraft(details,input);
+		createDraft(details,firstContact,input);
 	})
 }
 
-function createDraft(details,input=''){
+function createDraft(details,firstContact=true,input=''){
+	var intro='Thank you for reaching out to us!';
+	var messageBody='';
+	if(!firstContact){intro='Thank you for your reply!'}
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>Thank you for reaching out to us!"+details.signature,
+				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>"intro+messageBody+details.signature,
 				"to_fields": [
 					{
 						"address": details.email
