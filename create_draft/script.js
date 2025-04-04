@@ -32,7 +32,6 @@ function getDetails(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var orderNumber=urlParams.get('order');
 	var label=urlParams.get('label');
-	if(label===null){label=''}
 	if(urlParams.order===null){orderNumber=''};
 	if(urlParams.get('theme')!==null){
 		if(urlParams.get('theme').toLowerCase()=='dark'){
@@ -44,9 +43,9 @@ function getDetails(){
 		'subject': orderNumber==''?'':'Re: order #'+orderNumber,
 		'firstName': urlParams.get('firstName'),
 		'email':urlParams.get('email'),
-		'organization': urlParams.get('organization'),
-		'label':[label]
+		'organization': urlParams.get('organization')
 	}
+	if(label!==null){output.label=[];output.label.push(label)};
 	return output;
 }
 
