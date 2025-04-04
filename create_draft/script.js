@@ -99,8 +99,8 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 			for(n=0;n<data.conversations[i].external_authors.length;n++){
 				if(data.conversations[i].external_authors[n].address){parsed=data.conversations[i].external_authors[n].address.toLowerCase().trim()}						
 				if(details.email.toLowerCase().trim()==parsed){
-					// createDraft(details,data.conversations[i].id);
-					getReplyType(details,data.conversations[i].id);
+					createDraft(details,data.conversations[i].id);
+					///getReplyType(details,data.conversations[i].id);
 					return data.conversations[i].id;
 				}
 			}
@@ -116,14 +116,14 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 	})
 }
 
-/*async */function getReplyType(details,input=''){
+/*async function getReplyType(details,input=''){
 	var reply=false;
 	if(input!=''){
 		console.log('testing for reply');
 		createDraft(details,input);
 	}
 	alert('error');
-}
+}*/
 
 function createDraft(details,input=''){
 	fetch("https://public.missiveapp.com/v1/drafts", {
