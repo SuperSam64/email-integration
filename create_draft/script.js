@@ -145,16 +145,16 @@ async function getReplyType(details,input=''){
 }
 
 function createDraft(details,firstContact=true,input=''){
-	var intro='Thank you for reaching out to us!';
+	var intro='Thank you for reaching out to us! ';
 	var messageBody='';
-	if(!firstContact){intro='Thank you for your reply!'}
+	if(!firstContact){intro='Thank you for your reply! '}
 	fetch("https://public.missiveapp.com/v1/drafts", {
         method: "POST",
         body: JSON.stringify({
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>"intro+messageBody+details.signature,
+				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>"+intro+messageBody+details.signature,
 				"to_fields": [
 					{
 						"address": details.email
