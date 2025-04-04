@@ -134,11 +134,11 @@ async function getReplyType(details,input=''){
 		for(m=0;m<data.messages.length;m++){
 			var currentMessage;
 			for(s=0;s<data.messages[m].to_fields.length;s++){
-				if(data.messages[m].to_fields[s].address.includes('@filtersfast.com')&&!(data.messages[m].from_field.includes('@filtersfast.com'))){
+				if(data.messages[m].to_fields[s].address.includes('@filtersfast.com')&&!(data.messages[m].from_field.address.includes('@filtersfast.com'))){
 					incoming++;
 				}
 				console.log('round '+(m+1)+', incoming: '+incoming);
-				if(incoming>0&&!(data.messages[m].to_fields[s].address.includes('@filtersfast.com'))&&data.messages[m].from_field.includes('@filtersfast.com')){
+				if(incoming>0&&!(data.messages[m].to_fields[s].address.includes('@filtersfast.com'))&&data.messages[m].from_field.address.includes('@filtersfast.com')){
 					repliesSent++;
 				}
 				console.log('round '+(m+1)+', replies: '+repliesSent);
