@@ -119,7 +119,7 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 
 async function getReplyType(details,input=''){
 	var reply=false;
-	await fetch("https://public.missiveapp.com/v1/conversations/"+input+"/messages,{  
+	await fetch("https://public.missiveapp.com/v1/conversations/"+input+"/messages",{  
 		method: "GET",
 		headers: {
 			"Host": "public.missiveapp.com",
@@ -130,6 +130,7 @@ async function getReplyType(details,input=''){
 	.then(response => response.json())
 	.then(data => {
 		console.log('testing for reply');
+		alert('checkpoint');
 		createDraft(details,input);
 	})
 }
