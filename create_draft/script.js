@@ -71,7 +71,7 @@ async function getUserId(){
 		}
 		messageDetails.assignees=[user];
 		messageDetails.signature=(
-			'<div>--</div><div>Sincerely,</div><div>'+userName+'</div><div><br></div>'+
+			'<br><div>--</div><div>Sincerely,</div><div>'+userName+'</div><div><br></div>'+
 			'<div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">'+
 			'<img src="https://files.missiveusercontent.com/3747ddf5-6f69-4d16-a903-73873a0b8d37/large-FF-shield-logo-Full.png" '+
 			'alt="" title="" width="192" data-missive-resizable-image="true" data-missive-image-resolution="288" style="max-width: 100%"></a></div>'+
@@ -100,8 +100,8 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 			for(n=0;n<data.conversations[i].external_authors.length;n++){
 				if(data.conversations[i].external_authors[n].address){parsed=data.conversations[i].external_authors[n].address.toLowerCase().trim()}						
 				if(details.email.toLowerCase().trim()==parsed){
-					createDraft(details,data.conversations[i].id);
-					///getReplyType(details,data.conversations[i].id);
+					//createDraft(details,data.conversations[i].id);
+					getReplyType(details,data.conversations[i].id);
 					return data.conversations[i].id;
 				}
 			}
