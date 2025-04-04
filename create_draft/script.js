@@ -116,12 +116,13 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 	})
 }
 
-async function getReplyType(details,input=''){
+/*async */function getReplyType(details,input=''){
 	var reply=false;
 	if(input!=''){
 		console.log('testing for reply');
 		createDraft(details,input);
 	}
+	alert('error');
 }
 
 function createDraft(details,input=''){
