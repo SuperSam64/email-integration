@@ -117,14 +117,22 @@ async function getConversationId(details,currentTime,searchRange=7,resultsPerPag
 	})
 }
 
-/*async function getReplyType(details,input=''){
+async function getReplyType(details,input=''){
 	var reply=false;
-	if(input!=''){
+	await fetch("https://public.missiveapp.com/v1/conversations/"+input+"/messages,{  
+		method: "GET",
+		headers: {
+			"Host": "public.missiveapp.com",
+			"Authorization": "Bearer " + key,
+			"Content-type": "application/json"
+		},
+	})
+	.then(response => response.json())
+	.then(data => {
 		console.log('testing for reply');
 		createDraft(details,input);
-	}
-	alert('error');
-}*/
+	})
+}
 
 function createDraft(details,input=''){
 	fetch("https://public.missiveapp.com/v1/drafts", {
