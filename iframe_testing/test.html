@@ -3,14 +3,9 @@
 	<head>
 		<!--<link rel="stylesheet" href="style.css">-->
 	</head>
-	<body>
-		<div id='text'>Before</div>
-		<iframe src="frame.html"></iframe>
+	<body onload="listenForEvent()">
+		<div id='textBox'>On</div>
+			<iframe src="frame.html" ></iframe>
 		<script src="script.js"></script>
-		<script type="text/javascript">
-			function receiveMessage(data){
-				console.log('Received':,data.message);
-			}
-		</script>
 	</body>
 </html>
