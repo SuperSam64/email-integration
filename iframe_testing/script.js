@@ -1,4 +1,12 @@
-function buttonClick(){
-	const data={message:"hello!"};
-	window.parent.receiveMessage(data);
+function hideForm(input){
+	window.parent.postMessage(input, "*");
+}
+
+
+
+function listenForEvent(){
+	window.addEventListener('message', (event)=>{
+		var element=document.getElementById('textBox');
+		element.innerText=event.data;
+	});
 }
