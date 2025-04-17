@@ -162,7 +162,7 @@ function createDraft(details,firstContact=true,input=''){
 				],
 				"from_field": {
 					"name": "Filters Fast Customer Care Team",
-					"address": "boldsales@filtersfast.com"
+					"address": "sales@filtersfast.com"
 				},
 				"organization": details.organization,
 				"add_assignees": details.assignees,
