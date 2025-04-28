@@ -70,7 +70,7 @@ async function getUserId(){
 			}
 		}
 		messageDetails.assignees=[user];
-		messageDetails.signature='';
+		/*messageDetails.signature='';*/
 		/* messageDetails.signature=(
 			'<br><div>--</div><div>Sincerely,</div><div>'+userName+'</div><div><br></div>'+
 			'<div>Filters Fast Customer Experience</div><div><br></div><div><a href="https://www.filtersfast.com">'+
@@ -79,6 +79,9 @@ async function getUserId(){
 			'<div>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp; | &nbsp;📞 <a href="tel:+18664383458">'+
 			'866-438-3458 </a>&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></div>'
 		); */
+		messageDetails.signature=(
+			'<div class="missive_signature" spellcheck="false"><p style="margin-top: 0; margin-bottom: 0">--</p><p style="margin-top: 0; margin-bottom: 0">Sincerely,</p><p style="margin-top: 0; margin-bottom: 0">'+userName+'</p></div>'
+		);
 		getConversationId(messageDetails);
 	})
 }
