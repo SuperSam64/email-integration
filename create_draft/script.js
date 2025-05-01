@@ -82,6 +82,18 @@ async function getUserId(){
 		/* messageDetails.signature=(
 			'<div class="missive_signature" spellcheck="false"><br><p style="margin-top: 0; margin-bottom: 0">--</p><p style="margin-top: 0; margin-bottom: 0">Sincerely,</p><p style="margin-top: 0; margin-bottom: 0">'+userName+'</p></div>'
 		); */
+		messageDetails.signature=(
+			'<div class="missive_signature" spellcheck="false"><br>'+
+			'<p style="margin-top: 0; margin-bottom: 0">--</p>'+
+			'<p style="margin-top: 0; margin-bottom: 0">Sincerely,</p>'+
+			'<p style="margin-top: 0; margin-bottom: 0">'+userName+'</p><p></p>'+
+			'<p>Filters Fast Customer Experience</p><p><p>'+
+			'<p><a href="https://www.filtersfast.com">'+
+			'<img src="https://files.missiveusercontent.com/3747ddf5-6f69-4d16-a903-73873a0b8d37/large-FF-shield-logo-Full.png"alt="" '+
+			'title="" width="192" data-missive-resizable-image="true" data-missive-image-resolution="288" style="max-width: 100%">'+
+			'</a></p><p>✉ <a href="mailto:support@filtersfast.com">support@filtersfast.com</a>&nbsp; | &nbsp;📞 <a href="tel:+18664383458">866-438-3458</a>'+
+			'&nbsp; | &nbsp;💬 <a href="sms:+17042289166">704-228-9166</a></p></div>'
+		);
 		getConversationId(messageDetails);
 	})
 }
