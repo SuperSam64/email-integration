@@ -1,8 +1,7 @@
 var contact=getParams();
 coneole.log(contact);
 function getParams(){
-  var queryString=window.location.search;
-  var urlParams=new URLSearchParams(queryString);
+  var urlParams=new URLSearchParams(window.location.search);
   return {
     name:urlParams.get('name'),
     phone:urlParams.get('phone'),
