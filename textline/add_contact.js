@@ -1,5 +1,5 @@
 var contact=getParams();
-coneole.log(contact);
+console.log(contact);
 function getParams(){
   var urlParams=new URLSearchParams(window.location.search);
   return {
