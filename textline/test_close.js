@@ -1,3 +1,3 @@
-function something(){
-  closeMe();
+function closeMe(){
+  document.getElementById('close_button').click();
 }
