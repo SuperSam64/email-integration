@@ -1,3 +1,3 @@
 function something{
-  alert('hi');
+  closeMe();
 }
