@@ -58,5 +58,5 @@ function storeContactData(contact,key,uuid){
 
 function closeWindow(){
 	alert('updated');
-	window.open('','_self').close();
+	/*window.open('','_self').close();*/
 }
