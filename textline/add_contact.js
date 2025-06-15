@@ -51,6 +51,6 @@ function storeContactData(contact,key,uuid){
 }
 
 function closeWindow(){
-	alert('Contact data has been added, click OK to close this window.');
+	/*alert('Contact data has been added, click OK to close this window.');*/
 	window.open('','_self').close();
 }
