@@ -15,7 +15,7 @@ async function getParams(){
 }
 
 async function awaitResult(contact,key,uuid){
-	var result=await Promise(storeContactData(contact,key,uuid));
+	var result=await Promise.all([storeContactData(contact,key,uuid)]);
 	closeWindow();
 }
 
