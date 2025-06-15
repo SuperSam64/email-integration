@@ -11,7 +11,12 @@ async function getParams(){
 		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
-	storeContactData(contact,key,uuid);
+	awaitResult(contact,key,uuid);
+}
+
+async function awaitResult(contact,key,uuid){
+	var result=await Promise.all(storeContactData(contact,key,uuid));
+	closeWindow();
 }
 
 function storeContactData(contact,key,uuid){
@@ -43,7 +48,6 @@ function storeContactData(contact,key,uuid){
 	};
 	if(typeof uuid==='undefined'){body.customer.phone_number=contact.phone_number};
 	request.send(JSON.stringify(body));
-	closeWindow();
 }
 
 function closeWindow(){
