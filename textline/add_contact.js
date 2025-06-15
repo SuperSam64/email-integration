@@ -12,20 +12,16 @@ function getParams(){
 		order:urlParams.get('order')
 	};
 	awaitResult(contact,key,uuid);
-	
 }
 
 function awaitResult(contact,key,uuid){
 	var contactData=new Promise(resolve => {
 		storeContactData(contact,key,uuid);
 		resolve('Contact data stored');
-	}).then(
+	});
+	contactData.then(
 		(result) => {
-			console.log('Contact data stored');
-			closeWindow();
-		},
-		(error) =>{
-			console.log('Error');
+			console.log(result);
 			closeWindow();
 		}
 	);
@@ -63,6 +59,6 @@ function storeContactData(contact,key,uuid){
 }
 
 function closeWindow(){
-	/*alert('updated');*/
+	alert('Contact data has been added, click OK to close this window.');
 	window.open('','_self').close();
 }
