@@ -4,7 +4,7 @@ function getParams(){
   var urlParams=new URLSearchParams(window.location.search);
   return [
     urlParams.get('key'),
-    uuid:urlParams.get('uuid'), 
+    urlParams.get('uuid'), 
     {     
       phone_number:urlParams.get('phone_number'),
       name:urlParams.get('name'),
