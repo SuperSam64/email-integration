@@ -1,5 +1,3 @@
-storeContactData(getParams()[0],getParams()[1],getParams()[2]);
-
 function getParams(){
   var urlParams=new URLSearchParams(window.location.search);
   return [
