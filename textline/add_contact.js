@@ -17,9 +17,9 @@ function getParams(){
 
 async function awaitResult(contact,key,uuid){
 	var contactData=new Promise(resolve => {
-		storeContactData(contact,key,uuid);
+		resolve(storeContactData(contact,key,uuid));
 	});
-	await contactData;
+	var result = await contactData;
 	closeWindow();
 }
 
