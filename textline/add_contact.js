@@ -8,6 +8,7 @@ function getParams(){
 		phone_number:urlParams.get('phone_number'),
 		name:urlParams.get('name'),
 		email:urlParams.get('email'),
+		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
 	storeContactData(contact,key,uuid);
