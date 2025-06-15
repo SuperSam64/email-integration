@@ -1,16 +1,15 @@
-storeContactData(getParams()[0],getParams()[1],getParams()[2])
+getParams();
 
 function getParams(){
-  var urlParams=new URLSearchParams(window.location.search);
-  return [
-    urlParams.get('key'),
-    urlParams.get('uuid'), 
-    {     
-      phone_number:urlParams.get('phone_number'),
-      name:urlParams.get('name'),
-      email:urlParams.get('email'),
-      order:urlParams.get('order')
-  }];
+var urlParams=new URLSearchParams(window.location.search);
+var key=urlParams.get('key');
+var uuid=urlParams.get('uuid'),;
+var contact={     
+	phone_number:urlParams.get('phone_number'),
+	name:urlParams.get('name'),
+	email:urlParams.get('email'),
+	order:urlParams.get('order')
+	};
 }
 
 function storeContactData(contact,key,uuid){
@@ -21,12 +20,12 @@ function storeContactData(contact,key,uuid){
 	else{
 		request.open('PUT', 'https://private-anon-c310406e46-textline.apiary-proxy.com/api/customer/'+uuid+'.json?access_token='+key);
 	}
-	request.setRequestHeader('Content-Type', 'application/json');
-	request.onreadystatechange = function () {
+		request.setRequestHeader('Content-Type', 'application/json');
+		request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 		console.log('Status:', this.status);
-		console.log('Headers:', this.getAllResponseHeaders());
-		console.log('Body:', this.responseText);
+			console.log('Headers:', this.getAllResponseHeaders());
+			console.log('Body:', this.responseText);
 		}
 	};
 	var body = {
