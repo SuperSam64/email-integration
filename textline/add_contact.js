@@ -22,13 +22,13 @@ function awaitResult(contact,key,uuid){
 	}).then(
 		(result) => {
 			console.log('Contact data stored');
+			closeWindow();
 		},
 		(error) =>{
 			console.log('Error');
+			closeWindow();
 		}
-		closeWindow();
 	);
-	
 }
 
 function storeContactData(contact,key,uuid){
