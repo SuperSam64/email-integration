@@ -19,8 +19,7 @@ async function awaitResult(contact,key,uuid){
 	var contactData=new Promise(resolve => {
 		storeContactData(contact,key,uuid);
 	});
-	let result = await contactData;
-	console.log(result);
+	await contactData;
 	closeWindow();
 }
 
