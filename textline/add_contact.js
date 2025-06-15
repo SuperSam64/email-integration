@@ -43,7 +43,9 @@ function storeContactData(contact,key,uuid){
 	};
 	if(typeof uuid==='undefined'){body.customer.phone_number=contact.phone_number};
 	request.send(JSON.stringify(body));
-	closeWindow();
+	request.on('finish', () => {
+		closeWindow();
+	});
 }
 
 function closeWindow(){
