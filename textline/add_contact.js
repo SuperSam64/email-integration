@@ -1,6 +1,6 @@
 getParams();
 
-function getParams(){
+async function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
 	var uuid=urlParams.get('uuid');
@@ -43,9 +43,7 @@ function storeContactData(contact,key,uuid){
 	};
 	if(typeof uuid==='undefined'){body.customer.phone_number=contact.phone_number};
 	request.send(JSON.stringify(body));
-	request.on('finish', () => {
-		closeWindow();
-	});
+	closeWindow();
 }
 
 function closeWindow(){
