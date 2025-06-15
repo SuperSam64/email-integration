@@ -13,6 +13,7 @@ async function getParams(){
 	};
 	awaitResult(contact,key,uuid);
 	closeWindow();
+	alert('updated');
 }
 
 async function awaitResult(contact,key,uuid){
