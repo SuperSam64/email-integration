@@ -13,7 +13,6 @@ async function getParams(){
 	};
 	awaitResult(contact,key,uuid);
 	closeWindow();
-	alert('updated');
 }
 
 async function awaitResult(contact,key,uuid){
@@ -58,5 +57,6 @@ function storeContactData(contact,key,uuid){
 }
 
 function closeWindow(){
+	alert('updated');
 	window.open('','_self').close();
 }
