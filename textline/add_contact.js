@@ -1,15 +1,16 @@
 getParams();
 
 function getParams(){
-var urlParams=new URLSearchParams(window.location.search);
-var key=urlParams.get('key');
-var uuid=urlParams.get('uuid'),;
-var contact={     
-	phone_number:urlParams.get('phone_number'),
-	name:urlParams.get('name'),
-	email:urlParams.get('email'),
-	order:urlParams.get('order')
+	var urlParams=new URLSearchParams(window.location.search);
+	var key=urlParams.get('key');
+	var uuid=urlParams.get('uuid');
+	var contact={     
+		phone_number:urlParams.get('phone_number'),
+		name:urlParams.get('name'),
+		email:urlParams.get('email'),
+		order:urlParams.get('order')
 	};
+	storeContactData(contact,key,uuid);
 }
 
 function storeContactData(contact,key,uuid){
