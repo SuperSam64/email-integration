@@ -15,12 +15,20 @@ function getParams(){
 	
 }
 
-async function awaitResult(contact,key,uuid){
+function awaitResult(contact,key,uuid){
 	var contactData=new Promise(resolve => {
-		resolve(storeContactData(contact,key,uuid));
-	});
-	var result = await contactData;
-	closeWindow();
+		storeContactData(contact,key,uuid);
+		resolve('Contact data stored');
+	}).then(
+		(result) => {
+			console.log('Contact data stored');
+		},
+		(error) =>{
+			console.log('Error');
+		}
+		closeWindow();
+	);
+	
 }
 
 function storeContactData(contact,key,uuid){
