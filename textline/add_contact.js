@@ -47,5 +47,5 @@ function storeContactData(contact,key,uuid){
 }
 
 function closeWindow(){
-  document.getElementById('close_button').click();
+	window.open('','_self').close();
 }
