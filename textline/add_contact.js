@@ -12,11 +12,17 @@ async function getParams(){
 		order:urlParams.get('order')
 	};
 	awaitResult(contact,key,uuid);
+	closeWindow();
 }
 
 async function awaitResult(contact,key,uuid){
-	var result=await Promise.all([storeContactData(contact,key,uuid)]);
-	closeWindow();
+	var contactData=new Promise(resolve =>
+		setTimeout(() => {
+			resolve("Contact added");
+		},8000);
+	});
+	let result = await contactData;
+	
 }
 
 function storeContactData(contact,key,uuid){
