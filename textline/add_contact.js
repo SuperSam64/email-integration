@@ -11,20 +11,7 @@ function getParams(){
 		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
-	awaitResult(contact,key,uuid);
-}
-
-function awaitResult(contact,key,uuid){
-	var contactData=new Promise(resolve => {
-		storeContactData(contact,key,uuid);
-		resolve('Contact data stored');
-	});
-	contactData.then(
-		(result) => {
-			console.log(result);
-			closeWindow();
-		}
-	);
+	storeContactData(contact,key,uuid);
 }
 
 function storeContactData(contact,key,uuid){
@@ -38,9 +25,14 @@ function storeContactData(contact,key,uuid){
 		request.setRequestHeader('Content-Type', 'application/json');
 		request.onreadystatechange = function () {
 		if (this.readyState === 4) {
-		console.log('Status:', this.status);
-			console.log('Headers:', this.getAllResponseHeaders());
-			console.log('Body:', this.responseText);
+			if(this.status === 200){
+				closeWindow();
+			}
+			else{
+				console.log('Status:', this.status);
+				console.log('Headers:', this.getAllResponseHeaders());
+				console.log('Body:', this.responseText);
+			}
 		}
 	};
 	var body = {
