@@ -1,6 +1,6 @@
 getParams();
 
-async function getParams(){
+function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
 	var uuid=urlParams.get('uuid');
@@ -12,7 +12,7 @@ async function getParams(){
 		order:urlParams.get('order')
 	};
 	awaitResult(contact,key,uuid);
-	closeWindow();
+	
 }
 
 async function awaitResult(contact,key,uuid){
@@ -23,6 +23,7 @@ async function awaitResult(contact,key,uuid){
 	});
 	let result = await contactData;
 	console.log(result);
+	closeWindow();
 }
 
 function storeContactData(contact,key,uuid){
