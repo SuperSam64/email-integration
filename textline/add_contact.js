@@ -16,13 +16,13 @@ async function getParams(){
 }
 
 async function awaitResult(contact,key,uuid){
-	var contactData=new Promise(resolve =>
+	var contactData=new Promise(resolve => {
 		setTimeout(() => {
 			resolve("Contact added");
 		},8000);
 	});
 	let result = await contactData;
-	
+	console.log(result);
 }
 
 function storeContactData(contact,key,uuid){
