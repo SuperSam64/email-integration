@@ -1,5 +1,5 @@
 var urlParams=new URLSearchParams(window.location.search);
-var query=urlParams.get(query);
+var query=urlParams.get('query');
 if(query=='something'){
 	window.location.href='https://www.google.com/search?q='+query;
 }
