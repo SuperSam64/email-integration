@@ -5,8 +5,7 @@ function getParams(){
 	var key=urlParams.get('key');
 	var uuid=urlParams.get('uuid');
 	var contact={     
-		phone_number_1:urlParams.get('phone_number_1'),
-		phone_number_2:urlParams.get('phone_number_2'),
+		phone_number:urlParams.get('phone_number'),
 		name:urlParams.get('name'),
 		email:urlParams.get('email'),
 		CID:urlParams.get('CID'),
@@ -47,7 +46,7 @@ function storeContactData(contact,key,uuid){
 			}
 		}
 	};
-	if(typeof uuid==='undefined'){body.customer.phone_number=contact.phone_number_1};
+	if(typeof uuid==='undefined'){body.customer.phone_number=contact.phone_number};
 	request.send(JSON.stringify(body));
 }
 
