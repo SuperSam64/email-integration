@@ -19,8 +19,13 @@ function getConversationId(contact,key){
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).customer==null){
-				alert('No match!');
-				closeWindow();
+				var userInput=prompt('No match!',contact.phone_number);
+				if(userInput===null){
+					closeWindow();
+				}
+				else{
+					alert('input entered');
+				}
 			}
 			else{
 				storeContactData(contact,key,JSON.parse(this.response).customer.uuid);
@@ -99,7 +104,10 @@ function normalize(input){
 
 function verifyPhoneNumber(input,default_name){
 	var output;
-	if(!(input===null)){
+	if(input===null){
+		closeWindow();
+	}
+	else{
 		if(typeof input==='string'){
 			if(normalize(input)==''){
 				alert('No phone number entered, please try again',input);
