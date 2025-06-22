@@ -19,13 +19,15 @@ function getConversationId(contact,key){
 	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
-			console.log('Status:', this.status);
-			console.log('Headers:', this.getAllResponseHeaders());
-			console.log('Body:', this.responseText);
-			storeContactData(contact,key,JSON.parse(this.response).customer.uuid);
+			if(JSON.parse(this.response)==null){
+				alert('No match!');
+				closeWindow();
+			}
+			else{
+				storeContactData(contact,key,JSON.parse(this.response).customer.uuid);
+			}
 		}
 	};
-	/*storeContactData(contact,key,uuid);*/
 	request.send();
 }
 
@@ -42,11 +44,6 @@ function storeContactData(contact,key,uuid){
 		if (this.readyState === 4) {
 			if(this.status === 200){
 				closeWindow();
-			}
-			else{
-				console.log('Status:', this.status);
-				console.log('Headers:', this.getAllResponseHeaders());
-				console.log('Body:', this.responseText);
 			}
 		}
 	};
@@ -120,7 +117,6 @@ function verifyPhoneNumber(input,default_name){
 			}
 		}
 		else if((normalize(input.billing.phone)==''||normalize(input.billing.phone)=='Invalid format')&&(normalize(input.shipping.phone)==''||normalize(input.shipping.phone)=='Invalid format')){
-			alert('2a');
 			var name=input.billing.name;
 			if(normalize(input.billing.phone)==''&&normalize(input.shipping.phone)==''){
 				var userInput=prompt('Please enter a phone number');
