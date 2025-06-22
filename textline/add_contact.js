@@ -1,4 +1,3 @@
-var uuid='015de882-187c-4f8b-a7dd-2ae4468f4b0d';
 getParams();
 
 function getParams(){
@@ -19,10 +18,13 @@ function getConversationId(contact,key){
 	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
-			console.log(JSON.parse(this.response).customer==null);/*
-			alert('No match!');
-			closeWindow();
-			storeContactData(contact,key,JSON.parse(this.response).customer.uuid);*/
+			if(JSON.parse(this.response).customer==null){
+				alert('No match!');
+				closeWindow();
+			}
+			else{
+				storeContactData(contact,key,JSON.parse(this.response).customer.uuid);
+			}
 		}
 	};
 	request.send();
