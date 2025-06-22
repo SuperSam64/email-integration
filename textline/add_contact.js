@@ -29,7 +29,7 @@ function getConversationId(contact,key){
 					closeWindow();
 				}
 				else{
-					alert('input entered');
+					verifyPhoneNumber(userInput);
 				}
 			}
 			else{
