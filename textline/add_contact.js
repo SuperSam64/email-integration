@@ -114,21 +114,21 @@ function verifyPhoneNumber(input,default_name){
 	}
 	/*else{
 		if(typeof input==='string'){*/
-			else if(normalize(input)==''){
-				alert('No phone number entered, please try again',input);
-				var userInput=prompt('Please enter a phone number');
-				return verifyPhoneNumber(userInput,default_name);
-			}
-			else if(normalize(input)=='Invalid format'){
-				alert(input+' is not a valid phone number, please try again',input);
-				var userInput=prompt('Please enter a phone number');
-				return verifyPhoneNumber(userInput,default_name);
-			}
-			else{
-				getParams(normalize(input));
-				return;
-				/*output='&name_1='+default_name+'&phone_1='+input;*/
-			}
+	else if(normalize(input)==''){
+		alert('No phone number entered, please try again',input);
+		var userInput=prompt('Please enter a phone number');
+		return verifyPhoneNumber(userInput,default_name);
+	}
+	else if(normalize(input)=='Invalid format'){
+		alert(input+' is not a valid phone number, please try again',input);
+		var userInput=prompt('Please enter a phone number');
+		return verifyPhoneNumber(userInput,default_name);
+	}
+	else{
+		getParams(normalize(input));
+		return;
+			/*output='&name_1='+default_name+'&phone_1='+input;*/
+	}
 		/*}
 		else if((normalize(input.billing.phone)==''||normalize(input.billing.phone)=='Invalid format')&&(normalize(input.shipping.phone)==''||normalize(input.shipping.phone)=='Invalid format')){
 			var name=input.billing.name;
@@ -155,8 +155,8 @@ function verifyPhoneNumber(input,default_name){
 		else{
 			output='&name_1='+normalize(input.billing.name)+'&phone_1='+normalize(input.billing.phone)+'&name_2='+input.shipping.name+'&phone_2='+normalize(input.shipping.phone);
 		}
-		return output;*/
-	}
+		return output;
+	}*/
 }
 
 function closeWindow(){
