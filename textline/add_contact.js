@@ -1,15 +1,20 @@
 getParams();
 
-function getParams(){
+function getParams(phone_input){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
-	var contact={     
-		phone_number:urlParams.get('phone_number'),
+	var contact={
 		name:urlParams.get('name'),
 		email:urlParams.get('email'),
 		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
+	if(typeof phone_input==='undefined'){
+		contact.phone_number=urlParams.get('phone_number');
+	}
+	else{
+		contact.phone_number=phone_input;
+	}
 	getConversationId(contact,key);
 }
 
@@ -107,9 +112,9 @@ function verifyPhoneNumber(input,default_name){
 	if(input===null){
 		closeWindow();
 	}
-	else{
-		if(typeof input==='string'){
-			if(normalize(input)==''){
+	/*else{
+		if(typeof input==='string'){*/
+			else if(normalize(input)==''){
 				alert('No phone number entered, please try again',input);
 				var userInput=prompt('Please enter a phone number');
 				return verifyPhoneNumber(userInput,default_name);
@@ -120,9 +125,11 @@ function verifyPhoneNumber(input,default_name){
 				return verifyPhoneNumber(userInput,default_name);
 			}
 			else{
-				output='&name_1='+default_name+'&phone_1='+input;
+				getParams(normalize(input));
+				return;
+				/*output='&name_1='+default_name+'&phone_1='+input;*/
 			}
-		}
+		/*}
 		else if((normalize(input.billing.phone)==''||normalize(input.billing.phone)=='Invalid format')&&(normalize(input.shipping.phone)==''||normalize(input.shipping.phone)=='Invalid format')){
 			var name=input.billing.name;
 			if(normalize(input.billing.phone)==''&&normalize(input.shipping.phone)==''){
@@ -148,7 +155,7 @@ function verifyPhoneNumber(input,default_name){
 		else{
 			output='&name_1='+normalize(input.billing.name)+'&phone_1='+normalize(input.billing.phone)+'&name_2='+input.shipping.name+'&phone_2='+normalize(input.shipping.phone);
 		}
-		return output;
+		return output;*/
 	}
 }
 
