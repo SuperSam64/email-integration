@@ -14,8 +14,18 @@ function getParams(){
 	getConversationId(contact,key);
 }
 
-function getConversationId(){
-	storeContactData(contact,key,uuid);
+function getConversationId(contact,key){
+	var request = new XMLHttpRequest();
+	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
+	request.onreadystatechange = function () {
+		if (this.readyState === 4) {
+			console.log('Status:', this.status);
+			console.log('Headers:', this.getAllResponseHeaders());
+			console.log('Body:', this.responseText);
+		}
+	};
+	/*storeContactData(contact,key,uuid);*/
+	request.send();
 }
 
 function storeContactData(contact,key,uuid){
