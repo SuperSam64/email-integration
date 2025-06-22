@@ -22,6 +22,7 @@ function getConversationId(contact,key){
 			console.log('Status:', this.status);
 			console.log('Headers:', this.getAllResponseHeaders());
 			console.log('Body:', this.responseText);
+			console.log('Body:', this.response);
 		}
 	};
 	/*storeContactData(contact,key,uuid);*/
