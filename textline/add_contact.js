@@ -107,7 +107,7 @@ function normalize(input){
 	}	
 }
 
-function verifyPhoneNumber(input,default_name){
+function verifyPhoneNumber(input){
 	var output;
 	if(input===null){
 		closeWindow();
@@ -117,12 +117,12 @@ function verifyPhoneNumber(input,default_name){
 	else if(normalize(input)==''){
 		alert('No phone number entered, please try again',input);
 		var userInput=prompt('Please enter a phone number');
-		return verifyPhoneNumber(userInput,default_name);
+		return verifyPhoneNumber(userInput);
 	}
 	else if(normalize(input)=='Invalid format'){
 		alert(input+' is not a valid phone number, please try again',input);
 		var userInput=prompt('Please enter a phone number');
-		return verifyPhoneNumber(userInput,default_name);
+		return verifyPhoneNumber(userInput);
 	}
 	else{
 		getParams(normalize(input));
