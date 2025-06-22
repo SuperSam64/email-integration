@@ -19,13 +19,10 @@ function getConversationId(contact,key){
 	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
-			if(JSON.parse(this.response)==null){
-				alert('No match!');
-				closeWindow();
-			}
-			else{
-				storeContactData(contact,key,JSON.parse(this.response).customer.uuid);
-			}
+			console.log(this.response);/*
+			alert('No match!');
+			closeWindow();
+			storeContactData(contact,key,JSON.parse(this.response).customer.uuid);*/
 		}
 	};
 	request.send();
