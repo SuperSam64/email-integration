@@ -1,9 +1,9 @@
+var uuid='015de882-187c-4f8b-a7dd-2ae4468f4b0d';
 getParams();
 
 function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
-	var uuid=urlParams.get('uuid');
 	var contact={     
 		phone_number:urlParams.get('phone_number'),
 		name:urlParams.get('name'),
@@ -11,6 +11,10 @@ function getParams(){
 		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
+	getConversationId(contact,key);
+}
+
+function getConversationId(){
 	storeContactData(contact,key,uuid);
 }
 
