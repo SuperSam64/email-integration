@@ -24,7 +24,7 @@ function getConversationId(contact,key){
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).customer==null){
-				var userInput=prompt('No match!',contact.phone_number);
+				var userInput=prompt('This customer has not communicated with us by text. Only proceed if they have provided consent to receve text messages at this phone number, or enter a different phone number below.',contact.phone_number);
 				if(userInput===null){
 					closeWindow();
 				}
@@ -98,7 +98,7 @@ function normalize(input){
 		else{
 			output=output_value;
 		}
-		if(output.slice(1,2)=='0'||output.slice(1,2)=='1'||output.slice(6,7)=='0'||output.slice(6,7)=='1'||output.slice(6,9)=='555'/*||output.slice(1,4)=='555'*/||
+		if(output.slice(1,2)=='0'||output.slice(1,2)=='1'||output.slice(6,7)=='0'||output.slice(6,7)=='1'/*||output.slice(6,9)=='555'*/||output.slice(1,4)=='555'||
 			output.slice(1,4)=='800'||output.slice(1,4)=='855'||output.slice(1,4)=='866'||output.slice(1,4)=='877'||output.slice(1,4)=='888'||output.slice(1,4)=='900'
 		){
 			output='Invalid format';
