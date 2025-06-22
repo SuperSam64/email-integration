@@ -1,20 +1,34 @@
 getParams();
-
+var pass=1
 function getParams(phone_input){
+	var name;
+	var phone;
 	var urlParams=new URLSearchParams(window.location.search);
+	
 	var key=urlParams.get('key');
 	var contact={
-		name:urlParams.get('name'),
 		email:urlParams.get('email'),
 		CID:urlParams.get('CID'),
 		order:urlParams.get('order')
 	};
-	if(typeof phone_input==='undefined'){
+	if(pass==1){
+		contact.name=urlParams.get('name_1');
+		contact.phone_number=urlParams.get('phone_number_1');
+	}
+	else if (pass==2){
+		contact.name=(urlParams.get('name_2')==''||typeof (urlParams.get('name_2'))==='undefined')?urlParams.get('name_1'):urlParams.get('name_2');
+		contact.phone_number=urlParams.get('phone_number_2');
+	}
+	else{
+		contact.name=urlParams.get('name_1');
+		contact.phone_number=phone_input;
+	}
+	/*if(typeof phone_input==='undefined'){
 		contact.phone_number=urlParams.get('phone_number');
 	}
 	else{
-		contact.phone_number=phone_input;
-	}
+		
+	}*/
 	getConversationId(contact,key);
 }
 
@@ -24,12 +38,18 @@ function getConversationId(contact,key){
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).customer==null){
-				var userInput=prompt('This customer has not communicated with us by text. Only proceed if they have provided consent to receve text messages at this phone number, or enter a different phone number below.',contact.phone_number);
-				if(userInput===null){
-					closeWindow();
+				if(pass>1){
+					var userInput=prompt('This customer has not communicated with us by text. Only proceed if they have provided consent to receve text messages at this phone number, or enter a different phone number below.',contact.phone_number);
+					if(userInput===null){
+						closeWindow();
+					}
+					else{
+						verifyPhoneNumber(userInput);
+					}
 				}
 				else{
-					verifyPhoneNumber(userInput);
+					pass+=1;
+					getParams();
 				}
 			}
 			else{
@@ -112,8 +132,6 @@ function verifyPhoneNumber(input){
 	if(input===null){
 		closeWindow();
 	}
-	/*else{
-		if(typeof input==='string'){*/
 	else if(normalize(input)==''){
 		alert('No phone number entered, please try again',input);
 		var userInput=prompt('Please enter a phone number');
@@ -127,39 +145,9 @@ function verifyPhoneNumber(input){
 	else{
 		getParams(normalize(input));
 		return;
-			/*output='&name_1='+default_name+'&phone_1='+input;*/
 	}
-		/*}
-		else if((normalize(input.billing.phone)==''||normalize(input.billing.phone)=='Invalid format')&&(normalize(input.shipping.phone)==''||normalize(input.shipping.phone)=='Invalid format')){
-			var name=input.billing.name;
-			if(normalize(input.billing.phone)==''&&normalize(input.shipping.phone)==''){
-				var userInput=prompt('Please enter a phone number');
-				return verifyPhoneNumber(userInput,name);
-			}
-			else{
-				var userInput=prompt('No valid phone number saved, please enter a phone number to proceed');
-				return verifyPhoneNumber(userInput,name);
-			}
-		}
-		else if(normalize(input.billing.phone)==''||normalize(input.billing.phone)=='Invalid format'){
-			if(input.shipping.name==''){
-				output='&name_1='+normalize(input.billing.name)+'&phone_1='+normalize(input.shipping.phone);
-			}
-			else {
-				output='&name_1='+input.shipping.name+'&phone_1='+normalize(input.shipping.phone);
-			}
-		}
-		else if(normalize(input.shipping.phone)==''||normalize(input.shipping.phone)=='Invalid format'){
-			output='&name_1='+normalize(input.billing.name)+'&phone_1='+normalize(input.billing.phone);
-		}
-		else{
-			output='&name_1='+normalize(input.billing.name)+'&phone_1='+normalize(input.billing.phone)+'&name_2='+input.shipping.name+'&phone_2='+normalize(input.shipping.phone);
-		}
-		return output;
-	}*/
 }
 
 function closeWindow(){
-	/*alert('Contact data has been added, click OK to close this window.');*/
 	window.open('','_self').close();
 }
