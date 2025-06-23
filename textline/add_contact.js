@@ -1,6 +1,7 @@
 getParams();
-var pass=1
+var pass=0
 function getParams(phone_input){
+	pass+=1;
 	var name;
 	var phone;
 	var urlParams=new URLSearchParams(window.location.search);
@@ -28,7 +29,6 @@ function getParams(phone_input){
 		contact.name=urlParams.get('name_1');
 		contact.phone_number=phone_input;
 	}
-	pass+=1;
 	/*if(typeof phone_input==='undefined'){
 		contact.phone_number=urlParams.get('phone_number');
 	}
