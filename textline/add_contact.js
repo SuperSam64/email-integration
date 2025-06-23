@@ -143,6 +143,8 @@ function verifyPhoneNumber(input){
 	}
 	else{
 		phone_number=normalize(input);
+		console.log(pass);
+		console.log(phone_number);
 		getParams(normalize(input));
 		return;
 	}
