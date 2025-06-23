@@ -1,5 +1,5 @@
 getParams();
-var pass=0
+var pass=0;
 function getParams(phone_input){
 	pass+=1;
 	var name;
