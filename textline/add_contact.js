@@ -39,7 +39,7 @@ function getConversationId(contact,key){
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).customer==null){
 				if(pass>1){
-					var userInput=prompt('This customer has not communicated with us by text. Only proceed if they have provided consent to receve text messages at this phone number, or enter a different phone number below.',contact.phone_number);
+					var userInput=prompt('This customer has not communicated with us by text. Only proceed if they have provided consent to receve text messages at this phone number, or enter a different phone number below.',phone_number);
 					if(userInput===null){
 						closeWindow();
 					}
