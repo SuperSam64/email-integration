@@ -16,13 +16,19 @@ function getParams(phone_input){
 		contact.phone_number=urlParams.get('phone_number_1');
 	}
 	else if (pass==2){
-		contact.name=(urlParams.get('name_2')==''||typeof (urlParams.get('name_2'))==='undefined')?urlParams.get('name_1'):urlParams.get('name_2');
+		if(urlParams.get('name_2')==''||typeof urlParams.get('name_2')==='undefined'){
+			contact.name=urlParams.get('name_1');
+		}
+		else{
+			contact.name=urlParams.get('name_2');
+		}
 		contact.phone_number=urlParams.get('phone_number_2');
 	}
 	else{
 		contact.name=urlParams.get('name_1');
 		contact.phone_number=phone_input;
 	}
+	pass+=1;
 	/*if(typeof phone_input==='undefined'){
 		contact.phone_number=urlParams.get('phone_number');
 	}
@@ -48,7 +54,6 @@ function getConversationId(contact,key){
 					}
 				}
 				else{
-					pass+=1;
 					getParams();
 				}
 			}
