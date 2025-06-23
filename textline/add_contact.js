@@ -48,7 +48,7 @@ function getParams(phone_input){
 }
 
 function getConversationId(contact,key){
-	console.log('pass 1');
+	console.log('pass '+pass);
 	var request = new XMLHttpRequest();
 	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
 	request.onreadystatechange = function () {
