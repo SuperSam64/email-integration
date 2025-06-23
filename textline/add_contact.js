@@ -3,6 +3,7 @@ var phone_number;
 getParams();
 
 function getParams(phone_input){
+	console.log(phone_number);
 	pass+=1;
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
