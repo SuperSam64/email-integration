@@ -1,13 +1,9 @@
 var pass=0;
+var phone_number;
 getParams();
 
 function getParams(phone_input){
-	console.log(pass);
-	console.log('first pass before adding '+pass);
 	pass+=1;
-	console.log('first pass is '+pass);
-	var name;
-	var phone;
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
 	var contact={
@@ -18,9 +14,6 @@ function getParams(phone_input){
 	if(pass==1){
 		contact.name=urlParams.get('name_1');
 		contact.phone_number=urlParams.get('phone_number_1');
-		console.log(pass);
-		console.log(contact.name);
-		console.log(contact.phone_number);
 	}
 	else if (pass==2){
 		if(urlParams.get('name_2')==''||typeof urlParams.get('name_2')==='undefined'){
@@ -30,28 +23,15 @@ function getParams(phone_input){
 			contact.name=urlParams.get('name_2');
 		}
 		contact.phone_number=urlParams.get('phone_number_2');
-		console.log(pass);
-		console.log(contact.name);
-		console.log(contact.phone_number);		
 	}
 	else{
 		contact.name=urlParams.get('name_1');
 		contact.phone_number=phone_input;
-		console.log(pass);		
-		console.log(contact.name);
-		console.log(contact.phone_number);
 	}
-	/*if(typeof phone_input==='undefined'){
-		contact.phone_number=urlParams.get('phone_number');
-	}
-	else{
-		
-	}*/
 	getConversationId(contact,key);
 }
 
 function getConversationId(contact,key){
-	console.log('pass '+pass);
 	var request = new XMLHttpRequest();
 	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
 	request.onreadystatechange = function () {
@@ -161,6 +141,7 @@ function verifyPhoneNumber(input){
 		return verifyPhoneNumber(userInput);
 	}
 	else{
+		phone_number=normalize(input);
 		getParams(normalize(input));
 		return;
 	}
