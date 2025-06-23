@@ -2,7 +2,7 @@ getParams();
 var pass=0;
 function getParams(phone_input){
 	pass+=1;
-	console.log('first pass is '+pass');
+	console.log('first pass is '+pass);
 	var name;
 	var phone;
 	var urlParams=new URLSearchParams(window.location.search);
