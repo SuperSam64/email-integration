@@ -1,6 +1,7 @@
 getParams();
 var pass=0;
 function getParams(phone_input){
+	console.log('first pass before adding '+pass);
 	pass+=1;
 	console.log('first pass is '+pass);
 	var name;
