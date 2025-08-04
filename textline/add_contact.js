@@ -71,10 +71,10 @@ function getConversationId(contact,key){
 function storeContactData(contact,key,uuid){
 	var request = new XMLHttpRequest();
 	if(typeof uuid==='undefined'){
-		request.open('POST', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?access_token='+key);
+		request.open('POST', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/customers.json?access_token='+key);
 	}
 	else{
-		request.open('PUT', 'https://private-anon-c310406e46-textline.apiary-proxy.com/api/customer/'+uuid+'.json?access_token='+key);
+		request.open('PUT', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/customer/'+uuid+'.json?access_token='+key);
 	}
 		request.setRequestHeader('Content-Type', 'application/json');
 		request.onreadystatechange = function () {
