@@ -1,6 +1,6 @@
 function makeContact(){
 	var key=prompt('Key');
-	var url='https://application.textline.com/api/customers.json?access_token='+key;
+	var url='https://private-anon-6123db9648-textline.apiary-proxy.com/api/customers.json?access_token='+key;
 	var request = new XMLHttpRequest();
 	var customer={
 		'name':'name',
