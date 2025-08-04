@@ -43,7 +43,7 @@ function getConversationId(contact,key){
 	else{
 		phone_number=phone_number_2;
 	}
-	request.open('GET', 'https://private-anon-a941205863-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key);
+	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/customers.json?phone_number='+contact.phone_number+'&access_token='+key); /* a941205863 */
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).customer==null){
