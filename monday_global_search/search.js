@@ -4,7 +4,7 @@ var parameters = new URLSearchParams(URL);
 var query = parameters.get('query');
 var key = parameters.get('key');
 console.log(globalSearch(query, key))
-async function getMondayData(term,token){
+async function globalSearch(term,token){
     const response = await fetch ("https://api.monday.com/v2", {
         method: 'post',
         headers: {
