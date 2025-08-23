@@ -3,7 +3,7 @@ var URL = window.location.search;
 var parameters = new URLSearchParams(URL);
 var query = parameters.get('query');
 var key = parameters.get('key');
-console.log(globalSearch(query, key))
+window.open("javascript:window.location.href='filtersfast.monday.com/search/cross_board?q=' + query; console.log('this is a test')");
 async function globalSearch(term,token){
     const response = await fetch ("https://filtersfast.monday.com/search/cross_board?q" + term, {
         method: 'post',
