@@ -33,7 +33,7 @@ function getImages(input){
 				var image = Object.assign(document.createElement('img'), {
 					src: input.posts[c].attachments[i].url,
 					height:300
-				}
+				});
 				console.log(image);
 			}
 		}
