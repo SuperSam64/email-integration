@@ -1,7 +1,7 @@
 function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
-	var phone_number==urlParams.get('phone_number');
+	var phone_number=urlParams.get('phone_number');
 	getConversationId(key, phone_number);
 }
 
