@@ -15,9 +15,22 @@ function getConversationId(key, phone_number){
 				alert('error');
 			}
 			else{
-				console.log(JSON.parse(this.response));
+				getImages(JSON.parse(this.response));
+				/*console.log(JSON.parse(this.response));*/
 			}
 		}
 	};
 	request.send();
+}
+function getImages(input){
+	var images=[];
+	for(c=0;c<input.posts.length;c++){
+		if(input.posts[c].attachments!=null){
+			for(i=0;i<input.posts[c].attachments.length;i++){
+				images.push(input.posts[c].attachments.[i]);
+			}
+		}
+	}
+	console.log(images);
+	return images;
 }
