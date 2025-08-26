@@ -23,11 +23,18 @@ function getConversationId(key, phone_number){
 	request.send();
 }
 function getImages(input){
-	var images=[];
+	var images;
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
-				images.push(input.posts[c].attachments[i]);
+				console.log(input.posts[c]);
+				console.log(input.posts[c].attachments[i].name);
+				console.log(input.posts[c].attachments[i].url);
+				var image = Object.assign(document.createElement('img'), {
+					src: input.posts[c].attachments[i].url,
+					height:300
+				}
+				console.log(image);
 			}
 		}
 	}
