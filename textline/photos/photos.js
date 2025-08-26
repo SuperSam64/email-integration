@@ -24,6 +24,7 @@ function getConversationId(key, phone_number){
 }
 function getImages(input){
 	var images;
+	var imageGallery=document.querySelector('#image-gallery');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
@@ -35,6 +36,7 @@ function getImages(input){
 					height:300
 				});
 				console.log(image);
+				imageGallery.appendChild(image);
 			}
 		}
 	}
