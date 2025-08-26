@@ -15,7 +15,7 @@ function getConversationId(key, phone_number){
 				alert('error');
 			}
 			else{
-				console.log(JSON.parse(this.response).customer.posts);
+				console.log(JSON.parse(this.response).posts);
 			}
 		}
 	};
