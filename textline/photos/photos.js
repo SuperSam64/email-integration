@@ -1,3 +1,4 @@
+getParams();
 function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	var key=urlParams.get('key');
