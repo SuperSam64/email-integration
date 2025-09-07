@@ -1,0 +1,6 @@
+:root{
+	--button-color:rgba(32, 48, 64, 0.9);
+	--button-hover-color:rgba(65, 95, 129, 0.9);
+	--button-click-color:rgba(128, 187, 255, 1);
+	--theme-background-color:rgba(54, 61, 79, 1);
+}
