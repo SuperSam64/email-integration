@@ -198,12 +198,7 @@ function setImageTitle(imageName, imageDate){
 }
 
 function expandImage(originalImage, animation = 'open') {
-	var imageDate=images[imageIndex].date/*new Date(images[imageIndex].date);*/
-	var test1=new Date(imageDate*1000);
-	var test2=new Date(imageDate*100000);
-	console.log(test1);
-	console.log(test2);
-	setImageTitle(images[imageIndex].filename,imageDate);
+	setImageTitle(images[imageIndex].filename,formatDate(images[imageIndex].filename));
 	previousButton.style.opacity='1';
 	nextButton.style.opacity='1';
 	previousButton.style.pointerEvents='auto';
@@ -251,6 +246,15 @@ function expandImage(originalImage, animation = 'open') {
 			expandedImage.style.transform = 'translate(0, 0) scale(1)';
 			expandedImage.style.opacity='1';
 		});
+	});
+}
+
+function formatDate(input){
+	var date = new Date(input*1000);
+	return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
+		hour: 'numeric', 
+		minute: 'numeric', 
+		hour12: true
 	});
 }
 
