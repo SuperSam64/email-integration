@@ -1,6 +1,6 @@
 var customerName='John Doe';
 var customerPhoneNumber='5555555555';
-var images = [
+/*var images = [
 	{name:'e5bd57d8-f981-4e18-8c4f-82fc97562fee.jpeg', date:'1/1/25 1:45 PM EST'},
 	{name:'07d564ff-55cb-4ced-90d8-329860bcd742.jpeg', date:'1/1/25 1:45 PM EST'},
 	{name:'60c32dff-18ac-4486-bbbc-dfd892f84e4a.jpeg', date:'1/1/25 1:45 PM EST'},
@@ -11,8 +11,8 @@ var images = [
 	{name:'60c32dff-18ac-4486-bbbc-dfd892f84e4a.jpeg', date:'1/1/25 1:45 PM EST'},
 	{name:'3bdb2f7d-635d-4078-b9d2-3e2dc6edeb10.jpeg', date:'1/1/25 1:45 PM EST'},
 	{name:'62369a7e-bb06-4db0-a02c-695bbe161735.jpeg', date:'1/1/25 1:45 PM EST'}
-];
-buildGallery(customerName, customerPhoneNumber, images);
+];*/
+var images=[]
 
 /* TEMPORARY FUNCTION - TO TEST LOADING ONLY, REMOVE IN FINAL VERSION */
 
@@ -53,25 +53,20 @@ function getConversationId(key, phone_number){
 	request.send();
 }
 function getImages(input){
-	var images;
 	var imageGallery=document.querySelector('.gallery');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
-				console.log(input.posts[c]);
-				console.log(input.posts[c].attachments[i].name);
-				console.log(input.posts[c].attachments[i].url);
-				var image = Object.assign(document.createElement('img'), {
-					src: input.posts[c].attachments[i].url,
-					height:300
-				});
-				console.log(image);
-				imageGallery.appendChild(image);
+				var image={
+					name:input.posts[c].attachments[i].name,
+					date:input.posts[c].attachments[i].url
+				}
+				images.push(image);
 			}
 		}
 	}
-	console.log(images);
-	return images;
+	buildGallery(customerName, customerPhoneNumber, images);
+	return;
 }
 
 function buildGallery(title, subtitle, imageArray){
