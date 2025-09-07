@@ -1,5 +1,5 @@
-var customerName='John Doe';
-var customerPhoneNumber='5555555555';
+var customerName;
+var customerPhoneNumber;
 /*var images = [
 	{name:'e5bd57d8-f981-4e18-8c4f-82fc97562fee.jpeg', date:'1/1/25 1:45 PM EST'},
 	{name:'07d564ff-55cb-4ced-90d8-329860bcd742.jpeg', date:'1/1/25 1:45 PM EST'},
@@ -78,6 +78,16 @@ function buildGallery(title, subtitle, imageArray){
 	titleElement.innerText=title==''?subtitle:title;
 	subtitleElement.innerText=title==''?'':subtitle;
 	for(i=0;i<imageArray.length;i++){
+		if(titleElement.innerText==''){
+			if(imageArray.creator.name){
+				titleElement.innerText=imageArray.creator.name;
+				subtitleElement.innerText=imageArray.creator.phone_number;
+			}
+			else{
+				titleElement.innerText=imageArray.creator.phone_number;
+				subtitleElement.style.display='none';
+			}
+		}
 		var newContainer = Object.assign(document.createElement('div'), {
 			className: 'imageContainer',
 		});
