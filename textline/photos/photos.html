@@ -1,14 +1,276 @@
 <!DOCTYPE html>
-  <head>
-    <title>Get photos</title>
-    <link rel="stylesheet" href="photos.css">
-  </head>
-  <body>
-    <p onnclick="console.log(contact)">Getting photos...</p>	
-    <div>
-      <a href="https://s3.amazonaws.com/a2.textline.com/attachments/62369a7e-bb06-4db0-a02c-695bbe161735.jpeg" download>download</a>
-    </div>
-    <div id="image-gallery"></div>
+<head>
+	<title>Textline Photos</title>
+	<link rel="stylesheet" href="photos.css">
+	<link rel="stylesheet" href="theme1.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="icon" sizes="16x16" type="image/vnd.microsoft.icon" href="https://application.textline.com/assets_1756383719/app-icons/regular/Icon-App-16x16@1x-4612f5c3f257af796eda373e7d093f32e11d8a35200854a176ea3b3657f8393b.ico">
+</head>
+<body>
+	<svg width="0" height="0" style="display:block">
+		<defs>
+			<mask id="copyborder">
+				<rect width="100" height="100" fill="white" />
+				<rect rx="4" ry="4" x="46" y="42" width="17" height="22" fill="black" stroke-width="8" stroke="black"/>
+			</mask>
+			<mask id="fridge-filter-cutout" >		
+				<path fill="white" stroke-width="1" stroke="white" d="M18 11.625 C18 10.375 19.625 11.375 19.625 8.375 L20.375 8.375 C20.375 11.375 22 10.375 22 11.625 Z"/>
+				<path fill="white" d="M19.25 8.875 L19.25 6.875 L19.25 6.625 L19.5 6.375 L20.5 6.375 L20.75 6.625 L20.75 6.875 L20.75 8.875 Z"/>
+				<path fill="white" stroke-width="0.25" stroke="black" d="M18.25 8.125 L17.75 8.75 L21.75 8.75 L22.25 8.125 Z M18.75 6.75 L18.75 7.25 L21.25 7.25 L21.25 6.75 Z"/>
+				<path fill="white" stroke-width="1" stroke="white" stroke-linejoin="round" d="M18.5 23.125 L18.25 22.375 L18 20.375 L22 20.375 L21.75 22.375 L21.5 23.125 Z"/>
+				<line x1="15" x2="25" y1="5.375" y2="5.375" />
+				<line x1="15" x2="25" y1="11.875" y2="11.875" />
+				<line x1="15" x2="25" y1="20.375" y2="20.375" />
+				<path fill="black" stroke="none" d="M17.5 20.25 L17.5 12 L22.5 12 L22.5 20.25 Z" />
+			</mask>
+			<mask id="air-filter-cutout">
+				<path fill="white" stroke-width="1.5" stroke=black 
+				d="M10.53125 8.203125 L17.53125 12.203125 L17.53125 26.203125 L10.53125 22.203125 Z" />
+			</mask>
+			<mask id="air-filter-frame">
+				<path fill="white" d="M21.46875 4.296875 L22.46875 3.796875 L29.46875 7.796875 L29.46875 21.796875 L28.46875 22.296875 L21.46875 18.296875 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M21.46875 4.296875 L22.46875 3.796875 L29.46875 7.796875 L29.46875 21.796875 L28.46875 22.296875 L21.46875 18.296875 L21.46875 4.296875 M21.46875 4.296875 L28.46875 8.296875 L29.46875 7.796875 M28.46875 8.296875 L28.46875 22.296875"/>
+				<path fill="white" d="M19.28125 5.078125 L20.28125 4.578125 L27.28125 8.578125 L27.28125 22.578125 L26.28125 23.078125 L19.28125 19.078125 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M19.28125 5.078125 L20.28125 4.578125 L27.28125 8.578125 L27.28125 22.578125 L26.28125 23.078125 L19.28125 19.078125 L19.28125 5.078125 M19.28125 5.078125 L26.28125 9.078125 L27.28125 8.578125 M26.28125 9.078125 L26.28125 23.078125"/>
+				<path fill="white" d="M17.09375 5.859375 L18.09375 5.359375 L25.09375 9.359375 L25.09375 23.359375 L24.09375 23.859375 L17.09375 19.859375 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M17.09375 5.859375 L18.09375 5.359375 L25.09375 9.359375 L25.09375 23.359375 L24.09375 23.859375 L17.09375 19.859375 L17.09375 5.859375 M17.09375 5.859375 L24.09375 9.859375 L25.09375 9.359375 M24.09375 9.859375 L24.09375 23.859375"/>
+				<path fill="white" d="M14.90625 6.640625 L15.90625 6.140625 L22.90625 10.140625 L22.90625 24.140625 L21.90625 24.640625 L14.90625 20.640625 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M14.90625 6.640625 L15.90625 6.140625 L22.90625 10.140625 L22.90625 24.140625 L21.90625 24.640625 L14.90625 20.640625 L14.90625 6.640625 M14.90625 6.640625 L21.90625 10.640625 L22.90625 10.140625 M21.90625 10.640625 L21.90625 24.640625"/>
+				<path fill="white" d="M12.71875 7.421875 L13.71875 6.921875 L20.71875 10.921875 L20.71875 24.921875 L19.71875 25.421875 L12.71875 21.421875 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M12.71875 7.421875 L13.71875 6.921875 L20.71875 10.921875 L20.71875 24.921875 L19.71875 25.421875 L12.71875 21.421875 L12.71875 7.421875 M12.71875 7.421875 L19.71875 11.421875 L20.71875 10.921875 M19.71875 11.421875 L19.71875 25.421875"/>
+				<path fill="white" d="M10.53125 8.203125 L11.53125 7.703125 L18.53125 11.703125 L18.53125 25.703125 L17.53125 26.203125 L10.53125 22.203125 Z"/>
+				<path fill="none" stroke="black" stroke-width="0.25" d="M10.53125 8.203125 L11.53125 7.703125 L18.53125 11.703125 L18.53125 25.703125 L17.53125 26.203125 L10.53125 22.203125 L10.53125 8.203125 M10.53125 8.203125 L17.53125 12.203125 L18.53125 11.703125 M17.53125 12.203125 L17.53125 26.203125"/>
+				<path fill="black" mask="url(#air-filter-cutout)" d="M10.53125 8.203125 L17.53125 12.203125 L17.53125 26.203125 L10.53125 22.203125 Z" />
+			</mask>
+			<mask id="air-filter-grid">
+				<rect width="40" height="30" fill="black"/>
+				<path fill="white" mask="url(#air-filter-cutout)" 
+				d="M10.53125 8.203125 L17.53125 12.203125 L17.53125 26.203125 L10.53125 22.203125 Z" />
+				<g transform="skewY(30)" stroke="black" stroke-width="0.3">
+					<line x1="8.5" x2="18.5" y1="-4" y2="6" />
+					<line x1="8.5" x2="18.5" y1="-2" y2="8" />
+					<line x1="8.5" x2="18.5" y1="0" y2="10" />
+					<line x1="8.5" x2="18.5" y1="2" y2="12" />
+					<line x1="8.5" x2="18.5" y1="4" y2="14" />
+					<line x1="8.5" x2="18.5" y1="6" y2="16" />
+					<line x1="8.5" x2="18.5" y1="8" y2="18" />
+					<line x1="8.5" x2="18.5" y1="10" y2="20" />
+					<line x1="8.5" x2="18.5" y1="12" y2="22" />
+					<line x1="8.5" x2="18.5" y1="14" y2="24" />
+					<line x1="8.5" x2="18.5" y2="-4" y1="6" />
+					<line x1="8.5" x2="18.5" y2="-2" y1="8" />
+					<line x1="8.5" x2="18.5" y2="0" y1="10" />
+					<line x1="8.5" x2="18.5" y2="2" y1="12" />
+					<line x1="8.5" x2="18.5" y2="4" y1="14" />
+					<line x1="8.5" x2="18.5" y2="6" y1="16" />
+					<line x1="8.5" x2="18.5" y2="8" y1="18" />
+					<line x1="8.5" x2="18.5" y2="10" y1="20" />
+					<line x1="8.5" x2="18.5" y2="12" y1="22" />
+					<line x1="8.5" x2="18.5" y2="14" y1="24" />
+				</g>
+				<path fill="none" stroke="black" stroke-width="2" mask="url(#air-filter-cutout)" 
+					d="M10.53125 8.203125 L17.53125 12.203125 L17.53125 26.203125 L10.53125 22.203125 Z
+				" />
+			</mask>
+			<g id="splashscreen">
+				<!-- FRIDGE FILTER CARD ANIMATION -->
+				<g transform-origin="100 50" >
+					<use href="#fridge-filter-shape" x="160" y="35" />
+					<animateTransform attributeName="transform" type="scale"
+						begin="-0.8s"
+						dur="2.4s"
+						from="1"
+						to="1"
+						values="1;2;1"
+						keySplines="
+						0.4 0 0.6 1;  0.4 0 0.6 1"
+						keyTimes="0;0.5;1"     
+						calcMode="spline"
+						repeatCount="indefinite" />
+					<animateTransform attributeName="transform" type="translate"
+						from="0 0"
+						to="200 0"
+						additive="sum"
+						begin="-0.8s"
+						dur="2.4s"
+						values="-40, 0; -80, 0;-120, 0"
+						keySplines="
+						0.40 0 1 1;  0 0 0.6 1"
+						keyTimes="0;0.50;1"   
+						calcMode="spline"
+					repeatCount="indefinite" />
+					<animate attributeName="opacity"
+						begin="-0.8"
+						dur="2.4s"
+						from="0"
+						to="0"
+						values="0;1;0"
+						keySplines="
+						0.4 0 0.6 1; 0.4 0 0.6 1"
+						keyTimes="0;0.66;1" 
+						calcMode="spline"
+					repeatCount="indefinite" />
+				</g>
+				<!-- LOGO FILTER CARD ANIMATION -->
+				<g id="logo-object" transform-origin="100 50" >
+					<use href="#ff-logo-shape" x="160" y="35" />
+					<animateTransform attributeName="transform" type="scale"
+						begin="0s" dur="2.4s"
+						from="1" to="1"
+						values="1;2;1"
+						keySplines="0.4 0 0.6 1;  0.4 0 0.6 1"
+						keyTimes="0;0.5;1"     
+						calcMode="spline"
+						repeatCount="indefinite" />
+					<animateTransform attributeName="transform" type="translate"
+						begin="0s" dur="2.4s"
+						from="0 0" to="200 0"
+						values="-40, 0; -80, 0;-120, 0"
+						keySplines="0.40 0 1 1;  0 0 0.6 1"
+						keyTimes="0;0.50;1"   
+						additive="sum"
+						calcMode="spline"
+					repeatCount="indefinite" />
+					<animate attributeName="opacity"
+						begin="0s" dur="2.4s"
+						from="0" to="0"
+						values="0;1;0"
+						keySplines="0.4 0 0.6 1; 0.4 0 0.6 1"
+						keyTimes="0;0.66;1"       
+						calcMode="spline"
+					repeatCount="indefinite" />
+				</g>
+				<!-- AIR CARD ANIMATION -->
+				<g transform-origin="100 50" >
+					<use href="#air-filter-shape" x="160" y="35" />
+					<animateTransform attributeName="transform" type="scale"
+						begin="-1.6s"
+						dur="2.4s"
+						from="1"
+						to="1"
+						values="1;2;1"
+						keySplines="0.4 0 0.6 1; 0.4 0 0.6 1;"
+						keyTimes="0;0.5;1"     
+						calcMode="spline"
+						repeatCount="indefinite" />
+					<animateTransform attributeName="transform" type="translate"
+						from="0 0"
+						to="200 0"
+						additive="sum"
+						begin="-1.6s"
+						dur="2.4s"
+						values="-40, 0; -80, 0;-120, 0"
+						keySplines="
+						0.40 0 1 1;  0 0 0.6 1"
+						keyTimes="0;0.50;1"   
+						calcMode="spline"
+					repeatCount="indefinite" />
+					<animate attributeName="opacity"
+						begin="-1.6s"
+						dur="2.4s"
+						from="0"
+						to="0"
+						values="0;1;0"
+						keySplines="
+						0.4 0 0.6 1; 0.4 0 0.6 1"
+						keyTimes="0;0.66;1"  
+						calcMode="spline"
+					repeatCount="indefinite" />
+				</g>
+			</g>
+			<g id="fridge-filter-shape" stroke-width="3" stroke="rgba(240, 240, 240, 1)" stroke-linejoin="round" >
+				<rect width="40" height="30" fill="var(--ff-blue)" />
+				<rect mask="url(#fridge-filter-cutout)" width="40" height="30" fill="white" />
+				<path fill="var(--ff-orange)" stroke="none" d="M17.5 20 L17.5 12.25 L22.5 12.25 L22.5 20 Z" />
+			</g>
+			<g id="ff-logo-shape" stroke-width="3" stroke="rgba(240, 240, 240, 1)" stroke-linejoin="round" >
+				<rect width="40" height="30" fill="white"/>
+				<path fill="none" stroke="var(--ff-orange)" stroke-width="2.4" stroke-linejoin="miter" x="3.2" y="3.2" d="
+					M17.8 11.7 L13.2 11.7 M26.8 11.7 L22.2 11.7 M19.2 6.3 L13.2 6.3 L13.2 11.7 L13.2 18.2 C13.2 19.9 14 20.4 14.6 20.8
+					L20 23.7 L25.4 20.8 C26.0 20.4 26.8 19.9 26.8 18.2 L26.8 11.7 L26.8 6.3 L20.8 6.3 
+				"/>
+			</g>
+			<g id="air-filter-shape" stroke-width="3" stroke="rgba(240, 240, 240, 1)" stroke-linejoin="round" >
+				<rect width="40" height="30" fill="var(--ff-orange)" />
+				<rect mask="url(#air-filter-frame)" fill="var(--ff-blue)" width="40" height="30" />
+				<rect fill="white" width="40" height="30" mask="url(#air-filter-grid)" />
+			</g>
+			<g style="display:none">
+				<g id="copy">			
+					<rect rx="12" ry="12" x="16" y="16" width="68" height="68" />
+					<rect mask="url(#copyborder)" rx="4" ry="4" x="39" y="35" width="17" height="22" stroke-width="3" stroke="white" />
+					<rect rx="4" ry="4" x="46" y="42" width="17" height="22" stroke-width="3" stroke="white" />
+				</g>
+				<g id="download">
+					<rect rx="12" ry="12" x="16" y="16" width="68" height="68" />
+					<path fill="white" d="M50 65 L36 51 L44 51 L44 37 L56 37 L56 51 L64 51 Z"/>
+				</g>
+				<g id="close">
+					<rect rx="12" ry="12" x="16" y="16" width="68" height="68"/>
+					<path d="M40 40 L60 60 M40 60 L60 40" stroke-width="4" stroke="white" />	
+				</g>
+				<g id="previous">
+					<circle cx="60" cy="50" r="30" stroke="white" stroke-width="4" />
+					<circle cx="60" cy="50" r="30" stroke="white" stroke-width="4" fill="none" />
+					<path d="M62 38 L54 50 L62 62" stroke="white" stroke-width="4" fill="none"/>
+				</g>
+				<g id="next">
+					<circle cx="40" cy="50" r="30" stroke="white" stroke-width="4" />
+					<circle cx="40" cy="50" r="30" stroke="white" stroke-width="4" fill="none" />
+					<path d="M38 38 L46 50 L38 62" stroke="white" stroke-width="4" fill="none"/>
+				</g>
+			</g>
+		</defs>
+	</svg>
+	<div onclick="hideLoadingScreen()" id="loading-screen">
+			<svg style="filter:drop-shadow(12px 12px 8px rgba(0,0,0,0.4))" width="80vw" height="80vh" viewBox="0 0 200 200">
+				<text transform-origin="center" transform="skewX(-7.5)"  fill="white"  font-size="20" height="100" width="200" x="100" y="80" text-anchor="middle">Getting photos...</text>
+				<use x="0" y="80" transform-origin="center" transform="scale(0.75)" href="#splashscreen"/>
+			</svg>
+	</div>
+	<div class="heading">
+		<h1></h1>
+		<h2></h2>	
+	</div>
+	<div class="gallery"></div>
+	<div class="modal">	
+		<div class="modalHeader">
+			<span id="imageName" style="font-size:1.4em;">X</span><br>
+			<span id="imageDate" style="font-size:0.9em;color:rgba(255, 255, 255, 0.7);">
+				8/28/25 1:45 PM EST
+			</span>
+			<div class="button">
+				<svg width="100%" height="100%" viewBox="0 0 100 100">
+					<use href="#copy" class="copy button" fill="var(--button-color)"/>
+				</svg>
+			</div>
+			<div class="button">
+				<svg width="100%" height="100%" viewBox="0 0 100 100">
+					<use href="#download" class="download button" fill="var(--button-color)"/>
+				</svg>
+			</div>
+			<div class="button">
+				<svg width="100%" height="100%" viewBox="0 0 100 100">
+					<use href="#close" class="close button" fill="var(--button-color)"/>
+				</svg>
+			</div>
+		</div>
+		<img id="expanded-image" src="" alt="">
+	</div>
+	<div class="scroll-container left">
+		<div class="scrollbox">
+			<svg width="100%" height="100%" viewBox="0 0 100 100">
+				<use href="#previous" class="previous" fill="rgba(0, 0, 0, 0.1)"/>
+			</svg>
+		</div>
+	</div>
+	<div class="scroll-container right">
+		<div class="scrollbox">
+			<svg width="100%" height="100%" viewBox="0 0 100 100">
+				<use href="#next" class="next" fill="rgba(0, 0, 0, 0.1)"/>
+			</svg>
+		</div>
+	</div>
     <script src="photos.js"></script>
   </body>
 </html>
