@@ -46,7 +46,6 @@ function getConversationId(key, phone_number){
 			}
 			else{
 				getImages(JSON.parse(this.response));
-				console.log(JSON.parse(this.response));
 			}
 		}
 	};
@@ -57,7 +56,6 @@ function getImages(input){
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
-				console.log(input.posts[c].attachments[i]);
 				var image={
 					name:input.posts[c].creator.name,
 					phone_number:input.posts[c].creator.phone_number,
@@ -65,7 +63,6 @@ function getImages(input){
 					url:input.posts[c].attachments[i].url,
 					date:input.posts[c].created_at,  
 				}
-				console.log(image);
 				images.push(image);
 			}
 		}
@@ -75,16 +72,12 @@ function getImages(input){
 }
 
 function buildGallery(title, subtitle, imageArray){
-	console.log('imageArray');
-	console.log(imageArray);
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
 	var subtitleElement=document.getElementsByTagName('h2')[0];
 	titleElement.innerText='No matches found';
 	subtitleElement.innerText='There are no messages with images from this phone number.';
 	for(i=0;i<imageArray.length;i++){
-		console.log('imageArray[i]');
-		console.log(imageArray[i]);
 		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
 			if(imageArray[i].name){
 				titleElement.textContent=imageArray[i].name;
@@ -133,6 +126,7 @@ function buildGallery(title, subtitle, imageArray){
 
 function setClickBehavior(){
 	document.addEventListener('DOMContentLoaded', function(){
+		alert('test');
 		galleryImages.forEach(image => {
 			image.addEventListener('click', (e) => {
 				for(i=0;i<galleryImages.length;i++){
