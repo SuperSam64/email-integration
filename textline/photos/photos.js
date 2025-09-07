@@ -54,7 +54,7 @@ function getConversationId(key, phone_number){
 }
 function getImages(input){
 	var images;
-	var imageGallery=document.querySelector('#gallery');
+	var imageGallery=document.querySelector('.gallery');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
