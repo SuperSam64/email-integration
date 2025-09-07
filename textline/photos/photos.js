@@ -32,9 +32,9 @@ function getConversationId(key, phone_number){
 function getImages(input){
 	var imageGallery=document.querySelector('.gallery');
 	var noResults=document.querySelector('.no-results');
-	noResults.style="display:none";
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
+			noResults.style="display:none";
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				var image={
 					name:input.posts[c].creator.name,
