@@ -1,17 +1,3 @@
-var customerName;
-var customerPhoneNumber;
-/*var images = [
-	{name:'e5bd57d8-f981-4e18-8c4f-82fc97562fee.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'07d564ff-55cb-4ced-90d8-329860bcd742.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'60c32dff-18ac-4486-bbbc-dfd892f84e4a.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'3bdb2f7d-635d-4078-b9d2-3e2dc6edeb10.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'62369a7e-bb06-4db0-a02c-695bbe161735.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'e5bd57d8-f981-4e18-8c4f-82fc97562fee.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'07d564ff-55cb-4ced-90d8-329860bcd742.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'60c32dff-18ac-4486-bbbc-dfd892f84e4a.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'3bdb2f7d-635d-4078-b9d2-3e2dc6edeb10.jpeg', date:'1/1/25 1:45 PM EST'},
-	{name:'62369a7e-bb06-4db0-a02c-695bbe161735.jpeg', date:'1/1/25 1:45 PM EST'}
-];*/
 var images=[]
 
 /* TEMPORARY FUNCTION - TO TEST LOADING ONLY, REMOVE IN FINAL VERSION */
@@ -67,11 +53,11 @@ function getImages(input){
 			}
 		}
 	}
-	buildGallery(customerName, customerPhoneNumber, images);
+	buildGallery(images);
 	return;
 }
 
-function buildGallery(title, subtitle, imageArray){
+function buildGallery(imageArray){
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
 	var subtitleElement=document.getElementsByTagName('h2')[0];
