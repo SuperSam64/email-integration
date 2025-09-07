@@ -105,93 +105,88 @@ function buildGallery(imageArray){
 }
 
 function setClickBehavior(){
-	alert('outsideTest');
-	
-		alert('test');
-		galleryImages.forEach(image => {
-			image.addEventListener('click', (e) => {
-				for(i=0;i<galleryImages.length;i++){
-					if(e.target==galleryImages[i]){
-						imageIndex=i;
-					}
+	galleryImages.forEach(image => {
+		image.addEventListener('click', (e) => {
+			for(i=0;i<galleryImages.length;i++){
+				if(e.target==galleryImages[i]){
+					imageIndex=i;
 				}
-				expandImage(e.target); 
-			});
+			}
+			expandImage(e.target); 
 		});
-		copyButtons.forEach(button => {
-			button.addEventListener('click', (e) => {
-				copy(imageIndex,e.target); 
-			});
+	});
+	copyButtons.forEach(button => {
+		button.addEventListener('click', (e) => {
+			copy(imageIndex,e.target); 
 		});
-		downloadButtons.forEach(button => {
-			button.addEventListener('click', (e) => {
-				download(imageIndex,e.target); 
-			});
+	});
+	downloadButtons.forEach(button => {
+		button.addEventListener('click', (e) => {
+			download(imageIndex,e.target); 
 		});
-		closeButtons.forEach(button => {
-			button.addEventListener('click', () => {
-				 close();
-			});
+	});
+	closeButtons.forEach(button => {
+		button.addEventListener('click', () => {
+			 close();
 		});
-		previousButton.addEventListener('click', function(event) {
-		   event.stopPropogation;
-		   previous();
-		});
-		nextButton.addEventListener('click', function(event) {
-		   event.stopPropogation;
-		   next(); 
-		});
-		modal.addEventListener('click', function(event) {
-		   event.stopPropogation;
-		   if(event.target===this){
-			   close();
-		   }
-		});
-		document.addEventListener('keydown', (event) => {
-			switch (event.key) {
-			case 'ArrowLeft':
-				if(modal.classList.contains('is-visible')){
-					event.stopPropogation;
-					previous();break;
-				}
-				else{
-					break;
-				}
-			case 'ArrowRight':
-				if(modal.classList.contains('is-visible')){
-					event.stopPropogation;
-					next();
-					break;
-				}
-				else{
-					break;
-				}
-			case 'Escape':
-				if(modal.classList.contains('is-visible')){
-					event.stopPropogation;
-					close();break;
-				}
-				else{
-					break;
-				}
-			default:
+	});
+	previousButton.addEventListener('click', function(event) {
+	   event.stopPropogation;
+	   previous();
+	});
+	nextButton.addEventListener('click', function(event) {
+	   event.stopPropogation;
+	   next(); 
+	});
+	modal.addEventListener('click', function(event) {
+	   event.stopPropogation;
+	   if(event.target===this){
+		   close();
+	   }
+	});
+	document.addEventListener('keydown', (event) => {
+		switch (event.key) {
+		case 'ArrowLeft':
+			if(modal.classList.contains('is-visible')){
+				event.stopPropogation;
+				previous();break;
+			}
+			else{
 				break;
 			}
-		});
-	
+		case 'ArrowRight':
+			if(modal.classList.contains('is-visible')){
+				event.stopPropogation;
+				next();
+				break;
+			}
+			else{
+				break;
+			}
+		case 'Escape':
+			if(modal.classList.contains('is-visible')){
+				event.stopPropogation;
+				close();break;
+			}
+			else{
+				break;
+			}
+		default:
+			break;
+		}
+	});
 }
 
 function hideLoadingScreen(){
 	if(loadingScreen){
-		loadingScreen.classList.add('fade');
+		/* TEMPORARY TIMER - TO TEST LOADING ONLY, REMOVE TIMER IN FINAL VERSION */
+		setTimeout(function() {loadingScreen.classList.add('fade');
 		loadingScreen.addEventListener('transitionend', function handler() {
-			/* TEMPORARY TIMER - TO TEST LOADING ONLY, REMOVE TIMER IN FINAL VERSION */
-			setTimeout(function() {
 				loadingScreen.removeEventListener('transitionend', handler);
 				loadingScreen.remove();
 			}, 4600);
-			/* ------------------------------------------------------------------ */
 		});
+		/* ------------------------------------------------------------------ */
 	}
 }
 
@@ -203,7 +198,8 @@ function setImageTitle(imageName, imageDate){
 }
 
 function expandImage(originalImage, animation = 'open') {
-	setImageTitle(images[imageIndex].name,images[imageIndex].date);
+	var imageDate=new Date(images[imageIndex].date);
+	setImageTitle(images[imageIndex].filename,imageDate);
 	previousButton.style.opacity='1';
 	nextButton.style.opacity='1';
 	previousButton.style.pointerEvents='auto';
