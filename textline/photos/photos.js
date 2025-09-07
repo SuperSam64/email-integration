@@ -20,7 +20,7 @@ function getConversationId(key, phone_number){
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).conversation==null){
-				alert('error');
+				hideLoadingScreen();
 			}
 			else{
 				getImages(JSON.parse(this.response));
@@ -181,11 +181,11 @@ function hideLoadingScreen(){
 	if(loadingScreen){
 		/* TEMPORARY TIMER - TO TEST LOADING ONLY, REMOVE TIMER IN FINAL VERSION */
 		setTimeout(function() {loadingScreen.classList.add('fade');
-		loadingScreen.addEventListener('transitionend', function handler() {
+			loadingScreen.addEventListener('transitionend', function handler() {
 				loadingScreen.removeEventListener('transitionend', handler);
 				loadingScreen.remove();
-			}, 4600);
-		});
+			});
+		}, 4600);
 		/* ------------------------------------------------------------------ */
 	}
 }
