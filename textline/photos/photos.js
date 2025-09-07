@@ -31,7 +31,7 @@ function getConversationId(key, phone_number){
 }
 function getImages(input){
 	var imageGallery=document.querySelector('.gallery');
-	var noResults.querySelector('.no-results');
+	var noResults=document.querySelector('.no-results');
 	noResults.style="display:none";
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
