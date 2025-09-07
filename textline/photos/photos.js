@@ -59,7 +59,7 @@ function getImages(input){
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				console.log(input.posts[c].attachments[i]);
 				var image={
-					name:input.posts[c].attachments[i].name,
+					name:input.posts[c].attachments[i].url,
 					date:input.posts[c].attachments[i].url
 				}
 				images.push(image);
