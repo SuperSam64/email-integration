@@ -46,7 +46,7 @@ function getConversationId(key, phone_number){
 			}
 			else{
 				getImages(JSON.parse(this.response));
-				/*console.log(JSON.parse(this.response));*/
+				console.log(JSON.parse(this.response));
 			}
 		}
 	};
