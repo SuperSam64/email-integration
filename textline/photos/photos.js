@@ -86,7 +86,7 @@ function buildGallery(title, subtitle, imageArray){
 		console.log('imageArray[i]');
 		console.log(imageArray[i]);
 		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
-			if(imageArray[i].creator.name){
+			if(imageArray[i].name){
 				titleElement.textContent=imageArray[i].name;
 				subtitleElement.textContent=imageArray[i].phone_number;
 			}
