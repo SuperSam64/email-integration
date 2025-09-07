@@ -81,7 +81,7 @@ function buildGallery(title, subtitle, imageArray){
 			className: 'imageContainer',
 		});
 		var newImage = Object.assign(document.createElement('img'), {
-			src: 'https://s3.amazonaws.com/a2.textline.com/attachments/'+imageArray[i].name,
+			src: imageArray[i].url,
 			className: 'gallery-image'
 		});
 		var newCopyButton = document.createElementNS('http://www.w3.org/2000/svg','svg');
