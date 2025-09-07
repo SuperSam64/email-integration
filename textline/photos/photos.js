@@ -158,23 +158,34 @@ function setClickBehavior(){
 		   }
 		});
 		document.addEventListener('keydown', (event) => {
-			if(modal.classList.contains('is-visible')){
-				switch (event.key) {
-				case 'ArrowLeft':
+			switch (event.key) {
+			case 'ArrowLeft':
+				if(modal.classList.contains('is-visible')){
 					event.stopPropogation;
-					previous();
+					previous();break;
+				}
+				else{
 					break;
-				case 'ArrowRight':
+				}
+			case 'ArrowRight':
+				if(modal.classList.contains('is-visible')){
 					event.stopPropogation;
 					next();
 					break;
-				case 'Escape':
-					event.stopPropogation;
-					close();
-					break;
-				default:
+				}
+				else{
 					break;
 				}
+			case 'Escape':
+				if(modal.classList.contains('is-visible')){
+					event.stopPropogation;
+					close();break;
+				}
+				else{
+					break;
+				}
+			default:
+				break;
 			}
 		});
 	});
