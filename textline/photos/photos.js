@@ -58,6 +58,7 @@ function getImages(input){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				var image={
+					console.log(name:input.posts[c].attachments[i]);
 					name:input.posts[c].attachments[i].name,
 					date:input.posts[c].attachments[i].url
 				}
