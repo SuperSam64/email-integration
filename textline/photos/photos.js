@@ -253,7 +253,7 @@ function formatDate(input){
 	var date = new Date(input*1000);
 	console.log(input);
 	console.log(date);
-	console.log(getMonth());
+	console.log(date.getMonth());
 	return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
 		hour: 'numeric', 
 		minute: 'numeric', 
