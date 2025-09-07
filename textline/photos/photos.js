@@ -59,22 +59,19 @@ function getImages(input){
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				console.log(input.posts[c].attachments[i]);
 				var image={
-					name:input.posts[c].attachments[i].url,
-					date:input.posts[c].attachments[i].url
+					name:input.posts[c].attachments[i].name,
+					url:input.posts[c].attachments[i].url,
+					date:input.posts[c].attachments[i].url,
 				}
 				images.push(image);
 			}
 		}
 	}
-	console.log('images: ');
-	console.log(images);
 	buildGallery(customerName, customerPhoneNumber, images);
 	return;
 }
 
 function buildGallery(title, subtitle, imageArray){
-	console.log('imageArray: ');
-	console.log(imageArray);
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
 	var subtitleElement=document.getElementsByTagName('h2')[0];
