@@ -21,7 +21,6 @@ body {
 	font-weight:0;
 	font-family:'Roboto', sans-serif; 
 	display:flex;
-	/*display:flex;*/
 	position:fixed;
 	background-color:var(--theme-background-color);	
 	z-index:500;
