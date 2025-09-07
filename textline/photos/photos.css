@@ -106,6 +106,7 @@ h2{
 #expanded-image {
 	max-width: 90%;
 	max-height: 80%;
+	top:12vh;
 	object-fit: contain;
 	user-select:none;
 	transition: transform 0.3s ease-in-out;
