@@ -66,11 +66,15 @@ function getImages(input){
 			}
 		}
 	}
+	console.log('images: ');
+	console.log(images);
 	buildGallery(customerName, customerPhoneNumber, images);
 	return;
 }
 
 function buildGallery(title, subtitle, imageArray){
+	console.log('imageArray: ');
+	console.log(imageArray);
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
 	var subtitleElement=document.getElementsByTagName('h2')[0];
