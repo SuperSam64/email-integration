@@ -83,7 +83,9 @@ function buildGallery(title, subtitle, imageArray){
 	titleElement.innerText='No matches found';
 	subtitleElement.innerText='There are no messages with images from this phone number.';
 	for(i=0;i<imageArray.length;i++){
-		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
+		console.log('imageArray[i]');
+		console.log(imageArrayi);
+		/*if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
 			if(imageArray[i].creator.name){
 				titleElement.innerText=imageArray[i].name;
 				subtitleElement.innerText=imageArray[i].phone_number;
@@ -93,7 +95,7 @@ function buildGallery(title, subtitle, imageArray){
 				subtitleElement.innerText=imageArray[i].innerText='';
 				subtitleElement.style.display='none';
 			}
-		}
+		}*/
 		var newContainer = Object.assign(document.createElement('div'), {
 			className: 'imageContainer',
 		});
