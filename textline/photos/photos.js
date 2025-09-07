@@ -96,7 +96,6 @@ function buildGallery(imageArray){
 		galleryElement.appendChild(newContainer);
 	}
 	galleryImages = document.querySelectorAll('.gallery-image');
-	console.log(galleryImages);
 	copyButtons = document.querySelectorAll('.copy');
 	downloadButtons = document.querySelectorAll('.download');
 	closeButtons = document.querySelectorAll('.close');
@@ -253,9 +252,6 @@ function expandImage(originalImage, animation = 'open') {
 
 function formatDate(input){
 	var date = new Date(input*1000);
-	console.log(input);
-	console.log(date);
-	console.log(date.getMonth());
 	return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
 		hour: 'numeric', 
 		minute: 'numeric', 
