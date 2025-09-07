@@ -84,18 +84,18 @@ function buildGallery(title, subtitle, imageArray){
 	subtitleElement.innerText='There are no messages with images from this phone number.';
 	for(i=0;i<imageArray.length;i++){
 		console.log('imageArray[i]');
-		console.log(imageArrayi);
-		/*if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
+		console.log(imageArray[i]);
+		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
 			if(imageArray[i].creator.name){
-				titleElement.innerText=imageArray[i].name;
-				subtitleElement.innerText=imageArray[i].phone_number;
+				titleElement.textContent=imageArray[i].name;
+				subtitleElement.textContent=imageArray[i].phone_number;
 			}
 			else{
-				titleElement.innerText=imageArray[i].phone_number;
-				subtitleElement.innerText=imageArray[i].innerText='';
+				titleElement.textContent=imageArray[i].phone_number;
+				subtitleElement.textContent='';
 				subtitleElement.style.display='none';
 			}
-		}*/
+		}
 		var newContainer = Object.assign(document.createElement('div'), {
 			className: 'imageContainer',
 		});
