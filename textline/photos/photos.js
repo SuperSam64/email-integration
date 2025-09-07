@@ -62,6 +62,7 @@ function getImages(input){
 					name:input.posts[c].creator.name,
 					phone_number:input.posts[c].creator.phone_number,
 					filename:input.posts[c].attachments[i].name,
+					url:input.posts[c].attachments[i].url,
 					date:input.posts[c].created_at,  
 				}
 				console.log(image);
