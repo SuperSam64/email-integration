@@ -106,7 +106,7 @@ function buildGallery(imageArray){
 
 function setClickBehavior(){
 	alert('outsideTest');
-	document.addEventListener('DOMContentLoaded', function(){
+	
 		alert('test');
 		galleryImages.forEach(image => {
 			image.addEventListener('click', (e) => {
@@ -178,7 +178,7 @@ function setClickBehavior(){
 				break;
 			}
 		});
-	});
+	
 }
 
 function hideLoadingScreen(){
