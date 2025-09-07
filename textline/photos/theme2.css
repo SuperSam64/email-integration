@@ -1,0 +1,6 @@
+:root{
+	--button-color:red;
+	--button-hover-color:blue;
+	--button-click-color:green;
+	--theme-background-color:rgba(54, 61, 79, 1);
+}
