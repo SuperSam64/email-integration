@@ -1,13 +1,5 @@
 var images=[]
 
-/* TEMPORARY FUNCTION - TO TEST LOADING ONLY, REMOVE IN FINAL VERSION */
-
-setTimeout(function() {
-	hideLoadingScreen();
-}, 4600);
-
-/* ------------------------------------------------------------------ */ 
-
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
 const modal = document.querySelector('.modal');
@@ -109,6 +101,7 @@ function buildGallery(imageArray){
 	previousButton = document.querySelector('.previous');
 	nextButton = document.querySelector('.next');
 	setClickBehavior();
+	hideLoadingScreen();
 }
 
 function setClickBehavior(){
@@ -192,8 +185,12 @@ function hideLoadingScreen(){
 	if(loadingScreen){
 		loadingScreen.classList.add('fade');
 		loadingScreen.addEventListener('transitionend', function handler() {
-			loadingScreen.removeEventListener('transitionend', handler);
-			loadingScreen.remove();
+			/* TEMPORARY TIMER - TO TEST LOADING ONLY, REMOVE TIMER IN FINAL VERSION */
+			setTimeout(function() {
+				loadingScreen.removeEventListener('transitionend', handler);
+				loadingScreen.remove();
+			}, 4600);
+			/* ------------------------------------------------------------------ */
 		});
 	}
 }
