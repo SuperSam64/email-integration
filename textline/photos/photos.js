@@ -59,10 +59,12 @@ function getImages(input){
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				console.log(input.posts[c].attachments[i]);
 				var image={
-					name:input.posts[c].attachments[i].name,
-					url:input.posts[c].attachments[i].url,
-					date:input.posts[c].attachments[i].url,
+					name:input.posts[c].creator.name,
+					phone_number:input.posts[c].creator.phone_number,
+					filename:input.posts[c].attachments[i].name,
+					date:input.posts[c].created_at,  
 				}
+				console.log(image);
 				images.push(image);
 			}
 		}
@@ -80,11 +82,11 @@ function buildGallery(title, subtitle, imageArray){
 	for(i=0;i<imageArray.length;i++){
 		if(titleElement.innerText==''){
 			if(imageArray.creator.name){
-				titleElement.innerText=imageArray.creator.name;
-				subtitleElement.innerText=imageArray.creator.phone_number;
+				titleElement.innerText=imageArray.name;
+				subtitleElement.innerText=imageArray.phone_number;
 			}
 			else{
-				titleElement.innerText=imageArray.creator.phone_number;
+				titleElement.innerText=imageArray.phone_number;
 				subtitleElement.style.display='none';
 			}
 		}
