@@ -198,7 +198,11 @@ function setImageTitle(imageName, imageDate){
 }
 
 function expandImage(originalImage, animation = 'open') {
-	var imageDate=new Date(images[imageIndex].date);
+	var imageDate=images[imageIndex].date/*new Date(images[imageIndex].date);*/
+	var test1=new Date(imageDate*1000);
+	var test2=new Date(imageDate*100000);
+	console.log(test1);
+	console.log(test2);
 	setImageTitle(images[imageIndex].filename,imageDate);
 	previousButton.style.opacity='1';
 	nextButton.style.opacity='1';
