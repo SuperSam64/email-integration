@@ -126,6 +126,7 @@ function buildGallery(title, subtitle, imageArray){
 }
 
 function setClickBehavior(){
+	alert('outsideTest');
 	document.addEventListener('DOMContentLoaded', function(){
 		alert('test');
 		galleryImages.forEach(image => {
