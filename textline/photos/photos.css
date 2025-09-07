@@ -1,28 +1,271 @@
-#image-gallery img{
-	height:300px;
-	box-shadow: 12px 12px 24px rgba(0,0,0,0.3);
-	margin:4px;
-	padding:12px;
-	border-radius:8px;
-	border:1px solid rgba(0,0,0,0.1);
-	background-color: rgba(240, 240, 240, 1);
+:root{
+	--ff-blue:rgba(32, 80, 162, 1);
+	--ff-orange:rgba(242, 103, 34, 1);
 }
 
-#image-gallery{
-	padding: 28px  10%  28px 10%;
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: var(--theme-background-color);
 }
 
-#image-gallery img:hover{
-	border:1px solid rgba(0, 210, 255, 0.5);
-	box-shadow: 0px 0px 5px blue, 12px 12px 24px rgba(0,0,0,0.3) ;
-	
+#loading-screen{
+	top:0;
+	left:0;
+	width:100vw;
+	height:100vh;
+	color:white;
+	text-align:center;
+	align-items:center;
+	justify-content:center;
+	font-size:3.6em;
+	font-weight:0;
+	font-family:'Roboto', sans-serif; 
+	display:flex;
+	/*display:flex;*/
+	position:fixed;
+	background-color:var(--theme-background-color);	
+	z-index:500;
+}
+
+#loading-screen p{
+	margin:0px;
+}
+
+#splashscreen{
+	max-width:40vw;
+	max-height:40vh;
+	aspect-ratio:1/1;
+}
+
+.fade{
+	opacity:0;
+	transition: opacity 0.5s ease-out;
+}
+
+.heading{
+	padding:10px;
 }
 
 h1{
+	margin:0px;
+	padding:10px 0px 4px;
+	color:white;
 	text-align:center;
-	
 }
+
 h2{
+	margin:0px;
+	padding:0px;
+	color:white;
 	text-align:center;
-	
+	font-size:1em;
+	font-weight:normal;
+}
+
+.gallery {
+	padding: 20px 100px 20px;
+	gap: 18px;
+	display: flex;
+	flex-wrap:wrap;
+}
+
+.gallery-image {
+	width:auto;
+	height:300px;
+	border:12px solid white;
+	border-radius:6px;
+	box-shadow:20px 20px 44px rgba(0, 0, 0, 0.7);
+	transition: transform 0.3s ease-in-out;
+	cursor: pointer;
+	object-fit: cover;	
+}
+
+.imageContainer:has(*:hover) .thumbnail-button {
+	opacity:1;
+}
+
+.imageContainer svg{
+	top:8px;
+	width:60px;
+	height:60px;
+	position:absolute;
+	z-index:20;
+}
+
+.imageContainer svg:nth-of-type(1){
+	right:54px;
+}
+
+.imageContainer svg:nth-of-type(2){
+	right:8px;
+}
+
+.imageContainer .thumbnail-button{
+	transition: opacity 0.3s ease-in-out;
+}
+
+#expanded-image {
+	max-width: 90%;
+	max-height: 80%;
+	object-fit: contain;
+	user-select:none;
+	transition: transform 0.3s ease-in-out;
+}
+
+.modal {
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.9);
+	backdrop-filter: blur(4px);
+	display: flex;
+	position: fixed;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity:0;
+	z-index: 100;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.modal.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modalHeader{
+	top:0px;
+	padding-top:2vh;
+	width:100%;
+	height:6vh;
+	position:absolute;
+	color:white;
+	text-align:center;
+}
+
+.modal.is-visible #expanded-image {
+  transform: scale(1);
+}
+
+.imageContainer{
+	position:relative;
+	display:inline-block;
+	transition: transform 0.2s ease-in-out;
+}
+
+.imageContainer:hover{
+	transform:scale(1.05, 1.05);
+}
+
+.button{
+	right:11vh;
+	top:1vh;
+	width:6vh;
+	height:6vh;
+	position:absolute;
+}
+
+.thumbnail-button{
+	opacity:0;
+}
+
+.modal .button:nth-of-type(1){
+	right:11vh;
+}
+
+.modal .button:nth-of-type(2){
+	right:6vh;
+}
+
+.modal .button:nth-of-type(3){
+	right:1vh;
+}
+
+.controls{
+	top:0px;
+	width:100%;
+	height:6vh;
+	color:white;
+	text-align:center;
+	z-index:200;
+	display:none;
+	position:absolute;
+}
+
+.download:hover{
+	fill:var(--button-hover-color);
+	cursor:pointer;
+}
+
+.download:active{
+	fill:rgba(128, 187, 255, 1);
+}
+
+.copy:hover{
+	fill:var(--button-hover-color);
+	cursor:pointer;
+}
+
+.copy:active{
+	fill:rgba(128, 187, 255, 1);
+}
+
+.close:hover{
+	fill:var(--button-hover-color);
+	cursor:pointer;
+}
+
+.close:active{
+	fill:rgba(128, 187, 255, 1);
+}
+
+.previous{
+	opacity:0;
+	visibility:hidden;
+	pointer-events:none;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.previous:hover{
+	fill:rgba(255, 255, 255, 0.6);
+	cursor:pointer;
+}
+
+.next{
+	opacity:0;
+	visibility:hidden;
+	pointer-events:none;
+	transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.next:hover{
+	fill:rgba(255, 255, 255, 0.6);
+	cursor:pointer;
+}
+
+.scroll-container{
+	width:5vw;
+	height:100%;
+	color:white;
+	z-index:200;
+	vertical-align:middle;
+	position:fixed;
+}
+
+.scroll-container.right{
+	left:95vw;
+}
+
+.scroll-container.left{
+	left:0px;
+}
+
+.scrollbox{
+	top:50%;
+	width:5vw;
+	height:5vw;
+	align-items:center;
+	position:fixed;	
+	transform:translate(0,-50%);
 }
