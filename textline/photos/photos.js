@@ -200,7 +200,7 @@ function setImageTitle(imageName, imageDate){
 }
 
 function expandImage(originalImage, animation = 'open') {
-	setImageTitle(images[imageIndex].filename,formatDate(images[imageIndex].filename));
+	setImageTitle(images[imageIndex].filename,formatDate(images[imageIndex].date));
 	previousButton.style.opacity='1';
 	nextButton.style.opacity='1';
 	previousButton.style.pointerEvents='auto';
