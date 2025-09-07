@@ -13,7 +13,7 @@ var customerPhoneNumber;
 	{name:'62369a7e-bb06-4db0-a02c-695bbe161735.jpeg', date:'1/1/25 1:45 PM EST'}
 ];*/
 var images=[]
-alert('test2');
+
 /* TEMPORARY FUNCTION - TO TEST LOADING ONLY, REMOVE IN FINAL VERSION */
 
 setTimeout(function() {
