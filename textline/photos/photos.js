@@ -115,6 +115,7 @@ function buildGallery(title, subtitle, imageArray){
 		newContainer.appendChild(newDownloadButton);
 		galleryElement.appendChild(newContainer);
 	}
+	console.log(galleryImages);
 	galleryImages = document.querySelectorAll('.gallery-image');
 	copyButtons = document.querySelectorAll('.copy');
 	downloadButtons = document.querySelectorAll('.download');
