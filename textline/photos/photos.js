@@ -62,14 +62,11 @@ function buildGallery(imageArray){
 	for(i=0;i<imageArray.length;i++){
 		noResults.style="display:none";
 		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
-			if(imageArray[i].name){
-				console.log(imageArray[i].name);
-				titleElement.textContent=imageArray[i].name;
+			titleElement.textContent=imageArray[i].name;
+			if(imageArray[i].name != imageArray[i].phone_number){
 				subtitleElement.textContent=imageArray[i].phone_number;
 			}
 			else{
-				titleElement.textContent=imageArray[i].phone_number;
-				subtitleElement.textContent='';
 				subtitleElement.style.display='none';
 			}
 		}
