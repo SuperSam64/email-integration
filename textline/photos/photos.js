@@ -107,20 +107,6 @@ function buildGallery(imageArray){
 	hideLoadingScreen();
 }
 
-function download(images){
-	var downloadImage = images[0];
-	var blob = downloadImage.blob;
-	var url = window.URL.createObjectURL(blob);
-	var link = document.createElement('a');
-	link.href = url;
-	link.download = downloadImage.filename;
-	document.body.appendChild(link);
-	link.click();
-	link.remove();
-	window.URL.revokeObjectURL(url);
-	console.log('downloaded');
-}
-
 function setClickBehavior(){
 	galleryImages.forEach(image => {
 		image.addEventListener('click', (e) => {
@@ -289,8 +275,30 @@ function copy(index,element){
 	}*/
 }
 
-function download(index,element){
-	alert('Sorry, this function is still in development\nTo save this image, right-click it and select "Save image as..."');
+function download(index, element){
+	/*alert('Sorry, this function is still in development\nTo save this image, right-click it and select "Save image as..."');*/
+	if(index==-1){
+		for(i=0;i<downloadButtons.length;i++){
+			if(element==downloadButtons[i]){
+				selectedImage = i;
+			}
+		}
+	}
+	else{
+		var selectedImage = index;
+	}
+	var downloadImage = images[selectedImage];
+	var blob = downloadImage.blob;
+	var url = window.URL.createObjectURL(blob);
+	var link = document.createElement('a');
+	link.href = url;
+	link.download = downloadImage.filename;
+	document.body.appendChild(link);
+	link.click();
+	link.remove();
+	window.URL.revokeObjectURL(url);
+	console.log('downloaded');
+	
 	/*if(index==-1){
 		for(i=0;i<downloadButtons.length;i++){
 			if(element==downloadButtons[i]){
