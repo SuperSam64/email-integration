@@ -41,6 +41,7 @@ function getImages(input){
 					filename:input.posts[c].attachments[i].name,
 					url:input.posts[c].attachments[i].url,
 					date:input.posts[c].created_at,  
+					blob:input.posts[c].attachments[i].blob(),
 				}
 				images.push(image);
 			}
@@ -104,6 +105,20 @@ function buildGallery(imageArray){
 	nextButton = document.querySelector('.next');
 	setClickBehavior();
 	hideLoadingScreen();
+}
+
+function download(images){
+	var downloadImage = images[0];
+	var blob = downloadImage.blob;
+	var url = window.URL.createObjectURL(blob);
+	var link = document.createElement('a');
+	link.href = url;
+	link.download = downloadImage.filename;
+	document.body.appendChild(link);
+	link.click();
+	link.remove();
+	window.URL.revokeObjectURL(url);
+	console.log('downloaded');
 }
 
 function setClickBehavior(){
