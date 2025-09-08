@@ -276,7 +276,7 @@ function copy(index,element){
 }
 
 function download(index, element){
-	/*alert('Sorry, this function is still in development\nTo save this image, right-click it and select "Save image as..."');*/
+	
 	if(index==-1){
 		for(i=0;i<downloadButtons.length;i++){
 			if(element==downloadButtons[i]){
@@ -287,7 +287,7 @@ function download(index, element){
 	else{
 		var selectedImage = index;
 	}
-	var downloadImage = images[selectedImage];
+	/*var downloadImage = images[selectedImage];
 	var blob = downloadImage.blob;
 	var url = window.URL.createObjectURL(blob);
 	var link = document.createElement('a');
@@ -296,8 +296,11 @@ function download(index, element){
 	document.body.appendChild(link);
 	link.click();
 	link.remove();
-	window.URL.revokeObjectURL(url);
-	console.log('downloaded');
+	window.URL.revokeObjectURL(url);*/
+	console.log(images[selectedImage]);
+	console.log(images[selectedImage].blob);
+
+	alert('Sorry, this function is still in development\nTo save this image, right-click it and select "Save image as..."');
 	
 	/*if(index==-1){
 		for(i=0;i<downloadButtons.length;i++){
