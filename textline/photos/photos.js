@@ -63,6 +63,7 @@ function buildGallery(imageArray){
 		noResults.style="display:none";
 		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
 			if(imageArray[i].name){
+				console.log(imageArray[i].name);
 				titleElement.textContent=imageArray[i].name;
 				subtitleElement.textContent=imageArray[i].phone_number;
 			}
