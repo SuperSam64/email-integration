@@ -29,12 +29,11 @@ function getConversationId(key, phone_number){
 	};
 	request.send();
 }
+
 function getImages(input){
 	var imageGallery=document.querySelector('.gallery');
-	var noResults=document.querySelector('.no-results');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
-			noResults.style="display:none";
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				var image={
 					name:input.posts[c].creator.name,
@@ -55,9 +54,11 @@ function buildGallery(imageArray){
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
 	var subtitleElement=document.getElementsByTagName('h2')[0];
+	var noResults=document.querySelector('.no-results');
 	titleElement.innerText='No matches found';
 	subtitleElement.innerText='There are no messages with images from this phone number.';
 	for(i=0;i<imageArray.length;i++){
+		noResults.style="display:none";
 		if(titleElement.innerText=='No matches found'||titleElement.textContent=='No matches found'){
 			if(imageArray[i].name){
 				titleElement.textContent=imageArray[i].name;
