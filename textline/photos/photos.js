@@ -40,8 +40,7 @@ function getImages(input){
 					phone_number:input.posts[c].creator.phone_number,
 					filename:input.posts[c].attachments[i].name,
 					url:input.posts[c].attachments[i].url,
-					date:input.posts[c].created_at,  
-					blob:input.posts[c].attachments[i].blob(),
+					date:input.posts[c].created_at
 				}
 				images.push(image);
 			}
