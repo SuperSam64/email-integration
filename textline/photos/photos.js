@@ -1,4 +1,5 @@
 var images=[]
+var allImages;
 
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
@@ -31,6 +32,7 @@ function getConversationId(key, phone_number){
 }
 
 function getImages(input){
+	allImages=input;
 	var imageGallery=document.querySelector('.gallery');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
@@ -298,7 +300,7 @@ function download(index, element){
 	window.URL.revokeObjectURL(url);*/
 	console.log(images[selectedImage]);
 	console.log(images[selectedImage].blob);
-
+	console.log(allImages);
 	alert('Sorry, this function is still in development\nTo save this image, right-click it and select "Save image as..."');
 	
 	/*if(index==-1){
