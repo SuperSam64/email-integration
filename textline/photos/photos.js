@@ -110,14 +110,13 @@ function getWhispers(whisperArray){
 		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,commenterInitials.length) == ']' && commenterInitials.length < 6){			
 			try{
 				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
-				console.log('Modified initials: '+commenterInitials.replace('[','').replace(']',''));
-				console.log('CCA index HK: '+CCA.findIndex(user => user.initials == 'HK'));
-				console.log('CCA index: '+CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']','')));
 			}
 			catch (error) {
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
 			var comment = whisperArray[i].replace(commenterInitials,'').trim();
+			var now = new Date();
+			console.log(formatDate(now,true));
 			console.log(commenter);
 			console.log(comment);
 		}
@@ -324,13 +323,22 @@ function expandImage(originalImage, animation = 'open') {
 	});
 }
 
-function formatDate(input){
+function formatDate(input,isComment=false){
 	var date = new Date(input*1000);
-	return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
-		hour: 'numeric', 
-		minute: 'numeric', 
-		hour12: true
-	});
+	if(isComment=true){
+		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
+			hour: 'numeric', 
+			minute: 'numeric', 
+			hour12: true
+		})];
+	}
+	else{
+		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
+			hour: 'numeric', 
+			minute: 'numeric', 
+			hour12: true
+		});
+	}
 }
 
 function copy(index,element){
