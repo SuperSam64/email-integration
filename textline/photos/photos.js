@@ -107,25 +107,17 @@ function getImages(input){
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
 		var commenterInitials = whisperArray[i].split(' ')[0].trim();
-		console.log(commenterInitials);
-		console.log(commenterInitials.slice(0,1));
-		console.log(commenterInitials.slice(commenterInitials.length-1,1));
-		console.log(commenterInitials.length);
-		console.log(commenterInitials.slice(0,1)=='[');
-		console.log(commenterInitials.slice(commenterInitials.length-1,1)==']');
-		console.log(commenterInitials.length<6);
-		console.log(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6);
-		console.log(CCA[commenterInitials.replace('[','').replace(']','')]);
-		console.log(commenterInitials.replace('[','').replace(']',''));
-		console.log(whisperArray[i].replace(commenterInitials,''));
 		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6){
 			try{
 				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
+				console.log('Modified initials: '+commenterInitials.replace('[','').replace(']',''));
+				console.log('CCA index HK: '+CCA.findIndex(user => user.initials == 'HK'));
+				console.log('CCA index: '+CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']','')));
 			}
 			catch (error) {
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
-			var comment = whisperArray[i].replace(commenterInitials,'')
+			var comment = whisperArray[i].replace(commenterInitials,'').trim();
 			console.log(commenter);
 			console.log(comment);
 		}
