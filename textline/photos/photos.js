@@ -59,6 +59,16 @@ function getImages(input){
 	return;
 }
 
+function getWhispers(whisperArray){
+	for(i=0;i<whisperArray.length;i++){
+		var currentWhisper = whisperArray[i].split(' ')[0].trim();
+		/*if(currentWhisper.slice(0,1) == '[' && currentWhisper.slice(currentWhisper.length-1,1) == ']' && currentWhisper.length < 6){*/
+			console.log(currentWhisper.slice(0,1));
+			console.log(currentWhisper.slice(currentWhisper.length-1,1));
+		/*}*/
+	}
+}
+
 function buildGallery(imageArray){
 	var galleryElement=document.getElementsByClassName('gallery')[0];
 	var titleElement=document.getElementsByTagName('h1')[0];
@@ -109,6 +119,7 @@ function buildGallery(imageArray){
 	closeButtons = document.querySelectorAll('.close');
 	previousButton = document.querySelector('.previous');
 	nextButton = document.querySelector('.next');
+	getWhispers(whispers);
 	setClickBehavior();
 	hideLoadingScreen();
 }
