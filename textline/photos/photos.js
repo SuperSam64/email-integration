@@ -120,7 +120,7 @@ function getWhispers(whisperArray){
 		console.log(whisperArray[i].replace(commenterInitials,''));
 		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6){
 			try{
-				var commenter = CCA[commenterInitials.replace('[','').replace(']','')];
+				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
 			}
 			catch (error) {
 				var commenter = commenterInitials.replace('[','').replace(']','');
