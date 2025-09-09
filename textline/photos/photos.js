@@ -84,7 +84,7 @@ function getImages(input){
 	var imageGallery=document.querySelector('.gallery');
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].is_whisper){
-			whispers.push(input.posts[c].body);
+			whispers.push({content: input.posts[c].body, date:input.posts[c].created_at});
 		}
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
