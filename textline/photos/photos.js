@@ -107,11 +107,7 @@ function getImages(input){
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
 		var commenterInitials = whisperArray[i].split(' ')[0].trim();
-		console.log('Left: '+commenterInitials.slice(0,1));
-		console.log('Right: '+commenterInitials.slice(commenterInitials.length-1,commenterInitials.length));
-		console.log('Length: '+commenterInitials.length);
-		console.log('Left: '+(commenterInitials.slice(0,1) == '[') +'\n Right:'+ (commenterInitials.slice(commenterInitials.length-1,1) == ']') + '\nLength:' + (commenterInitials.length < 6));
-		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6){			
+		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,commenterInitials.length) == ']' && commenterInitials.length < 6){			
 			try{
 				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
 				console.log('Modified initials: '+commenterInitials.replace('[','').replace(']',''));
