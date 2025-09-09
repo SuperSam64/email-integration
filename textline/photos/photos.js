@@ -116,7 +116,7 @@ function getWhispers(whisperArray){
 			}
 			var comment = whisperArray[i].replace(commenterInitials,'').trim();
 			var now = new Date();
-			console.log(formatDate(now,true));
+			console.log(formatDate());
 			console.log(commenter);
 			console.log(comment);
 		}
@@ -323,21 +323,22 @@ function expandImage(originalImage, animation = 'open') {
 	});
 }
 
-function formatDate(input,isComment=false){
-	var date = new Date(input*1000);
-	if(isComment==true){
-		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
-			hour: 'numeric', 
-			minute: 'numeric', 
-			hour12: true
-		})];
-	}
-	else{
+function formatDate(input){
+	if(input){
+		var date = new Date(input*1000);
 		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
 			hour: 'numeric', 
 			minute: 'numeric', 
 			hour12: true
 		});
+	}
+	else{
+		var date = new Date();
+		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
+			hour: 'numeric', 
+			minute: 'numeric', 
+			hour12: true
+		})];
 	}
 }
 
