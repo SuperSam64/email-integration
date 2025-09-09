@@ -107,6 +107,17 @@ function getImages(input){
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
 		var commenterInitials = whisperArray[i].split(' ')[0].trim();
+		console.log(commenterInitials);
+		console.log(commenterInitials.slice(0,1));
+		console.log(commenterInitials.slice(commenterInitials.length-1,1));
+		console.log(commenterInitials.length);
+		console.log(commenterInitials.slice(0,1)=='[');
+		console.log(commenterInitials.slice(commenterInitials.length-1,1)==']');
+		console.log(commenterInitials.length<6);
+		console.log(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6);
+		console.log(CCA[commenterInitials.replace('[','').replace(']','')]);
+		console.log(commenterInitials.replace('[','').replace(']',''));
+		console.log(whisperArray[i].replace(commenterInitials,''));
 		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6){
 			try{
 				var commenter = CCA[commenterInitials.replace('[','').replace(']','')];
