@@ -1,7 +1,51 @@
 var images=[]
 var whispers=[];
 var allImages;
-
+var CCA =[
+	{
+		name:'Sam',
+		initials:'SN'
+	},
+	{
+		name:'Della Rose',
+		initials:'DRS'
+	},
+	{
+		name:'Heather',
+		initials:'HK'
+	},
+	{
+		name:'Ashley',
+		initials:'AT'
+	},
+	{
+		name:'Shaunte',
+		initials:'SN'
+	},
+	{
+		name:'Brandy',
+		initials:'BPR'
+	},
+	{
+		name:'Bailey',
+		initials:'BF'
+	},
+	{
+		name:'Gema',
+		initials:'GCC'
+	},
+	{
+		name:'Alli',
+		initials:'AF'
+	},
+	{
+		name:'Angie',
+		initials:'AV'
+	},
+	{
+		name:'David',
+		initials:'DA'
+];
 
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
@@ -62,10 +106,9 @@ function getImages(input){
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
 		var currentWhisper = whisperArray[i].split(' ')[0].trim();
-		/*if(currentWhisper.slice(0,1) == '[' && currentWhisper.slice(currentWhisper.length-1,1) == ']' && currentWhisper.length < 6){*/
-			console.log(currentWhisper.slice(0,1));
-			console.log(currentWhisper.slice(currentWhisper.length-1,1));
-		/*}*/
+		if(currentWhisper.slice(0,1) == '[' && currentWhisper.slice(currentWhisper.length-1,1) == ']' && currentWhisper.length < 6){
+			console.log(currentWhisper);
+		}
 	}
 }
 
