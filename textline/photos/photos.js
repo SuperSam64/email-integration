@@ -106,7 +106,7 @@ function getImages(input){
 
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
-		var commenterInitials = whisperArray[i].split(' ')[0].trim();
+		var commenterInitials = whisperArray[i].content.split(' ')[0].trim();
 		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,commenterInitials.length) == ']' && commenterInitials.length < 6){			
 			try{
 				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
@@ -114,7 +114,7 @@ function getWhispers(whisperArray){
 			catch (error) {
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
-			var comment = whisperArray[i].replace(commenterInitials,'').trim();
+			var comment = whisperArray[i].content.replace(commenterInitials,'').trim();
 			var now = new Date();
 			console.log(formatDate());
 			console.log(commenter);
