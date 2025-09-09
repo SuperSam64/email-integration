@@ -45,6 +45,7 @@ var CCA =[
 	{
 		name:'David',
 		initials:'DA'
+	}
 ];
 
 const loadingScreen = document.querySelector('#loading-screen');
