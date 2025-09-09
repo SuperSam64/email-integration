@@ -106,9 +106,17 @@ function getImages(input){
 
 function getWhispers(whisperArray){
 	for(i=0;i<whisperArray.length;i++){
-		var currentWhisper = whisperArray[i].split(' ')[0].trim();
-		if(currentWhisper.slice(0,1) == '[' && currentWhisper.slice(currentWhisper.length-1,1) == ']' && currentWhisper.length < 6){
-			console.log(currentWhisper);
+		var commenterInitials = whisperArray[i].split(' ')[0].trim();
+		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,1) == ']' && commenterInitials.length < 6){
+			try{
+				var commenter = CCA[commenterInitials.replace('[','').replace(']','')];
+			}
+			catch (error) {
+				var commenter = commenterInitials.replace('[','').replace(']','');
+			}
+			var comment = whisperArray[i].replace(commenterInitials,'')
+			console.log(commenter);
+			console.log(comment);
 		}
 	}
 }
