@@ -325,7 +325,7 @@ function expandImage(originalImage, animation = 'open') {
 
 function formatDate(input,isComment=false){
 	var date = new Date(input*1000);
-	if(isComment=true){
+	if(isComment==true){
 		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
 			hour: 'numeric', 
 			minute: 'numeric', 
