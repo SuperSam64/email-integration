@@ -1,5 +1,7 @@
 var images=[]
+var whispers=[];
 var allImages;
+
 
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
@@ -38,6 +40,9 @@ function getImages(input){
 	for(c=0;c<input.posts.length;c++){
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
+				if(input.posts[c].is_whisper){
+					whispers.push(input.posts[c].body);
+				}
 				var image={
 					name:input.posts[c].creator.name,
 					phone_number:input.posts[c].creator.phone_number,
@@ -49,6 +54,7 @@ function getImages(input){
 			}
 		}
 	}
+	console.log(whispers);
 	buildGallery(images);
 	return;
 }
