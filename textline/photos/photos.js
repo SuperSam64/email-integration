@@ -20,6 +20,7 @@ function getConversationId(key, phone_number){
 	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
+			console.log(this.response);
 			if(JSON.parse(this.response).conversation==null){
 				hideLoadingScreen();
 			}
