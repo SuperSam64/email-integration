@@ -115,8 +115,7 @@ function getWhispers(whisperArray){
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
 			var comment = whisperArray[i].content.replace(commenterInitials,'').trim();
-			var now = new Date();
-			console.log(formatDate());
+			console.log(formatDate(whisperArray[i].date,true));
 			console.log(commenter);
 			console.log(comment);
 		}
@@ -323,9 +322,9 @@ function expandImage(originalImage, animation = 'open') {
 	});
 }
 
-function formatDate(input){
-	if(input){
-		var date = new Date(input*1000);
+function formatDate(input,is_whisper=false){
+	var date = new Date(input*1000);
+	if(is_whisper==true){
 		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
 			hour: 'numeric', 
 			minute: 'numeric', 
