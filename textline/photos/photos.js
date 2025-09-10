@@ -115,16 +115,36 @@ function getWhispers(whisperArray){
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
 			var comment = whisperArray[i].content.replace(commenterInitials,'').trim();
-			var commentDiv = document.createElement('div');
-			var commentBody = document.createElement('div');
-			var commentDate = document.createElement('span');
-			var commentName = document.createElement('span');
+			var commentDiv = Object.assign(document.createElement('div'),{
+				class:'comment-container'
+			});
+			var commentDetails = document.createElement('div');
+			var commentUser = Object.assign(document.createElement('span'),{
+				class:'comment-user',
+				innerText='Sam'
+			});
+			var commentDate = Object.assign(document.createElement('span'),{
+				class:'comment-details',
+				innerText='1:42 PM 9/9/25'
+			});
+			var commentBody = Object.assign(document.createElement('div'),{
+				class:'comment-body',
+				innerText='This... is a comment!'
+			});
+
+			commentDetails.appendChild(commentUser);
+			commentDetails.appendChild(commentDate);
+			commentDiv.appendChild(commentDetails);
+			commentDiv.appendChild(commentBody);
+			
+		/*
 			commentDate.innerText=formatDate(whisperArray[i].date,true);
 			commentName.innerText=commenter;
 			commentBody.innerText=comment;
 			commentDiv.appendChild(commentName);
 			commentDiv.appendChild('|'+commentDate+'|');
 			commentDiv.appendChild(commentBody);
+   */
 			console.log(commentDiv);
 		}
 	}
