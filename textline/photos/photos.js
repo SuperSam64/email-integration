@@ -325,19 +325,18 @@ function expandImage(originalImage, animation = 'open') {
 function formatDate(input,is_whisper=false){
 	var date = new Date(input*1000);
 	if(is_whisper==true){
-		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
-			hour: 'numeric', 
-			minute: 'numeric', 
-			hour12: true
-		});
-	}
-	else{
-		var date = new Date();
 		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
 			hour: 'numeric', 
 			minute: 'numeric', 
 			hour12: true
 		})];
+	}
+	else{
+		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
+			hour: 'numeric', 
+			minute: 'numeric', 
+			hour12: true
+		});
 	}
 }
 
