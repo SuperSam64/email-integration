@@ -115,9 +115,17 @@ function getWhispers(whisperArray){
 				var commenter = commenterInitials.replace('[','').replace(']','');
 			}
 			var comment = whisperArray[i].content.replace(commenterInitials,'').trim();
-			console.log(formatDate(whisperArray[i].date,true));
-			console.log(commenter);
-			console.log(comment);
+			var commentDiv = document.createElement('div');
+			var commentBody = document.createElement('div');
+			var commentDate = document.createElement('span');
+			var commentName = document.createElement('span');
+			commentDate.innerText=formatDate(whisperArray[i].date,true);
+			commentName.innerText=commenter;
+			commentBody.innerText=comment;
+			commentDiv.appendChild(commentName);
+			commentDiv.appendChild('|'+commentDate+'|');
+			commentDiv.appendChild(commentBody);
+			console.log(commentDiv);
 		}
 	}
 }
@@ -325,11 +333,11 @@ function expandImage(originalImage, animation = 'open') {
 function formatDate(input,is_whisper=false){
 	var date = new Date(input*1000);
 	if(is_whisper==true){
-		return [[date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US', { 
+		return [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/'),date.toLocaleString('en-US' + ' ' + { 
 			hour: 'numeric', 
 			minute: 'numeric', 
 			hour12: true
-		})];
+		});
 	}
 	else{
 		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
