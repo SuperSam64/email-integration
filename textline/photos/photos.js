@@ -121,15 +121,15 @@ function getWhispers(whisperArray){
 			var commentDetails = document.createElement('div');
 			var commentUser = Object.assign(document.createElement('span'),{
 				class:'comment-user',
-				innerText='Sam'
+				innerText'Sam'
 			});
 			var commentDate = Object.assign(document.createElement('span'),{
 				class:'comment-details',
-				innerText='1:42 PM 9/9/25'
+				innerText:'1:42 PM 9/9/25'
 			});
 			var commentBody = Object.assign(document.createElement('div'),{
 				class:'comment-body',
-				innerText='This... is a comment!'
+				innerText:'This... is a comment!'
 			});
 
 			commentDetails.appendChild(commentUser);
