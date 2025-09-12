@@ -48,6 +48,13 @@ var CCA =[
 	}
 ];
 
+var key = localStorage.getItem('key');
+if(key==null){
+	var newKey = prompt('Key:');
+	localStorage.setItem('key', newKey);
+	key = newKey;
+}
+
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
 const modal = document.querySelector('.modal');
@@ -57,7 +64,7 @@ var copyButtons, closeButtons, downloadButtons, galleryImages, previousButton, n
 getParams();
 function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
-	var key=urlParams.get('key');
+	/*var key=urlParams.get('key');*/
 	var phone_number=urlParams.get('phone_number');
 	getConversationId(key, phone_number);
 }
