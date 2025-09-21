@@ -1,72 +1,41 @@
-var images=[]
-var whispers=[];
-var allImages;
-var CCA =[
-	{
-		name:'Sam',
-		initials:'SN'
-	},
-	{
-		name:'Della Rose',
-		initials:'DRS'
-	},
-	{
-		name:'Heather',
-		initials:'HK'
-	},
-	{
-		name:'Ashley',
-		initials:'AT'
-	},
-	{
-		name:'Shaunte',
-		initials:'SN'
-	},
-	{
-		name:'Brandy',
-		initials:'BPR'
-	},
-	{
-		name:'Bailey',
-		initials:'BF'
-	},
-	{
-		name:'Gema',
-		initials:'GCC'
-	},
-	{
-		name:'Alli',
-		initials:'AF'
-	},
-	{
-		name:'Angie',
-		initials:'AV'
-	},
-	{
-		name:'David',
-		initials:'DA'
-	}
-];
-
-var key = localStorage.getItem('key');
-if(key==null){
-	var newKey = prompt('Key:');
-	localStorage.setItem('key', newKey);
-	key = newKey;
-}
-
+var images=[];
 const loadingScreen = document.querySelector('#loading-screen');
 const expandedImage = document.getElementById('expanded-image');
 const modal = document.querySelector('.modal');
-let originalImageRect;
-var copyButtons, closeButtons, downloadButtons, galleryImages, previousButton, nextButton, imageIndex=-1;
-
+var originalImageRect, allImages, phone_number, userInitials, uuid, userInitials,
+	copyButtons, closeButtons, downloadButtons, galleryImages, previousButton, nextButton,
+	inputPadding,initialInputHeight, initialInputWrapHeight, inputFontSize,	pageHeaderHeight,
+	commentsHeaderHeight, commentsHeaderPadding, pageBottomMargin, imageIndex=-1;
+var key = getKey();
+setTheme();
 getParams();
+
+function getKey(){
+	if(localStorage.getItem('key') == null){
+		var newKey = prompt('Key:');
+		localStorage.setItem('key', newKey);
+		return newKey;
+	}
+	else{
+		return localStorage.getItem('key');
+	}
+}
+
 function getParams(){
 	var urlParams=new URLSearchParams(window.location.search);
 	/*var key=urlParams.get('key');*/
-	var phone_number=urlParams.get('phone_number');
+	phone_number = urlParams.get('phone_number');
+	userInitials = urlParams.get('CCA');
 	getConversationId(key, phone_number);
+}
+
+function setTheme(option = 'initial'){
+	var currentTheme = localStorage.getItem('currentTheme');
+	if(currentTheme == null){var theme = 'dark'}
+	else if (option == 'toggle'){var theme = (currentTheme == 'dark') ? 'light' : 'dark'}
+	else {var theme = currentTheme}
+	document.getElementById('theme').setAttribute('href', 'themes/' + theme + '.css');
+	localStorage.setItem('currentTheme', theme);
 }
 
 function getConversationId(key, phone_number){
@@ -74,8 +43,10 @@ function getConversationId(key, phone_number){
 	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
-			console.log(JSON.parse(this.response).conversation);
 			if(JSON.parse(this.response).conversation==null){
+				document.querySelector('.comments-panel').remove();
+				document.querySelector('.no-results').style.paddingLeft = '0';
+				document.querySelector('.no-results').style.paddingRight = '0';
 				hideLoadingScreen();
 			}
 			else{
@@ -87,12 +58,10 @@ function getConversationId(key, phone_number){
 }
 
 function getImages(input){
+	loadComments(key, phone_number);
 	allImages=input;
 	var imageGallery=document.querySelector('.gallery');
 	for(c=0;c<input.posts.length;c++){
-		if(input.posts[c].is_whisper){
-			whispers.push({content: input.posts[c].body, date:input.posts[c].created_at});
-		}
 		if(input.posts[c].attachments!=null){
 			for(i=0;i<input.posts[c].attachments.length;i++){
 				var image={
@@ -106,55 +75,14 @@ function getImages(input){
 			}
 		}
 	}
-	console.log(whispers);
 	buildGallery(images);
 	return;
 }
 
-function getWhispers(whisperArray){
-	for(i=0;i<whisperArray.length;i++){
-		var commenterInitials = whisperArray[i].content.split(' ')[0].trim();
-		if(commenterInitials.slice(0,1) == '[' && commenterInitials.slice(commenterInitials.length-1,commenterInitials.length) == ']' && commenterInitials.length < 6){			
-			try{
-				var commenter = CCA[CCA.findIndex(user => user.initials == commenterInitials.replace('[','').replace(']',''))].name;
-			}
-			catch (error) {
-				var commenter = commenterInitials.replace('[','').replace(']','');
-			}
-			var comment = whisperArray[i].content.replace(commenterInitials,'').trim();
-			var commentDiv = Object.assign(document.createElement('div'),{
-				class:'comment-container'
-			});
-			var commentDetails = document.createElement('div');
-			var commentUser = Object.assign(document.createElement('span'),{
-				className:'comment-user',
-				innerText:commenter
-			});
-			var commentDate = Object.assign(document.createElement('span'),{
-				className:'comment-details',
-				innerText:formatDate(whisperArray[i].date,true)
-			});
-			var commentBody = Object.assign(document.createElement('div'),{
-				className:'comment-body',
-				innerText:comment
-			});
-
-			commentDetails.appendChild(commentUser);
-			commentDetails.appendChild(commentDate);
-			commentDiv.appendChild(commentDetails);
-			commentDiv.appendChild(commentBody);
-			
-		
-   
-			console.log(commentDiv);
-		}
-	}
-}
-
 function buildGallery(imageArray){
 	var galleryElement=document.getElementsByClassName('gallery')[0];
-	var titleElement=document.getElementsByTagName('h1')[0];
-	var subtitleElement=document.getElementsByTagName('h2')[0];
+	var titleElement=document.getElementsByClassName('name')[0];
+	var subtitleElement=document.getElementsByClassName('date')[0];
 	var noResults=document.querySelector('.no-results');
 	titleElement.innerText='No matches found';
 	subtitleElement.innerText='There are no messages with images from this phone number.';
@@ -201,7 +129,6 @@ function buildGallery(imageArray){
 	closeButtons = document.querySelectorAll('.close');
 	previousButton = document.querySelector('.previous');
 	nextButton = document.querySelector('.next');
-	getWhispers(whispers);
 	setClickBehavior();
 	hideLoadingScreen();
 }
@@ -280,15 +207,15 @@ function setClickBehavior(){
 }
 
 function hideLoadingScreen(){
+	document.querySelector('#theme-button').addEventListener('click', (e) => {
+		setTheme('toggle');
+	});
 	if(loadingScreen){
-		/* TEMPORARY TIMER - TO TEST LOADING ONLY, REMOVE TIMER IN FINAL VERSION */
-		setTimeout(function() {loadingScreen.classList.add('fade');
-			loadingScreen.addEventListener('transitionend', function handler() {
-				loadingScreen.removeEventListener('transitionend', handler);
-				loadingScreen.remove();
-			});
-		}, 4600);
-		/* ------------------------------------------------------------------ */
+		loadingScreen.classList.add('fade');
+		loadingScreen.addEventListener('transitionend', function handler() {
+			loadingScreen.removeEventListener('transitionend', handler);
+			loadingScreen.remove();
+		});
 	}
 }
 
@@ -349,24 +276,6 @@ function expandImage(originalImage, animation = 'open') {
 			expandedImage.style.opacity='1';
 		});
 	});
-}
-
-function formatDate(input,is_whisper=false){
-	var date = new Date(input*1000);
-	if(is_whisper==true){
-		return [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/')+' '+date.toLocaleString('en-US',{ 
-			hour: 'numeric', 
-			minute: 'numeric', 
-			hour12: true
-		});
-	}
-	else{
-		return 'Received on ' + [date.getMonth()+1, date.getDate(), date.getFullYear()].join('/') + ' at ' + date.toLocaleString('en-US', { 
-			hour: 'numeric', 
-			minute: 'numeric', 
-			hour12: true
-		});
-	}
 }
 
 function copy(index,element){
@@ -454,4 +363,253 @@ function next(){
 		imageIndex+=1;
 		expandImage(galleryImages[imageIndex],'right');
 	}
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+	var rootElement = document.documentElement;
+	var topSection = document.querySelector('.top-section');
+	var commentsPanelTitle = document.querySelector('.comments-panel-title');
+	var commentsContainer = document.querySelector('.comments-content-section');
+	var commentsPanelContent = document.querySelector('.comments-panel-content');
+	var inputWrap = document.querySelector('#input-wrap');
+	var commentInput = document.querySelector('#comment-input');
+	var inputWrapPadding = measureElement(inputWrap, 'padding', 'px', inputWrapPadding);
+	commentInput.disabled = true;
+	commentInput.addEventListener('input', function(event) {
+		var previousScrollHeight = this.style.height;
+		this.style.height = 'auto';
+		this.style.height = (this.scrollHeight) + 'px';
+		initialInputHeight = initialInputHeight?initialInputHeight:this.scrollHeight;
+		inputFontSize = measureElement(commentInput, 'font-size', 'px', inputFontSize);
+		inputPadding = (initialInputHeight - inputFontSize);
+		inputWrap.style.height = (this.scrollHeight + inputPadding + measureElement(inputWrap, 'padding', 'px')) + 'px';
+		initialInputWrapHeight = measureElement(inputWrap, 'height', 'px', initialInputWrapHeight);
+		pageHeaderHeight = measureElement(topSection, 'height', 'px', pageHeaderHeight);
+		commentsHeaderHeight = measureElement(commentsPanelTitle, 'height', 'px', commentsHeaderHeight);
+		commentsHeaderPadding = measureElement(commentsPanelTitle, 'padding', 'px', commentsHeaderPadding);
+		pageBottomMargin = measureElement(rootElement, '--default-margins', 'px', pageBottomMargin);
+		var totalHeightOffset = pageHeaderHeight + commentsHeaderHeight + (commentsHeaderPadding * 2) + pageBottomMargin;
+		commentsPanelContent.style.height = 'calc(100vh - ' + (totalHeightOffset + (2 * (inputWrapPadding)) + 
+			(initialInputWrapHeight - initialInputHeight) + this.scrollHeight) + 'px)';
+	});
+	commentInput.addEventListener('keydown', function(event) {
+		if(event.key === 'Enter' && !event.shiftKey && !event.altKey && !event.altKey){
+			event.preventDefault();
+			if(commentInput.value.trim() != ''){
+				var submittedComment = commentInput.value;
+				commentInput.value = '';
+				commentInput.dispatchEvent(new Event('input'));
+				commentInput.disabled = true;
+				addComment(submittedComment);
+								
+				
+				
+			}
+		}
+	});
+	commentInput.dispatchEvent(new Event('input'));
+});
+
+function measureElement(element, style, units, variable){
+	if(!variable){
+		return Number(((window.getComputedStyle(element)).getPropertyValue(style)).replace(units,''));
+	}
+	else{
+		return variable;
+	}
+}
+
+function loadComments(key, phone_number, latest = false){
+	var request = new XMLHttpRequest();
+	var lastComment = {};
+	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
+	request.onreadystatechange = function () {
+		if (this.readyState === 4) {
+			uuid = JSON.parse(this.response).conversation.uuid;
+			if(JSON.parse(this.response).conversation==null){
+				return;
+			}
+			else{
+				var conversation = JSON.parse(this.response);
+				var commentCount = 0;
+				var latestComment = {};		
+				var commentInput = document.querySelector('#comment-input');
+				for(c=0;c<conversation.posts.length;c++){
+					var post = conversation.posts[c];
+					var body = (post.body == null || !post.body) ? '' : post.body;
+					var initials = body.trim().split(' ')[0];
+					var content = body.replace(initials,' ').trim();
+					if(post.is_whisper && initials.includes('[') && initials.includes(']') && 
+						body != '' && initials.replace('[','').replace(']','').length < 4){
+						commentCount += 1;
+						if(latest){
+							latestComment = {name: formatName(initials), date: formatDate(post.created_at), comment: formatComment(content)}
+						}
+						else{
+							buildComments(formatName(initials), formatDate(post.created_at), formatComment(content));
+							commentInput.disabled = false;
+						}
+					}
+				}
+				if(commentCount == 0){
+					var noComments = document.querySelector('.no-comments');
+					noComments.style.display = 'block';
+					commentInput.disabled = false;
+				}
+				if(latest){
+					/* determines when the new message has registered */
+					checkForNew = setTimeout(() => {
+						console.log('checking for new messages');
+						if (document.querySelectorAll('.comment-container').length == commentCount) {
+							/* proceed below with posting the new message */
+							buildComments(latestComment.name, latestComment.date, latestComment.comment, true);
+							console.log(commentInput);
+						}
+						else{
+							loadComments(key, phone_number, true);
+						}
+					}, 200);
+				}
+			}
+		}
+	}
+	request.send();
+}
+
+function formatName(name){
+	try{
+		return CCAs.find(CCA => CCA.initials == name.replace('[','').replace(']','')).name;
+	}
+	catch (err) {
+		return name.replace('[','').replace(']','');
+	}
+}
+
+function formatDate(date){
+	var fullDate = new Date(date * 1000);
+	return fullDate.toLocaleTimeString('en-US', {day:'numeric', month:'numeric', year: 'numeric',
+		hour: 'numeric', minute: 'numeric', hour12: true}).replace(', ','  (') + ')';
+}
+
+function formatComment(comment){
+	var commentArray = comment.split(' ');
+	var formattedComment = [];
+	for(i = 0; i < commentArray.length; i ++){
+		if(formatLinks(commentArray[i])){
+			if(commentArray[i].includes('http://') || commentArray[i].includes('https://')){
+				formattedComment.push('<a href="' + commentArray[i] + '">' + commentArray[i] + '</a>');
+			}
+			else{
+				formattedComment.push('<a href="https://' + commentArray[i] + '" target="_blank">' + commentArray[i] + '</a>');
+
+			}
+		}
+		else {
+			formattedComment.push(commentArray[i]);			
+		}
+	}
+	return formattedComment.join(' ');
+}
+
+function formatLinks(text){
+	var urlRegex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/;
+	return urlRegex.test(text);
+}
+
+function loadingIndicator(){
+	var commentContentsPanel = document.querySelector('.comments-panel-content');
+	var commentContainer = Object.assign(document.createElement('div'), {
+		className:'comment-container',
+		innerHTML:
+		`<div class="typing-indicator-container">
+			<div class="typing-indicator">
+				<svg viewBox="0 0 300 100" preserveAspectRatio="xMidYMid meet">
+					<use href="#typing-animation" />
+				</svg>
+			</div>
+		</div>
+		<div class="comment-card hidden">
+		</div>`
+	});
+	commentContentsPanel.appendChild(commentContainer);
+	commentContainer.scrollIntoView({behavior: 'smooth', block: 'end'});
+}
+
+function buildComments(name, date, comment, latest = false){
+	if(latest){
+		var lastComment = document.querySelectorAll('.comment-container')[document.querySelectorAll('.comment-container').length - 1];
+		var typingIndicatorContainer = document.querySelector('.typing-indicator-container');
+		var commentContainer = Object.assign(document.createElement('div'), {
+			className: 'comment-card hidden',
+			innerHTML:
+			`<div class="comment-card-content">
+				<div class="comment-details">
+					<span class="comment-name">
+						` + name + `
+					</span>
+					<span class="comment-time">
+						` + date + `
+					</span>
+				</div>
+				<div class="comment-body">
+					` + comment +`
+				</div>
+			</div>`
+		});
+		lastComment.appendChild(commentContainer);
+		setTimeout(() => {
+			var commentInput = document.querySelector('#comment-input');
+			typingIndicatorContainer.remove();
+			commentContainer.classList.remove('hidden');
+			commentInput.disabled = false;
+		}, 100);
+		setTimeout(() => {
+			commentContainer.scrollIntoView({behavior: 'smooth', block: 'end'});
+		}, 400);
+	}
+	else{
+		var commentsPanelContent = document.querySelector('.comments-panel-content');
+		var commentContainer = Object.assign(document.createElement('div'), {
+			className: 'comment-container',
+			innerHTML:
+			`<div class='comment-card'>
+				<div class="comment-card-content">
+					<div class="comment-details">
+						<span class="comment-name">
+							` + name + `
+						</span>
+						<span class="comment-time">
+							` + date + `
+						</span>
+					</div>
+					<div class="comment-body">
+						` + comment +`
+					</div>
+				</div>
+			</div>`
+		});
+		commentsPanelContent.appendChild(commentContainer);
+	}
+}
+
+function addComment(comment){
+	loadingIndicator();
+	var formattedComment = '[' + userInitials + '] ' + comment;
+	var request = new XMLHttpRequest();
+	request.open('POST', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversation/' + uuid + '.json?access_token=' + key);
+	request.setRequestHeader('Content-Type', 'application/json');
+	request.onreadystatechange = function () {
+		if (this.readyState === 4) {
+			console.log('Status:', this.status);
+			console.log('Headers:', this.getAllResponseHeaders());
+			console.log('Body:', this.responseText);
+			loadComments(key, phone_number, true);
+		}
+	};
+	var body = {
+		'whisper': {
+			'body': formattedComment
+		}
+	};
+	request.send(JSON.stringify(body));
 }
