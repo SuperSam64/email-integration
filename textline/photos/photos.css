@@ -527,13 +527,13 @@ body {
 }
 
 #theme-button:hover{
-	border: 2px solid rgba(var(--theme-hover-r), var(--theme-hover-g), var(--theme-hover-b), 0.6);
+	border: 2px solid var(--text-color-primary);
 	cursor:pointer;
 	background-color: hsl(from var(--comment-card-background-color) h calc(s + 20) calc(l + 20));
 	transition:none;
 }
 #theme-button:active{
-	border: 2px solid rgba(var(--theme-hover-r), var(--theme-hover-g), var(--theme-hover-b), 0.8);
+	border: 2px solid var(--text-color-primary);
 	cursor:pointer;
 	background-color: hsl(from var(--comment-card-background-color) h calc(s + 40) calc(l + 40));
 	transition:none;
