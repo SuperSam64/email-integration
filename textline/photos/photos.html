@@ -1,13 +1,92 @@
 <!DOCTYPE html>
 <head>
 	<title>Textline Photos</title>
-	<link rel="stylesheet" href="photos.css">
-	<link rel="stylesheet" href="theme1.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 	<link rel="icon" sizes="16x16" type="image/vnd.microsoft.icon" href="textline_favicon_16.ico">
 	<link rel="icon" sizes="326x32" type="image/vnd.microsoft.icon" href="textline_favicon_32.ico">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link id="theme" rel="stylesheet" href="themes/dark.css">
+	<link rel="stylesheet" href="photos.css">
 </head>
 <body>
+	
+		<div id="theme-button" class="darkmode">
+			
+			<svg viewBox="0 0 100 100">
+				<defs>
+					<g id="sun-rays">
+						<line x1="8" y1="50" x2="16" y2="50" stroke-width="4" stroke-linecap="round" /> 
+						<line x1="50" y1="8" x2="50" y2="16"  stroke-width="4"stroke-linecap="round" /> 
+						<line x1="92" y1="50" x2="84" y2="50" stroke-width="4" stroke-linecap="round" /> 
+						<line x1="50" y1="92" x2="50" y2="84"  stroke-width="4" stroke-linecap="round" /> 
+					<g>
+				</defs>
+				<path id="theme-toggle-dark" stroke-width="3" stroke-linejoin="round" d="M50 26 A18 18 0 1 1 26 50 A24 24 0 1 0 50 26 Z" />
+				<g id="theme-toggle-light" >
+					<use href="#sun-rays" />
+					<use transform="rotate(45 50 50)" href="#sun-rays" />
+					<circle cx="50" cy="50" r="24" stroke-width="3" fill="none" />
+				</g>			
+			</svg>
+			
+		</div>
+	
+
+
+	<svg display="none" viewBox="0 0 260 100">
+		<defs>
+			<circle id="typing-dot" r="25" fill="rgba(120, 120, 120, 1)" />
+			<use id="typing-1" href="#typing-dot" x="50" y="50"/>
+			<use id="typing-2" href="#typing-dot" x="130" y="50"/>
+			<use id="typing-3" href="#typing-dot" x="210" y="50"/>
+			<g id="typing-animation">
+				<g>
+					<use href="#typing-1" />
+					<animate attributeName="opacity"
+							begin="-1s"
+							dur="1.8"
+							from="0"
+							to="0"
+							values="0;0;1;0"
+							keySplines="
+							0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+							keyTimes="0;0.25;0.65;1" 
+							calcMode="spline"
+						repeatCount="indefinite" />
+				</g>
+				<g>
+					<use href="#typing-2" />
+					<animate attributeName="opacity"
+							begin="-0.5s"
+							dur="1.8s"
+							from="0"
+							to="0"
+							values="0;0;1;0"
+							keySplines="
+							0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+							keyTimes="0;0.25;0.65;1" 
+							calcMode="spline"
+						repeatCount="indefinite" />
+				</g>
+				<g>
+					<use href="#typing-3" />
+					<animate attributeName="opacity"
+							begin="0s"
+							dur="1.8s"
+							from="0"
+							to="0"
+							values="0;0;1;0"
+							keySplines="
+							0.4 0 0.6 1; 0.4 0 0.6 1; 0.4 0 0.6 1"
+							keyTimes="0;0.25;0.65;1" 
+							calcMode="spline"
+						repeatCount="indefinite" />
+				</g>
+			</g>
+		</defs>
+	</svg>
 	<svg width="0" height="0" style="display:block">
 		<defs>
 			<mask id="no-results-mask1">
@@ -246,24 +325,59 @@
 	</svg>
 	<div onclick="hideLoadingScreen()" id="loading-screen">
 			<svg style="filter:drop-shadow(12px 12px 8px rgba(0,0,0,0.4))" width="80vw" height="80vh" viewBox="0 0 200 200">
-				<text transform-origin="center" transform="skewX(-7.5)"  fill="white"  font-size="20" height="100" width="200" x="100" y="80" text-anchor="middle">Getting photos...</text>
+				<text transform-origin="center" transform="skewX(-7.5)"  fill="var(--text-color-primary)"  font-size="20" height="100" width="200" x="100" y="80" text-anchor="middle">Getting photos...</text>
 				<use x="0" y="80" transform-origin="center" transform="scale(0.75)" href="#splashscreen"/>
 			</svg>
 	</div>
-	<div class="heading">
-		<h1>No matches found</h1>
-		<h2>There are no messages with images from this phone number.</h2>
-		<div class="no-results">
-			<svg>
-				<g transform-origin="center" transform="scale(0.9)" style="opacity:0.5">
-					<use style="filter:drop-shadow(2px 2px 4px black)" transform="rotate(6)" href="#no-results-image1"></use>
-					<use style="filter:drop-shadow(2px 2px 4px black)" href="#no-results-image2"></use>
-					<use style="filter:drop-shadow(2px 2px 4px black)" transform="rotate(-6)" href="#no-results-image3"></use>
-				</g>
-			</svg>
+	<!-- 
+		BEGIN UPDATED SECTION 
+		CLASSES: heading, gallery
+		ELEMENT TYPES: h1, h2h, div
+	-->
+	
+	
+	<!-- UPDATED CUSTOMER NAME -->
+	<div class="top-section">
+		<!--<div style="position:absolute;right:0px;top:0px;height:calc((2 * var(--top-section-padding)) + var(--customer-name-height) + var(--customer-phone-number-padding) + var(--customer-phone-number-height));aspect-ratio:1/1;background-color:blue">THEME</div>-->
+		<div class="customer-info-container">
+			<div class="customer-info">
+				<div onclick="setTheme('theme2')" class="name">No matches found</div>
+				<!-- UPDATED CUSTOMER PHONE NUMBER -->
+				<div class="date">There are no messages with images from this phone number.</div>
+		<!-- "NO MATCHES" IMAGE, NO CHANGE NEEDED -->
+			</div>
 		</div>
 	</div>
-	<div class="gallery"></div>
+	<!-- UPDATED GALLERY -->
+	<div class="main-content">
+		<div class="gallery">
+			<div class="no-results">
+				<svg>
+					<g transform-origin="center" transform="scale(0.9)" style="opacity:0.5">
+						<use style="filter:drop-shadow(2px 2px 4px black)" transform="rotate(6)" href="#no-results-image1"></use>
+						<use style="filter:drop-shadow(2px 2px 4px black)" href="#no-results-image2"></use>
+						<use style="filter:drop-shadow(2px 2px 4px black)" transform="rotate(-6)" href="#no-results-image3"></use>
+					</g>
+				</svg>
+			</div>
+		</div>
+		<div class="comments-panel">
+			<div class="comments-panel-title">
+					COMMENTS
+			</div>
+			<div class="comments-panel-content-container">
+				<div class="comments-panel-content">
+					<div class="no-comments">
+						Leave a comment to let CRMs know once you are finished with the photo(s) on this page, and provide any additional information that may be helpful.
+					</div>
+				</div>
+			</div>
+			<div class="comment-input-container" id="input-wrap">
+				<textarea class="comment-input" id="comment-input" type="text" placeholder="Enter a comment..."></textarea>	
+			</div>
+		</div>
+	</div>
+	<!-- END UPDATED SECTION-->
 	<div class="modal">	
 		<div class="modalHeader">
 			<span id="imageName" style="font-size:1.4em;"></span><br>
@@ -300,6 +414,7 @@
 			</svg>
 		</div>
 	</div>
+	<script src="CCA_list.js"></script>
     <script src="photos.js"></script>
   </body>
 </html>
