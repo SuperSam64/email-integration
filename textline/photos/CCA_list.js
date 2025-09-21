@@ -1,0 +1,42 @@
+var CCAs = [
+	{
+		initials:'AF',
+		name:'Alli',
+	},{
+		initials:'AS',
+		name:'Allie',
+	},{
+		initials:'AU',
+		name:'Amelia',
+	},{
+		initials:'AV',
+		name:'Angie',
+	},{
+		initials:'AT',
+		name:'Ashley',
+	},{
+		initials:'BF',
+		name:'Bailey',
+	},{
+		initials:'BPR',
+		name:'Brandy',
+	},{
+		initials:'DA',
+		name:'David',
+	},{
+		initials:'DRS',
+		name:'Della Rose',
+	},{
+		initials:'',
+		name:'Gema',
+	},{
+		initials:'HP',
+		name:'Heather',
+	},{
+		initials:'SN',
+		name:'Sam',
+	},{
+		initials:'SR',
+		name:'Shaunte',
+	}
+];
