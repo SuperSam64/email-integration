@@ -1,0 +1,22 @@
+:root{
+	--theme-background-color:rgba(242, 244, 246, 1);
+	--text-color-primary:rgba(31, 33, 43, 1);
+	--comments-panel-title-background-color: rgba(164, 200, 225, 1);
+	--comments-panel-content-background-color: rgba(208, 225, 232, 1);
+	--comment-card-background-color: var(--theme-background-color);
+	--comment-divider-color: rgba(60, 60, 60, 1);
+	--link-color: var(--ff-blue);
+}
+
+#theme-toggle-light{
+	opacity:1;
+	
+}
+
+#theme-toggle-dark{
+	opacity:0;
+}
+
+#theme-button{
+	background-color:var(--comment-card-background-color);
+}
