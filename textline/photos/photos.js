@@ -40,7 +40,7 @@ function setTheme(option = 'initial'){
 
 function getConversationId(key, phone_number){
 	var request = new XMLHttpRequest();
-	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
+	request.open('GET', 'private-a1d8aa-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			if(JSON.parse(this.response).conversation==null){
@@ -422,7 +422,7 @@ function measureElement(element, style, units, variable){
 function loadComments(key, phone_number, latest = false){
 	var request = new XMLHttpRequest();
 	var lastComment = {};
-	request.open('GET', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
+	request.open('GET', 'private-a1d8aa-textline.apiary-proxy.com/api/conversations.json?phone_number='+phone_number+'&access_token='+key); /* a941205863 */
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
 			uuid = JSON.parse(this.response).conversation.uuid;
@@ -596,7 +596,7 @@ function addComment(comment){
 	loadingIndicator();
 	var formattedComment = '[' + userInitials + '] ' + comment;
 	var request = new XMLHttpRequest();
-	request.open('POST', 'https://private-anon-6123db9648-textline.apiary-proxy.com/api/conversation/' + uuid + '.json?access_token=' + key);
+	request.open('POST', 'private-a1d8aa-textline.apiary-proxy.com/api/conversation/' + uuid + '.json?access_token=' + key);
 	request.setRequestHeader('Content-Type', 'application/json');
 	request.onreadystatechange = function () {
 		if (this.readyState === 4) {
