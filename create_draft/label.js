@@ -169,7 +169,7 @@ function createDraft(details,firstContact=true,input=''){
 		var conversationId=data.drafts.conversation;
 		var messageId=data.drafts.id;
 		var url='https://mail.missiveapp.com/#inbox/conversations/'+conversationId+'/messages/'+messageId;
-		window.location.href=url;
+		window.location.href="javascript:window.location.href='" + url + "';console.log('success')";
 	})	
 }
 
