@@ -142,8 +142,7 @@ function createDraft(details,firstContact=true,input=''){
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>"+messageBody+details.signature,
-        "add_shared_labels": ['9af713d8-d632-47f2-b2ee-9da899fe72e1'],
+				"body": "Good "+getDayPart()+", "+details.firstName+",<br><br>"+messageBody+details.signature,
 				"to_fields": [
 					{
 						"address": details.email
@@ -155,7 +154,7 @@ function createDraft(details,firstContact=true,input=''){
 				},
 				"organization": details.organization,
 				"add_assignees": details.assignees,
-				"add_shared_labels": details.label,
+				"add_shared_labels": ['9af713d8-d632-47f2-b2ee-9da899fe72e1'],
 				"quote_previous_message": true
 			}
 		}),
