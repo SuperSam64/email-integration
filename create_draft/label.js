@@ -154,7 +154,7 @@ function createDraft(details,firstContact=true,input=''){
 				},
 				"organization": details.organization,
 				"add_assignees": details.assignees,
-				"add_shared_labels": ['9af713d8-d632-47f2-b2ee-9da899fe72e1'],
+				"add_shared_labels": ["6e308435-0aba-494c-9f88-aec2eb51255e"],
 				"quote_previous_message": true
 			}
 		}),
