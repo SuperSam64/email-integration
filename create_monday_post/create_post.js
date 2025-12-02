@@ -32,7 +32,6 @@ async function createPost(){
               }
             }`
         })
-    })
-    doAthing(response.json());
+    }
     return;
 }
