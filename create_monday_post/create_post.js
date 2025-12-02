@@ -6,7 +6,7 @@ function getKey(){
   return key;
 }
 doAthing();
-function doAthing(){
+async function doAthing(){
   var something = await createPost();
   console.log(something);
 }
