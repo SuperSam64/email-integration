@@ -1,4 +1,7 @@
 console.log(getKey);
 function getKey(){
-  return prompt('Enter key:');
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const key = urlParams.get('key');
+  return key;
 }
