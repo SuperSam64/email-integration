@@ -5,9 +5,10 @@ function getKey(){
   const key = urlParams.get('key');
   return key;
 }
-createPost();
-function doAthing(input){
-  console.log(input);
+doAthing();
+function doAthing(){
+  var something = await createPost();
+  console.log(something);
 }
 
 async function createPost(){
