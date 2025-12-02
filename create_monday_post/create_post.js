@@ -32,6 +32,7 @@ async function createPost(){
               }
             }`
         })
-    })
-    console.log(response.json());
+    });
+    var item = await response.json();
+    console.log(item.data.create_item.id);
 }
