@@ -5,7 +5,7 @@ function getKey(){
   const key = urlParams.get('key');
   return key;
 }
-
+doAthing();
 function doAthing(input){
   console.log(input);
 }
@@ -32,6 +32,6 @@ async function createPost(){
             }`
         })
     })
-    doAthing(response.json().data.create_item.id);
+    doAthing(response.data.create_item.id);
     return;
 }
