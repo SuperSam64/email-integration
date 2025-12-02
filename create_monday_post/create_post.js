@@ -32,6 +32,6 @@ async function createPost(){
             }`
         })
     })
-    doAthing(response.data.create_item.id);
+    doAthing(response.json());
     return;
 }
