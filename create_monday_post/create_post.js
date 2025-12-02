@@ -5,7 +5,7 @@ function getKey(){
   const key = urlParams.get('key');
   return key;
 }
-doAthing();
+createPost();
 function doAthing(input){
   console.log(input);
 }
