@@ -33,5 +33,5 @@ async function createPost(){
             }`
         })
     }
-    return;
+    return response.json();
 }
