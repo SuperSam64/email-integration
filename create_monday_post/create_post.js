@@ -1,4 +1,4 @@
-console.log(getKey());
+var key = getKey();
 function getKey(){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
