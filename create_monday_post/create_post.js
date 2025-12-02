@@ -5,12 +5,12 @@ function getKey(){
   const key = urlParams.get('key');
   return key;
 }
-doAthing();
+/*doAthing();
 async function doAthing(){
   var something = await createPost();
   console.log(something.data.create_item.id);
-}
-
+}*/
+createPost();
 async function createPost(){
     const response = await fetch ("https://api.monday.com/v2", {
         method: 'post',
@@ -33,5 +33,5 @@ async function createPost(){
             }`
         })
     })
-    return response.json();
+    console.log(response.json());
 }
