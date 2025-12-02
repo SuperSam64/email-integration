@@ -8,7 +8,7 @@ function getKey(){
 doAthing();
 async function doAthing(){
   var something = await createPost();
-  console.log(something);
+  console.log(something.data.create_item.id);
 }
 
 async function createPost(){
