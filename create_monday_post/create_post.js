@@ -33,5 +33,5 @@ async function createPost(){
             }`
         })
     })
-    console.log(response.json().data);
+    console.log(response.json());
 }
