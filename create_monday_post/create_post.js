@@ -29,5 +29,7 @@ async function createPost(){
             }`
         })
     })
-    return response.json();
+    result = response.json();
+    console.log('*' + result);
+    return result;
 }
