@@ -1,5 +1,5 @@
 var key = getKey();
-
+console.log(createPost());
 function getKey(){
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
