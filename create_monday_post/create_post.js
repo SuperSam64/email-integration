@@ -7,7 +7,7 @@ function getKey(){
 }
 createPost();
 function doAthing(input){
-  console.log(input);
+  console.log(input.data.create_item.id);
 }
 
 async function createPost(){
