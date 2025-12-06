@@ -26,7 +26,7 @@ function getParams(){
 				board_id: 169806972,
 				item_name: 'Cancelled order #' + itemObject.info.orderNum + ' / ' + itemObject.info.CID + ' / $' + itemObject.info.refundAmount + itemObject.info.refundType,
 				group_id: 'refund_requests',
-				columns: 'status,' + itemObject.info.refundReason
+				columns: 'status_1,' + itemObject.info.refundReason
 			};
 			itemObject.update = {
 				body: params.get('update') ? params.get('update') : '',
@@ -38,7 +38,7 @@ function getParams(){
 				board_id: 169806972,
 				item_name: 'Cancelled order #' + itemObject.info.orderNum + ' / ' + itemObject.info.CID + ' / $' + itemObject.info.refundAmount + itemObject.info.refundType,
 				group_id: 'new_group71812',
-				columns: 'status,' + itemObject.info.refundReason
+				columns: 'status_1,' + itemObject.info.refundReason
 			};
 			itemObject.update = {				
 				body: (params.get('update') ? params.get('update') + '<br>' : '') + 'FYI',
