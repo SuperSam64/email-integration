@@ -1,6 +1,5 @@
 var itemData = getParams();
 var key = itemData.key;
-createItem();
 function getParams(){
 	var params = new URLSearchParams(window.location.search);
 	var requestType = params.get('requestType');
@@ -54,7 +53,7 @@ function getParams(){
 			};
 			itemObject.update = {
 				body: 'Please ship using ' + itemObject.info.shipper + ' account #' + itemObject.info.shipperNum + ', thank you!<br>',
-				mentions_list: 'mentions_list: [{id: ' + 35911561/*20525251 */ + ' type: User}{id: ' + 35911561/*20525251 */ + ' type: User}], '
+				mentions_list: 'mentions_list: [{id: ' + 35911561/*2574175 */ + ' type: User}{id: ' + 35911561/*620174 */ + ' type: User}], '
 			};
 			break;
 		default:
@@ -72,6 +71,7 @@ function getParams(){
 	}
  	return itemObject;
 }
+createItem();
 async function createItem(){
     const response = await fetch ("https://api.monday.com/v2", {
         method: 'post',
@@ -117,7 +117,7 @@ function createUpdate(item, board){
 			})
 		});
 	}
-	/*goToItem(item, board);*/
+	goToItem(item, board);
 }
 function updateColumn(item, board, updatesString){
 	if(updatesString){
@@ -151,5 +151,5 @@ function updateColumn(item, board, updatesString){
 	}
 }
 function goToItem(item, board){
-	window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;
+	/*window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;*/
 }
