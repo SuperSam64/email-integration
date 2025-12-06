@@ -151,5 +151,5 @@ function updateColumn(item, board, updatesString){
 	}
 }
 function goToItem(item, board){
-	/*window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;*/
+	window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;
 }
