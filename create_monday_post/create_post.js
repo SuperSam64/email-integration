@@ -96,6 +96,7 @@ async function createItem(){
         })
     });
     var item = await response.json();
+	confirmShippingRequest(item.data.info.linkedRequest);
 	updateColumn(item.data.create_item.id, itemData.item.board_id, itemData.item.columns);
 	createUpdate(item.data.create_item.id, itemData.item.board_id);
 }
