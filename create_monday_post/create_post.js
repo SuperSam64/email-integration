@@ -1,5 +1,6 @@
 var itemData = getParams();
 var key = itemData.key;
+createItem();
 function getParams(){
 	var params = new URLSearchParams(window.location.search);
 	var requestType = params.get('requestType');
@@ -72,7 +73,6 @@ function getParams(){
 	}
  	return itemObject;
 }
-createItem();
 async function createItem(){
     const response = await fetch ("https://api.monday.com/v2", {
         method: 'post',
@@ -96,7 +96,7 @@ async function createItem(){
         })
     });
     var item = await response.json();
-	confirmShippingRequest(item.data.info.linkedRequest);
+	confirmShippingRequest(itemData.info.linkedRequest);
 	updateColumn(item.data.create_item.id, itemData.item.board_id, itemData.item.columns);
 	createUpdate(item.data.create_item.id, itemData.item.board_id);
 }
