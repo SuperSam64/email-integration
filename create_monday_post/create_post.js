@@ -117,7 +117,7 @@ function createUpdate(item, board){
 			})
 		});
 	}
-	goToItem(item, board);
+	/*goToItem(item, board);*/
 }
 function updateColumn(item, board, updatesString){
 	if(updatesString){
