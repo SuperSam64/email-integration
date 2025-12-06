@@ -11,6 +11,7 @@ function getParams(){
 	var itemObject = {
 		key: params.get('key'),
 		info: {
+			linkedRequest: params.get('linkedRequest'),
 			shipper: params.get('shipper'),
 			shipperNum: params.get('shipperNum'),
 			CID: params.get('CID'),
@@ -149,6 +150,29 @@ function updateColumn(item, board, updatesString){
 			})
 		});
 	}
+}
+async function confirmShippingRequest(linkedItem){
+	var response = await fetch ("https://api.monday.com/v2", {
+		method: 'post',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization' : key,
+			'API-Version' : '2025-10'
+		},
+		body: JSON.stringify({
+			'query' : 
+			`mutation {
+				change_multiple_column_values(
+					board_id: 18391198601,
+					item_id: ` + linkedItem + `,
+					column_values: "{\\"boolean_mkycdv3t\\": {\\"checked\\": \\"true\\"}}"
+				) {
+					id
+				}
+			}`
+		})
+	});
+	console.log(response.json());
 }
 function goToItem(item, board){
 	window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;
