@@ -1,4 +1,6 @@
 console.log(window.location.href);
+var missive_po_key = localStorage.getItem('missive_po_key');
+console.log('Key:', missive_po_key);
 function openForm(){
   var URL = window.location.href;
   var conversation = URL.split('conversations/')[1];
