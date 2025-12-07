@@ -1,3 +1,4 @@
+console.log(window.location.href);
 function openForm(){
   var URL = window.location.href;
   var conversation = URL.split('conversations/')[1];
