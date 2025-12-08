@@ -3,6 +3,7 @@
 console.log('Key:', missive_po_key);*/
 
 var testKey = localStorage.getItem('missive_po_key');
+var currentConvo;
 console.log('Key:', testKey);
 
 
@@ -15,24 +16,18 @@ console.log('Key:', testKey);
 }*/
 
 function openForm(){
-  Missive.fetchConversations(ids).then((conversations) => {
-    if (conversations.length != 1) {
-      // Do nothing if multiple conversations are selected.
-      return
-    }
-
-    var message = conversations[0].latest_message
-    if (!message || !message.from_field) {
-      // Do nothing if conversation has no message (only chat comments) or if
-      // message has no From field.
-      return
-    }
-
-    var from = message.from_field
-    console.log('Message from:', from.name, from.address)
-    console.log('Message subject:', message.subject)
+  Missive.on('change:conversations', (ids) => {
+    Missive.fetchConversations(ids).then((conversations) => {
+      if (conversations.length != 1) {
+        // Do nothing if multiple conversations are selected.
+        return
+      }
+      currentConvo = conversations[0]
+      console.log(currentConvo);
+    })
   })
 }
+           
 
 /*function openForm(){
   var keyField = document.getElementById('keyField');
