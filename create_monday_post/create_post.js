@@ -44,7 +44,7 @@ function getParams(){
 			};
 			itemObject.update = {				
 				body: (params.get('update') ? params.get('update') + '<br>' : '') + 'FYI',
-				mentions_list: 'mentions_list: [{id: ' + 35911561/*20525251 */ + ' type: User}], '
+				mentions_list: 'mentions_list: [{id: ' + 20525251 + ' type: User}], '
 			};
 			break;
 		case 'shipping request':
@@ -55,7 +55,7 @@ function getParams(){
 			};
 			itemObject.update = {
 				body: 'Please ship using ' + itemObject.info.shipper + ' account #' + itemObject.info.shipperNum + ', thank you!<br>',
-				mentions_list: 'mentions_list: [{id: ' + 35911561/*2574175 */ + ' type: User}{id: ' + 35911561/*620174 */ + ' type: User}], '
+				mentions_list: 'mentions_list: [{id: ' + 2574175 + ' type: User}{id: ' + 620174 + ' type: User}], '
 			};
 			break;
 		default:
