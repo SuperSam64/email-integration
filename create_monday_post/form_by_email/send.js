@@ -15,18 +15,17 @@ console.log('Key:', testKey);
   window.open(formLink);
 }*/
 
-function openForm(){
-  Missive.on('change:conversations', (ids) => {
-    Missive.fetchConversations(ids).then((conversations) => {
-      if (conversations.length != 1) {
-        // Do nothing if multiple conversations are selected.
-        return
-      }
-      currentConvo = conversations[0]
-      console.log(currentConvo);
-    })
-  })
-}
+
+ Missive.on('change:conversations', (ids) => {
+   Missive.fetchConversations(ids).then((conversations) => {
+     if (conversations.length != 1) {
+       // Do nothing if multiple conversations are selected.
+       return
+     }
+     currentConvo = conversations[0]
+     console.log(currentConvo);
+   })
+})
            
 
 /*function openForm(){
