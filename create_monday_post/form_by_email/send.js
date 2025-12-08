@@ -13,3 +13,7 @@ Missive.on('change:conversations', (ids) => {
     currentConvo = conversations[0].id;
   })
 })
+function goToBoard(){
+  var boardItem = 'https://filtersfast.monday.com/boards/18391198601/views/225788621?term=' + currentConvo + '&termColumns=XQAAAAIuAAAAAAAAAABBKsIjgbh-LZdXWUk_Qca3vzf388YyoJAIN0pDiOXAthWBVSnuVp97G60BfwSb___50kAA';
+  window.open(window.open(messageLink);
+}
