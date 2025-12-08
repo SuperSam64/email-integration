@@ -22,8 +22,7 @@ console.log('Key:', testKey);
        // Do nothing if multiple conversations are selected.
        return
      }
-     currentConvo = conversations[0]
-     console.log(currentConvo);
+     currentConvo = conversations[0].id;
    })
 })
            
