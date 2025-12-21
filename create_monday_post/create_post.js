@@ -44,7 +44,7 @@ function getParams(){
 			};
 			itemObject.update = {				
 				body: (params.get('update') ? params.get('update') + '<br>' : '') + 'FYI',
-				mentions_list: 'mentions_list: [{id: ' + 20525251 + ' type: User}], '
+				mentions_list: 'mentions_list: [{id: ' + 35911561 /* 20525251 */ + ' type: User}], '
 			};
 			break;
 		case 'shipping request':
