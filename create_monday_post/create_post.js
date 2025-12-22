@@ -71,6 +71,7 @@ function getParams(){
 			};
 			break;
 	}
+	console.log(itemObject);
  	return itemObject;
 }
 async function createItem(){
@@ -131,6 +132,7 @@ function updateColumn(item, board, updatesString){
 			}
 		}
 		var updatesOutput = '"{' + updates.join(',') + '}"';
+		console.log(updatesOutput);
 		fetch ("https://api.monday.com/v2", {
 				method: 'post',
 				headers: {
@@ -177,5 +179,5 @@ async function confirmShippingRequest(linkedItem){
 	}
 }
 function goToItem(item, board){
-	window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;
+	/*window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;*/
 }
