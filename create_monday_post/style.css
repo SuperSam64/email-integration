@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    /* Optional: sets the container to use the full viewport height */
+    height: 100vh; 
+    width: 100%;
+}
+
+.column {
+    flex: 1; /* Makes both columns take equal available width */
+    padding: 10px; /* Adds space around the iframes */
+    /* Required for absolute positioning of the iframe */
+    position: relative; 
+    /* Ensures the columns fill the container's height */
+    height: 100%; 
+}
+
+.column iframe {
+    /* Positions the iframe relative to its parent .column div */
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%; /* Iframe fills the width of its parent .column */
+    height: 100%; /* Iframe fills the height of its parent .column */
+    border: none; /* Optional: removes the default iframe border */
+}
+
+/* Optional: Media query for responsiveness (stacks columns vertically on small screens) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+}
