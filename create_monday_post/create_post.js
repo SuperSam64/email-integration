@@ -18,9 +18,9 @@ function getParams(){
 			mentionsString += '{id: ' + mentions[i] + ' type: User}';
 		}
 		var itemObject = {
-			key: .get('key'),
+			key: params.get('key'),
 			info: {
-				linkedRequest: .get('linkedRequest'),
+				linkedRequest: params.get('linkedRequest'),
 				shipper: params.get('shipper'),
 				shipperNum: params.get('shipperNum'),
 				CID: params.get('CID'),
