@@ -1,10 +1,12 @@
-var itemData = getParams();
-var key = itemData.key;
+var params = new URLSearchParams(window.location.search);
+var adminRequestNeeded = (!params.keys().next().done);
+if(adminRequestNeeded){
+	var itemData = getParams();
+	var key = itemData.key;
+}
 createItem();
 function getParams(){
-	var params = new URLSearchParams(window.location.search);
-	var noParams = params.keys().next().done;
-	if(noParams){
+	if(adminRequestNeeded){
 		console.log('No url parameters, proceeding to Cybersource');
 		/* check whether cybersource redirection is turned on */
 	}
@@ -16,9 +18,9 @@ function getParams(){
 			mentionsString += '{id: ' + mentions[i] + ' type: User}';
 		}
 		var itemObject = {
-			key: params.get('key'),
+			key: .get('key'),
 			info: {
-				linkedRequest: params.get('linkedRequest'),
+				linkedRequest: .get('linkedRequest'),
 				shipper: params.get('shipper'),
 				shipperNum: params.get('shipperNum'),
 				CID: params.get('CID'),
