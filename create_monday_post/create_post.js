@@ -6,7 +6,7 @@ if(adminRequestNeeded){
 }
 createItem();
 function getParams(){
-	if(adminRequestNeeded){
+	if(!adminRequestNeeded){
 		console.log('No url parameters, proceeding to Cybersource');
 		/* check whether cybersource redirection is turned on */
 	}
