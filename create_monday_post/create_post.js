@@ -57,6 +57,9 @@ function getParams(){
 				mentions_list: 'mentions_list: [{id: ' + 2574175 + ' type: User}{id: ' + 620174 + ' type: User}], '
 			};
 			break;
+		case 'matching_only':
+			console.log(itemObject.orderNum);
+			break;
 		default:
 			itemObject.item = {
 				board_id: params.get('board'),
@@ -74,31 +77,39 @@ function getParams(){
 	return itemObject;
 }
 async function createItem(){
-    const response = await fetch ("https://api.monday.com/v2", {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization' : key,
-            'API-Version' : '2025-10'
-        },
-        body: JSON.stringify({
-          'query' : 
-            `mutation {
-              create_item(
-                board_id: ` + itemData.item.board_id + `
-                item_name: "` + itemData.item.item_name + `",
-                group_id: "` + itemData.item.group_id + `",
-              ),
-              {
-                id
-              }
-            }`
-        })
-    });
-    var item = await response.json();
-	confirmShippingRequest(itemData.info.linkedRequest);
-	updateColumn(item.data.create_item.id, itemData.item.board_id, itemData.item.columns);
-	createUpdate(item.data.create_item.id, itemData.item.board_id);
+	    if(itemData.item){
+		const response = await fetch ("https://api.monday.com/v2", {
+	        method: 'post',
+	        headers: {
+	            'Content-Type': 'application/json',
+	            'Authorization' : key,
+	            'API-Version' : '2025-10'
+	        },
+	        body: JSON.stringify({
+	          'query' : 
+	            `mutation {
+	              create_item(
+	                board_id: ` + itemData.item.board_id + `
+	                item_name: "` + itemData.item.item_name + `",
+	                group_id: "` + itemData.item.group_id + `",
+	              ),
+	              {
+	                id
+	              }
+	            }`
+	        })
+	    });
+	    var item = await response.json();
+		confirmShippingRequest(itemData.info.linkedRequest);
+		updateColumn(item.data.create_item.id, itemData.item.board_id, itemData.item.columns);
+		createUpdate(item.data.create_item.id, itemData.item.board_id);
+	}
+	else{
+		var details = {
+			orderNumber: itemData.orderNum
+		};
+		updateCCABoardPosts(details);
+	}
 }
 function createUpdate(item, board){
 	if(itemData.update.body && itemData.update.mentions_list){
@@ -176,6 +187,9 @@ async function confirmShippingRequest(linkedItem){
 			})
 		});
 	}
+}
+function updateCCABoardPosts(detailsObject){
+	console.log(detailsObject.orderNumber);
 }
 function goToItem(item, board){
 	window.location.href = 'https://filtersfast.monday.com/boards/' + board + '/pulses/' + item;
