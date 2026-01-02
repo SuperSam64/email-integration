@@ -1,189 +1,123 @@
-<!DOCTYPE html>
+<DOCTYPE! html>
 <html>
 	<head>
-
+		<link rel="stylesheet" href="loading.css">
 	</head>
 	<body>
-		<style>
-			:root{
-				--loading-text-light: black;
-				--loading-text-dark: white;
-				--background-color-light: white;
-				--background-color-dark: rgba(41, 47, 76, 1);
-				--shadow-light: rgba(0, 0, 0, 0.25);
-				--shadow-dark: rgba(0, 0, 0, 0.5);
-			}
-			body{
-				background-color: var(--background-color-dark);
-				display: flex;
-				flex-direction: column;
-				justify-content:center;
-				align-items:center;
-				height: 100vh;
-				margin:0;
-			}
-			.container{
-				display:flex;
-				flex-direction: column;
-				justify-conent:center;
-				align-items: center;
-				height:50%
-			}
-			@keyframes growShrink {
-				0% {
-					transform: scale(1);
-					
-				}
-				25% {
-					transform: scale(1.2);	
-					
-				}
-				
-				50% {
-					transform: scale(1);
-					
-				}
-			}
-			.item{
-				color: var(--loading-text-dark);
-				display:inline-block;
-				font-size:36px;
-				font-family: 'Arial', sans-serif;
-				font-weight:bold;
-				font-style: italic;
-				filter: drop-shadow(6px 6px 2px var(--shadow-dark));
-				transform-origin: center;
-				animation: growShrink 4.5s infinite;	
-				animation-timing-function: cubic-bezier(0.4, 0.0, 0.6, 1.0); 
-				animation: growShrink 3.5s infinite cubic-bezier(0.42, 0, 0.58, 1.0);;
-			}
-			.item:nth-child(1) {
-				animation-delay: 0s;
-			}
-			.item:nth-child(2) {
-				animation-delay: 0.3s; 
-			}
-			.item:nth-child(3) {
-				animation-delay: 0.6s;  
-			}
-			.item:nth-child(4) {
-				animation-delay: 0.9s;  
-			}
-			.item:nth-child(5) {
-				animation-delay: 1.2s;
-			}
-			.item:nth-child(6) {
-				animation-delay: 1.5s;
-			}
-			.item:nth-child(7) {
-				animation-delay: 1.8s;
-			}
-			.item:nth-child(8) {
-				animation-delay: 2.1s;
-			}
-			.item:nth-child(9) {
-				animation-delay: 2.4s;
-			}
-			.item:nth-child(10) {
-				animation-delay: 2.7s;
-			}
-		</style>
 		<div class="container">
 			<div>
-				<svg width="200px" viewbox="0 0 1000 1000">
-					<defs>	
-						<path id="fflogo" 
-							d="M500 821 L301 719 A 108 108 0 0 1 254 640 L254 396 L398 396 L398 324 L254 324 L254 163 L456 163 L456 91 
+				<svg width="200px" viewBox="0 0 1000 1000">
+					<defs>
+						<path id="inner-sharp" fill="none" d="
+							M240 360 L398 360 M760 360 L602 360 M456 127 L217 127 L217 640 A134 134 0 0 0 274.5 747
+							L500 866.5 L725.5 747 A134 134 0 0 0 783 640 L783 127 L544 127"
+							stroke-width="76px" stroke="white">
+						</path>
+						<path id="inner-round" d="
+							M240 360 L362 360 M760 360 L638 360 M420 127 L217 127 L217 640 A134 134 0 0 0 274.5 747
+							L500 866.5 L725.5 747 A134 134 0 0 0 783 640 L783 127 L580 127"
+							>
+						</path>
+						<path id="fflogo" d="M500 821 L301 719 A 108 108 0 0 1 254 640 L254 396 L398 396 L398 324 L254 324 L254 163 L456 163 L456 91 
 							L180 91 L180 640 A 160 160 0 0 0 248 775 L500 912 L500 912 L500 912 L752 775 A 160 160 0 0 0 820 640 L820 91 
-							L544 91 L544 163 L746 163 L746 324 L602 324 L602 396 L746 396 L746 640 A 108 108 0 0 1 699 719 L500 821 Z"
-						<path />
+							L544 91 L544 163 L746 163 L746 324 L602 324 L602 396 L746 396 L746 640 A 108 108 0 0 1 699 719 L500 821 Z"></path>
 						<linearGradient id="lightgradient" x1="12%" x2="2%" y1="-7%" y2="100%">
-							<stop offset="0%" stop-color="black" />
-							<stop offset="41%" stop-color="black" />
-							<stop offset="50%" stop-color="white" />
-							<stop offset="59%" stop-color="black" />
-							<stop offset="100%" stop-color="black" />
+							<stop offset="0%" stop-color="hsl(20, 89%, 54%)"></stop>
+							<stop offset="41%" stop-color="hsl(20, 89%, 54%)"></stop>
+							<stop offset="50%" stop-color="white"></stop>
+							<stop offset="59%" stop-color="hsl(20, 89%, 54%)"></stop>
+							<stop offset="100%" stop-color="hsl(20, 89%, 54%)"></stop>
+						</linearGradient>
+						<linearGradient id="bevel" x1="10%" x2="100%" y1="20%" y2="80%">
+							<stop offset="2%" stop-color="hsl(20, 75%, 80%)"></stop>
+							<stop offset="45%" stop-color="hsl(20, 75%, 60%)"></stop>
+							<stop offset="50%" stop-color="hsl(20, 75%, 54%)"></stop>
+							<stop offset="82%" stop-color="hsl(20, 75%, 18%)"></stop>
+							<stop offset="100%" stop-color="hsl(20, 75%, 0%)"></stop>
 						</linearGradient>
 						<filter id="lightBlur">
-							<feGaussianBlur in=sourceGraphic" stdDeviation="5" />
+							<feGaussianBlur in="sourceGraphic&quot;" stdDeviation="5"></feGaussianBlur>
 						</filter>
 						<filter id="lightBlur2">
-							<feGaussianBlur in=sourceGraphic" stdDeviation="3" />
+							<feGaussianBlur in="sourceGraphic&quot;" stdDeviation="3"></feGaussianBlur>
 						</filter>
 						<filter id="shadow">
-							<feGaussianBlur in=sourceGraphic" stdDeviation="20" />
+							<feGaussianBlur in="sourceGraphic&quot;" stdDeviation="20"></feGaussianBlur>
 						</filter>
-						<mask id="shine2">
-							<circle r="600" cx="500" cy="360" fill="url(#lightgradient)" fill-opacity="100%" />
-							<circle r="2000" cx="350" cy="2360" fill="black" />
-							<circle r="2000" cx="650" cy="-1640" fill="black" />
-						</mask>
 						<mask id="shine1">
-							<circle r="600" cx="500" cy="360" fill="url(#lightgradient)" fill-opacity="100%" />
-							<circle r="2000" cx="250" cy="2360" fill="black" />
-							<circle r="2000" cx="750" cy="-1640" fill="black" />
+							<circle r="600" cx="500" cy="360" fill="url(#lightgradient)" fill-opacity="100%"></circle>
+							<circle r="2000" cx="350" cy="2360" fill="black"></circle>
+							<circle r="2000" cx="650" cy="-1640" fill="black"></circle>
+						</mask>
+						<mask id="shine2">
+							<circle r="600" cx="500" cy="360" fill="url(#lightgradient)" fill-opacity="100%"></circle>
+							<circle r="2000" cx="250" cy="2360" fill="black"></circle>
+							<circle r="2000" cx="750" cy="-1640" fill="black"></circle>
 						</mask>
 						<mask id="ffcutout">
-							<rect width="1000" height="1000" fill="black" />
+							<rect width="1000" height="1000" fill="black"></rect>
 							<use href="#fflogo" fill="white">
-						</mask>
+						</use></mask>
 						<mask id="ffframe">
-							<rect width="1000" height="1000" fill="black" />
-							<use href="#fflogo" stroke-width="20" stroke="white" fill="black" stroke-linejoin="round" stroke-linecap="round" />
-							<use href="#fflogo" stroke-width="10" stroke="white" fill="black" />
+							<rect width="1000" height="1000" fill="black"></rect>
+							<use href="#fflogo" stroke-width="20" stroke="white" fill="black" stroke-linejoin="round" stroke-linecap="round"></use>
+							<use href="#inner-round" fill="none" stroke="black" stroke-linejoin="round" stroke-linecap="round" stroke-width="76px"></use>
 						</mask>
 					</defs>		
-					<use href="#fflogo" fill="rgba(0, 0, 0, 0.7)" stroke-width="20" stroke-linejoin="round" stroke-linecap="round" transform="translate(30 30) scale(1.02)" filter="url(#shadow)" />
-					<use href="#fflogo" fill="rgba(242, 104, 34, 1)" stroke="white"  stroke-width="24" stroke-linejoin="round" stroke-linecap="round" />
-					<use href="#fflogo" fill="rgba(242, 104, 34, 1)" stroke="rgba(242, 104, 34, 1)"  stroke-width="20" stroke-linejoin="round" stroke-linecap="round" />		
+					<use href="#fflogo" fill="rgba(0, 0, 0, 0.7)" stroke-width="20" stroke-linejoin="round" stroke-linecap="round" transform="translate(30 30) scale(1.02)" filter="url(#shadow)"></use>
+					<use href="#fflogo" fill="rgba(242, 104, 34, 1)" stroke="rgba(242, 104, 34, 1)"  stroke-width="24" stroke-linejoin="round" stroke-linecap="round"></use>
+					<use href="#fflogo" opacity="60%" fill="rgba(242, 104, 34, 1)" stroke="url(#bevel)" stroke-width="24" stroke-linejoin="round" stroke-linecap="round"></use>
+					<use href="#fflogo" opacity="50%" fill="rgba(242, 104, 34, 1)" stroke="url(#bevel)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"></use>		
+					<use href="#fflogo" fill="rgba(242, 104, 34, 1)" ></use>
 					<g mask="url(#ffcutout)">
 						<g filter="url(#lightBlur)">
-							<rect width="1000" height="1000" mask="url(#shine1)" fill="rgba(255, 215, 150, 0.2)" transform-origin="500 360" transform="scale(1.1)" />
-							<rect width="1000" height="1000" mask="url(#shine2)" fill="rgba(255, 215, 150, 0.2)" transform-origin="500 360" transform="scale(1.1)" />
-							<animateTransform 
-								attributeName="transform"
-								attributeType="XML"
-								type="rotate"
-								from="0 500 360"
-								to="360 500 360"
-								dur="4s"
-								repeatCount="indefinite"
-							/>
+							<rect width="1000" height="1000" mask="url(#shine2)" fill="rgba(255, 215, 150, 0.2)" transform-origin="500 360" transform="scale(1.1)"></rect>
+							<rect width="1000" height="1000" mask="url(#shine1)" fill="rgba(255, 215, 150, 0.2)" transform-origin="500 360" transform="scale(1.1)"></rect>
+							<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 500 360" to="360 500 360" dur="4s" repeatCount="indefinite"></animateTransform>
 						</g>
 					</g>
 					<g filter="url(#lightBlur)">
-						<g mask="url(#ffframe)" >
+						<g mask="url(#ffframe)">
 							<g>
-								<rect width="1000" height="1000" mask="url(#shine1)" fill="rgba(255, 215, 150, 0.8)" transform-origin="500 360" transform="scale(3)" />
-								<rect width="1000" height="1000" mask="url(#shine2)" fill="rgba(255, 215, 150, 0.8)" transform-origin="500 360" transform="scale(3)" />
-								<animateTransform 
-									attributeName="transform"
-									attributeType="XML"
-									type="rotate"
-									from="0 500 360"
-									to="360 500 360"
-									dur="4s"
-									repeatCount="indefinite"
-								/>
+								<rect width="1000" height="1000" mask="url(#shine2)" fill="rgba(255, 215, 150, 0.8)" transform-origin="500 360" transform="scale(3)"></rect>
+								<rect width="1000" height="1000" mask="url(#shine1)" fill="rgba(255, 215, 150, 0.8)" transform-origin="500 360" transform="scale(3)"></rect>
+								<animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 500 360" to="360 500 360" dur="4s" repeatCount="indefinite"></animateTransform>
 							</g>
 						</g>
-					</g>
+					</g>	
 				</svg>
 			</div>
-			<div>
-				<span class="item">L</span>
-				<span class="item">o</span>
-				<span class="item">a</span>
-				<span class="item">d</span>
-				<span class="item">i</span>
-				<span class="item">n</span>
-				<span class="item">g</span>
-				<span class="item">.</span>
-				<span class="item">.</span>
-				<span class="item">.</span>
+			<div style="position: relative">
+				<div class="shadow">
+					<div>
+						<span class="item">L</span>
+						<span class="item">o</span>
+						<span class="item">a</span>
+						<span class="item">d</span>
+						<span class="item">i</span>
+						<span class="item">n</span>
+						<span class="item">g</span>
+						<span class="item">.</span>
+						<span class="item">.</span>
+						<span class="item">.</span>
+					</div>
+				</div>
+				<div  class="word">
+					<div>
+						<span class="item">L</span>
+						<span class="item">o</span>
+						<span class="item">a</span>
+						<span class="item">d</span>
+						<span class="item">i</span>
+						<span class="item">n</span>
+						<span class="item">g</span>
+						<span class="item">.</span>
+						<span class="item">.</span>
+						<span class="item">.</span>
+					</div>
+				</div>
 			</div>
 		</div>
-	<script src="create_post.js"></script>
+		<script src="create_post.js"></script>
 	</body>
 </html>
-
