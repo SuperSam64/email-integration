@@ -1,0 +1,46 @@
+var data = {
+  'xMain Menu': {
+    title: 'Main Menu',
+    'xCancellation': {
+      title: 'Cancellation',
+      info: 'Cancel an order',
+      'xCancel outcomes': {
+        title: 'Cancel outcomes',
+        info: 'Cancel an order',
+        'xCannot cancel': {
+          title: 'Cannot cancel',
+          info: 'Order could not be cancelled',
+          'xEmail to advise': {
+            title: 'Email to advise',
+            info: 'Email customer to advise cancellation was not possible',
+          }
+        },
+        'xCan be cancelled': {
+          title: 'Can be cancelled',
+          info: 'Order can be cancelled',
+          'xEmail to advise': {
+            title: 'Email to advise',
+            info: 'Email customer to advise cancellation order was cancelled',
+          }
+        },
+        'xCan be partially cancelled': {
+          title: 'Can be partially cancelled',
+          info: 'Order could not be fully cancelled, but could be partially cancelled',
+          'xEmail to advise': {
+            title: 'Email to advise',
+            info: 'Email customer to advise order was partially cancelled',
+          }
+        }
+        
+      }
+    },
+    'xDamage':{
+      title: 'Damage',
+      info: 'Order was damaged',
+      'xReship':{
+        title: 'Reship',
+        info: 'Reship damaged item(s)'
+      }
+    }
+  }
+};
