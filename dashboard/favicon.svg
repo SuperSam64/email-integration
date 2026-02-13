@@ -1,0 +1,28 @@
+<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="16" height="16">
+	<defs>
+		<rect id="tickmark" width="32" height="1000" x="484" y="0"/>
+		<mask id="tickmark-mask">
+			<circle cx="500" cy="500" r="340" fill="white" />
+			<circle cx="500" cy="500" r="280" fill="black" />
+		</mask>
+		<mask id="display-mask">
+			<rect width="1000" height="1000" x="0" y="0" fill="white" />
+			<path d="M0 1000 L0 840 L500 500 L1000 840 L1000 1000 Z" fill="black" />
+		</mask>
+	</defs>
+	<g fill="green" transform="translate(0 80)">
+		<circle cx="500" cy="500" r="400" fill="none" stroke="green" stroke-width="80" mask="url(#display-mask)"/>
+		<circle cx="500" cy="500" r="80" />			
+		<g mask="url(#display-mask)">
+			<g mask="url(#tickmark-mask)">
+				<use href="#tickmark" transform="rotate(15 500 500)" />
+				<use href="#tickmark" transform="rotate(45 500 500)" />
+				<use href="#tickmark" transform="rotate(75 500 500)" />
+				<use href="#tickmark" transform="rotate(105 500 500)" />
+				<use href="#tickmark" transform="rotate(135 500 500)" />
+				<use href="#tickmark" transform="rotate(165 500 500)" />
+			</g>
+		</g>
+		<path d="M440 500 L484 220 L516 220 L560 500 Z" transform="rotate(30 500 500)" />
+	</g>			
+</svg>
