@@ -36,6 +36,9 @@ var CCAs = [
 		initials:'SN',
 		name:'Sam',
 	},{
+		initials:'SNR',
+		name:'Samantha',
+	},{
 		initials:'SR',
 		name:'Shaunte',
 	}
