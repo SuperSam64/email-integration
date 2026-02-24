@@ -170,7 +170,7 @@ function createDraft(details,firstContact=true,input=''){
 			"drafts": {
 				...(input!='' ? { "conversation": input } : {}),
 				"subject": details.subject,
-				"body": "Good "+getDayPart()+" "+details.firstName+",<br><br>"+intro+messageBody+details.signature,
+				"body": "Good "+getDayPart()+", "+details.firstName+",<br><br>"+intro+messageBody+details.signature,
 				"to_fields": [
 					{
 						"address": details.email
