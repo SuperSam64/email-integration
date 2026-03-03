@@ -34,29 +34,53 @@ var data = {
 				
 			},
 			'Custom': {
-				title: 'Item(s) to return are not eligible',
-				info: 'See "Custom Air Filters" section (link to be added later)'
+				title: 'Custom Air Filters',
+				info: '',
+				'Custom': {
+					title: 'Custom Air Filters',
+					info: 'See "Custom Air Filters" section (link to be added later)'
+				}
 			},
 			'Non-returnable': {
 				title: 'Other non-returnable items',
 				info: '',
 				'Refund': {
 					title: 'A refund (or partial refund) is appropriate',
-					info: ''
+					info: '',
+					'Refund': {
+						title: 'A refund (or partial refund) is appropriate',
+						info: 'Submit a Monday request to see whether an exception can be made, do not promise a specific resolution '
+					}
 				},
 				'No refund': {
 					title: 'A refund (or partial refund) is not appropriate',
-					info: 'Explain to the customer that we will unfortunately not be able to accept the return, as it is ineligible/outside of the return window'
+					info: '',
+					'No refund': {
+						title: 'A refund (or partial refund) is not appropriate',
+						info: 'Explain to the customer that we will unfortunately not be able to accept the return, as it is ineligible/outside of the return window'
+					}
 				}
 			},
 			'Past return window': {
 				title: 'Order was placed more than 365 days ago',
 				info: '',
-				'xCannot cancel': {
-				
-				}				
-			}
-			,
+				'Refund': {
+					title: 'A refund (or partial refund) is appropriate',
+					info: '',
+					'Refund': {
+						title: 'A refund (or partial refund) is appropriate',
+						info: 'Submit a Monday request to see whether an exception can be made, do not promise a specific resolution '
+					}
+				},
+				'No refund': {
+					title: 'A refund (or partial refund) is not appropriate',
+					info: '',
+					'No refund': {
+						title: 'A refund (or partial refund) is not appropriate',
+						info: 'Explain to the customer that we will unfortunately not be able to accept the return, as it is ineligible/outside of the return window'
+					}
+				}			
+			},
 			'Sent in error': {
 				title: 'Customer received item(s) in error, and has not placed an order',
 				info: '',
@@ -127,4 +151,4 @@ var data = {
 			
 		}*/
 	}
-}
+};
