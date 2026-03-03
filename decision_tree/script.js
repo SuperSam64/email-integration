@@ -1,5 +1,5 @@
 buildPage(data);
-function appendURL();
+appendURL();
 function buildPage(input){
   var output = input;
   var elementArray = [];
