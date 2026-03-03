@@ -7,7 +7,7 @@ var data = {
 			'Eligible': {
 				title: 'Item(s) to return are eligible',
 				info: '',
-				'Return created': {
+				'Return not created': {
 					title: 'A return has not yet been created',
 					info: '',
 					'Create return': {
@@ -15,7 +15,7 @@ var data = {
 						info: 'Create a return'
 					}
 				},
-				'Return not created': {
+				'Return created': {
 					title: 'A return has already been created',
 					info: '',
 					'Resend label(s)': {
@@ -108,66 +108,166 @@ var data = {
 					info:'Send as many labels as needed using the “Generate Return Label [LINK]” link. When you create labels, choose the “Save as PDF” option. Make a [Monday request] to let CRMs know about the item(s) being returned, and get as much info as possible to help us identify order/customer details.'
 				}				
 			}
-		}/*,
+		},
 		'Overshipped/short shipped': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Tax exemption': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Issues with custom air filters':{
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Damaged | Defective': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Order processing issues': {
-			
-		},
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		}/*,
 		'Address update needed': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Webdev': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Product Info': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Order Status': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Cancellations': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'B2B call': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Account issues': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Data removal': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Escalation': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Invoice request': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Inaccurate tracking information': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Incompatible': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Lost package': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Discount not applied': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		},
 		'Check order': {
-			
+			title: '',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
 		}*/
 	}
 };
