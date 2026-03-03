@@ -1,5 +1,4 @@
 buildPage(data);
-appendURL();
 function buildPage(input){
   var output = input;
   var elementArray = [];
@@ -137,6 +136,7 @@ function initialize(){
         move(lastMenu, 'left');
         move(getMenu(activeMenu), 'left');
         modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';
+		appendURL();
       });
     }
   }
