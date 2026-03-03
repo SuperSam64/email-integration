@@ -1,4 +1,5 @@
 buildPage(data);
+function appendURL();
 function buildPage(input){
   var output = input;
   var elementArray = [];
@@ -170,4 +171,8 @@ function move(element, direction){
   var target = positions[positions.indexOf(position) + offset];
   element.classList.remove(position);
   element.classList.add(target);		
+}
+function appendURL(){
+	var page_id = document.querySelector('.menu-outer.active').querySelector('.menu-inner').id.replace('menu-', '').replaceAll('-', '.');
+	history.pushState({}, '' , 'https://supersam64.github.io/email-integration/decision_tree/index.html?page=' + page_id);
 }
