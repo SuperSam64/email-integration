@@ -140,7 +140,7 @@ Filters Fast LLC.
 5905 Stockbridge Dr. 
 Monroe. NC 28110 
 (Note that if the order is placed before the account is tax exempt, the tax amount paid can be refunded later, also these are done by our accounting and it may be 3-4 business days) `
-			}
+			},
 			'Customer does not yet have an account': {
 				title: 'Ask the customer to start an order',
 				info: 'Ask the customer to start placing their order, up until the point where the order is in a pending status. They can then either email their form and wait until tax exemption has been applied to finish their order, or finish the order immediately, and have the tax amount refunded back to them once the account is tax exempt.'
