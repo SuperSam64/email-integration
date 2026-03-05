@@ -130,16 +130,19 @@ var data = {
 			}
 		},
 		'Tax exemption': {
-			title: 'Account already exists',
+			title: 'Tax exemption'',
 			info: '',
 			'Account already exists': {
 				title: 'Account already exists',
-				info: `Request tax exempt cert. to support@filtersfast.com 
+				info: '',
+				'Account already exists': {
+					`Request tax exempt cert. to support@filtersfast.com 
 Advise billing address on account must match form & seller info should be filled in with: 
 Filters Fast LLC. 
 5905 Stockbridge Dr. 
 Monroe. NC 28110 
 (Note that if the order is placed before the account is tax exempt, the tax amount paid can be refunded later, also these are done by our accounting and it may be 3-4 business days) `
+				}
 			},
 			title: 'Customer does not yet have an account',
 			info: '',
@@ -171,7 +174,126 @@ Monroe. NC 28110
 				title: 'Menu in progress',
 				info: ''
 			}
-		}/*,
+		},
+		'Address update needed': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Webdev': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Product Info': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Order Status': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Cancellations': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'B2B call': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Account issues | Data removal': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Escalation ': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Invoice request': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Inaccurate tracking information': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Incompatible': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Lost package': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Discount not applied': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		},
+		'Check order': {
+			title: 'Order processing issues',
+			info: '',
+			'Content': {
+				title: 'Menu in progress',
+				info: ''
+			}
+		}
+		
+		
+		
+		
+		
+		
+		/*,
 		'Address update needed': {
 			title: '',
 			info: '',
