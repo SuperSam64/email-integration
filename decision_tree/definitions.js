@@ -167,7 +167,7 @@ Monroe. NC 28110
 			},
 			'Customer received wrong size': {
 				title: 'Customer received wrong size',
-				info: ''
+				info: '',
 				'Customer received wrong size': {
 					title: 'Customer received wrong size',
 					info: '',
