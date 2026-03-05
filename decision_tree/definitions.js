@@ -144,7 +144,7 @@ Filters Fast LLC.
 Monroe. NC 28110 
 (Note that if the order is placed before the account is tax exempt, the tax amount paid can be refunded later, also these are done by our accounting and it may be 3-4 business days) `
 					},
-			}
+			},
 			'Customer does not yet have an account': {
 				title: 'Customer does not yet have an account',
 				info: '',
