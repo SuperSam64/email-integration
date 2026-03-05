@@ -147,7 +147,8 @@ function initialize(){
         move(lastMenu, 'right');
         move(getMenu(activeMenu), 'right');
       }
-      modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';	
+      modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';
+	  appendURL();
     });
   }
 }
