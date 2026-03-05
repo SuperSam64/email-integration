@@ -112,17 +112,40 @@ var data = {
 		'Overshipped/short shipped': {
 			title: 'Overshipped/short shipped',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Overshipped': {
+				title: 'Overshipped',
+				info: '',
+				'Overshipped': {
+					title: 'Overshipped',
+					info: 'Set up a return, and also, submit a Monday request to let us know a refund is not due'
+				}
+			},
+			'Missing items': {
+				title: 'Missing items',
+				info: '',
+				'Missing items': {
+					title: 'Menu in progress',
+					info: 'Monday request when needed '
+				},
 			}
 		},
 		'Tax exemption': {
-			title: 'Tax exemption',
+			title: 'Account already exists',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Account already exists': {
+				title: 'Account already exists',
+				info: `Request tax exempt cert. to support@filtersfast.com 
+Advise billing address on account must match form & seller info should be filled in with: 
+Filters Fast LLC. 
+5905 Stockbridge Dr. 
+Monroe. NC 28110 
+(Note that if the order is placed before the account is tax exempt, the tax amount paid can be refunded later, also these are done by our accounting and it may be 3-4 business days) `
+			},
+			title: 'Customer does not yet have an account',
+			info: '',
+			'Customer does not yet have an account': {
+				title: 'Ask the customer to start an order',
+				info: 'Ask the customer to start placing their order, up until the point where the order is in a pending status. They can then either email their form and wait until tax exemption has been applied to finish their order, or finish the order immediately, and have the tax amount refunded back to them once the account is tax exempt.'
 			}
 		},
 		'Issues with custom air filters':{
