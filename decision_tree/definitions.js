@@ -130,7 +130,7 @@ var data = {
 			}
 		},
 		'Tax exemption': {
-			title: 'Tax exemption'',
+			title: 'Tax exemption',
 			info: '',
 			'Account already exists': {
 				title: 'Account already exists',
