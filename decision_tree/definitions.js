@@ -134,16 +134,24 @@ var data = {
 			info: '',
 			'Account already exists': {
 				title: 'Account already exists',
-				info: `Request tax exempt cert. to support@filtersfast.com 
+				info: '',
+				'Account already exists': {
+					title: 'Account already exists',
+					info: `Request tax exempt cert. to support@filtersfast.com 
 Advise billing address on account must match form & seller info should be filled in with: 
 Filters Fast LLC. 
 5905 Stockbridge Dr. 
 Monroe. NC 28110 
 (Note that if the order is placed before the account is tax exempt, the tax amount paid can be refunded later, also these are done by our accounting and it may be 3-4 business days) `
-			},
+					},
+			}
 			'Customer does not yet have an account': {
-				title: 'Ask the customer to start an order',
-				info: 'Ask the customer to start placing their order, up until the point where the order is in a pending status. They can then either email their form and wait until tax exemption has been applied to finish their order, or finish the order immediately, and have the tax amount refunded back to them once the account is tax exempt.'
+				title: 'Customer does not yet have an account',
+				info: '',
+				'Customer does not yet have an account': {
+					title: 'Ask the customer to start an order',
+					info: 'Ask the customer to start placing their order, up until the point where the order is in a pending status. They can then either email their form and wait until tax exemption has been applied to finish their order, or finish the order immediately, and have the tax amount refunded back to them once the account is tax exempt.'
+				}
 			}
 		},
 		'Issues with custom air filters':{
@@ -171,7 +179,7 @@ Monroe. NC 28110
 			}
 		},
 		'Address update needed': {
-			title: 'Order processing issues',
+			title: 'Address update needed',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -179,7 +187,7 @@ Monroe. NC 28110
 			}
 		},
 		'Webdev': {
-			title: 'Order processing issues',
+			title: 'Webdev',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -187,15 +195,15 @@ Monroe. NC 28110
 			}
 		},
 		'Product Info': {
-			title: 'Order processing issues',
+			title: 'Product Info',
 			info: '',
 			'Content': {
-				title: 'Menu in progress',
+				title: 'Content',
 				info: ''
 			}
 		},
 		'Order Status': {
-			title: 'Order processing issues',
+			title: 'Order Status',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -203,7 +211,7 @@ Monroe. NC 28110
 			}
 		},
 		'Cancellations': {
-			title: 'Order processing issues',
+			title: 'Cancellations',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -211,7 +219,7 @@ Monroe. NC 28110
 			}
 		},
 		'B2B call': {
-			title: 'Order processing issues',
+			title: 'B2B call',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -219,15 +227,15 @@ Monroe. NC 28110
 			}
 		},
 		'Account issues | Data removal': {
-			title: 'Order processing issues',
+			title: 'Account issues | Data removal',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
 				info: ''
 			}
 		},
-		'Escalation ': {
-			title: 'Order processing issues',
+		'Escalation': {
+			title: 'Escalation',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -235,7 +243,7 @@ Monroe. NC 28110
 			}
 		},
 		'Invoice request': {
-			title: 'Order processing issues',
+			title: 'Invoice request',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -243,7 +251,7 @@ Monroe. NC 28110
 			}
 		},
 		'Inaccurate tracking information': {
-			title: 'Order processing issues',
+			title: 'Inaccurate tracking information',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -251,7 +259,7 @@ Monroe. NC 28110
 			}
 		},
 		'Incompatible': {
-			title: 'Order processing issues',
+			title: 'Incompatible',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -259,7 +267,7 @@ Monroe. NC 28110
 			}
 		},
 		'Lost package': {
-			title: 'Order processing issues',
+			title: 'Lost package',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -267,7 +275,7 @@ Monroe. NC 28110
 			}
 		},
 		'Discount not applied': {
-			title: 'Order processing issues',
+			title: 'Discount not applied',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
@@ -275,7 +283,7 @@ Monroe. NC 28110
 			}
 		},
 		'Check order': {
-			title: 'Order processing issues',
+			title: 'Check order',
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
