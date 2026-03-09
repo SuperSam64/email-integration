@@ -1,4 +1,8 @@
+var clipboard = getClipboardContents();
 buildPage(data);
+function getClipboardContents(){
+	return new URLSearchParams(window.location.search).get('previousClipboard');
+}
 function buildPage(input){
   var output = input;
   var elementArray = [];
