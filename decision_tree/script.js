@@ -1,4 +1,5 @@
 var clipboard = getClipboardContents();
+console.log(clipboard);
 buildPage(data);
 function getClipboardContents(){
 	return new URLSearchParams(window.location.search).get('previousClipboard');
