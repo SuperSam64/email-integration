@@ -42,7 +42,7 @@ function buildPage(input){
   }
   function getConfig(data){
 	var configObject = Object.fromEntries(new URL(window.location.href).searchParams);
-	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? 'page =' + configObject.page : ''));
+	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? 'page=' + configObject.page : ''));
 	return configObject;
   }
   var output = input;
