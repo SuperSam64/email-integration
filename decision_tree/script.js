@@ -1,10 +1,34 @@
-var clipboard = getClipboardContents();
-console.log(clipboard);
+var customerOrderInfo;
 buildPage(data);
-function getClipboardContents(){
-	return new URLSearchParams(window.location.search).get('previousClipboard');
-}
 function buildPage(input){
+  window.addEventListener('focus', importClipboard);
+  async function importClipboard(){
+	  window.removeEventListener('focus', importClipboard);
+	  var updatedObject = {};
+	  var clipboardContents = await navigator.clipboard.read();
+	  for(const item of clipboardContents){
+		for(const mimeType of item.types){
+		  var currentClipboard = await item.getType(mimeType);	
+		  if(mimeType == 'text/plain'){
+		    var clipboardItem = await currentClipboard.text();
+			var itemArray = clipboardItem.split('{{ %end_clipboard% }}');
+			var updatedItem = itemArray.length > 1 ? itemArray[0] : '';
+			customerOrderInfo = JSON.parse(itemArray[itemArray.length - 1]);
+			updatedObject[mimeType] = updatedItem;
+		  }
+		  else{
+			updatedObject[mimeType] = item.getType(mimeType);
+		  }
+		}	
+	  }
+	  if(updatedObject['image/png']){delete updatedObject['text/plain']}
+	  var previousClipboard = new ClipboardItem(updatedObject);
+	  await navigator.clipboard.write([previousClipboard]);
+	  showCustomerOrderInfo(customerOrderInfo);
+  }
+  function showCustomerOrderInfo(input){
+	console.log(input);
+  }
   var output = input;
   var elementArray = [];
   setTitle(output);
