@@ -3,7 +3,6 @@ var config;
 var customerOrderInfo;
 buildPage(data);
 function buildPage(input){
-  config = getConfig();
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
 	  window.removeEventListener('focus', importClipboard);
@@ -35,10 +34,15 @@ function buildPage(input){
 	  }
   }
   function showCustomerOrderInfo(input){
-	if(input){console.log(input)}
+	if(input){
+		console.log(input);
+		config = getConfig(input);
+	}
   }
-  function getConfig(){
-
+  function getConfig(data){
+	var configObject = Object.fromEntries(new URL(window.location.href).searchParams);
+	history.replaceState(data, '', window.location.href.split('?')[0];
+	return configObject;
   }
   var output = input;
   var elementArray = [];
