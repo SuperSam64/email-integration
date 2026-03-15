@@ -5,6 +5,7 @@ buildPage(data);
 function buildPage(input){
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
+	  document.body.click();
 	  window.removeEventListener('focus', importClipboard);
 	  var updatedObject = {};	  
 	  try{
