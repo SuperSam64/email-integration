@@ -1,13 +1,14 @@
+
+var config;
 var customerOrderInfo;
 buildPage(data);
 function buildPage(input){
+  config = getConfig();
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
 	  window.removeEventListener('focus', importClipboard);
-	  var updatedObject = {};
-	  
-	  
-	  try
+	  var updatedObject = {};	  
+	  try{
 	    var clipboardContents = await navigator.clipboard.read();
 	    for(const item of clipboardContents){
 		  for(const mimeType of item.types){
@@ -35,6 +36,9 @@ function buildPage(input){
   }
   function showCustomerOrderInfo(input){
 	if(input){console.log(input)}
+  }
+  function getConfig(){
+
   }
   var output = input;
   var elementArray = [];
