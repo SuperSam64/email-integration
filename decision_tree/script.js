@@ -3,9 +3,11 @@ var config;
 var customerOrderInfo;
 buildPage(data);
 function buildPage(input){
+  document.addEventListener('DOMContentLoaded', (event) => {
+	document.body.click();  
+  });	
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
-	  document.body.click();
 	  window.removeEventListener('focus', importClipboard);
 	  var updatedObject = {};	  
 	  try{
