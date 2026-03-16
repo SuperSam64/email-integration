@@ -2,15 +2,10 @@
 var config;
 var customerOrderInfo;
 buildPage(data);
-function buildPage(input){
-  window.addEventListener('load', (event) => {
-	setTimeout(() => {
-	  document.querySelector('.backdrop').click(); 
-	}, 3000);
-  });	
- document.querySelector('.backdrop').addEventListener('click', importClipboard);
+function buildPage(input){	
+ window.addEventListener('load', , importClipboard);
   async function importClipboard(){
-	 document.querySelector('.backdrop').removeEventListener('click', importClipboard);
+	 window.removeEventListener('load', , importClipboard);
 	  var updatedObject = {};
 	  try{
 	    var clipboardContents = await navigator.clipboard.read();
