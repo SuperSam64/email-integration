@@ -4,7 +4,9 @@ var customerOrderInfo;
 buildPage(data);
 function buildPage(input){
   document.addEventListener('DOMContentLoaded', (event) => {
-	document.body.click();  
+	setTimeout(() => {
+	  document.querySelector('.backdrop').click(); 
+	}, 3000);
   });	
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
