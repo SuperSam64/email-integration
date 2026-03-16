@@ -3,9 +3,9 @@ var config;
 var customerOrderInfo;
 buildPage(data);
 function buildPage(input){	
- window.addEventListener('load', , importClipboard);
+ window.addEventListener('load', importClipboard);
   async function importClipboard(){
-	 window.removeEventListener('load', , importClipboard);
+	 window.removeEventListener('load', importClipboard);
 	  var updatedObject = {};
 	  try{
 	    var clipboardContents = await navigator.clipboard.read();
