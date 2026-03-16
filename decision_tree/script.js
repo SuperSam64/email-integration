@@ -3,7 +3,7 @@ var config;
 var customerOrderInfo;
 buildPage(data);
 function buildPage(input){
-  document.addEventListener('load', (event) => {
+  window.addEventListener('load', (event) => {
 	setTimeout(() => {
 	  document.querySelector('.backdrop').click(); 
 	}, 3000);
