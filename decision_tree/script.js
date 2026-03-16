@@ -8,9 +8,9 @@ function buildPage(input){
 	  document.querySelector('.backdrop').click(); 
 	}, 3000);
   });	
-  window.addEventListener('focus', importClipboard);
+ document.querySelector('.backdrop').addEventListener('click', importClipboard);
   async function importClipboard(){
-	  window.removeEventListener('focus', importClipboard);
+	 document.querySelector('.backdrop').removeEventListener('click', importClipboard);
 	  var updatedObject = {};
 	  try{
 	    var clipboardContents = await navigator.clipboard.read();
