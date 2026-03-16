@@ -11,7 +11,7 @@ function buildPage(input){
   window.addEventListener('focus', importClipboard);
   async function importClipboard(){
 	  window.removeEventListener('focus', importClipboard);
-	  var updatedObject = {};	  
+	  var updatedObject = {};
 	  try{
 	    var clipboardContents = await navigator.clipboard.read();
 	    for(const item of clipboardContents){
@@ -46,7 +46,7 @@ function buildPage(input){
   }
   function getConfig(data){
 	var configObject = Object.fromEntries(new URL(window.location.href).searchParams);
-	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? 'page=' + configObject.page : ''));
+	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? '?page=' + configObject.page : ''));
 	return configObject;
   }
   var output = input;
