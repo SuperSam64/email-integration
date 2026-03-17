@@ -41,6 +41,7 @@ function buildPage(input){
   }
   function getConfig(data){
 	var configObject = Object.fromEntries(new URL(window.location.href).searchParams);
+	console.log(configObject);
 	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? '?page=' + configObject.page : ''));
 	return configObject;
   }
