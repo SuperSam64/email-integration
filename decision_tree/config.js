@@ -46,7 +46,7 @@ var target = 'https://supersam64.github.io/email-integration/decision_tree/index
 
 
 
-var crm = new URLSearchParams(window.location.href).get('crm');
+var crm = new URLSearchParams(window.location.search).get('crm');
 
 
 var currentTheme = document.querySelector('#currentTheme');
