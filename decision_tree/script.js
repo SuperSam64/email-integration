@@ -1,8 +1,40 @@
 
 var config;
-var customerOrderInfo;
+var importedData;
 buildPage(data);
 function buildPage(input){	
+  window.addEventListener('load', importClipboard);
+  async function importClipboard(){
+  window.removeEventListener('load', importClipboard);
+  var containsPlaintext = true;
+  var clipboardText;
+  var imported = await navigator.clipboard.readText();
+  var copiedObject = {};
+  if(imported.includes('{{ %end_clipboard% }}')){
+	clipboardText = imported.split('{{ %end_clipboard% }}')[0];
+	imported = imported.split('{{ %end_clipboard% }}')[1];
+  }
+  var clipboardContents = await navigator.clipboard.read();
+  for(const item of clipboardContents){
+	for(const mimeType of item.types){
+	  if(mimeType === 'text/plain' && clipboardText){
+	    copiedObject[mimeType] = clipboardText;
+	  }
+	  else if(mimeType !== 'text/plain'){
+	    var copied = await item.getType(mimeType);
+	    copiedObject[mimeType] = copied;
+      }
+    }
+  }
+  var clipboard = new ClipboardItem(copiedObject);
+    await navigator.clipboard.write([clipboard]);	
+    importedData = document.createElement('div');
+    importedData.innerHTML = imported;
+    processImportedData(importedData);
+  }
+  function processImportedData(input){
+    console.log(input);
+  }	
   var output = input;
   var elementArray = [];
   setTitle(output);
