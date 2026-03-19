@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="decision_tree_helper.css">
+	</head>
+	<body>
+		<div class="final hidden">
+			<div style="width:100%;text-align:center;font-weight:bold;font-size: 22px">Bookmark copied to clipboard!</div>
+			<div style="padding: 30px; padding-top: 20px">To save your bookmark:<br><br>Press [SHIFT] + [CTRL] + [O] on your keyboard.<br><br>Next, while "Bookmarks bar" is selected in the menu on the left side of the page, click the 3-dot menu in the top right corner and select "Add new bookmark"<br><br>In the "Name" field, enter "Decision Tree" (or give it a name of your choice)<br><br>In the URL field, press [CTRL] + [V] to paste the code for your bookmark<br><br>Click "Save"<br><br><br><br><i>Once you have saved your bookmark, you may close this page</i></div>
+		</div>
+		<div class="outer">
+			<table style="border-radius:8px;box-shadow:6px 6px 16px rgba(0, 0, 0, 0.1);border: 1px solid rgba(0, 0, 0, 0.15)">
+				<th colspan="4" style="padding: 0px 18px 18px;font-size:18px;">Decision Tree Configuration</th>
+				<tr>
+					<td>
+						<label for="themeList" id="themeSelector"><p style="display:inline;color:red">* </p>Theme</label>
+					</td>
+					<td>
+						<div class="dropdown">
+							
+							<input id="currentTheme" readonly="true" placeholder="Choose Theme" style="text-align:center"></input>
+							<div class="container">
+							<div id="themeList" class="hidden">
+								
+								<div class="themeItem">Light</div>
+								<div class="themeItem">Dark</div>
+								<div class="themeItem">Auto</div>
+						
+							</div>
+							</div>
+						</div>
+					</td>
+					<td id="itemNumber" style="vertical-align:top;text-align:right;width: 32px;font-size:14px">
+						<b>1.<b>
+					</td>
+					<td rowspan="6" width="340px" style="vertical-align:top;padding-left:6px;font-size: 14px">
+						<span class="visible"><b>Theme</b><br>Choose a theme. "Auto" will match the theme you are using in CandyPress</span>
+						<span class="hidden"><b>First name</b><br>Enter your first name, as you would like it to appear in Monday requests</span>
+						<span class="hidden"><b>Last Name (optional)</b><br>Enter your last name, or last initial, as you would like it to appear in Monday requests. Leave this field blank if you do not wish to include your last name in requests</span>
+						<span class="hidden"><b>Initials</b><br>Enter your initials as they appear in CandyPress</span>
+						<span class="hidden">
+							<b>
+								Missive Key
+							</b>
+							<br>
+							
+							<ul style="padding-left:0;margin-top:0">
+								<li>Open Missive Settings</li>
+								<li>Find the section titled "API"</li>
+								<li>Click "New Token"</li>
+								<li>Name your new token. This can be a name of your choice, such as "Decision tree"</li>
+								<li>Click "Create"</li>
+								<li>You will now see a key of randomized numbers, letters and symbols. Copy the entire key, and paste it into the "Missive Key" field on this page.</li>
+							</ul>
+							</span>
+						<span class="hidden"><b>Monday Key</b><br>
+						
+							<ul style="padding-left:0;margin-top:0">
+								<li>On Monday.com, click your profile avatar in the top right corner to open the settings menu</li>
+								<li>Click "Developers"</li>
+								<li>From the menu on the left side of the screen, click "API token", then click "Copy"</li>
+								<li>Paste your key into the "Monday Key" field on this page</li>
+								<li>You will now see a key of randomized numbers, letters and symbols. Copy the entire key, and paste it into the "Missive Key" field on this page.</li>
+							</ul>					
+						
+						
+						
+						</span>
+						
+						
+						
+						<span class="hidden"><b>Textline Key</b><br>
+						
+							<ul style="padding-left:0;margin-top:0">
+								<li>In Textline, click your profile avatar in the top right corner</li>
+								<li>In the popup panel, find "USER TOKEN" and copy the value to your clipboard</li>
+								<li>Paste this  value into the "Textline Key" field on this page</li>
+								
+							</ul>					
+						
+						
+						
+						</span>
+						
+						
+						
+						
+						
+						
+						
+						<!-- add bookmark with ctrl + shift + O -->
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="firstName"><p style="display:inline;color:red">* </p>First name:</label>
+					</td>
+					<td>
+						<input id="firstName" required="true"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="lastName">Last name:</label>
+					</td>
+					<td>
+						<input id="lastName" required="true"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="initials"><p style="display:inline;color:red">* </p>Initials:</label>
+					</td>
+					<td>
+						<input id="initials" required="true"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="missiveKey"><p style="display:inline;color:red">* </p>Missive Key:</label>
+					</td>
+					<td>
+						<input type="password" id="missiveKey" required="true"></input>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="mondayKey"><p style="display:inline;color:red">* </p>Monday Key:</label>
+					</td>
+					<td>
+						<input type="password" id="mondayKey" required="true"></input>
+						</td>
+				</tr>
+				<tr class="textlineRow">
+					<td>
+						<label for="textlineKey"><p style="display:inline;color:red">* </p>Textline Key:</label>
+					</td>
+					<td>
+						<input type="password" id="textlineKey" required="true"></input>
+						</td>
+				</tr>
+				
+				<tr >
+					<td class="buttonCell" colspan="4">
+						<div class="button">Generate Link</div>
+					</td>
+				</tr>
+			</table>
+		</div>		
+		
+		
+		<script src="decision_tree_helper.js"></script>
+	</body>
+</html>
