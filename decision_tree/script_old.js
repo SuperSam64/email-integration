@@ -1,5 +1,50 @@
+
+var config;
+var customerOrderInfo;
 buildPage(data);
-function buildPage(input){
+function buildPage(input){	
+ window.addEventListener('load', importClipboard);
+  async function importClipboard(){
+	 window.removeEventListener('load', importClipboard);
+	  var updatedObject = {};
+	  try{
+	    var clipboardContents = await navigator.clipboard.read();
+	    for(const item of clipboardContents){
+		  for(const mimeType of item.types){
+		    var currentClipboard = await item.getType(mimeType);	
+		    if(mimeType == 'text/plain'){
+		      var clipboardItem = await currentClipboard.text();
+			  var itemArray = clipboardItem.split('{{ %end_clipboard% }}');
+			  var updatedItem = itemArray.length > 1 ? itemArray[0] : '';
+			  customerOrderInfo = JSON.parse(itemArray[itemArray.length - 1]);
+			  updatedObject[mimeType] = updatedItem;
+		    }
+		    else{
+			  updatedObject[mimeType] = item.getType(mimeType);
+		    }
+		  }	
+	    }
+	    if(updatedObject['image/png']){delete updatedObject['text/plain']}
+	    var previousClipboard = new ClipboardItem(updatedObject);
+	    await navigator.clipboard.write([previousClipboard]);
+	    showCustomerOrderInfo(customerOrderInfo);
+  	  }
+	  catch(error){
+		showCustomerOrderInfo();
+	  }
+  }
+  function showCustomerOrderInfo(input){
+	if(input){
+		console.log(input);
+		config = getConfig(input);
+	}
+  }
+  function getConfig(data){
+	var configObject = Object.fromEntries(new URL(window.location.href).searchParams);
+	console.log(configObject);
+	history.replaceState(data, '', window.location.href.split('?')[0] + (configObject.page ? '?page=' + configObject.page : ''));
+	return configObject;
+  }
   var output = input;
   var elementArray = [];
   setTitle(output);
@@ -136,6 +181,7 @@ function initialize(){
         move(lastMenu, 'left');
         move(getMenu(activeMenu), 'left');
         modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';
+		appendURL();
       });
     }
   }
@@ -146,7 +192,8 @@ function initialize(){
         move(lastMenu, 'right');
         move(getMenu(activeMenu), 'right');
       }
-      modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';	
+      modalOuter.style.height = getMenu(activeMenu).scrollHeight + 'px';
+	  appendURL();
     });
   }
 }
@@ -169,5 +216,9 @@ function move(element, direction){
   var offset = direction == 'left' ? -1 : 1;
   var target = positions[positions.indexOf(position) + offset];
   element.classList.remove(position);
-  element.classList.add(target);	
+  element.classList.add(target);		
+}
+function appendURL(){
+	var page_id = document.querySelector('.menu-outer.active').querySelector('.menu-inner').id.replace('menu-', '').replaceAll('-', '.');
+	history.pushState({}, '' , 'https://supersam64.github.io/email-integration/decision_tree/index.html?page=' + page_id);
 }
