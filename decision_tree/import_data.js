@@ -1,2 +1,2 @@
-var customerOrderData = sessionStorage.get('x');
-console.log('x', 'data fetched');
+var dataObject = sessionStorage.get('dataObject');
+console.log('data loaded');
