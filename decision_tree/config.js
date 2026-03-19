@@ -122,7 +122,7 @@ button.addEventListener('click', function(){
 			initials: initials.value,
 			missiveKey: missiveKey.value.replace(/\s/g, ''),
 			mondayKey: mondayKey.value.replace(/\s/g, ''),
-			options: 'CCA'
+			options: crm? 'CRM' : 'CCA'
 		});
 		if(crm){output.options = 'CRM'; output.textlineKey = textlineKey.value.replace(/\s/g, '')}
 		output = prefix.replace('[[config placeholder]]', output);
