@@ -3,8 +3,6 @@ var code = `
 `;
 
 
-
-
 var prefix = `javascript:
 var config = ` + '[[config placeholder]]' + `;
 ` + code;
