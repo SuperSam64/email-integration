@@ -1,2 +1,3 @@
-var dataObject = sessionStorage.getItem('dataObject');
+var dataObject = localStorage.getItem('dataObject');
+localStorage.removeItem('dataObject');
 console.log('data loaded');
