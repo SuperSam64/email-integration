@@ -36,7 +36,7 @@ function getData(){
     }
   }
   function processImportedData(input){
-    sessionStorage.setItem('dataObject', input);
+    localStorage.setItem('dataObject', input);
     console.log(input);
   }
   window.location.href = 'https://supersam64.github.io/email-integration/decision_tree/redirect_test.html';
