@@ -39,5 +39,5 @@ function getData(){
     sessionStorage.setItem('dataObject', input);
     console.log(input);
   }
-  window.location.href = 'https://supersam64.github.io/email-integration/decision_tree/landing_page.html';
+  window.location.href = 'https://supersam64.github.io/email-integration/decision_tree/redirect_test.html';
 }
