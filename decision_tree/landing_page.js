@@ -1,7 +1,7 @@
 var config;
 var importedData;
-getData(data);
-function getData(input){	
+getData();
+function getData(){	
   window.addEventListener('load', importClipboard);
   async function importClipboard(){
   window.removeEventListener('load', importClipboard);
