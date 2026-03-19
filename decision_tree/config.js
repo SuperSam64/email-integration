@@ -124,7 +124,7 @@ button.addEventListener('click', function(){
 			mondayKey: mondayKey.value.replace(/\s/g, ''),
 			options: 'CCA'
 		});
-		if(crm){output.textlineKey = textlineKey.value.replace(/\s/g, '')}
+		if(crm){output.options = 'CRM'; output.textlineKey = textlineKey.value.replace(/\s/g, '')}
 		output = prefix.replace('[[config placeholder]]', output);
 		console.log(output);
 		navigator.clipboard.writeText(output);
