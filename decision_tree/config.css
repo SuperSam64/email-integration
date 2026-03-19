@@ -4,7 +4,6 @@
 
 .hidden{
 	display: none;
-	
 }
 .themeItem{
 	padding: 6px ;
@@ -38,9 +37,7 @@ input:focus{
 	width: 208px;
 	z-index: 1;
 	background-color: rgba(240, 240, 240, 1);
-	clip-path: inset(0px 0px 0px 0px round 4px);
-	
-	
+	clip-path: inset(0px 0px 0px 0px round 4px);	
 }
 
 .dropdown{
@@ -58,7 +55,6 @@ input:focus{
 	width: 200px;
 	
 }
-
 
 .container{
 	filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.2));
