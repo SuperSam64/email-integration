@@ -1,10 +1,38 @@
 var code = `
+exportClipboard();
+async function exportClipboard(){
+	var pageData = document.body.innerHTML;
+	var clipboardContents = await navigator.clipboard.read();
+	var containsPlaintext = false;
+	var copiedObject = {};
+	for(const item of clipboardContents){
+		for(const mimeType of item.types){
+			var copied = await item.getType(mimeType);
+			if(mimeType === 'text/plain'){
+				var copiedText = await navigator.clipboard.readText();
+				copied = copiedText + '{{ %end_clipboard% }}' + pageData;
+				containsPlaintext = true;
+			}
+			copiedObject[mimeType] = copied;
+			
+		}
+	}
+	if(containsPlaintext == false){
+		copiedObject['text/plain'] = pageData;
+	}
+	var clipboard = new ClipboardItem(copiedObject);
+	await navigator.clipboard.write([clipboard]);
+	window.open(config);
+}
+`
 
-`;
+
 
 
 var prefix = `javascript:
 var config = ` + '[[config placeholder]]' + `;
+
+console.log(config);
 ` + code;
 
 
@@ -78,17 +106,18 @@ button.addEventListener('click', function(){
 		mondayKey.value != '' 
 	){
 		
-		var output = JSON.stringify({
+		var output = new URLSearchParams({
 			theme: currentTheme.value.toLowerCase(),
 			firstName: firstName.value,
 			lastName: lastName.value,
 			initials: initials.value,
 			missiveKey: missiveKey.value.replace(/\s/g, ''),
 			mondayKey: mondayKey.value.replace(/\s/g, ''),
-			options: crm ? 'CRM' :'CCA'
+			options: 'CCA'
 		});
 		if(crm){output.textlineKey = textlineKey.value.replace(/\s/g, '')}
-		output = prefix.replace('[[config placeholder]]', output);
+		output = prefix.replace('[[config placeholder]]', "'" + 'https://supersam64.github.io/email-integration/decision_tree/index.html' + '?' + output + "'");
+		console.log(output);
 		navigator.clipboard.writeText(output);
 		document.querySelector('.outer').classList.add('hidden');
 		document.querySelector('.final').classList.remove('hidden');
