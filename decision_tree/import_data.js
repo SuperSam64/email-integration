@@ -1,2 +1,2 @@
-var dataObject = sessionStorage.get('dataObject');
+var dataObject = sessionStorage.getItem('dataObject');
 console.log('data loaded');
