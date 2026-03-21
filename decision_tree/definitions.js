@@ -168,12 +168,7 @@ Monroe. NC 28110
 			'Customer received wrong size': {
 				title: 'Customer received wrong size',
 				info: '',
-				
-			'Customer received wrong size': {
-				title: 'Customer received wrong size',
-				info: '',
 				'Ask for measurements': {
-						
 					title: 'Ask for measurements',
 					info:'Ask whether they measured it with tape measure or held it up to current filter (if they held it up to the current filter, we will need the actual measurements). We need the whole filter, measurement, and need to be able to read the measurement in the photo. Also need photo of shipping label.',
 					'Wrong size sent': {
