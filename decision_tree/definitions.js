@@ -168,23 +168,24 @@ Monroe. NC 28110
 			'Customer received wrong size': {
 				title: 'Customer received wrong size',
 				info: '',
-				'Customer received wrong size': {
-					title: 'Customer received wrong size',
-					info: '',
-					'Ask for measurements': {
-						title: 'Ask for measurements',
-						info:'Ask whether they measured it with tape measure or held it up to current filter (if they held it up to the current filter, we will need the actual measurements). We need the whole filter, measurement, and need to be able to read the measurement in the photo. Also need photo of shipping label.',
-						'Wrong size sent': {
-							title: 'Wrong size sent',
-							info:'reship correct size, or full refund (customer' + "'" + 's preference) [Monday request]',
-							
-						},
-						'Customer ordered wrong size': {
-							title: 'Customer ordered wrong size',
-							info:`Offer to place an order for the correct size, and advise that the original order can then be refunded 
-Make Monday request for the refund, include the new order # 
-If they decline, offer 50% (if escalated, request full refund) [Monday request]`,
-						}
+				
+			'Customer received wrong size': {
+				title: 'Customer received wrong size',
+				info: '',
+				'Ask for measurements': {
+						
+					title: 'Ask for measurements',
+					info:'Ask whether they measured it with tape measure or held it up to current filter (if they held it up to the current filter, we will need the actual measurements). We need the whole filter, measurement, and need to be able to read the measurement in the photo. Also need photo of shipping label.',
+					'Wrong size sent': {
+						title: 'Wrong size sent',
+						info:'reship correct size, or full refund (customer' + "'" + 's preference) [Monday request]',
+						
+					},
+					'Customer ordered wrong size': {
+						title: 'Customer ordered wrong size',
+						info:`Offer to place an order for the correct size, and advise that the original order can then be refunded 
+		Make Monday request for the refund, include the new order # 
+		If they decline, offer 50% (if escalated, request full refund) [Monday request]`,
 					}
 				}
 			}		
