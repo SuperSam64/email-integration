@@ -217,7 +217,7 @@ Monroe. NC 28110
 					info: ''
 				}
 			},
-			'Request refund/reship (customer' + "'" + 's preference)': {
+			"Request refund/reship (customer's preference)": {
 				title: '',
 				info: '',
 				'Content': {
