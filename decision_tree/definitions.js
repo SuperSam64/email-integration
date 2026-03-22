@@ -193,9 +193,53 @@ Monroe. NC 28110
 		'Damaged | Defective': {
 			title: 'Damaged | Defective',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Apologize that it was damaged/defective, locate in CP ': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
+			},
+			'If drop ship/special order, ask for photos of the damaged item, plus the label, and model number if non-disposable items.': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
+			},
+			'Provide email address or text number support@filtersfast.com 704-228-9166': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
+			},
+			'Request refund/reship (customer' + "'" + 's preference)': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
+			},
+			'Tell customer to hold onto damaged item until refund/reship is done (or until we ask for it back when needed).': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
+			},
+			'Confirm who installed (if defective) and gather any other important details': {
+				title: '',
+				info: '',
+				'Content': {
+					title: 'Menu in progress',
+					info: ''
+				}
 			}
 		},
 		'Order processing issues': {
