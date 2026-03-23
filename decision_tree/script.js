@@ -1,5 +1,5 @@
 
-var config = Object.entriesFrom(new URLSearchParams(window.location.search));
+var config = Object.fromEntries(new URLSearchParams(window.location.search));
 console.log(config);
 var importedData;
 buildPage(data);
