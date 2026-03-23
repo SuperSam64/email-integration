@@ -9,7 +9,6 @@ function buildPage(input){
     window.removeEventListener('load', importClipboard);
     var containsPlaintext = true;
     var clipboardText;
-    var empty = true;
     var imported = await navigator.clipboard.readText();
     var copiedObject = {};
     if(imported.includes('{{ %end_clipboard% }}')){
@@ -18,7 +17,6 @@ function buildPage(input){
     }
     var clipboardContents = await navigator.clipboard.read();
     for(const item of clipboardContents){
-	  empty = false;
 	  for(const mimeType of item.types){
 	    if(mimeType === 'text/plain' && clipboardText){
 	      copiedObject[mimeType] = clipboardText;
@@ -29,7 +27,7 @@ function buildPage(input){
         }
       }
     }
-    if(empty == false){
+    if(config.pageType ? config.pageType != '' : false){
 	  var clipboard = new ClipboardItem(copiedObject);
       await navigator.clipboard.write([clipboard]);	
       importedData = document.createElement('div');
