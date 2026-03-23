@@ -27,7 +27,7 @@ function buildPage(input){
         }
       }
     }
-    if(config.pageType ? config.pageType != '' : false){
+    if(config.pageType ? (config.pageType != '' && config.pageType != 'none') : false){
 	  var clipboard = new ClipboardItem(copiedObject);
       await navigator.clipboard.write([clipboard]);	
       importedData = document.createElement('div');
