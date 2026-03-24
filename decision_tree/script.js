@@ -40,6 +40,7 @@ function buildPage(input){
   }
   function processImportedData(input){
     console.log(input);
+	processPageData(config.pageType, input);
   }	
   var output = input;
   var elementArray = [];
