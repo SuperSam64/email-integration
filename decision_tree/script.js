@@ -2,7 +2,7 @@
 var config = Object.fromEntries(new URLSearchParams(window.location.search));
 console.log(config);
 if(config.theme ? config.theme.toLowerCase() == 'dark' : false){
-	document.querySelector('#styletheme').setAttribut('href', 'dark.css');
+	document.querySelector('#styletheme').setAttribute('href', 'dark.css');
 }
 var importedData;
 buildPage(data);
