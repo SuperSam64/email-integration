@@ -1,7 +1,7 @@
 
 var config = Object.fromEntries(new URLSearchParams(window.location.search));
 console.log(config);
-if(config.theme ? config.theme.toLowerCase() == 'dark' : false || window.matchMedia('(prefers-color-scheme: dark)').matches){
+if((config.theme ? config.theme.toLowerCase() == 'dark' : false) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)){
 	document.querySelector('#styletheme').setAttribute('href', 'dark.css');
 }
 var importedData;
