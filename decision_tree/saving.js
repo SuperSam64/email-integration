@@ -32,13 +32,7 @@ async function save(content){
   try{
     const directoryHandle = await window.showDirectoryPicker();
     const subfolderName = 'decision-tree';
-    const subfolderHandle = await directlryHandle.getDirectoryHandle(subfolderName, {create: true});
-    const baseHandle = await window.showDirectoryPicker({
-      startIn: 'downloads'
-    });
-    
-   
-    
+    const subfolderHandle = await directlryHandle.getDirectoryHandle(subfolderName, {create: true});    
     const handle = await subfolderHandle.getFileHandle('config.json', {create: true});
     const writable = await handle.createWritable();
     await writable.write(content);
