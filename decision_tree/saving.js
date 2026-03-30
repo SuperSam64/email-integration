@@ -20,10 +20,10 @@ restoreButton.addEventListener('click', function() {
 
 function getData(){
   return JSON.stringify({
-    first: document.querySelector('#first'),
+    first: document.querySelector('#first').value,
     second: {
-      secondA: document.querySelector('#second'),
-      secondB: document.querySelector('#third')
+      secondA: document.querySelector('#second').value,
+      secondB: document.querySelector('#third').value
     }
   });
 }
@@ -47,12 +47,24 @@ async function save(content){
   catch(err){console.error('failed')}
 }
 
-function read(){
-  console.log('reading file');
+async function read(){
+  try{
+    const [fileHandle] = await window.showOpenFilePicker();
+    const file = await fileHandle.getFile();
+    const contents = await file.text();
+    processData(JSON.parse(contents));
+  }
+  catch(err){
+    console.error('error');
+  }
 }
 
 function backup(){
 
+}
+
+function processData(input){
+  console.log(input);
 }
 
 function restore(){
