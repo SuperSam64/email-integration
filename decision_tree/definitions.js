@@ -192,7 +192,7 @@ Monroe. NC 28110
 		},
 		'Damaged | Defective': {
 			title: 'Damaged | Defective',
-			info: 'Apologize that it was damaged/defective, locate in CandyPress',
+			info: '',
 			'If drop ship/special order, ask for photos of the damaged item, plus the label, and model number if non-disposable items.': {
 				title: 'Ask for photos',
 				info: `Apologize that it was damaged/defective, locate in CandyPress\.nIf drop ship/special order, ask for photos of the damaged item, plus the label, and model number if non-disposable items.<br>Provide email address or text number support@filtersfast.com 704-228-9166<br>Request refund/reship (customer's preference)<br>Tell customer to hold onto damaged item until refund/reship is done (or until we ask for it back when needed).<br>Confirm who installed (if defective) and gather any other important details.`
