@@ -30,6 +30,15 @@ function getData(){
 async function save(content){
   console.log('content', content);
   try{
+
+    const baseHandle = await window.showDirectoryPicker({
+      startIn: 'downloads'
+    });
+    
+    const subfolderHandle = await baseHandle.getDirectoryHandle('decision-tree', {
+      create: true
+    });
+    
     const handle = await window.showSaveFilePicker({
       suggestedName: 'config.json',
       types: [{
@@ -38,7 +47,7 @@ async function save(content){
           'application/json': ['.json']
         }
       }],
-      startIn: 'downloads/decision_tree/configuration'
+      startIn: sufolderHandle
     });
     const writable = await handle.createWritable();
     await writable.write(content);
