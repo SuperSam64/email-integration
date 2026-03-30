@@ -20,7 +20,9 @@ body, html {
   justify-content: center;
   align-items: center;
   position:fixed;
-  backdrop-filter: blur(3px);			
+  backdrop-filter: blur(3px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .modal-outer {
   width: 50%;
