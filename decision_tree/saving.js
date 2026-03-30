@@ -16,8 +16,21 @@ restoreButton.addEventListener('click', function() {
   restore();
 });
 
-function save(){
-
+async function save(){
+  try{
+    const handle = await window.showSaveFilePicker({
+      suggestedName: 'config.json',
+      types: [{
+        description: 'JSON Files',
+        accept: {'application/json': ['.json']}
+      }]
+    });
+    const writable = await handle.createWritable();
+    await writable.write(content);
+    await writable.cloose();
+    console.log('saved');
+  }
+  catch(err){console.log('failed')}
 }
 
 function read(){
