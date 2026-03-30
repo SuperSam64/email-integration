@@ -4,13 +4,12 @@ var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 
 
-var data = getData();
-console.log(data);
+
 readButton.addEventListener('click', function() {
   read();
 });
 saveButton.addEventListener('click', function() {
-  save(data);
+  save(getData());
 });
 backupButton.addEventListener('click', function() {
   backup();
@@ -53,7 +52,7 @@ async function read(){
     const [fileHandle] = await window.showOpenFilePicker();
     const file = await fileHandle.getFile();
     const contents = await file.text();
-    processData(JSON.parse(contents));
+    process(JSON.parse(contents));
   }
   catch(err){
     console.error('error');
@@ -64,7 +63,7 @@ function backup(){
 
 }
 
-function processData(input){
+function process(input){
   console.log(input);
 }
 
