@@ -29,7 +29,7 @@ function getData(){
 }
 
 async function save(content){
-  console.log('content', content');
+  console.log('content', content);
   try{
     const handle = await window.showSaveFilePicker({
       suggestedName: 'config.json',
