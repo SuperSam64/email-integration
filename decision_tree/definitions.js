@@ -296,7 +296,7 @@ Monroe. NC 28110
 		'Cancellations': {
 			title: 'Cancellations',
 			info: '',
-			Cancellations': {
+			'Cancellations': {
 				title: 'Cancellations',
 				info: '',
 				'Everything shipped': {
