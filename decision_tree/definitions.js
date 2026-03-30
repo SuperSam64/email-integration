@@ -244,12 +244,13 @@ Monroe. NC 28110
 						info: `Change details as needed from the "Account Details" page.`
 					}
 				},
-			'Subscription': {
-				title: 'Update address for subscriptions',
-				info: ``,
 				'Subscription': {
 					title: 'Update address for subscriptions',
-					info: `This can be done from the "Subscriptions" page`
+					info: ``,
+					'Subscription': {
+						title: 'Update address for subscriptions',
+						info: `This can be done from the "Subscriptions" page`
+					}
 				}
 			}
 		},
