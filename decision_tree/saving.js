@@ -3,11 +3,13 @@ var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 
+
+var data = getData();
 readButton.addEventListener('click', function() {
   read();
 });
 saveButton.addEventListener('click', function() {
-  save();
+  save(data);
 });
 backupButton.addEventListener('click', function() {
   backup();
@@ -15,6 +17,16 @@ backupButton.addEventListener('click', function() {
 restoreButton.addEventListener('click', function() {
   restore();
 });
+
+function getData(){
+  return {
+    first: document.querySelector('#first'),
+    second: {
+      secondA: document.querySelector('#second'),
+      secondB: document.querySelector('#third')
+    }
+  }
+}
 
 async function save(){
   try{
