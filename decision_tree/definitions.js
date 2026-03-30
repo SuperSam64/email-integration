@@ -194,24 +194,24 @@ Monroe. NC 28110
 			title: 'Damaged | Defective',
 			info: '',
 			'Apologize that it was damaged/defective, locate in CP ': {
-				title: '',
-				info: '',
+				title: 'Apologize for issue',
+				info: 'Apologize that it was damaged/defective, locate in CandyPress',
 				'Content': {
 					title: 'Menu in progress',
 					info: ''
 				}
 			},
 			'If drop ship/special order, ask for photos of the damaged item, plus the label, and model number if non-disposable items.': {
-				title: '',
-				info: '',
+				title: 'Ask for photos',
+				info: 'If drop ship/special order, ask for photos of the damaged item, plus the label, and model number if non-disposable items.',
 				'Content': {
 					title: 'Menu in progress',
 					info: ''
 				}
 			},
 			'Provide email address or text number support@filtersfast.com 704-228-9166': {
-				title: '',
-				info: '',
+				title: 'Provide contact info',
+				info: 'Provide email address or text number support@filtersfast.com 704-228-9166',
 				'Content': {
 					title: 'Menu in progress',
 					info: ''
