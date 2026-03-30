@@ -5,6 +5,7 @@ var restoreButton = document.querySelector('#restoreButton');
 
 
 var data = getData();
+console.log(data);
 readButton.addEventListener('click', function() {
   read();
 });
