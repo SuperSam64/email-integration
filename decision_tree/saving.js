@@ -18,7 +18,6 @@ backupButton.addEventListener('click', function() {
 restoreButton.addEventListener('click', function() {
   restore();
 });
-
 function getData(){
   return JSON.stringify({
     first: document.querySelector('#first').value,
@@ -30,6 +29,7 @@ function getData(){
 }
 
 async function save(content){
+  console.log('content', content');
   try{
     const handle = await window.showSaveFilePicker({
       suggestedName: 'config.json',
