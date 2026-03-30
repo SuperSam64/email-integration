@@ -216,18 +216,26 @@ Monroe. NC 28110
 		},
 		'Address update needed': {
 			title: 'Address update needed',
-			info: '',
-			'Content': {
-				title: 'Address update needed',
-				info: `Pull up order in CandyPress`,
+			info: 'Pull up order in CandyPress',	
+			'Order': {
+				title: 'Customer wants to change address on order',
+				info: ``,
 				'Order': {
 					title: 'Customer wants to change address on order',
 					info: `Order details cannot be changed after an order has been placed. Request cancellation when needed, and assist with placing a new order to the correct address. If the address in the account also needs to be updated, offer to help the customer change this from the "Account Details" page.`
 				},
+			},
+			'Account': {
+				title: 'Update address on account',
+				info: ``,
 				'Account': {
 					title: 'Update address on account',
 					info: `Change details as needed from the "Account Details" page.`
-				},
+				}
+			},
+			'Subscription': {
+				title: 'Update address for subscriptions',
+				info: ``,
 				'Subscription': {
 					title: 'Update address for subscriptions',
 					info: `This can be done from the "Subscriptions" page`
