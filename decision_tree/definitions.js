@@ -202,16 +202,36 @@ Monroe. NC 28110
 			title: 'Order processing issues',
 			info: '',
 			'Content': {
-				title: 'Menu in progress',
-				info: ''
+				title: 'Order processing issues',
+				info: `Pull up order in CP<br>Verify info<br>Check payment processing panel in CP<br>Pull up Cybersource if more info needed<br>Check order on website to make sure it matches CP and no errors<br>Things to check:<br>No unusual characters in name<br>no letters or unusual characters in phone number or ZIP<br>Cybersource codes when needed<br>Attempt to place order on your end`,
+				'Declined': {
+					title: 'Declined',
+					info: `Try a different card. If no other card can be approved, the order cannot be placed.`
+				},
+				'Approved': {
+					title: 'Approved',
+					info: `No further action needed.`
+				}
 			}
 		},
 		'Address update needed': {
 			title: 'Address update needed',
 			info: '',
 			'Content': {
-				title: 'Menu in progress',
-				info: ''
+				title: 'Address update needed',
+				info: `Pull up order in CandyPress`,
+				'Order': {
+					title: 'Customer wants to change address on order',
+					info: `Order details cannot be changed after an order has been placed. Request cancellation when needed, and assist with placing a new order to the correct address. If the address in the account also needs to be updated, offer to help the customer change this from the "Account Details" page.`
+				},
+				'Account': {
+					title: 'Update address on account',
+					info: `Change details as needed from the "Account Details" page.`
+				},
+				'Subscription': {
+					title: 'Update address for subscriptions',
+					info: `This can be done from the "Subscriptions" page`
+				}
 			}
 		},
 		'Webdev': {
