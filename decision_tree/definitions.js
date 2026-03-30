@@ -245,25 +245,33 @@ Monroe. NC 28110
 		'Webdev': {
 			title: 'Webdev',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Webdev': {
+				title: 'WebDev issue',
+				info: 'Put in a CE website issues ticket, include screenshots when possible, include ALL details that could be helpful to webdev'
 			}
 		},
 		'Product Info': {
 			title: 'Product Info',
 			info: '',
-			'Content': {
-				title: 'Content',
-				info: ''
+			'Product Info': {
+				title: 'Product Info',
+				info: 'Get model # if possible<br>Check repair clinic, also other third party websites - make sure the customer understands the info is from a third party and we can't guarantee its reliability<br>- Pool filters: get measurements, check Spa Daddy<br>- Microwave filters: get measurements & check spreadsheet repairclinic.com can be helpful with a model number<br>Monday request for more info if necessary'
 			}
 		},
 		'Order Status': {
 			title: 'Order Status',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Order Status': {
+				title: 'Order Status',
+				info: 'Pull up order in CP, make sure order is in PAID status, check for tracking. To know whether an item is stock, drop ship, or special order, go to the page for the item on filtersfast.com, and check the lead time. Stock items will say "In stock" (unless they are currently out of stock). If an item shows a lead time, it is either drop ship, or special order. Special order will say "Spcial order" in front of the lead time. If you see a lead time, but do not see "Special order", this is a drop ship item.',
+				'Stock': {
+					title: 'ERD is needed for stock items',
+					info: 'Call the CRM queue for an ERD'
+				},
+				'Drop ship/Special order': {
+					title: 'Check ERD board',
+					info: 'Check for the item on the ERD board. This data comes directly from NAV, so if the order/item you are looking for is not listed, or if it shows a date that has already passed, we will need to contact the vendor for an update, so a Monday reqeust will be needed.'
+				}
 			}
 		},
 		'Cancellations': {
