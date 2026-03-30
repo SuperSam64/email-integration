@@ -255,7 +255,7 @@ Monroe. NC 28110
 			info: '',
 			'Product Info': {
 				title: 'Product Info',
-				info: 'Get model # if possible<br>Check repair clinic, also other third party websites - make sure the customer understands the info is from a third party and we can't guarantee its reliability<br>- Pool filters: get measurements, check Spa Daddy<br>- Microwave filters: get measurements & check spreadsheet repairclinic.com can be helpful with a model number<br>Monday request for more info if necessary'
+				info: `Get model # if possible<br>Check repair clinic, also other third party websites - make sure the customer understands the info is from a third party and we can't guarantee its reliability<br>- Pool filters: get measurements, check Spa Daddy<br>- Microwave filters: get measurements & check spreadsheet repairclinic.com can be helpful with a model number<br>Monday request for more info if necessary`
 			}
 		},
 		'Order Status': {
@@ -277,17 +277,49 @@ Monroe. NC 28110
 		'Cancellations': {
 			title: 'Cancellations',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Everything shipped': {
+				title: 'Everything shipped',
+				info: 'If you can confirm all items on the order have shipped (which can be done by verifying that the number of items on the order matches the number of tracking links), the order cannot be cancelled. Set up a return when possible/needed.'
+			},
+			'Paritally shipped': {
+				title: 'Paritally shipped',
+				info: `If the order shows a shipped status, but there are more items on the order than there are tracking numbers, it may be possible to cancel part of the order. Call the CRM queue to see if the part of the order needing to be cancelled has already shipped. If not, submit a Monday request for cancellation of the items in question. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
+			},
+			'Nothing shipped': {
+				title: 'Nothing shipped',
+				info: `Submit a Monday request for cancellation. If the customer is only requesting partial cancellation, specify the item(s) that should be ccancelled. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
 			}
 		},
 		'B2B call': {
 			title: 'B2B call',
-			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`,
+			'B2B call': {
+				title: 'B2B call',
+				info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`,
+				'Customer not found in Missive contacts': {
+					title: 'Customer not found in Missive contacts',
+					info: ``,
+					'Customer not found in Missive contacts': {
+						title: 'B2B call',
+						info: `This is not a B2B call. Advise customer they can place orders with you or through our website.`
+					},
+				},
+				'Customer found, but without [B2B] prefix': {
+					title: 'Customer found, but without [B2B] prefix',
+					info: ``,
+					'Customer found, but without [B2B] prefix': {
+						title: 'Customer found, but without [B2B] prefix',
+						info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`
+					},
+				},
+				'Customer found, and contact name begins with [B2B]': {
+					title: 'Customer found, and contact name begins with [B2B]',
+					info: ``,
+					'Customer found, and contact name begins with [B2B]': {
+						title: 'Customer found, and contact name begins with [B2B]',
+						info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`
+					},
+				},
 			}
 		},
 		'Account issues | Data removal': {
