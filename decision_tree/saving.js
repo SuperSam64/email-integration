@@ -39,7 +39,7 @@ async function save(content){
     
    
     
-    const handle = await subfolderHandle.getFileHandle('config.json, {create: true});
+    const handle = await subfolderHandle.getFileHandle('config.json', {create: true});
     const writable = await handle.createWritable();
     await writable.write(content);
     await writable.close();
