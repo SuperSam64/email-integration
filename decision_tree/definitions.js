@@ -445,8 +445,8 @@ Monroe. NC 28110
 		'Check order': {
 			title: 'Check order',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
+			'Check order': {
+				title: 'Check Order',
 				info: `Prepare order in CP<br>Create Monday request with order info<br>Cancel pending order<br>Provide customer with all needed info:<br>Cost<br>Order number on memo,<br>Address: PO Box 49387 Charlotte, NC 28277<br>Inform customer:<br>they will receive a cancellation email, but their order is not cancelled<br>it may take 2 weeks to receive the check`
 			}
 		}
