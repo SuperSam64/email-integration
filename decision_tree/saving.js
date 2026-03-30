@@ -28,7 +28,7 @@ function getData(){
   }
 }
 
-async function save(){
+async function save(content){
   try{
     const handle = await window.showSaveFilePicker({
       suggestedName: 'config.json',
@@ -39,7 +39,7 @@ async function save(){
     });
     const writable = await handle.createWritable();
     await writable.write(content);
-    await writable.cloose();
+    await writable.close();
     console.log('saved');
   }
   catch(err){console.log('failed')}
