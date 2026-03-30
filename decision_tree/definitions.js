@@ -409,9 +409,37 @@ Monroe. NC 28110
 		'Discount not applied': {
 			title: 'Discount not applied',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Discount not applied': {
+				title: 'Discount not applied',
+				info: ``,
+				'Order in progress':{
+					title: 'Order in progress',
+					info: ``,
+					'Order in progress':{
+						title: 'Order in progress',
+						info: `Call CRM to adjust`
+					},
+				},
+				'Order has already been placed':{
+					title: 'Order has already been placed',
+					info: ``,
+					'Order is eligible':{
+						title: 'Order is eligible',
+						info: ``,
+						'Order is eligible':{
+							title: 'Order is eligible',
+							info: `Make request, let them know we will refund (3-7 days)<br>Order was not eligible/courtesy`
+						}
+					},
+					'Order is not eligible':{
+						title: 'Order is not eligible',
+						info: ``,
+						'Order is not eligible':{
+							title: 'Order is not eligible',
+							info: `Make a request for the discount but do not guarantee`
+						}
+					}
+				}
 			}
 		},
 		'Check order': {
@@ -419,7 +447,7 @@ Monroe. NC 28110
 			info: '',
 			'Content': {
 				title: 'Menu in progress',
-				info: ''
+				info: `Prepare order in CP<br>Create Monday request with order info<br>Cancel pending order<br>Provide customer with all needed info:<br>Cost<br>Order number on memo,<br>Address: PO Box 49387 Charlotte, NC 28277<br>Inform customer:<br>they will receive a cancellation email, but their order is not cancelled<br>it may take 2 weeks to receive the check`
 			}
 		}
 		
