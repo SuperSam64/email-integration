@@ -369,25 +369,25 @@ Monroe. NC 28110
 		'Escalation': {
 			title: 'Escalation',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Escalation': {
+				title: 'Escalation',
+				info: `Locate the order in CP, identify issue, apologize<br>Try to de-escalate the best you can, make Urgent/Sup Monday request for any action`
 			}
 		},
 		'Invoice request': {
 			title: 'Invoice request',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Invoice request': {
+				title: 'Invoice request',
+				info: `Locate order in CP, determine if they prefer order confirmation or invoice<br>If invoice is needed, make a Monday request (do not send the CandyPress invoice)<br>Advise customer invoice cannot be sent until order has completely shipped<br>if absolutely necessary, we can 🐌 mail an invoice`
 			}
 		},
 		'Inaccurate tracking information': {
 			title: 'Inaccurate tracking information',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Inaccurate tracking information': {
+				title: 'Inaccurate tracking information',
+				info: 'Monday request<br>If return is needed (or status needs to be changed right away for any other reason), consult w/ CRM'
 			}
 		},
 		'Incompatible': {
