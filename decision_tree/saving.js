@@ -37,7 +37,8 @@ async function save(content){
         accept: {
           'application/json': ['.json']
         }
-      }]
+      }],
+      startIn: 'downloads/decision_tree/configuration'
     });
     const writable = await handle.createWritable();
     await writable.write(content);
