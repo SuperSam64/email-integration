@@ -206,33 +206,44 @@ Monroe. NC 28110
 				info: `Pull up order in CP<br>Verify info<br>Check payment processing panel in CP<br>Pull up Cybersource if more info needed<br>Check order on website to make sure it matches CP and no errors<br>Things to check:<br>No unusual characters in name<br>no letters or unusual characters in phone number or ZIP<br>Cybersource codes when needed<br>Attempt to place order on your end`,
 				'Declined': {
 					title: 'Declined',
-					info: `Try a different card. If no other card can be approved, the order cannot be placed.`
+					info: ``,
+					'Declined': {
+						title: 'Declined',
+						info: `Try a different card. If no other card can be approved, the order cannot be placed.`
+					},
 				},
 				'Approved': {
 					title: 'Approved',
-					info: `No further action needed.`
+					info: ``,
+					'Approved': {
+						title: 'Approved',
+						info: `No further action needed.`
+					}
 				}
 			}
 		},
 		'Address update needed': {
 			title: 'Address update needed',
-			info: 'Pull up order in CandyPress',	
-			'Order': {
-				title: 'Customer wants to change address on order',
-				info: ``,
+			info: '',
+			'Address update needed': {
+			title: 'Address update needed',
+			info: 'Pull up order in Candypress',
 				'Order': {
 					title: 'Customer wants to change address on order',
-					info: `Order details cannot be changed after an order has been placed. Request cancellation when needed, and assist with placing a new order to the correct address. If the address in the account also needs to be updated, offer to help the customer change this from the "Account Details" page.`
+					info: ``,
+					'Order': {
+						title: 'Customer wants to change address on order',
+						info: `Order details cannot be changed after an order has been placed. Request cancellation when needed, and assist with placing a new order to the correct address. If the address in the account also needs to be updated, offer to help the customer change this from the "Account Details" page.`
+					},
 				},
-			},
-			'Account': {
-				title: 'Update address on account',
-				info: ``,
 				'Account': {
 					title: 'Update address on account',
-					info: `Change details as needed from the "Account Details" page.`
-				}
-			},
+					info: ``,
+					'Account': {
+						title: 'Update address on account',
+						info: `Change details as needed from the "Account Details" page.`
+					}
+				},
 			'Subscription': {
 				title: 'Update address for subscriptions',
 				info: ``,
@@ -266,33 +277,57 @@ Monroe. NC 28110
 				info: 'Pull up order in CP, make sure order is in PAID status, check for tracking. To know whether an item is stock, drop ship, or special order, go to the page for the item on filtersfast.com, and check the lead time. Stock items will say "In stock" (unless they are currently out of stock). If an item shows a lead time, it is either drop ship, or special order. Special order will say "Spcial order" in front of the lead time. If you see a lead time, but do not see "Special order", this is a drop ship item.',
 				'Stock': {
 					title: 'ERD is needed for stock items',
-					info: 'Call the CRM queue for an ERD'
+					info: '',
+					'Stock': {
+						title: 'ERD is needed for stock items',
+						info: 'Call the CRM queue for an ERD',
+					},
 				},
 				'Drop ship/Special order': {
 					title: 'Check ERD board',
-					info: 'Check for the item on the ERD board. This data comes directly from NAV, so if the order/item you are looking for is not listed, or if it shows a date that has already passed, we will need to contact the vendor for an update, so a Monday reqeust will be needed.'
+					info: '',
+					'Drop ship/Special order': {
+						title: 'Check ERD board',
+						info: 'Check for the item on the ERD board. This data comes directly from NAV, so if the order/item you are looking for is not listed, or if it shows a date that has already passed, we will need to contact the vendor for an update, so a Monday reqeust will be needed.'
+					}
 				}
 			}
 		},
 		'Cancellations': {
 			title: 'Cancellations',
 			info: '',
-			'Everything shipped': {
-				title: 'Everything shipped',
-				info: 'If you can confirm all items on the order have shipped (which can be done by verifying that the number of items on the order matches the number of tracking links), the order cannot be cancelled. Set up a return when possible/needed.'
-			},
-			'Paritally shipped': {
-				title: 'Paritally shipped',
-				info: `If the order shows a shipped status, but there are more items on the order than there are tracking numbers, it may be possible to cancel part of the order. Call the CRM queue to see if the part of the order needing to be cancelled has already shipped. If not, submit a Monday request for cancellation of the items in question. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
-			},
-			'Nothing shipped': {
-				title: 'Nothing shipped',
-				info: `Submit a Monday request for cancellation. If the customer is only requesting partial cancellation, specify the item(s) that should be ccancelled. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
+			Cancellations': {
+				title: 'Cancellations',
+				info: '',
+				'Everything shipped': {
+					title: 'Everything shipped',
+					info: '',
+					'Everything shipped': {
+						title: 'Everything shipped',
+						info: 'If you can confirm all items on the order have shipped (which can be done by verifying that the number of items on the order matches the number of tracking links), the order cannot be cancelled. Set up a return when possible/needed.'
+					},
+				},
+				'Paritally shipped': {
+					title: 'Paritally shipped',
+					info: ``,
+					'Paritally shipped': {
+						title: 'Paritally shipped',
+						info: `If the order shows a shipped status, but there are more items on the order than there are tracking numbers, it may be possible to cancel part of the order. Call the CRM queue to see if the part of the order needing to be cancelled has already shipped. If not, submit a Monday request for cancellation of the items in question. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
+					},
+				},
+				'Nothing shipped': {
+					title: 'Nothing shipped',
+					info: ``,
+					'Nothing shipped': {
+						title: 'Nothing shipped',
+						info: `Submit a Monday request for cancellation. If the customer is only requesting partial cancellation, specify the item(s) that should be ccancelled. Do not promise cancellation, as orders/items cannot always be cancelled. A return can be set up (for eligible items) if cancellation is not possible.`
+					}
+				}
 			}
 		},
 		'B2B call': {
 			title: 'B2B call',
-			info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`,
+			info: ``,
 			'B2B call': {
 				title: 'B2B call',
 				info: `Search Missive contacts for the name of the company. (You don't need to put the whole name, as you type into the search box, it will show all partial matches)`,
