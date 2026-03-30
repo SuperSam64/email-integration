@@ -19,13 +19,13 @@ restoreButton.addEventListener('click', function() {
 });
 
 function getData(){
-  return {
+  return JSON.stringify({
     first: document.querySelector('#first'),
     second: {
       secondA: document.querySelector('#second'),
       secondB: document.querySelector('#third')
     }
-  }
+  });
 }
 
 async function save(content){
@@ -34,7 +34,9 @@ async function save(content){
       suggestedName: 'config.json',
       types: [{
         description: 'JSON Files',
-        accept: {'application/json': ['.json']}
+        accept: {
+          'application/json': ['.json']
+        }
       }]
     });
     const writable = await handle.createWritable();
@@ -42,7 +44,7 @@ async function save(content){
     await writable.close();
     console.log('saved');
   }
-  catch(err){console.log('failed')}
+  catch(err){console.error('failed')}
 }
 
 function read(){
