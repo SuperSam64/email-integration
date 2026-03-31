@@ -2,7 +2,7 @@ var readButton = document.querySelector('#readButton');
 var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
-var displayButton = document.querySelector('#displayButton');
+
 var loadedValues;
 
 
@@ -18,9 +18,7 @@ backupButton.addEventListener('click', function() {
 restoreButton.addEventListener('click', function() {
   restore();
 });
-displayButton.addEventListener('click', function() {
-  process(loadedValues);
-});
+
 function getData(){
   return JSON.stringify({
     first: document.querySelector('#first').value,
