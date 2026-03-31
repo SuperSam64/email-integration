@@ -366,7 +366,7 @@ Monroe. NC 28110
 				info: '',
 				'Change of email address': {
 					title: 'Change of email addresss',
-					info: 'Email address can be changed from "Privacy and Security" page',
+					info: 'Email address can be changed from "Privacy and Security" page'
 				}
 			},
 			'Unable to login': {
@@ -413,31 +413,31 @@ Monroe. NC 28110
 						'Unsubscribe from marketing': {
 							title: 'Unsubscribe from marketing',
 							info: 'Submit an unsubscribe request'
-						},
-					},
+						}
+					}
+				},
+				'Cancel subscriptions/reminders': {
+					title: 'Cancel subscriptions/reminders',
+					info: '',
 					'Cancel subscriptions/reminders': {
 						title: 'Cancel subscriptions/reminders',
-						info: ''
-						'Cancel subscriptions/reminders': {
-							title: 'Cancel subscriptions/reminders',
-							info: 'Cancel from the "Subscriptions" page'
-						},
+						info: 'Cancel from the "Subscriptions" page'
 					},
+				},
+				'Make account inactive': {
+					title: 'Clarify what is needed',
+					info: '',
 					'Make account inactive': {
 						title: 'Clarify what is needed',
-						info: '',
-						'Make account inactive': {
-							title: 'Clarify what is needed',
-							info: 'Submit a Monday request'
-						},
-					},
+						info: 'Submit a Monday request'
+					}
+				},
+				'Full data removal': {
+					title: 'Clarify what is needed',
+					info: '',
 					'Full data removal': {
 						title: 'Clarify what is needed',
-						info: '',
-						'Full data removal': {
-							title: 'Clarify what is needed',
-							info: 'Submit a Monday request'
-						}
+						info: 'Submit a Monday request'
 					}
 				}
 			}
