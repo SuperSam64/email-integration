@@ -28,24 +28,14 @@ function getData(){
 }
 
 async function save(content){
-  console.log('content', content);
-  try{
-    
-    const handle = await window.showSaveFilePicker({
-      suggestedName:  'config.json',
-      types: [{
-        description: 'JSON File',
-        accept: {
-          'application/json': ['.json']
-        }
-      }]
-    });
-    const writable = await handle.createWritable();
-    await writable.write(content);
-    await writable.close();
-    console.log('saved');
-  }
-  catch(err){console.error('failed')}
+  const handle = await window.showSaveFilePicker({
+    suggestedName: 'config.json',
+    types: [{ description: 'JSON', accept: { 'application/json': ['.json'] }}]
+  });
+  const writable = await handle.createWritable();
+  await writable.write(content);
+  await writable.close();
+  console.log('saved');
 }
 
 async function read(){
