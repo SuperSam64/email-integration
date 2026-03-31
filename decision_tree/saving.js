@@ -54,7 +54,7 @@ async function read(){
       types: [
         {
           description: 'JSON Files',
-          accept {
+          accept: {
             'application/json': ['.json']
           }
         }
