@@ -34,6 +34,7 @@ function getData(){
 async function save(content){
   const handle = await window.showSaveFilePicker({
     suggestedName: 'config.json',
+    startIn: 'documents',
     types: [{ description: 'JSON', accept: { 'application/json': ['.json'] }}]
   });
   const writable = await handle.createWritable();
@@ -60,6 +61,7 @@ async function read(){
     const contents = await file.text();
     loadedValues = JSON.parse(contents);
     console.log(loadedValues);
+    process(loadedValues);
   }
   catch(err){
     console.error('error');
