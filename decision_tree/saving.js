@@ -39,6 +39,8 @@ async function save(content){
   await writable.write(content);
   await writable.close();
   console.log('saved');
+  await storeHandleInDB(handle);
+}
 }
 
 async function read(){
@@ -86,4 +88,9 @@ function restore(){
 
 }
 
-
+async function storeHandleInDB(fileHandle) {
+  const db = await openDB(); // Assume a standard IDB open request
+  const tx = db.transaction('fileHandles', 'readwrite');
+  tx.store.put({ id: 'mySavedFile', handle: fileHandle });
+  await tx.done;
+}
