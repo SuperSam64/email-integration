@@ -2,7 +2,8 @@ var readButton = document.querySelector('#readButton');
 var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
-
+var displayButton = document.querySelector('#displayButton');
+var loadedValues;
 
 
 readButton.addEventListener('click', function() {
@@ -16,6 +17,9 @@ backupButton.addEventListener('click', function() {
 });
 restoreButton.addEventListener('click', function() {
   restore();
+});
+displayButton.addEventListener('click', function() {
+  process(loadedValues);
 });
 function getData(){
   return JSON.stringify({
@@ -54,7 +58,8 @@ async function read(){
     });
     const file = await fileHandle.getFile();
     const contents = await file.text();
-    process(JSON.parse(contents));
+    loadedValues = JSON.parse(contents);
+    console.log(loadedValues);
   }
   catch(err){
     console.error('error');
@@ -66,7 +71,6 @@ function backup(){
 }
 
 function process(input){
-  console.log(input);
   var firstValue = input.first;
   var secondValue = input.second.secondA;
   var thirdValue = input.second.secondB;
