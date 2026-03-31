@@ -67,8 +67,19 @@ function backup(){
 
 function process(input){
   console.log(input);
+  var firstValue = input.first;
+  var secondValue = input.second.secondA;
+  var thirdValue = input.second.secondB;
+  var firstField = document.querySelector('#initial-first');
+  var secondField = document.querySelector('#initial-second');
+  var thirdField = document.querySelector('#initial-third');
+  firstField.innerText = firstValue;
+  secondField.innerText = secondValue;
+  thirdField.innerText = thirdValue;
 }
 
 function restore(){
 
 }
+
+
