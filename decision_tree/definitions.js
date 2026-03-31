@@ -361,9 +361,85 @@ Monroe. NC 28110
 		'Account issues | Data removal': {
 			title: 'Account issues | Data removal',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Change email': {
+				title: 'Change of email address',
+				info: '',
+				'Change of email address': {
+					title: 'Change of email addresss',
+					info: 'Email address can be changed from "Privacy and Security" page',
+				}
+			},
+			'Unable to login': {
+				title: 'Unable to login',
+				info: '',
+				'Unable to login': {
+					title: 'Reset password',
+					info: 'Password reset email can be sent from the CandyPress customer maintanence page, or can be manually set from the "Privacy and Security" page'
+				}
+			},
+			'Subscriptions': {
+				title: 'Help with subscriptions',
+				info: '',
+				'Help with subscriptions': {
+					title: 'Help with subscriptions',
+					info: 'Subscriptions can be managed from the "Subscriptions" page'
+				}
+			},
+			'Reminders': {
+				title: 'Reminders',
+				info: '',
+				'Reminders': {
+					title: 'Reminders',
+					info: 'Reminders can be managed from the "Product Reminders" page'
+				}
+			},
+			'Merging': {
+				title: 'Merging',
+				info: '',
+				'Merging': {
+					title: 'Identify all customer IDs',
+					info: `Identify all customer IDs. (If none under orders, this may be because there are no orders on the account - search under "Customer Management" - either "Customers" or "Customers Legacy")<br>Turn off all reminders and cancel all subscriptions for any account(s) that will be made inactive as a result of merging<br>Note: under any of the following conditions, it will take longer, because we will need to wait until they are resolved to merge:<br>- Outstanding order (not shipped)<br>- Return awaiting refund`
+				}
+			},
+			'Data removal': {
+				title: 'Data removal',
+				info: '',
+				'Clarify what is needed': {
+					title: 'Clarify what is needed',
+					info: '',
+					'Unsubscribe from marketing': {
+						title: 'Unsubscribe from marketing',
+						info: '',
+						'Unsubscribe from marketing': {
+							title: 'Unsubscribe from marketing',
+							info: 'Submit an unsubscribe request'
+						},
+					},
+					'Cancel subscriptions/reminders': {
+						title: 'Cancel subscriptions/reminders',
+						info: ''
+						'Cancel subscriptions/reminders': {
+							title: 'Cancel subscriptions/reminders',
+							info: 'Cancel from the "Subscriptions" page'
+						},
+					},
+					'Make account inactive': {
+						title: 'Clarify what is needed',
+						info: '',
+						'Make account inactive': {
+							title: 'Clarify what is needed',
+							info: 'Submit a Monday request'
+						},
+					},
+					'Full data removal': {
+						title: 'Clarify what is needed',
+						info: '',
+						'Full data removal': {
+							title: 'Clarify what is needed',
+							info: 'Submit a Monday request'
+						}
+					}
+				}
 			}
 		},
 		'Escalation': {
