@@ -30,10 +30,16 @@ function getData(){
 async function save(content){
   console.log('content', content);
   try{
-    const directoryHandle = await window.showDirectoryPicker();
-    const subfolderName = 'decision-tree';
-    const subfolderHandle = await directlryHandle.getDirectoryHandle(subfolderName, {create: true});    
-    const handle = await subfolderHandle.getFileHandle('config.json', {create: true});
+    
+    const handle = await window.shoSaveFilePicker({
+      suggestedName:  'config.json',
+      types: [{
+        description: 'JSON File',
+        accept: {
+          'application/json': ['.json']
+        }
+      }]
+    });
     const writable = await handle.createWritable();
     await writable.write(content);
     await writable.close();
@@ -44,7 +50,18 @@ async function save(content){
 
 async function read(){
   try{
-    const [fileHandle] = await window.showOpenFilePicker();
+    const [fileHandle] = await window.showOpenFilePicker({
+      types: [
+        {
+          description: 'JSON Files',
+          accept {
+            'application/json': ['.json']
+          }
+        }
+      ],
+      excludeAcceptAllOption: true,
+      multiple: false
+    });
     const file = await fileHandle.getFile();
     const contents = await file.text();
     process(JSON.parse(contents));
