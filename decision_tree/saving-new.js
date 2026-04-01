@@ -45,8 +45,11 @@ async function setValues(){
     firstVal.value = importedJSON.first;
     firstVal.value = importedJSON.second.secondA;
     firstVal.value = importedJSON.second.secondB;
+    configData = imported;
     console.log('success');
   }
+  else{
+    console.log('failure');
 }
 
 
