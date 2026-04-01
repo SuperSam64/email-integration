@@ -43,8 +43,8 @@ async function setValues(){
     var secondVal = document.querySelector('#second-first');
     var thirdVal = document.querySelector('#third-first');
     firstVal.innerText = importedJSON.first;
-    firstVal.innerText = importedJSON.second.secondA;
-    firstVal.innerText = importedJSON.second.secondB;
+    secondVal.innerText = importedJSON.second.secondA;
+    thirdVal.innerText = importedJSON.second.secondB;
     configData = imported;
     console.log('success');
   }
