@@ -50,6 +50,7 @@ async function setValues(){
   }
   else{
     console.log('failure');
+  }
 }
 
 
