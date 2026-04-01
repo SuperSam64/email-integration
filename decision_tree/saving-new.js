@@ -42,9 +42,9 @@ async function setValues(){
     var firstVal = document.querySelector('#initial-first');
     var secondVal = document.querySelector('#second-first');
     var thirdVal = document.querySelector('#third-first');
-    firstVal.value = importedJSON.first;
-    firstVal.value = importedJSON.second.secondA;
-    firstVal.value = importedJSON.second.secondB;
+    firstVal.innerText = importedJSON.first;
+    firstVal.innerText = importedJSON.second.secondA;
+    firstVal.innerText = importedJSON.second.secondB;
     configData = imported;
     console.log('success');
   }
