@@ -1,3 +1,5 @@
+var configData;
+
 const dbName = "ConfigDB";
 const storeName = "user_settings";
 
@@ -33,7 +35,19 @@ function getData(){
 
 
 
-
+async function setValues(){
+  var imported = await loadFromDB()
+  if(imported){
+    var importedJSON = JSON.parse(imported);
+    var firstVal = document.querySelector('#initial-first');
+    var secondVal = document.querySelector('#second-first');
+    var thirdVal = document.querySelector('#third-first');
+    firstVal.value = importedJSON.first;
+    firstVal.value = importedJSON.second.secondA;
+    firstVal.value = importedJSON.second.secondB;
+    console.log('success');
+  }
+}
 
 
 
