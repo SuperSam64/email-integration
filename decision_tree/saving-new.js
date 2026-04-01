@@ -68,12 +68,14 @@ async function initDB() {
 }
 
 async function saveToDB(config) {
+  console.log('saving...');
   const db = await initDB();
   const tx = db.transaction(storeName, "readwrite");
   tx.objectStore(storeName).put(config, "current_config");
 }
 
 async function loadFromDB() {
+  console.log('loading...');
   const db = await initDB();
   return new Promise((resolve) => {
     const req = db.transaction(storeName).objectStore(storeName).get("current_config");
@@ -83,6 +85,7 @@ async function loadFromDB() {
 
 // --- File System Access (config.json) ---
 async function exportConfig() {
+  console.log('export initiated');
   const config = await loadFromDB();
   const handle = await window.showSaveFilePicker({
     suggestedName: 'config.json',
