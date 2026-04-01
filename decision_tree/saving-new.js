@@ -42,12 +42,12 @@ async function setValues(){
   var imported = await loadFromDB()
   if(imported){
     var importedJSON = JSON.parse(imported);
-    var firstVal = document.querySelector('#initial-first');
-    var secondVal = document.querySelector('#initial-second');
-    var thirdVal = document.querySelector('#initial-third');
-    firstVal.innerText = importedJSON.first;
-    secondVal.innerText = importedJSON.second.secondA;
-    thirdVal.innerText = importedJSON.second.secondB;
+    var firstVal = document.querySelector('#first');
+    var secondVal = document.querySelector('#second');
+    var thirdVal = document.querySelector('#third');
+    firstVal.value = importedJSON.first;
+    secondVal.value = importedJSON.second.secondA;
+    thirdVal.value = importedJSON.second.secondB;
     configData = imported;
     console.log('success');
   }
