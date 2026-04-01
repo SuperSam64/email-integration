@@ -1,3 +1,6 @@
+/* when nothing is in indexedDB, store a value in indexedDB that no data has been loaded. Offer to load config. Also offer not to ask again. If user opts out, do not show again. */
+
+
 var configData;
 
 const dbName = "ConfigDB";
