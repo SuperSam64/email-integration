@@ -34,7 +34,7 @@ function getData(){
 }
 
 
-
+setValues();
 async function setValues(){
   var imported = await loadFromDB()
   if(imported){
