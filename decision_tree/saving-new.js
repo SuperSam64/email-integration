@@ -1,6 +1,45 @@
 const dbName = "ConfigDB";
 const storeName = "user_settings";
 
+
+
+var readButton = document.querySelector('#readButton');
+var saveButton = document.querySelector('#saveButton');
+var backupButton = document.querySelector('#backupButton');
+var restoreButton = document.querySelector('#restoreButton');
+
+readButton.addEventListener('click', function() {
+  loadFromDB();
+});
+saveButton.addEventListener('click', function() {
+  saveToDB(getData());
+});
+backupButton.addEventListener('click', function() {
+  exportConfig();
+});
+restoreButton.addEventListener('click', function() {
+  importConfig();
+});
+
+function getData(){
+  return JSON.stringify({
+    first: document.querySelector('#first').value,
+    second: {
+      secondA: document.querySelector('#second').value,
+      secondB: document.querySelector('#third').value
+    }
+  });
+}
+
+
+
+
+
+
+
+
+
+
 async function initDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 1);
