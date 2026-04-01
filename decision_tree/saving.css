@@ -1,0 +1,13 @@
+.button {
+  margin:8px;
+  width:120px;
+  padding:8px;
+  border-radius:6px;
+  text-align:center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.button:hover {
+  filter: brightness(125%);
+}
