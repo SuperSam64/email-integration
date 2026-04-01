@@ -86,7 +86,7 @@ async function loadFromDB() {
   });
 }
 
-// --- File System Access (config.json) ---
+
 async function exportConfig() {
   console.log('export initiated');
   const config = await loadFromDB();
@@ -106,3 +106,9 @@ async function importConfig() {
   await saveToDB(config); // Sync to DB after import
   return config;
 }
+
+/*
+1) No safe file found. This can occur after browsing data has been cleared. Please restore your settings from a backup, or configure your settings again. Note: the default name and location of your backups will be Documents/decision_tree/config.json
+2) Configuration complete. Would you like to backup this configuration?
+3) Configuration restored from backup.*/
+
