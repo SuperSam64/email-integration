@@ -40,8 +40,8 @@ async function setValues(){
   if(imported){
     var importedJSON = JSON.parse(imported);
     var firstVal = document.querySelector('#initial-first');
-    var secondVal = document.querySelector('#second-first');
-    var thirdVal = document.querySelector('#third-first');
+    var secondVal = document.querySelector('#initial-second');
+    var thirdVal = document.querySelector('#initial-third');
     firstVal.innerText = importedJSON.first;
     secondVal.innerText = importedJSON.second.secondA;
     thirdVal.innerText = importedJSON.second.secondB;
