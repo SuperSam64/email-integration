@@ -477,9 +477,57 @@ Monroe. NC 28110
 		'Lost package': {
 			title: 'Lost package',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Lost package': {
+				title: 'Lost package',
+				info: '-Locate order in CandyPress and view tracking<br>Locate order in CandyPress and view tracking<br>-Confirm shipping address is correct',
+				'Returned to sender': {
+					title: 'Returned to sender',
+					info: ``,
+					'Returned to sender': {
+						title: 'Returned to sender',
+						info: `If tracking confirms we have received it:<br>-Check Cybersource for refund (CRM can check PayPal)<br>-If no refund, request one, advise if the order is still needed, a new one needs to be placed<br>-Can request reship if preferred by customer, depending on reason for it being returned to sender (check tracking details)`
+					}
+				},
+				'Says delivered but not received': {
+					title: 'Says delivered but not received',
+					info: '',
+					'Says delivered but not received': {
+						title: 'Says delivered but not received',
+						info: 'Confirm the shipping address. If it is correct, ask the customer whether they want a reship or refund. If incorrect, it can only be refunded, and a new order will need to be placed if needed. In either case, submit a Monday request.'
+					}
+				},
+				'Still in transit': {
+					title: 'Still in transit',
+					info: '',
+					'Tracking has been updated in last 7 days': {
+						title: 'Tracking has been updated in last 7 days',
+						info: '',
+						'Tracking has been updated in last 7 days': {
+							title: 'Tracking has been updated in last 7 days',
+							info: 'Use judgement (for example, if it shows 4+ days no update and an error status). If a refund/reship is not yet appropriate, advise that it is only considered lost after 7 days with no updates. Though if it is taking longer than expected and the customer is escalated, offer a refund of the shipping cost. (First, check to make sure there was a shipping cost, and that it has not already been refunded.) If the shipping needs to be refunded, submit a Monday request.'
+						}
+					},
+					'No tracking update in last 7 days': {
+						title: 'No tracking update in last 7 days',
+						info: '',
+						'No tracking update in last 7 days': {
+							title: 'Address is correct',
+							info: '',
+							'Address is correct': {
+								title: 'Address is correct',
+								info: ''
+							}
+						},
+						'Address is wrong ': {
+							title: 'Address is wrong ',
+							info: '',
+							'Address is wrong ': {
+								title: 'No tracking update in last 7 days',
+								info: 'Must refund, customer can place a new order. Cannot reship to different address '
+							}
+						}
+					}
+				}	
 			}
 		},
 		'Discount not applied': {
