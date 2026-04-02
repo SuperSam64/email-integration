@@ -1,21 +1,15 @@
 /* when nothing is in indexedDB, store a value in indexedDB that no data has been loaded. Offer to load config. Also offer not to ask again. If user opts out, do not show again. */
-
-
 var configData;
-
 const dbName = "ConfigDB";
 const storeName = "user_settings";
 
 
 
-var readButton = document.querySelector('#readButton');
+
 var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 
-readButton.addEventListener('click', function() {
-  loadFromDB();
-});
 saveButton.addEventListener('click', function() {
   saveToDB(getData());
 });
@@ -97,6 +91,7 @@ async function exportConfig() {
   const writable = await handle.createWritable();
   await writable.write(JSON.stringify(config, null, 2));
   await writable.close();
+  saveToDB(getData());
 }
 
 async function importConfig() {
