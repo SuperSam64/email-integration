@@ -69,6 +69,7 @@ async function loadFromDB() {
   });
 }
 async function exportConfig() {
+  await saveToDB(getData());
   console.log('export initiated');
   const config = await loadFromDB();
   const handle = await window.showSaveFilePicker({
@@ -76,9 +77,8 @@ async function exportConfig() {
     types: [{ description: 'JSON', accept: {'application/json': ['.json']} }]
   });
   const writable = await handle.createWritable();
-  await writable.write(JSON.stringify(config, null, 2));
+  await writable.write(JSON.stringify(config));
   await writable.close();
-  saveToDB(getData());
 }
 async function importConfig() {
   const [handle] = await window.showOpenFilePicker();
