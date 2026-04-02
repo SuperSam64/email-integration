@@ -469,9 +469,25 @@ Monroe. NC 28110
 		'Incompatible': {
 			title: 'Incompatible',
 			info: '',
-			'Content': {
-				title: 'Menu in progress',
-				info: ''
+			'Incompatible': {
+				title: 'Incompatible',
+				info: 'Locate order in Candypress, apologize fo customer. Try to identify product. Start with part number, if no part number is available, ask for photos.',
+				'Customer received wrong item': {
+					title: 'Customer received wrong item',
+					info: '',
+					'Customer received wrong item': {
+						title: 'Customer received wrong item',
+						info: `When doing a return wrong item received, do a Monday request to let CRMs know the part number match the part # in CP<br>Put customer's preference/reship if the correct item can be reshipped (if it can't be, the order will be refunded)<br>Requirements for returns: If reminders are on, turn off. If there is a subscription, cancel (or change to a different product). Find out how customer searched for product.`
+					},
+				},
+				'Customer ordered wrong item': {
+					title: 'Customer ordered wrong item',
+					info: '',
+					'Customer ordered wrong item': {
+						title: 'Customer ordered wrong item',
+						info: `Set up return, help with new order if needed .<br>Requirements for returns: If reminders are on, turn off. If there is a subscription, cancel (or change to a different product). Find out how customer searched for product.`
+					}
+				}
 			}
 		},
 		'Lost package': {
