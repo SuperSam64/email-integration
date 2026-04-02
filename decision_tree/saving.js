@@ -1,35 +1,10 @@
-import { openDB } from 'https://unpkg.com';
+/* when nothing is in indexedDB, store a value in indexedDB that no data has been loaded. Offer to load config. Also offer not to ask again. If user opts out, do not show again. */
 
-const DB_NAME = 'UserConfigDB';
-const STORE_NAME = 'configStore';
 
-async function getDB() {
-  return openDB(DB_NAME, 1, {
-    upgrade(db) {
-      db.createObjectStore(STORE_NAME);
-    },
-  });
-}
+var configData;
 
-export async function getConfig(key) {
-  const db = await getDB();
-  return db.get(STORE_NAME, key);
-}
-
-export async function setConfig(key, val) {
-  const db = await getDB();
-  return db.put(STORE_NAME, val, key);
-}
-
-export async function getAllConfig() {
-    const db = await getDB();
-    const allKeys = await db.getAllKeys(STORE_NAME);
-    const config = {};
-    for (const key of allKeys) {
-        config[key] = await db.get(STORE_NAME, key);
-    }
-    return config;
-}
+const dbName = "ConfigDB";
+const storeName = "user_settings";
 
 
 
@@ -38,20 +13,17 @@ var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 
-var loadedValues;
-
-
 readButton.addEventListener('click', function() {
-  read();
+  loadFromDB();
 });
 saveButton.addEventListener('click', function() {
-  save(getData());
+  saveToDB(getData());
 });
 backupButton.addEventListener('click', function() {
-  backup();
+  exportConfig();
 });
 restoreButton.addEventListener('click', function() {
-  restore();
+  importConfig();
 });
 
 function getData(){
@@ -64,68 +36,79 @@ function getData(){
   });
 }
 
-async function save(content){
+
+setValues();
+async function setValues(){
+  var imported = await loadFromDB()
+  if(imported){
+    var importedJSON = JSON.parse(imported);
+    var firstVal = document.querySelector('#first');
+    var secondVal = document.querySelector('#second');
+    var thirdVal = document.querySelector('#third');
+    firstVal.value = importedJSON.first;
+    secondVal.value = importedJSON.second.secondA;
+    thirdVal.value = importedJSON.second.secondB;
+    configData = imported;
+    console.log('success');
+  }
+  else{
+    console.log('failure');
+  }
+}
+
+
+
+
+
+
+async function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName, 1);
+    request.onupgradeneeded = (e) => e.target.result.createObjectStore(storeName);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function saveToDB(config) {
+  console.log('saving...');
+  const db = await initDB();
+  const tx = db.transaction(storeName, "readwrite");
+  tx.objectStore(storeName).put(config, "current_config");
+}
+
+async function loadFromDB() {
+  console.log('loading...');
+  const db = await initDB();
+  return new Promise((resolve) => {
+    const req = db.transaction(storeName).objectStore(storeName).get("current_config");
+    req.onsuccess = () => resolve(req.result);
+  });
+}
+
+
+async function exportConfig() {
+  console.log('export initiated');
+  const config = await loadFromDB();
   const handle = await window.showSaveFilePicker({
     suggestedName: 'config.json',
-    startIn: 'documents',
-    types: [{ description: 'JSON', accept: { 'application/json': ['.json'] }}]
+    types: [{ description: 'JSON', accept: {'application/json': ['.json']} }]
   });
   const writable = await handle.createWritable();
-  await writable.write(content);
+  await writable.write(JSON.stringify(config, null, 2));
   await writable.close();
-  console.log('saved');
-  await storeHandleInDB(handle);
-}
 }
 
-async function read(){
-  try{
-    const [fileHandle] = await window.showOpenFilePicker({
-      types: [
-        {
-          description: 'JSON Files',
-          accept: {
-            'application/json': ['.json']
-          }
-        }
-      ],
-      excludeAcceptAllOption: true,
-      multiple: false
-    });
-    const file = await fileHandle.getFile();
-    const contents = await file.text();
-    loadedValues = JSON.parse(contents);
-    console.log(loadedValues);
-    process(loadedValues);
-  }
-  catch(err){
-    console.error('error');
-  }
+async function importConfig() {
+  const [handle] = await window.showOpenFilePicker();
+  const file = await handle.getFile();
+  const config = JSON.parse(await file.text());
+  await saveToDB(config); // Sync to DB after import
+  return config;
 }
 
-function backup(){
+/*
+1) No safe file found. This can occur after browsing data has been cleared. Please restore your settings from a backup, or configure your settings again. Note: the default name and location of your backups will be Documents/decision_tree/config.json
+2) Configuration complete. Would you like to backup this configuration?
+3) Configuration restored from backup.*/
 
-}
-
-function process(input){
-  var firstValue = input.first;
-  var secondValue = input.second.secondA;
-  var thirdValue = input.second.secondB;
-  var firstField = document.querySelector('#first');
-  var secondField = document.querySelector('#second');
-  var thirdField = document.querySelector('#third');
-  firstField.value = firstValue;
-  secondField.value = secondValue;
-  thirdField.value = thirdValue;
-}
-
-function restore(){
-
-}
-
-async function storeHandleInDB(fileHandle) {
-  const db = await openDB(); // Assume a standard IDB open request
-  const tx = db.transaction('fileHandles', 'readwrite');
-  tx.store.put({ id: 'mySavedFile', handle: fileHandle });
-  await tx.done;
-}
