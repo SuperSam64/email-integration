@@ -2,14 +2,10 @@
 var configData;
 const dbName = "ConfigDB";
 const storeName = "user_settings";
-
-
-
-
 var saveButton = document.querySelector('#saveButton');
 var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
-
+setValues();
 saveButton.addEventListener('click', function() {
   saveToDB(getData());
 });
@@ -19,7 +15,6 @@ backupButton.addEventListener('click', function() {
 restoreButton.addEventListener('click', function() {
   importConfig();
 });
-
 function getData(){
   return JSON.stringify({
     first: document.querySelector('#first').value,
@@ -29,9 +24,6 @@ function getData(){
     }
   });
 }
-
-
-setValues();
 async function setValues(){
   var imported = await loadFromDB()
   if(imported){
@@ -46,15 +38,12 @@ async function setValues(){
     console.log('success');
   }
   else{
-    console.log('failure');
+    noSaveData();
   }
 }
-
-
-
-
-
-
+function noSaveData(){
+  console.log('No save data exits, create now?');
+}
 async function initDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 1);
@@ -63,14 +52,12 @@ async function initDB() {
     request.onerror = () => reject(request.error);
   });
 }
-
 async function saveToDB(config) {
   console.log('saving...');
   const db = await initDB();
   const tx = db.transaction(storeName, "readwrite");
   tx.objectStore(storeName).put(config, "current_config");
 }
-
 async function loadFromDB() {
   console.log('loading...');
   const db = await initDB();
@@ -79,8 +66,6 @@ async function loadFromDB() {
     req.onsuccess = () => resolve(req.result);
   });
 }
-
-
 async function exportConfig() {
   console.log('export initiated');
   const config = await loadFromDB();
@@ -93,7 +78,6 @@ async function exportConfig() {
   await writable.close();
   saveToDB(getData());
 }
-
 async function importConfig() {
   const [handle] = await window.showOpenFilePicker();
   const file = await handle.getFile();
@@ -101,9 +85,8 @@ async function importConfig() {
   await saveToDB(config); // Sync to DB after import
   return config;
 }
-
 /*
-1) No safe file found. This can occur after browsing data has been cleared. Please restore your settings from a backup, or configure your settings again. Note: the default name and location of your backups will be Documents/decision_tree/config.json
+1) No save file found. This can occur after browsing data has been cleared. Please restore your settings from a backup, or configure your settings again. Note: the default name and location of your backups will be Documents/decision_tree/config.json
 2) Configuration complete. Would you like to backup this configuration?
 3) Configuration restored from backup.*/
 
