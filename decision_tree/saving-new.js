@@ -38,13 +38,15 @@ async function setValues(){
     thirdVal.value = importedJSON.second.secondB;
     configData = imported;
     console.log('success');
+    document.querySelector('#messageSection').innerText = 'Stored settings are in use';
   }
   else{
     noSaveData();
+    document.querySelector('#messageSection').innerHTML = '<span>Settings not found. This can occur after clearing cookies. Restore from backup?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript(document.querySelector(`#restoreButton`).click())">Restore</span>';
   }
 }
 function noSaveData(){
-  console.log('No save data exits, create now?');
+  document.querySelector('#messageSection').innerHTML = '<span>Your settings have not been backed up. Would you like to back them up now?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript(document.querySelector(`#backupButton`).click())">Back up</span>';;
 }
 async function initDB() {
   return new Promise((resolve, reject) => {
