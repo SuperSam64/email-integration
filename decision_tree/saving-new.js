@@ -42,11 +42,11 @@ async function setValues(){
   }
   else{
     noSaveData();
-    document.querySelector('#messageSection').innerHTML = '<span>Settings not found. This can occur after clearing cookies. Restore from backup?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript(document.querySelector(`#restoreButton`).click())">Restore</span>';
+    document.querySelector('#messageSection').innerHTML = '<span>Settings not found. This can occur after clearing cookies. Restore from backup?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript:(document.querySelector(`#restoreButton`).click())">Restore</span>';
   }
 }
 function noSaveData(){
-  document.querySelector('#messageSection').innerHTML = '<span>Your settings have not been backed up. Would you like to back them up now?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript(document.querySelector(`#backupButton`).click())">Back up</span>';;
+  document.querySelector('#messageSection').innerHTML = '<span>Your settings have not been backed up. Would you like to back them up now?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript:(document.querySelector(`#backupButton`).click())">Back up</span>';;
 }
 async function initDB() {
   return new Promise((resolve, reject) => {
