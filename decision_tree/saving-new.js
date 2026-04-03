@@ -87,6 +87,7 @@ async function importConfig() {
   const file = await handle.getFile();
   const config = JSON.parse(await file.text());
   await saveToDB(config); // Sync to DB after import
+  setValues();
   return config;
 }
 /*
