@@ -86,7 +86,7 @@ async function importConfig() {
   const [handle] = await window.showOpenFilePicker();
   const file = await handle.getFile();
   const config = JSON.parse(await file.text());
-  await saveToDB(config); // Sync to DB after import
+  await saveToDB("ConfigDB", config, "current_config", "user_settings"); // Sync to DB after import
   setValues();
   return config;
 }
