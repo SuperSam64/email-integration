@@ -5,7 +5,7 @@ var configData;
 
 const dbName = "ConfigDB";
 const storeName = "user_settings";
-
+const keyName = "current_config"
 
 
 var readButton = document.querySelector('#readButton');
@@ -14,10 +14,10 @@ var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 
 readButton.addEventListener('click', function() {
-  loadFromDB();
+  loadFromDB("ConfigDB", "current_config", "user_settings");
 });
 saveButton.addEventListener('click', function() {
-  saveToDB(getData());
+  saveToDB("ConfigDB", getData(), "current_config", "user_settings");
 });
 backupButton.addEventListener('click', function() {
   exportConfig();
@@ -39,7 +39,7 @@ function getData(){
 
 setValues();
 async function setValues(){
-  var imported = await loadFromDB()
+  var imported = await loadFromDB("ConfigDB", "current_config", "user_settings");
   if(imported){
     var importedJSON = JSON.parse(imported);
     var firstVal = document.querySelector('#first');
@@ -57,11 +57,7 @@ async function setValues(){
 }
 
 
-
-
-
-
-async function initDB() {
+async function initDB(dbName, storeName) {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 1);
     request.onupgradeneeded = (e) => e.target.result.createObjectStore(storeName);
@@ -70,7 +66,34 @@ async function initDB() {
   });
 }
 
-async function saveToDB(config) {
+async function saveToDB(dbName, savedValue, keyName, storeName) {
+  console.log('saving...');
+  const db = await initDB(dbName, storeName);
+  const tx = db.transaction(storeName, "readwrite");
+  tx.objectStore(storeName).put(savedValue, keyName);
+}
+
+async function loadFromDB(dbName, keyName, storeName) {
+  console.log('loading...');
+  const db = await initDB(dbName,, storeName);
+  return new Promise((resolve) => {
+    const req = db.transaction(storeName).objectStore(storeName).get(keyName);
+    req.onsuccess = () => resolve(req.result);
+  });
+}
+
+
+
+/*async function initDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(dbName, 1);
+    request.onupgradeneeded = (e) => e.target.result.createObjectStore(storeName);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function (config) {
   console.log('saving...');
   const db = await initDB();
   const tx = db.transaction(storeName, "readwrite");
@@ -84,7 +107,7 @@ async function loadFromDB() {
     const req = db.transaction(storeName).objectStore(storeName).get("current_config");
     req.onsuccess = () => resolve(req.result);
   });
-}
+}*/
 
 
 async function exportConfig() {
@@ -103,7 +126,7 @@ async function importConfig() {
   const [handle] = await window.showOpenFilePicker();
   const file = await handle.getFile();
   const config = JSON.parse(await file.text());
-  await saveToDB(config); // Sync to DB after import
+  await saveToDB("ConfigDB", config, "current_config", "user_settings"); // Sync to DB after import
   return config;
 }
 
