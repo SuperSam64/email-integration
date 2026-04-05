@@ -64,7 +64,7 @@ async function saveToDB(dbName, savedValue, keyName, storeName) {
 }
 async function loadFromDB(dbName, keyName, storeName) {
   console.log('loading...');
-  const db = await initDB(dbName,, storeName);
+  const db = await initDB(dbName, storeName);
   return new Promise((resolve) => {
     const req = db.transaction(storeName).objectStore(storeName).get(keyName);
     req.onsuccess = () => resolve(req.result);
