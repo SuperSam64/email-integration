@@ -41,8 +41,7 @@ async function setValues(){
     document.querySelector('#messageSection').innerText = 'Stored settings are in use';
   }
   else{
-    noSaveData();
-    document.querySelector('#messageSection').innerHTML = '<span>Settings not found. This can occur after clearing cookies. Restore from backup?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript:(document.querySelector(`#restoreButton`).click())">Restore</span>';
+    noConfigFound();
   }
 }
 function noSaveData(){
@@ -92,7 +91,6 @@ async function importConfig() {
 }
 function noConfigFound(){
 		new modal({
-		parent: document.querySelector('#leftSection'),
 		title: 'No saved configuration', 
 		content: 'No saved configuration data found. This can be caused by clearing cookies. Please restore your configuration from a backup, or configure your settings manually. Integration with third-party resources, such as Monday and Missive, will be unavailable until this has been done.',
 		doNotShowCheckbox: true,
