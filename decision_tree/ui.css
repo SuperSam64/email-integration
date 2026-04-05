@@ -1,0 +1,229 @@
+:root{
+	--distance-from-top: 0%;
+	--offset-top: 0%;
+	--modal-background-color: white;
+	--modal-text-color: black;
+	--main-font-size: 14px;
+	--title-font-size: calc(var(--main-font-size) + 2px);
+	--modal-shadow: 6px 6px 8px rgba(0, 0, 0, 0.6);
+	--button-color: gray;
+	--button-hover: background-color: rgba(0, 0, 0, 0.4);
+	--button-text: white;
+	--button-color-accept: rgba(5, 79, 151, 1);
+	--button-hover-accept: rgba(0, 120, 255, 1);
+	--button-text-accept: white;
+	--button-color-cancel: rgba(242, 103, 34, 1);
+	--button-hover-cancel: rgba(255, 130, 65, 1);
+	--button-text-cancel: white;
+	--backdrop-color: rgba(0, 0, 0, 0.8);
+	--animation-timing: 0.4s;
+	--margin-padding-baseline: 8px;
+	--background-blur: 0.8px;
+	--border-radius: 8px;
+}
+body, html{
+	font-family: Lato, museo-sans-rounded, verdana, sans-serif, helvetica;
+	font-size: var(--main-font-size);
+	
+}
+body.blocking{
+	pointer-events: none;
+}
+.backdrop{
+	background-color: var(--backdrop-color);
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	z-index: 900;
+	opacity: 0;
+	backdrop-filter: blur(var(--background-blur));
+}
+.backdrop.fade-in{
+	animation: fade-backdrop-in var(--animation-timing) forwards;
+	animation-fill-mode: both;
+	will-change: opacity; 
+}
+.backdrop.fade-out{
+	animation: fade-backdrop-out var(--animation-timing) forwards;
+	animation-fill-mode: both;
+	will-change: opacity; 
+}
+.modal{
+	background-color: var(--modal-background-color);
+	color: var(--modal-text-color);
+	max-width: 90%;
+	max-height: 90%;
+	top: var(--distance-from-top);
+	left: 0;
+	left: 50%;
+	padding: 6px;
+	border-radius: var(--border-radius);
+	position: absolute;
+	overflow: auto;
+	z-index: 999;
+	filter: drop-shadow(var(--modal-shadow));
+	transform: translate(-50%, var(--offset-top));
+	transform-origin: center;
+	opacity: 0;
+	backface-visibility: hidden;
+	pointer-events: all;
+	user-select: none;
+}
+.modalContainer{
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	position: relative;
+}
+.modalTitle{
+	padding:6px;
+	border-bottom:1px solid rgba(0, 0, 0, 0.15);
+	font-size: var(--title-font-size);
+	font-weight: bold;
+	text-align: center;
+}
+.modalContent{
+	max-width: 90%;
+	max-height: 90%;
+	width: 0;
+	margin: auto;
+	padding: 12px 18px 12px;
+	text-align: left;
+	text-wrap: balance;
+	oveflow: auto;
+}
+.buttonRow{
+	padding: 6px;
+	justify-content:center;
+	display:flex;
+}
+.modal div.button{
+	background-color: var(--button-color);
+	color: var(--button-text);
+	width: min(fit-content, 100%);
+	min-width: 60px;
+	padding: 6px;
+	margin: 4px;
+	border-radius: calc(var(--border-radius) * 0.5);
+	text-align: center;
+	user-select: none;
+	cursor: pointer;
+}
+.modal div.button:hover{
+	background-color: var(--button-hover);
+}
+.modal div.button.accept{
+	background-color: var(--button-color-accept);
+	color: var(--button-text-accept);
+}
+.modal div.button.accept:hover{
+	background-color: var(--button-hover-accept);
+}
+.modal div.button.cancel{
+	background-color: var(--button-color-cancel);
+	color: var(--button-text-cancel);
+}
+.modal div.button.cancel:hover{
+	background-color: var(--button-hover-cancel);
+}
+.modal.show{
+	animation: show-modal var(--animation-timing) ease-in-out forwards;
+	animation-fill-mode: both;
+	will-change: opacity;
+}
+.modal.hide{
+	animation: hide-modal var(--animation-timing) ease-in-out forwards;
+	animation-fill-mode: both;
+	will-change: opacity; 
+}
+#doNotShow{
+	margin-left: -5px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	gap: 4px;
+	
+}
+.blockingContainer{
+	background-color: rgba(100, 200, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left:0;
+	padding: 0;
+	margin: 0;
+	position:absolute;
+	cursor: default;
+	user-select: none;
+	z-index: 500;
+}
+.contain{
+	contain: layout;
+}
+
+@keyframes fade-backdrop-in {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes fade-backdrop-out {
+	0% {
+		opacity: 1;
+	}
+	60% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+@keyframes hide-modal {
+	0% {
+		transform: translate(-50%, var(--offset-top)) scale(1);
+		opacity: 1;
+	}
+	40% {
+		transform: translate(-50%, var(--offset-top)) scale(1.06);
+	}
+	80% {
+		opacity: 0;
+	}
+	90% {
+		transform: translate(-50%, var(--offset-top)) scale(0.2);
+	}
+	100% {
+		transform: translate(-50%, var(--offset-top)) scale(0);
+		opacity: 0;
+	}
+}
+@keyframes show-modal {
+	0% {
+		transform: translate(-50%, var(--offset-top)) scale(0);
+		opacity: 0;
+	}
+	10% {
+		transform: translate(-50%, var(--offset-top)) scale(0.2);
+	}
+	20% {
+		opacity: 0;
+	}
+	60% {
+		transform: translate(-50%, var(--offset-top)) scale(1.06);
+	}
+	100% {
+		transform: translate(-50%, var(--offset-top)) scale(1);
+		opacity: 1;
+	}
+}
