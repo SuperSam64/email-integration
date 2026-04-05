@@ -90,3 +90,20 @@ async function importConfig() {
   setValues();
   return config;
 }
+function noConfigFound(){
+		new modal({
+		parent: document.querySelector('#leftSection'),
+		title: 'No saved configuration', 
+		content: 'No saved configuration data found. This can be caused by clearing cookies. Please restore your configuration from a backup, or configure your settings manually. Integration with third-party resources, such as Monday and Missive, will be unavailable until this has been done.',
+		doNotShowCheckbox: true,
+		buttons:{
+			'Configure': {
+				type: 'accept',
+				linkedFunction: 'openConfig()'
+			},
+			'Skip': {
+				type: 'cancel',
+			}
+		}
+	});
+}
