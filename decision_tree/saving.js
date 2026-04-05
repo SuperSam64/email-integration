@@ -9,7 +9,7 @@ var backupButton = document.querySelector('#backupButton');
 var restoreButton = document.querySelector('#restoreButton');
 setValues();
 saveButton.addEventListener('click', function() {
-  saveToDB(getData());
+  saveToDB("ConfigDB", getData(), "current_config", "user_settings");
 });
 backupButton.addEventListener('click', function() {
   exportConfig();
@@ -27,7 +27,7 @@ function getData(){
   });
 }
 async function setValues(){
-  var imported = await loadFromDB()
+  var imported = await loadFromDB("ConfigDB", "current_config", "user_settings");
   if(imported){
     var importedJSON = JSON.parse(imported);
     var firstVal = document.querySelector('#first');
@@ -48,7 +48,7 @@ async function setValues(){
 function noSaveData(){
   document.querySelector('#messageSection').innerHTML = '<span>Your settings have not been backed up. Would you like to back them up now?<span>&nbsp;&nbsp;<span style="color:blue;text-decoration:underline" onclick="javascript:(document.querySelector(`#backupButton`).click())">Back up</span>';;
 }
-async function initDB() {
+async function initDB(dbName, storeName) {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(dbName, 1);
     request.onupgradeneeded = (e) => e.target.result.createObjectStore(storeName);
@@ -56,24 +56,24 @@ async function initDB() {
     request.onerror = () => reject(request.error);
   });
 }
-async function saveToDB(config) {
+async function saveToDB(dbName, savedValue, keyName, storeName) {
   console.log('saving...');
-  const db = await initDB();
+  const db = await initDB(dbName, storeName);
   const tx = db.transaction(storeName, "readwrite");
-  tx.objectStore(storeName).put(config, "current_config");
+  tx.objectStore(storeName).put(savedValue, keyName);
 }
-async function loadFromDB() {
+async function loadFromDB(dbName, keyName, storeName) {
   console.log('loading...');
-  const db = await initDB();
+  const db = await initDB(dbName, storeName);
   return new Promise((resolve) => {
-    const req = db.transaction(storeName).objectStore(storeName).get("current_config");
+    const req = db.transaction(storeName).objectStore(storeName).get(keyName);
     req.onsuccess = () => resolve(req.result);
   });
 }
 async function exportConfig() {
-  await saveToDB(getData());
+  await saveToDB("ConfigDB", getData(), "current_config", "user_settings");
   console.log('export initiated');
-  const config = await loadFromDB();
+  const config = await loadFromDB("ConfigDB", "current_config", "user_settings");
   const handle = await window.showSaveFilePicker({
     suggestedName: 'config.json',
     types: [{ description: 'JSON', accept: {'application/json': ['.json']} }]
@@ -86,12 +86,7 @@ async function importConfig() {
   const [handle] = await window.showOpenFilePicker();
   const file = await handle.getFile();
   const config = JSON.parse(await file.text());
-  await saveToDB(config); // Sync to DB after import
+  await saveToDB("ConfigDB", config, "current_config", "user_settings"); // Sync to DB after import
   setValues();
   return config;
 }
-/*
-1) No save file found. This can occur after browsing data has been cleared. Please restore your settings from a backup, or configure your settings again. Note: the default name and location of your backups will be Documents/decision_tree/config.json
-2) Configuration complete. Would you like to backup this configuration?
-3) Configuration restored from backup.*/
-
