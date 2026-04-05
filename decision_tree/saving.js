@@ -97,7 +97,7 @@ function noConfigFound(){
 		buttons:{
 			'Configure': {
 				type: 'accept',
-				linkedFunction: 'openConfig()'
+				linkedFunction: 'importConfig()'
 			},
 			'Skip': {
 				type: 'cancel',
