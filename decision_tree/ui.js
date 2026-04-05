@@ -38,9 +38,12 @@ class modal{
 		}
 		function buildModal(){
 			setStyle();
-			document.body.classList.add('blocking');
-			if(!input.parent){input.parent = document.body}
-			input.parent.classList.add('contain');
+			if(!input.parent){
+				input.parent = document.body
+			}
+			else{
+				input.parent.classList.add('contain');
+			}
 			var backdrop = Object.assign(document.createElement('div'), {
 				className: 'backdrop fade-in'
 			});
