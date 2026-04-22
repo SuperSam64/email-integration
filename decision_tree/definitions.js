@@ -203,7 +203,16 @@ Monroe. NC 28110
 			info: '',
 			'Content': {
 				title: 'Order processing issues',
-				info: `Pull up order in CP<br>Verify info<br>Check payment processing panel in CP<br>Pull up Cybersource if more info needed<br>Check order on website to make sure it matches CP and no errors<br>Things to check:<br>No unusual characters in name<br>no letters or unusual characters in phone number or ZIP<br>Cybersource codes when needed<br>Attempt to place order on your end`,
+				info: `<ul>
+					<li>Pull up order in CP</li>
+					<li>Verify info</li>
+					<li>Check payment processing panel in CP</li>
+					<li>Pull up Cybersource if more info needed</li>
+					<li>Check order on website to make sure it matches CP and no errors</li>
+					<li>Things to check:<br>No unusual characters in name (no letters or unusual characters in phone number or ZIP)</li>
+					<li>Cybersource codes when needed</li>
+					<li>Attempt to place order on your end</li>
+				</ul>`,
 				'Declined': {
 					title: 'Declined',
 					info: ``,
