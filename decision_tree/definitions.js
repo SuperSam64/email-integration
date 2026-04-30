@@ -464,7 +464,15 @@ Monroe. NC 28110
 			info: '',
 			'Invoice request': {
 				title: 'Invoice request',
-				info: `Locate order in CP, determine if they prefer order confirmation or invoice<br>If invoice is needed, make a Monday request (do not send the CandyPress invoice)<br>Advise customer invoice cannot be sent until order has completely shipped<br>if absolutely necessary, we can 🐌 mail an invoice`
+				info: `<ul>
+					<li>Locate order in CP, determine if they prefer order confirmation or invoice</li>
+					<li>If invoice is needed for a customer on the phone, consult a CRM.</li>
+					<ul>
+						<li>A posted invoice is only available once all items have shipped. If some items are awaiting shipment, please make a Monday request.</li>
+					</ul>
+					<li>Advise customer invoice cannot be sent until order has completely shipped</li>
+					<li>If absolutely necessary, we can 🐌 mail an invoice</li>
+				</ul>`
 			}
 		},
 		'Inaccurate tracking information': {
