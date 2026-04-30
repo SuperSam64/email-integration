@@ -601,7 +601,7 @@ Monroe. NC 28110
 					title: 'Reimbursement for return shipping cost',
 					info: ``,
 					'Reimbursement for return shipping cost':{
-						title: 'Reimbursement for return shipping cost's',
+						title: 'Reimbursement for return shipping cost',
 						info: `
 						<ul>
 							<li>Locate the order in CandyPress </li>
