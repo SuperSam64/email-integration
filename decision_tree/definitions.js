@@ -598,9 +598,9 @@ Monroe. NC 28110
 				title: 'Reimbursement',
 				info: ``,
 				'Reimbursement for return shipping cost':{
-					title: 'Reimbursement for return shipping cost'',
+					title: 'Reimbursement for return shipping cost',
 					info: ``,
-					'Reimbursement for return shipping cost'':{
+					'Reimbursement for return shipping cost':{
 						title: 'Reimbursement for return shipping cost's',
 						info: `
 						<ul>
