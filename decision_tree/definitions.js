@@ -167,7 +167,7 @@ Monroe. NC 28110
 			},
 			'Customer received wrong size': {
 				title: 'Customer received wrong size',
-				info: 'Ask whether they measured it with tape measure or held it up to current filter (if they held it up to the current filter, we will need the actual measurements). We need the whole filter, measurement, and need to be able to read the measurement in the photo. Also need photo of shipping label.',
+				info: 'Ask whether they measured it with tape measure or held it up to current filter (if they held it up to the current filter, we will need the actual measurements). We need the whole filter, measurement, and need to be able to read the measurement in the photo. Also need photo of  label.',
 				'Wrong size sent': {
 					title: 'Wrong size sent',
 					info:'reship correct size, or full refund (customer' + "'" + 's preference) [Monday request]',
@@ -504,7 +504,7 @@ Monroe. NC 28110
 			info: '',
 			'Lost package': {
 				title: 'Lost package',
-				info: '-Locate order in CandyPress and view tracking<br>Locate order in CandyPress and view tracking<br>-Confirm shipping address is correct',
+				info: '-Locate order in CandyPress and view tracking<br>Locate order in CandyPress and view tracking<br>-Confirm  address is correct',
 				'Returned to sender': {
 					title: 'Returned to sender',
 					info: ``,
@@ -587,6 +587,46 @@ Monroe. NC 28110
 							title: 'Order is not eligible',
 							info: `Make a request for the discount but do not guarantee`
 						}
+					}
+				}
+			}
+		},
+		'Reimbursement': {
+			title: 'Reimbursement',
+			info: '',
+			'Reimbursement': {
+				title: 'Reimbursement',
+				info: ``,
+				'Reimbursement for return shipping cost':{
+					title: 'Reimbursement for return shipping cost'',
+					info: ``,
+					'Reimbursement for return shipping cost'':{
+						title: 'Reimbursement for return shipping cost's',
+						info: `
+						<ul>
+							<li>Locate the order in CandyPress </li>
+							<li>Confirm a return was set up</li>
+							<li>Determine why the customer paid for their own return shipping. </li>
+							<li>Request documentation or receipt of charges paid to return. (We need to be able to clearly read the photo that shows exact amount paid to return.)</li>
+							<li>Submit a Monday request and include the documentation.</li>
+							<li>Do not make any promises regarding what will/will not be reimbursed, but let them know you will submit it for approval</li>
+						</ul>`
+					},
+				},
+				'Reimbursement for damaged caused by products':{
+					title: 'Reimbursement for damaged caused by products',
+					info: ``,
+					'Reimbursement for damaged caused by products':{
+						title: 'Reimbursement for damaged caused by products',
+						info: `
+						<ul>
+							<li>Locate the order in CandyPress </li>
+							<li>Determine whether the customer prefers a reship or refund for the item that caused the damage. </li>
+							<li>Ask the customer to provide us documentation from their homeowner’s insurance claim via email </li>
+							<li>Make an Urgent/Sup request on Monday for the reship/refund of the item AND the damage to property (one ticket for both). Tag David on this ticket. </li>
+							<li>Include all documentation in your ticket (receipts or invoices) and any specifics applicable to the situation (tech installed or troubleshooted) </li>
+							<li>Do not make any promises regarding what will/will not be reimbursed, but let them know you will submit it for approval</li>
+						</ul>`
 					}
 				}
 			}
