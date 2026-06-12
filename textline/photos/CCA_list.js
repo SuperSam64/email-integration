@@ -9,8 +9,8 @@ var CCAs = [
 		initials:'AU',
 		name:'Amelia',
 	},{
-		initials:'AV',
-		name:'Angie',
+		initials:'AH',
+		name:'Amanda',
 	},{
 		initials:'AT',
 		name:'Ashley',
