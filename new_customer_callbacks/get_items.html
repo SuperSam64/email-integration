@@ -3,6 +3,7 @@
 	<head></head>
 	<body>
 		<div onclick="readClipboard()" style="background-color: green; color: white; width: 60px; text-align: center; border-radius: 4px; padding:10px; cursor: pointer">Click me</div>
+		<div onclick="close()" style="background-color: red; color: white; width: 60px; text-align: center; border-radius: 4px; padding:10px; cursor: pointer">Close tab</div>
     <script>	  
       async function readClipboard() {
       	var clipboard = await navigator.clipboard.readText();
@@ -12,7 +13,9 @@
         var newClipboard = await navigator.clipboard.readText();
         console.log(newClipboard);
       }
-      
+      function close(){
+		  window.close();
+	  }
     </script>
   </body>
 </html>
