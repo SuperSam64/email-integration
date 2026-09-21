@@ -2,9 +2,8 @@
 <html>
 	<head></head>
 	<body>
-
-    <script>
-	  readClipboard();
+		<div onclick="readClipboard()" style="background-color: green; color: white; width: 60px; text-align: center; border-radius: 4px; padding:10px; cursor: pointer">Click me</div>
+    <script>	  
       async function readClipboard() {
       	var clipboard = await navigator.clipboard.readText();
         console.log(clipboard);
