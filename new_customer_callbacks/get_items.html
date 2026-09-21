@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+
+    <script>
+      async function readClipboard() {
+      	var clipboard = await navigator.clipboard.readText();
+        console.log(clipboard);
+        await navigator.clipboard.writeText('{"first": "1", "second": "2", "third": "3"}');
+        var newClipboard = await navigator.clipboard.readText();
+        console.log(newClipboard);
+      }
+      
+    </script>
+  </body>
+</html>
