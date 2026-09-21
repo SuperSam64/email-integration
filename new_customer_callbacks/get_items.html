@@ -4,6 +4,7 @@
 	<body>
 
     <script>
+	  readClipboard();
       async function readClipboard() {
       	var clipboard = await navigator.clipboard.readText();
         console.log(clipboard);
