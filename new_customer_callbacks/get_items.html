@@ -7,6 +7,7 @@
       async function readClipboard() {
       	var clipboard = await navigator.clipboard.readText();
         console.log(clipboard);
+		  // do a thing with clipboard, the result should be what goes into the next step. mainly, get the key and do an API call.
         await navigator.clipboard.writeText('{"first": "1", "second": "2", "third": "3"}');
         var newClipboard = await navigator.clipboard.readText();
         console.log(newClipboard);
