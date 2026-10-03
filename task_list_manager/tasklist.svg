@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 1000 1000" >
+	<defs>
+		<g id="line">
+			<rect x="252" y="327" width="134" height="134" rx="24" ry="24" fill="white" />
+			<rect x="276" y="350" width="87" height="87" rx="12" ry="12" fill="black" />
+			<rect x="421" y="378" width="315" height="31" rx="16" ry="16" fill="white" />
+		</g>
+		<mask id="cutout">
+			<rect x="0" y="0" width="1000" height="1000" fill="black" />
+			<rect x="106" y="55" width="787" height="945" rx="64" ry="64" fill="white" />
+			<rect x="154" y="102" width="693" height="850" rx="32" ry="32" fill="black" />             
+			<use href="#line"/>
+			<use href="#line" transform="translate(0 197)"/>
+			<use href="#line" transform="translate(0 394)"/>
+			<rect x="240" y="24" width="520" height="189" fill="black" />
+			<rect x="272" y="39" width="457" height="157" rx="32" ry="32" fill="white" />
+			<rect x="350" y="0" width="299" height="157" rx="32" ry="32" fill="white" />	
+		</mask>
+		<g id="favico_light">
+			<rect x="0" y="0" width="1000" height="1000" fill="white" />
+			<rect x="0" y="0" width="1000" height="1000" fill="rgba(40, 40, 40, 1)" mask="url(#cutout)" transform="scale(0.8)" transform-origin="center" />
+		</g>
+		<g id="favico_dark">
+			<rect x="0" y="0" width="1000" height="1000" fill="rgba(40, 40, 40, 1)" />
+			<rect x="0" y="0" width="1000" height="1000" fill="white" mask="url(#cutout)" transform="scale(0.9)" transform-origin="center" />
+		</g>
+	</defs>
+	<use href="#favico_light"/>
+
+</svg>
