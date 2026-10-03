@@ -17,11 +17,11 @@
 			<rect x="350" y="0" width="299" height="157" rx="32" ry="32" fill="white" />	
 		</mask>
 		<g id="favico_light">
-			<rect x="0" y="0" width="1000" height="1000" fill="white" rx="64" ry="64" />
+			<rect x="0" y="0" width="1000" height="1000" fill="white" rx="128" ry="128" />
 			<rect x="0" y="0" width="1000" height="1000" fill="rgba(40, 40, 40, 1)" mask="url(#cutout)" transform="scale(0.8)" transform-origin="center" />
 		</g>
 		<g id="favico_dark">
-			<rect x="0" y="0" width="1000" height="1000" fill="rgba(40, 40, 40, 1)" rx="64" ry="64" />
+			<rect x="0" y="0" width="1000" height="1000" fill="rgba(40, 40, 40, 1)" rx="128" ry="128" />
 			<rect x="0" y="0" width="1000" height="1000" fill="white" mask="url(#cutout)" transform="scale(0.9)" transform-origin="center" />
 		</g>
 	</defs>
